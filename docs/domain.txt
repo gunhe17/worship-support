@@ -1,0 +1,338 @@
+Domain Spec (worship-support)
+=============================
+
+이 문서는 도메인을 `auth / project / template / block` 4개 단위로 정리합니다.
+기준은 Next.js(App Router) + Supabase(Postgres/RLS)이며, 본 문서는 아래 “의사결정”을 반영합니다.
+
+- 로그인: email + password
+- 프로젝트 접근: 인증된 유저면 모든 project를 공유(권한 구분 없음)
+- 역할(Role): 없음
+- 세션 처리: 서버(SSR) 중심
+- 감사/추적: 주요 이벤트 기록
+- 삭제 정책: hard delete 금지(soft delete)
+- 템플릿 타입: card-news, presentation (추후 확장 가능)
+- 블록: 타입 확장 가능, 저장 시 항상 새 버전 생성, 프로젝트 내부 재사용
+- 이미지: Supabase(Storage) 사용
+- 구성(리스트/광고): item 테이블 유지
+
+
+0) 현재 테이블(요약)
+-------------------
+- project
+- template
+- render
+- block
+- block_txt
+- block_image
+- block_datetime
+- block_song
+- block_song_list
+- block_advertisement
+- block_background
+- block_song_list_item
+- block_advertisement_item
+
+추가 필요(권장):
+- audit_log (감사/추적)
+- 각 엔티티의 soft delete 컬럼(예: deleted_at, deleted_by)
+
+0-1) 공통 규약(테이블/삭제/감사)
+-----------------------------
+공통 컬럼(권장):
+- `created_at TIMESTAMPTZ NOT NULL DEFAULT now()`
+- `updated_at TIMESTAMPTZ NOT NULL DEFAULT now()` (write 시 갱신)
+- `deleted_at TIMESTAMPTZ` (soft delete)
+- `deleted_by UUID` (삭제 실행자; Supabase Auth user id)
+
+soft delete 규칙:
+- “삭제”는 `deleted_at = now()`, `deleted_by = auth.uid()`(서버에서 세팅)로 정의합니다.
+- “복구”는 `deleted_at = null`, `deleted_by = null`로 정의합니다.
+- 기본 조회는 항상 `deleted_at is null` 필터를 적용합니다.
+- 하위 리소스 동작(권장):
+  - project soft delete -> template/block/render도 함께 soft delete(또는 조회 시 project.deleted_at으로 필터)
+  - template soft delete -> render도 함께 soft delete(또는 조회 시 template.deleted_at으로 필터)
+  - block soft delete -> render/composition에서 참조 중이면 편집기에서 “삭제됨” 상태로 처리(물리 삭제 없음)
+
+감사(audit) 규칙:
+- 감사 로그는 “권한이 없는 사용자”를 막기 위한 장치가 아니라, 운영/추적/복구를 위한 장치입니다.
+- audit_log는 “성공한 write 작업” 단위로 1건 이상 남기는 것을 기본으로 합니다.
+
+0-2) 접근/보안(RLS) 기본값
+------------------------
+전제(현재 의사결정):
+- 프로젝트는 전역 공유이므로 “멤버십/역할 기반 권한”은 당장 구현하지 않습니다.
+- 대신 “익명(anon) 차단 + 인증(authenticated)만 허용”을 최소 보안선으로 둡니다.
+
+권장 정책:
+- DB RLS는 활성화하고, 모든 테이블에 대해 `authenticated`만 SELECT/INSERT/UPDATE 허용합니다.
+  - 서버(SSR)에서 `@supabase/ssr` 세션으로 쿼리하면 유저 컨텍스트로 통과합니다.
+- 삭제는 UPDATE로 처리되므로(soft delete), UPDATE 정책에 포함됩니다.
+- 운영상 “관리자만” 제약이 생기면 그 시점에 roles/claims 또는 멤버십 테이블을 도입합니다.
+
+0-3) API 컨벤션(권장)
+--------------------
+응답 형태(예시):
+- 성공: `{ data: ... }`
+- 에러: `{ error: { code: string, message: string, details?: any } }`
+
+상태 코드(권장):
+- 200 조회/수정 성공, 201 생성 성공, 204 삭제 성공
+- 400 검증 실패, 401 미인증, 403 금지, 404 없음, 409 충돌(유니크/정합성), 422 스키마 오류
+
+목록 조회(권장):
+- pagination: `?limit=50&cursor=<opaque>` 또는 `?limit=50&offset=0`
+- 필터: `?q=검색어&type=...&includeDeleted=false`
+- 정렬: `?orderBy=created_at&order=desc`
+
+
+1) Auth 도메인
+-------------
+목적:
+- Supabase Auth 기반으로 로그인/세션을 제공하고, 서버(SSR)에서만 세션을 신뢰해 데이터 접근을 수행합니다.
+- “누가/언제/무엇을” 했는지 감사 로그를 남깁니다.
+
+핵심 규칙:
+- 인증된 사용자만 서비스 사용 가능.
+- 프로젝트 권한 구분은 없음: 로그인만 하면 모든 project를 조회/편집 가능(운영자가 관리).
+- 클라이언트 직접 DB 쓰기보다, 서버(Route Handlers/Server Actions) 중심으로 구현(@supabase/ssr).
+
+관련 엔티티:
+- `auth.users` (Supabase Auth)
+- (권장) `public.audit_log`
+
+권장 audit_log(예시 컬럼):
+- id(UUID), created_at, actor_user_id, action(TEXT), entity_type(TEXT), entity_id(UUID), meta(JSONB)
+  - action 예: auth.sign_in, project.create, template.update, block.set_current, render.update
+
+인증 플로우(권장):
+- 회원가입: email + password
+- 로그인: email + password
+- 로그아웃: 서버에서 세션 쿠키 제거
+- 비밀번호 재설정: Supabase Auth 기본 기능 사용(메일 링크)
+
+권장 구현(예시):
+- UI:
+  - `/login` (서버 액션으로 sign-in)
+  - `/signup` (서버 액션으로 sign-up)
+  - `/logout` (서버 액션으로 sign-out)
+- 서버:
+  - 세션은 `@supabase/ssr`로 쿠키 기반 처리(클라이언트에서 토큰을 직접 다루지 않음)
+- 감사 로그:
+  - 로그인 성공/실패(선택), 로그아웃, 비밀번호 재설정 요청(선택)
+  - 모든 생성/수정/삭제 API에 공통 미들웨어로 audit_log를 남기는 형태 권장
+
+권장 API(서버):
+- POST `/api/auth/sign-up`
+  - body: `{ email: string, password: string }`
+- POST `/api/auth/sign-in`
+  - body: `{ email: string, password: string }`
+- POST `/api/auth/sign-out`
+- GET `/api/auth/me`
+  - 응답: `{ data: { id, email } }` (필요한 최소만)
+
+권장 audit action 목록(초안):
+- `auth.sign_up`, `auth.sign_in`, `auth.sign_out`
+- `project.create`, `project.update`, `project.soft_delete`, `project.restore`
+- `template.create`, `template.update`, `template.soft_delete`, `template.restore`
+- `render.create`, `render.update`, `render.delete`
+- `block.create`, `block.update_meta`, `block.soft_delete`, `block.restore`
+- `block.version_create`, `block.set_current`
+- `song_list.add_item`, `song_list.remove_item`, `song_list.reorder`
+- `advertisement.add_item`, `advertisement.remove_item`, `advertisement.reorder`
+
+
+2) Project 도메인
+----------------
+목적:
+- 작업 단위(테넌트)인 project를 생성/정리하고, project 기준으로 템플릿/블록을 그룹핑합니다.
+
+관련 테이블:
+- `project`
+
+삭제 정책(soft delete):
+- delete는 `deleted_at`을 채우는 것으로 정의(목록/조회는 `deleted_at is null` 기본 필터).
+- “복구”는 deleted_at을 null로 되돌리는 것으로 정의.
+
+권장 컬럼 보강(요약):
+- `project.updated_at`
+- `project.deleted_at`, `project.deleted_by`
+
+핵심 기능:
+- 프로젝트 생성(로그인 유저 누구나)
+- 프로젝트 목록/검색(전체 공유이므로 “전체 목록”)
+- 프로젝트 이름 변경
+- 프로젝트 soft delete / 복구
+
+권장 API(서버):
+- GET/POST `/api/projects`
+- GET/PATCH `/api/projects/:id`
+- POST `/api/projects/:id/delete` (soft delete)
+- POST `/api/projects/:id/restore`
+
+권장 검증:
+- 이름(name) 최소/최대 길이 제한(앱 레벨)
+- 삭제된 프로젝트에는 새 템플릿/블록 생성 불가(서버에서 차단)
+- 이름 중복을 허용할지 정책 결정(허용하면 제약 없음, 금지면 UNIQUE + 스코프 정의 필요)
+
+
+3) Template 도메인
+-----------------
+목적:
+- 프로젝트 내 산출물 “그릇”을 관리하고, 템플릿에 블록을 배치(render)합니다.
+
+관련 테이블:
+- `template` (project_id FK)
+- `render` (template_id FK, block_id FK)
+
+템플릿 타입:
+- 현재 허용: `card-news`, `presentation`
+- 추후 확장 가능: `template.type`은 TEXT 유지 + 허용 목록은 애플리케이션에서 관리(또는 CHECK/ENUM로 강화)
+
+삭제 정책(soft delete 권장):
+- template도 soft delete 적용(동일한 deleted_at 필터 규칙)
+- template 삭제 시 render 처리:
+  - soft delete 전략이면 render도 함께 soft delete(또는 “template 조회 시만 필터링”)
+
+권장 컬럼 보강(요약):
+- `template.updated_at`
+- `template.deleted_at`, `template.deleted_by`
+- `render.updated_at`
+- (선택) `render.deleted_at`, `render.deleted_by` (render도 soft delete로 운영할 경우)
+
+핵심 기능:
+- 템플릿 생성/목록/조회/이름 변경
+- 템플릿 soft delete / 복구
+- 템플릿 편집기:
+  - render 추가/삭제(템플릿에 블록 배치)
+  - render 위치(location)/크기(size) 변경
+
+권장 API(서버):
+- GET/POST `/api/projects/:projectId/templates`
+- GET/PATCH `/api/templates/:templateId`
+- POST `/api/templates/:templateId/delete`
+- POST `/api/templates/:templateId/restore`
+- GET/POST `/api/templates/:templateId/renders`
+- PATCH/DELETE `/api/renders/:renderId`
+
+API payload(예시):
+- POST `/api/projects/:projectId/templates`
+  - body: `{ name: string, type: "card-news" | "presentation" }`
+- POST `/api/templates/:templateId/renders`
+  - body: `{ blockId: string, location: { x: number, y: number, z: number }, size: { width: number, height: number } }`
+- PATCH `/api/renders/:renderId`
+  - body: `{ location?: { x, y, z }, size?: { width, height } }`
+
+권장 검증:
+- render는 `template_id + block_id` 유니크 유지(현재 스키마의 UNIQUE 사용)
+- (권장) `template.project_id`와 `block.project_id`가 동일해야 함(앱/트리거로 강제)
+- location/size JSON은 필수 키(x,y,z,width,height) 검증을 서버에서 수행
+- z는 레이어 용도(정렬 기준)로 명시하고, 같은 z 허용 여부를 정책으로 결정
+
+템플릿 조회(편집기 화면) 권장 쿼리 구성:
+- template 단위로 render 목록을 가져온 뒤
+- render.block_id들에 대해 block의 current_version을 함께 구성
+  - 타입별로 current_version_id를 모아서 배치 조회하거나
+  - current 버전 통합 VIEW를 만들어 단일 쿼리로 가져옵니다(운영/단순성 트레이드오프)
+
+
+4) Block 도메인(타입 확장 + 버전)
+-------------------------------
+목적:
+- 프로젝트 내부에서 재사용 가능한 콘텐츠 조각을 관리합니다.
+- 저장 시 항상 “새 버전”을 만들고, 현재 버전을 가리키는 포인터만 이동합니다.
+
+관련 테이블:
+- `block` (project_id, type, current_version_id)
+- 타입별 버전 테이블: `block_txt`, `block_image`, `block_datetime`, `block_song`, `block_song_list`, `block_advertisement`, `block_background`
+- 구성 테이블: `block_song_list_item`, `block_advertisement_item`
+
+권장 컬럼 보강(요약):
+- `block.updated_at`
+- `block.deleted_at`, `block.deleted_by`
+- (선택) `block.created_by` (block 메타 생성자; 버전 생성자와 구분할지 정책에 따라)
+
+버전 정책:
+- 편집 저장: 항상 타입별 테이블에 새 row insert
+- 현재 버전 지정: `block.current_version_id`를 새 버전 id로 업데이트
+- 되돌리기: 과거 버전 id를 current_version_id로 재지정(버전 row 삭제 없음)
+
+삭제 정책(soft delete 권장):
+- block도 soft delete 적용
+- 버전 테이블 row는 기본적으로 유지(감사/되돌리기 목적)
+
+이미지/파일:
+- 저장소: Supabase Storage
+- 권장: `image_url`은 “공개 URL” 대신 storage object path(예: bucket/path)를 저장하고,
+  실제 표시용 URL은 서버에서 signed URL 또는 public URL 정책에 따라 생성
+
+블록 타입(현재 + 확장):
+- 현재 정의(초안): txt, image, datetime, song, song_list, advertisement, background
+- 확장 방식:
+  - block.type은 TEXT 유지(확장 용이)
+  - 새 타입 추가 시: `block_<newtype>` 테이블 추가 + 생성/조회/렌더링 로직 추가
+
+핵심 기능:
+- 블록 생성(공통 block row 생성)
+- 블록 버전 추가(타입별 payload)
+- 현재 버전 지정
+- 프로젝트 내 블록 목록/검색(type 필터)
+- 블록 soft delete / 복구
+
+구성(Composition) 기능:
+- song_list에 song 추가/삭제/재정렬(sequence)
+- advertisement에 child_block 추가/삭제/재정렬(sequence)
+
+타입별 payload(예시, “버전 생성” 요청 body):
+- txt: `{ title?: string, description?: string, content: string }`
+- image/background: `{ title?: string, description?: string, imagePath: string, crop?: { x, y, width, height, rotation? } }`
+- datetime: `{ title?: string, description?: string, startAt: string, endAt?: string }`
+- song: `{ title: string, description?: string, referenceUrl?: string, musicalKey?: string }`
+- song_list: `{ title?: string, description?: string, referenceUrl?: string }`
+- advertisement: `{ title: string, description: string }`
+
+필수 검증(앱 또는 DB 트리거로 보강 권장):
+- 타입 일치:
+  - 예: block_txt insert 시 해당 block.type = 'txt'
+- current_version_id 무결성:
+  - 같은 block_id에 속한 버전 row를 가리켜야 함
+- cross-project 차단:
+  - render, composition에서 서로 다른 project의 리소스를 섞지 않음
+- sequence 충돌 방지:
+  - (권장) UNIQUE(parent_block_id, sequence) 추가 검토
+
+재정렬(reorder) 권장 방식:
+- 입력: `[{ childBlockId, sequence }, ...]` 또는 `childBlockIds: string[]`(순서 배열)
+- 처리:
+  1) 부모 block 존재/타입 확인
+  2) 전달된 child들이 모두 같은 project인지 검증
+  3) 트랜잭션으로 sequence 일괄 업데이트
+- 동시 편집 충돌이 걱정되면:
+  - `updated_at` 또는 별도 `version` 컬럼을 두고 낙관적 락(If-Match) 도입 검토
+
+권장 API(서버):
+- GET/POST `/api/projects/:projectId/blocks?type=txt`
+- GET/PATCH `/api/blocks/:blockId`
+- POST `/api/blocks/:blockId/delete`
+- POST `/api/blocks/:blockId/restore`
+- POST `/api/blocks/:blockId/versions` (타입별 payload)
+- POST `/api/blocks/:blockId/set-current` (versionId)
+- POST/DELETE `/api/song-lists/:blockId/items`
+- PATCH `/api/song-lists/:blockId/items/reorder`
+- POST/DELETE `/api/advertisements/:blockId/items`
+- PATCH `/api/advertisements/:blockId/items/reorder`
+
+파일 업로드(이미지) 권장 API(서버):
+- POST `/api/storage/images/upload-url`
+  - body: `{ contentType: string, fileName: string }`
+  - 응답: `{ data: { path: string, signedUrl: string } }` 또는 Supabase 업로드 토큰 방식
+- 업로드 완료 후 block_image 버전 생성 시 `imagePath`로 path 저장
+
+
+5) 구현 순서(추천)
+----------------
+1) Auth(SSR 세션) + 기본 API(/me) + audit_log
+2) Project CRUD + soft delete + 목록 필터 규약
+3) Template CRUD + render CRUD(캔버스) + cross-project 검증
+4) Block CRUD + 버전 생성 + current 지정 + 되돌리기 UX
+5) Composition(송리스트/광고) + 재정렬 트랜잭션 처리
+6) 트리거/제약 보강(타입 일치, current_version 무결성, sequence 충돌 방지)
