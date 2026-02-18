@@ -3,19 +3,38 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { writeAuditLog } from "@/lib/audit";
+import type { AuthFormState } from "@/lib/auth-types";
 
-export async function login(formData: FormData) {
+export async function login(
+  _prevState: AuthFormState,
+  formData: FormData
+): Promise<AuthFormState> {
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  if (!email || !password) {
+    return { error: "이메일과 비밀번호를 입력해주세요.", success: null };
+  }
+
   const supabase = await createClient();
-
-  const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  };
-
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
 
   if (error) {
-    redirect("/login?error=Invalid credentials");
+    return { error: "이메일 또는 비밀번호가 올바르지 않습니다.", success: null };
+  }
+
+  try {
+    await writeAuditLog({
+      actorId: data.user.id,
+      action: "auth.sign_in",
+      meta: { email },
+    });
+  } catch {
+    // best-effort
   }
 
   revalidatePath("/", "layout");
