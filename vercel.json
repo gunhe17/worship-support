@@ -1,6 +1,3 @@
 {
-  "regions": ["icn1"],
-  "toolbar": {
-    "enabled": false
-  }
+  "regions": ["icn1"]
 }
