@@ -2,14 +2,11 @@
 -- Worship Support – Initial Schema
 -- ============================================================
 
--- 0) Extensions
-create extension if not exists "uuid-ossp" with schema extensions;
-
 -- ============================================================
 -- 1) audit_log
 -- ============================================================
 create table public.audit_log (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   created_at  timestamptz not null default now(),
   actor_id    uuid references auth.users(id),
   action      text not null,
@@ -22,7 +19,7 @@ create table public.audit_log (
 -- 2) project
 -- ============================================================
 create table public.project (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   name        text not null,
   created_at  timestamptz not null default now(),
   updated_at  timestamptz not null default now(),
@@ -34,7 +31,7 @@ create table public.project (
 -- 3) template
 -- ============================================================
 create table public.template (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   project_id  uuid not null references public.project(id),
   name        text not null,
   type        text not null check (type in ('card-news', 'presentation')),
@@ -48,7 +45,7 @@ create table public.template (
 -- 4) block (메타 – current_version_id는 뒤에서 ALTER로 추가)
 -- ============================================================
 create table public.block (
-  id                  uuid primary key default uuid_generate_v4(),
+  id                  uuid primary key default gen_random_uuid(),
   project_id          uuid not null references public.project(id),
   type                text not null,
   name                text not null default '',
@@ -63,7 +60,7 @@ create table public.block (
 -- 5) render (template ↔ block 배치)
 -- ============================================================
 create table public.render (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   template_id uuid not null references public.template(id),
   block_id    uuid not null references public.block(id),
   location    jsonb not null default '{"x":0,"y":0,"z":0}',
@@ -81,7 +78,7 @@ create table public.render (
 
 -- 6-a) block_txt
 create table public.block_txt (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   block_id    uuid not null references public.block(id),
   title       text,
   description text,
@@ -91,7 +88,7 @@ create table public.block_txt (
 
 -- 6-b) block_image
 create table public.block_image (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   block_id    uuid not null references public.block(id),
   title       text,
   description text,
@@ -102,7 +99,7 @@ create table public.block_image (
 
 -- 6-c) block_datetime
 create table public.block_datetime (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   block_id    uuid not null references public.block(id),
   title       text,
   description text,
@@ -113,7 +110,7 @@ create table public.block_datetime (
 
 -- 6-d) block_song
 create table public.block_song (
-  id            uuid primary key default uuid_generate_v4(),
+  id            uuid primary key default gen_random_uuid(),
   block_id      uuid not null references public.block(id),
   title         text not null,
   description   text,
@@ -124,7 +121,7 @@ create table public.block_song (
 
 -- 6-e) block_song_list
 create table public.block_song_list (
-  id            uuid primary key default uuid_generate_v4(),
+  id            uuid primary key default gen_random_uuid(),
   block_id      uuid not null references public.block(id),
   title         text,
   description   text,
@@ -134,7 +131,7 @@ create table public.block_song_list (
 
 -- 6-f) block_advertisement
 create table public.block_advertisement (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   block_id    uuid not null references public.block(id),
   title       text not null,
   description text not null,
@@ -143,7 +140,7 @@ create table public.block_advertisement (
 
 -- 6-g) block_background
 create table public.block_background (
-  id          uuid primary key default uuid_generate_v4(),
+  id          uuid primary key default gen_random_uuid(),
   block_id    uuid not null references public.block(id),
   title       text,
   description text,
@@ -158,7 +155,7 @@ create table public.block_background (
 
 -- 7-a) block_song_list_item
 create table public.block_song_list_item (
-  id                    uuid primary key default uuid_generate_v4(),
+  id                    uuid primary key default gen_random_uuid(),
   parent_block_id       uuid not null references public.block(id),
   child_block_id        uuid not null references public.block(id),
   sequence              int not null default 0,
@@ -167,7 +164,7 @@ create table public.block_song_list_item (
 
 -- 7-b) block_advertisement_item
 create table public.block_advertisement_item (
-  id                    uuid primary key default uuid_generate_v4(),
+  id                    uuid primary key default gen_random_uuid(),
   parent_block_id       uuid not null references public.block(id),
   child_block_id        uuid not null references public.block(id),
   sequence              int not null default 0,
