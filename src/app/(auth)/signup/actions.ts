@@ -30,23 +30,20 @@ export async function signup(
   });
 
   if (error) {
-    return { error: "회원가입에 실패했습니다. 이미 등록된 이메일일 수 있습니다.", success: null };
+    return { error: `회원가입에 실패했습니다: ${error.message}`, success: null };
   }
 
-  // 이메일 확인이 활성화된 경우 처리
+  // identities가 비어있으면 이미 등록된 이메일
   if (data.user && data.user.identities?.length === 0) {
-    return { error: null, success: "확인 이메일을 발송했습니다. 이메일을 확인해주세요." };
+    return { error: "이미 등록된 이메일입니다. 로그인을 시도해주세요.", success: null };
   }
 
-  try {
-    await writeAuditLog({
-      actorId: data.user?.id ?? null,
-      action: "auth.sign_up",
-      meta: { email, name },
-    });
-  } catch {
-    // best-effort
-  }
+  // audit log는 응답을 블로킹하지 않도록 fire-and-forget
+  writeAuditLog({
+    actorId: data.user?.id ?? null,
+    action: "auth.sign_up",
+    meta: { email, name },
+  }).catch(() => {});
 
   revalidatePath("/", "layout");
   redirect("/dashboard");

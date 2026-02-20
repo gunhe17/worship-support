@@ -27,15 +27,12 @@ export async function login(
     return { error: "이메일 또는 비밀번호가 올바르지 않습니다.", success: null };
   }
 
-  try {
-    await writeAuditLog({
-      actorId: data.user.id,
-      action: "auth.sign_in",
-      meta: { email },
-    });
-  } catch {
-    // best-effort
-  }
+  // audit log는 응답을 블로킹하지 않도록 fire-and-forget
+  writeAuditLog({
+    actorId: data.user.id,
+    action: "auth.sign_in",
+    meta: { email },
+  }).catch(() => {});
 
   revalidatePath("/", "layout");
   redirect("/dashboard");

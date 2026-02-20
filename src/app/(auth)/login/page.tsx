@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useSearchParams } from "next/navigation";
 import { login } from "./actions";
 import type { AuthFormState } from "@/lib/auth-types";
 
@@ -22,6 +23,9 @@ function SubmitButton() {
 
 export default function LoginPage() {
   const [state, formAction] = useActionState(login, initialState);
+  const searchParams = useSearchParams();
+  const urlError = searchParams.get("error");
+  const displayError = state.error || urlError;
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center bg-white px-6 py-12 dark:bg-gray-900 lg:px-8">
@@ -36,9 +40,9 @@ export default function LoginPage() {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form action={formAction} className="space-y-6">
-          {state.error && (
+          {displayError && (
             <div className="rounded-md bg-red-50 p-3 text-sm/6 text-red-600 ring-1 ring-red-200 dark:bg-red-950 dark:text-red-400 dark:ring-red-800">
-              {state.error}
+              {displayError}
             </div>
           )}
 
