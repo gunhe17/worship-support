@@ -40,6 +40,13 @@ Notes:
 - Local development: `pnpm dev`
 - Production mode (build + start): `pnpm prod`
 
+## Icon Policy
+
+- Use only `@radix-ui/react-icons` for all UI icons.
+- Do not use mixed icon sources (Heroicons, Lucide, custom SVG, emoji).
+- Keep icon style consistent across editor UI and sidebar components.
+- Reference: https://www.radix-ui.com/icons?utm_source=chatgpt.com
+
 ## Getting Started
 
 First, run the development server:

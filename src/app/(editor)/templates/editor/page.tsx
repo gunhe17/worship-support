@@ -140,13 +140,14 @@ export default async function TemplateEditorPage({
     if ((versionIdsByType.txt ?? []).length > 0) {
       const { data } = await supabase
         .from("block_txt")
-        .select("id, title, content")
+        .select("id, title, description, content")
         .in("id", versionIdsByType.txt);
       for (const row of data ?? []) {
         versionPayloadMap.set(row.id, {
           id: row.id,
           values: {
             title: row.title ?? "",
+            description: row.description ?? "",
             content: row.content ?? "",
           },
         });
@@ -156,7 +157,7 @@ export default async function TemplateEditorPage({
     if ((versionIdsByType.image ?? []).length > 0) {
       const { data } = await supabase
         .from("block_image")
-        .select("id, title, description, image_path")
+        .select("id, title, description, image_path, crop")
         .in("id", versionIdsByType.image);
       for (const row of data ?? []) {
         versionPayloadMap.set(row.id, {
@@ -165,6 +166,7 @@ export default async function TemplateEditorPage({
             title: row.title ?? "",
             description: row.description ?? "",
             image_path: row.image_path ?? "",
+            crop: row.crop ? JSON.stringify(row.crop) : "",
           },
         });
       }
@@ -209,15 +211,15 @@ export default async function TemplateEditorPage({
     if ((versionIdsByType.background ?? []).length > 0) {
       const { data } = await supabase
         .from("block_background")
-        .select("id, title, description, image_path")
+        .select("id, mode, image_path, color")
         .in("id", versionIdsByType.background);
       for (const row of data ?? []) {
         versionPayloadMap.set(row.id, {
           id: row.id,
           values: {
-            title: row.title ?? "",
-            description: row.description ?? "",
+            mode: row.mode ?? "color",
             image_path: row.image_path ?? "",
+            color: row.color ?? "",
           },
         });
       }
