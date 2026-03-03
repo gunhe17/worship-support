@@ -2,27 +2,17 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Environment Split (dev local / prod cloud)
 
-This project is configured to separate environments like this:
+Env files are managed under the `.env/` directory using `APP_ENV`.
 
-- `development`: local Next.js + local Supabase
-- `production`: cloud deployment (e.g. Vercel + Supabase Cloud)
+- `APP_ENV=develop` → local Supabase
+- `APP_ENV=production` → cloud Supabase
 
-### 1) Development (all local)
+### File structure
 
-1. Create `.env.development.local` from `.env.development.example`.
-2. Fill local Supabase values.
-3. Start local Supabase and app.
-
-```bash
-supabase start
-pnpm dev
-```
-
-### 2) Production (all cloud)
-
-1. Use `.env.production.example` as the variable checklist.
-2. Set values in your cloud platform (Vercel project env vars).
-3. Do not use local URLs in production vars.
+- `.env/.env.base` (required): `APP_ENV=develop | production`
+- `.env/.env.develop` (local, git ignored)
+- `.env/.env.production` (local/cloud, git ignored)
+- `.env/.env.develop.example` / `.env/.env.production.example` (templates, committed)
 
 Required vars:
 
@@ -34,6 +24,23 @@ Notes:
 
 - In non-production, `NEXT_PUBLIC_SITE_URL` falls back to `http://127.0.0.1:3000` if omitted.
 - In production, missing required env vars throw an error at runtime.
+
+### 1) Development (all local)
+
+1. Set `.env/.env.base` to `APP_ENV=develop`.
+2. Create `.env/.env.develop` from `.env/.env.develop.example`.
+3. Start local Supabase and app.
+
+```bash
+supabase start
+pnpm dev
+```
+
+### 2) Production (all cloud)
+
+1. Set `.env/.env.base` to `APP_ENV=production`.
+2. Create `.env/.env.production` from `.env/.env.production.example`.
+3. Set same values in your cloud platform env vars (Vercel).
 
 ### pnpm commands
 

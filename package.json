@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "prod": "next build && next start",
-    "lint": "eslint"
+    "dev": "APP_ENV=develop next dev",
+    "prod": "APP_ENV=production next build && APP_ENV=production next start",
+    "lint": "eslint",
+    "lint:ui-patterns": "node scripts/check-ui-patterns.mjs"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",

@@ -15,10 +15,8 @@ function readEnv(name: PublicEnvKey): string | undefined {
 function requireEnv(name: PublicEnvKey): string {
   const value = readEnv(name);
   if (!value) {
-    const envFile =
-      process.env.NODE_ENV === "production"
-        ? ".env.production.local (or cloud env vars)"
-        : ".env.development.local";
+    const appEnv = process.env.APP_ENV ?? "develop";
+    const envFile = `.env/.env.base + .env/.env.${appEnv}`;
     throw new Error(
       `Missing required environment variable: ${name}. Set it in ${envFile}.`
     );
