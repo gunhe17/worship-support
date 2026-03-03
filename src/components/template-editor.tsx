@@ -4,11 +4,25 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { createClient as createBrowserClient } from "@/lib/supabase/client";
 import {
+  EditorFloatingMenu,
+  EditorIconButton,
+  EditorLabeledFieldRow,
+  EditorPanelHeader,
+  EditorResizeHandle,
+  EditorSectionBlock,
+  EditorTinyOutlineButton,
+} from "./editor-shell";
+import { ColorPickerField, InlineSelectRow, NumberField } from "./editor-fields";
+import {
+  WorkspaceSidebar,
+  WorkspaceSidebarDivider,
+  WorkspaceSidebarSection,
+} from "@/components/workspace-sidebar";
+import {
   CheckIcon,
   ChevronDownIcon,
   ChevronRightIcon,
   ClipboardCopyIcon,
-  Cross1Icon,
   FileTextIcon,
   HamburgerMenuIcon,
   MinusIcon,
@@ -149,31 +163,6 @@ function formatShortId(value: string) {
   return `${value.slice(0, 8)}...${value.slice(-6)}`;
 }
 
-function NumberField({
-  label,
-  value,
-  disabled = false,
-  onChange,
-}: {
-  label: string;
-  value: number;
-  disabled?: boolean;
-  onChange: (value: number) => void;
-}) {
-  return (
-    <label className="space-y-1">
-      <span className="text-xs text-gray-500 dark:text-gray-400">{label}</span>
-      <input
-        type="number"
-        value={value}
-        disabled={disabled}
-        onChange={(e) => onChange(Number(e.target.value) || 0)}
-        className="w-full rounded-md border border-gray-200 bg-white px-2.5 py-1.5 text-sm text-gray-800 outline-none focus:border-indigo-400 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:border-white/15 dark:bg-gray-900 dark:text-gray-100 dark:disabled:bg-white/5 dark:disabled:text-gray-400"
-      />
-    </label>
-  );
-}
-
 function readAnchorRect(el: HTMLElement | null) {
   if (!el) return null;
   const rect = el.getBoundingClientRect();
@@ -182,395 +171,6 @@ function readAnchorRect(el: HTMLElement | null) {
     left: rect.left,
     width: rect.width,
   };
-}
-
-function InlineSelectRow({
-  label,
-  value,
-  options,
-  onChange,
-}: {
-  label?: string;
-  value: string;
-  options: Array<{ value: string; label: string }>;
-  onChange: (value: string) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const [menuRect, setMenuRect] = useState<{ top: number; left: number; width: number } | null>(
-    null
-  );
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const update = () => setMenuRect(readAnchorRect(buttonRef.current));
-    update();
-    window.addEventListener("scroll", update, true);
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update, true);
-      window.removeEventListener("resize", update);
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-    function onPointerDown(event: MouseEvent) {
-      const target = event.target as Node | null;
-      if (!target) return;
-      if (buttonRef.current?.contains(target)) return;
-      if (menuRef.current?.contains(target)) return;
-      setOpen(false);
-      setMenuRect(null);
-    }
-    window.addEventListener("pointerdown", onPointerDown);
-    return () => window.removeEventListener("pointerdown", onPointerDown);
-  }, [open]);
-
-  return (
-    <>
-      <button
-        ref={buttonRef}
-        type="button"
-        onClick={() =>
-          setOpen((prev) => {
-            const next = !prev;
-            setMenuRect(next ? readAnchorRect(buttonRef.current) : null);
-            return next;
-          })
-        }
-        className={`group flex h-7 w-full cursor-pointer items-center gap-3 rounded-md px-2 text-left transition-colors dark:hover:bg-white/10 ${
-          open ? "bg-gray-100 dark:bg-white/15" : "hover:bg-gray-100"
-        }`}
-      >
-        {label ? (
-          <span className="block w-12 shrink-0 truncate text-[10px] text-gray-500 dark:text-gray-400">
-            {label}
-          </span>
-        ) : null}
-        <span className="min-w-0 flex-1 truncate text-[11px] font-normal text-gray-700 dark:text-gray-200">
-          {value}
-        </span>
-        <span
-          className="ml-2 inline-flex h-5 w-5 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400"
-          aria-hidden="true"
-        >
-          <ChevronDownIcon className="h-3 w-3" />
-        </span>
-      </button>
-
-      {open && menuRect && (
-        <div
-          ref={menuRef}
-          className="fixed z-40 overflow-hidden rounded-md border border-gray-200 bg-white shadow-md dark:border-white/10 dark:bg-gray-900"
-          style={{
-            top: menuRect.top,
-            left: menuRect.left,
-            width: menuRect.width,
-          }}
-        >
-          <div className="p-1">
-            {options.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                onClick={() => {
-                  onChange(option.value);
-                  setOpen(false);
-                  setMenuRect(null);
-                }}
-                className="block w-full rounded px-2 py-1 text-left text-[10px] text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-white/10"
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
-}
-
-function hexToRgb(hex: string) {
-  const normalized = hex.replace("#", "");
-  if (!/^[0-9a-fA-F]{6}$/.test(normalized)) return null;
-  return {
-    r: Number.parseInt(normalized.slice(0, 2), 16),
-    g: Number.parseInt(normalized.slice(2, 4), 16),
-    b: Number.parseInt(normalized.slice(4, 6), 16),
-  };
-}
-
-function rgbToHex(r: number, g: number, b: number) {
-  const toHex = (value: number) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, "0");
-  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-}
-
-function rgbToHsv(r: number, g: number, b: number) {
-  const rn = r / 255;
-  const gn = g / 255;
-  const bn = b / 255;
-  const max = Math.max(rn, gn, bn);
-  const min = Math.min(rn, gn, bn);
-  const d = max - min;
-
-  let h = 0;
-  if (d !== 0) {
-    if (max === rn) h = ((gn - bn) / d) % 6;
-    else if (max === gn) h = (bn - rn) / d + 2;
-    else h = (rn - gn) / d + 4;
-    h *= 60;
-    if (h < 0) h += 360;
-  }
-
-  const s = max === 0 ? 0 : d / max;
-  const v = max;
-  return { h, s, v };
-}
-
-function hsvToRgb(h: number, s: number, v: number) {
-  const c = v * s;
-  const hh = h / 60;
-  const x = c * (1 - Math.abs((hh % 2) - 1));
-  let r = 0;
-  let g = 0;
-  let b = 0;
-
-  if (hh >= 0 && hh < 1) [r, g, b] = [c, x, 0];
-  else if (hh < 2) [r, g, b] = [x, c, 0];
-  else if (hh < 3) [r, g, b] = [0, c, x];
-  else if (hh < 4) [r, g, b] = [0, x, c];
-  else if (hh < 5) [r, g, b] = [x, 0, c];
-  else [r, g, b] = [c, 0, x];
-
-  const m = v - c;
-  return {
-    r: Math.round((r + m) * 255),
-    g: Math.round((g + m) * 255),
-    b: Math.round((b + m) * 255),
-  };
-}
-
-function ColorPickerField({
-  value,
-  onChange,
-  onCommit,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  onCommit?: (value: string) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const [panelRect, setPanelRect] = useState<{ top: number; left: number; width: number } | null>(
-    null
-  );
-  const [savedColors, setSavedColors] = useState<string[]>([
-    "#6d67d8",
-    "#22c55e",
-    "#fb923c",
-    "#f43f5e",
-    "#facc15",
-    "#14b8a6",
-    "#38bdf8",
-    "#94a3b8",
-  ]);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const svRef = useRef<HTMLDivElement>(null);
-
-  const safeHex = /^#[0-9a-fA-F]{6}$/.test(value) ? value : "#6d67d8";
-  const currentRgb = hexToRgb(safeHex) ?? { r: 109, g: 103, b: 216 };
-  const [hsv, setHsv] = useState(() => rgbToHsv(currentRgb.r, currentRgb.g, currentRgb.b));
-
-  useEffect(() => {
-    if (!open) return;
-    const update = () => setPanelRect(readAnchorRect(buttonRef.current));
-    update();
-    window.addEventListener("scroll", update, true);
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update, true);
-      window.removeEventListener("resize", update);
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-    function onPointerDown(event: MouseEvent) {
-      const target = event.target as Node | null;
-      if (!target) return;
-      if (buttonRef.current?.contains(target)) return;
-      if (panelRef.current?.contains(target)) return;
-      setOpen(false);
-      setPanelRect(null);
-      onCommit?.(safeHex);
-    }
-    window.addEventListener("pointerdown", onPointerDown);
-    return () => window.removeEventListener("pointerdown", onPointerDown);
-  }, [onCommit, open, safeHex]);
-
-  function commitNextHsv(next: { h: number; s: number; v: number }) {
-    setHsv(next);
-    const rgb = hsvToRgb(next.h, next.s, next.v);
-    onChange(rgbToHex(rgb.r, rgb.g, rgb.b));
-  }
-
-  function updateSaturationValue(clientX: number, clientY: number) {
-    const rect = svRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const s = clamp((clientX - rect.left) / rect.width, 0, 1);
-    const v = clamp(1 - (clientY - rect.top) / rect.height, 0, 1);
-    commitNextHsv({ ...hsv, s, v });
-  }
-
-  return (
-    <div ref={containerRef} className="relative min-w-0 flex-1">
-      <button
-        ref={buttonRef}
-        type="button"
-        onClick={() =>
-          setOpen((prev) => {
-            const next = !prev;
-            if (next) {
-              setHsv(rgbToHsv(currentRgb.r, currentRgb.g, currentRgb.b));
-              setPanelRect(readAnchorRect(buttonRef.current));
-            } else {
-              setPanelRect(null);
-            }
-            return next;
-          })
-        }
-        className="flex h-7 w-full cursor-pointer items-center gap-2 rounded-md px-1.5 text-left hover:bg-gray-100 dark:hover:bg-white/10"
-      >
-        <span
-          className="h-4 w-4 rounded border border-gray-300 dark:border-white/15"
-          style={{ backgroundColor: safeHex }}
-        />
-        <span className="text-[11px] text-gray-700 dark:text-gray-200">{safeHex.toUpperCase()}</span>
-      </button>
-
-      {open && panelRect && (
-        <div
-          ref={panelRef}
-          className="fixed z-50 w-[280px] rounded-xl border border-gray-200 bg-white p-3 shadow-xl dark:border-white/10 dark:bg-gray-900"
-          style={{
-            top: panelRect.top,
-            // Align with the field row start (label + gap width offset).
-            left: Math.max(8, panelRect.left - 60),
-          }}
-        >
-          <div className="mb-2 flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-800 dark:text-gray-100">Color Picker</p>
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                onCommit?.(safeHex);
-              }}
-              className="h-6 w-6 rounded text-base leading-none text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/10"
-            >
-              <Cross1Icon className="mx-auto h-3.5 w-3.5" />
-            </button>
-          </div>
-
-          <div
-            ref={svRef}
-            onPointerDown={(e) => {
-              updateSaturationValue(e.clientX, e.clientY);
-              const move = (me: PointerEvent) => updateSaturationValue(me.clientX, me.clientY);
-              const up = () => {
-                window.removeEventListener("pointermove", move);
-                window.removeEventListener("pointerup", up);
-              };
-              window.addEventListener("pointermove", move);
-              window.addEventListener("pointerup", up);
-            }}
-            className="relative mb-3 h-40 w-full cursor-crosshair rounded-lg"
-            style={{ backgroundColor: `hsl(${hsv.h}, 100%, 50%)` }}
-          >
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-white to-transparent" />
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black to-transparent" />
-            <span
-              className="pointer-events-none absolute h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow"
-              style={{ left: `${hsv.s * 100}%`, top: `${(1 - hsv.v) * 100}%` }}
-            />
-          </div>
-
-          <input
-            type="range"
-            min={0}
-            max={360}
-            value={Math.round(hsv.h)}
-            onChange={(e) => commitNextHsv({ ...hsv, h: Number(e.target.value) })}
-            className="mb-3 h-2 w-full cursor-pointer appearance-none rounded-full"
-            style={{
-              background:
-                "linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000)",
-            }}
-          />
-
-          <div className="mb-3 grid grid-cols-3 gap-1.5">
-            {(["r", "g", "b"] as const).map((key) => {
-              const nextValue = key === "r" ? currentRgb.r : key === "g" ? currentRgb.g : currentRgb.b;
-              return (
-                <input
-                  key={key}
-                  type="number"
-                  min={0}
-                  max={255}
-                  value={nextValue}
-                  onChange={(e) => {
-                    const parsed = clamp(Number(e.target.value) || 0, 0, 255);
-                    const nextRgb = {
-                      r: key === "r" ? parsed : currentRgb.r,
-                      g: key === "g" ? parsed : currentRgb.g,
-                      b: key === "b" ? parsed : currentRgb.b,
-                    };
-                    onChange(rgbToHex(nextRgb.r, nextRgb.g, nextRgb.b));
-                  }}
-                  className="h-8 rounded-md border border-gray-200 bg-white px-2 text-[11px] text-gray-700 outline-none focus:border-indigo-300 dark:border-white/15 dark:bg-gray-900 dark:text-gray-200"
-                />
-              );
-            })}
-          </div>
-
-          <div className="flex items-center justify-between">
-            <p className="text-[11px] text-gray-500 dark:text-gray-400">Saved Colors</p>
-            <button
-              type="button"
-              onClick={() =>
-                setSavedColors((prev) =>
-                  prev.includes(safeHex) ? prev : [safeHex, ...prev].slice(0, 12)
-                )
-              }
-              className="inline-flex h-5 w-5 items-center justify-center rounded text-[14px] text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/10"
-              aria-label="Add color"
-            >
-              <PlusIcon className="h-3 w-3" />
-            </button>
-          </div>
-          <div className="mt-1.5 flex flex-wrap gap-1.5">
-            {savedColors.map((saved) => (
-              <button
-                key={saved}
-                type="button"
-                onClick={() => onChange(saved)}
-                className="h-5 w-5 rounded-full border border-gray-200 dark:border-white/15"
-                style={{ backgroundColor: saved }}
-                aria-label={`Select color ${saved}`}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
 }
 
 export function TemplateEditor({
@@ -1561,15 +1161,8 @@ export function TemplateEditor({
       ref={shellRef}
       className="flex h-[calc(100vh-3.5rem)] min-h-[640px] w-full gap-0 overflow-hidden bg-gray-100/70 dark:bg-gray-950"
     >
-      <section
-        className="overflow-auto border-y border-l border-gray-200 bg-white dark:border-white/10 dark:bg-gray-900"
-        style={{ width: leftWidth }}
-      >
-        <div className="px-4 py-4">
-          <div className="px-2">
-            <p className="mb-1.5 select-none text-[10px] font-medium text-gray-500 dark:text-gray-400">
-              project
-            </p>
+      <WorkspaceSidebar width={leftWidth}>
+          <WorkspaceSidebarSection title="project">
             <Link
               href={`/projects/${initialData.project.id}`}
               className="group flex h-7 cursor-pointer items-center justify-between rounded-md px-2 text-[11px] font-medium text-gray-800 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-white/10"
@@ -1581,16 +1174,11 @@ export function TemplateEditor({
                 </span>
               </span>
             </Link>
-          </div>
+          </WorkspaceSidebarSection>
 
-          <div className="my-3 px-2">
-            <div className="h-px bg-gray-200 dark:bg-white/10" />
-          </div>
+          <WorkspaceSidebarDivider />
 
-          <div className="px-2">
-            <p className="mb-1.5 select-none text-[10px] font-medium text-gray-500 dark:text-gray-400">
-              template
-            </p>
+          <WorkspaceSidebarSection title="template">
             <div className="space-y-1.5">
               {activeTemplate ? (
                 <div key={activeTemplate.id} className="rounded-md px-2 py-1">
@@ -1605,10 +1193,11 @@ export function TemplateEditor({
                       >
                         {formatShortId(activeTemplate.id)}
                       </span>
-                      <button
+                      <EditorIconButton
                         type="button"
                         onClick={() => void copyTemplateId(activeTemplate.id)}
-                        className="inline-flex h-5 w-5 shrink-0 cursor-pointer items-center justify-center rounded text-[11px] text-gray-500 dark:text-gray-400"
+                        className="shrink-0 cursor-pointer text-[11px]"
+                        tone="muted"
                         aria-label="Copy template id"
                         title={copiedTemplateId === activeTemplate.id ? "복사됨" : "ID 복사"}
                       >
@@ -1617,7 +1206,7 @@ export function TemplateEditor({
                         ) : (
                           <ClipboardCopyIcon className="h-3 w-3" />
                         )}
-                      </button>
+                      </EditorIconButton>
                     </div>
 
                     <label className="flex h-7 items-center gap-3 rounded-md px-2 transition-colors hover:bg-gray-50 focus-within:bg-gray-100 focus-within:hover:bg-gray-100 dark:hover:bg-white/10 dark:focus-within:bg-white/15 dark:focus-within:hover:bg-white/15">
@@ -1679,14 +1268,11 @@ export function TemplateEditor({
                       </button>
 
                       {openSizeMenuId === activeTemplate.id && sizeMenuRect && (
-                        <div
-                          ref={sizeMenuRef}
-                          className="fixed z-40 overflow-hidden rounded-md border border-gray-200 bg-white shadow-md dark:border-white/10 dark:bg-gray-900"
-                          style={{
-                            top: sizeMenuRect.top,
-                            left: sizeMenuRect.left,
-                            width: sizeMenuRect.width,
-                          }}
+                        <EditorFloatingMenu
+                          menuRef={sizeMenuRef}
+                          top={sizeMenuRect.top}
+                          left={sizeMenuRect.left}
+                          width={sizeMenuRect.width}
                         >
                           <div className="max-h-40 overflow-auto p-1">
                             {sizePresets.map((preset) => (
@@ -1735,7 +1321,7 @@ export function TemplateEditor({
                                 }
                                 className="h-7 w-full rounded border border-gray-200 bg-white px-2 text-[10px] text-gray-700 outline-none [appearance:textfield] focus:border-indigo-300 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:border-white/15 dark:bg-gray-900 dark:text-gray-200"
                               />
-                              <button
+                              <EditorTinyOutlineButton
                                 type="button"
                                 onClick={() => {
                                   const width = clampMin1(
@@ -1748,13 +1334,12 @@ export function TemplateEditor({
                                   setOpenSizeMenuId(null);
                                   setSizeMenuRect(null);
                                 }}
-                                className="h-7 shrink-0 rounded border border-gray-200 px-2 text-[10px] font-medium text-gray-700 hover:bg-gray-100 dark:border-white/15 dark:text-gray-200 dark:hover:bg-white/10"
                               >
                                 적용
-                              </button>
+                              </EditorTinyOutlineButton>
                             </div>
                           </div>
-                        </div>
+                        </EditorFloatingMenu>
                       )}
                     </div>
 
@@ -1767,18 +1352,14 @@ export function TemplateEditor({
                 </div>
               )}
             </div>
-          </div>
+          </WorkspaceSidebarSection>
 
-          <div className="my-3 px-2">
-            <div className="h-px bg-gray-200 dark:bg-white/10" />
-          </div>
+          <WorkspaceSidebarDivider />
 
-          <div className="px-2">
-            <div className="mb-1.5 flex items-center justify-between">
-              <p className="select-none text-[10px] font-medium text-gray-500 dark:text-gray-400">
-                blocks
-              </p>
-              <button
+          <WorkspaceSidebarSection
+            title="blocks"
+            action={
+              <EditorIconButton
                 ref={createTriggerRef}
                 type="button"
                 onClick={() => {
@@ -1795,12 +1376,13 @@ export function TemplateEditor({
                     return next;
                   });
                 }}
-                className="inline-flex h-5 w-5 cursor-pointer items-center justify-center rounded text-[15px] text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-gray-200"
+                className="cursor-pointer text-[15px]"
                 aria-label="Add block"
               >
                 <PlusIcon className="h-3 w-3" />
-              </button>
-            </div>
+              </EditorIconButton>
+            }
+          >
 
             {showCreateBlockForm && (
               <div
@@ -1857,14 +1439,11 @@ export function TemplateEditor({
                     </button>
 
                     {openCreateTypeMenu && createTypeMenuRect && (
-                      <div
-                        ref={createTypeMenuRef}
-                        className="fixed z-40 overflow-hidden rounded-md border border-gray-200 bg-white shadow-md dark:border-white/10 dark:bg-gray-900"
-                        style={{
-                          top: createTypeMenuRect.top,
-                          left: createTypeMenuRect.left,
-                          width: createTypeMenuRect.width,
-                        }}
+                      <EditorFloatingMenu
+                        menuRef={createTypeMenuRef}
+                        top={createTypeMenuRect.top}
+                        left={createTypeMenuRect.left}
+                        width={createTypeMenuRect.width}
                       >
                         <div className="p-1">
                           {Object.keys(createFieldConfigByType).map((type) => (
@@ -1884,20 +1463,16 @@ export function TemplateEditor({
                             </button>
                           ))}
                         </div>
-                      </div>
+                      </EditorFloatingMenu>
                     )}
                   </div>
 
-                  <label
-                    className={`flex h-7 items-center gap-3 rounded-md border px-2 transition-colors hover:bg-gray-100 focus-within:bg-gray-100 dark:hover:bg-white/10 dark:focus-within:bg-white/15 ${
-                      isPrimaryCreateErrorField("name")
-                        ? "border-red-300 bg-red-50/40 dark:border-red-400/60 dark:bg-red-500/10"
-                        : "border-transparent"
-                    }`}
+                  <EditorLabeledFieldRow
+                    label="name"
+                    required
+                    bordered
+                    highlighted={isPrimaryCreateErrorField("name")}
                   >
-                    <span className="block w-12 shrink-0 truncate text-[10px] text-gray-500 dark:text-gray-400">
-                      name *
-                    </span>
                     <input
                       type="text"
                       value={newBlockName}
@@ -1907,7 +1482,7 @@ export function TemplateEditor({
                       }}
                       className="min-w-0 flex-1 bg-transparent text-[11px] font-normal text-gray-700 outline-none dark:text-gray-200"
                     />
-                  </label>
+                  </EditorLabeledFieldRow>
                   {shouldShowCreateFieldMessage("name") && getCreateFieldErrorMessage("name") && (
                     <p className="px-2 text-[9px] text-red-600 dark:text-red-400">
                       {getCreateFieldErrorMessage("name")}
@@ -1927,17 +1502,12 @@ export function TemplateEditor({
                         {(() => {
                           const fieldError = isPrimaryCreateErrorField(field.key);
                           return (
-                        <label
-                          className={`flex h-7 items-center gap-3 rounded-md border px-2 transition-colors hover:bg-gray-100 focus-within:bg-gray-100 dark:hover:bg-white/10 dark:focus-within:bg-white/15 ${
-                            fieldError
-                              ? "border-red-300 bg-red-50/40 dark:border-red-400/60 dark:bg-red-500/10"
-                              : "border-transparent"
-                          }`}
+                        <EditorLabeledFieldRow
+                          label={field.label}
+                          required={isFieldRequired(field.key)}
+                          bordered
+                          highlighted={fieldError}
                         >
-                          <span className="block w-12 shrink-0 truncate text-[10px] text-gray-500 dark:text-gray-400">
-                            {field.label}
-                            {isFieldRequired(field.key) ? " *" : ""}
-                          </span>
                           {field.key === "mode" ? (
                             <div className="min-w-0 flex-1">
                               <InlineSelectRow
@@ -2002,7 +1572,7 @@ export function TemplateEditor({
                               className="min-w-0 flex-1 bg-transparent text-[11px] font-normal text-gray-700 outline-none dark:text-gray-200"
                             />
                           )}
-                        </label>
+                        </EditorLabeledFieldRow>
                           );
                         })()}
                         {shouldShowCreateFieldMessage(field.key) &&
@@ -2026,17 +1596,18 @@ export function TemplateEditor({
                   )}
 
                   <div className="px-2 pt-0.5">
-                    <button
+                    <EditorTinyOutlineButton
                       type="button"
                       onClick={() => {
                         setShowCreateValidation(true);
                         if (creatingBlock || !createValidation.isValid) return;
                         void createBlock(createValidation.normalizedValues);
                       }}
-                      className="h-7 w-full rounded-md border border-gray-200 bg-gray-50 px-2 text-[11px] font-normal text-gray-700 hover:bg-gray-100 dark:border-white/15 dark:bg-white/5 dark:text-gray-200 dark:hover:bg-white/10"
+                      block
+                      className="rounded-md bg-gray-50 text-[11px] font-normal dark:bg-white/5"
                     >
                       confirm
-                    </button>
+                    </EditorTinyOutlineButton>
                   </div>
                 </div>
               </div>
@@ -2096,13 +1667,7 @@ export function TemplateEditor({
                             return true;
                           })
                           .map((field) => (
-                          <label
-                            key={`${block.id}-${field}`}
-                            className="flex h-7 items-center gap-3 rounded-md px-2 transition-colors hover:bg-gray-100 focus-within:bg-gray-100 dark:hover:bg-white/10 dark:focus-within:bg-white/15"
-                          >
-                            <span className="block w-12 shrink-0 truncate text-[10px] text-gray-500 dark:text-gray-400">
-                              {field}
-                            </span>
+                          <EditorLabeledFieldRow key={`${block.id}-${field}`} label={field}>
                             {field === "mode" ? (
                               <div className="flex min-w-0 flex-1 items-center">
                                 <select
@@ -2201,7 +1766,7 @@ export function TemplateEditor({
                                 className="min-w-0 flex-1 bg-transparent text-[11px] font-normal text-gray-700 outline-none dark:text-gray-200"
                               />
                             )}
-                          </label>
+                          </EditorLabeledFieldRow>
                         ))}
                         {!(editableVersionFieldsByType[block.type] ?? []).length && (
                           <div className="px-2 py-1 text-[10px] text-gray-500 dark:text-gray-400">
@@ -2220,30 +1785,21 @@ export function TemplateEditor({
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      </section>
+          </WorkspaceSidebarSection>
+      </WorkspaceSidebar>
 
-      <button
-        type="button"
-        aria-label="왼쪽 패널 크기 조정"
+      <EditorResizeHandle
+        ariaLabel="왼쪽 패널 크기 조정"
         onPointerDown={(e) => startResize("left", e.clientX)}
-        className="group relative -mx-px w-0 shrink-0 cursor-col-resize"
-      >
-        <span className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-gray-300 transition-colors group-hover:bg-indigo-400 dark:bg-white/15 dark:group-hover:bg-indigo-500" />
-        <span className="absolute inset-y-0 -left-[6px] w-3" />
-      </button>
+      />
 
       <section className="min-w-[720px] flex-1 border-y border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-black">
-        <div className="flex items-center justify-between px-4 pb-2 pt-4">
-          <p className="text-xs font-semibold tracking-wide text-gray-500 dark:text-gray-400">
-            Block Editor
-          </p>
-          <span className="text-xs text-gray-500 dark:text-gray-400">Render {nodes.length}</span>
-        </div>
+        <EditorPanelHeader
+          title="Block Editor"
+          trailing={<span className="text-xs text-gray-500 dark:text-gray-400">Render {nodes.length}</span>}
+        />
 
-        <div className="px-4 py-3">
-          <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">Block 단위 선택</p>
+        <EditorSectionBlock title="Block 단위 선택">
           <div className="flex flex-wrap gap-2">
             {nodes.map((node) => {
               const active = node.id === selectedId;
@@ -2262,10 +1818,9 @@ export function TemplateEditor({
               );
             })}
           </div>
-        </div>
+        </EditorSectionBlock>
 
-        <div className="px-4 py-3">
-          <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">Block 추가</p>
+        <EditorSectionBlock title="Block 추가">
           <div className="flex flex-wrap gap-2">
             {sortedBlocks.map((block) => (
               <button
@@ -2277,7 +1832,7 @@ export function TemplateEditor({
               </button>
             ))}
           </div>
-        </div>
+        </EditorSectionBlock>
 
         <div className="p-6">
           <div
@@ -2330,25 +1885,16 @@ export function TemplateEditor({
         </div>
       </section>
 
-      <button
-        type="button"
-        aria-label="오른쪽 패널 크기 조정"
+      <EditorResizeHandle
+        ariaLabel="오른쪽 패널 크기 조정"
         onPointerDown={(e) => startResize("right", e.clientX)}
-        className="group relative -mx-px w-0 shrink-0 cursor-col-resize"
-      >
-        <span className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-gray-300 transition-colors group-hover:bg-indigo-400 dark:bg-white/15 dark:group-hover:bg-indigo-500" />
-        <span className="absolute inset-y-0 -left-[6px] w-3" />
-      </button>
+      />
 
       <section
         className="overflow-auto border-y border-r border-gray-200 bg-white dark:border-white/10 dark:bg-gray-900"
         style={{ width: rightWidth }}
       >
-        <div className="px-4 pb-2 pt-4">
-          <p className="text-xs font-semibold tracking-wide text-gray-500 dark:text-gray-400">
-            Render Detail
-          </p>
-        </div>
+        <EditorPanelHeader title="Render Detail" />
 
         {!selectedNode ? (
           <p className="p-4 text-sm text-gray-500 dark:text-gray-400">선택된 Render가 없습니다.</p>
