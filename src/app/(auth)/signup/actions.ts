@@ -46,5 +46,5 @@ export async function signup(
   }).catch(() => {});
 
   revalidatePath("/", "layout");
-  redirect("/dashboard");
+  redirect("/home");
 }

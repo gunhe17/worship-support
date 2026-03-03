@@ -60,14 +60,16 @@ soft delete 규칙:
 0-2) 접근/보안(RLS) 기본값
 ------------------------
 전제(현재 의사결정):
-- 프로젝트는 전역 공유이므로 “멤버십/역할 기반 권한”은 당장 구현하지 않습니다.
-- 대신 “익명(anon) 차단 + 인증(authenticated)만 허용”을 최소 보안선으로 둡니다.
+- 프로젝트는 owner scope를 기본 권한 경계로 사용합니다.
+- 역할/멤버십 모델은 향후 필요 시 확장합니다.
 
 권장 정책:
-- DB RLS는 활성화하고, 모든 테이블에 대해 `authenticated`만 SELECT/INSERT/UPDATE 허용합니다.
-  - 서버(SSR)에서 `@supabase/ssr` 세션으로 쿼리하면 유저 컨텍스트로 통과합니다.
+- DB RLS는 모든 테이블에서 활성화합니다.
+- 핵심 정책은 `project.owner_id = auth.uid()`이며, 하위 리소스(`template/block/render` 및 관련 조합/버전 테이블)는 project owner scope를 상속합니다.
+- `audit_log`는 `actor_id = auth.uid()` 범위만 조회/변경 허용합니다.
+- 서버(SSR)에서 `@supabase/ssr` 세션으로 쿼리하면 유저 컨텍스트 기준으로 정책이 적용됩니다.
 - 삭제는 UPDATE로 처리되므로(soft delete), UPDATE 정책에 포함됩니다.
-- 운영상 “관리자만” 제약이 생기면 그 시점에 roles/claims 또는 멤버십 테이블을 도입합니다.
+- 운영상 “관리자 전용” 정책이 필요해지면 roles/claims 또는 멤버십 테이블을 도입해 확장합니다.
 
 0-3) API 컨벤션(권장)
 --------------------

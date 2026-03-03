@@ -1,111 +1,91 @@
 "use client";
 
+import Link from "next/link";
 import { Suspense, useActionState } from "react";
-import { useFormStatus } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import { login } from "./actions";
 import type { AuthFormState } from "@/lib/auth-types";
+import { AuthLayout } from "@/components/auth-layout";
+import { FormInput } from "@/components/form-input";
+import { SubmitButton } from "@/components/submit-button";
+import { Alert } from "@/components/alert";
 
 const initialState: AuthFormState = { error: null, success: null };
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="flex w-full justify-center rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500 disabled:opacity-50"
-    >
-      {pending ? "로그인 중..." : "로그인"}
-    </button>
-  );
-}
 
 function ErrorFromUrl() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
-  if (!error) return null;
-  return (
-    <div className="rounded-md bg-red-50 p-3 text-sm/6 text-red-600 ring-1 ring-red-200 dark:bg-red-950 dark:text-red-400 dark:ring-red-800">
-      {error}
-    </div>
-  );
+  return <Alert message={error} variant="error" />;
 }
 
 export default function LoginPage() {
   const [state, formAction] = useActionState(login, initialState);
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center bg-white px-6 py-12 dark:bg-gray-900 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
-          로그인
-        </h2>
-        <p className="mt-2 text-center text-sm/6 text-gray-500 dark:text-gray-400">
-          이메일과 비밀번호를 입력하세요.
+    <AuthLayout
+      title="로그인"
+      showLogo={false}
+      boxed={false}
+      footer={
+        <p className="mt-6 text-center text-sm/6 text-gray-600 dark:text-gray-400">
+          계정이 없으신가요?{" "}
+          <Link
+            href="/signup"
+            className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-gray-200"
+          >
+            회원가입
+          </Link>
         </p>
-      </div>
+      }
+    >
+      <form action={formAction} className="space-y-6">
+        <Suspense>
+          <ErrorFromUrl />
+        </Suspense>
+        <Alert message={state.error} variant="error" />
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form action={formAction} className="space-y-6">
-          <Suspense>
-            <ErrorFromUrl />
-          </Suspense>
-          {state.error && (
-            <div className="rounded-md bg-red-50 p-3 text-sm/6 text-red-600 ring-1 ring-red-200 dark:bg-red-950 dark:text-red-400 dark:ring-red-800">
-              {state.error}
-            </div>
-          )}
+        <FormInput
+          label="이메일"
+          id="email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="you@example.com"
+        />
 
-          <div>
-            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 dark:text-gray-100">
-              이메일
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                autoComplete="email"
-                placeholder="you@example.com"
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500 sm:text-sm/6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900 dark:text-gray-100">
+        <div>
+          <div className="flex items-center justify-between">
+            <label
+              htmlFor="password"
+              className="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
+            >
               비밀번호
             </label>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                minLength={6}
-                autoComplete="current-password"
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500 sm:text-sm/6"
-              />
+            <div className="text-sm">
+              <Link
+                href="/forgot-password"
+                className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-gray-200"
+              >
+                비밀번호를 잊으셨나요?
+              </Link>
             </div>
           </div>
-
-          <SubmitButton />
-        </form>
-
-        <div className="mt-6 flex items-center justify-between text-sm/6">
-          <a href="/forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-            비밀번호를 잊으셨나요?
-          </a>
-          <span className="text-gray-500 dark:text-gray-400">
-            계정이 없으신가요?{" "}
-            <a href="/signup" className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-              회원가입
-            </a>
-          </span>
+          <div className="mt-2">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              minLength={6}
+              autoComplete="current-password"
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 dark:bg-gray-800/60 dark:text-gray-100 dark:outline-gray-700 dark:placeholder:text-gray-500 dark:focus:outline-gray-400 sm:text-sm/6"
+            />
+          </div>
         </div>
-      </div>
-    </div>
+
+        <SubmitButton pendingText="로그인 중...">로그인</SubmitButton>
+      </form>
+    </AuthLayout>
   );
 }

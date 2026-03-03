@@ -1,5 +1,52 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment Split (dev local / prod cloud)
+
+This project is configured to separate environments like this:
+
+- `development`: local Next.js + local Supabase
+- `production`: cloud deployment (e.g. Vercel + Supabase Cloud)
+
+### 1) Development (all local)
+
+1. Create `.env.development.local` from `.env.development.example`.
+2. Fill local Supabase values.
+3. Start local Supabase and app.
+
+```bash
+supabase start
+pnpm dev
+```
+
+### 2) Production (all cloud)
+
+1. Use `.env.production.example` as the variable checklist.
+2. Set values in your cloud platform (Vercel project env vars).
+3. Do not use local URLs in production vars.
+
+Required vars:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_SITE_URL`
+
+Notes:
+
+- In non-production, `NEXT_PUBLIC_SITE_URL` falls back to `http://127.0.0.1:3000` if omitted.
+- In production, missing required env vars throw an error at runtime.
+
+### pnpm commands
+
+- Local development: `pnpm dev`
+- Production mode (build + start): `pnpm prod`
+
+## Icon Policy
+
+- Use only `@radix-ui/react-icons` for all UI icons.
+- Do not use mixed icon sources (Heroicons, Lucide, custom SVG, emoji).
+- Keep icon style consistent across editor UI and sidebar components.
+- Reference: https://www.radix-ui.com/icons?utm_source=chatgpt.com
+
 ## Getting Started
 
 First, run the development server:

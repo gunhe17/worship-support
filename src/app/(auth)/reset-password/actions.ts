@@ -30,5 +30,5 @@ export async function updatePassword(
     return { error: "비밀번호 변경에 실패했습니다. 다시 시도해주세요.", success: null };
   }
 
-  redirect("/dashboard");
+  redirect("/home");
 }

@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { getSiteUrl } from "@/lib/env";
 import type { AuthFormState } from "@/lib/auth-types";
 
 export async function requestPasswordReset(
@@ -15,7 +16,7 @@ export async function requestPasswordReset(
 
   const supabase = await createClient();
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/callback?next=/reset-password`,
+    redirectTo: `${getSiteUrl()}/api/auth/callback?next=/reset-password`,
   });
 
   if (error) {

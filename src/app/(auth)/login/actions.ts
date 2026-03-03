@@ -35,5 +35,5 @@ export async function login(
   }).catch(() => {});
 
   revalidatePath("/", "layout");
-  redirect("/dashboard");
+  redirect("/home");
 }
