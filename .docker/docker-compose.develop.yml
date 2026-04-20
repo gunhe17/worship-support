@@ -1,0 +1,75 @@
+name: worship-support-develop
+
+services:
+  workspace:
+    container_name: worship-support-develop-workspace
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.develop.workspace
+    volumes:
+      # bind
+      - ..:/app
+      - ~/.claude.json:/root/.claude.json # to share login
+      # volume
+      - claude-config:/root/.claude
+      - vscode-server:/root/.vscode-server
+    command: sleep infinity
+    env_file:
+      - ../.env/.env.develop
+
+  api:
+    container_name: worship-support-develop-api
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.develop.api
+    volumes:
+      - ..:/app:ro
+    ports:
+      - "${DEVELOP_API_PORT}:${DEVELOP_API_PORT}"
+    depends_on:
+      - database
+      - database-test
+    env_file:
+      - ../.env/.env.develop
+
+  mcp:
+    container_name: worship-support-develop-mcp
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.develop.mcp
+    volumes:
+      - ..:/app:ro
+    ports:
+      - "${DEVELOP_MCP_PORT}:${DEVELOP_MCP_PORT}"
+    env_file:
+      - ../.env/.env.develop
+
+  database:
+    container_name: worship-support-develop-database
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=${DEVELOP_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DEVELOP_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DEVELOP_POSTGRES_DB}
+    ports:
+      - "${DEVELOP_DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  database-test:
+    container_name: worship-support-develop-database-test
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=${DEVELOP_POSTGRES_TEST_USER}
+      - POSTGRES_PASSWORD=${DEVELOP_POSTGRES_TEST_PASSWORD}
+      - POSTGRES_DB=${DEVELOP_POSTGRES_TEST_DB}
+    ports:
+      - "${DEVELOP_DB_TEST_PORT}:5432"
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  postgres_test_data:
+  claude-config:
+  vscode-server:

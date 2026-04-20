@@ -1,0 +1,22 @@
+{
+  "name": "worship-support",
+  "dockerComposeFile": "../.docker/docker-compose.develop.yml",
+  "service": "workspace",
+  "workspaceFolder": "/app",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.analysis.typeCheckingMode": "standard"
+      }
+    }
+  },
+
+  "remoteUser": "root"
+}

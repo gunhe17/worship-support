@@ -1,0 +1,34 @@
+[project]
+name = "worship-support"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2",
+]
+
+[project.optional-dependencies]
+app = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy[asyncio]",
+    "asyncpg",
+    "alembic",
+]
+mcp = [
+    "mcp",
+]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+    "mypy",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["worship_support*"]
+namespaces = true

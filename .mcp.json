@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "worship-support-dev": {
+      "type": "http",
+      "url": "http://mcp:${DEVELOP_MCP_PORT}/mcp"
+    }
+  }
+}
