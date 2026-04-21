@@ -1,4 +1,6 @@
 {
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.pythonVersion": "3.13",
   "files.exclude": {
     "**/__pycache__": true,
     "**/*.pyc": true,
