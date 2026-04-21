@@ -51,16 +51,13 @@ def report_dependency(
     file: str,
     name: str | None = None,
     root: str | None = None,
-) -> str:
+) -> dict:
     file_path = Path(file)
     root_path = Path(root) if root else None
     base = (root_path or _default_root()).resolve()
     hits = _find_usages(file_path, name, root_path)
-    label = f"{file_path}" + (f"::{name}" if name else "")
-    if not hits:
-        return f"no usages of {label}"
-    lines = [f"{len(hits)} usage(s) of {label}:"]
+    result: list[str] = []
     for path, line in hits:
         rel = path.relative_to(base) if path.is_relative_to(base) else path
-        lines.append(f"  {rel}:{line}")
-    return "\n".join(lines)
+        result.append(f"{rel}:{line}")
+    return {"result": result}
