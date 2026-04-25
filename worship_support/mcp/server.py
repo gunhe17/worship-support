@@ -8,7 +8,7 @@ from worship_support.mcp.dependency import report_dependency
 server = FastMCP(
     "worship-support-dev",
     host="0.0.0.0",
-    port=int(os.environ["DEVELOP_MCP_PORT"]),
+    port=int(os.environ["DEVELOP_MCP_CONTAINER_PORT"]),
     transport_security=(
         TransportSecuritySettings(
             allowed_hosts=[
