@@ -25,7 +25,7 @@ services:
     volumes:
       - ..:/app:ro
     ports:
-      - "${DEVELOP_API_PORT}:${DEVELOP_API_PORT}"
+      - "${DEVELOP_API_PORT}:${DEVELOP_API_CONTAINER_PORT}"
     depends_on:
       - database
       - database-test
@@ -40,7 +40,7 @@ services:
     volumes:
       - ..:/app:ro
     ports:
-      - "${DEVELOP_MCP_PORT}:${DEVELOP_MCP_PORT}"
+      - "${DEVELOP_MCP_PORT}:${DEVELOP_MCP_CONTAINER_PORT}"
     env_file:
       - ../.env/.env.develop
 
@@ -52,7 +52,7 @@ services:
       - POSTGRES_PASSWORD=${DEVELOP_POSTGRES_PASSWORD}
       - POSTGRES_DB=${DEVELOP_POSTGRES_DB}
     ports:
-      - "${DEVELOP_DB_PORT}:5432"
+      - "${DEVELOP_POSTGRES_PORT}:${DEVELOP_POSTGRES_CONTAINER_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -60,11 +60,11 @@ services:
     container_name: worship-support-develop-database-test
     image: postgres:16-alpine
     environment:
-      - POSTGRES_USER=${DEVELOP_POSTGRES_TEST_USER}
-      - POSTGRES_PASSWORD=${DEVELOP_POSTGRES_TEST_PASSWORD}
-      - POSTGRES_DB=${DEVELOP_POSTGRES_TEST_DB}
+      - POSTGRES_USER=${TEST_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${TEST_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${TEST_POSTGRES_DB}
     ports:
-      - "${DEVELOP_DB_TEST_PORT}:5432"
+      - "${TEST_POSTGRES_PORT}:${TEST_POSTGRES_CONTAINER_PORT}"
     volumes:
       - postgres_test_data:/var/lib/postgresql/data
 
