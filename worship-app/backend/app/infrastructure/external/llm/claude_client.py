@@ -97,19 +97,53 @@ class ClaudeClient:
         """
         available_minutes = int(duration_minutes * 0.7)
         system = f"""당신은 한국 예배 찬양 큐레이터입니다.
-반드시 YouTube에서 실제로 검색 가능한 한국 찬양팀의 실존 곡만 추천하세요.
-추천 찬양팀: 마커스워십, WELOVE, F.I.A, 제이어스, 어노인팅, 온누리워십, 소리엘, 예수전도단, 다윗의장막, 시와그림, 화나, 워십메이커스, 강찬 등.
-존재하지 않는 곡 추천 금지.
 
-[규칙 1 — 최우선] 가사가 성경 본문의 핵심 메시지와 직접 연결되는 곡을 선정하세요.
+[최우선 규칙 — 절대 준수]
+반드시 당신이 확실히 알고 있는 실존하는 한국 찬양만 추천하세요.
+제목이 비슷하거나 그럴듯해 보여도 확신이 없으면 절대 추천하지 마세요.
+아래 예시 목록처럼 YouTube에서 실제로 검색되는 곡만 사용하세요.
 
-[규칙 2 — 절대 준수] 곡 순서와 분위기는 아래 위치를 반드시 지켜야 합니다. 절대 바꾸지 마세요:
-  1번 곡: 느린곡 (mood: "slow", BPM 75 이하, 잔잔한 경배/고백 분위기로 예배 시작)
-  2번 곡: 빠른곡 (mood: "fast", BPM 100 이상, 활기찬 찬양/선포 분위기)
-  3번 곡: 빠른곡 (mood: "fast", BPM 100 이상, 활기찬 찬양/선포 분위기)
-  4번 곡: 느린곡 (mood: "slow", BPM 75 이하, 깊은 경배/헌신 분위기)
-  5번 곡: 느린곡 (mood: "slow", BPM 75 이하, 마무리 경배/헌신 분위기)
-  ※ 1번은 반드시 느린곡이어야 합니다. 빠른곡을 1번에 넣으면 안 됩니다.
+추천 찬양팀: 마커스워십, WELOVE(위러브), F.I.A(피아워십), 제이어스, 어노인팅, 온누리워십, 소리엘, 예수전도단, 다윗의장막, 시와그림, 화나, 워십메이커스, 강찬, 홀리원, 힐송코리아 등.
+
+[mood 기준 + 실존 곡 예시 — 이 목록 안에서 우선 선택]
+  "slow" (잔잔한 경배/묵상/헌신):
+    그 사랑(마커스워십), 주 품에(마커스워십), 내 삶을 드리리(예수전도단),
+    예수 나의 첫사랑 되시네(마커스워십), 내가 매일 기쁘게(마커스워십),
+    주님 다시 오실 때까지(어노인팅), 내 영혼이 은총 입어(어노인팅),
+    사랑합니다 나의 예수님(어노인팅), 주님의 사랑이(소리엘),
+    주의 음성을 내가 들으니(예수전도단), 하나님의 사랑(예수전도단),
+    주가 보이신 생명의 길(예수전도단), 내 구주 예수님(온누리워십),
+    나의 반석이신 하나님(마커스워십), 은혜(마커스워십)
+
+  "medium" (적당히 활기찬 찬양):
+    우리는 주의 움직이는 교회(제이어스), 주와 함께 걸어가네(마커스워십),
+    찬양하라 내 영혼아(마커스워십), 주님 한 분만으로(마커스워십),
+    나는 주를 작은 배에(예수전도단), 내 인생 주관하시는(어노인팅),
+    주의 이름 높이며(어노인팅), 아버지(마커스워십),
+    하나님 아버지의 마음(온누리워십), 주님 내 길 되시니(소리엘),
+    복음 안에서(마커스워십), 주 보혈 날 씻기시네(WELOVE)
+
+  "fast" (활기찬 선포/축제):
+    우리 주 안에서 노래하며(WELOVE), 성령의 불타는 교회(제이어스),
+    부흥 있으리라(제이어스), 승리하였네(마커스워십),
+    주 이름 찬양(마커스워십), 할렐루야(예수전도단),
+    모든 민족 주 찬양(어노인팅), 주님 오시네(온누리워십),
+    하나님은 너를 만드신 분(화나), 새 힘 얻으리(어노인팅),
+    일어나라 빛을 발하라(온누리워십), 왕이신 나의 하나님(마커스워십)
+
+[규칙 1 — 절대 최우선] 반드시 곡의 "가사 내용"을 기준으로 선정하세요. 제목이 아닙니다.
+  - 해당 곡의 가사가 성경 본문의 핵심 메시지(죄 용서, 사랑, 회복, 찬양 등)를 직접 담고 있어야 합니다.
+  - 가사를 모르는 곡은 절대 추천하지 마세요.
+  - reason 필드에는 반드시 "가사의 어떤 내용이 본문과 연결되는지"를 구체적으로 설명하세요.
+
+[규칙 2 — 절대 준수] 아래 두 패턴 중 예배 주제에 더 어울리는 것을 하나 선택하세요.
+  패턴 A: slow → fast → fast → slow → slow
+    1번: slow, 2번: fast, 3번: fast, 4번: slow, 5번: slow
+  패턴 B: slow → fast → fast → medium → slow
+    1번: slow, 2번: fast, 3번: fast, 4번: medium, 5번: slow
+
+  ※ 절대 불변 규칙: 1번 곡과 5번 곡은 반드시 "slow"이어야 합니다.
+  ※ mood와 실제 곡의 분위기가 반드시 일치해야 합니다. (BPM 숫자가 아닌 곡의 실제 느낌 기준)
 
 [규칙 3] 총 찬양 가용 시간 {available_minutes}분 이내 (예배 {duration_minutes}분의 70%)
 
@@ -129,7 +163,8 @@ class ClaudeClient:
   "estimated_duration_minutes": 5.0,
   "song_form": ["Intro", "Verse1", "Chorus", "Bridge", "Outro"],
   "connection_to_prev": "start",
-  "connection_note": "예배 시작곡"
+  "connection_note": "예배 시작곡",
+  "youtube_search_query": "곡명 찬양팀명으로 YouTube에서 찾을 때 가장 정확한 검색어 (예: 그 사랑 마커스워십 라이브)"
 }}]"""
 
         direction_text = f"\n설교 방향성: {sermon_direction}" if sermon_direction.strip() else ""
@@ -139,7 +174,8 @@ class ClaudeClient:
             f"주제: {', '.join(themes)}{direction_text}\n"
             f"예배 총 시간: {duration_minutes}분 (찬양 가용 시간: 약 {available_minutes}분)\n\n"
             "위 규칙을 모두 지켜 실존 한국 찬양 5곡을 추천해주세요.\n"
-            "※ 반드시 1번 곡은 느린곡(BPM 75 이하)이어야 합니다."
+            "※ 1번=slow, 5번=slow는 절대 불변입니다.\n"
+            "※ 패턴A(slow→fast→fast→slow→slow) 또는 패턴B(slow→fast→fast→medium→slow) 중 선택하세요."
         )
         result = await self._call(system, prompt, max_tokens=3000)
         return result if isinstance(result, list) else result.get("recommendations", [])
@@ -189,24 +225,73 @@ class ClaudeClient:
         song_title: str,
         section_from: str,
         section_to: str,
+        bars_from: int,
+        bars_to: int,
         scripture: str,
         theme: str,
         worship_type: str,
     ) -> dict:
-        system = (
-            "당신은 경험 많은 한국 예배 인도자입니다. "
-            "찬양의 섹션 전환 시점에 인도자가 자연스럽게 할 수 있는 짧은 멘트를 작성합니다. "
-            "멘트는 회중의 집중을 유도하고 다음 섹션으로 자연스럽게 이어지는 흐름이어야 합니다. "
-            "구어체로 자연스럽게, 1~3문장 이내로 작성하세요. "
-            "반드시 아래 형식의 JSON만 출력하세요:\n"
-            '{"ment": "주요 멘트", "alternatives": ["대안 멘트1", "대안 멘트2"]}'
-        )
+        system = """당신은 경험 많은 한국 예배 인도자입니다.
+찬양 섹션 전환 시점에 인도자가 하는 짧은 멘트를 작성합니다.
+
+[멘트 작성 규칙 — 반드시 준수]
+1. 어미: "요"로 끝내지 말 것. 반드시 "합시다", "하겠습니다", "좋겠습니다", "드리겠습니다", "입니다" 중 하나로 끝낼 것.
+2. 불필요한 조사·부사 사용 금지: "자", "이제", "함께", "여러분", "정말", "한번" 등 군더더기 표현 제거.
+3. 찬양을 전달하는 인도자 입장으로만 말할 것. 감정 표현이나 설명은 넣지 말 것.
+4. 1~2문장 이내. 마디 수에 맞게 간결하게 작성할 것.
+5. 마디가 짧으면(8마디 이하) 더 짧게, 길면 조금 더 길게.
+
+좋은 예시:
+- "코러스를 한 번 더 드리겠습니다."
+- "브릿지로 넘어가겠습니다."
+- "마지막으로 찬양하겠습니다."
+- "처음부터 찬양하겠습니다."
+
+나쁜 예시 (금지):
+- "자 이제 다함께 코러스로 넘어가 볼게요."
+- "여러분 정말 아름다운 찬양이에요."
+- "함께 브릿지를 불러봐요."
+
+반드시 아래 JSON만 출력하세요:
+{"ment": "주요 멘트", "alternatives": ["대안 멘트1", "대안 멘트2"]}"""
+
         prompt = (
             f"예배 유형: {worship_type}\n"
             f"성경 본문: {scripture}\n"
-            f"예배 주제: {theme}\n"
+            f"예배 주제/방향: {theme}\n"
             f"현재 찬양: {song_title}\n"
-            f"섹션 전환: {section_from} → {section_to}\n\n"
-            f"위 상황에서 '{section_from}'에서 '{section_to}'로 넘어갈 때 인도자가 할 멘트를 추천해주세요."
+            f"섹션 전환: {section_from}({bars_from}마디) → {section_to}({bars_to}마디)\n\n"
+            f"'{section_from}'({bars_from}마디)이 끝나고 '{section_to}'({bars_to}마디)로 넘어갈 때 인도자가 할 멘트를 추천해주세요."
+        )
+        return await self._call(system, prompt)
+
+    async def recommend_song_form_with_bars(
+        self,
+        song_title: str,
+        artist: str,
+        bpm: int,
+        worship_type: str,
+        available_minutes: float,
+    ) -> dict:
+        system = f"""당신은 예배 음악 편곡 전문가입니다.
+찬양 곡의 BPM과 배정 시간을 고려하여 최적의 송폼과 각 섹션 마디 수를 추천합니다.
+
+계산 기준:
+- 1마디 = 4박자
+- 연주 시간(초) = 마디 수 × 4 / BPM × 60
+- 총 시간이 {available_minutes}분 이내가 되도록 마디 수를 배분하세요.
+
+섹션 이름은 반드시 영문으로: Intro, Verse, Verse2, Pre-Chorus, Chorus, Bridge, Tag, Inter, Outro 중에서 선택.
+자연스러운 예배 흐름이 되도록 구성하고, 마디 수는 4의 배수로만 사용하세요.
+
+반드시 아래 JSON만 출력하세요:
+{{"sections": [{{"name": "Intro", "bars": 8}}, ...], "total_estimated_minutes": 5.0}}"""
+
+        prompt = (
+            f"찬양: {song_title} ({artist})\n"
+            f"BPM: {bpm}\n"
+            f"예배 유형: {worship_type}\n"
+            f"배정 시간: 약 {available_minutes}분\n\n"
+            "위 조건에 맞는 송폼과 각 섹션 마디 수를 추천해주세요."
         )
         return await self._call(system, prompt)

@@ -17,6 +17,7 @@ export default function WorshipDetailPage() {
   const {
     data: recommend,
     isLoading: isAnalyzing,
+    isFetching,
     isError,
     error,
     refetch,
@@ -148,29 +149,53 @@ export default function WorshipDetailPage() {
             </div>
 
             {/* 분위기 패턴 안내 */}
-            <div className="flex flex-wrap gap-2 text-xs">
-              <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">느린곡</span>
-              <span className="text-gray-300">→</span>
-              <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-full">빠른곡</span>
-              <span className="text-gray-300">→</span>
-              <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-full">빠른곡</span>
-              <span className="text-gray-300">→</span>
-              <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">느린곡</span>
-              <span className="text-gray-300">→</span>
-              <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">느린곡</span>
+            <div className="space-y-1.5">
+              <p className="text-xs text-gray-400">AI가 아래 두 패턴 중 주제에 맞는 것을 선택합니다</p>
+              <div className="flex flex-wrap gap-1.5 text-xs items-center">
+                <span className="text-gray-400 font-medium">A</span>
+                <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">잔잔</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-full">빠름</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-full">빠름</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">잔잔</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">잔잔</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5 text-xs items-center">
+                <span className="text-gray-400 font-medium">B</span>
+                <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">잔잔</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-full">빠름</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-full">빠름</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-yellow-50 text-yellow-600 rounded-full">적당히</span>
+                <span className="text-gray-300">→</span>
+                <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">잔잔</span>
+              </div>
             </div>
 
-            <div className="space-y-3">
+            <div className={`space-y-3 transition-opacity ${isFetching ? "opacity-40 pointer-events-none" : ""}`}>
               {recommend.recommendations.map((song, i) => (
                 <SongRecommendCard key={i} song={song} rank={i + 1} />
               ))}
             </div>
 
+            {isFetching && (
+              <div className="flex items-center justify-center gap-2 py-3 text-sm text-primary-500">
+                <div className="w-4 h-4 border-2 border-primary-200 border-t-primary-500 rounded-full animate-spin" />
+                AI가 다른 찬양을 추천하고 있습니다...
+              </div>
+            )}
+
             <button
               onClick={() => refetch()}
-              className="w-full py-2 text-sm text-gray-400 border border-gray-200 rounded-lg hover:bg-gray-50"
+              disabled={isFetching}
+              className="w-full py-2 text-sm text-gray-400 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              다른 찬양으로 다시 추천받기
+              {isFetching ? "추천 중..." : "다른 찬양으로 다시 추천받기"}
             </button>
           </div>
         </>

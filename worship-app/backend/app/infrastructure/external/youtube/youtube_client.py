@@ -7,77 +7,126 @@ from app.common.config.settings import settings
 
 YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 
+ARTIST_ALIASES: dict[str, list[str]] = {
+    "마커스워십":   ["markers", "마커스"],
+    "welove":       ["welove", "위러브"],
+    "위러브":       ["welove", "위러브"],
+    "f.i.a":        ["fia", "f i a", "피아"],
+    "피아":         ["fia", "f i a", "피아"],
+    "제이어스":     ["j us", "제이어스", "jus"],
+    "어노인팅":     ["anointing", "어노인팅"],
+    "온누리워십":   ["onnuri", "온누리"],
+    "소리엘":       ["sorijel", "소리엘"],
+    "예수전도단":   ["예수전도단", "ywam"],
+    "다윗의장막":   ["다윗의장막"],
+    "시와그림":     ["시와그림"],
+    "화나":         ["화나", "hwana"],
+    "강찬":         ["강찬"],
+    "워십메이커스": ["worshipmakers", "워십메이커스"],
+}
+
 
 def _normalize(text: str) -> str:
-    """비교용: 소문자화 + 특수문자 제거."""
-    return re.sub(r"[^\w가-힣]", " ", text.lower())
+    return re.sub(r"[^\w가-힣]", " ", text.lower()).strip()
 
 
-def _is_relevant(video_title: str, song_title: str, artist: str) -> bool:
-    """
-    YouTube 결과 영상이 실제 추천 곡과 관련 있는지 확인합니다.
-    곡 제목의 주요 단어 또는 아티스트명이 영상 제목에 포함되어야 합니다.
-    """
+def _is_clearly_wrong(video_title: str, channel: str, song_title: str, artist: str) -> bool:
+    """완전히 관계없는 영상인지만 체크 (느슨한 필터)."""
     vt = _normalize(video_title)
+    vc = _normalize(channel)
 
-    # 곡 제목에서 2자 이상 단어만 추출
-    song_words = [w for w in _normalize(song_title).split() if len(w) >= 2]
-    # 아티스트명 전체 또는 분리 단어
-    artist_words = [w for w in _normalize(artist).split() if len(w) >= 2]
+    # 곡 제목 토큰 (2자 이상)
+    title_tokens = [w for w in _normalize(song_title).split() if len(w) >= 2]
 
-    # 곡 제목 단어 중 하나 이상이 영상 제목에 있으면 관련 있음
-    title_match = sum(1 for w in song_words if w in vt)
-    artist_match = any(w in vt for w in artist_words)
+    # 아티스트 토큰
+    artist_key = _normalize(artist)
+    artist_tokens = {artist_key}
+    for k, aliases in ARTIST_ALIASES.items():
+        if k in artist_key or artist_key in k:
+            artist_tokens.update(_normalize(a) for a in aliases)
+    artist_tokens.update(w for w in artist_key.split() if len(w) >= 2)
 
-    # 제목 단어 50% 이상 매칭(최소 2단어) 또는 아티스트 매칭
-    if song_words:
-        ratio_ok = (title_match / len(song_words)) >= 0.5 and title_match >= 2
-        return ratio_ok or artist_match
-    return artist_match
+    # 곡 제목 단어 하나라도 포함되면 OK
+    title_hit = any(w in vt for w in title_tokens)
+    # 아티스트가 영상 제목 또는 채널에 포함되면 OK
+    artist_hit = any(t in vt or t in vc for t in artist_tokens if t)
+
+    # 둘 다 없으면 완전히 관계없는 영상
+    return not title_hit and not artist_hit
 
 
 class YoutubeClient:
-    async def search_by_song(self, title: str, artist: str) -> list[dict]:
-        """곡 제목과 아티스트로 YouTube 영상을 검색하고 관련성 필터를 적용합니다."""
+    def _to_result(self, item: dict) -> dict:
+        return {
+            "title": item["snippet"]["title"],
+            "url": f"https://www.youtube.com/watch?v={item['id']['videoId']}",
+            "channel": item["snippet"]["channelTitle"],
+            "thumbnail": item["snippet"]["thumbnails"]["default"]["url"],
+        }
+
+    async def _fetch(self, query: str, max_results: int = 8) -> list[dict]:
+        async with httpx.AsyncClient(trust_env=False, timeout=10.0) as client:
+            resp = await client.get(
+                YOUTUBE_SEARCH_URL,
+                params={
+                    "part": "snippet",
+                    "q": query,
+                    "type": "video",
+                    "maxResults": max_results,
+                    "key": settings.YOUTUBE_API_KEY,
+                    "relevanceLanguage": "ko",
+                },
+            )
+            resp.raise_for_status()
+            return resp.json().get("items", [])
+
+    async def search_by_song(
+        self,
+        title: str,
+        artist: str,
+        search_query: str = "",
+    ) -> list[dict]:
         if not title.strip():
             return []
 
-        # 더 구체적인 쿼리: 곡명 + 아티스트명으로 정확도 향상
-        query = f'"{title}" {artist} 찬양'
         try:
-            async with httpx.AsyncClient(trust_env=False, timeout=10.0) as client:
-                resp = await client.get(
-                    YOUTUBE_SEARCH_URL,
-                    params={
-                        "part": "snippet",
-                        "q": query,
-                        "type": "video",
-                        "maxResults": 8,  # 필터링 후 3개 남기기 위해 더 많이 가져옴
-                        "key": settings.YOUTUBE_API_KEY,
-                        "relevanceLanguage": "ko",
-                    },
+            if search_query.strip():
+                # Claude가 제공한 정확한 검색어 → YouTube 상위 결과를 신뢰
+                # 완전히 관계없는 영상만 제거
+                items = await self._fetch(search_query.strip())
+                results = [
+                    self._to_result(item) for item in items
+                    if not _is_clearly_wrong(
+                        item["snippet"]["title"],
+                        item["snippet"]["channelTitle"],
+                        title, artist,
+                    )
+                ]
+                if results:
+                    return results[:3]
+
+            # 검색어 없거나 결과 없을 때 → 곡명+아티스트 기본 쿼리로 재시도
+            items = await self._fetch(f"{title} {artist} 찬양")
+            results = [
+                self._to_result(item) for item in items
+                if not _is_clearly_wrong(
+                    item["snippet"]["title"],
+                    item["snippet"]["channelTitle"],
+                    title, artist,
                 )
-                resp.raise_for_status()
-                items = resp.json().get("items", [])
+            ]
+            return results[:3]
 
-                results = []
-                for item in items:
-                    video_title = item["snippet"]["title"]
-                    # 관련성 필터: 영상 제목에 곡명 또는 아티스트가 포함되어야 함
-                    if _is_relevant(video_title, title, artist):
-                        results.append({
-                            "title": video_title,
-                            "url": f"https://www.youtube.com/watch?v={item['id']['videoId']}",
-                            "channel": item["snippet"]["channelTitle"],
-                            "thumbnail": item["snippet"]["thumbnails"]["default"]["url"],
-                        })
-
-                # 관련 영상이 없으면 빈 결과 반환 (틀린 영상 표시보다 직접 검색 링크가 낫다)
-                return results[:3]
         except Exception:
             return []
 
     async def search_multiple(self, songs: list[dict]) -> list[list[dict]]:
-        """여러 곡을 동시에 검색합니다."""
-        tasks = [self.search_by_song(s.get("title", ""), s.get("artist", "")) for s in songs]
+        tasks = [
+            self.search_by_song(
+                s.get("title", ""),
+                s.get("artist", ""),
+                s.get("youtube_search_query", ""),
+            )
+            for s in songs
+        ]
         return await asyncio.gather(*tasks)

@@ -12,8 +12,9 @@ const CONNECTION_LABELS: Record<string, { label: string; color: string }> = {
 };
 
 const MOOD_LABELS: Record<string, { label: string; color: string }> = {
-  slow: { label: "느린곡", color: "bg-indigo-50 text-indigo-600" },
-  fast: { label: "빠른곡", color: "bg-orange-50 text-orange-600" },
+  slow:   { label: "잔잔한곡",      color: "bg-indigo-50 text-indigo-600" },
+  medium: { label: "적당히 빠른곡", color: "bg-yellow-50 text-yellow-600" },
+  fast:   { label: "빠른곡",        color: "bg-orange-50 text-orange-600" },
 };
 
 export function SongRecommendCard({ song, rank }: Props) {
