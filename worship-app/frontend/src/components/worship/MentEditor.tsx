@@ -262,7 +262,7 @@ export function MentEditor({ worship, songs, onClose }: MentEditorProps) {
   }
 
   if (showLead) {
-    return <Teleprompter ments={ments} onExit={() => setShowLead(false)} />;
+    return <Teleprompter ments={ments} songs={songs} onExit={() => setShowLead(false)} />;
   }
 
   return (
@@ -387,12 +387,22 @@ export function MentEditor({ worship, songs, onClose }: MentEditorProps) {
                         />
                         <div className="flex items-center gap-1 shrink-0">
                           <button
-                            onClick={() => handleBarsChange(song.title, i, Math.max(4, section.bars - 4))}
+                            onClick={() => handleBarsChange(song.title, i, Math.max(1, section.bars - 1))}
                             className="w-6 h-6 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm flex items-center justify-center"
                           >−</button>
-                          <span className="text-sm font-mono w-8 text-center">{section.bars}</span>
+                          <input
+                            type="number"
+                            min={1}
+                            value={section.bars}
+                            onChange={(e) => {
+                              const v = parseInt(e.target.value);
+                              if (!isNaN(v) && v >= 1) handleBarsChange(song.title, i, v);
+                            }}
+                            onMouseDown={(e) => e.stopPropagation()}
+                            className="text-sm font-mono w-10 text-center border border-gray-200 rounded px-1 py-0.5 focus:outline-none focus:ring-1 focus:ring-primary-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          />
                           <button
-                            onClick={() => handleBarsChange(song.title, i, section.bars + 4)}
+                            onClick={() => handleBarsChange(song.title, i, section.bars + 1)}
                             className="w-6 h-6 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm flex items-center justify-center"
                           >+</button>
                           <span className="text-xs text-gray-400 ml-1">마디</span>

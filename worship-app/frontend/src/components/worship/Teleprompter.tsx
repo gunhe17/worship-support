@@ -1,279 +1,376 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { WorshipMentItem } from "@/types";
+import type { SongRecommendation, WorshipMentItem } from "@/types";
 
 interface TeleprompterProps {
   ments: WorshipMentItem[];
+  songs: SongRecommendation[];
   onExit: () => void;
 }
 
-// 섹션 레이블에서 표시용 텍스트 추출
-function formatSectionLabel(label: string): string {
-  // "Chorus(16마디) → Bridge(8마디)" → "Chorus → Bridge"
+interface MentTrigger {
+  mentIndex: number;
+  triggerAt: number;
+}
+
+interface SongSpan {
+  title: string;
+  startSec: number;
+  durationSec: number;
+}
+
+const DEFAULT_BARS: Record<string, number> = {
+  Intro: 8, Verse: 16, Verse1: 16, Verse2: 16, Verse3: 16,
+  "Pre-Chorus": 8, PreChorus: 8, Chorus: 16, Bridge: 16,
+  Tag: 8, Inter: 8, Outro: 8, Ending: 8,
+};
+
+function parseSectionBars(label: string): Record<string, number> {
+  const map: Record<string, number> = {};
+  const re = /([A-Za-z가-힣][A-Za-z가-힣0-9 ]*?)\s*\((\d+)마디\)/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(label)) !== null) map[m[1].trim()] = parseInt(m[2]);
+  return map;
+}
+
+function toSectionName(label: string): string {
+  const after = label.includes("→") ? label.split("→")[1] : label;
+  return after.replace(/\(\d+마디\)/g, "").trim();
+}
+
+function formatLabel(label: string): string {
   return label.replace(/\(\d+마디\)/g, "").replace(/\s+/g, " ").trim();
 }
 
-// 현재/이전/다음 라벨 분리
-function getSectionParts(label: string): { from: string; to: string } | null {
-  const clean = formatSectionLabel(label);
-  if (!clean.includes("→")) return null;
-  const [from, ...rest] = clean.split(" → ");
-  return { from: from.trim(), to: rest.join(" → ").trim() };
+function formatTime(sec: number): string {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export function Teleprompter({ ments, onExit }: TeleprompterProps) {
-  const [current, setCurrent] = useState(0);
-  const mainRef = useRef<HTMLDivElement>(null);
-
-  const goNext = useCallback(() => {
-    setCurrent((prev) => Math.min(prev + 1, ments.length - 1));
-  }, [ments.length]);
-
-  const goPrev = useCallback(() => {
-    setCurrent((prev) => Math.max(prev - 1, 0));
+function buildTimeline(ments: WorshipMentItem[], songs: SongRecommendation[]): {
+  triggers: MentTrigger[];
+  songSpans: SongSpan[];
+  totalSec: number;
+} {
+  const songMap = new Map(songs.map((s) => [s.title, s]));
+  const songTitles = ments.reduce<string[]>((acc, m) => {
+    if (!acc.includes(m.song_title)) acc.push(m.song_title);
+    return acc;
   }, []);
 
+  const triggers: MentTrigger[] = [];
+  const songSpans: SongSpan[] = [];
+  let songStartSec = 0;
+
+  for (const title of songTitles) {
+    const song = songMap.get(title);
+    const bpm = song?.bpm && song.bpm > 0 ? song.bpm : 80;
+    const secsPerBar = (60 / bpm) * 4;
+    const songForm = song?.song_form ?? [];
+    const songDurationSec = (song?.estimated_duration_minutes ?? 4) * 60;
+
+    const songMentEntries = ments.map((m, i) => ({ m, i })).filter(({ m }) => m.song_title === title);
+
+    const barsMap: Record<string, number> = {};
+    for (const { m } of songMentEntries) Object.assign(barsMap, parseSectionBars(m.section_label));
+
+    const sectionStartSecs: Record<string, number> = {};
+    let cumSecs = 0;
+    for (const name of songForm) {
+      sectionStartSecs[name] = cumSecs;
+      cumSecs += (barsMap[name] ?? DEFAULT_BARS[name] ?? 8) * secsPerBar;
+    }
+
+    songMentEntries.forEach(({ m, i }, j) => {
+      const toSection = toSectionName(m.section_label);
+      const fromSecs = sectionStartSecs[toSection];
+      const offsetSec = fromSecs !== undefined
+        ? fromSecs
+        : songDurationSec * (j / Math.max(songMentEntries.length, 1));
+      triggers.push({ mentIndex: i, triggerAt: songStartSec + offsetSec });
+    });
+
+    const thisDuration = cumSecs > 0 ? cumSecs : songDurationSec;
+    songSpans.push({ title, startSec: songStartSec, durationSec: thisDuration });
+    songStartSec += thisDuration;
+  }
+
+  return { triggers, songSpans, totalSec: songStartSec };
+}
+
+export function Teleprompter({ ments, songs, onExit }: TeleprompterProps) {
+  const [current, setCurrent] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+
+  const elapsedRef = useRef(0);
+  const currentRef = useRef(0);
+  const timelineRef = useRef<MentTrigger[]>([]);
+  const songSpansRef = useRef<SongSpan[]>([]);
+  const totalSecRef = useRef(0);
+  const mentRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // current 동기화
+  useEffect(() => { currentRef.current = current; }, [current]);
+
+  useEffect(() => {
+    const { triggers, songSpans, totalSec } = buildTimeline(ments, songs);
+    timelineRef.current = triggers;
+    songSpansRef.current = songSpans;
+    totalSecRef.current = totalSec;
+  }, [ments, songs]);
+
+  // 활성 멘트가 바뀌면 스크롤해서 화면 중앙에 보이게
+  useEffect(() => {
+    mentRefs.current[current]?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [current]);
+
+  const jumpTo = useCallback((idx: number) => {
+    const clamped = Math.max(0, Math.min(idx, ments.length - 1));
+    currentRef.current = clamped;
+    setCurrent(clamped);
+    const trigger = timelineRef.current.find((t) => t.mentIndex === clamped);
+    if (trigger) {
+      elapsedRef.current = trigger.triggerAt;
+      setElapsed(trigger.triggerAt);
+    }
+  }, [ments.length]);
+
+  // 자동 타이머
+  useEffect(() => {
+    if (!isPlaying) return;
+    const id = setInterval(() => {
+      elapsedRef.current += 0.5;
+      setElapsed(elapsedRef.current);
+      const due = timelineRef.current.filter(
+        (t) => t.mentIndex > currentRef.current && t.triggerAt <= elapsedRef.current,
+      );
+      if (due.length > 0) {
+        const next = due[due.length - 1];
+        currentRef.current = next.mentIndex;
+        setCurrent(next.mentIndex);
+      }
+    }, 500);
+    return () => clearInterval(id);
+  }, [isPlaying]);
+
+  // 키보드
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
-        e.preventDefault();
-        goNext();
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        e.preventDefault();
-        goPrev();
-      } else if (e.key === "Escape") {
-        onExit();
-      }
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); jumpTo(currentRef.current + 1); }
+      else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); jumpTo(currentRef.current - 1); }
+      else if (e.key === " ") { e.preventDefault(); setIsPlaying((p) => !p); }
+      else if (e.key === "Escape") onExit();
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [goNext, goPrev, onExit]);
+  }, [jumpTo, onExit]);
 
   const currentMent = ments[current];
-  const prevPrevMent = current > 1 ? ments[current - 2] : null;
-  const prevMent = current > 0 ? ments[current - 1] : null;
-  const nextMent = current < ments.length - 1 ? ments[current + 1] : null;
-  const nextNextMent = current < ments.length - 2 ? ments[current + 2] : null;
-
-  // 곡별로 멘트를 그룹화해서 현재 곡 내 진행 상황 계산
   const currentSongTitle = currentMent?.song_title ?? "";
-  const songMentIndices = ments
-    .map((m, i) => ({ m, i }))
-    .filter(({ m }) => m.song_title === currentSongTitle);
-  const posInSong = songMentIndices.findIndex(({ i }) => i === current);
+  const currentSong = songs.find((s) => s.title === currentSongTitle);
+  const activeSectionName = currentMent ? toSectionName(currentMent.section_label) : "";
+  const activeSectionIdx = currentSong?.song_form.findIndex(
+    (f) => f.toLowerCase() === activeSectionName.toLowerCase(),
+  ) ?? -1;
 
-  // 고유 곡 목록 (순서 유지)
   const songOrder = ments.reduce<string[]>((acc, m) => {
     if (!acc.includes(m.song_title)) acc.push(m.song_title);
     return acc;
   }, []);
   const currentSongIdx = songOrder.indexOf(currentSongTitle);
 
-  const sectionParts = currentMent ? getSectionParts(currentMent.section_label) : null;
-  const isFirst = current === 0;
-  const isLast = current === ments.length - 1;
+  const totalSec = totalSecRef.current;
+  const progressPct = totalSec > 0 ? Math.min((elapsed / totalSec) * 100, 100) : 0;
+
+  // 현재 곡 내 경과 시간 / 곡 전체 시간
+  const currentSongSpan = songSpansRef.current.find((s) => s.title === currentSongTitle);
+  const songElapsed = currentSongSpan ? Math.max(0, elapsed - currentSongSpan.startSec) : 0;
+  const songDuration = currentSongSpan?.durationSec ?? 0;
+  const songProgressPct = songDuration > 0 ? Math.min((songElapsed / songDuration) * 100, 100) : 0;
 
   return (
-    <div className="fixed inset-0 bg-gray-950 z-50 flex flex-col select-none">
+    <div className="fixed inset-0 bg-black flex select-none">
 
-      {/* ── 상단 바 ── */}
-      <div className="flex items-center justify-between px-6 py-3 border-b border-gray-800/60">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-green-400 text-xs font-semibold tracking-widest uppercase">Live</span>
+      {/* ── 왼쪽: 악보 영역 (3/4) ── */}
+      <div className="flex-1 border-r border-white/5 flex items-center justify-center">
+        <div className="text-center space-y-3">
+          <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mx-auto">
+            <svg className="w-7 h-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+            </svg>
+          </div>
+          <p className="text-white/15 text-sm font-light">악보 영역</p>
         </div>
-
-        {/* 곡 진행 인디케이터 */}
-        <div className="flex items-center gap-1.5">
-          {songOrder.map((title, i) => (
-            <div
-              key={i}
-              className={`h-1 rounded-full transition-all duration-300 ${
-                i === currentSongIdx
-                  ? "w-6 bg-primary-400"
-                  : i < currentSongIdx
-                  ? "w-3 bg-gray-600"
-                  : "w-3 bg-gray-700"
-              }`}
-              title={title}
-            />
-          ))}
-        </div>
-
-        <button onClick={onExit} className="text-gray-600 hover:text-gray-400 text-xs">
-          ESC 종료
-        </button>
       </div>
 
-      {/* ── 현재 곡 정보 ── */}
-      <div className="px-6 pt-5 pb-3">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-primary-400 text-xs font-semibold uppercase tracking-widest mb-0.5">
-              {currentSongIdx + 1} / {songOrder.length} 번째 찬양
-            </p>
-            <h2 className="text-white text-xl font-bold">{currentSongTitle}</h2>
+      {/* ── 오른쪽: 인도 패널 (1/4) ── */}
+      <div className="w-80 flex flex-col bg-black">
+
+        {/* 헤더 */}
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/5 shrink-0">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-green-400 text-[10px] font-bold tracking-[0.2em] uppercase">Live</span>
           </div>
-          <div className="text-right">
-            <p className="text-gray-500 text-xs">{current + 1} / {ments.length}</p>
-            <p className="text-gray-600 text-xs mt-0.5">
-              {posInSong + 1} / {songMentIndices.length} 포인트
-            </p>
-          </div>
+          <button onClick={onExit} className="text-white/20 hover:text-white/50 text-[10px] tracking-widest transition-colors">
+            ESC
+          </button>
         </div>
 
-        {/* 섹션 진행 타임라인 */}
-        <div className="flex items-center gap-1 mt-3 flex-wrap">
-          {songMentIndices.map(({ m, i }, j) => {
-            const isCurrent = i === current;
-            const isPast = i < current;
-            const parts = getSectionParts(m.section_label);
-            const label = parts ? parts.from : m.section_label.replace(/\(\d+마디\)/g, "").trim();
-            return (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`flex items-center gap-1 transition-all duration-200 ${
-                  isCurrent ? "opacity-100" : isPast ? "opacity-40" : "opacity-25"
-                }`}
-              >
-                <span
-                  className={`px-2 py-0.5 rounded text-xs font-medium ${
-                    isCurrent
-                      ? "bg-primary-500 text-white"
-                      : "bg-gray-800 text-gray-400"
-                  }`}
-                >
-                  {label}
+        {/* 현재 곡 정보 */}
+        <div className="px-5 pt-4 pb-3 shrink-0">
+          <p className="text-white/25 text-[10px] mb-1">
+            {currentSongIdx + 1} / {songOrder.length}번째 찬양
+          </p>
+          <h2 className="text-white text-lg font-semibold leading-tight">{currentSongTitle}</h2>
+          {currentSong?.artist && (
+            <p className="text-white/25 text-xs mt-0.5">{currentSong.artist}</p>
+          )}
+
+          {/* 송폼 칩 */}
+          {currentSong?.song_form && currentSong.song_form.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-3">
+              {currentSong.song_form.map((form, i) => (
+                <span key={i} className={`px-1.5 py-0.5 rounded text-[10px] font-medium transition-all duration-300 ${
+                  i === activeSectionIdx
+                    ? "bg-white text-black"
+                    : i < activeSectionIdx
+                    ? "bg-white/6 text-white/18 line-through"
+                    : "bg-white/5 text-white/25"
+                }`}>
+                  {form}
                 </span>
-                {j < songMentIndices.length - 1 && (
-                  <span className="text-gray-700 text-xs">›</span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="mx-5 border-t border-white/6 shrink-0" />
+
+        {/* ── 멘트 목록 (스크롤 가능) ── */}
+        <div className="flex-1 overflow-y-auto py-3" style={{ scrollbarWidth: "none" }}>
+          {songOrder.map((title, songIdx) => {
+            const songMents = ments
+              .map((m, i) => ({ m, i }))
+              .filter(({ m }) => m.song_title === title);
+
+            return (
+              <div key={title}>
+                {/* 곡 구분선 (2번째 곡부터) */}
+                {songIdx > 0 && (
+                  <div className="flex items-center gap-2 px-5 py-3">
+                    <div className="h-px flex-1 bg-white/5" />
+                    <span className="text-white/18 text-[9px] tracking-wider">{title}</span>
+                    <div className="h-px flex-1 bg-white/5" />
+                  </div>
                 )}
-              </button>
+
+                {songMents.map(({ m, i }) => {
+                  const isActive = i === current;
+                  const isPast = i < current;
+
+                  // 이 멘트가 발동되는 시간 (곡 내 상대 시간)
+                  const globalTriggerAt = timelineRef.current.find((t) => t.mentIndex === i)?.triggerAt ?? 0;
+                  const songSpan = songSpansRef.current.find((s) => s.title === m.song_title);
+                  const relTriggerAt = globalTriggerAt - (songSpan?.startSec ?? 0);
+
+                  return (
+                    <div
+                      key={i}
+                      ref={(el) => { mentRefs.current[i] = el; }}
+                      onClick={() => jumpTo(i)}
+                      className={`mx-3 mb-1 px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 ${
+                        isActive
+                          ? "bg-white/8 border border-white/10"
+                          : "hover:bg-white/4 border border-transparent"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <p className={`text-[9px] uppercase tracking-[0.15em] transition-colors ${
+                          isActive ? "text-white/40" : "text-white/12"
+                        }`}>
+                          {formatLabel(m.section_label)}
+                        </p>
+                        <span className={`text-[10px] tabular-nums font-mono transition-colors ${
+                          isActive ? "text-white/50" : isPast ? "text-white/15" : "text-white/20"
+                        }`}>
+                          {formatTime(relTriggerAt)}
+                        </span>
+                      </div>
+                      <p className={`text-sm leading-relaxed transition-colors ${
+                        isActive
+                          ? "text-white font-medium"
+                          : isPast
+                          ? "text-white/18"
+                          : "text-white/38"
+                      }`}>
+                        {m.ment_text || <span className="italic text-white/15">멘트 없음</span>}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             );
           })}
+
+          {/* 하단 여백 (마지막 멘트가 중앙에 올 수 있도록) */}
+          <div className="h-24" />
         </div>
-      </div>
 
-      {/* ── 메인 멘트 영역 ── */}
-      <div ref={mainRef} className="flex-1 flex flex-col justify-center px-6 gap-3 overflow-hidden">
+        {/* ── 재생 컨트롤 ── */}
+        <div className="px-5 pb-5 pt-3 border-t border-white/5 space-y-3 shrink-0">
 
-        {/* 이전이전 멘트 (매우 희미) */}
-        {prevPrevMent ? (
-          <div className="opacity-15 transition-all duration-300">
-            <p className="text-xs text-gray-700 mb-0.5 truncate">
-              {formatSectionLabel(prevPrevMent.section_label)}
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed line-clamp-1">
-              {prevPrevMent.ment_text || "(멘트 없음)"}
-            </p>
-          </div>
-        ) : <div className="h-8" />}
-
-        {/* 이전 멘트 (희미) */}
-        {prevMent ? (
-          <div className="opacity-35 transition-all duration-300">
-            <p className="text-xs text-gray-600 mb-0.5 truncate">
-              {formatSectionLabel(prevMent.section_label)}
-            </p>
-            <p className="text-gray-400 text-base leading-relaxed line-clamp-1">
-              {prevMent.ment_text || "(멘트 없음)"}
-            </p>
-          </div>
-        ) : <div className="h-10" />}
-
-        {/* 현재 멘트 (메인) */}
-        <div className="bg-gray-800/60 border border-primary-500/40 rounded-2xl px-8 py-7 shadow-2xl shadow-primary-900/20 transition-all duration-300">
-          {sectionParts ? (
-            <div className="flex items-center gap-2 mb-4">
-              <span className="px-2 py-0.5 bg-gray-700 text-gray-300 text-xs rounded font-mono">
-                {sectionParts.from}
+          {/* 현재 곡 시간 */}
+          <div className="space-y-1.5">
+            <div className="flex justify-between items-baseline">
+              <span className="text-white text-base font-semibold tabular-nums">
+                {formatTime(songElapsed)}
               </span>
-              <span className="text-gray-500 text-xs">→</span>
-              <span className="px-2 py-0.5 bg-primary-900/60 text-primary-300 text-xs rounded font-mono">
-                {sectionParts.to}
+              <span className="text-white/25 text-[10px] tabular-nums">
+                / {formatTime(songDuration)}
               </span>
             </div>
-          ) : (
-            <p className="text-primary-400 text-xs font-semibold mb-4 uppercase tracking-widest">
-              {formatSectionLabel(currentMent?.section_label ?? "")}
-            </p>
-          )}
-
-          {currentMent?.ment_text ? (
-            <p className="text-white text-3xl font-medium leading-snug">
-              {currentMent.ment_text}
-            </p>
-          ) : (
-            <p className="text-gray-600 text-2xl italic">(멘트 없음)</p>
-          )}
-        </div>
-
-        {/* 다음 멘트 미리보기 */}
-        {nextMent ? (
-          <div className="opacity-35 transition-all duration-300">
-            <p className="text-xs text-gray-600 mb-0.5 truncate">
-              다음 · {formatSectionLabel(nextMent.section_label)}
-            </p>
-            <p className="text-gray-400 text-base leading-relaxed line-clamp-1">
-              {nextMent.ment_text || "(멘트 없음)"}
-            </p>
+            <div className="h-px bg-white/8 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-white/50 rounded-full transition-all duration-500"
+                style={{ width: `${songProgressPct}%` }}
+              />
+            </div>
           </div>
-        ) : <div className="h-10" />}
 
-        {/* 다다음 멘트 (매우 희미) */}
-        {nextNextMent ? (
-          <div className="opacity-15 transition-all duration-300">
-            <p className="text-xs text-gray-700 mb-0.5 truncate">
-              {formatSectionLabel(nextNextMent.section_label)}
-            </p>
-            <p className="text-gray-600 text-sm leading-relaxed line-clamp-1">
-              {nextNextMent.ment_text || "(멘트 없음)"}
-            </p>
-          </div>
-        ) : <div className="h-8" />}
-      </div>
-
-      {/* ── 하단 네비게이션 ── */}
-      <div className="flex items-center justify-between px-6 py-4 border-t border-gray-800/60">
-        <button
-          onClick={goPrev}
-          disabled={isFirst}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 active:scale-95 disabled:opacity-20 disabled:cursor-not-allowed transition-all text-sm font-medium"
-        >
-          ← 이전
-        </button>
-
-        {/* 전체 진행 도트 */}
-        <div className="flex gap-1 max-w-xs overflow-hidden">
-          {ments.map((_, i) => (
+          {/* 재생 / 일시정지 */}
+          <div className="flex items-center justify-center">
             <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`transition-all duration-200 rounded-full ${
-                i === current
-                  ? "w-4 h-2 bg-primary-400"
-                  : i < current
-                  ? "w-2 h-2 bg-gray-600"
-                  : "w-2 h-2 bg-gray-800"
-              }`}
-            />
-          ))}
+              onClick={() => setIsPlaying((p) => !p)}
+              className="w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-lg shadow-white/10 hover:bg-white/90 active:scale-95 transition-all"
+            >
+              {isPlaying ? (
+                <svg className="w-3.5 h-3.5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <rect x="6" y="4" width="4" height="16" rx="1" />
+                  <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg>
+              ) : (
+                <svg className="w-3.5 h-3.5 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* 곡 진행 도트 */}
+          <div className="flex items-center justify-center gap-1.5">
+            {songOrder.map((_, i) => (
+              <div key={i} className={`rounded-full transition-all duration-300 ${
+                i === currentSongIdx ? "w-4 h-1 bg-white/50" : i < currentSongIdx ? "w-1 h-1 bg-white/15" : "w-1 h-1 bg-white/8"
+              }`} />
+            ))}
+          </div>
         </div>
-
-        <button
-          onClick={goNext}
-          disabled={isLast}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 active:scale-95 disabled:opacity-20 disabled:cursor-not-allowed transition-all text-sm font-medium"
-        >
-          다음 →
-        </button>
       </div>
-
-      <p className="text-center text-xs text-gray-800 pb-2">
-        ← → 방향키 · 스페이스바
-      </p>
     </div>
   );
 }

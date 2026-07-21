@@ -19,3 +19,6 @@ class WorshipRepository(ABC):
 
     @abstractmethod
     async def delete(self, worship_id: UUID) -> None: ...
+
+    @abstractmethod
+    async def save_ai_result(self, worship_id: UUID, ai_result: dict) -> None: ...

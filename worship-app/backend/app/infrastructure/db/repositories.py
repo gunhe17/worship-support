@@ -31,6 +31,11 @@ class InMemoryWorshipRepository(WorshipRepository):
     async def delete(self, worship_id: UUID) -> None:
         self._store.pop(worship_id, None)
 
+    async def save_ai_result(self, worship_id: UUID, ai_result: dict) -> None:
+        worship = self._store.get(worship_id)
+        if worship:
+            worship.ai_result = ai_result
+
 
 class InMemorySongRepository(SongRepository):
     _store: dict[UUID, Song] = {}

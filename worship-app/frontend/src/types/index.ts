@@ -91,6 +91,8 @@ export interface SectionMentRecommendRequest {
   song_title: string;
   section_from: string;
   section_to: string;
+  bars_from?: number;
+  bars_to?: number;
   scripture: string;
   theme: string;
   worship_type?: string;
@@ -99,4 +101,22 @@ export interface SectionMentRecommendRequest {
 export interface SectionMentRecommendResponse {
   ment: string;
   alternatives: string[];
+}
+
+export interface SongFormSection {
+  name: string;
+  bars: number;
+}
+
+export interface SongFormWithBarsRequest {
+  song_title: string;
+  artist: string;
+  bpm: number;
+  worship_type?: string;
+  available_minutes: number;
+}
+
+export interface SongFormWithBarsResponse {
+  sections: SongFormSection[];
+  total_estimated_minutes: number;
 }

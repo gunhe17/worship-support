@@ -3,6 +3,8 @@ import { apiClient } from "@/lib/api";
 import type {
   SectionMentRecommendRequest,
   SectionMentRecommendResponse,
+  SongFormWithBarsRequest,
+  SongFormWithBarsResponse,
   WorshipMentItem,
   WorshipMentListResponse,
 } from "@/types";
@@ -32,5 +34,12 @@ export function useRecommendSectionMent() {
   return useMutation<SectionMentRecommendResponse, Error, SectionMentRecommendRequest>({
     mutationFn: (req) =>
       apiClient.post("/api/v1/recommend/section-ment", req).then((r) => r.data),
+  });
+}
+
+export function useRecommendSongFormWithBars() {
+  return useMutation<SongFormWithBarsResponse, Error, SongFormWithBarsRequest>({
+    mutationFn: (req) =>
+      apiClient.post("/api/v1/recommend/song-form-bars", req).then((r) => r.data),
   });
 }

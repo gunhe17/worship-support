@@ -22,6 +22,7 @@ def _orm_to_worship(row: WorshipORM) -> Worship:
         sermon_direction=row.sermon_direction,
         duration_minutes=row.duration_minutes,
         created_at=row.created_at,
+        ai_result=row.ai_result,
     )
 
 
@@ -84,6 +85,13 @@ class SQLAlchemyWorshipRepository(WorshipRepository):
         row = result.scalar_one_or_none()
         if row:
             await self._db.delete(row)
+            await self._db.commit()
+
+    async def save_ai_result(self, worship_id: UUID, ai_result: dict) -> None:
+        result = await self._db.execute(select(WorshipORM).where(WorshipORM.id == worship_id))
+        row = result.scalar_one_or_none()
+        if row:
+            row.ai_result = ai_result
             await self._db.commit()
 
 

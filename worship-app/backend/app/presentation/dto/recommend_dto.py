@@ -53,6 +53,7 @@ class FullRecommendRequest(BaseModel):
     duration_minutes: int = 30
     worship_type: str = "청년예배"
     count: int = 5
+    force_refresh: bool = False
 
 
 class FullRecommendResponse(BaseModel):
@@ -106,8 +107,10 @@ class MentRecommendResponse(BaseModel):
 
 class SectionMentRecommendRequest(BaseModel):
     song_title: str
-    section_from: str   # e.g. "코러스", "인트로", "브릿지"
-    section_to: str     # e.g. "브릿지", "버스", "아웃트로"
+    section_from: str       # e.g. "Chorus", "Intro", "Bridge"
+    section_to: str         # e.g. "Bridge", "Verse", "Outro"
+    bars_from: int = 8      # 현재 섹션 마디 수
+    bars_to: int = 8        # 다음 섹션 마디 수
     scripture: str
     theme: str
     worship_type: str = "청년예배"
@@ -116,3 +119,21 @@ class SectionMentRecommendRequest(BaseModel):
 class SectionMentRecommendResponse(BaseModel):
     ment: str
     alternatives: list[str]
+
+
+class SongFormSectionItem(BaseModel):
+    name: str   # e.g. "Intro", "Verse", "Chorus"
+    bars: int   # 마디 수
+
+
+class SongFormWithBarsRequest(BaseModel):
+    song_title: str
+    artist: str
+    bpm: int = 90
+    worship_type: str = "청년예배"
+    available_minutes: float = 5.0  # 이 곡에 배정된 예배 시간
+
+
+class SongFormWithBarsResponse(BaseModel):
+    sections: list[SongFormSectionItem]
+    total_estimated_minutes: float

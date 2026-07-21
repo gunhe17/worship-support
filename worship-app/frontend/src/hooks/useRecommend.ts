@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api";
 import type { FullRecommendResponse, ScriptureAnalysis, SongRecommendation } from "@/types";
 
@@ -40,7 +40,7 @@ interface FullRecommendReq {
   count?: number;
 }
 
-// 본문 분석 + 곡 추천 + YouTube 검색을 한 번에 자동 실행하는 훅
+// 예배 상세 진입 시 자동 실행 — DB에 캐시된 결과가 있으면 AI 재호출 없이 즉시 반환
 export function useFullRecommend(req: FullRecommendReq | null) {
   return useQuery<FullRecommendResponse>({
     queryKey: ["full-recommend", req?.worship_id],
@@ -49,8 +49,27 @@ export function useFullRecommend(req: FullRecommendReq | null) {
         .post("/api/v1/recommend/worship", { ...req, worship_type: "청년예배", count: 5 })
         .then((r) => r.data),
     enabled: !!req && !!req.worship_id && !!req.scripture,
-    staleTime: 15 * 60 * 1000, // 15분 캐시 (같은 예배 카드 재방문 시 재분석 안 함)
+    staleTime: Infinity, // DB가 영구 캐시이므로 프론트 캐시도 만료 없음
     gcTime: 30 * 60 * 1000,
     retry: 1,
+  });
+}
+
+// "다른 찬양으로 다시 추천받기" — force_refresh=true로 AI 재분석 후 캐시 갱신
+export function useForceRecommend(worshipId: string) {
+  const queryClient = useQueryClient();
+  return useMutation<FullRecommendResponse, Error, FullRecommendReq>({
+    mutationFn: (req) =>
+      apiClient
+        .post("/api/v1/recommend/worship", {
+          ...req,
+          worship_type: "청년예배",
+          count: 5,
+          force_refresh: true,
+        })
+        .then((r) => r.data),
+    onSuccess: (data) => {
+      queryClient.setQueryData(["full-recommend", worshipId], data);
+    },
   });
 }

@@ -52,6 +52,7 @@ export default function WorshipLeadPage() {
     return (
       <Teleprompter
         ments={ments}
+        songs={songs}
         onExit={() => setView("prepare")}
       />
     );

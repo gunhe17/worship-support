@@ -1,3 +1,6 @@
+from uuid import UUID
+
+from app.domain.repository.worship_repository import WorshipRepository
 from app.infrastructure.external.llm.claude_client import ClaudeClient
 from app.infrastructure.external.youtube.youtube_client import YoutubeClient
 from app.presentation.dto.recommend_dto import (
@@ -13,6 +16,9 @@ from app.presentation.dto.recommend_dto import (
     SectionMentRecommendResponse,
     SongFormRecommendRequest,
     SongFormRecommendResponse,
+    SongFormSectionItem,
+    SongFormWithBarsRequest,
+    SongFormWithBarsResponse,
     SongRecommendItem,
     SongRecommendRequest,
     SongRecommendResponse,
@@ -23,9 +29,10 @@ from app.presentation.dto.recommend_dto import (
 
 
 class RecommendUsecase:
-    def __init__(self, llm: ClaudeClient, youtube: YoutubeClient):
+    def __init__(self, llm: ClaudeClient, youtube: YoutubeClient, worship_repo: WorshipRepository | None = None):
         self._llm = llm
         self._youtube = youtube
+        self._worship_repo = worship_repo
 
     async def analyze_scripture(self, req: ScriptureAnalysisRequest) -> ScriptureAnalysisResponse:
         result = await self._llm.analyze_scripture(req.scripture, req.worship_type)
@@ -52,7 +59,16 @@ class RecommendUsecase:
         return SongRecommendResponse(recommendations=recommendations)
 
     async def full_recommend(self, req: FullRecommendRequest) -> FullRecommendResponse:
-        """본문 분석 + 곡 추천(분위기 패턴+연결) + YouTube 검색을 한 번에 수행."""
+        """본문 분석 + 곡 추천(분위기 패턴+연결) + YouTube 검색을 한 번에 수행. DB 캐시 우선."""
+        # 0. DB에 저장된 결과가 있으면 바로 반환 (force_refresh=True면 재분석)
+        if self._worship_repo and req.worship_id and not req.force_refresh:
+            try:
+                worship = await self._worship_repo.find_by_id(UUID(req.worship_id))
+                if worship and worship.ai_result:
+                    return FullRecommendResponse(**worship.ai_result)
+            except Exception:
+                pass
+
         # 1. 성경 본문 분석 (설교 방향성 포함)
         analysis_result = await self._llm.analyze_scripture(
             req.scripture, req.worship_type, req.sermon_direction
@@ -96,12 +112,24 @@ class RecommendUsecase:
 
         total_duration = sum(s.estimated_duration_minutes for s in recommendations)
 
-        return FullRecommendResponse(
+        response = FullRecommendResponse(
             worship_id=req.worship_id,
             analysis=analysis,
             recommendations=recommendations,
             total_estimated_duration=round(total_duration, 1),
         )
+
+        # 5. 결과 DB에 저장 (다음 요청부터 캐시 반환)
+        if self._worship_repo and req.worship_id:
+            try:
+                await self._worship_repo.save_ai_result(
+                    UUID(req.worship_id),
+                    response.model_dump(),
+                )
+            except Exception:
+                pass
+
+        return response
 
     async def recommend_key(self, req: KeyRecommendRequest) -> KeyRecommendResponse:
         result = await self._llm.recommend_key(req.song_id, req.vocal_type, req.congregation_type)
@@ -124,8 +152,24 @@ class RecommendUsecase:
             song_title=req.song_title,
             section_from=req.section_from,
             section_to=req.section_to,
+            bars_from=req.bars_from,
+            bars_to=req.bars_to,
             scripture=req.scripture,
             theme=req.theme,
             worship_type=req.worship_type,
         )
         return SectionMentRecommendResponse(**result)
+
+    async def recommend_song_form_with_bars(self, req: SongFormWithBarsRequest) -> SongFormWithBarsResponse:
+        result = await self._llm.recommend_song_form_with_bars(
+            song_title=req.song_title,
+            artist=req.artist,
+            bpm=req.bpm,
+            worship_type=req.worship_type,
+            available_minutes=req.available_minutes,
+        )
+        sections = [SongFormSectionItem(**s) for s in result.get("sections", [])]
+        return SongFormWithBarsResponse(
+            sections=sections,
+            total_estimated_minutes=float(result.get("total_estimated_minutes", 0)),
+        )

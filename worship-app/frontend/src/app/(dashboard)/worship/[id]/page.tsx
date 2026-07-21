@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useWorshipDetail, useDeleteWorship } from "@/hooks/useWorship";
-import { useFullRecommend } from "@/hooks/useRecommend";
+import { useForceRecommend, useFullRecommend } from "@/hooks/useRecommend";
 import { SongRecommendCard } from "@/components/ai/SongRecommendCard";
 import { ScriptureAnalysisCard } from "@/components/ai/ScriptureAnalysisCard";
 import Link from "next/link";
@@ -14,23 +14,26 @@ export default function WorshipDetailPage() {
   const { mutate: deleteWorship } = useDeleteWorship();
 
   // 예배 데이터가 로드되면 자동으로 전체 분석 시작 (15분 캐시 적용)
+  const recommendReq = worship
+    ? {
+        worship_id: worship.id,
+        scripture: worship.scripture,
+        sermon_direction: worship.sermon_direction ?? "",
+        duration_minutes: worship.duration_minutes ?? 30,
+      }
+    : null;
+
   const {
     data: recommend,
     isLoading: isAnalyzing,
-    isFetching,
     isError,
     error,
-    refetch,
-  } = useFullRecommend(
-    worship
-      ? {
-          worship_id: worship.id,
-          scripture: worship.scripture,
-          sermon_direction: worship.sermon_direction ?? "",
-          duration_minutes: worship.duration_minutes ?? 30,
-        }
-      : null
-  );
+  } = useFullRecommend(recommendReq);
+
+  const {
+    mutate: forceRecommend,
+    isPending: isFetching,
+  } = useForceRecommend(id);
 
   if (worshipLoading) {
     return (
@@ -117,7 +120,7 @@ export default function WorshipDetailPage() {
             {(error as any)?.response?.data?.message ?? "서버가 실행 중인지 확인해 주세요."}
           </p>
           <button
-            onClick={() => refetch()}
+            onClick={() => recommendReq && forceRecommend(recommendReq)}
             className="text-sm px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
           >
             다시 시도
@@ -191,7 +194,7 @@ export default function WorshipDetailPage() {
             )}
 
             <button
-              onClick={() => refetch()}
+              onClick={() => recommendReq && forceRecommend(recommendReq)}
               disabled={isFetching}
               className="w-full py-2 text-sm text-gray-400 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
             >
