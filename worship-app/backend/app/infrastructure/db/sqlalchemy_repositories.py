@@ -7,10 +7,12 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.entity.song import Song
+from app.domain.entity.song_section import SongSection
 from app.domain.entity.worship import Worship
 from app.domain.repository.song_repository import SongRepository
 from app.domain.repository.worship_repository import WorshipRepository
 from app.infrastructure.orm.song_orm import SongORM
+from app.infrastructure.orm.song_section_orm import SongSectionORM
 from app.infrastructure.orm.worship_orm import WorshipORM
 
 
@@ -26,7 +28,20 @@ def _orm_to_worship(row: WorshipORM) -> Worship:
     )
 
 
-def _orm_to_song(row: SongORM) -> Song:
+def _orm_to_section(row: SongSectionORM) -> SongSection:
+    return SongSection(
+        id=row.id,
+        song_id=row.song_id,
+        section_type=row.section_type,
+        section_label=row.section_label,
+        lyrics=row.lyrics,
+        bars=row.bars,
+        chord=row.chord,
+        order=row.order,
+    )
+
+
+def _orm_to_song(row: SongORM, sections: list[SongSection] | None = None) -> Song:
     return Song(
         id=row.id,
         title=row.title,
@@ -36,6 +51,7 @@ def _orm_to_song(row: SongORM) -> Song:
         category=row.category,
         lyrics=row.lyrics,
         sheet=row.sheet,
+        sections=sections or [],
     )
 
 
@@ -153,3 +169,73 @@ class SQLAlchemySongRepository(SongRepository):
         if row:
             await self._db.delete(row)
             await self._db.commit()
+
+    async def find_sections(self, song_id: UUID) -> list[SongSection]:
+        result = await self._db.execute(
+            select(SongSectionORM)
+            .where(SongSectionORM.song_id == song_id)
+            .order_by(SongSectionORM.order)
+        )
+        return [_orm_to_section(r) for r in result.scalars().all()]
+
+    async def save_section(self, section: SongSection) -> SongSection:
+        row = SongSectionORM(
+            id=section.id,
+            song_id=section.song_id,
+            section_type=section.section_type,
+            section_label=section.section_label,
+            lyrics=section.lyrics,
+            bars=section.bars,
+            chord=section.chord,
+            order=section.order,
+        )
+        self._db.add(row)
+        await self._db.commit()
+        await self._db.refresh(row)
+        return _orm_to_section(row)
+
+    async def update_section(self, section: SongSection) -> SongSection:
+        result = await self._db.execute(
+            select(SongSectionORM).where(SongSectionORM.id == section.id)
+        )
+        row = result.scalar_one_or_none()
+        if row:
+            row.section_type = section.section_type
+            row.section_label = section.section_label
+            row.lyrics = section.lyrics
+            row.bars = section.bars
+            row.chord = section.chord
+            row.order = section.order
+            await self._db.commit()
+            await self._db.refresh(row)
+        return _orm_to_section(row)
+
+    async def delete_section(self, section_id: UUID) -> None:
+        result = await self._db.execute(
+            select(SongSectionORM).where(SongSectionORM.id == section_id)
+        )
+        row = result.scalar_one_or_none()
+        if row:
+            await self._db.delete(row)
+            await self._db.commit()
+
+    async def find_section_by_id(self, section_id: UUID) -> SongSection | None:
+        result = await self._db.execute(
+            select(SongSectionORM).where(SongSectionORM.id == section_id)
+        )
+        row = result.scalar_one_or_none()
+        return _orm_to_section(row) if row else None
+
+    async def reorder_sections(self, song_id: UUID, section_ids: list[UUID]) -> list[SongSection]:
+        for i, section_id in enumerate(section_ids):
+            result = await self._db.execute(
+                select(SongSectionORM).where(
+                    SongSectionORM.id == section_id,
+                    SongSectionORM.song_id == song_id,
+                )
+            )
+            row = result.scalar_one_or_none()
+            if row:
+                row.order = i
+        await self._db.commit()
+        return await self.find_sections(song_id)

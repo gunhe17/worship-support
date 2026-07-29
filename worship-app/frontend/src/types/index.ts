@@ -16,6 +16,18 @@ export interface Song {
   category: string;
   lyrics: string;
   sheet?: string;
+  sections: SongSection[];
+}
+
+export interface SongSection {
+  id: string;
+  song_id: string;
+  section_type: string;
+  section_label: string;
+  lyrics: string;
+  bars: number;
+  chord?: string | null;
+  order: number;
 }
 
 export interface SongArrangement {
