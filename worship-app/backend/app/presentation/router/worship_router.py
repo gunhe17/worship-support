@@ -5,13 +5,34 @@ from fastapi import APIRouter, Depends
 from app.application.usecase.worship_usecase import WorshipUsecase
 from app.common.dependencies import get_worship_repo
 from app.domain.repository.worship_repository import WorshipRepository
-from app.presentation.dto.worship_dto import WorshipCreateRequest, WorshipResponse, WorshipUpdateRequest
+from app.infrastructure.external.llm.claude_client import ClaudeClient
+from app.presentation.dto.worship_dto import (
+    WorshipCreateRequest,
+    WorshipFromTextRequest,
+    WorshipResponse,
+    WorshipUpdateRequest,
+)
 
 router = APIRouter(prefix="/api/v1/worship", tags=["Worship"])
 
 
 def get_usecase(repo: WorshipRepository = Depends(get_worship_repo)) -> WorshipUsecase:
     return WorshipUsecase(repo)
+
+
+@router.post("/from-text", response_model=WorshipResponse, status_code=201)
+async def create_worship_from_text(
+    body: WorshipFromTextRequest,
+    usecase: WorshipUsecase = Depends(get_usecase),
+) -> WorshipResponse:
+    extracted = await ClaudeClient().extract_worship_info(body.raw_text)
+    create_req = WorshipCreateRequest(
+        title=extracted.get("title", "예배"),
+        scripture=extracted.get("scripture", ""),
+        sermon_direction=extracted.get("sermon_direction") or "",
+        duration_minutes=body.duration_minutes,
+    )
+    return await usecase.create(create_req)
 
 
 @router.post("", response_model=WorshipResponse, status_code=201)

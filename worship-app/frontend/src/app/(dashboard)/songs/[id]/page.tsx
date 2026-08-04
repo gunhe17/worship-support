@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import {
   useAddSection,
@@ -23,7 +23,7 @@ const SECTION_TYPES = [
   "OUTRO",
 ];
 
-const SECTION_TYPE_LABELS: Record<string, string> = {
+const SECTION_LABELS: Record<string, string> = {
   INTRO: "인트로",
   VERSE1: "벌스 1", VERSE2: "벌스 2", VERSE3: "벌스 3", VERSE4: "벌스 4",
   PRE_CHORUS: "프리코러스",
@@ -33,15 +33,15 @@ const SECTION_TYPE_LABELS: Record<string, string> = {
   OUTRO: "아웃트로",
 };
 
-const SECTION_TYPE_COLORS: Record<string, string> = {
-  INTRO: "bg-gray-100 text-gray-600",
+const SECTION_COLORS: Record<string, string> = {
+  INTRO: "bg-gray-100 text-gray-500",
   VERSE1: "bg-blue-50 text-blue-600", VERSE2: "bg-blue-50 text-blue-600",
   VERSE3: "bg-blue-50 text-blue-600", VERSE4: "bg-blue-50 text-blue-600",
   PRE_CHORUS: "bg-purple-50 text-purple-600",
   CHORUS: "bg-orange-50 text-orange-600",
   BRIDGE: "bg-pink-50 text-pink-600",
   INTERLUDE: "bg-yellow-50 text-yellow-600",
-  OUTRO: "bg-gray-100 text-gray-600",
+  OUTRO: "bg-gray-100 text-gray-500",
 };
 
 function SectionForm({
@@ -49,90 +49,55 @@ function SectionForm({
   onSubmit,
   onCancel,
   isPending,
+  submitLabel = "저장",
 }: {
-  initial?: Partial<SongSection>;
-  onSubmit: (data: Omit<SongSection, "id" | "song_id">) => void;
+  initial?: { section_type?: string; lyrics?: string };
+  onSubmit: (data: { section_type: string; section_label: string; lyrics: string; bars: number }) => void;
   onCancel: () => void;
   isPending: boolean;
+  submitLabel?: string;
 }) {
-  const [form, setForm] = useState({
-    section_type: initial?.section_type ?? "INTRO",
-    section_label: initial?.section_label ?? "",
-    lyrics: initial?.lyrics ?? "",
-    bars: initial?.bars ?? 8,
-    chord: initial?.chord ?? "",
-    order: initial?.order ?? 0,
-  });
-
-  const handleTypeChange = (type: string) => {
-    setForm((f) => ({
-      ...f,
-      section_type: type,
-      section_label: f.section_label || SECTION_TYPE_LABELS[type] || type,
-    }));
-  };
+  const [sectionType, setSectionType] = useState(initial?.section_type ?? "VERSE1");
+  const [lyrics, setLyrics] = useState(initial?.lyrics ?? "");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ ...form, chord: form.chord || null });
+    onSubmit({
+      section_type: sectionType,
+      section_label: SECTION_LABELS[sectionType] || sectionType,
+      lyrics,
+      bars: 8,
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-3">
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="block text-xs font-medium text-gray-500 mb-1">구간 타입</label>
-          <select
-            value={form.section_type}
-            onChange={(e) => handleTypeChange(e.target.value)}
-            className="w-full border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 bg-white"
-          >
-            {SECTION_TYPES.map((t) => (
-              <option key={t} value={t}>{t} — {SECTION_TYPE_LABELS[t]}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-500 mb-1">표시 이름</label>
-          <input
-            value={form.section_label}
-            onChange={(e) => setForm({ ...form, section_label: e.target.value })}
-            placeholder={SECTION_TYPE_LABELS[form.section_type]}
-            className="w-full border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-500 mb-1">마디수</label>
-          <input
-            type="number"
-            min={1}
-            value={form.bars}
-            onChange={(e) => setForm({ ...form, bars: parseInt(e.target.value) || 8 })}
-            className="w-full border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-500 mb-1">코드 진행</label>
-          <input
-            value={form.chord}
-            onChange={(e) => setForm({ ...form, chord: e.target.value })}
-            placeholder="예: Am - G - F - C"
-            className="w-full border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 bg-white"
-          />
-        </div>
-        <div className="col-span-2">
-          <label className="block text-xs font-medium text-gray-500 mb-1">가사 (이 구간)</label>
-          <textarea
-            rows={3}
-            value={form.lyrics}
-            onChange={(e) => setForm({ ...form, lyrics: e.target.value })}
-            placeholder="이 구간에 해당하는 가사를 붙여넣어 주세요"
-            className="w-full border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 bg-white resize-none"
-          />
-        </div>
+    <form onSubmit={handleSubmit} className="border border-gray-200 rounded-xl p-4 space-y-3 bg-gray-50">
+      <div>
+        <label className="block text-xs font-medium text-gray-500 mb-1.5">구간</label>
+        <select
+          value={sectionType}
+          onChange={(e) => setSectionType(e.target.value)}
+          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+        >
+          {SECTION_TYPES.map((t) => (
+            <option key={t} value={t}>
+              {t} — {SECTION_LABELS[t]}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label className="block text-xs font-medium text-gray-500 mb-1.5">가사</label>
+        <textarea
+          rows={6}
+          value={lyrics}
+          onChange={(e) => setLyrics(e.target.value)}
+          placeholder="이 구간 가사를 붙여넣어 주세요"
+          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary-300 resize-none leading-relaxed"
+        />
       </div>
       <div className="flex justify-end gap-2">
-        <button type="button" onClick={onCancel} className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700">
+        <button type="button" onClick={onCancel} className="px-3 py-1.5 text-sm text-gray-400 hover:text-gray-600">
           취소
         </button>
         <button
@@ -140,7 +105,7 @@ function SectionForm({
           disabled={isPending}
           className="px-4 py-1.5 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 disabled:opacity-40"
         >
-          {isPending ? "저장 중..." : "저장"}
+          {isPending ? "저장 중..." : submitLabel}
         </button>
       </div>
     </form>
@@ -165,14 +130,17 @@ function SectionCard({
   const { mutate: updateSection, isPending } = useUpdateSection(songId);
   const { mutate: deleteSection } = useDeleteSection(songId);
 
-  const colorClass = SECTION_TYPE_COLORS[section.section_type] ?? "bg-gray-100 text-gray-600";
+  const colorClass = SECTION_COLORS[section.section_type] ?? "bg-gray-100 text-gray-500";
 
   if (editing) {
     return (
       <SectionForm
-        initial={section}
+        initial={{ section_type: section.section_type, lyrics: section.lyrics }}
         onSubmit={(data) =>
-          updateSection({ id: section.id, ...data }, { onSuccess: () => setEditing(false) })
+          updateSection(
+            { id: section.id, ...data },
+            { onSuccess: () => setEditing(false) }
+          )
         }
         onCancel={() => setEditing(false)}
         isPending={isPending}
@@ -186,32 +154,29 @@ function SectionCard({
       onDragStart={() => onDragStart(section.id)}
       onDragOver={onDragOver}
       onDrop={() => onDrop(section.id)}
-      className="bg-white border border-gray-200 rounded-xl p-3 cursor-grab active:cursor-grabbing hover:border-gray-300 transition-colors"
+      className="bg-white border border-gray-200 rounded-xl p-3.5 cursor-grab active:cursor-grabbing hover:border-gray-300 transition-colors"
     >
       <div className="flex items-center gap-3">
-        <span className="text-gray-300 text-sm select-none">⠿</span>
-        <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0 ${colorClass}`}>
+        <span className="text-gray-300 select-none text-base">⠿</span>
+        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${colorClass}`}>
           {section.section_type}
         </span>
-        <span className="text-sm font-medium text-gray-700 flex-1 truncate">{section.section_label}</span>
-        <span className="text-xs text-gray-400 flex-shrink-0">{section.bars}마디</span>
-        {section.chord && (
-          <span className="text-xs text-primary-500 font-mono flex-shrink-0 hidden sm:block">{section.chord}</span>
-        )}
+        <span className="text-sm text-gray-600 flex-1 truncate">{section.section_label}</span>
         <div className="flex items-center gap-1 flex-shrink-0">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="text-xs text-gray-400 hover:text-gray-600 px-1"
-          >
-            {expanded ? "접기" : "가사"}
-          </button>
+          {section.lyrics && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="text-xs text-gray-400 hover:text-gray-600 px-1"
+            >
+              {expanded ? "접기" : "가사"}
+            </button>
+          )}
           <button onClick={() => setEditing(true)} className="text-xs text-gray-400 hover:text-primary-500 px-1">
             수정
           </button>
           <button
             onClick={() => {
-              if (confirm(`"${section.section_label}" 구간을 삭제하시겠습니까?`))
-                deleteSection(section.id);
+              if (confirm(`"${section.section_label}" 구간을 삭제할까요?`)) deleteSection(section.id);
             }}
             className="text-xs text-gray-300 hover:text-red-400 px-1"
           >
@@ -220,7 +185,7 @@ function SectionCard({
         </div>
       </div>
       {expanded && section.lyrics && (
-        <div className="mt-2 ml-7 text-xs text-gray-500 whitespace-pre-wrap leading-relaxed border-t border-gray-100 pt-2">
+        <div className="mt-2.5 ml-8 text-xs text-gray-500 whitespace-pre-wrap leading-relaxed border-t border-gray-100 pt-2.5">
           {section.lyrics}
         </div>
       )}
@@ -231,40 +196,37 @@ function SectionCard({
 export default function SongDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
-  const [showAddSection, setShowAddSection] = useState(false);
-  const [editingSong, setEditingSong] = useState(false);
   const dragId = useRef<string | null>(null);
 
   const { data: song, isLoading } = useSongDetail(id);
-  const { mutate: updateSong, isPending: isSongUpdating } = useUpdateSong();
+  const { mutate: updateSong, isPending: isSaving } = useUpdateSong();
   const { mutate: deleteSong } = useDeleteSong();
-  const { mutate: addSection, isPending: isAddingSection } = useAddSection(id);
+  const { mutate: addSection, isPending: isAdding } = useAddSection(id);
   const { mutate: reorder } = useReorderSections(id);
 
-  const [songForm, setSongForm] = useState<{
-    title: string; artist: string; default_key: string; bpm: number; category: string; lyrics: string;
-  } | null>(null);
+  const [title, setTitle] = useState("");
+  const [artist, setArtist] = useState("");
+  const [lyrics, setLyrics] = useState("");
+  const [showAddSection, setShowAddSection] = useState(false);
 
-  const handleEditSong = () => {
-    if (!song) return;
-    setSongForm({
-      title: song.title,
-      artist: song.artist,
-      default_key: song.default_key,
-      bpm: song.bpm,
-      category: song.category,
-      lyrics: song.lyrics,
+  useEffect(() => {
+    if (song) {
+      setTitle(song.title);
+      setArtist(song.artist === "미상" ? "" : song.artist);
+      setLyrics(song.lyrics);
+    }
+  }, [song]);
+
+  const handleSave = () => {
+    updateSong({
+      id,
+      title,
+      artist: artist || "미상",
+      lyrics,
+      default_key: song?.default_key ?? "C",
+      bpm: song?.bpm ?? 80,
+      category: song?.category ?? "찬양",
     });
-    setEditingSong(true);
-  };
-
-  const handleSaveSong = () => {
-    if (!songForm) return;
-    updateSong({ id, ...songForm }, { onSuccess: () => setEditingSong(false) });
-  };
-
-  const handleDragStart = (sectionId: string) => {
-    dragId.current = sectionId;
   };
 
   const handleDrop = (targetId: string) => {
@@ -283,7 +245,7 @@ export default function SongDetailPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <p className="text-gray-400">불러오는 중...</p>
+        <p className="text-gray-400 text-sm">불러오는 중...</p>
       </div>
     );
   }
@@ -291,7 +253,7 @@ export default function SongDetailPage() {
   if (!song) {
     return (
       <div className="flex items-center justify-center h-64">
-        <p className="text-gray-400">찬양을 찾을 수 없습니다.</p>
+        <p className="text-gray-400 text-sm">찬양을 찾을 수 없습니다.</p>
       </div>
     );
   }
@@ -300,111 +262,68 @@ export default function SongDetailPage() {
 
   return (
     <div className="max-w-2xl space-y-6">
-      {/* 헤더 */}
+      {/* 상단 네비 */}
       <div className="flex items-center justify-between">
-        <button onClick={() => router.push("/songs")} className="text-sm text-gray-400 hover:text-gray-600">
+        <button
+          onClick={() => router.push("/songs")}
+          className="text-sm text-gray-400 hover:text-gray-600 flex items-center gap-1"
+        >
           ← 찬양 목록
         </button>
-        <div className="flex items-center gap-2">
-          <button onClick={handleEditSong} className="text-sm text-gray-500 hover:text-gray-700 px-3 py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50">
-            곡 정보 수정
-          </button>
+        <button
+          onClick={() => {
+            if (confirm("이 찬양을 삭제할까요?"))
+              deleteSong(id, { onSuccess: () => router.push("/songs") });
+          }}
+          className="text-sm text-red-400 hover:text-red-600"
+        >
+          삭제
+        </button>
+      </div>
+
+      {/* 곡 기본 정보 + 가사 */}
+      <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4">
+        <div className="space-y-3">
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="곡 제목"
+            className="w-full text-xl font-bold text-gray-900 border-0 border-b border-gray-100 pb-1 focus:outline-none focus:border-primary-300 bg-transparent"
+          />
+          <input
+            value={artist}
+            onChange={(e) => setArtist(e.target.value)}
+            placeholder="아티스트 (선택)"
+            className="w-full text-sm text-gray-400 border-0 focus:outline-none bg-transparent focus:text-gray-600"
+          />
+        </div>
+
+        <div>
+          <label className="block text-xs font-medium text-gray-400 mb-2">가사 전체</label>
+          <textarea
+            rows={14}
+            value={lyrics}
+            onChange={(e) => setLyrics(e.target.value)}
+            placeholder="가사를 붙여넣어 주세요"
+            className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-300 resize-none leading-relaxed"
+          />
+        </div>
+
+        <div className="flex justify-end">
           <button
-            onClick={() => { if (confirm("이 찬양을 삭제하시겠습니까?")) deleteSong(id, { onSuccess: () => router.push("/songs") }); }}
-            className="text-sm text-red-400 hover:text-red-600"
+            onClick={handleSave}
+            disabled={isSaving}
+            className="px-5 py-2 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 disabled:opacity-40"
           >
-            삭제
+            {isSaving ? "저장 중..." : "저장"}
           </button>
         </div>
       </div>
 
-      {/* 곡 정보 */}
-      {editingSong && songForm ? (
-        <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-3">
-          <h2 className="font-semibold text-gray-800 mb-2">곡 정보 수정</h2>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="col-span-2">
-              <label className="block text-xs font-medium text-gray-500 mb-1">곡 제목</label>
-              <input
-                value={songForm.title}
-                onChange={(e) => setSongForm({ ...songForm, title: e.target.value })}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-500 mb-1">아티스트</label>
-              <input
-                value={songForm.artist}
-                onChange={(e) => setSongForm({ ...songForm, artist: e.target.value })}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-500 mb-1">BPM</label>
-              <input
-                type="number"
-                value={songForm.bpm}
-                onChange={(e) => setSongForm({ ...songForm, bpm: parseInt(e.target.value) || 80 })}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300"
-              />
-            </div>
-            <div className="col-span-2">
-              <label className="block text-xs font-medium text-gray-500 mb-1">가사 전체</label>
-              <textarea
-                rows={8}
-                value={songForm.lyrics}
-                onChange={(e) => setSongForm({ ...songForm, lyrics: e.target.value })}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 resize-none"
-              />
-            </div>
-          </div>
-          <div className="flex justify-end gap-2">
-            <button onClick={() => setEditingSong(false)} className="px-4 py-2 text-sm text-gray-500">취소</button>
-            <button
-              onClick={handleSaveSong}
-              disabled={isSongUpdating}
-              className="px-5 py-2 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 disabled:opacity-40"
-            >
-              {isSongUpdating ? "저장 중..." : "저장"}
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="bg-primary-50 border border-primary-100 rounded-xl p-5">
-          <div className="flex items-start justify-between">
-            <div>
-              <h1 className="text-xl font-bold text-primary-900">{song.title}</h1>
-              <p className="text-sm text-primary-600 mt-1">{song.artist}</p>
-            </div>
-            <div className="flex items-center gap-2 flex-wrap justify-end">
-              <span className="px-2 py-0.5 bg-primary-100 text-primary-700 text-xs rounded-full font-medium">{song.default_key}</span>
-              <span className="px-2 py-0.5 bg-primary-100 text-primary-700 text-xs rounded-full">{song.bpm} BPM</span>
-              <span className="px-2 py-0.5 bg-primary-100 text-primary-700 text-xs rounded-full">{song.category}</span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 가사 전체 */}
-      {!editingSong && song.lyrics && (
-        <div className="bg-white border border-gray-200 rounded-xl p-5">
-          <h2 className="text-sm font-semibold text-gray-700 mb-3">가사 전체</h2>
-          <pre className="text-sm text-gray-600 whitespace-pre-wrap leading-relaxed font-sans">
-            {song.lyrics}
-          </pre>
-          <p className="text-xs text-gray-400 mt-3">
-            위 가사에서 각 구간에 해당하는 부분을 복사해서 아래 구간 편집기에 붙여넣으세요.
-          </p>
-        </div>
-      )}
-
       {/* 구간 구성 */}
       <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <div>
-            <h2 className="font-semibold text-gray-800">구간 구성 (송폼)</h2>
-            <p className="text-xs text-gray-400 mt-0.5">드래그로 순서를 변경할 수 있습니다</p>
-          </div>
+          <h2 className="font-semibold text-gray-800">구간 구성</h2>
           <button
             onClick={() => setShowAddSection(!showAddSection)}
             className="text-sm px-3 py-1.5 border border-primary-200 text-primary-600 rounded-lg hover:bg-primary-50"
@@ -413,13 +332,13 @@ export default function SongDetailPage() {
           </button>
         </div>
 
-        {/* 현재 송폼 흐름 */}
+        {/* 송폼 흐름 미리보기 */}
         {sections.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 py-2 px-3 bg-gray-50 rounded-lg">
+          <div className="flex flex-wrap gap-1 py-2 px-3 bg-gray-50 rounded-lg">
             {sections.map((s, i) => (
               <span key={s.id} className="flex items-center gap-1">
                 {i > 0 && <span className="text-gray-300 text-xs">→</span>}
-                <span className={`text-xs px-1.5 py-0.5 rounded ${SECTION_TYPE_COLORS[s.section_type] ?? "bg-gray-100 text-gray-600"}`}>
+                <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${SECTION_COLORS[s.section_type] ?? "bg-gray-100 text-gray-500"}`}>
                   {s.section_label}
                 </span>
               </span>
@@ -427,23 +346,26 @@ export default function SongDetailPage() {
           </div>
         )}
 
-        {/* 추가 폼 */}
+        {/* 구간 추가 폼 */}
         {showAddSection && (
           <SectionForm
-            initial={{ order: sections.length }}
             onSubmit={(data) =>
-              addSection(data, { onSuccess: () => setShowAddSection(false) })
+              addSection(
+                { ...data, order: sections.length },
+                { onSuccess: () => setShowAddSection(false) }
+              )
             }
             onCancel={() => setShowAddSection(false)}
-            isPending={isAddingSection}
+            isPending={isAdding}
+            submitLabel="구간 추가"
           />
         )}
 
         {/* 구간 목록 */}
         {sections.length === 0 && !showAddSection ? (
-          <div className="text-center py-8 text-gray-400 text-sm">
+          <div className="text-center py-10 text-gray-400 text-sm">
             <p>아직 구간이 없습니다.</p>
-            <p className="mt-1">위 가사를 참고해서 구간을 추가해 주세요.</p>
+            <p className="mt-1 text-xs">위 가사를 참고해서 구간을 추가해 주세요.</p>
           </div>
         ) : (
           <div className="space-y-2">
@@ -452,7 +374,7 @@ export default function SongDetailPage() {
                 key={section.id}
                 section={section}
                 songId={id}
-                onDragStart={handleDragStart}
+                onDragStart={(sectionId) => { dragId.current = sectionId; }}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={handleDrop}
               />

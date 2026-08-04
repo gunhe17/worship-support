@@ -11,6 +11,11 @@ class WorshipCreateRequest(BaseModel):
     duration_minutes: int = 30
 
 
+class WorshipFromTextRequest(BaseModel):
+    raw_text: str
+    duration_minutes: int = 30
+
+
 class WorshipUpdateRequest(BaseModel):
     title: str | None = None
     scripture: str | None = None
