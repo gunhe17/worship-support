@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const NAV_ITEMS = [
   { href: "/worship", label: "예배 목록" },
   { href: "/songs", label: "찬양 관리" },
+  { href: "/community", label: "불편한 커뮤니티" },
 ];
 
 export function Sidebar() {
