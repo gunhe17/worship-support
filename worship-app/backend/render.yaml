@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: worship-support-api
+    env: python
+    rootDir: worship-app/backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: USE_MEMORY_REPO
+        value: "false"
+      - key: DEBUG
+        value: "false"
