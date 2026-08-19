@@ -15,6 +15,7 @@ interface MentEditorProps {
   worship: Worship;
   songs: SongRecommendation[];
   onClose: () => void;
+  initialStep?: Step;
 }
 
 // 기본 마디 수 (섹션 이름별)
@@ -96,13 +97,13 @@ type Step = "form" | "ment";
 interface AiMentState { idx: number; loading: boolean; alternatives: string[] }
 interface AiFormState { songTitle: string; loading: boolean }
 
-export function MentEditor({ worship, songs, onClose }: MentEditorProps) {
+export function MentEditor({ worship, songs, onClose, initialStep = "form" }: MentEditorProps) {
   const { data: savedData, isLoading: isFetching } = useWorshipMents(worship.id);
   const { mutate: saveMents, isPending: isSaving } = useBatchSaveMents(worship.id);
   const { mutate: recommendMent } = useRecommendSectionMent();
   const { mutate: recommendForm } = useRecommendSongFormWithBars();
 
-  const [step, setStep] = useState<Step>("form");
+  const [step, setStep] = useState<Step>(initialStep);
   const [songForms, setSongForms] = useState<Record<string, SongFormSection[]>>({});
   const [ments, setMents] = useState<WorshipMentItem[]>([]);
   const [aiMentState, setAiMentState] = useState<AiMentState | null>(null);

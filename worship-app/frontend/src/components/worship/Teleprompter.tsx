@@ -3,6 +3,98 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { SongRecommendation, WorshipMentItem } from "@/types";
 
+// ── 메트로놈 훅 ────────────────────────────────────────────────────────────────
+function useMetronome(initialBpm = 80) {
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const nextBeatTimeRef = useRef(0);
+  const beatCountRef = useRef(0);
+
+  const [metroPlaying, setMetroPlaying] = useState(false);
+  const [bpm, setBpmState] = useState(initialBpm);
+  const [beatsPerBar, setBeatsPerBarState] = useState(4);
+  const [volume, setVolumeState] = useState(0.6);
+
+  const bpmRef = useRef(initialBpm);
+  const beatsPerBarRef = useRef(4);
+  const volumeRef = useRef(0.6);
+
+  const setBpm = useCallback((v: number) => {
+    const clamped = Math.max(30, Math.min(300, v));
+    bpmRef.current = clamped;
+    setBpmState(clamped);
+  }, []);
+
+  const setBeatsPerBar = useCallback((v: number) => {
+    beatsPerBarRef.current = v;
+    setBeatsPerBarState(v);
+  }, []);
+
+  const setVolume = useCallback((v: number) => {
+    volumeRef.current = v;
+    setVolumeState(v);
+  }, []);
+
+  function scheduleClick(time: number, accent: boolean) {
+    const ctx = audioCtxRef.current!;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.frequency.value = accent ? 1100 : 880;
+    const vol = volumeRef.current;
+    gain.gain.setValueAtTime(accent ? vol : vol * 0.55, time);
+    gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.04);
+    osc.start(time);
+    osc.stop(time + 0.05);
+  }
+
+  function runScheduler() {
+    const ctx = audioCtxRef.current;
+    if (!ctx) return;
+    while (nextBeatTimeRef.current < ctx.currentTime + 0.1) {
+      scheduleClick(
+        nextBeatTimeRef.current,
+        beatCountRef.current % beatsPerBarRef.current === 0,
+      );
+      nextBeatTimeRef.current += 60 / bpmRef.current;
+      beatCountRef.current++;
+    }
+    timerRef.current = setTimeout(runScheduler, 25);
+  }
+
+  function startMetro() {
+    if (!audioCtxRef.current || audioCtxRef.current.state === "closed") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+    }
+    if (audioCtxRef.current.state === "suspended") audioCtxRef.current.resume();
+    beatCountRef.current = 0;
+    nextBeatTimeRef.current = audioCtxRef.current.currentTime + 0.05;
+    runScheduler();
+    setMetroPlaying(true);
+  }
+
+  function stopMetro() {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setMetroPlaying(false);
+  }
+
+  const toggleMetro = useCallback(() => {
+    if (metroPlaying) stopMetro(); else startMetro();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [metroPlaying]);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      audioCtxRef.current?.close();
+    };
+  }, []);
+
+  return { metroPlaying, toggleMetro, bpm, setBpm, beatsPerBar, setBeatsPerBar, volume, setVolume };
+}
+
 interface TeleprompterProps {
   ments: WorshipMentItem[];
   songs: SongRecommendation[];
@@ -105,6 +197,9 @@ export function Teleprompter({ ments, songs, onExit }: TeleprompterProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
 
+  const firstBpm = songs[0]?.bpm && songs[0].bpm > 0 ? songs[0].bpm : 80;
+  const metro = useMetronome(firstBpm);
+
   const elapsedRef = useRef(0);
   const currentRef = useRef(0);
   const timelineRef = useRef<MentTrigger[]>([]);
@@ -114,6 +209,13 @@ export function Teleprompter({ ments, songs, onExit }: TeleprompterProps) {
 
   // current 동기화
   useEffect(() => { currentRef.current = current; }, [current]);
+
+  // 곡이 바뀌면 메트로놈 BPM 자동 동기화
+  useEffect(() => {
+    const song = songs.find((s) => s.title === ments[current]?.song_title);
+    if (song?.bpm && song.bpm > 0) metro.setBpm(song.bpm);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ments[current]?.song_title]);
 
   useEffect(() => {
     const { triggers, songSpans, totalSec } = buildTimeline(ments, songs);
@@ -194,17 +296,41 @@ export function Teleprompter({ ments, songs, onExit }: TeleprompterProps) {
   return (
     <div className="fixed inset-0 bg-black flex select-none">
 
-      {/* ── 왼쪽: 악보 영역 (3/4) ── */}
-      <div className="flex-1 border-r border-white/5 flex items-center justify-center">
-        <div className="text-center space-y-3">
-          <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mx-auto">
-            <svg className="w-7 h-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
-            </svg>
+      {/* ── 왼쪽: 악보 영역 ── */}
+      <div className="flex-1 border-r border-white/5 relative overflow-hidden">
+        {currentSong?.sheet_url ? (
+          (() => {
+            const url = `${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"}${currentSong.sheet_url}`;
+            const isPdf = currentSong.sheet_url.toLowerCase().endsWith(".pdf");
+            return isPdf ? (
+              <iframe
+                key={url}
+                src={url}
+                className="w-full h-full border-0"
+                title="악보"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-white p-4">
+                <img
+                  key={url}
+                  src={url}
+                  alt="악보"
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            );
+          })()
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-3">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                  d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+              </svg>
+            </div>
+            <p className="text-white/15 text-sm font-light">악보 없음</p>
           </div>
-          <p className="text-white/15 text-sm font-light">악보 영역</p>
-        </div>
+        )}
       </div>
 
       {/* ── 오른쪽: 인도 패널 (1/4) ── */}
@@ -319,6 +445,112 @@ export function Teleprompter({ ments, songs, onExit }: TeleprompterProps) {
 
           {/* 하단 여백 (마지막 멘트가 중앙에 올 수 있도록) */}
           <div className="h-24" />
+        </div>
+
+        {/* ── 메트로놈 ── */}
+        <div className="mx-4 mb-3 mt-3 rounded-xl border border-white/12 bg-white/4 p-3 space-y-3 shrink-0">
+          {/* 헤더: 라벨 + 재생 버튼 */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <span className="text-white/60 text-[10px] font-semibold tracking-[0.15em] uppercase">
+                메트로놈
+              </span>
+              {metro.metroPlaying && (
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              )}
+            </div>
+            <button
+              onClick={metro.toggleMetro}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                metro.metroPlaying
+                  ? "bg-white text-black"
+                  : "bg-white/10 text-white/70 hover:bg-white/18"
+              }`}
+            >
+              {metro.metroPlaying ? (
+                <>
+                  <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16" rx="1" />
+                    <rect x="14" y="4" width="4" height="16" rx="1" />
+                  </svg>
+                  정지
+                </>
+              ) : (
+                <>
+                  <svg className="w-2.5 h-2.5 ml-px" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  시작
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* BPM 조절 */}
+          <div className="flex items-center gap-2">
+            <span className="text-white/50 text-xs w-8 shrink-0">BPM</span>
+            <button
+              onClick={() => metro.setBpm(metro.bpm - 1)}
+              className="w-7 h-7 rounded-lg bg-white/8 text-white/60 hover:bg-white/15 hover:text-white text-base leading-none flex items-center justify-center transition-colors"
+            >
+              −
+            </button>
+            <input
+              type="number"
+              value={metro.bpm}
+              onChange={(e) => metro.setBpm(Number(e.target.value))}
+              className="flex-1 text-center text-sm font-mono font-semibold rounded-lg py-1 border focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              style={{ color: "#ffffff", background: "rgba(255,255,255,0.08)", borderColor: "rgba(255,255,255,0.18)", colorScheme: "dark" }}
+              min={30}
+              max={300}
+            />
+            <button
+              onClick={() => metro.setBpm(metro.bpm + 1)}
+              className="w-7 h-7 rounded-lg bg-white/8 text-white/60 hover:bg-white/15 hover:text-white text-base leading-none flex items-center justify-center transition-colors"
+            >
+              +
+            </button>
+          </div>
+
+          {/* 박자 선택 */}
+          <div className="flex items-center gap-2">
+            <span className="text-white/50 text-xs w-8 shrink-0">박자</span>
+            <div className="flex gap-1.5 flex-1">
+              {(["2/4", "3/4", "4/4", "6/8"] as const).map((label) => {
+                const beats = label === "6/8" ? 6 : parseInt(label[0]);
+                return (
+                  <button
+                    key={label}
+                    onClick={() => metro.setBeatsPerBar(beats)}
+                    className={`flex-1 py-1 rounded-lg text-xs font-medium transition-all ${
+                      metro.beatsPerBar === beats
+                        ? "bg-white text-black"
+                        : "bg-white/8 text-white/50 hover:bg-white/15 hover:text-white/80"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 음량 */}
+          <div className="flex items-center gap-2">
+            <span className="text-white/50 text-xs w-8 shrink-0">음량</span>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.05}
+              value={metro.volume}
+              onChange={(e) => metro.setVolume(Number(e.target.value))}
+              className="flex-1 h-1.5 cursor-pointer accent-white rounded-full"
+            />
+            <span className="text-white/35 text-[10px] w-6 text-right tabular-nums">
+              {Math.round(metro.volume * 100)}
+            </span>
+          </div>
         </div>
 
         {/* ── 재생 컨트롤 ── */}

@@ -2,13 +2,34 @@
 
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useWorshipDetail } from "@/hooks/useWorship";
-import { useFullRecommend } from "@/hooks/useRecommend";
+import { useArrangements, useWorshipDetail } from "@/hooks/useWorship";
 import { useWorshipMents } from "@/hooks/useWorshipMent";
 import { MentEditor } from "@/components/worship/MentEditor";
 import { Teleprompter } from "@/components/worship/Teleprompter";
+import type { Arrangement, SongRecommendation } from "@/types";
 
-type View = "prepare" | "edit" | "lead";
+type View = "prepare" | "edit-form" | "edit-ment" | "lead";
+
+function arrangementToSong(arr: Arrangement): SongRecommendation {
+  const form =
+    arr.song_form.length > 0
+      ? arr.song_form
+      : arr.sections.map((s) => s.section_label || s.section_type);
+  return {
+    title: arr.song_title || "제목 없음",
+    artist: arr.song_artist || "",
+    bpm: arr.song_bpm > 0 ? arr.song_bpm : 80,
+    song_form: form,
+    recommended_key: "",
+    reason: "",
+    mood: "",
+    estimated_duration_minutes: 4,
+    connection_to_prev: "",
+    connection_note: "",
+    youtube_links: [],
+    sheet_url: arr.sheet_url,
+  };
+}
 
 export default function WorshipLeadPage() {
   const { id } = useParams<{ id: string }>();
@@ -16,16 +37,7 @@ export default function WorshipLeadPage() {
   const [view, setView] = useState<View>("prepare");
 
   const { data: worship, isLoading: worshipLoading } = useWorshipDetail(id);
-  const { data: recommend } = useFullRecommend(
-    worship
-      ? {
-          worship_id: worship.id,
-          scripture: worship.scripture,
-          sermon_direction: worship.sermon_direction ?? "",
-          duration_minutes: worship.duration_minutes ?? 30,
-        }
-      : null
-  );
+  const { data: arrangements } = useArrangements(id);
   const { data: mentData, isLoading: mentsLoading } = useWorshipMents(id);
 
   if (worshipLoading) {
@@ -44,34 +56,32 @@ export default function WorshipLeadPage() {
     );
   }
 
-  const songs = recommend?.recommendations ?? [];
+  const songs: SongRecommendation[] = (arrangements ?? []).map(arrangementToSong);
   const ments = mentData?.ments ?? [];
   const hasMents = ments.some((m) => m.ment_text.trim() !== "");
 
   if (view === "lead") {
+    return <Teleprompter ments={ments} songs={songs} onExit={() => setView("prepare")} />;
+  }
+
+  if (view === "edit-form") {
     return (
-      <Teleprompter
-        ments={ments}
-        songs={songs}
-        onExit={() => setView("prepare")}
-      />
+      <div className="max-w-2xl space-y-4">
+        <button onClick={() => setView("prepare")} className="text-sm text-gray-400 hover:text-gray-600">
+          ← 돌아가기
+        </button>
+        <MentEditor worship={worship} songs={songs} onClose={() => setView("prepare")} initialStep="form" />
+      </div>
     );
   }
 
-  if (view === "edit") {
+  if (view === "edit-ment") {
     return (
       <div className="max-w-2xl space-y-4">
-        <button
-          onClick={() => setView("prepare")}
-          className="text-sm text-gray-400 hover:text-gray-600"
-        >
+        <button onClick={() => setView("prepare")} className="text-sm text-gray-400 hover:text-gray-600">
           ← 돌아가기
         </button>
-        <MentEditor
-          worship={worship}
-          songs={songs}
-          onClose={() => setView("prepare")}
-        />
+        <MentEditor worship={worship} songs={songs} onClose={() => setView("prepare")} initialStep="ment" />
       </div>
     );
   }
@@ -90,22 +100,20 @@ export default function WorshipLeadPage() {
 
       {/* 예배 정보 */}
       <div className="bg-primary-50 border border-primary-100 rounded-xl p-5 space-y-2">
+        {worship.scripture && (
+          <p className="text-xs text-primary-500 font-medium">{worship.scripture}</p>
+        )}
         <h1 className="text-xl font-bold text-primary-900">{worship.title}</h1>
-        <div className="flex flex-wrap gap-2 text-sm">
-          <span className="text-primary-700">{worship.scripture}</span>
-          {worship.sermon_direction && (
-            <span className="px-2 py-0.5 bg-primary-100 text-primary-600 rounded-full">
-              설교 방향성 있음
-            </span>
-          )}
-        </div>
+        {worship.sermon_direction && (
+          <p className="text-sm text-primary-600">{worship.sermon_direction}</p>
+        )}
       </div>
 
       {/* 인도 준비 상태 */}
       <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-5">
         <h2 className="font-semibold text-gray-800">인도 준비</h2>
 
-        {/* 찬양 목록 확인 */}
+        {/* 찬양 목록 */}
         <div className="flex items-center gap-3">
           <div
             className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
@@ -119,19 +127,51 @@ export default function WorshipLeadPage() {
             <p className="text-xs text-gray-400">
               {songs.length > 0
                 ? `${songs.length}곡 준비됨 (${songs.map((s) => s.title).join(", ")})`
-                : "예배 상세 페이지에서 AI 추천을 먼저 받아주세요"}
+                : "예배 상세 페이지에서 콘티를 먼저 추가해주세요"}
             </p>
           </div>
+          {songs.length === 0 && (
+            <button
+              onClick={() => router.push(`/worship/${id}`)}
+              className="text-xs px-3 py-1.5 border border-gray-200 text-gray-500 rounded-lg hover:bg-gray-50"
+            >
+              콘티 추가
+            </button>
+          )}
         </div>
 
-        {/* 멘트 작성 상태 */}
+        {/* 송폼 정리 */}
+        <div className="flex items-center gap-3">
+          <div
+            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
+              songs.length > 0 ? "bg-green-100 text-green-600" : "bg-gray-100 text-gray-400"
+            }`}
+          >
+            {songs.length > 0 ? "✓" : "2"}
+          </div>
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-700">송폼 정리</p>
+            <p className="text-xs text-gray-400">
+              각 찬양의 구간 순서와 마디 수를 정리하세요
+            </p>
+          </div>
+          <button
+            onClick={() => setView("edit-form")}
+            disabled={songs.length === 0}
+            className="text-xs px-3 py-1.5 border border-primary-200 text-primary-600 rounded-lg hover:bg-primary-50 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            정리하기
+          </button>
+        </div>
+
+        {/* 멘트 작성 */}
         <div className="flex items-center gap-3">
           <div
             className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
               hasMents ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-600"
             }`}
           >
-            {hasMents ? "✓" : "2"}
+            {hasMents ? "✓" : "3"}
           </div>
           <div className="flex-1">
             <p className="text-sm font-medium text-gray-700">멘트 작성</p>
@@ -144,8 +184,9 @@ export default function WorshipLeadPage() {
             </p>
           </div>
           <button
-            onClick={() => setView("edit")}
-            className="text-xs px-3 py-1.5 border border-primary-200 text-primary-600 rounded-lg hover:bg-primary-50"
+            onClick={() => setView("edit-ment")}
+            disabled={songs.length === 0}
+            className="text-xs px-3 py-1.5 border border-primary-200 text-primary-600 rounded-lg hover:bg-primary-50 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {hasMents ? "수정" : "작성하기"}
           </button>
@@ -174,13 +215,17 @@ export default function WorshipLeadPage() {
         </div>
       )}
 
-      {/* 인도 시작 버튼 */}
+      {/* 인도 시작 */}
       <button
         onClick={() => setView("lead")}
-        disabled={ments.length === 0}
+        disabled={songs.length === 0 || ments.length === 0}
         className="w-full py-4 rounded-xl bg-primary-500 text-white font-semibold text-lg hover:bg-primary-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
-        {ments.length === 0 ? "멘트를 먼저 작성해주세요" : "인도 시작 →"}
+        {songs.length === 0
+          ? "1단계: 콘티를 먼저 추가해주세요"
+          : ments.length === 0
+          ? "3단계: 멘트를 먼저 작성해주세요"
+          : "인도 시작 →"}
       </button>
 
       <p className="text-center text-xs text-gray-400">
