@@ -263,21 +263,12 @@ export default function SongDetailPage() {
   return (
     <div className="max-w-2xl space-y-6">
       {/* 상단 네비 */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center">
         <button
           onClick={() => router.push("/songs")}
           className="text-sm text-gray-400 hover:text-gray-600 flex items-center gap-1"
         >
           ← 찬양 목록
-        </button>
-        <button
-          onClick={() => {
-            if (confirm("이 찬양을 삭제할까요?"))
-              deleteSong(id, { onSuccess: () => router.push("/songs") });
-          }}
-          className="text-sm text-red-400 hover:text-red-600"
-        >
-          삭제
         </button>
       </div>
 
@@ -307,16 +298,6 @@ export default function SongDetailPage() {
             placeholder="가사를 붙여넣어 주세요"
             className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-300 resize-none leading-relaxed"
           />
-        </div>
-
-        <div className="flex justify-end">
-          <button
-            onClick={handleSave}
-            disabled={isSaving}
-            className="px-5 py-2 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 disabled:opacity-40"
-          >
-            {isSaving ? "저장 중..." : "저장"}
-          </button>
         </div>
       </div>
 
@@ -381,6 +362,26 @@ export default function SongDetailPage() {
             ))}
           </div>
         )}
+      </div>
+
+      {/* 저장 / 삭제 */}
+      <div className="flex gap-3">
+        <button
+          onClick={handleSave}
+          disabled={isSaving}
+          className="flex-1 py-3 bg-primary-500 text-white text-sm font-medium rounded-xl hover:bg-primary-600 disabled:opacity-40 transition-colors"
+        >
+          {isSaving ? "저장 중..." : "저장"}
+        </button>
+        <button
+          onClick={() => {
+            if (confirm("이 찬양을 삭제할까요?"))
+              deleteSong(id, { onSuccess: () => router.push("/songs") });
+          }}
+          className="px-6 py-3 border border-red-200 text-red-400 text-sm rounded-xl hover:bg-red-50 hover:text-red-500 transition-colors"
+        >
+          삭제
+        </button>
       </div>
     </div>
   );
