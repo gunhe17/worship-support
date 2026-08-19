@@ -11,6 +11,7 @@ ERRORS: dict[str, tuple[int, str]] = {
     "WORSHIP_NOT_FOUND": (status.HTTP_404_NOT_FOUND, "예배를 찾을 수 없습니다."),
     "SONG_NOT_FOUND": (status.HTTP_404_NOT_FOUND, "찬양을 찾을 수 없습니다."),
     "SECTION_NOT_FOUND": (status.HTTP_404_NOT_FOUND, "구간을 찾을 수 없습니다."),
+    "POST_NOT_FOUND": (status.HTTP_404_NOT_FOUND, "포스트를 찾을 수 없습니다."),
     "ARRANGEMENT_NOT_FOUND": (status.HTTP_404_NOT_FOUND, "곡 구성을 찾을 수 없습니다."),
     "DUPLICATE_SONG": (status.HTTP_409_CONFLICT, "이미 등록된 찬양입니다."),
     "INVALID_KEY": (status.HTTP_422_UNPROCESSABLE_ENTITY, "유효하지 않은 Key입니다."),

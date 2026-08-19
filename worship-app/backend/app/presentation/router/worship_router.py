@@ -1,12 +1,20 @@
+import asyncio
+import os
 from uuid import UUID
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, UploadFile, File
+from supabase import create_client
 
 from app.application.usecase.worship_usecase import WorshipUsecase
-from app.common.dependencies import get_worship_repo
+from app.common.dependencies import get_song_repo, get_worship_repo
+from app.domain.repository.song_repository import SongRepository
 from app.domain.repository.worship_repository import WorshipRepository
 from app.infrastructure.external.llm.claude_client import ClaudeClient
 from app.presentation.dto.worship_dto import (
+    ArrangementBulkItem,
+    ArrangementCreateRequest,
+    ArrangementResponse,
+    ArrangementUpdateRequest,
     WorshipCreateRequest,
     WorshipFromTextRequest,
     WorshipResponse,
@@ -15,9 +23,32 @@ from app.presentation.dto.worship_dto import (
 
 router = APIRouter(prefix="/api/v1/worship", tags=["Worship"])
 
+SUPABASE_BUCKET = "sheets"
 
-def get_usecase(repo: WorshipRepository = Depends(get_worship_repo)) -> WorshipUsecase:
-    return WorshipUsecase(repo)
+
+def _upload_sheet_sync(content: bytes, filename: str, content_type: str) -> str:
+    client = create_client(
+        os.environ["SUPABASE_URL"],
+        os.environ["SUPABASE_KEY"],
+    )
+    # 같은 이름 파일이 있으면 덮어쓰기
+    try:
+        client.storage.from_(SUPABASE_BUCKET).remove([filename])
+    except Exception:
+        pass
+    client.storage.from_(SUPABASE_BUCKET).upload(
+        path=filename,
+        file=content,
+        file_options={"content-type": content_type},
+    )
+    return client.storage.from_(SUPABASE_BUCKET).get_public_url(filename)
+
+
+def get_usecase(
+    repo: WorshipRepository = Depends(get_worship_repo),
+    song_repo: SongRepository = Depends(get_song_repo),
+) -> WorshipUsecase:
+    return WorshipUsecase(repo, song_repo)
 
 
 @router.post("/from-text", response_model=WorshipResponse, status_code=201)
@@ -75,3 +106,65 @@ async def delete_worship(
     usecase: WorshipUsecase = Depends(get_usecase),
 ) -> None:
     await usecase.delete(worship_id)
+
+
+# ── Arrangement (콘티) ────────────────────────────────────────────────────────
+
+@router.get("/{worship_id}/arrangements", response_model=list[ArrangementResponse])
+async def list_arrangements(
+    worship_id: UUID,
+    usecase: WorshipUsecase = Depends(get_usecase),
+) -> list[ArrangementResponse]:
+    return await usecase.list_arrangements(worship_id)
+
+
+@router.post("/{worship_id}/arrangements", response_model=ArrangementResponse, status_code=201)
+async def add_arrangement(
+    worship_id: UUID,
+    body: ArrangementCreateRequest,
+    usecase: WorshipUsecase = Depends(get_usecase),
+) -> ArrangementResponse:
+    return await usecase.add_arrangement(worship_id, body)
+
+
+@router.put("/{worship_id}/arrangements/{arr_id}", response_model=ArrangementResponse)
+async def update_arrangement(
+    worship_id: UUID,
+    arr_id: UUID,
+    body: ArrangementUpdateRequest,
+    usecase: WorshipUsecase = Depends(get_usecase),
+) -> ArrangementResponse:
+    return await usecase.update_arrangement(arr_id, body)
+
+
+@router.delete("/{worship_id}/arrangements/{arr_id}", status_code=204)
+async def delete_arrangement(
+    worship_id: UUID,
+    arr_id: UUID,
+    usecase: WorshipUsecase = Depends(get_usecase),
+) -> None:
+    await usecase.delete_arrangement(arr_id)
+
+
+@router.post("/{worship_id}/arrangements/bulk", response_model=list[ArrangementResponse], status_code=201)
+async def bulk_add_arrangements(
+    worship_id: UUID,
+    body: list[ArrangementBulkItem],
+    usecase: WorshipUsecase = Depends(get_usecase),
+) -> list[ArrangementResponse]:
+    return await usecase.bulk_add_arrangements(worship_id, body)
+
+
+@router.post("/{worship_id}/arrangements/{arr_id}/sheet", response_model=ArrangementResponse)
+async def upload_sheet(
+    worship_id: UUID,
+    arr_id: UUID,
+    file: UploadFile = File(...),
+    usecase: WorshipUsecase = Depends(get_usecase),
+) -> ArrangementResponse:
+    ext = os.path.splitext(file.filename or "")[-1]
+    filename = f"{arr_id}{ext}"
+    content = await file.read()
+    content_type = file.content_type or "application/octet-stream"
+    sheet_url = await asyncio.to_thread(_upload_sheet_sync, content, filename, content_type)
+    return await usecase.update_arrangement(arr_id, ArrangementUpdateRequest(sheet_url=sheet_url))

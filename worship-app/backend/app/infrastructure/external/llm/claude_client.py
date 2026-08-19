@@ -301,12 +301,12 @@ class ClaudeClient:
 목사님께서 주신 설교 자료나 메모에서 예배 정보를 추출합니다.
 
 반드시 아래 JSON만 출력하세요:
-{"title": "예배 제목", "scripture": "말씀 본문", "sermon_direction": "설교 방향성 또는 주제 (없으면 null)"}
+{"title": "설교 주제 또는 제목", "scripture": "말씀 본문", "sermon_direction": "설교 방향성 (없으면 null)"}
 
 규칙:
-- title: 텍스트에 제목이 없으면 말씀 본문을 기반으로 간결하게 생성 (예: "요한복음 3장 예배")
-- scripture: 성경 구절 형식으로 (예: "요한복음 3:16", "시편 23편")
-- sermon_direction: 설교 방향성, 주제, 핵심 메시지가 있으면 추출, 없으면 반드시 null"""
+- title: 설교 주제나 제목만 넣으세요. 성경 구절 자체(예: 요한복음 15장)는 절대 넣지 마세요. 주제가 없으면 핵심 메시지를 짧게 요약하세요.
+- scripture: 성경 구절 형식으로만 (예: "요한복음 15:1-8", "시편 23편"). 주제나 설명은 넣지 마세요.
+- sermon_direction: 설교 방향성, 핵심 메시지, 강조점이 있으면 추출. 없으면 반드시 null."""
 
         prompt = f"다음 텍스트에서 예배 정보를 추출해주세요:\n\n{raw_text}"
         return await self._call(system, prompt, max_tokens=512)

@@ -17,4 +17,5 @@ class WorshipORM(Base):
     sermon_direction: Mapped[str] = mapped_column(Text, nullable=False, default="")
     duration_minutes: Mapped[int] = mapped_column(Integer, nullable=False, default=30)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    leader_meditation: Mapped[str] = mapped_column(Text, nullable=False, default="")
     ai_result: Mapped[dict | None] = mapped_column(JSONB, nullable=True, default=None)

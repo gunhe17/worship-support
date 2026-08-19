@@ -1,9 +1,11 @@
+import os
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.common.exception.exceptions import AppException
-from app.presentation.router import recommend_router, song_router, worship_router, worship_ment_router, youtube_router
+from app.presentation.router import post_router, recommend_router, song_router, worship_router, worship_ment_router, youtube_router
 
 app = FastAPI(
     title="Worship Support API",
@@ -12,15 +14,17 @@ app = FastAPI(
     redoc_url="/api/redoc",
 )
 
+_cors_origins = os.environ.get("CORS_ORIGINS", "http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 app.include_router(worship_router.router)
+app.include_router(post_router.router)
 app.include_router(song_router.router)
 app.include_router(recommend_router.router)
 app.include_router(youtube_router.router)

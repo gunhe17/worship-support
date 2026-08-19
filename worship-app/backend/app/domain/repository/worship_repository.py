@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from uuid import UUID
 
+from app.domain.entity.song_arrangement import SongArrangement
 from app.domain.entity.worship import Worship
 
 
@@ -22,3 +23,20 @@ class WorshipRepository(ABC):
 
     @abstractmethod
     async def save_ai_result(self, worship_id: UUID, ai_result: dict) -> None: ...
+
+    # ── Arrangement (콘티) ────────────────────────────────────────────────────
+
+    @abstractmethod
+    async def save_arrangement(self, arr: SongArrangement) -> SongArrangement: ...
+
+    @abstractmethod
+    async def find_arrangements(self, worship_id: UUID) -> list[SongArrangement]: ...
+
+    @abstractmethod
+    async def find_arrangement_by_id(self, arr_id: UUID) -> SongArrangement | None: ...
+
+    @abstractmethod
+    async def update_arrangement(self, arr: SongArrangement) -> SongArrangement: ...
+
+    @abstractmethod
+    async def delete_arrangement(self, arr_id: UUID) -> None: ...

@@ -12,4 +12,5 @@ class SongArrangement:
     ment: str
     memo: str
     order: int
+    sheet_url: str | None = None
     id: UUID = field(default_factory=uuid4)

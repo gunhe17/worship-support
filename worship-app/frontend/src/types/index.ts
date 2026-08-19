@@ -4,7 +4,29 @@ export interface Worship {
   scripture: string;
   sermon_direction: string;
   duration_minutes: number;
+  leader_meditation: string;
   created_at: string;
+}
+
+export interface SectionSummary {
+  id: string;
+  section_type: string;
+  section_label: string;
+  order: number;
+}
+
+export interface Arrangement {
+  id: string;
+  worship_id: string;
+  song_id: string;
+  order: number;
+  song_form: string[];
+  ment: string;
+  sheet_url: string | null;
+  song_title: string;
+  song_artist: string;
+  song_bpm: number;
+  sections: SectionSummary[];
 }
 
 export interface Song {
@@ -77,6 +99,7 @@ export interface SongRecommendation {
   connection_to_prev: string;
   connection_note: string;
   youtube_links: YoutubeResult[];
+  sheet_url?: string | null;
 }
 
 export interface FullRecommendResponse {
@@ -131,4 +154,44 @@ export interface SongFormWithBarsRequest {
 export interface SongFormWithBarsResponse {
   sections: SongFormSection[];
   total_estimated_minutes: number;
+}
+
+export interface PostSong {
+  id: string;
+  post_id: string;
+  song_id: string;
+  order: number;
+  ment: string;
+  song_title?: string;
+  song_artist?: string;
+}
+
+export interface Comment {
+  id: string;
+  post_id: string;
+  author_name: string;
+  content: string;
+  created_at: string;
+}
+
+export interface Post {
+  id: string;
+  author_name: string;
+  scripture: string;
+  meditation: string;
+  view_count: number;
+  created_at: string;
+  songs: PostSong[];
+  comments: Comment[];
+}
+
+export interface PostSummary {
+  id: string;
+  author_name: string;
+  scripture: string;
+  meditation: string;
+  view_count: number;
+  created_at: string;
+  song_count: number;
+  comment_count: number;
 }
