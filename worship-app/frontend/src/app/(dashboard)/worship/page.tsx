@@ -5,12 +5,26 @@ import { WorshipCard } from "@/components/worship/WorshipCard";
 import { CreateWorshipButton } from "@/components/worship/CreateWorshipButton";
 
 export default function WorshipPage() {
-  const { data: worships, isLoading } = useWorshipList();
+  const { data: worships, isLoading, isError, refetch } = useWorshipList();
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
         <p className="text-gray-400">예배 목록을 불러오는 중...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 gap-3">
+        <p className="text-gray-400">서버에 연결할 수 없습니다.</p>
+        <button
+          onClick={() => refetch()}
+          className="text-sm text-primary-500 hover:underline"
+        >
+          다시 시도
+        </button>
       </div>
     );
   }
