@@ -103,7 +103,7 @@ export function useUploadSheet(worshipId: string) {
       form.append("file", file);
       return apiClient
         .post(`/api/v1/worship/${worshipId}/arrangements/${arrId}/sheet`, form, {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: { "Content-Type": undefined },
         })
         .then((r) => r.data as Arrangement);
     },

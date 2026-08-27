@@ -18,6 +18,7 @@ ERRORS: dict[str, tuple[int, str]] = {
     "AI_SERVICE_ERROR": (status.HTTP_503_SERVICE_UNAVAILABLE, "AI 서비스 오류가 발생했습니다."),
     "YOUTUBE_API_ERROR": (status.HTTP_503_SERVICE_UNAVAILABLE, "YouTube API 오류가 발생했습니다."),
     "EXPORT_FAILED": (status.HTTP_500_INTERNAL_SERVER_ERROR, "자료 생성에 실패했습니다."),
+    "STORAGE_ERROR": (status.HTTP_500_INTERNAL_SERVER_ERROR, "파일 저장소 오류가 발생했습니다."),
     "UNAUTHORIZED": (status.HTTP_401_UNAUTHORIZED, "인증이 필요합니다."),
     "FORBIDDEN": (status.HTTP_403_FORBIDDEN, "접근 권한이 없습니다."),
 }

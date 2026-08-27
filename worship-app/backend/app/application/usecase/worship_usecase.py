@@ -71,6 +71,8 @@ class WorshipUsecase:
         song_title = ""
         song_artist = ""
         song_bpm = 80
+        song_key = arr.key or ""
+        song_sheet_url: str | None = None
         sections: list[SectionSummary] = []
 
         if self._song_repo:
@@ -79,6 +81,8 @@ class WorshipUsecase:
                 song_title = song.title
                 song_artist = song.artist
                 song_bpm = song.bpm if song.bpm and song.bpm > 0 else 80
+                if not song_key:
+                    song_key = song.default_key or ""
                 raw_sections = await self._song_repo.find_sections(arr.song_id)
                 sections = [
                     SectionSummary(
@@ -89,6 +93,11 @@ class WorshipUsecase:
                     )
                     for s in raw_sections
                 ]
+                # find the per-key sheet matching this arrangement's key
+                sheets = await self._song_repo.find_sheets(arr.song_id)
+                matched = next((s for s in sheets if s.key == song_key), None)
+                if matched:
+                    song_sheet_url = matched.sheet_url
 
         return ArrangementResponse(
             id=arr.id,
@@ -101,6 +110,8 @@ class WorshipUsecase:
             song_title=song_title,
             song_artist=song_artist,
             song_bpm=song_bpm,
+            song_key=song_key,
+            song_sheet_url=song_sheet_url,
             sections=sections,
         )
 

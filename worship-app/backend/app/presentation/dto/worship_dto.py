@@ -78,6 +78,8 @@ class ArrangementResponse(BaseModel):
     song_title: str = ""
     song_artist: str = ""
     song_bpm: int = 80
+    song_key: str = ""
+    song_sheet_url: str | None = None
     sections: list[SectionSummary] = []
 
     class Config:

@@ -3,6 +3,7 @@ from uuid import UUID
 
 from app.domain.entity.song import Song
 from app.domain.entity.song_section import SongSection
+from app.domain.entity.song_sheet import SongSheet
 
 
 class SongRepository(ABC):
@@ -41,3 +42,18 @@ class SongRepository(ABC):
 
     @abstractmethod
     async def reorder_sections(self, song_id: UUID, section_ids: list[UUID]) -> list[SongSection]: ...
+
+    @abstractmethod
+    async def find_sheets(self, song_id: UUID) -> list[SongSheet]: ...
+
+    @abstractmethod
+    async def save_sheet(self, sheet: SongSheet) -> SongSheet: ...
+
+    @abstractmethod
+    async def find_sheet_by_id(self, sheet_id: UUID) -> SongSheet | None: ...
+
+    @abstractmethod
+    async def delete_sheet(self, sheet_id: UUID) -> None: ...
+
+    @abstractmethod
+    async def delete_sheets_by_key(self, song_id: UUID, key: str) -> None: ...

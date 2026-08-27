@@ -172,16 +172,24 @@ function SheetUpload({ arr, worshipId }: { arr: Arrangement; worshipId: string }
     e.target.value = "";
   }
 
-  if (arr.sheet_url) {
+  // manual override takes precedence; fall back to key-matched song sheet
+  const displayUrl = arr.sheet_url || arr.song_sheet_url;
+
+  if (displayUrl) {
     return (
       <div className="flex items-center gap-2">
+        {arr.song_key && !arr.sheet_url && (
+          <span className="text-xs bg-primary-50 text-primary-600 px-1.5 py-0.5 rounded-full font-bold">
+            {arr.song_key}
+          </span>
+        )}
         <a
-          href={`http://localhost:8000${arr.sheet_url}`}
+          href={displayUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-primary-500 hover:underline"
         >
-          📄 악보 보기
+          📄 악보
         </a>
         <button
           onClick={() => inputRef.current?.click()}
@@ -196,7 +204,7 @@ function SheetUpload({ arr, worshipId }: { arr: Arrangement; worshipId: string }
 
   return (
     <label className={`text-xs text-gray-400 hover:text-primary-500 cursor-pointer ${isPending ? "opacity-50" : ""}`}>
-      {isPending ? "업로드 중..." : "📎 악보 첨부"}
+      {isPending ? "업로드 중..." : "📎 악보"}
       <input type="file" accept=".pdf,image/*" className="hidden" onChange={handleFile} disabled={isPending} />
     </label>
   );

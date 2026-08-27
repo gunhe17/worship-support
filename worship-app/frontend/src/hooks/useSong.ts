@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api";
-import type { Song, SongSection } from "@/types";
+import type { Song, SongSection, SongSheet } from "@/types";
 
 const KEY = ["songs"];
 
@@ -114,6 +114,61 @@ export function useReorderSections(songId: string) {
         .then((r) => r.data),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: [...KEY, songId, "sections"] });
+      qc.invalidateQueries({ queryKey: [...KEY, songId] });
+    },
+  });
+}
+
+// ── 키별 악보(Sheet) hooks ─────────────────────────────────────────────────────
+
+export function useSongSheets(songId: string) {
+  return useQuery<SongSheet[]>({
+    queryKey: [...KEY, songId, "sheets"],
+    queryFn: () =>
+      apiClient.get(`/api/v1/songs/${songId}/sheets`).then((r) => r.data),
+    enabled: !!songId,
+  });
+}
+
+export function useUploadSongSheet(songId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ key, file }: { key: string; file: File }) => {
+      const form = new FormData();
+      form.append("key", key);
+      form.append("file", file);
+      return apiClient
+        .post(`/api/v1/songs/${songId}/sheets`, form, {
+          headers: { "Content-Type": undefined },
+        })
+        .then((r) => r.data as SongSheet);
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: [...KEY, songId, "sheets"] });
+      qc.invalidateQueries({ queryKey: [...KEY, songId] });
+    },
+  });
+}
+
+export function useClearSongSheetsByKey(songId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (sheetIds: string[]) =>
+      Promise.all(sheetIds.map((id) => apiClient.delete(`/api/v1/songs/${songId}/sheets/${id}`))),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: [...KEY, songId, "sheets"] });
+      qc.invalidateQueries({ queryKey: [...KEY, songId] });
+    },
+  });
+}
+
+export function useDeleteSongSheet(songId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (sheetId: string) =>
+      apiClient.delete(`/api/v1/songs/${songId}/sheets/${sheetId}`),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: [...KEY, songId, "sheets"] });
       qc.invalidateQueries({ queryKey: [...KEY, songId] });
     },
   });

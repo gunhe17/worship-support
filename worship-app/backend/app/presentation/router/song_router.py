@@ -1,9 +1,13 @@
-from uuid import UUID
+import asyncio
+import os
+from uuid import UUID, uuid4
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, UploadFile, File, Form
+from supabase import create_client
 
 from app.application.usecase.song_usecase import SongUsecase
 from app.common.dependencies import get_song_repo
+from app.common.exception.exceptions import raise_app_error
 from app.domain.repository.song_repository import SongRepository
 from app.presentation.dto.song_dto import (
     SectionReorderRequest,
@@ -12,8 +16,20 @@ from app.presentation.dto.song_dto import (
     SongSectionCreateRequest,
     SongSectionResponse,
     SongSectionUpdateRequest,
+    SongSheetResponse,
     SongUpdateRequest,
 )
+
+SUPABASE_BUCKET = "sheets"
+
+
+def _upload_sheet_sync(content: bytes, filename: str, content_type: str) -> str:
+    from app.common.config.settings import settings as _settings
+    client = create_client(_settings.SUPABASE_URL, _settings.SUPABASE_KEY)
+    client.storage.from_(SUPABASE_BUCKET).upload(
+        path=filename, file=content, file_options={"content-type": content_type}
+    )
+    return client.storage.from_(SUPABASE_BUCKET).get_public_url(filename)
 
 router = APIRouter(prefix="/api/v1/songs", tags=["Song"])
 
@@ -117,3 +133,50 @@ async def delete_section(
     usecase: SongUsecase = Depends(get_usecase),
 ) -> None:
     await usecase.delete_section(song_id, section_id)
+
+
+# ── 키별 악보(Sheet) 엔드포인트 ──────────────────────────────────────────────────
+
+@router.get("/{song_id}/sheets", response_model=list[SongSheetResponse])
+async def list_sheets(
+    song_id: UUID,
+    usecase: SongUsecase = Depends(get_usecase),
+) -> list[SongSheetResponse]:
+    return await usecase.list_sheets(song_id)
+
+
+@router.post("/{song_id}/sheets", response_model=SongSheetResponse, status_code=201)
+async def upload_song_sheet(
+    song_id: UUID,
+    key: str = Form(...),
+    file: UploadFile = File(...),
+    usecase: SongUsecase = Depends(get_usecase),
+) -> SongSheetResponse:
+    import re
+    song = await usecase._repo.find_by_id(song_id)
+    raw_title = song.title if song else ""
+    ascii_title = re.sub(r'[^a-zA-Z0-9]', '_', raw_title)
+    ascii_title = re.sub(r'_+', '_', ascii_title).strip('_')
+    short_id = str(song_id)[:8]
+    safe_base = f"{ascii_title}_{key}" if ascii_title else f"{key}_{short_id}"
+    ext = os.path.splitext(file.filename or "")[-1]
+    unique_suffix = str(uuid4())[:8]
+    filename = f"{safe_base}_{unique_suffix}{ext}"
+    content = await file.read()
+    content_type = file.content_type or "application/octet-stream"
+    try:
+        sheet_url = await asyncio.to_thread(_upload_sheet_sync, content, filename, content_type)
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        raise_app_error("STORAGE_ERROR")
+    return await usecase.upload_sheet(song_id, key, sheet_url)
+
+
+@router.delete("/{song_id}/sheets/{sheet_id}", status_code=204)
+async def delete_song_sheet(
+    song_id: UUID,
+    sheet_id: UUID,
+    usecase: SongUsecase = Depends(get_usecase),
+) -> None:
+    await usecase.delete_sheet(song_id, sheet_id)

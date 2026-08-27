@@ -26,7 +26,17 @@ export interface Arrangement {
   song_title: string;
   song_artist: string;
   song_bpm: number;
+  song_key?: string;
+  song_sheet_url?: string | null;
   sections: SectionSummary[];
+}
+
+export interface SongSheet {
+  id: string;
+  song_id: string;
+  key: string;
+  sheet_url: string;
+  page_order: number;
 }
 
 export interface Song {
@@ -39,6 +49,7 @@ export interface Song {
   lyrics: string;
   sheet?: string;
   sections: SongSection[];
+  sheets?: SongSheet[];
 }
 
 export interface SongSection {

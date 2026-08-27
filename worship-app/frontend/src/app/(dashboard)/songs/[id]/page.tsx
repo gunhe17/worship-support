@@ -4,14 +4,17 @@ import { useState, useRef, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import {
   useAddSection,
+  useClearSongSheetsByKey,
   useDeleteSection,
   useDeleteSong,
+  useDeleteSongSheet,
   useReorderSections,
   useSongDetail,
   useUpdateSection,
   useUpdateSong,
+  useUploadSongSheet,
 } from "@/hooks/useSong";
-import type { SongSection } from "@/types";
+import type { SongSection, SongSheet } from "@/types";
 
 const SECTION_TYPES = [
   "INTRO",
@@ -193,6 +196,191 @@ function SectionCard({
   );
 }
 
+const KEYS = ["C", "C#", "Db", "D", "Eb", "E", "F", "F#", "Gb", "G", "Ab", "A", "Bb", "B"];
+
+async function downloadSheet(url: string, songTitle: string, key: string, pageNum?: number) {
+  const ext = url.split(".").pop()?.split("?")[0] ?? "jpg";
+  const res = await fetch(url);
+  const blob = await res.blob();
+  const objectUrl = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = objectUrl;
+  a.download = pageNum !== undefined
+    ? `${songTitle}_${key}_${pageNum}.${ext}`
+    : `${songTitle}_${key}.${ext}`;
+  a.click();
+  URL.revokeObjectURL(objectUrl);
+}
+
+function SheetManager({ songId, songTitle, sheets }: { songId: string; songTitle: string; sheets: SongSheet[] }) {
+  const [selectedKey, setSelectedKey] = useState("C");
+  const fileRef = useRef<HTMLInputElement>(null);
+  const { mutate: uploadSheet, isPending: isUploading } = useUploadSongSheet(songId);
+  const { mutate: deleteSheet } = useDeleteSongSheet(songId);
+  const { mutate: clearSheets, isPending: isClearing } = useClearSongSheetsByKey(songId);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    uploadSheet(
+      { key: selectedKey, file },
+      {
+        onError: (err: any) => {
+          const msg =
+            err?.response?.data?.detail ??
+            err?.response?.data?.message ??
+            err?.message ??
+            "알 수 없는 오류";
+          alert(`악보 업로드 실패\n${typeof msg === "string" ? msg : JSON.stringify(msg)}`);
+        },
+      }
+    );
+    e.target.value = "";
+  };
+
+  // 선택된 키의 악보만 page_order 순으로 필터
+  const keySheets = [...sheets.filter((s) => s.key === selectedKey)].sort(
+    (a, b) => a.page_order - b.page_order
+  );
+  const isMulti = keySheets.length > 1;
+  const registeredKeys = new Set(sheets.map((s) => s.key));
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4">
+      <h2 className="font-semibold text-gray-800">악보 관리</h2>
+
+      {/* 키 선택 + 페이지 추가 */}
+      <div className="flex items-center gap-2">
+        <select
+          value={selectedKey}
+          onChange={(e) => setSelectedKey(e.target.value)}
+          className="border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+        >
+          {KEYS.map((k) => (
+            <option key={k} value={k}>
+              {k}{registeredKeys.has(k) ? " ✓" : ""}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={() => fileRef.current?.click()}
+          disabled={isUploading || isClearing}
+          className="flex-1 py-2 px-3 border border-primary-200 text-primary-600 text-sm rounded-lg hover:bg-primary-50 disabled:opacity-40"
+        >
+          {isUploading
+            ? "업로드 중..."
+            : keySheets.length === 0
+            ? `${selectedKey} 키 악보 추가`
+            : `${selectedKey} 키 ${keySheets.length + 1}페이지 추가`}
+        </button>
+        <input ref={fileRef} type="file" accept=".pdf,image/*" className="hidden" onChange={handleFileChange} />
+      </div>
+
+      {/* 선택된 키의 악보 표시 */}
+      {keySheets.length === 0 ? (
+        <p className="text-sm text-gray-400 text-center py-6">{selectedKey} 키 악보가 없습니다.</p>
+      ) : (
+        <>
+          {/* 키 헤더 (전체 삭제) */}
+          {keySheets.length > 0 && (
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-gray-400">{keySheets.length}장</span>
+              <button
+                onClick={() => {
+                  if (confirm(`${selectedKey} 키 악보 ${keySheets.length}장을 모두 삭제할까요?`))
+                    clearSheets(keySheets.map((s) => s.id));
+                }}
+                disabled={isClearing}
+                className="text-xs text-gray-300 hover:text-red-400 disabled:opacity-40"
+              >
+                전체 삭제
+              </button>
+            </div>
+          )}
+
+          {isMulti ? (
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {keySheets.map((s, i) => {
+                const isPdf = s.sheet_url.toLowerCase().includes(".pdf");
+                return (
+                  <div key={s.id} className="flex-none w-72 space-y-1.5">
+                    <div className="flex items-center justify-between text-xs text-gray-400 px-1">
+                      <span>{i + 1}페이지</span>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => downloadSheet(s.sheet_url, songTitle, selectedKey, i + 1)}
+                          className="hover:text-primary-500"
+                        >
+                          다운로드
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (confirm(`${selectedKey} 키 ${i + 1}페이지를 삭제할까요?`)) deleteSheet(s.id);
+                          }}
+                          className="hover:text-red-400"
+                        >
+                          삭제
+                        </button>
+                      </div>
+                    </div>
+                    {isPdf ? (
+                      <iframe
+                        src={s.sheet_url}
+                        className="w-full rounded-lg border border-gray-200"
+                        style={{ height: 420 }}
+                        title={`악보 ${selectedKey} ${i + 1}p`}
+                      />
+                    ) : (
+                      <img
+                        src={s.sheet_url}
+                        alt={`악보 ${selectedKey} ${i + 1}p`}
+                        className="w-full rounded-lg border border-gray-200 object-contain bg-white"
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="space-y-1.5">
+              <div className="flex justify-end gap-3 text-xs text-gray-400 px-1">
+                <button
+                  onClick={() => downloadSheet(keySheets[0].sheet_url, songTitle, selectedKey)}
+                  className="hover:text-primary-500"
+                >
+                  다운로드
+                </button>
+                <button
+                  onClick={() => {
+                    if (confirm(`${selectedKey} 키 악보를 삭제할까요?`)) deleteSheet(keySheets[0].id);
+                  }}
+                  className="hover:text-red-400"
+                >
+                  삭제
+                </button>
+              </div>
+              {keySheets[0].sheet_url.toLowerCase().includes(".pdf") ? (
+                <iframe
+                  src={keySheets[0].sheet_url}
+                  className="w-full rounded-lg border border-gray-200"
+                  style={{ height: 500 }}
+                  title={`악보 ${selectedKey}`}
+                />
+              ) : (
+                <img
+                  src={keySheets[0].sheet_url}
+                  alt={`악보 ${selectedKey}`}
+                  className="w-full rounded-lg border border-gray-200 object-contain bg-white"
+                />
+              )}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function SongDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
@@ -363,6 +551,9 @@ export default function SongDetailPage() {
           </div>
         )}
       </div>
+
+      {/* 악보 관리 */}
+      <SheetManager songId={id} songTitle={song.title} sheets={song.sheets ?? []} />
 
       {/* 저장 / 삭제 */}
       <div className="flex gap-3">

@@ -3,6 +3,17 @@ from uuid import UUID
 from pydantic import BaseModel
 
 
+class SongSheetResponse(BaseModel):
+    id: UUID
+    song_id: UUID
+    key: str
+    sheet_url: str
+    page_order: int = 0
+
+    class Config:
+        from_attributes = True
+
+
 class SongSectionCreateRequest(BaseModel):
     section_type: str
     section_label: str
@@ -69,6 +80,7 @@ class SongResponse(BaseModel):
     lyrics: str
     sheet: str | None = None
     sections: list[SongSectionResponse] = []
+    sheets: list[SongSheetResponse] = []
 
     class Config:
         from_attributes = True

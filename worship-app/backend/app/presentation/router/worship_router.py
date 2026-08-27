@@ -7,6 +7,7 @@ from supabase import create_client
 
 from app.application.usecase.worship_usecase import WorshipUsecase
 from app.common.dependencies import get_song_repo, get_worship_repo
+from app.common.exception.exceptions import raise_app_error
 from app.domain.repository.song_repository import SongRepository
 from app.domain.repository.worship_repository import WorshipRepository
 from app.infrastructure.external.llm.claude_client import ClaudeClient
@@ -27,11 +28,9 @@ SUPABASE_BUCKET = "sheets"
 
 
 def _upload_sheet_sync(content: bytes, filename: str, content_type: str) -> str:
-    client = create_client(
-        os.environ["SUPABASE_URL"],
-        os.environ["SUPABASE_KEY"],
-    )
-    # 같은 이름 파일이 있으면 덮어쓰기
+    from app.common.config.settings import settings as _settings
+    client = create_client(_settings.SUPABASE_URL, _settings.SUPABASE_KEY)
+    _ensure_bucket(client)
     try:
         client.storage.from_(SUPABASE_BUCKET).remove([filename])
     except Exception:
@@ -166,5 +165,8 @@ async def upload_sheet(
     filename = f"{arr_id}{ext}"
     content = await file.read()
     content_type = file.content_type or "application/octet-stream"
-    sheet_url = await asyncio.to_thread(_upload_sheet_sync, content, filename, content_type)
+    try:
+        sheet_url = await asyncio.to_thread(_upload_sheet_sync, content, filename, content_type)
+    except Exception:
+        raise_app_error("STORAGE_ERROR")
     return await usecase.update_arrangement(arr_id, ArrangementUpdateRequest(sheet_url=sheet_url))

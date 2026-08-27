@@ -27,7 +27,7 @@ function arrangementToSong(arr: Arrangement): SongRecommendation {
     connection_to_prev: "",
     connection_note: "",
     youtube_links: [],
-    sheet_url: arr.sheet_url,
+    sheet_url: arr.sheet_url || arr.song_sheet_url,
   };
 }
 

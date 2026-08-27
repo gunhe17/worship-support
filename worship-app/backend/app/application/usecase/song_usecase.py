@@ -3,6 +3,7 @@ from uuid import UUID
 from app.common.exception.exceptions import raise_app_error
 from app.domain.entity.song import Song
 from app.domain.entity.song_section import SongSection
+from app.domain.entity.song_sheet import SongSheet
 from app.domain.repository.song_repository import SongRepository
 from app.presentation.dto.song_dto import (
     SectionReorderRequest,
@@ -11,6 +12,7 @@ from app.presentation.dto.song_dto import (
     SongSectionCreateRequest,
     SongSectionResponse,
     SongSectionUpdateRequest,
+    SongSheetResponse,
     SongUpdateRequest,
 )
 
@@ -26,6 +28,10 @@ def _section_to_response(s: SongSection) -> SongSectionResponse:
         chord=s.chord,
         order=s.order,
     )
+
+
+def _sheet_to_response(s: SongSheet) -> SongSheetResponse:
+    return SongSheetResponse(id=s.id, song_id=s.song_id, key=s.key, sheet_url=s.sheet_url, page_order=s.page_order)
 
 
 class SongUsecase:
@@ -59,7 +65,10 @@ class SongUsecase:
             raise_app_error("SONG_NOT_FOUND")
         sections = await self._repo.find_sections(song_id)
         song.sections = sections
-        return SongResponse.model_validate(song)
+        raw_sheets = await self._repo.find_sheets(song_id)
+        resp = SongResponse.model_validate(song)
+        resp.sheets = [_sheet_to_response(s) for s in raw_sheets]
+        return resp
 
     async def update(self, song_id: UUID, req: SongUpdateRequest) -> SongResponse:
         song = await self._repo.find_by_id(song_id)
@@ -128,3 +137,29 @@ class SongUsecase:
             raise_app_error("SONG_NOT_FOUND")
         sections = await self._repo.reorder_sections(song_id, req.section_ids)
         return [_section_to_response(s) for s in sections]
+
+    async def list_sheets(self, song_id: UUID) -> list[SongSheetResponse]:
+        song = await self._repo.find_by_id(song_id)
+        if not song:
+            raise_app_error("SONG_NOT_FOUND")
+        sheets = await self._repo.find_sheets(song_id)
+        return [_sheet_to_response(s) for s in sheets]
+
+    async def upload_sheet(self, song_id: UUID, key: str, sheet_url: str) -> SongSheetResponse:
+        song = await self._repo.find_by_id(song_id)
+        if not song:
+            raise_app_error("SONG_NOT_FOUND")
+        existing = await self._repo.find_sheets(song_id)
+        page_order = sum(1 for s in existing if s.key == key)
+        sheet = SongSheet(song_id=song_id, key=key, sheet_url=sheet_url, page_order=page_order)
+        saved = await self._repo.save_sheet(sheet)
+        return _sheet_to_response(saved)
+
+    async def delete_sheet(self, song_id: UUID, sheet_id: UUID) -> None:
+        sheet = await self._repo.find_sheet_by_id(sheet_id)
+        if not sheet or sheet.song_id != song_id:
+            raise_app_error("SONG_NOT_FOUND")
+        await self._repo.delete_sheet(sheet_id)
+
+    async def delete_sheets_by_key(self, song_id: UUID, key: str) -> None:
+        await self._repo.delete_sheets_by_key(song_id, key)

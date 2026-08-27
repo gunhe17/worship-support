@@ -8,6 +8,7 @@ from app.domain.entity.post import Comment, Post, PostSong
 from app.domain.entity.song import Song
 from app.domain.entity.song_arrangement import SongArrangement
 from app.domain.entity.song_section import SongSection
+from app.domain.entity.song_sheet import SongSheet
 from app.domain.entity.worship import Worship
 from app.domain.repository.post_repository import PostRepository
 from app.domain.repository.song_repository import SongRepository
@@ -65,6 +66,7 @@ class InMemoryWorshipRepository(WorshipRepository):
 class InMemorySongRepository(SongRepository):
     _store: dict[UUID, Song] = {}
     _sections: dict[UUID, SongSection] = {}
+    _sheets: dict[UUID, SongSheet] = {}
 
     async def save(self, song: Song) -> Song:
         self._store[song.id] = song
@@ -120,6 +122,30 @@ class InMemorySongRepository(SongRepository):
             if section_id in self._sections:
                 self._sections[section_id].order = i
         return await self.find_sections(song_id)
+
+    async def find_sheets(self, song_id: UUID) -> list[SongSheet]:
+        return sorted(
+            [s for s in self._sheets.values() if s.song_id == song_id],
+            key=lambda s: (s.key, s.page_order),
+        )
+
+    async def save_sheet(self, sheet: SongSheet) -> SongSheet:
+        self._sheets[sheet.id] = sheet
+        return sheet
+
+    async def find_sheet_by_id(self, sheet_id: UUID) -> SongSheet | None:
+        return self._sheets.get(sheet_id)
+
+    async def delete_sheet(self, sheet_id: UUID) -> None:
+        self._sheets.pop(sheet_id, None)
+
+    async def delete_sheets_by_key(self, song_id: UUID, key: str) -> None:
+        to_delete = [
+            sid for sid, s in self._sheets.items()
+            if s.song_id == song_id and s.key == key
+        ]
+        for sid in to_delete:
+            self._sheets.pop(sid, None)
 
 
 class InMemoryPostRepository(PostRepository):
