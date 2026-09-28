@@ -1,0 +1,11 @@
+9곡을 서로 다른 팀의 공식 채널 영상으로 맞추기 위해, 후보 팀별 대표곡과 공식 유튜브 주소를 웹과 X에서 확인하겠습니다.대표곡은 잡혔고, 각 팀 공식 채널의 단일 곡 영상(제목·길이·라이브/스튜디오)을 더 좁혀 확인합니다.공식 채널 단일곡의 제목과 길이를 맞추고, 디사이플스·예수전도단·어노인팅은 3–8분 영상을 더 찾겠습니다.[
+  {"team": "위러브", "title": "WELOVE | 우리가 주를 더욱 사랑하고 | Loving You More [애가 | Love in the Lament]", "url": "https://www.youtube.com/watch?v=aZKVBRA_hAg", "duration": "5:07", "kind": "studio"},
+  {"team": "아이자야씩스티원", "title": "하나님께서 세상을 사랑하사 | God So Loved | 아이자야 LIVE worship | \" THE MISSION \"(Part 3. 다시, 선교의 삶으로)", "url": "https://www.youtube.com/watch?v=j_fxvfTShVg", "duration": "4:47", "kind": "live"},
+  {"team": "예수전도단", "title": "처음과 나중 (Live)ㅣ예수전도단 화요모임", "url": "https://www.youtube.com/watch?v=ooQZP50jabw", "duration": "7:48", "kind": "live"},
+  {"team": "피아워십", "title": "01. 나의 예수님 (Official) | MY JESUS | F.I.A WORSHIP", "url": "https://www.youtube.com/watch?v=Ozm81MUkxRE", "duration": "4:37", "kind": "studio"},
+  {"team": "레위지파", "title": "나의 예수 Lord of My Heart | 스캇 브래너 & 리바이츠", "url": "https://www.youtube.com/watch?v=_3yYmkvHygI", "duration": "6:40", "kind": "studio"},
+  {"team": "팀룩워십", "title": "함께 지어져 가네 Being Built Together ㅣ Youth Revival Busan", "url": "https://www.youtube.com/watch?v=TtH4qHWdTto", "duration": "5:51", "kind": "live"},
+  {"team": "옹기장이", "title": "주의 나라와 영광 이곳에 | 옹기장이 40주년 카운트다운콘서트 2026", "url": "https://www.youtube.com/watch?v=ufEXsxOS3mE", "duration": "4:27", "kind": "live"},
+  {"team": "마커스워십", "title": "은혜 - 마커스워십 | Grace | 소진영 인도", "url": "https://www.youtube.com/watch?v=AXCuHNnHRRM", "duration": "5:12", "kind": "live"},
+  {"team": "어노인팅", "title": "10 주와 같이 길 가는 것  (Official Lyrics)ㅣ어노인팅 찬송가 2집", "url": "https://www.youtube.com/watch?v=Z0ZFf1JkiMM", "duration": "5:51", "kind": "studio"}
+]

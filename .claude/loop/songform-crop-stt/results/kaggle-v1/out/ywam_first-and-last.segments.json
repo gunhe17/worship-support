@@ -1,0 +1,191 @@
+[
+ {
+  "label": "intro",
+  "start": 0.0,
+  "end": 19.440777631105245,
+  "crop_start": 0.0,
+  "crop_end": 20.94
+ },
+ {
+  "label": "verse",
+  "start": 19.440777631105245,
+  "end": 32.64130565222609,
+  "crop_start": 17.94,
+  "crop_end": 34.14
+ },
+ {
+  "label": "verse",
+  "start": 32.64130565222609,
+  "end": 60.48241929677187,
+  "crop_start": 31.14,
+  "crop_end": 61.98
+ },
+ {
+  "label": "verse",
+  "start": 60.48241929677187,
+  "end": 73.80295211808472,
+  "crop_start": 58.98,
+  "crop_end": 75.3
+ },
+ {
+  "label": "verse",
+  "start": 73.80295211808472,
+  "end": 87.00348013920556,
+  "crop_start": 72.3,
+  "crop_end": 88.5
+ },
+ {
+  "label": "chorus",
+  "start": 87.00348013920556,
+  "end": 111.84447377895115,
+  "crop_start": 85.5,
+  "crop_end": 113.34
+ },
+ {
+  "label": "bridge",
+  "start": 111.84447377895115,
+  "end": 145.2058082323293,
+  "crop_start": 110.34,
+  "crop_end": 146.71
+ },
+ {
+  "label": "chorus",
+  "start": 145.2058082323293,
+  "end": 159.96639865594622,
+  "crop_start": 143.71,
+  "crop_end": 161.47
+ },
+ {
+  "label": "chorus",
+  "start": 159.96639865594622,
+  "end": 172.68690747629904,
+  "crop_start": 158.47,
+  "crop_end": 174.19
+ },
+ {
+  "label": "chorus",
+  "start": 172.68690747629904,
+  "end": 187.20748829953197,
+  "crop_start": 171.19,
+  "crop_end": 188.71
+ },
+ {
+  "label": "intro",
+  "start": 187.20748829953197,
+  "end": 204.24816992679706,
+  "crop_start": 185.71,
+  "crop_end": 205.75
+ },
+ {
+  "label": "chorus",
+  "start": 204.24816992679706,
+  "end": 218.28873154926197,
+  "crop_start": 202.75,
+  "crop_end": 219.79
+ },
+ {
+  "label": "chorus",
+  "start": 218.28873154926197,
+  "end": 231.72926917076683,
+  "crop_start": 216.79,
+  "crop_end": 233.23
+ },
+ {
+  "label": "chorus",
+  "start": 231.72926917076683,
+  "end": 245.6498259930397,
+  "crop_start": 230.23,
+  "crop_end": 247.15
+ },
+ {
+  "label": "chorus",
+  "start": 245.6498259930397,
+  "end": 259.0903636145446,
+  "crop_start": 244.15,
+  "crop_end": 260.59
+ },
+ {
+  "label": "inst",
+  "start": 259.0903636145446,
+  "end": 290.05160206408254,
+  "crop_start": 257.59,
+  "crop_end": 291.55
+ },
+ {
+  "label": "verse",
+  "start": 290.05160206408254,
+  "end": 303.2521300852034,
+  "crop_start": 288.55,
+  "crop_end": 304.75
+ },
+ {
+  "label": "verse",
+  "start": 303.2521300852034,
+  "end": 317.5327013080523,
+  "crop_start": 301.75,
+  "crop_end": 319.03
+ },
+ {
+  "label": "verse",
+  "start": 317.5327013080523,
+  "end": 330.97323892955717,
+  "crop_start": 316.03,
+  "crop_end": 332.47
+ },
+ {
+  "label": "pre-chorus",
+  "start": 330.97323892955717,
+  "end": 348.2539301572063,
+  "crop_start": 329.47,
+  "crop_end": 349.75
+ },
+ {
+  "label": "chorus",
+  "start": 348.2539301572063,
+  "end": 362.05448217928716,
+  "crop_start": 346.75,
+  "crop_end": 363.55
+ },
+ {
+  "label": "chorus",
+  "start": 362.05448217928716,
+  "end": 375.73502940117606,
+  "crop_start": 360.55,
+  "crop_end": 377.24
+ },
+ {
+  "label": "verse",
+  "start": 375.73502940117606,
+  "end": 389.53558142325693,
+  "crop_start": 374.24,
+  "crop_end": 391.04
+ },
+ {
+  "label": "verse",
+  "start": 389.53558142325693,
+  "end": 403.2161286451458,
+  "crop_start": 388.04,
+  "crop_end": 404.72
+ },
+ {
+  "label": "chorus",
+  "start": 403.2161286451458,
+  "end": 426.9770790831633,
+  "crop_start": 401.72,
+  "crop_end": 428.48
+ },
+ {
+  "label": "outro",
+  "start": 426.9770790831633,
+  "end": 448.0979239169567,
+  "crop_start": 425.48,
+  "crop_end": 449.6
+ },
+ {
+  "label": "outro",
+  "start": 448.0979239169567,
+  "end": 467.5387015480619,
+  "crop_start": 446.6,
+  "crop_end": 467.61
+ }
+]

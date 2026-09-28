@@ -1,0 +1,262 @@
+{
+ "file": "markers_love-of-god.wav",
+ "stems": false,
+ "device": "cuda",
+ "tuning_offset": 0.01,
+ "bpm": {
+  "value": 136.4,
+  "alternates": [
+   68.2,
+   272.7
+  ],
+  "meter_beats_per_bar": 4,
+  "ibi_cv": 0.387
+ },
+ "key": {
+  "song_key_essentia_majority": "F major"
+ },
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 15.8,
+   "bpm": 136.4,
+   "key_essentia": "B major",
+   "strength": 0.75,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "verse",
+   "start": 15.8,
+   "end": 29.8,
+   "bpm": 136.4,
+   "key_essentia": "E major",
+   "strength": 0.88,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "verse",
+   "start": 29.8,
+   "end": 43.6,
+   "bpm": 136.4,
+   "key_essentia": "E major",
+   "strength": 0.89,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "pre-chorus",
+   "start": 43.6,
+   "end": 56.5,
+   "bpm": 136.4,
+   "key_essentia": "E major",
+   "strength": 0.67,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "chorus",
+   "start": 56.5,
+   "end": 82.0,
+   "bpm": 136.4,
+   "key_essentia": "B major",
+   "strength": 0.79,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "inst",
+   "start": 82.0,
+   "end": 95.9,
+   "bpm": 136.4,
+   "key_essentia": "B major",
+   "strength": 0.74,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "verse",
+   "start": 95.9,
+   "end": 109.9,
+   "bpm": 136.4,
+   "key_essentia": "E major",
+   "strength": 0.87,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "verse",
+   "start": 109.9,
+   "end": 123.5,
+   "bpm": 136.4,
+   "key_essentia": "E major",
+   "strength": 0.84,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "pre-chorus",
+   "start": 123.5,
+   "end": 136.9,
+   "bpm": 136.4,
+   "key_essentia": "B major",
+   "strength": 0.62,
+   "key_cnn": "B major"
+  },
+  {
+   "label": "chorus",
+   "start": 136.9,
+   "end": 151.1,
+   "bpm": 136.4,
+   "key_essentia": "B major",
+   "strength": 0.78,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 151.1,
+   "end": 165.2,
+   "bpm": 136.4,
+   "key_essentia": "B major",
+   "strength": 0.79,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 165.2,
+   "end": 179.5,
+   "bpm": 136.4,
+   "key_essentia": "B major",
+   "strength": 0.63,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 179.5,
+   "end": 195.8,
+   "bpm": 136.4,
+   "key_essentia": "E major",
+   "strength": 0.54,
+   "key_cnn": "B major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 195.8,
+   "end": 210.2,
+   "bpm": 136.4,
+   "key_essentia": "F major",
+   "strength": 0.78,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  },
+  {
+   "label": "chorus",
+   "start": 210.2,
+   "end": 223.7,
+   "bpm": 136.4,
+   "key_essentia": "F major",
+   "strength": 0.81,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  },
+  {
+   "label": "chorus",
+   "start": 223.7,
+   "end": 237.8,
+   "bpm": 136.4,
+   "key_essentia": "F major",
+   "strength": 0.78,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  },
+  {
+   "label": "chorus",
+   "start": 237.8,
+   "end": 262.7,
+   "bpm": 136.4,
+   "key_essentia": "F major",
+   "strength": 0.82,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  },
+  {
+   "label": "bridge",
+   "start": 262.7,
+   "end": 279.4,
+   "bpm": 136.4,
+   "key_essentia": "F major",
+   "strength": 0.86,
+   "key_cnn": "F major"
+  },
+  {
+   "label": "verse",
+   "start": 279.4,
+   "end": 296.1,
+   "bpm": 120.0,
+   "key_essentia": "F major",
+   "strength": 0.69,
+   "key_cnn": "F major"
+  },
+  {
+   "label": "verse",
+   "start": 296.1,
+   "end": 311.3,
+   "bpm": 120.0,
+   "key_essentia": "F major",
+   "strength": 0.69,
+   "key_cnn": "F major"
+  },
+  {
+   "label": "verse",
+   "start": 311.3,
+   "end": 327.4,
+   "bpm": 120.0,
+   "key_essentia": "C major",
+   "strength": 0.73,
+   "key_cnn": "F major"
+  },
+  {
+   "label": "chorus",
+   "start": 327.4,
+   "end": 343.3,
+   "bpm": 60.0,
+   "key_essentia": "F major",
+   "strength": 0.76,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  },
+  {
+   "label": "chorus",
+   "start": 343.3,
+   "end": 360.5,
+   "bpm": 60.0,
+   "key_essentia": "F major",
+   "strength": 0.8,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  },
+  {
+   "label": "chorus",
+   "start": 360.5,
+   "end": 375.5,
+   "bpm": 60.0,
+   "key_essentia": "F major",
+   "strength": 0.72,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  },
+  {
+   "label": "chorus",
+   "start": 375.5,
+   "end": 397.8,
+   "bpm": 57.7,
+   "key_essentia": "F major",
+   "strength": 0.84,
+   "key_cnn": "F major",
+   "oti_vs_first_chorus": 1
+  }
+ ],
+ "timing_s": {
+  "beat_this": 5.6,
+  "songformer": 0.0,
+  "key": 41.7
+ }
+}

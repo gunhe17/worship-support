@@ -1,0 +1,535 @@
+{
+ "id": "anointing_rejoice",
+ "team": "어노인팅",
+ "title": "주 안에서 기뻐해",
+ "url": "https://www.youtube.com/watch?v=oHgvIjvzb1o",
+ "kind": "live",
+ "pad": 1.5,
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 15.840633625345014,
+   "crop_start": 0.0,
+   "crop_end": 17.34,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "영원히 기뻐하는 것이 우리의 일입니다. 다 행복해 소망을 두시옵소. 우리의 기쁨 높여 소망을 두시다. 하늘이야.",
+     "vocals": "영원을 기뻐하는 것이 우리의 일입니다 다른 곳에 소망을 두지 않고 오직 지진 옆에 소망을 두시다 하늘이야"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "영원히 기뻐하는 것이 우리의 일입니다. 다른 곳의 소망을 두지 않고 오직 눈높이의 소망을 두시다, 할렐루야!",
+     "vocals": "영화를 기뻐하는 것이 우리의 일입니다. 다른 곳의 소망을 두지 않고 오직 눈높이의 소망을 두시다. 할리아!"
+    }
+   }
+  },
+  {
+   "label": "intro",
+   "start": 15.840633625345014,
+   "end": 29.161166446657866,
+   "crop_start": 14.34,
+   "crop_end": 30.66,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "같이 추나에서 추나에서",
+     "vocals": "다같이 주 안에서"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "아직 초에서 주말에서.",
+     "vocals": "같이 추안에서 추안에서."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 29.161166446657866,
+   "end": 42.84171366854674,
+   "crop_start": 27.66,
+   "crop_end": 44.34,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라",
+     "vocals": "슈화네스"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 주인 주신 빛으로 기뻐하라 주 안에서 주 안에서",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 수입 수신 빈부 불평 없어 주 안에서 주 안에서"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 42.84171366854674,
+   "end": 56.40225609024361,
+   "crop_start": 41.34,
+   "crop_end": 57.9,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘은 주를 기뻐하는 것 한 번 더 고백하실까요? 주 안에서 주 안에서",
+     "vocals": "주 안에서 기뻐해 우리의 힘은 주를 기뻐하는 것 한 번 더 고백하실까요? 주 안에서 주 안에서"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주안에서 주안에서 기뻐해 주안에서 기뻐해 우리의 힘은 주를 기뻐하는 거 한 번 더 고백하실까요 주안에서 주안에서",
+     "vocals": "주안에서 주안에서 기뻐해 주안에서 기뻐해 부의 힘은 주를 기뻐하는 거 한 번 더 고백하실까요? 주안에서 주안에서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 56.40225609024361,
+   "end": 69.84279371174847,
+   "crop_start": 54.9,
+   "crop_end": 71.34,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 주 안에서",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 주 안에서"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주안에서 주안에서 기뻐해 주안에서 기뻐해 주인주신 기쁨으로 기뻐하라 주안에서 주안에서",
+     "vocals": "주안에서 주안에서 기뻐해 주안에서 기뻐해 주민들 신기쁨으로 기뻐하라 주안에서 주안에서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 69.84279371174847,
+   "end": 83.64334573382935,
+   "crop_start": 68.34,
+   "crop_end": 85.14,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 우리의 힘은 주를 기뻐하는 것 다시 한번 다같이 주 안에서",
+     "vocals": "주 안에서 기뻐해 우리의 힘은 주를 기뻐하는 것 다시 한번 다같이 주 안에서 주 안에서 기뻐해"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주안에서 주안에서 기뻐해 주안에서 기뻐해 우리의 힘은 쓰르기 보아도 다시 한번 다 같이 주안에서 주안에서.",
+     "vocals": "주원에서 주원에서 기뻐해 주원에서 기뻐해 우리의 기운 쓸어딛고 안고 다시 한번 다 같이 주원에서 주원에서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 83.64334573382935,
+   "end": 97.32389295571822,
+   "crop_start": 82.14,
+   "crop_end": 98.82,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라",
+     "vocals": "주 안에서 기뻐해. 주 안에서 기뻐해. 주님 주신 기쁨으로 기뻐하라. 주 안에서 기뻐하라."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 주 안에서 주 안에서",
+     "vocals": "주안에서 주안에서 기뻐해 주안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 주안에서 주안에서"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 97.32389295571822,
+   "end": 110.88443537741509,
+   "crop_start": 95.82,
+   "crop_end": 112.38,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘은 주를 기뻐하는 것 기뻐 기뻐",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘을 주는 거라는 걸 기뻐 기뻐"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘을 주를 기뻐하는 거 기뻐 기뻐",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘을 주는 기뻐함으로 기뻐 비뻐"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 110.88443537741509,
+   "end": 124.56498259930397,
+   "crop_start": 109.38,
+   "crop_end": 126.06,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "깊어 춤을 추며 크게 소리 높여 사랑의 신수의 이름을 바른 다음에 찬양해 춤을 추며",
+     "vocals": "이뻐 춤을 추며 크게 소리 높여 사랑신 주의 이름을 받은 나의 찬양의 주를"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리 목숨을 주며 그의 소리높은 사랑이신 주의 이름은 마른 날의 자녀네 주를.",
+     "vocals": "미법주를 추며 그대 소리로 별사랑 신수에 이르는 마음은 나의 찬양에 주를."
+    }
+   }
+  },
+  {
+   "label": "bridge",
+   "start": 124.56498259930397,
+   "end": 141.48565942637705,
+   "crop_start": 123.06,
+   "crop_end": 142.99,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "우리의 힘은 주를 기뻐하는 것 여러분 이제 좀 익숙해지셨죠? 다같이 다시 한번 찬양합시다 주 안에서 주 안에서",
+     "vocals": "네 여러분 이제 좀 익숙해지셨죠? 다같이 다시 한번 체험합시다 추원에서"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "야대 수를 바라볼 때 새해 두 시 우리에 힘은 수를 잊고 안고 예로 이제 좀 익숙해지셨죠? 다 같이 다시 한번 차량 없이 나 추원에서.",
+     "vocals": "야 내 숨을 바라볼 때 Saint Lucy 우리의 비는 두르고 아미고 네놈 이제 좀 힙스테이치셨죠? 다 같이 다시 한번 찰랑합시다 추원에서 숨 안에서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 141.48565942637705,
+   "end": 155.28621144845795,
+   "crop_start": 139.99,
+   "crop_end": 156.79,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 주 안에서 기뻐하라",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 한 번 더 주 안에서 주 안에서 기뻐해"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 주님 주신 기쁨을 우리 모두 알아. 주 안에서 주 안에서",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 주님 수신 기쁨으로 기뻐하라 한 번 더 주 안에서 주 안에서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 155.28621144845795,
+   "end": 168.7267490699628,
+   "crop_start": 153.79,
+   "crop_end": 170.23,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 우리의 힘은 주를 기뻐하는 것 주 안에서",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘은 우리의 힘은 주를 기뻐하노 한 번 더 전해봅시다 주 안에서 주 안에서"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 피를 흘리고 있는 거 한 번 더 전했습니다 주 안에서 주 안에서",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘은 우리의 힘은 주를 믿고 안고 한 번만 더 해봅시다 주 안에서 주 안에서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 168.7267490699628,
+   "end": 182.6473058922357,
+   "crop_start": 167.23,
+   "crop_end": 184.15,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 주 안에서 기뻐하라",
+     "vocals": "주 안에서 기뻐해 주님 주신 기쁨으로 기뻐하라 주 안에서 주 안에서 기뻐하라"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주 안에서 주 안에서 기뻐해 주 안에서 기뻐해 주님 주식 기쁨으로 기뻐하라 주 안에서 주 안에서 기뻐해 주님 주식 기쁨으로 기뻐하라",
+     "vocals": "주 안에서, 주 안에서 기뻐해. 주 안에서, 주 안에서 기뻐해. 주님 주심 깊은 곳으로 기뻐하라. 주 안에서, 주 안에서 기뻐해."
+    }
+   }
+  },
+  {
+   "label": "intro",
+   "start": 182.6473058922357,
+   "end": 195.84783391335654,
+   "crop_start": 181.15,
+   "crop_end": 197.35,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주 안에서 기뻐해 주 안에서 기뻐해 우리의 힘은 주를 기뻐하는 것 함께 기뻐 주의 주여 기뻐",
+     "vocals": "수환에서 기뻐해 수환에서 기뻐해 우리의 힘은 술을 입어 안고 함께 기뻐 춤을 추며 기뻐"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주 안에서 기뻐해, 주 안에서 기뻐해. 우리의 힘은 주를 기뻐하는 거. 함께 기뻐, 춤을 추요. 기뻐.",
+     "vocals": "주 안에서 기뻐해 주 안에서 기뻐해 부의 힘은 주를 기뻐하는 거 함께 기뻐 춤을 추며 기뻐."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 195.84783391335654,
+   "end": 209.5283811352454,
+   "crop_start": 194.35,
+   "crop_end": 211.03,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "기쁜 춤을 추며 크게 소리 높여 사랑의 신 주의 이름 내 마음 가득 찬양해 주",
+     "vocals": "주의 이름 내 마음 가득 찬양해"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주여 기뻐 주를 주며 그게 소리높여 사라지신 주에 이르 내 말은 나의 찬양에 주.",
+     "vocals": "이 번주를 추며 그게 소리 높여 사는 심장에 있는 내 마음 날에 사냥에 주는"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 209.5283811352454,
+   "end": 222.96891875675027,
+   "crop_start": 208.03,
+   "crop_end": 224.47,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "오늘도 우리의 삶을 지켜주시니 우리의 힘으로 주를 기뻐하는 것 기뻐",
+     "vocals": "오늘도 우리에게 힘을 주신 주님 우리의 힘은 주님을 기뻐한 것 기뻐"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리의 인은 쓰르르 뻗어나고 기뻐 춤을 추며.",
+     "vocals": "주님, 하나님, 새 주식, 우리의 힘은 주를 떠나고, 뛰고 춤을 추며."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 222.96891875675027,
+   "end": 236.88947557902316,
+   "crop_start": 221.47,
+   "crop_end": 238.39,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "기뻐 춤을 추며 크게 소리 높여 사랑의 신 주의 이름 내 마른 땅에 찬양해 주네",
+     "vocals": "기뻐 춤을 추며 크게 소리 높여 가라 신 주의 이름 내 마음 다해 찬양해"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "기뻐 춤을 추며 그대 소리 속에 살아있지 주께 내 말은 다들 사야해 주를.",
+     "vocals": "깊은 숨을 쉬며 그게 소리로 다 사라진 숨에 내 마른 다리 타령에 숨을."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 236.88947557902316,
+   "end": 250.33001320052801,
+   "crop_start": 235.39,
+   "crop_end": 251.83,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "향해 주를 바라보네 새 힘 주시리 우리의 힘은 주를 더하는 곳 깊어 춤을 추며 깊어",
+     "vocals": "수고하셨습니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주를 바라보는 세계 뜻이 우리의 힘은 주님의 힘으로만 주면.",
+     "vocals": "두를 바라보는 세계 투시 우리에 힘은 조금 더 한 포기 보충만 주면."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 250.33001320052801,
+   "end": 263.8905556222249,
+   "crop_start": 248.83,
+   "crop_end": 265.39,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "깊어 춤을 추며 크게 소리 높여 사랑의 신 주의 이름 내 마음 다해 찬양해 춤을 추며",
+     "vocals": "기뻐 춤을 추며 크게 소리 높여 사랑의 신 주의 이름 내 마음 다해 찬양해 주를"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "기뻐 축을 측여 그게 소리높여 사랑이 신 중에 이르되 마른다의 사냥에 주를.",
+     "vocals": "기뻐 춤을 추며 그게 소리 높여 사람이 신 중에 있는 내 마음은 다해 찬양에 춤을."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 263.8905556222249,
+   "end": 277.57110284411374,
+   "crop_start": 262.39,
+   "crop_end": 279.07,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "찬양의 주를 바라볼래 새 힘 주시리 우리의 힘은 주를 기뻐하는 것 무한한 나무",
+     "vocals": "제일 멋있다! 무화과나무!"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님을 바라볼 때 생뚱시 우리에 있는 주를 믿고 아는 것.",
+     "vocals": "주를 바라볼 때 Saint to City 우리의 힘은 주를 기뻐하는 것 무한한 나무 무한한 나무"
+    }
+   }
+  },
+  {
+   "label": "bridge",
+   "start": 277.57110284411374,
+   "end": 294.6117844713788,
+   "crop_start": 276.07,
+   "crop_end": 296.11,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "부활한 나무 마르고 고루 열매 없어도 주님을 함께 하시니 나는 기뻐하고 즐거워하리로다 나는 기뻐하고 즐거워하리로다",
+     "vocals": "주님을 신뢰하며 우리 손 높이를 모아서 부릅시다"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "무엇이 나를 말하고 모두의 메어써도. 지금 함께 하시니 나는 유서하고 즐거워할 도다. Keep on.",
+     "vocals": "주님을 신뢰하며 주님들 앞에 합심이 나는 기뻐하고 즐거워할 노가."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 294.6117844713788,
+   "end": 308.1723268930757,
+   "crop_start": 293.11,
+   "crop_end": 309.67,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "기뻐 죽을 주며 크게 소리 높여 살아계신 주의 이름 내 마음 다해 찬양해",
+     "vocals": "기뻐 춤을 추며 크게 소리 높여 사라진 주의 이름 내 마음 다해 찬양해 주의 이름 내 마음 다해 찬양해"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "기뻐 춤을 추며 그게 소리로 살아있지 주의 일을 내 마음 다해 참여해 주를.",
+     "vocals": "어서합시다. 키퍼 춤을 추면 그게 소리 없어 사라진 술에 이르는 마른 다리 산란에 술을"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 308.1723268930757,
+   "end": 321.8528741149646,
+   "crop_start": 306.67,
+   "crop_end": 323.35,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "찬양의 죽음을 달아줄 때 새 힘 주시 우리의 힘은 죽을 거라는 것 기뻐",
+     "vocals": "하나님의 죽을 바라볼 때 새 힘 주시니 우리의 힘은 죽을 거라고 기뻐"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나의 뜰을 가로질 세계 중심 우리의 이름 쓸 거야 멋진 기쁨",
+     "vocals": "힘을 줄 바로 때 생존 시리 우리의 힘을 쓸 거야. Give it to me, true love. Give"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 321.8528741149646,
+   "end": 335.4134165366615,
+   "crop_start": 320.35,
+   "crop_end": 336.91,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "기뻐 춤을 추며 크게 소리 높여 바람의 신 주의 이름 내 마음 다해 찬양해 주를",
+     "vocals": "기뻐 춤을 추며 크게 소리 높여 사랑의 신 주의 이름 내 마른 발에 찬양해"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "기뻐 숨을 쉬며 그게 소희 목표 살아계신 주의 이름 내 말은 나의 찬양에 주를.",
+     "vocals": "기뻐 숨을 쉬며 그게 소위 목표 살아계신 주의는 내 말은 다 해차니하게 숨을."
+    }
+   }
+  },
+  {
+   "label": "intro",
+   "start": 335.4134165366615,
+   "end": 349.09396375855033,
+   "crop_start": 333.91,
+   "crop_end": 349.07,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "찬양해 주를 바라볼게 새 힘 주시 우리의 믿음 주를 기뻐하는 것 기뻐하며 승리의 노래고",
+     "vocals": "만약에 술을 바라볼 때 새 힘주신 우리의 힘은 술을 기뻐한 것 기뻐하면 승리의 노래고"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "그만하게 술을 바라볼 때, Saint Jude City, 우리 기분 술기뻐하고.",
+     "vocals": "반향의 수를 바라볼 때, Save the City, 우리의 희극 수기법도."
+    }
+   }
+  }
+ ]
+}

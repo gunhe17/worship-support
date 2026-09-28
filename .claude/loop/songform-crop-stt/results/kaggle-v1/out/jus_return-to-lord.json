@@ -1,0 +1,409 @@
+{
+ "id": "jus_return-to-lord",
+ "team": "제이어스",
+ "title": "여호와께 돌아가자",
+ "url": "https://www.youtube.com/watch?v=kdFH0iSBU9I",
+ "kind": "studio",
+ "pad": 1.5,
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 15.120604824192968,
+   "crop_start": 0.0,
+   "crop_end": 16.62,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 백성",
+     "vocals": "내 백성"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "네 백성.",
+     "vocals": "네 백성."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 15.120604824192968,
+   "end": 29.161166446657866,
+   "crop_start": 13.62,
+   "crop_end": 30.66,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 백성이 나를 떠나 돌아섰지만 내 사랑이 나를 떠나 돌아섰지만",
+     "vocals": "내 백성이 나를 떠나 돌아섰지만 내 사랑이 나를 떠나 돌아섰지만"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 백성이 나를 떠나 돌아섰지만 내 사랑.",
+     "vocals": "내 백성이 나를 떠나 돌아섰지만 내 사랑."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 29.161166446657866,
+   "end": 42.96171846873875,
+   "crop_start": 27.66,
+   "crop_end": 44.46,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 사랑이 내 백성을 포기 못하니 내 모든 걸",
+     "vocals": "내 사랑이 내 백성을 포기 못하니 내 모든 것"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 사랑이 내 백성을 복이 못하니 내 모든 것을",
+     "vocals": "내 사랑이 내 백성을 보지 못하니 내 모든 것을"
+    }
+   }
+  },
+  {
+   "label": "pre-chorus",
+   "start": 42.96171846873875,
+   "end": 56.88227529101164,
+   "crop_start": 41.46,
+   "crop_end": 58.38,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 모든 걸 내어주고 나 그들을 얻으리라 여호와께 돌아가",
+     "vocals": "내 모든 것 내어주고 나 그들을 얻으리라 여호와께 돌아가"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 모든 걸 내어주고 나 그들을 얻으리라 여호와께 돌.",
+     "vocals": "내 모든 걸 내어주고 나 그들을 얻으리라 여호와께 돌아."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 56.88227529101164,
+   "end": 81.36325453018121,
+   "crop_start": 55.38,
+   "crop_end": 82.86,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "여호와께 돌아가자 우린 돌아서도 그는 변치 않네 여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네",
+     "vocals": "여호와께 돌아가자 우린 돌아서도 그는 변치 않네 여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "여호하게 돌아가자. 우린 돌아서도 그는 변지 않네. 여호하게 돌아가자. 우린 넘어져도 그 사랑 영원하네.",
+     "vocals": "여호와께 돌아가자. 우린 돌아서도 그는 변지 않네. 여호와께 돌아가자. 우린 넘어져도 그 사랑 영원하네."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 81.36325453018121,
+   "end": 95.16380655226209,
+   "crop_start": 79.86,
+   "crop_end": 96.66,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "영원하네",
+     "vocals": "영원하네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "영원하게 내 백성.",
+     "vocals": "영원하게 내 백성."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 95.16380655226209,
+   "end": 108.72434897395895,
+   "crop_start": 93.66,
+   "crop_end": 110.22,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 백성이 나를 떠나 돌아섰지만",
+     "vocals": "내 백성이 나를 떠나 돌아섰지만 내 사랑이 나를 떠나 돌아섰지만"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 백선이 나를 떠나 돌아섰지만 내 삶은",
+     "vocals": "내 백성이 나를 떠나 돌아섰지만 내 삶은."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 108.72434897395895,
+   "end": 123.00492019680787,
+   "crop_start": 107.22,
+   "crop_end": 124.5,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 사랑이 내 백성은 포기 못하니 내 모든 건",
+     "vocals": "내 사랑이 내 백성을 포기 못하니 내 모든 것"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 사랑이 내 백성을 포기 못하니 내 모든 것을",
+     "vocals": "내 사랑이 내 백성을 포기 못하니 내 모든."
+    }
+   }
+  },
+  {
+   "label": "pre-chorus",
+   "start": 123.00492019680787,
+   "end": 135.6054242169687,
+   "crop_start": 121.5,
+   "crop_end": 137.11,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 모든 걸 내어주고 나 그들을 얻으리라",
+     "vocals": "내 모든 걸 메어주고 나 그들을 얻으리라 여호와께"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 모든 거 내어주고 나 그들을 얻으라 여호와께서",
+     "vocals": "내 모든 걸 내어주고 나 그들을 얻으리라 여호와께서."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 135.6054242169687,
+   "end": 149.52598103924157,
+   "crop_start": 134.11,
+   "crop_end": 151.03,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "여호와께 돌아가자 우린 돌아서도 그는 변치 않네 여호와께",
+     "vocals": "여호와께 돌아가자 우린 돌아서도 그는 변치 않네 여호와께"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "여호와께 돌아가자. 우리는 돌아서도 그는 변치 않네. 여호와께",
+     "vocals": "여호와께 돌아가자. 우린 돌아서도 그는 변치 않네. 여호와께"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 149.52598103924157,
+   "end": 164.64658586343452,
+   "crop_start": 148.03,
+   "crop_end": 166.15,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네 사랑은 오래",
+     "vocals": "내 여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네 사랑은 오래"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "안돼 여호와께 돌아가자. 우린 넘어져도 그 사랑 영원하네. 사랑을 오래.",
+     "vocals": "내 여호와께 돌아가자. 우린 넘어져도 그 사랑 영원하네. 사랑은 오래."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 164.64658586343452,
+   "end": 191.16764670586824,
+   "crop_start": 163.15,
+   "crop_end": 192.67,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "사랑을 오래 참고 자신을 내어주네 서로 사랑할 때 세상은 죽어네 사랑은 절대 지지 않네",
+     "vocals": "사랑은 오래 참고 자신을 내어주네 서로 사랑할 때 세상은 주보네 사랑은 절대 지지 않네 사랑을"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "사랑은 오래 참고 자신을 내어주네. 서로 사랑할 때 세상은 주고 내 사랑은 절대 지지 않네. 사랑은",
+     "vocals": "사랑은 오래 참고 자신을 내어주네. 서로 사랑할 때 세상은 주변에 사랑은 절대 지지 않네. 사랑은"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 191.16764670586824,
+   "end": 206.4082563302532,
+   "crop_start": 189.67,
+   "crop_end": 207.91,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "사랑은 오래 참고 자신을 내어주네 서로 사랑할 때",
+     "vocals": "사랑은 오래 참고 자신을 내어주네 서로 사랑할 때"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "사랑을 오래장보 자신을 내어주네 서로 사랑할 때.",
+     "vocals": "사랑을 오래 장보 자신을 내어주네 서로 사랑할 때."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 206.4082563302532,
+   "end": 218.88875555022202,
+   "crop_start": 204.91,
+   "crop_end": 220.39,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "서로 사랑할 때 세상은 주보네 사랑은 절대 지지 않네 여호와",
+     "vocals": "서로 사랑할 때 세상은 주문해 사랑은 절대 지지 않네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "서로 사랑할 때 세상은 주변에 사랑은 절대 지지 않네 여우와",
+     "vocals": "서로 사랑할 때 세상은 주문해 사랑은 절대 지지 않네 여호와"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 218.88875555022202,
+   "end": 233.88935557422298,
+   "crop_start": 217.39,
+   "crop_end": 235.39,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "여호와께 돌아가자 우린 돌아서도 그는 변치 않네 여호와께 돌아가자",
+     "vocals": "여호와께 돌아가자 우린 돌아서도 그댄 변치 않네 여호와께 돌아가자"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "여호와께 돌아가자. 우린 돌아서고 그는 변치 않는 여호와께.",
+     "vocals": "여호와께 돌아가자. 우린 돌아서도 그는 변치 않네. 여호와께 돌아가자."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 233.88935557422298,
+   "end": 246.7298691947678,
+   "crop_start": 232.39,
+   "crop_end": 248.23,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네 여호와께",
+     "vocals": "여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네 여호와께 돌아가자"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "영호하게 돌아가자. 우린 넘어져도 그 사랑 영원하네. 영호하게.",
+     "vocals": "영원하게 돌아가다. 우린 넘어져도 그 사랑 영원하네. 영원하게."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 246.7298691947678,
+   "end": 272.4108964358574,
+   "crop_start": 245.23,
+   "crop_end": 273.91,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "여호와께 돌아가자 우린 돌아서도 그는 변치 않네 여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네",
+     "vocals": "여호와께 돌아가자 우린 돌아서도 그는 변치 않네 여호와께 돌아가자 우린 넘어져도 그 사랑 영원하네 시청해주셔서 감사합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "여호와께 돌아가자. 우린 뭐라서도 그는 편치 않네. 여호와께 돌아가자. 우린 뭐저도 그 사랑 영원하네.",
+     "vocals": "여호와께 돌아가자. 우린 도라서도 그는 변치 않네. 여호와께 돌아가자. 우린 넘어져도 그 사랑 영원하네."
+    }
+   }
+  },
+  {
+   "label": "outro",
+   "start": 272.4108964358574,
+   "end": 288.7315492619705,
+   "crop_start": 270.91,
+   "crop_end": 290.23,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "영원하네",
+     "vocals": "영원하네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "영원하게.",
+     "vocals": "영원한데."
+    }
+   }
+  },
+  {
+   "label": "intro",
+   "start": 288.7315492619705,
+   "end": 291.0116404656186,
+   "crop_start": 287.23,
+   "crop_end": 291.03,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "한글자막 by 한효주",
+     "vocals": "시청해주셔서 감사합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "아.",
+     "vocals": "그런데."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,493 @@
+{
+ "id": "teamluke_built-together",
+ "team": "팀룩워십",
+ "title": "함께 지어져 가네",
+ "url": "https://www.youtube.com/watch?v=TtH4qHWdTto",
+ "kind": "live",
+ "pad": 1.5,
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 16.08064322572903,
+   "crop_start": 0.0,
+   "crop_end": 17.58,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "우리는",
+     "vocals": "아멘"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리는.",
+     "vocals": "우리는."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 16.08064322572903,
+   "end": 31.201248049921997,
+   "crop_start": 14.58,
+   "crop_end": 32.7,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "우리는 하나님의 자녀 주 사랑하네 우리가 할 때 주님 나를 사랑하네",
+     "vocals": "우리는 하나님의 자녀 주 사랑하네 우리가 할 때 주님 나를 사랑하네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리는 하나님의 자녀. 주 사랑함에 우리 거할 때, 주님 나를.",
+     "vocals": "우리는 하나님의 자녀, 주 사랑함에 우리 거할 때, 주님 나를."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 31.201248049921997,
+   "end": 47.64190567622705,
+   "crop_start": 29.7,
+   "crop_end": 49.14,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님 나를 사랑하신 것 같이 우리도 서로 사랑할 수 있네",
+     "vocals": "주님 나를 사랑하신 것 같이 우리도 서로 사랑할 수 있네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님 나를 사랑하신 것 같이 우리도 서로 사랑할 수 있네. 우리는.",
+     "vocals": "주님 나를 사랑하신 것 같이 우리도 서로 사랑할 수 있네. 우리는."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 47.64190567622705,
+   "end": 62.64250570022801,
+   "crop_start": 46.14,
+   "crop_end": 64.14,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "우리는 주의 몸 된 교회 모든 지체가 하나 될 때 예수님의 이름으로 기도합니다.",
+     "vocals": "우리는 주의 몸 된 교회 모든 지체가 하나 될 때 예수님의 이름으로 기도합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리는 주의 몸 된 교회 모든 지체가 하나 될 때 예수님의",
+     "vocals": "우리는 주의 몸 된 교회 모든 지체가 하나 될 때 예수님의"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 62.64250570022801,
+   "end": 79.20316812672506,
+   "crop_start": 61.14,
+   "crop_end": 80.7,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님의 마음을 닮아가며 고통과 즐거움 함께 나누네 하나님 안에서 하나님",
+     "vocals": "예수님의 마음을 닮아가며 고통과 즐거움 함께 나누네 하나님 안에서 하나님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님의 마인을 닮아가며 고통과 즐거움 함께 나누네 하나님 안에서 하나님.",
+     "vocals": "예수님의 마음을 닮아가며 고통과 즐거움 함께 나누네 하나님 안에서 하나님"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 79.20316812672506,
+   "end": 94.08376335053401,
+   "crop_start": 77.7,
+   "crop_end": 95.58,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 거하실 성전이 되네 모퉁이 똘대신 예수와 모퉁이 똘대신 예수와",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 거하실 성전이 되네 모퉁이 똘대신 예수와 모퉁이 똘대신 예수와"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "모퉁이 돌 대신 예수와 모퉁이 돌",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 거하시길 성장이 되네 모퉁이 떨대신 예수와 모퉁이 떨"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 94.08376335053401,
+   "end": 106.68426737069483,
+   "crop_start": 92.58,
+   "crop_end": 108.18,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "모퉁이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네",
+     "vocals": "모퉁이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "모퉁이 떠들듯이 예수아, 모퉁이 떠들듯이 예수아, 하나 되게 하신 성령 안에 함께 지어져 가네.",
+     "vocals": "모퉁이 돌 대신 예수, 모퉁이 돌 대신 예수 하나에게 하신 성령 안에 함께 지어져 가네."
+    }
+   }
+  },
+  {
+   "label": "inst",
+   "start": 106.68426737069483,
+   "end": 122.40489619584783,
+   "crop_start": 105.18,
+   "crop_end": 123.9,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "1부에서 계속 됩니다.",
+     "vocals": "우리는 우리는"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리는 우리는.",
+     "vocals": "우리는 우리는."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 122.40489619584783,
+   "end": 137.5255010200408,
+   "crop_start": 120.9,
+   "crop_end": 139.03,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "우리는 하나님의 자녀 주 사랑하는 우리가 할 때 주님 나를 사랑하는",
+     "vocals": "우리는 하나님의 자녀 주 사랑하네 우리가 할 때 주님 나를 사랑하네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리는 하나님의 자녀. 주 사랑한 내 우리거 할 때. 주님 나를 사랑",
+     "vocals": "우리는 우리는 하나님의 자녀 주 사랑 안에 우리 거할 때 주님 나를."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 137.5255010200408,
+   "end": 153.84615384615384,
+   "crop_start": 136.03,
+   "crop_end": 155.35,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님 나를 사랑하신 것 같이 우리도 서로 사랑할 수 있네",
+     "vocals": "주님 나를 사랑하신 것 같이 우리도 서로 사랑할 수 있네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님 나를 사랑하신 것 같이 우리도 서로 사랑할 수 있네. 우리는 주의 몸 된 교회입니다. 우리는",
+     "vocals": "주님 나를 사랑하신 것 같이 우리도 서로 살아할 수 있네. 우리는 주의 본당 교회입니다. 우리는"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 153.84615384615384,
+   "end": 169.32677307092283,
+   "crop_start": 152.35,
+   "crop_end": 170.83,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "우리는 주의 몸된 교회 모든 지체가 하나 될 때 예수님의 마음을",
+     "vocals": "우리는 주의 몸 된 교회입니다. 우리는 주의 몸 된 교회 모든 지체가 하나 될 때 예수님의 마음"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리는 주의 몸 된 교회 우리는 주의 몸 된 교회 모든 지체가 하나 될 때 예수님의 말",
+     "vocals": "우리는 주의 몸 된 교회 우리는 주의 몸 된 교회 모든 지체가 하나 될 때 예수님의 말"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 169.32677307092283,
+   "end": 185.28741149645987,
+   "crop_start": 167.83,
+   "crop_end": 186.79,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님의 마음을 닮아가며 고통과 즐거움 함께 나누네 하나님의 마음에서",
+     "vocals": "예수님의 마음을 닮아가며 고통과 즐거움 함께 나누네 하나님의 말에서"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님의 마음을 닮아가며 고통과 즐거움 함께 나누네. 하나님. 하나님.",
+     "vocals": "예수님의 마음을 닮아가며 고통과 즐거움 함께 나누네. 하나님 말씀 하나님."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 185.28741149645987,
+   "end": 200.64802592103683,
+   "crop_start": 183.79,
+   "crop_end": 202.15,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 허하신 성전이 되네 모퉁이 똘되",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 허하실 성전이 되네 모퉁이 똘되"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 거하시 성전이 되네 모퉁이 돌 되",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 거하시 성전이 되네 모퉁이 돌 되"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 200.64802592103683,
+   "end": 216.72866914676587,
+   "crop_start": 199.15,
+   "crop_end": 218.23,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "모퉁이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네 하나님 안에서 서로 이어질 수 있습니다",
+     "vocals": "모퉁이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네 하나님 안에서 우리 서로 이어질 수 있습니다"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "모퉁이 돌되신 예수와 하나되게 하신 성령 안에 함께 지어져가네. 하나님만에서 서로 이어질 수 있습니다. 하나님이",
+     "vocals": "모퉁이 돌되신 예수와 하나되게 하신 성령 안에 함께 지어져가네. 하나님 안에서 우리 서로 이어질 수 있습니다. 하나님."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 216.72866914676587,
+   "end": 232.08928357134286,
+   "crop_start": 215.23,
+   "crop_end": 233.59,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 거하시 성전이 되네 모퉁이 똘되",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 거하실 성전이 되네 모퉁이 똘되"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 거하시 성전이 되네 모퉁이 돌 되네",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 거하시 성정이 되네 모퉁이 돌되"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 232.08928357134286,
+   "end": 244.20976839073563,
+   "crop_start": 230.59,
+   "crop_end": 245.71,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "모퉁이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네",
+     "vocals": "모퉁이 똘되신 예수와 하나 되게 하신 성명 안에 함께 지어져 가네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "모퉁이 떠들 되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네.",
+     "vocals": "모퉁이 돌 되신 예수와 하나 되게 하심 선명한에 함께 지어져 가네."
+    }
+   }
+  },
+  {
+   "label": "inst",
+   "start": 244.20976839073563,
+   "end": 259.9303972158886,
+   "crop_start": 242.71,
+   "crop_end": 261.43,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "오 주님의 이름으로 기도합니다",
+     "vocals": "하나님의 이름으로 기도합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "어떻게 되시는 예수와 어떻게 될 돼",
+     "vocals": "모퉁이 돌듯이 예수와 모퉁이 돌듯이"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 259.9303972158886,
+   "end": 275.77103084123365,
+   "crop_start": 258.43,
+   "crop_end": 277.27,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "모든 잇돌되신 예수와 하나 되게 하신 성령 안에 함께 지어져가네 하나님",
+     "vocals": "모퉁이 입돌 되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네 하나님 말해서 하나님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수와 모퉁이 돌 되신 예수와 하나 되게 하신 선명 안에 함께 지어져 가네 하나님 말씀 부어 하나님",
+     "vocals": "모퉁이 돌 되신 예수와 하늘 되게 하신 성령 안에 함께 지어져 가네. 하나님께서 무어 하나님."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 275.77103084123365,
+   "end": 291.61166446657865,
+   "crop_start": 274.27,
+   "crop_end": 293.11,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 더하실 성장이 되네 모퉁이 돌 대신",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 더하실 성전이 되네 모든 이 똘대신"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 거하시어 성전이 되네 모든 이 떨대시.",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 더하실 성전이 되네 모퉁이 돌듯이"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 291.61166446657865,
+   "end": 307.21228849153965,
+   "crop_start": 290.11,
+   "crop_end": 308.71,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "모퉁이 똘대신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네 하나님",
+     "vocals": "모든 이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네 하나님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "모든 이돌 대신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네. 하나님이",
+     "vocals": "모퉁이 돌 되신 예수와 하나되게 하신 성령 안에 함께 지어져 가네. 하나님이"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 307.21228849153965,
+   "end": 323.17292691707667,
+   "crop_start": 305.71,
+   "crop_end": 324.67,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 거하실 성전이 되네 모퉁이 똘되",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 거하실 성전이 되네 모퉁이 똘되"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님 안에서 우리 서로 이어져 주가 거하실 성전이 되네 모퉁이 돌 되네",
+     "vocals": "하나님 안에서 우리 서로 이어져 주가 거하실 성전이 되네 모퉁이 돌 되어"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 323.17292691707667,
+   "end": 336.6134645385815,
+   "crop_start": 321.67,
+   "crop_end": 338.11,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "모퉁이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네",
+     "vocals": "모퉁이 똘되신 예수와 하나 되게 하신 성령 안에 함께 지어져 가네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "모퉁이 돌되신 예수와 하나되게 하신 성령 안에 함께 지어져 가네.",
+     "vocals": "모퉁이 돌되신 예수와 하나되게 하신 성령 안에 함께 지어져 가네."
+    }
+   }
+  },
+  {
+   "label": "outro",
+   "start": 336.6134645385815,
+   "end": 350.65402616104643,
+   "crop_start": 335.11,
+   "crop_end": 350.69,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "아멘",
+     "vocals": "아멘"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "아멘. 아멘. 주님의 영발목 소리 듣지 마요. 아멘. 주님은 능히 그렇게 행하실 분이십니다. 아멘. 우리 같이 기도하겠습니다.",
+     "vocals": "아멘. 우리 함께 영발목 소리해 주실까요? 아멘. 주님은 등이 그렇게 행하실 분이십니다. 아멘. 우리 같이 기도하겠습니다."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "gunhe17/worship-songform-ghost613",
+  "title": "worship-songform-ghost613",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["gunhe17/worship-songform-pool"],
+  "kernel_sources": ["gunhe17/worship-songform-crop-stt"],
+  "competition_sources": []
+}

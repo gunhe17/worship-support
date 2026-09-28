@@ -1,0 +1,17 @@
+  0%|          | 0.00/77.3M [00:00<?, ?B/s]  0%|          | 128k/77.3M [00:00<03:57, 341kB/s]  0%|          | 256k/77.3M [00:00<02:24, 561kB/s]  1%|          | 512k/77.3M [00:00<01:18, 1.03MB/s]  1%|▏         | 1.00M/77.3M [00:00<00:40, 1.98MB/s]  3%|▎         | 2.00M/77.3M [00:00<00:20, 3.87MB/s]  5%|▌         | 4.00M/77.3M [00:01<00:10, 7.67MB/s] 10%|▉         | 7.50M/77.3M [00:01<00:05, 13.7MB/s] 14%|█▍        | 11.1M/77.3M [00:01<00:03, 18.0MB/s] 19%|█▉        | 14.6M/77.3M [00:01<00:03, 20.7MB/s] 23%|██▎       | 18.1M/77.3M [00:01<00:02, 22.5MB/s] 28%|██▊       | 21.8M/77.3M [00:01<00:02, 24.0MB/s] 33%|███▎      | 25.4M/77.3M [00:01<00:02, 25.0MB/s] 38%|███▊      | 29.0M/77.3M [00:01<00:01, 26.4MB/s] 42%|████▏     | 32.6M/77.3M [00:02<00:01, 27.3MB/s] 47%|████▋     | 36.0M/77.3M [00:02<00:01, 29.2MB/s] 50%|█████     | 38.9M/77.3M [00:02<00:01, 27.2MB/s] 54%|█████▍    | 41.6M/77.3M [00:02<00:01, 25.5MB/s] 59%|█████▊    | 45.4M/77.3M [00:02<00:01, 26.4MB/s] 63%|██████▎   | 48.9M/77.3M [00:02<00:01, 26.5MB/s] 68%|██████▊   | 52.6M/77.3M [00:02<00:00, 26.9MB/s] 73%|███████▎  | 56.1M/77.3M [00:03<00:00, 26.8MB/s] 77%|███████▋  | 59.8M/77.3M [00:03<00:00, 27.0MB/s] 82%|████████▏ | 63.1M/77.3M [00:03<00:00, 26.6MB/s] 87%|████████▋ | 66.9M/77.3M [00:03<00:00, 27.1MB/s] 91%|█████████ | 70.4M/77.3M [00:03<00:00, 26.9MB/s] 96%|█████████▌| 74.0M/77.3M [00:03<00:00, 27.1MB/s]100%|██████████| 77.3M/77.3M [00:03<00:00, 21.2MB/s]
+Traceback (most recent call last):
+  File "/kaggle/working/scripts/analyze.py", line 39, in <module>
+    segments = [s for s in json.load(open(args.segments)) if s["end"] - s["start"] > 0.5]
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

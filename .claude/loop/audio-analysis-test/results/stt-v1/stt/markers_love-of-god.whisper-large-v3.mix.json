@@ -1,0 +1,14 @@
+{
+ "song": "markers_love-of-god",
+ "model": "whisper-large-v3",
+ "input": "mix",
+ "seconds": 1.6,
+ "text": "감사합니다.",
+ "segments": [
+  {
+   "start": 379.47,
+   "end": 380.29,
+   "text": " 감사합니다."
+  }
+ ]
+}

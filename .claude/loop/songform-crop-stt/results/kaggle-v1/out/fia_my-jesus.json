@@ -1,0 +1,367 @@
+{
+ "id": "fia_my-jesus",
+ "team": "피아워십",
+ "title": "나의 예수님",
+ "url": "https://www.youtube.com/watch?v=Ozm81MUkxRE",
+ "kind": "studio",
+ "pad": 1.5,
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 18.840753630145205,
+   "crop_start": 0.0,
+   "crop_end": 20.34,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 삶 속에",
+     "vocals": "내 삶 속에"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 삶 속에.",
+     "vocals": "내 삶 속에."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 18.840753630145205,
+   "end": 32.28129125165007,
+   "crop_start": 17.34,
+   "crop_end": 33.78,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 삶속에 감당치 못한 고난을 통과한 예수",
+     "vocals": "내 삶속에 감당치 못한 고난을 통과한 예수 연단을 통과한 예수"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 삶 속에 감당치 못한 고난을 통과한 예수 연단이",
+     "vocals": "내 삶 속에 감당치 못한 고난을 통과한 예수 연단이"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 32.28129125165007,
+   "end": 48.361934477379094,
+   "crop_start": 30.78,
+   "crop_end": 49.86,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "연단으로 순종으로 굳게 지키며 주의 약속 이루시리라",
+     "vocals": "연단으로 순종으로 굳게 지키며 주의 약속 이루시리라"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "연단으로 순종으로 굳게 지키며 주의 약속 이루시리라 중심이리.",
+     "vocals": "연단으로 순종으로 굳게 지키며 주의 약속 이루시리라 충실히."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 48.361934477379094,
+   "end": 62.522500900036,
+   "crop_start": 46.86,
+   "crop_end": 64.02,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "중심이 든 세상 속에서 내 안에 충만한 예수 소망으로 지키고",
+     "vocals": "주신 이름 세상 속에서 내 안에 충만한 예수 소망으로"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "중심이 된 세상 속에서 내 안에 충만한 예수 소망으로.",
+     "vocals": "중심이 된 세상 속에서는 내 안에 충만한 예수 소망으로."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 62.522500900036,
+   "end": 76.92307692307692,
+   "crop_start": 61.02,
+   "crop_end": 78.42,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "소망으로 자랑으로 붙게 잡으며 나의 삶은 그의 집이라 예수님",
+     "vocals": "소망으로 자랑으로 웃게 잡으면 나의 삶은 그의 집이라"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "소망으로 자랑으로 붙게 잡으며 나의 삶인 그의 집이라 예수님.",
+     "vocals": "소망으로 자랑으로 붙게 잡으며 나의 삶은 그의 집이라 예수님."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 76.92307692307692,
+   "end": 92.04368174726989,
+   "crop_start": 75.42,
+   "crop_end": 93.54,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님 나의 예수님 복음의 중심 대신에 무너진 내 삶을 세우신 예수님 예수님 나의 예수님 복음의 중심 대신에",
+     "vocals": "예수님 나의 예수님 복음의 중심 되시네 무너진 내 삶을 세우신 예수님 예수님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님 나의 예수님 구름의 중심 대신해 무너진 내 삶을 세우신 예수님 예수님",
+     "vocals": "예수님 나의 예수님 부끄매 중심 배신해 무너진 내 삶을 세우신 예수님 예수님"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 92.04368174726989,
+   "end": 114.84459378375135,
+   "crop_start": 90.54,
+   "crop_end": 116.34,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님",
+     "vocals": "예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님, 예수님, 나의 예수님, 사랑해 주심 내신에 반복된 모든 죄 덮으신 주님의 내 삶 속에",
+     "vocals": "예수님, 나의 예수님, 사랑해 주심 내신에 반복된 모든 죄 덮으심 주님의 내 삶 속에"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 114.84459378375135,
+   "end": 129.48517940717628,
+   "crop_start": 113.34,
+   "crop_end": 130.99,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 삶속에 감당치 못한 고난을 통과한 예수 연단으로 숨쉬고",
+     "vocals": "내 삶속에 감당치 못한 고난을 통과한 예수는 연단으로 숨쉬고"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 삶 속에 감당치 못한 고난을 통과한 예수 연단으로 숨은",
+     "vocals": "내 삶 속에 감당치 못한 고난을 통과한 예수 연단으로 숨."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 129.48517940717628,
+   "end": 144.36577463098524,
+   "crop_start": 127.99,
+   "crop_end": 145.87,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "영당으로 순종으로 함께 지키며 주의 약속 이루시리라",
+     "vocals": "연단으로 순종으로 굳게 지키며 주의 약속 이루시리라"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "연단으로 순종으로 붙게 지키며 주의 약속 이를 실이라 충실히.",
+     "vocals": "연달이로 순종으로 뿌개지키며 주의 약속 이루시리라 중심이."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 144.36577463098524,
+   "end": 172.92691707668305,
+   "crop_start": 142.87,
+   "crop_end": 174.43,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "중심이 있는 세상 속에서 내 안에 충만한 예수 소망으로 자랑으로 굳게 잡으며 나의 삶을 그의 집이라 예수님",
+     "vocals": "중심이 있는 세상 속에서 내 안에 충만한 예수 소망으로 자랑으로 두께 잡으며 나의 삶은 그의 집이라 예수님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "중심이 세상 속에서 내 안에 충만한 예수, 소망으로 자랑으로 붙들며 나의 삶 위에 집이로 예수님.",
+     "vocals": "중심이 된 세상 속에서 내 안에 충만한 예수 수많이로 자랑으로 붙들며 나의 삶 위에 집이라 예수 니"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 172.92691707668305,
+   "end": 187.6875075003,
+   "crop_start": 171.43,
+   "crop_end": 189.19,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님 나의 예수님 복음의 중심 대신에 무너진 내 삶을 세우신 예수님 예수님",
+     "vocals": "예수님 나의 예수님 부름의 중심 대신에 무너진 내 삶을 세우신 예수님 예수님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님 나의 예수님 구름에 중심 내신에 무너진 내 삶을 세우신 예수님 예수님",
+     "vocals": "예수님 나의 예수님 모든 중심 대신에 무너진 내 삶을 세울 심 예수님 예수님"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 187.6875075003,
+   "end": 206.04824192967718,
+   "crop_start": 186.19,
+   "crop_end": 207.55,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님 예수님 나의 예수님 사랑의 중심 되시네 반복된 모든 죄 덮으신 주 예수님 예수님",
+     "vocals": "예수님 예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주 내 예수님 예수님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님, 예수님, 나의 예수님, 사랑의 중심 되시네 안목된 모든 뜰 더 풍신 주님, 예수님, 예수님.",
+     "vocals": "예수님 예수님 나의 예수님 사랑의 중심 내 지내 반복된 모든죄 더 불심 주님 예수님 예수님"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 206.04824192967718,
+   "end": 220.92883715348614,
+   "crop_start": 204.55,
+   "crop_end": 222.43,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님 나의 예수님 복음의 중심 대신에 무너진 내 삶을 세우신 예수님 예수님",
+     "vocals": "예수님 나의 예수님 복음의 중심 대신에 무너진 내 삶을 세우신 예수님 예수님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님, 예수님, 나의 예수님, 우리의 중심 내신에 무너진 내 삶을 세울 신 예수님, 예수님.",
+     "vocals": "예수님, 예수님, 나의 예수님, 모든 내 중심 대신에 무너진 내 삶을 세울지니 예수님, 예수님."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 220.92883715348614,
+   "end": 239.28957158286332,
+   "crop_start": 219.43,
+   "crop_end": 240.79,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님 예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님의 예수님",
+     "vocals": "예수님 예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님 예수님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님 예수님 나의 예수님 사랑의 중심 내 신에 감복된 모든 죄 덮으신 주님에 예수님.",
+     "vocals": "예수님 예수님 나의 예수님 사랑의 중심 내 신에 반복된 모든 죄 덮으신 주님 예수님"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 239.28957158286332,
+   "end": 254.8901956078243,
+   "crop_start": 237.79,
+   "crop_end": 256.39,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님의",
+     "vocals": "예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님의",
+     "vocals": "예수님 나의 예수님 사랑의 중심 대신에 반복된 모든 죄 덮으신 주님의."
+    }
+   }
+  },
+  {
+   "label": "outro",
+   "start": 254.8901956078243,
+   "end": 275.1710068402736,
+   "crop_start": 253.39,
+   "crop_end": 276.67,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 이름",
+     "vocals": "아멘"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주인내.",
+     "vocals": "주인내."
+    }
+   }
+  },
+  {
+   "label": "intro",
+   "start": 275.1710068402736,
+   "end": 276.8510740429617,
+   "crop_start": 273.67,
+   "crop_end": 276.86,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "감사합니다.",
+     "vocals": "감사합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "감사합니다.",
+     "vocals": "그렇죠."
+    }
+   }
+  }
+ ]
+}

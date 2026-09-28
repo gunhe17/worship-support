@@ -1,0 +1,121 @@
+[
+ {
+  "label": "intro",
+  "start": 0.0,
+  "end": 18.840753630145205,
+  "crop_start": 0.0,
+  "crop_end": 20.34
+ },
+ {
+  "label": "verse",
+  "start": 18.840753630145205,
+  "end": 32.28129125165007,
+  "crop_start": 17.34,
+  "crop_end": 33.78
+ },
+ {
+  "label": "verse",
+  "start": 32.28129125165007,
+  "end": 48.361934477379094,
+  "crop_start": 30.78,
+  "crop_end": 49.86
+ },
+ {
+  "label": "verse",
+  "start": 48.361934477379094,
+  "end": 62.522500900036,
+  "crop_start": 46.86,
+  "crop_end": 64.02
+ },
+ {
+  "label": "verse",
+  "start": 62.522500900036,
+  "end": 76.92307692307692,
+  "crop_start": 61.02,
+  "crop_end": 78.42
+ },
+ {
+  "label": "chorus",
+  "start": 76.92307692307692,
+  "end": 92.04368174726989,
+  "crop_start": 75.42,
+  "crop_end": 93.54
+ },
+ {
+  "label": "chorus",
+  "start": 92.04368174726989,
+  "end": 114.84459378375135,
+  "crop_start": 90.54,
+  "crop_end": 116.34
+ },
+ {
+  "label": "verse",
+  "start": 114.84459378375135,
+  "end": 129.48517940717628,
+  "crop_start": 113.34,
+  "crop_end": 130.99
+ },
+ {
+  "label": "verse",
+  "start": 129.48517940717628,
+  "end": 144.36577463098524,
+  "crop_start": 127.99,
+  "crop_end": 145.87
+ },
+ {
+  "label": "chorus",
+  "start": 144.36577463098524,
+  "end": 172.92691707668305,
+  "crop_start": 142.87,
+  "crop_end": 174.43
+ },
+ {
+  "label": "chorus",
+  "start": 172.92691707668305,
+  "end": 187.6875075003,
+  "crop_start": 171.43,
+  "crop_end": 189.19
+ },
+ {
+  "label": "verse",
+  "start": 187.6875075003,
+  "end": 206.04824192967718,
+  "crop_start": 186.19,
+  "crop_end": 207.55
+ },
+ {
+  "label": "chorus",
+  "start": 206.04824192967718,
+  "end": 220.92883715348614,
+  "crop_start": 204.55,
+  "crop_end": 222.43
+ },
+ {
+  "label": "chorus",
+  "start": 220.92883715348614,
+  "end": 239.28957158286332,
+  "crop_start": 219.43,
+  "crop_end": 240.79
+ },
+ {
+  "label": "chorus",
+  "start": 239.28957158286332,
+  "end": 254.8901956078243,
+  "crop_start": 237.79,
+  "crop_end": 256.39
+ },
+ {
+  "label": "outro",
+  "start": 254.8901956078243,
+  "end": 275.1710068402736,
+  "crop_start": 253.39,
+  "crop_end": 276.67
+ },
+ {
+  "label": "intro",
+  "start": 275.1710068402736,
+  "end": 276.8510740429617,
+  "crop_start": 273.67,
+  "crop_end": 276.86
+ }
+]

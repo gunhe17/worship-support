@@ -1,0 +1,62 @@
+{
+ "file": "synth.wav",
+ "stems": true,
+ "device": "mps",
+ "tuning_offset": -0.04,
+ "bpm": {
+  "value": 71.4,
+  "alternates": [
+   35.7,
+   142.9
+  ],
+  "meter_beats_per_bar": 4,
+  "ibi_cv": 0.011
+ },
+ "key": {
+  "song_key_essentia_majority": "G major"
+ },
+ "sections": [
+  {
+   "label": "verse",
+   "start": 0.0,
+   "end": 16.6,
+   "bpm": 71.4,
+   "key_essentia": "G major",
+   "strength": 0.88,
+   "key_cnn": "G major"
+  },
+  {
+   "label": "verse",
+   "start": 16.6,
+   "end": 29.9,
+   "bpm": 71.4,
+   "key_essentia": "G major",
+   "strength": 0.83,
+   "key_cnn": "G major"
+  },
+  {
+   "label": "inst",
+   "start": 29.9,
+   "end": 46.6,
+   "bpm": 71.4,
+   "key_essentia": "C minor",
+   "strength": 0.63,
+   "key_cnn": "G major"
+  },
+  {
+   "label": "inst",
+   "start": 46.6,
+   "end": 60.0,
+   "bpm": 71.4,
+   "key_essentia": "Ab major",
+   "strength": 0.82,
+   "key_cnn": "F minor"
+  }
+ ],
+ "timing_s": {
+  "beat_this": 5.2,
+  "songformer": 16.6,
+  "demucs": 34.0,
+  "key": 20.7
+ }
+}

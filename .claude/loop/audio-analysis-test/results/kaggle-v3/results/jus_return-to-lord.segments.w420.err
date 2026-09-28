@@ -1,0 +1,10 @@
+Fetching 28 files:   0%|          | 0/28 [00:00<?, ?it/s]Fetching 28 files: 100%|██████████| 28/28 [00:00<00:00, 187904.82it/s]
+You are using a model of type songformer to instantiate a model of type custom_model. This is not supported for all configurations of models and can yield errors.
+/usr/local/lib/python3.12/dist-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+load 10.5s
+/root/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:264: RuntimeWarning: invalid value encountered in divide
+  logits["function_logits"] /= logits_num["function_logits"]
+/root/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:265: RuntimeWarning: invalid value encountered in divide
+  logits["boundary_logits"] /= logits_num["boundary_logits"]
+infer 21.2s on cuda
