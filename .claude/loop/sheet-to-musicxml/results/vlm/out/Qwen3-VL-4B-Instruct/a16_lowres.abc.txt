@@ -1,0 +1,75 @@
+```abc
+X:1
+T:S Wonderful
+M:4/4
+L:1/8
+K:E
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2 | B2 E2 z2 E2 |
+E2 d2 z2 E2 | d2 d2 z2 E2 | d2 d2 z2 E2

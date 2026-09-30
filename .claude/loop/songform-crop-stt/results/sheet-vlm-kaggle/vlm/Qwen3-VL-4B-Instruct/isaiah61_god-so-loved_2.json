@@ -1,0 +1,80 @@
+{
+  "title": "하나님께서 세상을 사랑하사",
+  "key": "C",
+  "time_signature": "4/4",
+  "tempo": "= 67",
+  "sections": [
+    {
+      "tag": "Verse",
+      "lyrics": "하늘보다 높으신주 사랑 바다보다 넓으신주 사랑",
+      "chords": [
+        "C",
+        "G/B",
+        "Am",
+        "C/G",
+        "F"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "나를 향한 크고 높은 신사랑",
+      "chords": [
+        "Dm7",
+        "Gsus4",
+        "G",
+        "C"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "헛되고 헛된 그 모든것 내게서 멀리 거두셨네",
+      "chords": [
+        "G/B",
+        "Am",
+        "C/G",
+        "F"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "나의 수치 찬양되었네",
+      "chords": [
+        "C/E",
+        "Dm",
+        "Gsus4"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "영원히 감사드리리 주님의 그은혜",
+      "chords": [
+        "G",
+        "C",
+        "G/B",
+        "F/A",
+        "C/G"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "날찾아 주신그 사랑 오주님 내전부",
+      "chords": [
+        "C",
+        "G/B",
+        "F/A",
+        "Gsus4"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "사랑해요 경배해요 오주위 해살리",
+      "chords": [
+        "G",
+        "C",
+        "G/B",
+        "F/A",
+        "C/G"
+      ]
+    }
+  ]
+}

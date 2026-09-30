@@ -1,0 +1,74 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/fia_my-jesus_1.png"
+INFO  [fia_my-jesus_1]                      Book 560  | 1 sheet in /tmp/aud_in/fia_my-jesus_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/fia_my-jesus_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | LOAD
+INFO  [fia_my-jesus_1]                 SheetStub 1278 | Loaded image #1 2479x3508 from /tmp/aud_in/fia_my-jesus_1.png
+INFO  [fia_my-jesus_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | BINARY
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | SCALE
+INFO  [fia_my-jesus_1]              ScaleBuilder 254  | Beam  guessed height: 11 -- 0.25 of [9..18] range
+INFO  [fia_my-jesus_1]              ScaleBuilder 271  | Beam measured height: 10 -- 0.11 of [9..18] range at 349% of needed quorum
+INFO  [fia_my-jesus_1]              ScaleBuilder 401  | Normalized black jitter: 15.79 %
+INFO  [fia_my-jesus_1]                 ScaleStep 65   | Scale{ interline(19,19,20) line(1,2,4) beam(10)}
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | GRID
+INFO  [fia_my-jesus_1]            LinesRetriever 1508 | Global slope: 0.00141
+INFO  [fia_my-jesus_1]         ClustersRetriever 326  | Retrieved raw line clusters: 6 of sizes [5] with interline(19,19,20)
+INFO  [fia_my-jesus_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6]
+INFO  [fia_my-jesus_1]             SystemManager 800  | 1 part along 6 systems
+INFO  [fia_my-jesus_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | HEADERS
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [fia_my-jesus_1]             StemSeedsStep 86   | stem(2 max:3)
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | BEAMS
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | LEDGERS
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | HEADS
+INFO  [fia_my-jesus_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[L:-0.5,R:-0.3]}
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | STEMS
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | REDUCTION
+INFO  [fia_my-jesus_1]             ReductionStep 105  | Stems free length median value: 68 pixels, 3.6 interlines
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [fia_my-jesus_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 337
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | MEASURES
+INFO  [fia_my-jesus_1]                      Page 307  | 25 raw measures: [4 in system#1, 4 in system#2, 4 in system#3, 4 in system#4, 4 in system#5, 5 in system#6]
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | CHORDS
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | CURVES
+INFO  [fia_my-jesus_1]              SlursBuilder 240  | Slurs: 19
+INFO  [fia_my-jesus_1]           SegmentsBuilder 155  | Segments: 51
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | SYMBOLS
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | LINKS
+INFO  [fia_my-jesus_1]             SentenceInter 483  | No chord below ChordNameInter#3222{(0.710) staff:1 TEXT "G7" font:SC-42 root:G ChordKind{DOMINANT '7'}}
+INFO  [fia_my-jesus_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#4654{(0.195) staff:1 VENTIDUESIMA BASSA} at java.awt.Point[x=1720,y=917]
+INFO  [fia_my-jesus_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#4790{(0.179) staff:2 VENTIDUESIMA ALTA} at java.awt.Point[x=762,y=918]
+INFO  [fia_my-jesus_1]             SentenceInter 483  | No chord below ChordNameInter#3318{(0.765) staff:3 TEXT "G7" font:SC-42 root:G ChordKind{DOMINANT '7'}}
+INFO  [fia_my-jesus_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#5148{(0.155) staff:4 QUINDICESIMA ALTA} at java.awt.Point[x=2223,y=1760]
+INFO  [fia_my-jesus_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#5341{(0.339) staff:6 QUINDICESIMA ALTA} at java.awt.Point[x=544,y=2605]
+INFO  [fia_my-jesus_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#5461{(0.426) staff:6 QUINDICESIMA ALTA} at java.awt.Point[x=1649,y=2597]
+INFO  [fia_my-jesus_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#5476{(0.299) staff:6 QUINDICESIMA ALTA} at java.awt.Point[x=1969,y=2605]
+INFO  [fia_my-jesus_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#5499{(0.368) staff:6 QUINDICESIMA ALTA} at java.awt.Point[x=2219,y=2605]
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | RHYTHMS
+INFO  [fia_my-jesus_1]            StepMonitoring 98   | PAGE
+INFO  [fia_my-jesus_1]            SheetReduction 154  | Gutter. Different glyphs 3/4 ArticulationInter#4910{(0.786/0.904) TENUTO} vs OctaveShiftInter#5065{(0.582/0.582) staff:4 QUINDICESIMA ALTA}
+INFO  [fia_my-jesus_1]            SheetReduction 154  | Gutter. Different glyphs 4/5 ArticulationInter#5122{(0.786/0.897) TENUTO} vs OctaveShiftInter#5263{(0.604/0.604) staff:5 QUINDICESIMA ALTA}
+INFO  [fia_my-jesus_1]                      Book 2584 | Book{fia_my-jesus_1} storing
+INFO  [fia_my-jesus_1]                      Book 2565 | Stored /book.xml
+INFO  [fia_my-jesus_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [fia_my-jesus_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [fia_my-jesus_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/fia_my-jesus_1.omr
+INFO  [fia_my-jesus_1]                 SheetStub 1655 | Sheet disposed
+INFO  [fia_my-jesus_1]                      Book 2050 | End of Stub#1
+INFO  [fia_my-jesus_1]                      Book 2057 | End of Book{fia_my-jesus_1}
+INFO  [fia_my-jesus_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [fia_my-jesus_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [fia_my-jesus_1]             ScoreExporter 164  | Score fia_my-jesus_1 exported to /kaggle/working/out/audiveris/B/fia_my-jesus_1.mxl
+INFO  [fia_my-jesus_1]                     Score 181  | Closing {Score 1}

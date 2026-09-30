@@ -1,0 +1,79 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/levites_lord-of-my-heart_2.png"
+INFO  [levites_lord-of-my-heart_2]                      Book 560  | 1 sheet in /tmp/aud_in/levites_lord-of-my-heart_2.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/levites_lord-of-my-heart_2.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | LOAD
+INFO  [levites_lord-of-my-heart_2]                 SheetStub 1278 | Loaded image #1 1448x2048 from /tmp/aud_in/levites_lord-of-my-heart_2.png
+INFO  [levites_lord-of-my-heart_2]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | BINARY
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | SCALE
+INFO  [levites_lord-of-my-heart_2]              ScaleBuilder 254  | Beam  guessed height:  7 -- 0.25 of [5..11] range
+INFO  [levites_lord-of-my-heart_2]              ScaleBuilder 271  | Beam measured height:  8 -- 0.50 of [5..11] range at 386% of needed quorum
+INFO  [levites_lord-of-my-heart_2]              ScaleBuilder 401  | Normalized black jitter: 16.67 %
+INFO  [levites_lord-of-my-heart_2]                 ScaleStep 65   | Scale{ interline(10,12,12) line(2,4,4) beam(8)}
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | GRID
+INFO  [levites_lord-of-my-heart_2]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [levites_lord-of-my-heart_2]         ClustersRetriever 326  | Retrieved raw line clusters: 7 of sizes [5] with interline(10,12,12)
+INFO  [levites_lord-of-my-heart_2]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7]
+INFO  [levites_lord-of-my-heart_2]             SystemManager 800  | 1 part along 7 systems
+INFO  [levites_lord-of-my-heart_2]                      Book 543  | Created scores: [{Score 1}]
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | HEADERS
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | STEM_SEEDS
+INFO  [levites_lord-of-my-heart_2]             StemSeedsStep 86   | stem(3 max:4)
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | BEAMS
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | LEDGERS
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | HEADS
+INFO  [levites_lord-of-my-heart_2]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[R:-0.2] NOTEHEAD_BLACK[L:-0.4,R:-0.0]}
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | STEMS
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | REDUCTION
+INFO  [levites_lord-of-my-heart_2]             ReductionStep 105  | Stems free length median value: 42 pixels, 3.5 interlines
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | CUE_BEAMS
+INFO  [levites_lord-of-my-heart_2]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 264
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | MEASURES
+INFO  [levites_lord-of-my-heart_2]                      Page 307  | 26 raw measures: [4 in system#1, 3 in system#2, 4 in system#3, 4 in system#4, 4 in system#5, 3 in system#6, 4 in system#7]
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | CHORDS
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | CURVES
+INFO  [levites_lord-of-my-heart_2]              SlursBuilder 240  | Slurs: 14
+INFO  [levites_lord-of-my-heart_2]           SegmentsBuilder 155  | Segments: 19
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | SYMBOLS
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | LINKS
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6201{(0.136) staff:1 QUINDICESIMA BASSA} at java.awt.Point[x=1127,y=459]
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6203{(0.136) staff:1 QUINDICESIMA BASSA} at java.awt.Point[x=1127,y=431]
+INFO  [levites_lord-of-my-heart_2]             SentenceInter 483  | No chord below ChordNameInter#4932{(0.678) staff:2 TEXT "A" font:BS-26 root:A ChordKind{MAJOR}}
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6298{(0.327) staff:2 QUINDICESIMA ALTA} at java.awt.Point[x=456,y=430]
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6383{(0.136) staff:2 QUINDICESIMA ALTA} at java.awt.Point[x=1127,y=459]
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6384{(0.136) staff:2 QUINDICESIMA ALTA} at java.awt.Point[x=1127,y=431]
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6522{(0.136) staff:4 QUINDICESIMA BASSA} at java.awt.Point[x=291,y=1135]
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6581{(0.136) staff:5 QUINDICESIMA ALTA} at java.awt.Point[x=291,y=1135]
+INFO  [levites_lord-of-my-heart_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6641{(0.136) staff:6 QUINDICESIMA BASSA} at java.awt.Point[x=721,y=1585]
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | RHYTHMS
+INFO  [levites_lord-of-my-heart_2]            StepMonitoring 98   | PAGE
+WARN  [levites_lord-of-my-heart_2]              MeasureFixer 343  | System#1 No target duration for measures local IDs [1, 2, 3, 4], please check time signatures
+WARN  [levites_lord-of-my-heart_2]              MeasureFixer 343  | System#2 No target duration for measures local IDs [5, 6, 7], please check time signatures
+WARN  [levites_lord-of-my-heart_2]              MeasureFixer 343  | System#3 No target duration for measures local IDs [8, 9, 10, 11], please check time signatures
+WARN  [levites_lord-of-my-heart_2]              MeasureFixer 343  | System#4 No target duration for measures local IDs [12, 13, 14, 15], please check time signatures
+WARN  [levites_lord-of-my-heart_2]              MeasureFixer 343  | System#5 No target duration for measures local IDs [16, 17, 18, 19], please check time signatures
+WARN  [levites_lord-of-my-heart_2]              MeasureFixer 343  | System#6 No target duration for measures local IDs [20, 21, 22], please check time signatures
+WARN  [levites_lord-of-my-heart_2]              MeasureFixer 343  | System#7 No target duration for measures local IDs [23, 24, 25, 26], please check time signatures
+INFO  [levites_lord-of-my-heart_2]                      Book 2584 | Book{levites_lord-of-my-heart_2} storing
+INFO  [levites_lord-of-my-heart_2]                      Book 2565 | Stored /book.xml
+INFO  [levites_lord-of-my-heart_2]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [levites_lord-of-my-heart_2]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [levites_lord-of-my-heart_2]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/levites_lord-of-my-heart_2.omr
+INFO  [levites_lord-of-my-heart_2]                 SheetStub 1655 | Sheet disposed
+INFO  [levites_lord-of-my-heart_2]                      Book 2050 | End of Stub#1
+INFO  [levites_lord-of-my-heart_2]                      Book 2057 | End of Book{levites_lord-of-my-heart_2}
+INFO  [levites_lord-of-my-heart_2]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [levites_lord-of-my-heart_2]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [levites_lord-of-my-heart_2]             ScoreExporter 164  | Score levites_lord-of-my-heart_2 exported to /kaggle/working/out/audiveris/B/levites_lord-of-my-heart_2.mxl
+INFO  [levites_lord-of-my-heart_2]                     Score 181  | Closing {Score 1}

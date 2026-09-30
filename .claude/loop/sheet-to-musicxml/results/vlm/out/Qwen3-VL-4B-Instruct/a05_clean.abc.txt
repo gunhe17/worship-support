@@ -1,0 +1,52 @@
+```abc
+X:1
+T:Ballin' The Jack
+M:4/4
+L:1/8
+K:G
+V:1 clef=treble
+" G7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" C7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" E7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" D7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" G7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F dim7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Gm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm7b5" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" G7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F dim7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Gm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm7b5" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" G7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F dim7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Gm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm7b5" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" G7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F dim7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Gm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm7b5" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" G7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F dim7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Gm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" Cm7b5" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" F7" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G2 G2 A2 B2 A2 G2 | F2 G2 A2 B2 A2 G2 |
+" B" d2d^c d2A2 | B2 ^c2 G2- G2 A2/A2 | G

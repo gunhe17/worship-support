@@ -1,0 +1,12 @@
+```abc
+X:1
+T:나의 예수
+T:Lord of My Heart
+M:4/4
+L:1/8
+K:G
+C,,2 | "D"DE "A/C#"F "G/B"G "A sus4"A "D"D "A/C#"A | "G/B"G "A sus4"A "D"DE "A/C#"F "G/B"G "A sus4"A "D"D "A/C#"A |
+"G/B"G "A sus4"A "D"DE "A/C#"F "G/B"G "A sus4"A "Bm"B "A"/A | "E/G#"E "E"DE "D/F#"F "G"G "A sus4"A "D"DE "A/C#"A |
+"D"z2 "A/C#"z2 "G/B"G "A sus4"A "D"z2 "D/F#"F "G/D"G "D"z2 "D/F#"F | "G"G "A sus4"A "D"DE "A/C#"F "G"G "A sus4"A "D"DE "A/C#"A |
+```
+```

@@ -1,0 +1,74 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/ywam_first-and-last_1.png"
+INFO  [ywam_first-and-last_1]                      Book 560  | 1 sheet in /tmp/aud_in/ywam_first-and-last_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/ywam_first-and-last_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | LOAD
+INFO  [ywam_first-and-last_1]                 SheetStub 1278 | Loaded image #1 2894x4096 from /tmp/aud_in/ywam_first-and-last_1.png
+INFO  [ywam_first-and-last_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | BINARY
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | SCALE
+INFO  [ywam_first-and-last_1]              ScaleBuilder 254  | Beam  guessed height: 12 -- 0.25 of [9..20] range
+INFO  [ywam_first-and-last_1]              ScaleBuilder 271  | Beam measured height: 13 -- 0.36 of [9..20] range at 122% of needed quorum
+INFO  [ywam_first-and-last_1]              ScaleBuilder 401  | Normalized black jitter: 19.05 %
+INFO  [ywam_first-and-last_1]                 ScaleStep 65   | Scale{ interline(20,21,23) line(1,3,5) beam(13)}
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | GRID
+INFO  [ywam_first-and-last_1]            LinesRetriever 1508 | Global slope: 0.00067
+INFO  [ywam_first-and-last_1]         ClustersRetriever 326  | Retrieved raw line clusters: 8 of sizes [5] with interline(20,21,23)
+INFO  [ywam_first-and-last_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7] #8[8]
+INFO  [ywam_first-and-last_1]             SystemManager 800  | 1 part along 8 systems
+INFO  [ywam_first-and-last_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | HEADERS
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [ywam_first-and-last_1]             StemSeedsStep 86   | stem(4 max:6)
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | BEAMS
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | LEDGERS
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | HEADS
+INFO  [ywam_first-and-last_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[L:0.0,R:-1.0]}
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | STEMS
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | REDUCTION
+INFO  [ywam_first-and-last_1]             ReductionStep 105  | Stems free length median value: 75 pixels, 3.6 interlines
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [ywam_first-and-last_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 480
+WARN  [ywam_first-and-last_1]            ChordNameInter 1024 | ChordName. No kind type for 5
+WARN  [ywam_first-and-last_1]            ChordNameInter 1024 | ChordName. No kind type for 5
+WARN  [ywam_first-and-last_1]            ChordNameInter 1024 | ChordName. No kind type for 5
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | MEASURES
+INFO  [ywam_first-and-last_1]                      Page 307  | 40 raw measures: [5 in system#1, 5 in system#2, 4 in system#3, 5 in system#4, 5 in system#5, 5 in system#6, 5 in system#7, 6 in system#8]
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | CHORDS
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | CURVES
+INFO  [ywam_first-and-last_1]              SlursBuilder 240  | Slurs: 19
+INFO  [ywam_first-and-last_1]           SegmentsBuilder 155  | Segments: 61
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | SYMBOLS
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | LINKS
+INFO  [ywam_first-and-last_1]             SentenceInter 483  | No chord below ChordNameInter#4049{(0.538) staff:4 TEXT "Bb" font:S-40 root:Bb ChordKind{MAJOR}}
+INFO  [ywam_first-and-last_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6105{(0.262) staff:4 OTTAVA BASSA} at java.awt.Point[x=406,y=2032]
+INFO  [ywam_first-and-last_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6188{(0.262) staff:5 OTTAVA ALTA} at java.awt.Point[x=406,y=2032]
+INFO  [ywam_first-and-last_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6219{(0.163) staff:5 QUINDICESIMA ALTA} at java.awt.Point[x=762,y=1883]
+INFO  [ywam_first-and-last_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6378{(0.130) staff:6 VENTIDUESIMA ALTA} at java.awt.Point[x=1905,y=2234]
+INFO  [ywam_first-and-last_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6413{(0.293) staff:7 QUINDICESIMA ALTA} at java.awt.Point[x=673,y=2589]
+INFO  [ywam_first-and-last_1]             SentenceInter 463  | No chord near SentenceInter#4160{(0.691) staff:8 mFont:BS-52 Direction} D.S.alFine
+INFO  [ywam_first-and-last_1]             SentenceInter 463  | No chord near SentenceInter#4162{(0.558) staff:8 mFont:S-37 Direction} l l'
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | RHYTHMS
+INFO  [ywam_first-and-last_1]            StepMonitoring 98   | PAGE
+INFO  [ywam_first-and-last_1]                      Book 2584 | Book{ywam_first-and-last_1} storing
+INFO  [ywam_first-and-last_1]                      Book 2565 | Stored /book.xml
+INFO  [ywam_first-and-last_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [ywam_first-and-last_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [ywam_first-and-last_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/ywam_first-and-last_1.omr
+INFO  [ywam_first-and-last_1]                 SheetStub 1655 | Sheet disposed
+INFO  [ywam_first-and-last_1]                      Book 2050 | End of Stub#1
+INFO  [ywam_first-and-last_1]                      Book 2057 | End of Book{ywam_first-and-last_1}
+INFO  [ywam_first-and-last_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [ywam_first-and-last_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [ywam_first-and-last_1]             ScoreExporter 164  | Score ywam_first-and-last_1 exported to /kaggle/working/out/audiveris/B/ywam_first-and-last_1.mxl
+INFO  [ywam_first-and-last_1]                     Score 181  | Closing {Score 1}

@@ -1,0 +1,398 @@
+{
+ "A": {
+  "a00_clean.mxl": {
+   "measures": 82,
+   "ok": 80,
+   "partial": 0,
+   "bad": 2,
+   "fifths": null
+  },
+  "a00_lowres.mxl": {
+   "measures": 72,
+   "ok": 49,
+   "partial": 0,
+   "bad": 23,
+   "fifths": null
+  },
+  "a01_clean.mxl": {
+   "measures": 66,
+   "ok": 64,
+   "partial": 0,
+   "bad": 2,
+   "fifths": -1
+  },
+  "a01_lowres.mxl": {
+   "measures": 66,
+   "ok": 64,
+   "partial": 0,
+   "bad": 2,
+   "fifths": -1
+  },
+  "a02_clean.mxl": {
+   "measures": 68,
+   "ok": 64,
+   "partial": 0,
+   "bad": 4,
+   "fifths": -1
+  },
+  "a02_lowres.mxl": {
+   "measures": 68,
+   "ok": 64,
+   "partial": 0,
+   "bad": 4,
+   "fifths": -1
+  },
+  "a03_clean.mxl": {
+   "measures": 64,
+   "ok": 62,
+   "partial": 0,
+   "bad": 2,
+   "fifths": null
+  },
+  "a03_lowres.mxl": {
+   "measures": 64,
+   "ok": 62,
+   "partial": 0,
+   "bad": 2,
+   "fifths": null
+  },
+  "a04_clean.mxl": {
+   "measures": 66,
+   "ok": 64,
+   "partial": 0,
+   "bad": 2,
+   "fifths": null
+  },
+  "a04_lowres.mxl": {
+   "measures": 96,
+   "ok": 91,
+   "partial": 0,
+   "bad": 5,
+   "fifths": null
+  },
+  "a05_clean.mxl": {
+   "measures": 34,
+   "ok": 29,
+   "partial": 0,
+   "bad": 5,
+   "fifths": -2
+  },
+  "a05_lowres.mxl": {
+   "measures": 34,
+   "ok": 32,
+   "partial": 0,
+   "bad": 2,
+   "fifths": -2
+  },
+  "a06_clean.mxl": {
+   "measures": 70,
+   "ok": 65,
+   "partial": 0,
+   "bad": 5,
+   "fifths": -1
+  },
+  "a06_lowres.mxl": {
+   "measures": 70,
+   "ok": 53,
+   "partial": 1,
+   "bad": 16,
+   "fifths": -1
+  },
+  "a07_clean.mxl": {
+   "measures": 66,
+   "ok": 64,
+   "partial": 0,
+   "bad": 2,
+   "fifths": null
+  },
+  "a07_lowres.mxl": {
+   "measures": 60,
+   "ok": 56,
+   "partial": 0,
+   "bad": 4,
+   "fifths": null
+  },
+  "a08_clean.mxl": {
+   "measures": 78,
+   "ok": 68,
+   "partial": 1,
+   "bad": 9,
+   "fifths": 4
+  },
+  "a08_lowres.mxl": {
+   "measures": 117,
+   "ok": 102,
+   "partial": 1,
+   "bad": 14,
+   "fifths": 4
+  },
+  "a09_clean.mxl": {
+   "measures": 72,
+   "ok": 68,
+   "partial": 0,
+   "bad": 4,
+   "fifths": null
+  },
+  "a09_lowres.mxl": {
+   "measures": 72,
+   "ok": 68,
+   "partial": 0,
+   "bad": 4,
+   "fifths": null
+  },
+  "a10_clean.mxl": {
+   "measures": 74,
+   "ok": 70,
+   "partial": 0,
+   "bad": 4,
+   "fifths": null
+  },
+  "a10_lowres.mxl": {
+   "measures": 70,
+   "ok": 63,
+   "partial": 0,
+   "bad": 7,
+   "fifths": null
+  },
+  "a11_clean.mxl": {
+   "measures": 34,
+   "ok": 33,
+   "partial": 0,
+   "bad": 1,
+   "fifths": 1
+  },
+  "a11_lowres.mxl": {
+   "measures": 33,
+   "ok": 31,
+   "partial": 0,
+   "bad": 2,
+   "fifths": 1
+  },
+  "a12_clean.mxl": {
+   "measures": 56,
+   "ok": 52,
+   "partial": 0,
+   "bad": 4,
+   "fifths": -1
+  },
+  "a12_lowres.mxl": {
+   "measures": 81,
+   "ok": 74,
+   "partial": 0,
+   "bad": 7,
+   "fifths": -1
+  },
+  "a13_clean.mxl": {
+   "measures": 50,
+   "ok": 48,
+   "partial": 0,
+   "bad": 2,
+   "fifths": -1
+  },
+  "a13_lowres.mxl": {
+   "measures": 46,
+   "ok": 36,
+   "partial": 0,
+   "bad": 10,
+   "fifths": -1
+  },
+  "a14_clean.mxl": {
+   "measures": 72,
+   "ok": 66,
+   "partial": 0,
+   "bad": 6,
+   "fifths": 1
+  },
+  "a14_lowres.mxl": {
+   "measures": 66,
+   "ok": 51,
+   "partial": 0,
+   "bad": 15,
+   "fifths": 1
+  },
+  "a15_clean.mxl": {
+   "measures": 52,
+   "ok": 50,
+   "partial": 0,
+   "bad": 2,
+   "fifths": -1
+  },
+  "a15_lowres.mxl": {
+   "measures": 78,
+   "ok": 75,
+   "partial": 0,
+   "bad": 3,
+   "fifths": -1
+  },
+  "a16_clean.mxl": {
+   "measures": 66,
+   "ok": 64,
+   "partial": 0,
+   "bad": 2,
+   "fifths": -3
+  },
+  "a16_lowres.mxl": {
+   "measures": 62,
+   "ok": 42,
+   "partial": 0,
+   "bad": 20,
+   "fifths": -3
+  },
+  "a17_clean.mxl": {
+   "measures": 70,
+   "ok": 66,
+   "partial": 0,
+   "bad": 4,
+   "fifths": null
+  },
+  "a17_lowres.mxl": {
+   "measures": 70,
+   "ok": 68,
+   "partial": 0,
+   "bad": 2,
+   "fifths": null
+  },
+  "a18_clean.mxl": {
+   "measures": 68,
+   "ok": 65,
+   "partial": 0,
+   "bad": 3,
+   "fifths": -1
+  },
+  "a18_lowres.mxl": {
+   "measures": 64,
+   "ok": 55,
+   "partial": 0,
+   "bad": 9,
+   "fifths": -1
+  },
+  "a19_clean.mxl": {
+   "measures": 40,
+   "ok": 38,
+   "partial": 0,
+   "bad": 2,
+   "fifths": 1
+  },
+  "a19_lowres.mxl": {
+   "measures": 40,
+   "ok": 38,
+   "partial": 0,
+   "bad": 2,
+   "fifths": 1
+  }
+ },
+ "B": {
+  "anointing_rejoice_1.mxl": {
+   "measures": 35,
+   "ok": 29,
+   "partial": 0,
+   "bad": 6,
+   "fifths": 2
+  },
+  "anointing_rejoice_2.mxl": {
+   "measures": 37,
+   "ok": 32,
+   "partial": 0,
+   "bad": 5,
+   "fifths": 2
+  },
+  "fia_my-jesus_1.mxl": {
+   "measures": 26,
+   "ok": 25,
+   "partial": 0,
+   "bad": 1,
+   "fifths": 1
+  },
+  "isaiah61_god-so-loved_1.mvt1.mxl": {
+   "measures": 28,
+   "ok": 7,
+   "partial": 1,
+   "bad": 20,
+   "fifths": null
+  },
+  "isaiah61_god-so-loved_1.mvt2.mxl": {
+   "measures": 6,
+   "ok": 3,
+   "partial": 0,
+   "bad": 3,
+   "fifths": null
+  },
+  "isaiah61_god-so-loved_1.mxl": {
+   "measures": 28,
+   "ok": 7,
+   "partial": 1,
+   "bad": 20,
+   "fifths": null
+  },
+  "isaiah61_god-so-loved_2.mxl": {
+   "measures": 21,
+   "ok": 5,
+   "partial": 1,
+   "bad": 15,
+   "fifths": null
+  },
+  "isaiah61_god-so-loved_3.mxl": {
+   "measures": 19,
+   "ok": 11,
+   "partial": 0,
+   "bad": 8,
+   "fifths": null
+  },
+  "jus_return-to-lord_1.mxl": {
+   "measures": 20,
+   "ok": 2,
+   "partial": 0,
+   "bad": 18,
+   "fifths": -4
+  },
+  "levites_lord-of-my-heart_1.mxl": {
+   "measures": 21,
+   "ok": 13,
+   "partial": 0,
+   "bad": 8,
+   "fifths": 2
+  },
+  "levites_lord-of-my-heart_2.mxl": {
+   "measures": 26,
+   "ok": 13,
+   "partial": 0,
+   "bad": 13,
+   "fifths": 2
+  },
+  "markers_love-of-god_1.mxl": {
+   "measures": 37,
+   "ok": 24,
+   "partial": 0,
+   "bad": 13,
+   "fifths": 4
+  },
+  "teamluke_built-together_1.mxl": {
+   "measures": 17,
+   "ok": 13,
+   "partial": 0,
+   "bad": 4,
+   "fifths": -1
+  },
+  "welove_loving-you-more_1.mxl": {
+   "measures": 60,
+   "ok": 35,
+   "partial": 1,
+   "bad": 24,
+   "fifths": 4
+  },
+  "welove_loving-you-more_2.mxl": {
+   "measures": 51,
+   "ok": 31,
+   "partial": 0,
+   "bad": 20,
+   "fifths": 4
+  },
+  "ywam_first-and-last_1.mxl": {
+   "measures": 38,
+   "ok": 32,
+   "partial": 0,
+   "bad": 6,
+   "fifths": -2
+  }
+ }
+}

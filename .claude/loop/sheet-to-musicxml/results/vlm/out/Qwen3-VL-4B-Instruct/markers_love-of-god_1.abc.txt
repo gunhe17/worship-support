@@ -1,0 +1,135 @@
+```abc
+X:1
+T:주남의 사랑
+M:4/4
+L:1/8
+K:D#maj
+V:1
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"G#m7"z2 E2 B2 B2 D2 z2 | 
+"F#m7"z2 B2 A2 G2 F2 E2 D2 | 
+"D(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"A/B"B2 A2 G2 F2 E2 D2 C2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"E(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"C#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"E"z2 E2 D2 C2 B2 A2 G2 | 
+|: 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"G#m7"z2 E2 B2 B2 D2 z2 | 
+"F#m7"z2 B2 A2 G2 F2 E2 D2 | 
+"D(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"A/B"B2 A2 G2 F2 E2 D2 C2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"E(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"C#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"E"z2 E2 D2 C2 B2 A2 G2 | 
+|: 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"G#m7"z2 E2 B2 B2 D2 z2 | 
+"F#m7"z2 B2 A2 G2 F2 E2 D2 | 
+"D(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"A/B"B2 A2 G2 F2 E2 D2 C2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"E(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"C#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"E"z2 E2 D2 C2 B2 A2 G2 | 
+|: 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"G#m7"z2 E2 B2 B2 D2 z2 | 
+"F#m7"z2 B2 A2 G2 F2 E2 D2 | 
+"D(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"A/B"B2 A2 G2 F2 E2 D2 C2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"E(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"C#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"E"z2 E2 D2 C2 B2 A2 G2 | 
+|: 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"G#m7"z2 E2 B2 B2 D2 z2 | 
+"F#m7"z2 B2 A2 G2 F2 E2 D2 | 
+"D(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"A/B"B2 A2 G2 F2 E2 D2 C2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"E(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"C#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"E"z2 E2 D2 C2 B2 A2 G2 | 
+|: 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"G#m7"z2 E2 B2 B2 D2 z2 | 
+"F#m7"z2 B2 A2 G2 F2 E2 D2 | 
+"D(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"A/B"B2 A2 G2 F2 E2 D2 C2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"E(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"C#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"E"z2 E2 D2 C2 B2 A2 G2 | 
+|: 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"G#m7"z2 E2 B2 B2 D2 z2 | 
+"F#m7"z2 B2 A2 G2 F2 E2 D2 | 
+"D(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"A/B"B2 A2 G2 F2 E2 D2 C2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"E(add9)"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"G#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"C#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"F#m7"z2 E2 D2 C2 B2 A2 G2 | 
+"B"z2 E2 D2 C2 B2 A2 G2 | 
+"E"z2 E2 D2 C2 B2 A2 G2 | 
+|: 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 | 
+"EM7"z2 G2 G2 E2 D2 B2 A2 z2 |

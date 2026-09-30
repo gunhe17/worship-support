@@ -1,0 +1,162 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/welove_loving-you-more_1.png"
+INFO  [welove_loving-you-more_1]                      Book 560  | 1 sheet in /tmp/aud_in/welove_loving-you-more_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/welove_loving-you-more_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | LOAD
+INFO  [welove_loving-you-more_1]                 SheetStub 1278 | Loaded image #1 1932x2732 from /tmp/aud_in/welove_loving-you-more_1.png
+INFO  [welove_loving-you-more_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | BINARY
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | SCALE
+INFO  [welove_loving-you-more_1]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [welove_loving-you-more_1]              ScaleBuilder 271  | Beam measured height:  9 -- 0.43 of [6..13] range at 294% of needed quorum
+INFO  [welove_loving-you-more_1]              ScaleBuilder 401  | Normalized black jitter: 21.43 %
+INFO  [welove_loving-you-more_1]                 ScaleStep 65   | Scale{ interline(12,14,15) line(2,4,5) beam(9)}
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | GRID
+INFO  [welove_loving-you-more_1]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [welove_loving-you-more_1]         ClustersRetriever 326  | Retrieved raw line clusters: 9 of sizes [5] with interline(12,14,15)
+INFO  [welove_loving-you-more_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7] #8[8] #9[9]
+INFO  [welove_loving-you-more_1]             SystemManager 800  | 1 part along 9 systems
+INFO  [welove_loving-you-more_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | HEADERS
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [welove_loving-you-more_1]             StemSeedsStep 86   | stem(4 max:5)
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | BEAMS
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | LEDGERS
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | HEADS
+INFO  [welove_loving-you-more_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:0.5,R:0.7] NOTEHEAD_BLACK[L:0.8,R:0.5]}
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | STEMS
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | REDUCTION
+INFO  [welove_loving-you-more_1]             ReductionStep 105  | Stems free length median value: 49 pixels, 3.5 interlines
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [welove_loving-you-more_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 376
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | MEASURES
+INFO  [welove_loving-you-more_1]                      Page 307  | 60 raw measures: [4 in system#1, 8 in system#2, 9 in system#3, 7 in system#4, 8 in system#5, 6 in system#6, 6 in system#7, 8 in system#8, 4 in system#9]
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | CHORDS
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | CURVES
+INFO  [welove_loving-you-more_1]              SlursBuilder 240  | Slurs: 76
+INFO  [welove_loving-you-more_1]           SegmentsBuilder 155  | Segments: 112
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13048{(0.782) staff:2 mFont:2147483647 Rehearsal enclosure:java.awt.Rectangle[x=489,y=489,width=93,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13053{(0.759) staff:2 mFont:B-2147483647 Rehearsal enclosure:java.awt.Rectangle[x=1453,y=491,width=93,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13056{(0.581) staff:2 mFont:S-2147483647 Rehearsal enclosure:java.awt.Rectangle[x=835,y=492,width=94,height=54]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13068{(0.828) staff:3 mFont:43 Rehearsal enclosure:java.awt.Rectangle[x=751,y=699,width=197,height=54]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13078{(0.776) staff:5 mFont:2147483647 Rehearsal enclosure:java.awt.Rectangle[x=206,y=1305,width=166,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13081{(0.783) staff:6 mFont:2147483647 Rehearsal enclosure:java.awt.Rectangle[x=1323,y=1615,width=93,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13084{(0.783) staff:7 mFont:2147483647 Rehearsal enclosure:java.awt.Rectangle[x=1522,y=1925,width=93,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13094{(0.794) staff:8 mFont:B-62 Rehearsal enclosure:java.awt.Rectangle[x=847,y=2167,width=231,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13099{(0.781) staff:9 mFont:B-2147483647 Rehearsal enclosure:java.awt.Rectangle[x=860,y=2425,width=93,height=54]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_1]         RehearsalsBuilder 229  | RehearsalInter#13107{(0.774) staff:9 mFont:B-151 Rehearsal enclosure:java.awt.Rectangle[x=1677,y=2425,width=173,height=54]}
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | SYMBOLS
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | LINKS
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#14503{(0.320) staff:3 QUINDICESIMA ALTA} at java.awt.Point[x=562,y=733]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#14790{(0.213) staff:4 QUINDICESIMA ALTA} at java.awt.Point[x=1161,y=940]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#14792{(0.147) staff:4 QUINDICESIMA ALTA} at java.awt.Point[x=1101,y=945]
+INFO  [welove_loving-you-more_1]                  KeyInter 1331 | Key built KeyInter#15902{(0.198) staff:4 KEY_FLAT_1 pitch:0.3 fifths:-1}
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15232{(0.155) staff:6 QUINDICESIMA ALTA} at java.awt.Point[x=1587,y=1537]
+INFO  [welove_loving-you-more_1]             SentenceInter 463  | No chord near SentenceInter#11248{(0.594) staff:9 mFont:S-50 Direction} g 7
+INFO  [welove_loving-you-more_1]             SentenceInter 483  | No chord below ChordNameInter#11252{(0.717) staff:9 TEXT "D" font:S-44 root:D ChordKind{MAJOR}}
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15774{(0.145) staff:9 QUINDICESIMA ALTA} at java.awt.Point[x=617,y=2350]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15778{(0.142) staff:9 QUINDICESIMA ALTA} at java.awt.Point[x=884,y=2444]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15781{(0.150) staff:9 QUINDICESIMA ALTA} at java.awt.Point[x=1093,y=2350]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15782{(0.163) staff:9 QUINDICESIMA ALTA} at java.awt.Point[x=1008,y=2351]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15843{(0.405) staff:9 QUINDICESIMA ALTA} at java.awt.Point[x=1707,y=2350]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15882{(0.172) staff:9 QUINDICESIMA ALTA} at java.awt.Point[x=1859,y=2345]
+INFO  [welove_loving-you-more_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#15883{(0.120) staff:9 QUINDICESIMA ALTA} at java.awt.Point[x=1859,y=2350]
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | RHYTHMS
+INFO  [welove_loving-you-more_1]             MeasureRhythm 1044 | Measure{#11} No timeOffset for HeadChordInter#11356{(0.583/0.583) staff:2 slot#7 dur:1/2}
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S2 MeasureStack#11 no correct rhythm
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#20} Voice{#3 excess:1/8} too long
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S3 MeasureStack#20 no correct rhythm
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#21} Voice{#1 excess:3/4} too long
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S3 MeasureStack#21 no correct rhythm
+INFO  [welove_loving-you-more_1]             MeasureRhythm 1044 | Measure{#28} No timeOffset for HeadChordInter#11430{(0.946/0.946) staff:4 slot#5 dur:1/8}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for HeadChordInter#11430{(0.946/0.946) staff:4 slot#5 dur:1/8}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for HeadChordInter#11431{(0.940/0.940) staff:4 slot#6 dur:1/4}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for HeadChordInter#11432{(0.945/0.945) staff:4 slot#7 dur:1/8}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for HeadChordInter#11433{(0.580/0.580) staff:4 slot#8 dur:3/4}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for RestChordInter#14980{(0.565/0.565) staff:4 slot#9 dur:3/4}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for HeadChordInter#11434{(0.917/0.917) staff:4 slot#10 dur:1/2}
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S4 MeasureStack#28 no correct rhythm
+INFO  [welove_loving-you-more_1]             MeasureRhythm 1044 | Measure{#41} No timeOffset for HeadChordInter#11499{(0.656/0.656) staff:6 slot#6 dur:1/2}
+INFO  [welove_loving-you-more_1]             MeasureRhythm 1044 | Measure{#41} No timeOffset for HeadChordInter#11498{(0.940/0.940) staff:6 slot#6 dur:1/4}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#41} No timeOffset for HeadChordInter#11499{(0.656/0.656) staff:6 slot#6 dur:1/2}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#41} No timeOffset for HeadChordInter#11498{(0.940/0.940) staff:6 slot#6 dur:1/4}
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S6 MeasureStack#41 no correct rhythm
+INFO  [welove_loving-you-more_1]             MeasureRhythm 1044 | Measure{#46} No timeOffset for HeadChordInter#11532{(0.947/0.947) staff:7 slot#9 dur:1/4}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#46} No timeOffset for HeadChordInter#11532{(0.947/0.947) staff:7 slot#9 dur:1/4}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#46} No timeOffset for HeadChordInter#11535{(0.915/0.915) staff:7 slot#12 dur:1/8}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#46} No timeOffset for HeadChordInter#11536{(0.949/0.949) staff:7 slot#13 dur:1/4}
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S7 MeasureStack#46 no correct rhythm
+INFO  [welove_loving-you-more_1]             MeasureRhythm 1044 | Measure{#48} No timeOffset for RestChordInter#15469{(0.674/0.674) staff:7 slot#8 dur:1/8}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#48} No timeOffset for RestChordInter#15469{(0.674/0.674) staff:7 slot#8 dur:1/8}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#48} No timeOffset for HeadChordInter#11550{(0.929/0.929) staff:7 slot#9 dur:1/8}
+INFO  [welove_loving-you-more_1]        AbstractChordInter 635  | Measure{#48} No timeOffset for HeadChordInter#11552{(0.942/0.942) staff:7 slot#11 dur:1/8}
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S7 MeasureStack#48 no correct rhythm
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#54} Voice{#1 excess:1/8} too long
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S8 MeasureStack#54 no correct rhythm
+INFO  [welove_loving-you-more_1]             MeasureRhythm 1044 | Measure{#55} No timeOffset for HeadChordInter#11597{(0.941/0.941) staff:8 slot#6 dur:1/4}
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#55} Voice{#1 excess:1/16} too long
+INFO  [welove_loving-you-more_1]               StackRhythm 224  | S8 MeasureStack#55 no correct rhythm
+INFO  [welove_loving-you-more_1]            StepMonitoring 98   | PAGE
+INFO  [welove_loving-you-more_1]            SheetReduction 154  | Gutter. Different glyphs 1/2 DynamicsInter#14282{(0.488/0.761) DYNAMICS_P} vs DynamicsInter#14418{(0.497/0.772) DYNAMICS_P}
+INFO  [welove_loving-you-more_1]            SheetReduction 154  | Gutter. Different glyphs 3/4 PedalInter#14577{(0.527/0.527) PEDAL_MARK} vs DynamicsInter#14807{(0.543/0.800) DYNAMICS_SF}
+INFO  [welove_loving-you-more_1]            SheetReduction 154  | Gutter. Different glyphs 4/5 PedalInter#14798{(0.542/0.542) PEDAL_MARK} vs DynamicsInter#15058{(0.549/0.804) DYNAMICS_SF}
+INFO  [welove_loving-you-more_1]            SheetReduction 154  | Gutter. Different glyphs 5/6 PedalInter#14991{(0.560/0.560) PEDAL_MARK} vs DynamicsInter#15132{(0.394/0.686) DYNAMICS_SF}
+INFO  [welove_loving-you-more_1]            SheetReduction 154  | Gutter. Different glyphs 5/6 PedalInter#15053{(0.512/0.512) PEDAL_MARK} vs DynamicsInter#15169{(0.444/0.727) DYNAMICS_SF}
+INFO  [welove_loving-you-more_1]            SheetReduction 154  | Gutter. Different glyphs 6/7 PedalInter#15181{(0.514/0.514) PEDAL_MARK} vs DynamicsInter#15324{(0.556/0.808) DYNAMICS_SF}
+INFO  [welove_loving-you-more_1]            SheetReduction 154  | Gutter. Different glyphs 7/8 PedalInter#15328{(0.538/0.538) PEDAL_MARK} vs DynamicsInter#15604{(0.317/0.610) DYNAMICS_SF}
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#20} Voice{#3 excess:1/8} too long
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#21} Voice{#3 excess:3/4} too long
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#54} Voice{#1 excess:1/8} too long
+INFO  [welove_loving-you-more_1]                     Voice 257  | Measure{#55} Voice{#1 excess:1/16} too long
+INFO  [welove_loving-you-more_1]                      Book 2584 | Book{welove_loving-you-more_1} storing
+INFO  [welove_loving-you-more_1]                      Book 2565 | Stored /book.xml
+INFO  [welove_loving-you-more_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [welove_loving-you-more_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [welove_loving-you-more_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/welove_loving-you-more_1.omr
+INFO  [welove_loving-you-more_1]                 SheetStub 1655 | Sheet disposed
+INFO  [welove_loving-you-more_1]                      Book 2050 | End of Stub#1
+INFO  [welove_loving-you-more_1]                      Book 2057 | End of Book{welove_loving-you-more_1}
+INFO  [welove_loving-you-more_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [welove_loving-you-more_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [welove_loving-you-more_1]             ScoreExporter 164  | Score welove_loving-you-more_1 exported to /kaggle/working/out/audiveris/B/welove_loving-you-more_1.mxl
+INFO  [welove_loving-you-more_1]                     Score 181  | Closing {Score 1}

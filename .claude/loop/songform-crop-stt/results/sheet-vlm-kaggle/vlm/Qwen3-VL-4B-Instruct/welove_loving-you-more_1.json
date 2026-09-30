@@ -1,0 +1,33 @@
+{
+  "title": "우리가 주를 더욱 사랑하고",
+  "key": "D",
+  "time_signature": "4/4",
+  "tempo": "140",
+  "sections": [
+    {
+      "tag": "ITR",
+      "lyrics": "사랑우리게 창아 놀네 자기몽 회생 하며 화 흥해니 사랑",
+      "chords": "D D A D A D D A D A D D A D A D D A D A"
+    },
+    {
+      "tag": "V",
+      "lyrics": "먼저본 이되신 이가 우리 계명 하시네 네 말과 뜻 다해 주 를사랑 하라",
+      "chords": "E D C#m7 C6 E D C#m7 C6"
+    },
+    {
+      "tag": "P",
+      "lyrics": "우었보다 드림게 서로사랑할지니 사랑이모 든것을 몇 어쿠네 사랑가운 데우리 운전히 설아갈 뭐 우리함이 그의 기쁨 되네 우리가주를더욱",
+      "chords": "F#m7 E/G# A F#m7 E/G# A F#m7 E/G# Cmaj7 A/B"
+    },
+    {
+      "tag": "C",
+      "lyrics": "사랑 하고 그사랑우리삶에 녹어 네이 서로를더욱심기 고사랑 할때 하나님 나 라임 하겠네 우리가주를더욱",
+      "chords": "E A F#m7 C Cmaj7 A/B"
+    },
+    {
+      "tag": "ITL1",
+      "lyrics": "노래 하고 이곳에함께모여 찬양 하나 모든두렵과 걱정은 뭐 나가네 주 사랑 만 이 이곳에 가득",
+      "chords": "E A F#m7 E/G# Cmaj7 A/B"
+    }
+  ]
+}

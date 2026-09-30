@@ -1,0 +1,65 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a19_clean.png"
+INFO  [a19_clean]                      Book 560  | 1 sheet in /tmp/aud_in/a19_clean.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a19_clean.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a19_clean]            StepMonitoring 98   | LOAD
+INFO  [a19_clean]                 SheetStub 1278 | Loaded image #1 1650x2334 from /tmp/aud_in/a19_clean.png
+INFO  [a19_clean]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a19_clean]            StepMonitoring 98   | BINARY
+INFO  [a19_clean]            StepMonitoring 98   | SCALE
+INFO  [a19_clean]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [a19_clean]              ScaleBuilder 271  | Beam measured height:  8 -- 0.29 of [6..13] range at 257% of needed quorum
+INFO  [a19_clean]              ScaleBuilder 401  | Normalized black jitter: 14.29 %
+INFO  [a19_clean]                 ScaleStep 65   | Scale{ interline(14,14,15) line(1,2,3) beam(8)}
+INFO  [a19_clean]            StepMonitoring 98   | GRID
+INFO  [a19_clean]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a19_clean]         ClustersRetriever 326  | Retrieved raw line clusters: 4 of sizes [5] with interline(14,14,15)
+INFO  [a19_clean]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4]
+INFO  [a19_clean]             SystemManager 134  | Indentation detected for system #1
+INFO  [a19_clean]             SystemManager 800  | 1 part along 4 systems
+INFO  [a19_clean]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a19_clean]            StepMonitoring 98   | HEADERS
+INFO  [a19_clean]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a19_clean]             StemSeedsStep 86   | stem(3 max:4)
+INFO  [a19_clean]            StepMonitoring 98   | BEAMS
+INFO  [a19_clean]            StepMonitoring 98   | LEDGERS
+INFO  [a19_clean]            StepMonitoring 98   | HEADS
+INFO  [a19_clean]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[R:0.9]}
+INFO  [a19_clean]            StepMonitoring 98   | STEMS
+INFO  [a19_clean]            StepMonitoring 98   | REDUCTION
+INFO  [a19_clean]             ReductionStep 105  | Stems free length median value: 50 pixels, 3.6 interlines
+INFO  [a19_clean]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a19_clean]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a19_clean]            StepMonitoring 98   | TEXTS
+Estimating resolution as 266
+INFO  [a19_clean]            StepMonitoring 98   | MEASURES
+INFO  [a19_clean]                      Page 307  | 20 raw measures: [4 in system#1, 5 in system#2, 6 in system#3, 5 in system#4]
+INFO  [a19_clean]            StepMonitoring 98   | CHORDS
+INFO  [a19_clean]            StepMonitoring 98   | CURVES
+INFO  [a19_clean]              SlursBuilder 240  | Slurs: 1
+INFO  [a19_clean]           SegmentsBuilder 155  | Segments: 4
+INFO  [a19_clean]            StepMonitoring 98   | SYMBOLS
+INFO  [a19_clean]            StepMonitoring 98   | LINKS
+INFO  [a19_clean]            StepMonitoring 98   | RHYTHMS
+INFO  [a19_clean]            StepMonitoring 98   | PAGE
+INFO  [a19_clean]                      Book 2584 | Book{a19_clean} storing
+INFO  [a19_clean]                      Book 2565 | Stored /book.xml
+INFO  [a19_clean]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a19_clean]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a19_clean]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a19_clean.omr
+INFO  [a19_clean]                 SheetStub 1655 | Sheet disposed
+INFO  [a19_clean]                      Book 2050 | End of Stub#1
+INFO  [a19_clean]                      Book 2057 | End of Book{a19_clean}
+INFO  [a19_clean]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a19_clean]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a19_clean]                      Part 351  | Sheet#1 System#1 Part#2{name:Electric Piano staves[1] configs:[5]} dummyPart id: 1
+INFO  [a19_clean]                      Part 351  | Sheet#1 System#2 Part#1{name:E.Pno staves[2] configs:[5]} dummyPart id: 2
+INFO  [a19_clean]                      Part 351  | Sheet#1 System#3 Part#1{name:E.Pno staves[3] configs:[5]} dummyPart id: 2
+INFO  [a19_clean]                      Part 351  | Sheet#1 System#4 Part#1{name:E.Pno staves[4] configs:[5]} dummyPart id: 2
+INFO  [a19_clean]             ScoreExporter 164  | Score a19_clean exported to /kaggle/working/out/audiveris/A/a19_clean.mxl
+INFO  [a19_clean]                     Score 181  | Closing {Score 1}

@@ -1,0 +1,201 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/jus_return-to-lord_1.png"
+INFO  [jus_return-to-lord_1]                      Book 560  | 1 sheet in /tmp/aud_in/jus_return-to-lord_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/jus_return-to-lord_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | LOAD
+INFO  [jus_return-to-lord_1]                 SheetStub 1278 | Loaded image #1 1590x2246 from /tmp/aud_in/jus_return-to-lord_1.png
+INFO  [jus_return-to-lord_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | BINARY
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | SCALE
+INFO  [jus_return-to-lord_1]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..12] range
+INFO  [jus_return-to-lord_1]              ScaleBuilder 271  | Beam measured height:  8 -- 0.33 of [6..12] range at 361% of needed quorum
+INFO  [jus_return-to-lord_1]              ScaleBuilder 401  | Normalized black jitter: 23.08 %
+INFO  [jus_return-to-lord_1]                 ScaleStep 65   | Scale{ interline(11,13,14) line(2,4,5) beam(8)}
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | GRID
+INFO  [jus_return-to-lord_1]            LinesRetriever 1508 | Global slope: -0.00025
+INFO  [jus_return-to-lord_1]         ClustersRetriever 326  | Retrieved raw line clusters: 10 of sizes [5] with interline(11,13,14)
+INFO  [jus_return-to-lord_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7] #8[8] #9[9] #10[10]
+INFO  [jus_return-to-lord_1]             SystemManager 800  | 1 part along 10 systems
+INFO  [jus_return-to-lord_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | HEADERS
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [jus_return-to-lord_1]             StemSeedsStep 86   | stem(4 max:5)
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | BEAMS
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | LEDGERS
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | HEADS
+INFO  [jus_return-to-lord_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:-0.9] NOTEHEAD_BLACK[L:-0.2,R:-0.3]}
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | STEMS
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | REDUCTION
+INFO  [jus_return-to-lord_1]             ReductionStep 105  | Stems free length median value: 48 pixels, 3.7 interlines
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [jus_return-to-lord_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 328
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | MEASURES
+INFO  [jus_return-to-lord_1]                      Page 307  | 20 raw measures: [1 in system#1, 1 in system#2, 1 in system#3, 2 in system#4, 2 in system#5, 3 in system#6, 4 in system#7, 1 in system#8, 3 in system#9, 2 in system#10]
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | CHORDS
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | CURVES
+INFO  [jus_return-to-lord_1]              SlursBuilder 240  | Slurs: 25
+INFO  [jus_return-to-lord_1]           SegmentsBuilder 155  | Segments: 71
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | SYMBOLS
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | LINKS
+INFO  [jus_return-to-lord_1]             SentenceInter 483  | No chord below ChordNameInter#9671{(0.551) staff:7 TEXT "Eb" font:BS-23 root:Eb ChordKind{MAJOR}}
+INFO  [jus_return-to-lord_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12568{(0.149) staff:7 QUINDICESIMA ALTA} at java.awt.Point[x=1060,y=1312]
+INFO  [jus_return-to-lord_1]                  KeyInter 1331 | Key built KeyInter#12907{(0.919) staff:9 KEY_FLAT_2 pitch:-1.3 fifths:-2}
+INFO  [jus_return-to-lord_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12894{(0.120) staff:10 QUINDICESIMA ALTA} at java.awt.Point[x=1440,y=1954]
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | RHYTHMS
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#1} No timeOffset for HeadChordInter#9804{(0.589/0.589) staff:1 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9804{(0.589/0.589) staff:1 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9805{(0.535/0.535) slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9806{(0.941/0.941) slot#9 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9809{(0.953/0.953) slot#12 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9810{(0.903/0.903) slot#13 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9811{(0.939/0.939) slot#14 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9812{(0.528/0.528) slot#15 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#1} No timeOffset for HeadChordInter#9814{(0.566/0.566) staff:1 slot#16 dur:1}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S1 MeasureStack#1 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#2} No timeOffset for RestChordInter#12056{(0.583/0.583) staff:2 slot#6 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for RestChordInter#12056{(0.583/0.583) staff:2 slot#6 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9819{(0.915/0.915) staff:2 slot#7 dur:1/8}
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#2} No timeOffset for HeadChordInter#9820{(0.589/0.589) staff:2 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9821{(0.914/0.914) staff:2 slot#8 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9820{(0.589/0.589) staff:2 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9824{(0.935/0.935) staff:2 slot#11 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9820{(0.589/0.589) staff:2 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9824{(0.935/0.935) staff:2 slot#11 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for RestChordInter#12057{(0.758/0.758) staff:2 slot#12 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9824{(0.935/0.935) staff:2 slot#11 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9825{(0.627/0.627) staff:2 slot#13 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9824{(0.935/0.935) staff:2 slot#11 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for RestChordInter#12058{(0.744/0.744) staff:2 slot#14 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9824{(0.935/0.935) staff:2 slot#11 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9827{(0.918/0.918) staff:2 slot#16 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9824{(0.935/0.935) staff:2 slot#11 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9831{(0.950/0.950) staff:2 slot#20 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9832{(0.655/0.655) staff:2 slot#21 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9831{(0.950/0.950) staff:2 slot#20 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9832{(0.655/0.655) staff:2 slot#21 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#2} No timeOffset for HeadChordInter#9833{(0.891/0.891) staff:2 slot#22 dur:3/4}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S2 MeasureStack#2 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#3} No timeOffset for RestChordInter#12158{(0.751/0.751) staff:3 slot#6 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for RestChordInter#12158{(0.751/0.751) staff:3 slot#6 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9838{(0.915/0.915) staff:3 slot#7 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9839{(0.630/0.630) staff:3 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9840{(0.904/0.904) staff:3 slot#9 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9843{(0.947/0.947) staff:3 slot#12 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for RestChordInter#12159{(0.763/0.763) staff:3 slot#13 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9844{(0.577/0.577) staff:3 slot#14 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for RestChordInter#12160{(0.692/0.692) staff:3 slot#15 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9848{(0.952/0.952) staff:3 slot#19 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9851{(0.956/0.956) staff:3 slot#22 dur:1/8}
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#3} No timeOffset for HeadChordInter#9852{(0.610/0.610) staff:3 slot#23 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9853{(0.651/0.651) staff:3 slot#23 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9852{(0.610/0.610) staff:3 slot#23 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for HeadChordInter#9853{(0.651/0.651) staff:3 slot#23 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#3} No timeOffset for RestChordInter#12163{(0.536/0.536) staff:3 slot#24 dur:1/8}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S3 MeasureStack#3 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#4} No timeOffset for HeadChordInter#9861{(0.562/0.562) staff:4 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#4} No timeOffset for HeadChordInter#9862{(0.725/0.725) staff:4 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#4} No timeOffset for HeadChordInter#9861{(0.562/0.562) staff:4 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#4} No timeOffset for HeadChordInter#9862{(0.725/0.725) staff:4 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#4} No timeOffset for HeadChordInter#9861{(0.562/0.562) staff:4 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#4} No timeOffset for RestChordInter#12231{(0.622/0.622) staff:4 slot#9 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#4} No timeOffset for HeadChordInter#9861{(0.562/0.562) staff:4 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#4} No timeOffset for HeadChordInter#9863{(0.925/0.925) staff:4 slot#10 dur:1/8}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S4 MeasureStack#4 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#5} No timeOffset for HeadChordInter#9872{(0.577/0.577) staff:4 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#5} No timeOffset for HeadChordInter#9872{(0.577/0.577) staff:4 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#5} No timeOffset for HeadChordInter#9873{(0.820/0.820) staff:4 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#5} No timeOffset for RestChordInter#12236{(0.769/0.769) staff:4 slot#9 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#5} No timeOffset for HeadChordInter#9874{(0.952/0.952) staff:4 slot#10 dur:1/8}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S4 MeasureStack#5 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#6} No timeOffset for HeadChordInter#9888{(0.951/0.951) staff:5 slot#9 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#6} No timeOffset for HeadChordInter#9888{(0.951/0.951) staff:5 slot#9 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#6} No timeOffset for HeadChordInter#9890{(0.941/0.941) staff:5 slot#11 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#6} No timeOffset for HeadChordInter#9891{(0.611/0.611) staff:5 slot#12 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#6} No timeOffset for HeadChordInter#9895{(0.950/0.950) staff:5 slot#16 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#6} No timeOffset for HeadChordInter#9896{(0.943/0.943) staff:5 slot#17 dur:1/8}
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#6} Voice{#1 excess:5/16} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#6} Voice{#2 excess:11/16} too long
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S5 MeasureStack#6 no correct rhythm
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#7} Voice{#1 excess:3/8} too long
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S5 MeasureStack#7 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#8} No timeOffset for RestChordInter#12497{(0.614/0.614) staff:6 slot#9 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#8} No timeOffset for RestChordInter#12497{(0.614/0.614) staff:6 slot#9 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#8} No timeOffset for HeadChordInter#9920{(0.930/0.930) staff:6 slot#12 dur:1/8}
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#8} Voice{#1 excess:5/16} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#8} Voice{#2 excess:7/16} too long
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S6 MeasureStack#8 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#13} No timeOffset for HeadChordInter#9946{(0.622/0.622) staff:7 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#13} No timeOffset for HeadChordInter#9946{(0.622/0.622) staff:7 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#13} No timeOffset for HeadChordInter#9947{(0.941/0.941) staff:7 slot#8 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#13} No timeOffset for HeadChordInter#9949{(0.919/0.919) staff:7 slot#10 dur:1/8}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S7 MeasureStack#13 no correct rhythm
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#14} Voice{#1 excess:3/8} too long
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S7 MeasureStack#14 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#15} No timeOffset for HeadChordInter#9964{(0.568/0.568) staff:8 slot#9 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9964{(0.568/0.568) staff:8 slot#9 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9965{(0.941/0.941) staff:8 slot#10 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9967{(0.954/0.954) staff:8 slot#12 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for RestChordInter#12667{(0.651/0.651) staff:8 slot#13 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9968{(0.910/0.910) staff:8 slot#14 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9970{(0.887/0.887) staff:8 slot#16 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9971{(0.693/0.693) staff:8 slot#17 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9975{(0.936/0.936) staff:8 slot#21 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9979{(0.906/0.906) staff:8 slot#25 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9980{(0.769/0.769) staff:8 slot#26 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9981{(0.671/0.671) staff:8 slot#27 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for RestChordInter#12671{(0.764/0.764) staff:8 slot#28 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#9982{(0.941/0.941) staff:8 slot#29 dur:1/8}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S8 MeasureStack#15 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#17} No timeOffset for HeadChordInter#9999{(0.670/0.670) staff:9 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#17} No timeOffset for HeadChordInter#9999{(0.670/0.670) staff:9 slot#7 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#17} No timeOffset for HeadChordInter#10000{(0.855/0.855) staff:9 slot#8 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#17} No timeOffset for HeadChordInter#10001{(0.905/0.905) staff:9 slot#9 dur:1/8}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S9 MeasureStack#17 no correct rhythm
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#18} Voice{#1 excess:3/8} too long
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S9 MeasureStack#18 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#19} No timeOffset for HeadChordInter#10021{(0.912/0.912) staff:10 slot#10 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for HeadChordInter#10021{(0.912/0.912) staff:10 slot#10 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for HeadChordInter#10023{(0.955/0.955) staff:10 slot#12 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for HeadChordInter#10024{(0.938/0.938) staff:10 slot#13 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for HeadChordInter#10026{(0.915/0.915) staff:10 slot#15 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for HeadChordInter#10027{(0.643/0.643) staff:10 slot#16 dur:1/2}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for HeadChordInter#10028{(0.905/0.905) staff:10 slot#17 dur:1/4}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for RestChordInter#12899{(0.630/0.630) staff:10 slot#18 dur:1/8}
+INFO  [jus_return-to-lord_1]        AbstractChordInter 635  | Measure{#19} No timeOffset for HeadChordInter#10031{(0.950/0.950) staff:10 slot#21 dur:1/8}
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#19} Voice{#2 excess:3/8} too long
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S10 MeasureStack#19 no correct rhythm
+INFO  [jus_return-to-lord_1]             MeasureRhythm 1044 | Measure{#20} No timeOffset for HeadChordInter#10041{(0.565/0.565) staff:10 slot#9 dur:1/2}
+INFO  [jus_return-to-lord_1]               StackRhythm 224  | S10 MeasureStack#20 no correct rhythm
+INFO  [jus_return-to-lord_1]            StepMonitoring 98   | PAGE
+INFO  [jus_return-to-lord_1]            SheetReduction 154  | Gutter. Different glyphs 8/9 DynamicsInter#12638{(0.313/0.604) DYNAMICS_SF} vs ChordNameInter#9767{(0.676/0.676) staff:9 TEXT "Gm7" font:BS-23 root:G ChordKind{MINOR_SEVENTH 'm7'}}
+INFO  [jus_return-to-lord_1]            SheetReduction 154  | Gutter. Different glyphs 9/10 DynamicsInter#12677{(0.353/0.626) DYNAMICS_SF} vs ArticulationInter#12798{(0.659/0.712) STACCATISSIMO}
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#6} Voice{#1 excess:5/16} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#6} Voice{#2 excess:11/16} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#7} Voice{#3 excess:3/8} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#8} Voice{#1 excess:5/16} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#8} Voice{#2 excess:7/16} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#14} Voice{#1 excess:3/8} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#18} Voice{#1 excess:3/8} too long
+INFO  [jus_return-to-lord_1]                     Voice 257  | Measure{#19} Voice{#1 excess:3/8} too long
+INFO  [jus_return-to-lord_1]                      Book 2584 | Book{jus_return-to-lord_1} storing
+INFO  [jus_return-to-lord_1]                      Book 2565 | Stored /book.xml
+INFO  [jus_return-to-lord_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [jus_return-to-lord_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [jus_return-to-lord_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/jus_return-to-lord_1.omr
+INFO  [jus_return-to-lord_1]                 SheetStub 1655 | Sheet disposed
+INFO  [jus_return-to-lord_1]                      Book 2050 | End of Stub#1
+INFO  [jus_return-to-lord_1]                      Book 2057 | End of Book{jus_return-to-lord_1}
+INFO  [jus_return-to-lord_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [jus_return-to-lord_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [jus_return-to-lord_1]             ScoreExporter 164  | Score jus_return-to-lord_1 exported to /kaggle/working/out/audiveris/B/jus_return-to-lord_1.mxl
+INFO  [jus_return-to-lord_1]                     Score 181  | Closing {Score 1}

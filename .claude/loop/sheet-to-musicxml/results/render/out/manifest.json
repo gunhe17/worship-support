@@ -1,0 +1,29 @@
+[
+ {
+  "id": "a04",
+  "tag": "best",
+  "num_diffs": 6,
+  "rendered": [
+   true,
+   true
+  ]
+ },
+ {
+  "id": "a13",
+  "tag": "median",
+  "num_diffs": 46,
+  "rendered": [
+   true,
+   true
+  ]
+ },
+ {
+  "id": "a08",
+  "tag": "worst",
+  "num_diffs": 167,
+  "rendered": [
+   true,
+   true
+  ]
+ }
+]

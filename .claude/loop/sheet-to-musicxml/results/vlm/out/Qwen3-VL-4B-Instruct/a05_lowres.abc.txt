@@ -1,0 +1,15 @@
+```abc
+X:1
+T:Ballin' The Jack
+M:4/4
+L:1/8
+K:G
+V:1 clef=treble
+" G7" d2d^cB G2A | d2 ^c2- c2A | " C7" GAGA B2A | " F7" ABAF G2E | " B" d^cdB c^BcA | " D7" BAGF E2z | " E7" BAGF E2z | " D7" BAGF E2z |
+" G7" d2d^cB G2A | " C7" GAGA B2A | " G7" d2d^cB G2A | " B" d^cdB c^BcA | " F dim7" B2A2 G2F2 | " Gm" G2G2 G2G2 | " Cm" A2A2 A2A2 | " G" G2G2 G2G2 |
+" Cm" A2A2 A2A2 | " Cm7b5" A2A2 A2A2 | " F7" A2A2 A2A2 | " B" B2B2 B2B2 |]
+V:2 clef=treble
+" G7" d2d^cB G2A | d2 ^c2- c2A | " C7" GAGA B2A | " F7" ABAF G2E | " B" d^cdB c^BcA | " D7" BAGF E2z | " E7" BAGF E2z | " D7" BAGF E2z |
+" G7" d2d^cB G2A | " C7" GAGA B2A | " G7" d2d^cB G2A | " B" d^cdB c^BcA | " F dim7" B2A2 G2F2 | " Gm" G2G2 G2G2 | " Cm" A2A2 A2A2 | " G" G2G2 G2G2 |
+" Cm" A2A2 A2A2 | " Cm7b5" A2A2 A2A2 | " F7" A2A2 A2A2 | " B" B2B2 B2B2 |]
+```

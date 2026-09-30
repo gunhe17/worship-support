@@ -1,0 +1,59 @@
+```abc
+X:1
+T:Quartermaster's Store
+M:4/4
+L:1/8
+K:G
+C|"G"z2 G2 | B2 A2 G2 F2 | "C"G2 z2 A2 B2 | "D7"c2 z2 A2 B2 |
+"C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "D7"c2 z2 A2 B2 |
+"C"z2 G2 A2 B2 | "D7"c2 z2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "D7"c2 z2 A2 B2 | "G"z2 G2 A2 B2 |
+"C"c2 z2 A2 B2 | "D7"c2 z2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B2 | "C"c2 z2 A2 B2 |
+"D7"z2 G2 A2 B2 | "C"z2 G2 A2 B2 | "G"z2 G2 A2 B

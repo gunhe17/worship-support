@@ -56,7 +56,7 @@ X 검색에서는 이 곡들의 key·BPM 게시물이 나오지 않아, 정답�
 - `yt-dlp -f bestaudio` → ffmpeg 44.1kHz mono WAV, `audio/`에 저장 (git 제외, 개인 시험용)
 - 제이어스 라이브 영상(NYiH9ftHjWo)은 HTTP 403 → 같은 채널의 앨범 영상(kdFH0iSBU9I)으로 대체
 
-### 8. 측정 (진행 중)
+### 8. 측정 (완료 — Kaggle로 이전)
 - 곡마다 `analyze.py`를 전체 믹스와 `--stems`(bass+other)로 2회 실행 → `results/<곡>.json`, `results/<곡>.stems.json`
 
 #### 8-1. 문제: SongFormer 메모리 폭주 (해결)
@@ -77,7 +77,7 @@ X 검색에서는 이 곡들의 key·BPM 게시물이 나오지 않아, 정답�
 - 대안 조사: Kaggle(주 30h GPU) · Lightning AI(월 80h GPU, SSH) · Modal($30/월 크레딧) · SageMaker Studio Lab(2026.07.30 종료). Kaggle은 CLI로 커널 업로드·실행·결과 다운로드를 자동화할 수 있어 선택
 - 이 세션에는 브라우저 제어 도구가 없음 → 브라우저가 필요한 단계(로그인, 전화번호 인증, API 토큰)는 모두 인증 단계라 사용자에게 요청하고, 나머지는 `kaggle` CLI(2.2.4)로 진행
 
-### 9. Kaggle 실행 (진행 중)
+### 9. Kaggle 실행 (완료)
 - 인증: 사용자가 `.env`의 `KAGGLE_API_TOKEN`으로 제공(git 제외). 명령마다 `.env`에서 읽어 환경변수로만 쓰고 출력하지 않음. 계정 gunhe17, GPU 할당량 주 30시간
 - **비공개 데이터셋** `gunhe17/worship-audio-analysis-test`: 3곡 WAV + `analyze.py`, `songformer_run.py` (스테이징 폴더 `kaggle/dataset/`는 git 제외)
 - **비공개 커널** `gunhe17/worship-audio-analysis-run` (`kaggle/kernel/run.py`, GPU + 인터넷 사용)
@@ -103,7 +103,7 @@ X 검색에서는 이 곡들의 key·BPM 게시물이 나오지 않아, 정답�
 - 아티팩트: https://claude.ai/artifact/MHJazAZindSDrVPx3EGXmq (비공개)
 - 구성: 실행 대상 요약표 → 곡별로 같은 형식(참고 정보 대 모델 출력 대조 + 타임라인 + 원시 값 표) → SongFormer 창 크기 비교 → 실행 시간
 
-### 11. 가사 추출(STT) 시험 (진행 중)
+### 11. 가사 추출(STT) 시험 (완료)
 - 근거 조사: `.claude/documents/korean-stt-research/`
 - 목적: 가사를 모른다고 가정하고 노래에서 한국어 가사를 받아 적기(전사)
 - 설계: 3곡 × 모델 3개 × 입력 2종 = 18회 전사

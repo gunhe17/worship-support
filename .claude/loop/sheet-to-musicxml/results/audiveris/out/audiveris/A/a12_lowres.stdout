@@ -1,0 +1,77 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a12_lowres.png"
+INFO  [a12_lowres]                      Book 560  | 1 sheet in /tmp/aud_in/a12_lowres.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a12_lowres.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a12_lowres]            StepMonitoring 98   | LOAD
+INFO  [a12_lowres]                 SheetStub 1278 | Loaded image #1 1800x2546 from /tmp/aud_in/a12_lowres.png
+INFO  [a12_lowres]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a12_lowres]            StepMonitoring 98   | BINARY
+INFO  [a12_lowres]            StepMonitoring 98   | SCALE
+INFO  [a12_lowres]              ScaleBuilder 254  | Beam  guessed height:  9 -- 0.25 of [7..14] range
+INFO  [a12_lowres]              ScaleBuilder 271  | Beam measured height: 10 -- 0.43 of [7..14] range at 294% of needed quorum
+INFO  [a12_lowres]              ScaleBuilder 401  | Normalized black jitter: 20.00 %
+INFO  [a12_lowres]                 ScaleStep 65   | Scale{ interline(14,15,16) line(2,3,5) beam(10)}
+INFO  [a12_lowres]            StepMonitoring 98   | GRID
+INFO  [a12_lowres]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a12_lowres]         ClustersRetriever 326  | Retrieved raw line clusters: 6 of sizes [5] with interline(14,15,16)
+INFO  [a12_lowres]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6]
+INFO  [a12_lowres]             SystemManager 800  | 1 part along 6 systems
+INFO  [a12_lowres]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a12_lowres]            StepMonitoring 98   | HEADERS
+INFO  [a12_lowres]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a12_lowres]             StemSeedsStep 86   | stem(4 max:6)
+INFO  [a12_lowres]            StepMonitoring 98   | BEAMS
+INFO  [a12_lowres]            StepMonitoring 98   | LEDGERS
+INFO  [a12_lowres]            StepMonitoring 98   | HEADS
+INFO  [a12_lowres]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:-0.5,R:-1.1] NOTEHEAD_BLACK[L:-0.6,R:-0.9]}
+INFO  [a12_lowres]            StepMonitoring 98   | STEMS
+INFO  [a12_lowres]            StepMonitoring 98   | REDUCTION
+INFO  [a12_lowres]             ReductionStep 105  | Stems free length median value: 55 pixels, 3.7 interlines
+INFO  [a12_lowres]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a12_lowres]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a12_lowres]            StepMonitoring 98   | TEXTS
+Estimating resolution as 318
+INFO  [a12_lowres]            StepMonitoring 98   | MEASURES
+INFO  [a12_lowres]                      Page 307  | 28 raw measures: [4 in system#1, 5 in system#2, 7 in system#3, 5 in system#4, 5 in system#5, 2 in system#6]
+INFO  [a12_lowres]            StepMonitoring 98   | CHORDS
+INFO  [a12_lowres]            StepMonitoring 98   | CURVES
+INFO  [a12_lowres]              SlursBuilder 240  | Slurs: 5
+INFO  [a12_lowres]           SegmentsBuilder 155  | Segments: 5
+INFO  [a12_lowres]            StepMonitoring 98   | SYMBOLS
+INFO  [a12_lowres]            StepMonitoring 98   | LINKS
+INFO  [a12_lowres]             SentenceInter 463  | No chord near SentenceInter#4118{(0.615) staff:3 mFont:BS-22 Direction} [2—
+INFO  [a12_lowres]             SentenceInter 483  | No chord below ChordNameInter#4137{(0.655) staff:3 TEXT "FMaj7" font:BS-30 root:F ChordKind{MAJOR_SEVENTH 'Maj7'}}
+INFO  [a12_lowres]             SentenceInter 449  | No measure stack for SentenceInter#4564{(0.900) staff:6 mFont:BS-30 Direction} but don't for-get folks that‘s whatyou get folks for mak-in'
+INFO  [a12_lowres]            StepMonitoring 98   | RHYTHMS
+INFO  [a12_lowres]             MeasureRhythm 1044 | Measure{#23} No timeOffset for HeadChordInter#4705{(0.946/0.946) staff:5 slot#3 dur:1/8}
+INFO  [a12_lowres]               StackRhythm 224  | S5 MeasureStack#23 no correct rhythm
+INFO  [a12_lowres]            StepMonitoring 98   | PAGE
+INFO  [a12_lowres]                      Book 2584 | Book{a12_lowres} storing
+INFO  [a12_lowres]                      Book 2565 | Stored /book.xml
+INFO  [a12_lowres]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a12_lowres]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a12_lowres]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a12_lowres.omr
+INFO  [a12_lowres]                 SheetStub 1655 | Sheet disposed
+INFO  [a12_lowres]                      Book 2050 | End of Stub#1
+INFO  [a12_lowres]                      Book 2057 | End of Book{a12_lowres}
+INFO  [a12_lowres]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a12_lowres]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#1 Part#3{name:Piano staves[1] configs:[5]} dummyPart id: 1
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#2 Part#2{name:Pno staves[2] configs:[5]} dummyPart id: 1
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#3 Part#2{name:Pno staves[3] configs:[5]} dummyPart id: 1
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#5 Part#2{name:Pno staves[5] configs:[5]} dummyPart id: 1
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#6 Part#3{ staves[6] configs:[5]} dummyPart id: 1
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#1 Part#3{name:Piano staves[1] configs:[5]} dummyPart id: 2
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#4 Part#1{name:P110 staves[4] configs:[5]} dummyPart id: 2
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#6 Part#3{ staves[6] configs:[5]} dummyPart id: 2
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#2 Part#2{name:Pno staves[2] configs:[5]} dummyPart id: 3
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#3 Part#2{name:Pno staves[3] configs:[5]} dummyPart id: 3
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#4 Part#1{name:P110 staves[4] configs:[5]} dummyPart id: 3
+INFO  [a12_lowres]                      Part 351  | Sheet#1 System#5 Part#2{name:Pno staves[5] configs:[5]} dummyPart id: 3
+INFO  [a12_lowres]             ScoreExporter 164  | Score a12_lowres exported to /kaggle/working/out/audiveris/A/a12_lowres.mxl
+INFO  [a12_lowres]                     Score 181  | Closing {Score 1}

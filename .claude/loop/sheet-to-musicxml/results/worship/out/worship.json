@@ -1,0 +1,3012 @@
+{
+ "anointing_rejoice_1": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 65.3,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 37,
+  "rhythm_ok": 31,
+  "rhythm_partial": 0,
+  "rhythm_bad": 6,
+  "rhythm_ok_rate": 0.838,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "long",
+    "dur": 4.25,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "long",
+    "dur": 4.25,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "long",
+    "dur": 4.25,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "long",
+    "dur": 4.25,
+    "expect": 4.0
+   },
+   {
+    "n": 34,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 35,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 36,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 37,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 2,
+  "time": "4/4",
+  "notes": 178,
+  "chords": 5,
+  "lyric_notes": 0
+ },
+ "anointing_rejoice_2": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 48.5,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 38,
+  "rhythm_ok": 28,
+  "rhythm_partial": 1,
+  "rhythm_bad": 9,
+  "rhythm_ok_rate": 0.737,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "partial",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "short",
+    "dur": 1.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "short",
+    "dur": 2.25,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 34,
+    "status": "long",
+    "dur": 4.25,
+    "expect": 4.0
+   },
+   {
+    "n": 35,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 36,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 37,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 38,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 2,
+  "time": "4/4",
+  "notes": 162,
+  "chords": 3,
+  "lyric_notes": 0
+ },
+ "fia_my-jesus_1": {
+  "width_in": 2479,
+  "width_used": 2479,
+  "upscaled": false,
+  "seconds": 33.0,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 25,
+  "rhythm_ok": 25,
+  "rhythm_partial": 0,
+  "rhythm_bad": 0,
+  "rhythm_ok_rate": 1.0,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 1,
+  "time": "4/4",
+  "notes": 200,
+  "chords": 44,
+  "lyric_notes": 6
+ },
+ "isaiah61_god-so-loved_1": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 62.2,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 33,
+  "rhythm_ok": 18,
+  "rhythm_partial": 1,
+  "rhythm_bad": 14,
+  "rhythm_ok_rate": 0.545,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "partial",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "short",
+    "dur": 3.75,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "short",
+    "dur": 0.5,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "long",
+    "dur": 4.938,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "long",
+    "dur": 4.75,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "short",
+    "dur": 1.5,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "short",
+    "dur": 0.5,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "long",
+    "dur": 4.75,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "long",
+    "dur": 6.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "short",
+    "dur": 1.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "long",
+    "dur": 4.5,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": null,
+  "time": "4/4",
+  "notes": 283,
+  "chords": 31,
+  "lyric_notes": 0
+ },
+ "isaiah61_god-so-loved_2": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 55.3,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 20,
+  "rhythm_ok": 6,
+  "rhythm_partial": 1,
+  "rhythm_bad": 13,
+  "rhythm_ok_rate": 0.3,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "short",
+    "dur": 1.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "short",
+    "dur": 3.75,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "short",
+    "dur": 2.5,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "long",
+    "dur": 4.75,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "short",
+    "dur": 1.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "short",
+    "dur": 3.75,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "long",
+    "dur": 4.5,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "short",
+    "dur": 0.5,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "short",
+    "dur": 0.5,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "long",
+    "dur": 5.5,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "short",
+    "dur": 0.5,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "partial",
+    "dur": 3.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": null,
+  "time": "4/4",
+  "notes": 156,
+  "chords": 11,
+  "lyric_notes": 4
+ },
+ "isaiah61_god-so-loved_3": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 53.5,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 18,
+  "rhythm_ok": 11,
+  "rhythm_partial": 1,
+  "rhythm_bad": 6,
+  "rhythm_ok_rate": 0.611,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "partial",
+    "dur": 1.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "long",
+    "dur": 5.5,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "short",
+    "dur": 1.5,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "short",
+    "dur": 2.625,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "short",
+    "dur": 1.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "long",
+    "dur": 6.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": null,
+  "time": null,
+  "notes": 145,
+  "chords": 30,
+  "lyric_notes": 0
+ },
+ "jus_return-to-lord_1": {
+  "width_in": 795,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 84.9,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 37,
+  "rhythm_ok": 32,
+  "rhythm_partial": 0,
+  "rhythm_bad": 5,
+  "rhythm_ok_rate": 0.865,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 34,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 35,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 36,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 37,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": -4,
+  "time": "4/4",
+  "notes": 200,
+  "chords": 16,
+  "lyric_notes": 10
+ },
+ "levites_lord-of-my-heart_1": {
+  "width_in": 724,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 47.8,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 19,
+  "rhythm_ok": 17,
+  "rhythm_partial": 0,
+  "rhythm_bad": 2,
+  "rhythm_ok_rate": 0.895,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 2,
+  "time": "4/4",
+  "notes": 84,
+  "chords": 10,
+  "lyric_notes": 5
+ },
+ "levites_lord-of-my-heart_2": {
+  "width_in": 724,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 54.7,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 26,
+  "rhythm_ok": 21,
+  "rhythm_partial": 0,
+  "rhythm_bad": 5,
+  "rhythm_ok_rate": 0.808,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "long",
+    "dur": 5.5,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "long",
+    "dur": 8.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "short",
+    "dur": 3.75,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 2,
+  "time": null,
+  "notes": 151,
+  "chords": 13,
+  "lyric_notes": 0
+ },
+ "markers_love-of-god_1": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 57.6,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 35,
+  "rhythm_ok": 28,
+  "rhythm_partial": 0,
+  "rhythm_bad": 7,
+  "rhythm_ok_rate": 0.8,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "long",
+    "dur": 4.5,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 34,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 35,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 4,
+  "time": "4/4",
+  "notes": 129,
+  "chords": 4,
+  "lyric_notes": 0
+ },
+ "teamluke_built-together_1": {
+  "width_in": 1241,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 43.0,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 16,
+  "rhythm_ok": 15,
+  "rhythm_partial": 0,
+  "rhythm_bad": 1,
+  "rhythm_ok_rate": 0.938,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": -1,
+  "time": "4/4",
+  "notes": 135,
+  "chords": 18,
+  "lyric_notes": 60
+ },
+ "welove_loving-you-more_1": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 80.9,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 59,
+  "rhythm_ok": 40,
+  "rhythm_partial": 1,
+  "rhythm_bad": 18,
+  "rhythm_ok_rate": 0.678,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "long",
+    "dur": 4.5,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "long",
+    "dur": 7.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "short",
+    "dur": 1.5,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 34,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 35,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 36,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 37,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 38,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 39,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 40,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 41,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 42,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 43,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 44,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 45,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 46,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 47,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 48,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 49,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 50,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 51,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 52,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 53,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 54,
+    "status": "long",
+    "dur": 4.5,
+    "expect": 4.0
+   },
+   {
+    "n": 55,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 56,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 57,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 58,
+    "status": "short",
+    "dur": 1.5,
+    "expect": 4.0
+   },
+   {
+    "n": 59,
+    "status": "partial",
+    "dur": 0.5,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 4,
+  "time": "4/4",
+  "notes": 258,
+  "chords": 0,
+  "lyric_notes": 0
+ },
+ "welove_loving-you-more_2": {
+  "width_in": 966,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 74.2,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 54,
+  "rhythm_ok": 37,
+  "rhythm_partial": 0,
+  "rhythm_bad": 17,
+  "rhythm_ok_rate": 0.685,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "long",
+    "dur": 7.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "long",
+    "dur": 10.0,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "long",
+    "dur": 8.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "long",
+    "dur": 7.5,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "long",
+    "dur": 8.0,
+    "expect": 4.0
+   },
+   {
+    "n": 34,
+    "status": "long",
+    "dur": 4.5,
+    "expect": 4.0
+   },
+   {
+    "n": 35,
+    "status": "long",
+    "dur": 7.0,
+    "expect": 4.0
+   },
+   {
+    "n": 36,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 37,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 38,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 39,
+    "status": "long",
+    "dur": 5.0,
+    "expect": 4.0
+   },
+   {
+    "n": 40,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 41,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 42,
+    "status": "long",
+    "dur": 8.0,
+    "expect": 4.0
+   },
+   {
+    "n": 43,
+    "status": "long",
+    "dur": 8.0,
+    "expect": 4.0
+   },
+   {
+    "n": 44,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 45,
+    "status": "long",
+    "dur": 6.0,
+    "expect": 4.0
+   },
+   {
+    "n": 46,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 47,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 48,
+    "status": "long",
+    "dur": 5.0,
+    "expect": 4.0
+   },
+   {
+    "n": 49,
+    "status": "long",
+    "dur": 6.0,
+    "expect": 4.0
+   },
+   {
+    "n": 50,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 51,
+    "status": "long",
+    "dur": 6.0,
+    "expect": 4.0
+   },
+   {
+    "n": 52,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 53,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 54,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": 4,
+  "time": null,
+  "notes": 270,
+  "chords": 7,
+  "lyric_notes": 0
+ },
+ "ywam_first-and-last_1": {
+  "width_in": 1447,
+  "width_used": 2900,
+  "upscaled": true,
+  "seconds": 48.1,
+  "movements": 1,
+  "parts_before": 1,
+  "measures": 38,
+  "rhythm_ok": 33,
+  "rhythm_partial": 1,
+  "rhythm_bad": 4,
+  "rhythm_ok_rate": 0.868,
+  "per_measure": [
+   {
+    "n": 1,
+    "status": "partial",
+    "dur": 0.5,
+    "expect": 4.0
+   },
+   {
+    "n": 2,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 3,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 4,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 5,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 6,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 7,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 8,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 9,
+    "status": "short",
+    "dur": 3.5,
+    "expect": 4.0
+   },
+   {
+    "n": 10,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 11,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 12,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 13,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 14,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 15,
+    "status": "short",
+    "dur": 2.0,
+    "expect": 4.0
+   },
+   {
+    "n": 16,
+    "status": "short",
+    "dur": 1.0,
+    "expect": 4.0
+   },
+   {
+    "n": 17,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 18,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 19,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 20,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 21,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 22,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 23,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 24,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 25,
+    "status": "short",
+    "dur": 3.0,
+    "expect": 4.0
+   },
+   {
+    "n": 26,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 27,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 28,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 29,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 30,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 31,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 32,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 33,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 34,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 35,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 36,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 37,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   },
+   {
+    "n": 38,
+    "status": "ok",
+    "dur": 4.0,
+    "expect": 4.0
+   }
+  ],
+  "fifths": -2,
+  "time": "4/4",
+  "notes": 150,
+  "chords": 23,
+  "lyric_notes": 6
+ }
+}

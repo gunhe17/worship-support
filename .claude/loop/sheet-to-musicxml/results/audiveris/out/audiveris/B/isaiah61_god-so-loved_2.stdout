@@ -1,0 +1,76 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/isaiah61_god-so-loved_2.png"
+INFO  [isaiah61_god-so-loved_2]                      Book 560  | 1 sheet in /tmp/aud_in/isaiah61_god-so-loved_2.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/isaiah61_god-so-loved_2.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | LOAD
+INFO  [isaiah61_god-so-loved_2]                 SheetStub 1278 | Loaded image #1 1932x2730 from /tmp/aud_in/isaiah61_god-so-loved_2.png
+INFO  [isaiah61_god-so-loved_2]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | BINARY
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | SCALE
+INFO  [isaiah61_god-so-loved_2]              ScaleBuilder 254  | Beam  guessed height: 10 -- 0.25 of [8..15] range
+INFO  [isaiah61_god-so-loved_2]              ScaleBuilder 271  | Beam measured height: 10 -- 0.29 of [8..15] range at 643% of needed quorum
+INFO  [isaiah61_god-so-loved_2]              ScaleBuilder 401  | Normalized black jitter: 11.76 %
+INFO  [isaiah61_god-so-loved_2]                 ScaleStep 65   | Scale{ interline(16,17,17) line(4,4,6) beam(10)}
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | GRID
+INFO  [isaiah61_god-so-loved_2]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [isaiah61_god-so-loved_2]         ClustersRetriever 326  | Retrieved raw line clusters: 7 of sizes [5] with interline(16,17,17)
+INFO  [isaiah61_god-so-loved_2]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7]
+INFO  [isaiah61_god-so-loved_2]             SystemManager 800  | 1 part along 7 systems
+INFO  [isaiah61_god-so-loved_2]                      Book 543  | Created scores: [{Score 1}]
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | HEADERS
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | STEM_SEEDS
+INFO  [isaiah61_god-so-loved_2]             StemSeedsStep 86   | stem(4 max:5)
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | BEAMS
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | LEDGERS
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | HEADS
+INFO  [isaiah61_god-so-loved_2]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[R:-1.4] NOTEHEAD_BLACK[L:-0.9,R:-1.4]}
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | STEMS
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | REDUCTION
+INFO  [isaiah61_god-so-loved_2]             ReductionStep 105  | Stems free length median value: 59 pixels, 3.5 interlines
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | CUE_BEAMS
+INFO  [isaiah61_god-so-loved_2]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 428
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | MEASURES
+INFO  [isaiah61_god-so-loved_2]                      Page 307  | 20 raw measures: [3 in system#1, 3 in system#2, 3 in system#3, 2 in system#4, 3 in system#5, 3 in system#6, 3 in system#7]
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | CHORDS
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | CURVES
+INFO  [isaiah61_god-so-loved_2]              SlursBuilder 240  | Slurs: 43
+INFO  [isaiah61_god-so-loved_2]           SegmentsBuilder 155  | Segments: 23
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | SYMBOLS
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | LINKS
+INFO  [isaiah61_god-so-loved_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6064{(0.130) staff:2 QUINDICESIMA BASSA} at java.awt.Point[x=1386,y=973]
+INFO  [isaiah61_god-so-loved_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6172{(0.209) staff:4 QUINDICESIMA ALTA} at java.awt.Point[x=1227,y=1278]
+INFO  [isaiah61_god-so-loved_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6221{(0.632) staff:5 QUINDICESIMA BASSA} at java.awt.Point[x=448,y=1877]
+INFO  [isaiah61_god-so-loved_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6285{(0.164) staff:6 OTTAVA BASSA} at java.awt.Point[x=156,y=2287]
+INFO  [isaiah61_god-so-loved_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6357{(0.164) staff:7 OTTAVA ALTA} at java.awt.Point[x=156,y=2287]
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | RHYTHMS
+INFO  [isaiah61_god-so-loved_2]                     Voice 257  | Measure{#7} Voice{#1 excess:1/16} too long
+INFO  [isaiah61_god-so-loved_2]               StackRhythm 224  | S3 MeasureStack#7 no correct rhythm
+INFO  [isaiah61_god-so-loved_2]                     Voice 257  | Measure{#8} Voice{#1 excess:3/16} too long
+INFO  [isaiah61_god-so-loved_2]               StackRhythm 224  | S3 MeasureStack#8 no correct rhythm
+INFO  [isaiah61_god-so-loved_2]             MeasureRhythm 1044 | Measure{#11} No timeOffset for RestChordInter#6201{(0.744/0.744) staff:4 slot#11 dur:1/16}
+INFO  [isaiah61_god-so-loved_2]               StackRhythm 224  | S4 MeasureStack#11 no correct rhythm
+INFO  [isaiah61_god-so-loved_2]            StepMonitoring 98   | PAGE
+INFO  [isaiah61_god-so-loved_2]                     Voice 257  | Measure{#7} Voice{#1 excess:1/16} too long
+INFO  [isaiah61_god-so-loved_2]                     Voice 257  | Measure{#8} Voice{#1 excess:3/16} too long
+INFO  [isaiah61_god-so-loved_2]                      Book 2584 | Book{isaiah61_god-so-loved_2} storing
+INFO  [isaiah61_god-so-loved_2]                      Book 2565 | Stored /book.xml
+INFO  [isaiah61_god-so-loved_2]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [isaiah61_god-so-loved_2]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [isaiah61_god-so-loved_2]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/isaiah61_god-so-loved_2.omr
+INFO  [isaiah61_god-so-loved_2]                 SheetStub 1655 | Sheet disposed
+INFO  [isaiah61_god-so-loved_2]                      Book 2050 | End of Stub#1
+INFO  [isaiah61_god-so-loved_2]                      Book 2057 | End of Book{isaiah61_god-so-loved_2}
+INFO  [isaiah61_god-so-loved_2]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [isaiah61_god-so-loved_2]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [isaiah61_god-so-loved_2]             ScoreExporter 164  | Score isaiah61_god-so-loved_2 exported to /kaggle/working/out/audiveris/B/isaiah61_god-so-loved_2.mxl
+INFO  [isaiah61_god-so-loved_2]                     Score 181  | Closing {Score 1}

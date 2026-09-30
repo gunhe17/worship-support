@@ -1,0 +1,10 @@
+```abc
+X:1
+T:나의 예수님
+M:4/4
+L:1/8
+K:G
+V:1
+Q:1/4=65
+G2 G2 G2 G2 | D/F# E m7 D m7 G7 C | D/C Bm7 Eaug7 E7 | Am7 D7 G D/F# E m7 C | C/D G C/D | G D/F# E m7 D m7 G7 C | D/C Bm7 Eaug7 E7 | Am7 D7 G D/F# E m7 C | C/D G C/D | G D/F# E m7 D m7 G7 C | D/C Bm7 Eaug7 E7 | Am7 D7 G D/F# E m7 C | C/D G C/D | G D/F# E m7 D m7 G7 C | G/B A7 C/D | G F6 E m7 Cm/Eb | Am7 G/B C C/D G |
+```

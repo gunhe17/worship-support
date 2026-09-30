@@ -1,0 +1,128 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/welove_loving-you-more_2.png"
+INFO  [welove_loving-you-more_2]                      Book 560  | 1 sheet in /tmp/aud_in/welove_loving-you-more_2.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/welove_loving-you-more_2.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | LOAD
+INFO  [welove_loving-you-more_2]                 SheetStub 1278 | Loaded image #1 1932x2732 from /tmp/aud_in/welove_loving-you-more_2.png
+INFO  [welove_loving-you-more_2]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | BINARY
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | SCALE
+INFO  [welove_loving-you-more_2]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [welove_loving-you-more_2]              ScaleBuilder 271  | Beam measured height:  9 -- 0.43 of [6..13] range at 270% of needed quorum
+INFO  [welove_loving-you-more_2]              ScaleBuilder 401  | Normalized black jitter: 21.43 %
+INFO  [welove_loving-you-more_2]                 ScaleStep 65   | Scale{ interline(12,14,15) line(2,4,5) beam(9)}
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | GRID
+INFO  [welove_loving-you-more_2]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [welove_loving-you-more_2]         ClustersRetriever 326  | Retrieved raw line clusters: 8 of sizes [5] with interline(12,14,15)
+INFO  [welove_loving-you-more_2]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7] #8[8]
+INFO  [welove_loving-you-more_2]             SystemManager 800  | 1 part along 8 systems
+INFO  [welove_loving-you-more_2]                      Book 543  | Created scores: [{Score 1}]
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | HEADERS
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | STEM_SEEDS
+INFO  [welove_loving-you-more_2]             StemSeedsStep 86   | stem(4 max:5)
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | BEAMS
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | LEDGERS
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | HEADS
+INFO  [welove_loving-you-more_2]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:0.5,R:1.1] NOTEHEAD_BLACK[L:0.5,R:1.0]}
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | STEMS
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | REDUCTION
+INFO  [welove_loving-you-more_2]             ReductionStep 105  | Stems free length median value: 49 pixels, 3.5 interlines
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | CUE_BEAMS
+INFO  [welove_loving-you-more_2]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 369
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | MEASURES
+INFO  [welove_loving-you-more_2]                      Page 307  | 51 raw measures: [8 in system#1, 8 in system#2, 8 in system#3, 5 in system#4, 4 in system#5, 6 in system#6, 6 in system#7, 6 in system#8]
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | CHORDS
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | CURVES
+INFO  [welove_loving-you-more_2]              SlursBuilder 240  | Slurs: 68
+INFO  [welove_loving-you-more_2]           SegmentsBuilder 155  | Segments: 108
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11415{(0.797) staff:3 mFont:B-34 Rehearsal enclosure:java.awt.Rectangle[x=319,y=727,width=186,height=54]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11428{(0.857) staff:4 mFont:B-2147483647 Rehearsal enclosure:java.awt.Rectangle[x=321,y=1083,width=227,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11440{(0.905) staff:4 mFont:B-35 Rehearsal enclosure:java.awt.Rectangle[x=1624,y=1087,width=186,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11451{(0.741) staff:5 mFont:B-2147483647 Rehearsal enclosure:java.awt.Rectangle[x=341,y=1400,width=252,height=54]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 203  | Several text lines found in rehearsal enclosure java.awt.Rectangle[x=1305,y=1411,width=132,height=103]
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11466{(0.502) staff:6 mFont:43 Rehearsal enclosure:java.awt.Rectangle[x=1523,y=1802,width=94,height=54]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11476{(0.791) staff:7 mFont:76 Rehearsal enclosure:java.awt.Rectangle[x=831,y=2123,width=230,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11483{(0.856) staff:8 mFont:2147483647 Rehearsal enclosure:java.awt.Rectangle[x=1378,y=2444,width=167,height=54]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11486{(0.780) staff:8 mFont:2147483647 Rehearsal enclosure:java.awt.Rectangle[x=440,y=2461,width=93,height=53]}
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+INFO  [welove_loving-you-more_2]         RehearsalsBuilder 229  | RehearsalInter#11489{(0.770) staff:8 mFont:2147483647 Rehearsal enclosure:java.awt.Rectangle[x=1043,y=2461,width=93,height=53]}
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | SYMBOLS
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | LINKS
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12480{(0.282) staff:2 OTTAVA BASSA} at java.awt.Point[x=215,y=831]
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12497{(0.160) staff:2 QUINDICESIMA BASSA} at java.awt.Point[x=686,y=644]
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12578{(0.282) staff:3 OTTAVA ALTA} at java.awt.Point[x=215,y=831]
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12579{(0.422) staff:3 OTTAVA BASSA} at java.awt.Point[x=215,y=1165]
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12707{(0.132) staff:3 QUINDICESIMA ALTA} at java.awt.Point[x=1848,y=639]
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12720{(0.422) staff:4 OTTAVA ALTA} at java.awt.Point[x=215,y=1165]
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#12918{(0.387) staff:5 OTTAVA BASSA} at java.awt.Point[x=231,y=1831]
+INFO  [welove_loving-you-more_2]             SentenceInter 463  | No chord near SentenceInter#9829{(0.700) staff:6 mFont:30 Direction} 105
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#13288{(0.387) staff:6 OTTAVA ALTA} at java.awt.Point[x=231,y=1831]
+INFO  [welove_loving-you-more_2]             SentenceInter 463  | No chord near SentenceInter#9842{(0.633) staff:7 mFont:30 Direction} 113
+INFO  [welove_loving-you-more_2]             SentenceInter 483  | No chord below ChordNameInter#9850{(0.709) staff:8 TEXT "E" font:S-44 root:E ChordKind{MAJOR}}
+INFO  [welove_loving-you-more_2]             SentenceInter 463  | No chord near SentenceInter#9851{(0.649) staff:8 mFont:35 Direction} 12]
+INFO  [welove_loving-you-more_2]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#14121{(0.297) staff:8 QUINDICESIMA ALTA} at java.awt.Point[x=1725,y=2309]
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | RHYTHMS
+INFO  [welove_loving-you-more_2]            StepMonitoring 98   | PAGE
+INFO  [welove_loving-you-more_2]            SheetReduction 154  | Gutter. Different glyphs 2/3 PedalInter#12514{(0.522/0.522) PEDAL_MARK} vs DynamicsInter#12616{(0.318/0.610) DYNAMICS_SF}
+INFO  [welove_loving-you-more_2]            SheetReduction 154  | Gutter. Different glyphs 3/4 PedalInter#12624{(0.572/0.572) PEDAL_MARK} vs DynamicsInter#12810{(0.519/0.783) DYNAMICS_SF}
+INFO  [welove_loving-you-more_2]            SheetReduction 154  | Gutter. Different glyphs 5/6 PedalInter#13194{(0.574/0.574) PEDAL_MARK} vs DynamicsInter#13415{(0.556/0.807) DYNAMICS_SF}
+INFO  [welove_loving-you-more_2]            SheetReduction 154  | Gutter. Different glyphs 6/7 PedalInter#13411{(0.513/0.513) PEDAL_MARK} vs DynamicsInter#13760{(0.685/0.880) DYNAMICS_SF}
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#1 No target duration for measures local IDs [1, 2, 3, 4, 5, 6, 7, 8], please check time signatures
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#2 No target duration for measures local IDs [9, 10, 11, 12, 13, 14, 15, 16], please check time signatures
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#3 No target duration for measures local IDs [17, 18, 19, 20, 21, 22, 23, 24], please check time signatures
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#4 No target duration for measures local IDs [25, 26, 27, 28, 29], please check time signatures
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#5 No target duration for measures local IDs [30, 31, 32, 33], please check time signatures
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#6 No target duration for measures local IDs [34, 35, 36, 37, 38, 39], please check time signatures
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#7 No target duration for measures local IDs [40, 41, 42, 43, 44, 45], please check time signatures
+WARN  [welove_loving-you-more_2]              MeasureFixer 343  | System#8 No target duration for measures local IDs [46, 47, 48, 49, 50, 51], please check time signatures
+INFO  [welove_loving-you-more_2]                      Book 2584 | Book{welove_loving-you-more_2} storing
+INFO  [welove_loving-you-more_2]                      Book 2565 | Stored /book.xml
+INFO  [welove_loving-you-more_2]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [welove_loving-you-more_2]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [welove_loving-you-more_2]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/welove_loving-you-more_2.omr
+INFO  [welove_loving-you-more_2]                 SheetStub 1655 | Sheet disposed
+INFO  [welove_loving-you-more_2]                      Book 2050 | End of Stub#1
+INFO  [welove_loving-you-more_2]                      Book 2057 | End of Book{welove_loving-you-more_2}
+INFO  [welove_loving-you-more_2]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [welove_loving-you-more_2]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [welove_loving-you-more_2]             ScoreExporter 164  | Score welove_loving-you-more_2 exported to /kaggle/working/out/audiveris/B/welove_loving-you-more_2.mxl
+INFO  [welove_loving-you-more_2]                     Score 181  | Closing {Score 1}

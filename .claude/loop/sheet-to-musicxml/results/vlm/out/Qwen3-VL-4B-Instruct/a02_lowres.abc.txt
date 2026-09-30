@@ -1,0 +1,67 @@
+```abc
+X:1
+T:Auld Lang Syne
+M:4/4
+L:1/8
+K:F
+F2 | "F"z2 F2 A2 | "C7"z2 F2 A2 | "F"z2 F2 A2 | "B"z2 d2 |
+F2 | "F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2 F2 | "C7"z2 A2 F2 | "A7"z2 B2 A2 | "B"z2 D2 C2 |
+"F"z2 A2

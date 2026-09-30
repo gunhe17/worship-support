@@ -1,0 +1,51 @@
+```abc
+X:1
+T:In a little Spanish town (twas on a night like this)
+C:Sam M lewis, Joe Young,
+M:3/4
+L:1/8
+K:C
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2B2A2 | G2z2z2 |
+C2A2c2 | d2c2B2 | A2G2F2 | G2z2z2 | A2B2c2 | d2e2d2 | c2

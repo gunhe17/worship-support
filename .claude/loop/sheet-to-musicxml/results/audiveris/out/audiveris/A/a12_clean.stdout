@@ -1,0 +1,70 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a12_clean.png"
+INFO  [a12_clean]                      Book 560  | 1 sheet in /tmp/aud_in/a12_clean.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a12_clean.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a12_clean]            StepMonitoring 98   | LOAD
+INFO  [a12_clean]                 SheetStub 1278 | Loaded image #1 1650x2334 from /tmp/aud_in/a12_clean.png
+INFO  [a12_clean]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a12_clean]            StepMonitoring 98   | BINARY
+INFO  [a12_clean]            StepMonitoring 98   | SCALE
+INFO  [a12_clean]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [a12_clean]              ScaleBuilder 271  | Beam measured height:  8 -- 0.29 of [6..13] range at 373% of needed quorum
+INFO  [a12_clean]              ScaleBuilder 401  | Normalized black jitter: 14.29 %
+INFO  [a12_clean]                 ScaleStep 65   | Scale{ interline(13,14,15) line(1,2,3) beam(8)}
+INFO  [a12_clean]            StepMonitoring 98   | GRID
+INFO  [a12_clean]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a12_clean]         ClustersRetriever 326  | Retrieved raw line clusters: 6 of sizes [5] with interline(13,14,15)
+INFO  [a12_clean]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6]
+INFO  [a12_clean]             SystemManager 800  | 1 part along 6 systems
+INFO  [a12_clean]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a12_clean]            StepMonitoring 98   | HEADERS
+INFO  [a12_clean]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a12_clean]             StemSeedsStep 86   | stem(3 max:4)
+INFO  [a12_clean]            StepMonitoring 98   | BEAMS
+INFO  [a12_clean]            StepMonitoring 98   | LEDGERS
+INFO  [a12_clean]            StepMonitoring 98   | HEADS
+INFO  [a12_clean]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:0.0] NOTEHEAD_BLACK[L:0.7,R:0.8]}
+INFO  [a12_clean]            StepMonitoring 98   | STEMS
+INFO  [a12_clean]            StepMonitoring 98   | REDUCTION
+INFO  [a12_clean]             ReductionStep 105  | Stems free length median value: 50 pixels, 3.6 interlines
+INFO  [a12_clean]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a12_clean]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a12_clean]            StepMonitoring 98   | TEXTS
+Estimating resolution as 269
+INFO  [a12_clean]            StepMonitoring 98   | MEASURES
+INFO  [a12_clean]                      Page 307  | 28 raw measures: [4 in system#1, 5 in system#2, 7 in system#3, 5 in system#4, 5 in system#5, 2 in system#6]
+INFO  [a12_clean]            StepMonitoring 98   | CHORDS
+INFO  [a12_clean]            StepMonitoring 98   | CURVES
+INFO  [a12_clean]              SlursBuilder 240  | Slurs: 13
+INFO  [a12_clean]           SegmentsBuilder 155  | Segments: 4
+INFO  [a12_clean]            StepMonitoring 98   | SYMBOLS
+INFO  [a12_clean]            StepMonitoring 98   | LINKS
+INFO  [a12_clean]             SentenceInter 449  | No measure stack for SentenceInter#4279{(0.900) staff:6 mFont:S-32 Direction} but don't for-get folks that's what you get folks for mak-in'
+INFO  [a12_clean]            StepMonitoring 98   | RHYTHMS
+INFO  [a12_clean]            StepMonitoring 98   | PAGE
+INFO  [a12_clean]            SheetReduction 154  | Gutter. Different glyphs 3/4 ArticulationInter#4777{(0.536/0.623) STACCATO} vs WordInter#4021{(0.531/0.531) staff:4 TEXT "Eﬂ‘b'B(" font:S-26}
+INFO  [a12_clean]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#4789{(0.355/0.648) DYNAMICS_FF} vs WordInter#4024{(0.746/0.746) staff:4 TEXT "C7" font:S-32}
+INFO  [a12_clean]            SheetReduction 154  | Gutter. Different glyphs 5/6 DynamicsInter#4890{(0.514/0.782) DYNAMICS_F} vs WordInter#4289{(0.722/0.722) staff:6 TEXT "for" font:S-33}
+INFO  [a12_clean]                      Book 2584 | Book{a12_clean} storing
+INFO  [a12_clean]                      Book 2565 | Stored /book.xml
+INFO  [a12_clean]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a12_clean]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a12_clean]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a12_clean.omr
+INFO  [a12_clean]                 SheetStub 1655 | Sheet disposed
+INFO  [a12_clean]                      Book 2050 | End of Stub#1
+INFO  [a12_clean]                      Book 2057 | End of Book{a12_clean}
+INFO  [a12_clean]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a12_clean]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a12_clean]                      Part 351  | Sheet#1 System#1 Part#2{name:Piano staves[1] configs:[5]} dummyPart id: 1
+INFO  [a12_clean]                      Part 351  | Sheet#1 System#2 Part#1{name:Pno staves[2] configs:[5]} dummyPart id: 2
+INFO  [a12_clean]                      Part 351  | Sheet#1 System#3 Part#1{name:Pno staves[3] configs:[5]} dummyPart id: 2
+INFO  [a12_clean]                      Part 351  | Sheet#1 System#4 Part#1{name:Pno staves[4] configs:[5]} dummyPart id: 2
+INFO  [a12_clean]                      Part 351  | Sheet#1 System#5 Part#1{name:Pno staves[5] configs:[5]} dummyPart id: 2
+INFO  [a12_clean]                      Part 351  | Sheet#1 System#6 Part#1{name:Pno staves[6] configs:[5]} dummyPart id: 2
+INFO  [a12_clean]             ScoreExporter 164  | Score a12_clean exported to /kaggle/working/out/audiveris/A/a12_clean.mxl
+INFO  [a12_clean]                     Score 181  | Closing {Score 1}

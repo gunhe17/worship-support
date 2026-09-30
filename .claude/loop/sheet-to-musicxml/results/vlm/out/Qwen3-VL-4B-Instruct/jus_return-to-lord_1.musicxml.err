@@ -1,0 +1,1 @@
+ABCHandlerException("no active default note length provided for note processing. tPrev: None, token: <music21.abcFormat.ABCNote 'a'>, tNext: <music21.abcFormat.ABCNote 'b'>")

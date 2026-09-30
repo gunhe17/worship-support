@@ -1,0 +1,1522 @@
+{
+ "a00_clean": {
+  "notes": {
+   "omr_ned": 0.2011,
+   "gt_syms": 308,
+   "pred_syms": 388,
+   "edits": 140
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.4545,
+   "gt_syms": 5,
+   "pred_syms": 6,
+   "edits": 5
+  },
+  "chords": {
+   "omr_ned": 0.2,
+   "gt_syms": 19,
+   "pred_syms": 16,
+   "edits": 7
+  },
+  "lyrics": {
+   "omr_ned": 0.2153,
+   "gt_syms": 648,
+   "pred_syms": 643,
+   "edits": 278
+  },
+  "all": {
+   "omr_ned": 0.2137,
+   "gt_syms": 1016,
+   "pred_syms": 1085,
+   "edits": 449
+  }
+ },
+ "a00_lowres": {
+  "notes": {
+   "omr_ned": 0.2663,
+   "gt_syms": 308,
+   "pred_syms": 368,
+   "edits": 180
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.6,
+   "gt_syms": 5,
+   "pred_syms": 5,
+   "edits": 6
+  },
+  "chords": {
+   "omr_ned": 0.6154,
+   "gt_syms": 19,
+   "pred_syms": 7,
+   "edits": 16
+  },
+  "lyrics": {
+   "omr_ned": 0.3075,
+   "gt_syms": 648,
+   "pred_syms": 604,
+   "edits": 385
+  },
+  "all": {
+   "omr_ned": 0.249,
+   "gt_syms": 1016,
+   "pred_syms": 1000,
+   "edits": 502
+  }
+ },
+ "a01_clean": {
+  "notes": {
+   "omr_ned": 0.4571,
+   "gt_syms": 127,
+   "pred_syms": 223,
+   "edits": 160
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.3143,
+   "gt_syms": 35,
+   "pred_syms": 35,
+   "edits": 22
+  },
+  "lyrics": {
+   "omr_ned": 0.2705,
+   "gt_syms": 221,
+   "pred_syms": 219,
+   "edits": 119
+  },
+  "all": {
+   "omr_ned": 0.3511,
+   "gt_syms": 391,
+   "pred_syms": 492,
+   "edits": 310
+  }
+ },
+ "a01_lowres": {
+  "notes": {
+   "omr_ned": 0.4571,
+   "gt_syms": 127,
+   "pred_syms": 223,
+   "edits": 160
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.3231,
+   "gt_syms": 35,
+   "pred_syms": 30,
+   "edits": 21
+  },
+  "lyrics": {
+   "omr_ned": 0.2398,
+   "gt_syms": 221,
+   "pred_syms": 221,
+   "edits": 106
+  },
+  "all": {
+   "omr_ned": 0.3438,
+   "gt_syms": 391,
+   "pred_syms": 499,
+   "edits": 306
+  }
+ },
+ "a02_clean": {
+  "notes": {
+   "omr_ned": 0.2222,
+   "gt_syms": 282,
+   "pred_syms": 348,
+   "edits": 140
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.3714,
+   "gt_syms": 37,
+   "pred_syms": 33,
+   "edits": 26
+  },
+  "lyrics": {
+   "omr_ned": 0.1828,
+   "gt_syms": 482,
+   "pred_syms": 481,
+   "edits": 176
+  },
+  "all": {
+   "omr_ned": 0.2108,
+   "gt_syms": 820,
+   "pred_syms": 902,
+   "edits": 363
+  }
+ },
+ "a02_lowres": {
+  "notes": {
+   "omr_ned": 0.2222,
+   "gt_syms": 282,
+   "pred_syms": 348,
+   "edits": 140
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.6721,
+   "gt_syms": 37,
+   "pred_syms": 24,
+   "edits": 41
+  },
+  "lyrics": {
+   "omr_ned": 0.2404,
+   "gt_syms": 482,
+   "pred_syms": 483,
+   "edits": 232
+  },
+  "all": {
+   "omr_ned": 0.2202,
+   "gt_syms": 820,
+   "pred_syms": 901,
+   "edits": 379
+  }
+ },
+ "a03_clean": {
+  "notes": {
+   "omr_ned": 0.3967,
+   "gt_syms": 124,
+   "pred_syms": 181,
+   "edits": 121
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 1.0,
+   "gt_syms": 1,
+   "pred_syms": 0,
+   "edits": 1
+  },
+  "chords": {
+   "omr_ned": 0.3,
+   "gt_syms": 12,
+   "pred_syms": 8,
+   "edits": 6
+  },
+  "lyrics": {
+   "omr_ned": 1.0,
+   "gt_syms": 241,
+   "pred_syms": 0,
+   "edits": 241
+  },
+  "all": {
+   "omr_ned": 0.6478,
+   "gt_syms": 399,
+   "pred_syms": 220,
+   "edits": 401
+  }
+ },
+ "a03_lowres": {
+  "notes": {
+   "omr_ned": 0.8098,
+   "gt_syms": 124,
+   "pred_syms": 181,
+   "edits": 247
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 1.0,
+   "gt_syms": 1,
+   "pred_syms": 0,
+   "edits": 1
+  },
+  "chords": {
+   "omr_ned": 0.8571,
+   "gt_syms": 12,
+   "pred_syms": 2,
+   "edits": 12
+  },
+  "lyrics": {
+   "omr_ned": 1.0,
+   "gt_syms": 241,
+   "pred_syms": 54,
+   "edits": 295
+  },
+  "all": {
+   "omr_ned": 0.8991,
+   "gt_syms": 399,
+   "pred_syms": 255,
+   "edits": 588
+  }
+ },
+ "a04_clean": {
+  "notes": {
+   "omr_ned": 0.1917,
+   "gt_syms": 448,
+   "pred_syms": 512,
+   "edits": 184
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 4,
+   "pred_syms": 4,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.6471,
+   "gt_syms": 35,
+   "pred_syms": 16,
+   "edits": 33
+  },
+  "lyrics": {
+   "omr_ned": 0.6106,
+   "gt_syms": 576,
+   "pred_syms": 143,
+   "edits": 439
+  },
+  "all": {
+   "omr_ned": 0.3961,
+   "gt_syms": 1112,
+   "pred_syms": 779,
+   "edits": 749
+  }
+ },
+ "a04_lowres": {
+  "notes": {
+   "omr_ned": 0.8899,
+   "gt_syms": 448,
+   "pred_syms": 569,
+   "edits": 905
+  },
+  "signatures": {
+   "omr_ned": 0.5385,
+   "gt_syms": 4,
+   "pred_syms": 9,
+   "edits": 7
+  },
+  "barlines": {
+   "omr_ned": 1.0,
+   "gt_syms": 4,
+   "pred_syms": 4,
+   "edits": 8
+  },
+  "chords": {
+   "omr_ned": 0.8824,
+   "gt_syms": 35,
+   "pred_syms": 16,
+   "edits": 45
+  },
+  "lyrics": {
+   "omr_ned": 1.0,
+   "gt_syms": 576,
+   "pred_syms": 319,
+   "edits": 895
+  },
+  "all": {
+   "omr_ned": 0.9404,
+   "gt_syms": 1112,
+   "pred_syms": 969,
+   "edits": 1957
+  }
+ },
+ "a05_clean": {
+  "notes": {
+   "omr_ned": 0.2609,
+   "gt_syms": 268,
+   "pred_syms": 303,
+   "edits": 149
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.3333,
+   "gt_syms": 20,
+   "pred_syms": 16,
+   "edits": 12
+  },
+  "lyrics": {
+   "omr_ned": 0.2139,
+   "gt_syms": 417,
+   "pred_syms": 415,
+   "edits": 178
+  },
+  "all": {
+   "omr_ned": 0.2495,
+   "gt_syms": 725,
+   "pred_syms": 770,
+   "edits": 373
+  }
+ },
+ "a05_lowres": {
+  "notes": {
+   "omr_ned": 0.4718,
+   "gt_syms": 268,
+   "pred_syms": 300,
+   "edits": 268
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.3889,
+   "gt_syms": 20,
+   "pred_syms": 16,
+   "edits": 14
+  },
+  "lyrics": {
+   "omr_ned": 0.4463,
+   "gt_syms": 417,
+   "pred_syms": 412,
+   "edits": 370
+  },
+  "all": {
+   "omr_ned": 0.4663,
+   "gt_syms": 725,
+   "pred_syms": 757,
+   "edits": 691
+  }
+ },
+ "a06_clean": {
+  "notes": {
+   "omr_ned": 0.2498,
+   "gt_syms": 472,
+   "pred_syms": 533,
+   "edits": 251
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 3,
+   "pred_syms": 6,
+   "edits": 3
+  },
+  "barlines": {
+   "omr_ned": 0.5,
+   "gt_syms": 7,
+   "pred_syms": 9,
+   "edits": 8
+  },
+  "chords": {
+   "omr_ned": 0.5952,
+   "gt_syms": 61,
+   "pred_syms": 23,
+   "edits": 50
+  },
+  "lyrics": {
+   "omr_ned": 0.2263,
+   "gt_syms": 723,
+   "pred_syms": 722,
+   "edits": 327
+  },
+  "all": {
+   "omr_ned": 0.3056,
+   "gt_syms": 1290,
+   "pred_syms": 1534,
+   "edits": 863
+  }
+ },
+ "a06_lowres": {
+  "notes": {
+   "omr_ned": 0.5671,
+   "gt_syms": 472,
+   "pred_syms": 512,
+   "edits": 558
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 3,
+   "pred_syms": 6,
+   "edits": 3
+  },
+  "barlines": {
+   "omr_ned": 0.625,
+   "gt_syms": 7,
+   "pred_syms": 9,
+   "edits": 10
+  },
+  "chords": {
+   "omr_ned": 0.75,
+   "gt_syms": 61,
+   "pred_syms": 19,
+   "edits": 60
+  },
+  "lyrics": {
+   "omr_ned": 0.5806,
+   "gt_syms": 723,
+   "pred_syms": 729,
+   "edits": 843
+  },
+  "all": {
+   "omr_ned": 0.6091,
+   "gt_syms": 1290,
+   "pred_syms": 1496,
+   "edits": 1697
+  }
+ },
+ "a07_clean": {
+  "notes": {
+   "omr_ned": 0.2778,
+   "gt_syms": 276,
+   "pred_syms": 372,
+   "edits": 180
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 0,
+   "pred_syms": 0,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 1.0,
+   "gt_syms": 12,
+   "pred_syms": 2,
+   "edits": 14
+  },
+  "lyrics": {
+   "omr_ned": 0.2921,
+   "gt_syms": 402,
+   "pred_syms": 310,
+   "edits": 208
+  },
+  "all": {
+   "omr_ned": 0.3013,
+   "gt_syms": 709,
+   "pred_syms": 708,
+   "edits": 427
+  }
+ },
+ "a07_lowres": {
+  "notes": {
+   "omr_ned": 0.3846,
+   "gt_syms": 276,
+   "pred_syms": 309,
+   "edits": 225
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 0,
+   "pred_syms": 0,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.8571,
+   "gt_syms": 12,
+   "pred_syms": 2,
+   "edits": 12
+  },
+  "lyrics": {
+   "omr_ned": 0.4697,
+   "gt_syms": 402,
+   "pred_syms": 226,
+   "edits": 295
+  },
+  "all": {
+   "omr_ned": 0.435,
+   "gt_syms": 709,
+   "pred_syms": 553,
+   "edits": 549
+  }
+ },
+ "a08_clean": {
+  "notes": {
+   "omr_ned": 0.4701,
+   "gt_syms": 194,
+   "pred_syms": 308,
+   "edits": 236
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 7,
+   "pred_syms": 14,
+   "edits": 7
+  },
+  "barlines": {
+   "omr_ned": 0.5,
+   "gt_syms": 2,
+   "pred_syms": 2,
+   "edits": 2
+  },
+  "chords": {
+   "omr_ned": 0.3529,
+   "gt_syms": 17,
+   "pred_syms": 17,
+   "edits": 12
+  },
+  "lyrics": {
+   "omr_ned": 0.5491,
+   "gt_syms": 959,
+   "pred_syms": 711,
+   "edits": 917
+  },
+  "all": {
+   "omr_ned": 0.5406,
+   "gt_syms": 1189,
+   "pred_syms": 1112,
+   "edits": 1244
+  }
+ },
+ "a08_lowres": {
+  "notes": {
+   "omr_ned": 0.8474,
+   "gt_syms": 194,
+   "pred_syms": 422,
+   "edits": 522
+  },
+  "signatures": {
+   "omr_ned": 0.5,
+   "gt_syms": 7,
+   "pred_syms": 21,
+   "edits": 14
+  },
+  "barlines": {
+   "omr_ned": 0.5,
+   "gt_syms": 2,
+   "pred_syms": 2,
+   "edits": 2
+  },
+  "chords": {
+   "omr_ned": 0.7333,
+   "gt_syms": 17,
+   "pred_syms": 13,
+   "edits": 22
+  },
+  "lyrics": {
+   "omr_ned": 1.0,
+   "gt_syms": 959,
+   "pred_syms": 703,
+   "edits": 1662
+  },
+  "all": {
+   "omr_ned": 0.9511,
+   "gt_syms": 1189,
+   "pred_syms": 1226,
+   "edits": 2297
+  }
+ },
+ "a09_clean": {
+  "notes": {
+   "omr_ned": 0.2527,
+   "gt_syms": 243,
+   "pred_syms": 311,
+   "edits": 140
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 0,
+   "pred_syms": 0,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.7297,
+   "gt_syms": 30,
+   "pred_syms": 7,
+   "edits": 27
+  },
+  "lyrics": {
+   "omr_ned": 0.7687,
+   "gt_syms": 507,
+   "pred_syms": 68,
+   "edits": 442
+  },
+  "all": {
+   "omr_ned": 0.5446,
+   "gt_syms": 798,
+   "pred_syms": 447,
+   "edits": 678
+  }
+ },
+ "a09_lowres": {
+  "notes": {
+   "omr_ned": 0.2482,
+   "gt_syms": 243,
+   "pred_syms": 313,
+   "edits": 138
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 0,
+   "pred_syms": 0,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.3913,
+   "gt_syms": 30,
+   "pred_syms": 16,
+   "edits": 18
+  },
+  "lyrics": {
+   "omr_ned": 0.5293,
+   "gt_syms": 507,
+   "pred_syms": 158,
+   "edits": 352
+  },
+  "all": {
+   "omr_ned": 0.4169,
+   "gt_syms": 798,
+   "pred_syms": 514,
+   "edits": 547
+  }
+ },
+ "a10_clean": {
+  "notes": {
+   "omr_ned": 0.1694,
+   "gt_syms": 480,
+   "pred_syms": 553,
+   "edits": 175
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.5,
+   "gt_syms": 2,
+   "pred_syms": 2,
+   "edits": 2
+  },
+  "chords": {
+   "omr_ned": 0.2,
+   "gt_syms": 41,
+   "pred_syms": 34,
+   "edits": 15
+  },
+  "lyrics": {
+   "omr_ned": 0.0524,
+   "gt_syms": 487,
+   "pred_syms": 486,
+   "edits": 51
+  },
+  "all": {
+   "omr_ned": 0.1242,
+   "gt_syms": 1035,
+   "pred_syms": 1114,
+   "edits": 267
+  }
+ },
+ "a10_lowres": {
+  "notes": {
+   "omr_ned": 0.2823,
+   "gt_syms": 480,
+   "pred_syms": 526,
+   "edits": 284
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 1.0,
+   "gt_syms": 2,
+   "pred_syms": 1,
+   "edits": 3
+  },
+  "chords": {
+   "omr_ned": 0.3143,
+   "gt_syms": 41,
+   "pred_syms": 29,
+   "edits": 22
+  },
+  "lyrics": {
+   "omr_ned": 0.1788,
+   "gt_syms": 487,
+   "pred_syms": 464,
+   "edits": 170
+  },
+  "all": {
+   "omr_ned": 0.2433,
+   "gt_syms": 1035,
+   "pred_syms": 1041,
+   "edits": 505
+  }
+ },
+ "a11_clean": {
+  "notes": {
+   "omr_ned": 0.0,
+   "gt_syms": 243,
+   "pred_syms": 243,
+   "edits": 0
+  },
+  "signatures": {
+   "omr_ned": 0.0,
+   "gt_syms": 4,
+   "pred_syms": 4,
+   "edits": 0
+  },
+  "barlines": {
+   "omr_ned": 0.1429,
+   "gt_syms": 3,
+   "pred_syms": 4,
+   "edits": 1
+  },
+  "chords": {
+   "omr_ned": 0.04,
+   "gt_syms": 26,
+   "pred_syms": 24,
+   "edits": 2
+  },
+  "lyrics": {
+   "omr_ned": 0.0293,
+   "gt_syms": 946,
+   "pred_syms": 933,
+   "edits": 55
+  },
+  "all": {
+   "omr_ned": 0.0231,
+   "gt_syms": 1236,
+   "pred_syms": 1236,
+   "edits": 57
+  }
+ },
+ "a11_lowres": {
+  "notes": {
+   "omr_ned": 0.0083,
+   "gt_syms": 243,
+   "pred_syms": 239,
+   "edits": 4
+  },
+  "signatures": {
+   "omr_ned": 0.0,
+   "gt_syms": 4,
+   "pred_syms": 4,
+   "edits": 0
+  },
+  "barlines": {
+   "omr_ned": 0.2,
+   "gt_syms": 3,
+   "pred_syms": 2,
+   "edits": 1
+  },
+  "chords": {
+   "omr_ned": 0.0612,
+   "gt_syms": 26,
+   "pred_syms": 23,
+   "edits": 3
+  },
+  "lyrics": {
+   "omr_ned": 0.0393,
+   "gt_syms": 946,
+   "pred_syms": 913,
+   "edits": 73
+  },
+  "all": {
+   "omr_ned": 0.0421,
+   "gt_syms": 1236,
+   "pred_syms": 1209,
+   "edits": 103
+  }
+ },
+ "a12_clean": {
+  "notes": {
+   "omr_ned": 0.2321,
+   "gt_syms": 309,
+   "pred_syms": 363,
+   "edits": 156
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.1667,
+   "gt_syms": 6,
+   "pred_syms": 6,
+   "edits": 2
+  },
+  "chords": {
+   "omr_ned": 0.5135,
+   "gt_syms": 48,
+   "pred_syms": 26,
+   "edits": 38
+  },
+  "lyrics": {
+   "omr_ned": 0.365,
+   "gt_syms": 585,
+   "pred_syms": 467,
+   "edits": 384
+  },
+  "all": {
+   "omr_ned": 0.372,
+   "gt_syms": 977,
+   "pred_syms": 1047,
+   "edits": 753
+  }
+ },
+ "a12_lowres": {
+  "notes": {
+   "omr_ned": 0.8357,
+   "gt_syms": 309,
+   "pred_syms": 409,
+   "edits": 600
+  },
+  "signatures": {
+   "omr_ned": 0.5,
+   "gt_syms": 4,
+   "pred_syms": 12,
+   "edits": 8
+  },
+  "barlines": {
+   "omr_ned": 0.8333,
+   "gt_syms": 6,
+   "pred_syms": 6,
+   "edits": 10
+  },
+  "chords": {
+   "omr_ned": 1.0,
+   "gt_syms": 48,
+   "pred_syms": 21,
+   "edits": 69
+  },
+  "lyrics": {
+   "omr_ned": 0.8084,
+   "gt_syms": 585,
+   "pred_syms": 459,
+   "edits": 844
+  },
+  "all": {
+   "omr_ned": 0.8382,
+   "gt_syms": 977,
+   "pred_syms": 1063,
+   "edits": 1710
+  }
+ },
+ "a13_clean": {
+  "notes": {
+   "omr_ned": 0.3169,
+   "gt_syms": 159,
+   "pred_syms": 207,
+   "edits": 116
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.4194,
+   "gt_syms": 35,
+   "pred_syms": 27,
+   "edits": 26
+  },
+  "lyrics": {
+   "omr_ned": 0.2672,
+   "gt_syms": 329,
+   "pred_syms": 326,
+   "edits": 175
+  },
+  "all": {
+   "omr_ned": 0.3009,
+   "gt_syms": 528,
+   "pred_syms": 582,
+   "edits": 334
+  }
+ },
+ "a13_lowres": {
+  "notes": {
+   "omr_ned": 0.3575,
+   "gt_syms": 159,
+   "pred_syms": 199,
+   "edits": 128
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 1.0,
+   "gt_syms": 1,
+   "pred_syms": 0,
+   "edits": 1
+  },
+  "chords": {
+   "omr_ned": 0.5172,
+   "gt_syms": 35,
+   "pred_syms": 23,
+   "edits": 30
+  },
+  "lyrics": {
+   "omr_ned": 0.389,
+   "gt_syms": 329,
+   "pred_syms": 288,
+   "edits": 240
+  },
+  "all": {
+   "omr_ned": 0.3928,
+   "gt_syms": 528,
+   "pred_syms": 531,
+   "edits": 416
+  }
+ },
+ "a14_clean": {
+  "notes": {
+   "omr_ned": 0.2589,
+   "gt_syms": 189,
+   "pred_syms": 259,
+   "edits": 116
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.5,
+   "gt_syms": 5,
+   "pred_syms": 7,
+   "edits": 6
+  },
+  "chords": {
+   "omr_ned": 0.2353,
+   "gt_syms": 20,
+   "pred_syms": 14,
+   "edits": 8
+  },
+  "lyrics": {
+   "omr_ned": 0.2642,
+   "gt_syms": 339,
+   "pred_syms": 331,
+   "edits": 177
+  },
+  "all": {
+   "omr_ned": 0.2727,
+   "gt_syms": 567,
+   "pred_syms": 647,
+   "edits": 331
+  }
+ },
+ "a14_lowres": {
+  "notes": {
+   "omr_ned": 0.3641,
+   "gt_syms": 189,
+   "pred_syms": 245,
+   "edits": 158
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.4545,
+   "gt_syms": 5,
+   "pred_syms": 6,
+   "edits": 5
+  },
+  "chords": {
+   "omr_ned": 0.4483,
+   "gt_syms": 20,
+   "pred_syms": 9,
+   "edits": 13
+  },
+  "lyrics": {
+   "omr_ned": 0.3034,
+   "gt_syms": 339,
+   "pred_syms": 307,
+   "edits": 196
+  },
+  "all": {
+   "omr_ned": 0.3524,
+   "gt_syms": 567,
+   "pred_syms": 605,
+   "edits": 413
+  }
+ },
+ "a15_clean": {
+  "notes": {
+   "omr_ned": 0.1947,
+   "gt_syms": 355,
+   "pred_syms": 405,
+   "edits": 148
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.4545,
+   "gt_syms": 5,
+   "pred_syms": 6,
+   "edits": 5
+  },
+  "chords": {
+   "omr_ned": 0.2593,
+   "gt_syms": 15,
+   "pred_syms": 12,
+   "edits": 7
+  },
+  "lyrics": {
+   "omr_ned": 0.1249,
+   "gt_syms": 672,
+   "pred_syms": 665,
+   "edits": 167
+  },
+  "all": {
+   "omr_ned": 0.1591,
+   "gt_syms": 1076,
+   "pred_syms": 1118,
+   "edits": 349
+  }
+ },
+ "a15_lowres": {
+  "notes": {
+   "omr_ned": 0.83,
+   "gt_syms": 355,
+   "pred_syms": 457,
+   "edits": 674
+  },
+  "signatures": {
+   "omr_ned": 0.5,
+   "gt_syms": 4,
+   "pred_syms": 12,
+   "edits": 8
+  },
+  "barlines": {
+   "omr_ned": 1.0,
+   "gt_syms": 5,
+   "pred_syms": 6,
+   "edits": 11
+  },
+  "chords": {
+   "omr_ned": 0.9167,
+   "gt_syms": 15,
+   "pred_syms": 9,
+   "edits": 22
+  },
+  "lyrics": {
+   "omr_ned": 0.8735,
+   "gt_syms": 672,
+   "pred_syms": 656,
+   "edits": 1160
+  },
+  "all": {
+   "omr_ned": 0.8585,
+   "gt_syms": 1076,
+   "pred_syms": 1157,
+   "edits": 1917
+  }
+ },
+ "a16_clean": {
+  "notes": {
+   "omr_ned": 0.3216,
+   "gt_syms": 167,
+   "pred_syms": 231,
+   "edits": 128
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 6,
+   "pred_syms": 12,
+   "edits": 6
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.6087,
+   "gt_syms": 32,
+   "pred_syms": 14,
+   "edits": 28
+  },
+  "lyrics": {
+   "omr_ned": 0.2823,
+   "gt_syms": 273,
+   "pred_syms": 269,
+   "edits": 153
+  },
+  "all": {
+   "omr_ned": 0.3873,
+   "gt_syms": 495,
+   "pred_syms": 610,
+   "edits": 428
+  }
+ },
+ "a16_lowres": {
+  "notes": {
+   "omr_ned": 0.4,
+   "gt_syms": 167,
+   "pred_syms": 223,
+   "edits": 156
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 6,
+   "pred_syms": 12,
+   "edits": 6
+  },
+  "barlines": {
+   "omr_ned": 0.0,
+   "gt_syms": 1,
+   "pred_syms": 1,
+   "edits": 0
+  },
+  "chords": {
+   "omr_ned": 0.8049,
+   "gt_syms": 32,
+   "pred_syms": 9,
+   "edits": 33
+  },
+  "lyrics": {
+   "omr_ned": 0.3036,
+   "gt_syms": 273,
+   "pred_syms": 254,
+   "edits": 160
+  },
+  "all": {
+   "omr_ned": 0.3979,
+   "gt_syms": 495,
+   "pred_syms": 543,
+   "edits": 413
+  }
+ },
+ "a17_clean": {
+  "notes": {
+   "omr_ned": 0.2588,
+   "gt_syms": 338,
+   "pred_syms": 404,
+   "edits": 192
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.4,
+   "gt_syms": 5,
+   "pred_syms": 5,
+   "edits": 4
+  },
+  "chords": {
+   "omr_ned": 0.2222,
+   "gt_syms": 38,
+   "pred_syms": 34,
+   "edits": 16
+  },
+  "lyrics": {
+   "omr_ned": 0.3145,
+   "gt_syms": 827,
+   "pred_syms": 556,
+   "edits": 435
+  },
+  "all": {
+   "omr_ned": 0.3006,
+   "gt_syms": 1230,
+   "pred_syms": 1032,
+   "edits": 680
+  }
+ },
+ "a17_lowres": {
+  "notes": {
+   "omr_ned": 0.7432,
+   "gt_syms": 338,
+   "pred_syms": 394,
+   "edits": 544
+  },
+  "signatures": {
+   "omr_ned": 0.4,
+   "gt_syms": 4,
+   "pred_syms": 6,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 1.0,
+   "gt_syms": 5,
+   "pred_syms": 5,
+   "edits": 10
+  },
+  "chords": {
+   "omr_ned": 0.8246,
+   "gt_syms": 38,
+   "pred_syms": 19,
+   "edits": 47
+  },
+  "lyrics": {
+   "omr_ned": 0.5754,
+   "gt_syms": 827,
+   "pred_syms": 452,
+   "edits": 736
+  },
+  "all": {
+   "omr_ned": 0.6506,
+   "gt_syms": 1230,
+   "pred_syms": 908,
+   "edits": 1391
+  }
+ },
+ "a18_clean": {
+  "notes": {
+   "omr_ned": 0.2954,
+   "gt_syms": 208,
+   "pred_syms": 266,
+   "edits": 140
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.1429,
+   "gt_syms": 3,
+   "pred_syms": 4,
+   "edits": 1
+  },
+  "chords": {
+   "omr_ned": 0.4105,
+   "gt_syms": 57,
+   "pred_syms": 38,
+   "edits": 39
+  },
+  "lyrics": {
+   "omr_ned": 0.2577,
+   "gt_syms": 388,
+   "pred_syms": 361,
+   "edits": 193
+  },
+  "all": {
+   "omr_ned": 0.3072,
+   "gt_syms": 672,
+   "pred_syms": 744,
+   "edits": 435
+  }
+ },
+ "a18_lowres": {
+  "notes": {
+   "omr_ned": 0.3262,
+   "gt_syms": 208,
+   "pred_syms": 258,
+   "edits": 152
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.1429,
+   "gt_syms": 3,
+   "pred_syms": 4,
+   "edits": 1
+  },
+  "chords": {
+   "omr_ned": 0.4286,
+   "gt_syms": 57,
+   "pred_syms": 34,
+   "edits": 39
+  },
+  "lyrics": {
+   "omr_ned": 0.2739,
+   "gt_syms": 388,
+   "pred_syms": 335,
+   "edits": 198
+  },
+  "all": {
+   "omr_ned": 0.3257,
+   "gt_syms": 672,
+   "pred_syms": 688,
+   "edits": 443
+  }
+ },
+ "a19_clean": {
+  "notes": {
+   "omr_ned": 0.3316,
+   "gt_syms": 168,
+   "pred_syms": 206,
+   "edits": 124
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.5,
+   "gt_syms": 5,
+   "pred_syms": 7,
+   "edits": 6
+  },
+  "chords": {
+   "omr_ned": 0.1489,
+   "gt_syms": 24,
+   "pred_syms": 23,
+   "edits": 7
+  },
+  "lyrics": {
+   "omr_ned": 0.3275,
+   "gt_syms": 428,
+   "pred_syms": 430,
+   "edits": 281
+  },
+  "all": {
+   "omr_ned": 0.3278,
+   "gt_syms": 642,
+   "pred_syms": 685,
+   "edits": 435
+  }
+ },
+ "a19_lowres": {
+  "notes": {
+   "omr_ned": 0.3316,
+   "gt_syms": 168,
+   "pred_syms": 206,
+   "edits": 124
+  },
+  "signatures": {
+   "omr_ned": 0.3333,
+   "gt_syms": 4,
+   "pred_syms": 8,
+   "edits": 4
+  },
+  "barlines": {
+   "omr_ned": 0.5,
+   "gt_syms": 5,
+   "pred_syms": 7,
+   "edits": 6
+  },
+  "chords": {
+   "omr_ned": 0.2,
+   "gt_syms": 24,
+   "pred_syms": 21,
+   "edits": 9
+  },
+  "lyrics": {
+   "omr_ned": 0.3132,
+   "gt_syms": 428,
+   "pred_syms": 431,
+   "edits": 269
+  },
+  "all": {
+   "omr_ned": 0.3205,
+   "gt_syms": 642,
+   "pred_syms": 684,
+   "edits": 425
+  }
+ }
+}

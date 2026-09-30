@@ -1,0 +1,71 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a05_clean.png"
+INFO  [a05_clean]                      Book 560  | 1 sheet in /tmp/aud_in/a05_clean.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a05_clean.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a05_clean]            StepMonitoring 98   | LOAD
+INFO  [a05_clean]                 SheetStub 1278 | Loaded image #1 1650x2334 from /tmp/aud_in/a05_clean.png
+INFO  [a05_clean]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a05_clean]            StepMonitoring 98   | BINARY
+INFO  [a05_clean]            StepMonitoring 98   | SCALE
+INFO  [a05_clean]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [a05_clean]              ScaleBuilder 271  | Beam measured height:  8 -- 0.29 of [6..13] range at 505% of needed quorum
+INFO  [a05_clean]              ScaleBuilder 401  | Normalized black jitter: 14.29 %
+INFO  [a05_clean]                 ScaleStep 65   | Scale{ interline(14,14,15) line(1,2,3) beam(8)}
+INFO  [a05_clean]            StepMonitoring 98   | GRID
+INFO  [a05_clean]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a05_clean]         ClustersRetriever 326  | Retrieved raw line clusters: 5 of sizes [5] with interline(14,14,15)
+INFO  [a05_clean]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5]
+INFO  [a05_clean]             SystemManager 800  | 1 part along 5 systems
+INFO  [a05_clean]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a05_clean]            StepMonitoring 98   | HEADERS
+INFO  [a05_clean]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a05_clean]             StemSeedsStep 86   | stem(3 max:4)
+INFO  [a05_clean]            StepMonitoring 98   | BEAMS
+INFO  [a05_clean]            StepMonitoring 98   | LEDGERS
+INFO  [a05_clean]            StepMonitoring 98   | HEADS
+INFO  [a05_clean]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[L:0.8,R:0.8]}
+INFO  [a05_clean]            StepMonitoring 98   | STEMS
+INFO  [a05_clean]            StepMonitoring 98   | REDUCTION
+INFO  [a05_clean]             ReductionStep 105  | Stems free length median value: 50 pixels, 3.6 interlines
+INFO  [a05_clean]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a05_clean]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a05_clean]            StepMonitoring 98   | TEXTS
+Estimating resolution as 269
+INFO  [a05_clean]            StepMonitoring 98   | MEASURES
+INFO  [a05_clean]                      Page 307  | 16 raw measures: [3 in system#1, 3 in system#2, 3 in system#3, 4 in system#4, 3 in system#5]
+INFO  [a05_clean]            StepMonitoring 98   | CHORDS
+INFO  [a05_clean]            StepMonitoring 98   | CURVES
+INFO  [a05_clean]              SlursBuilder 240  | Slurs: 7
+INFO  [a05_clean]           SegmentsBuilder 155  | Segments: 2
+INFO  [a05_clean]            StepMonitoring 98   | SYMBOLS
+INFO  [a05_clean]            StepMonitoring 98   | LINKS
+INFO  [a05_clean]            StepMonitoring 98   | RHYTHMS
+INFO  [a05_clean]                     Voice 257  | Measure{#7} Voice{#2 excess:1/8} too long
+INFO  [a05_clean]               StackRhythm 224  | S3 MeasureStack#7 no correct rhythm
+INFO  [a05_clean]            StepMonitoring 98   | PAGE
+INFO  [a05_clean]            SheetReduction 154  | Gutter. Different glyphs 2/3 DynamicsInter#3390{(0.288/0.577) DYNAMICS_FF} vs ChordNameInter#2816{(0.745/0.745) staff:3 TEXT "G7" font:S-32 root:G ChordKind{DOMINANT '7'}}
+INFO  [a05_clean]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#3407{(0.355/0.651) DYNAMICS_FF} vs ChordNameInter#2945{(0.746/0.746) staff:4 TEXT "C7" font:S-32 root:C ChordKind{DOMINANT '7'}}
+INFO  [a05_clean]            SheetReduction 154  | Gutter. Different glyphs 4/5 DynamicsInter#3442{(0.288/0.576) DYNAMICS_FF} vs ChordNameInter#3076{(0.745/0.745) staff:5 TEXT "G7" font:S-32 root:G ChordKind{DOMINANT '7'}}
+INFO  [a05_clean]                     Voice 257  | Measure{#7} Voice{#2 excess:1/8} too long
+INFO  [a05_clean]                      Book 2584 | Book{a05_clean} storing
+INFO  [a05_clean]                      Book 2565 | Stored /book.xml
+INFO  [a05_clean]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a05_clean]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a05_clean]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a05_clean.omr
+INFO  [a05_clean]                 SheetStub 1655 | Sheet disposed
+INFO  [a05_clean]                      Book 2050 | End of Stub#1
+INFO  [a05_clean]                      Book 2057 | End of Book{a05_clean}
+INFO  [a05_clean]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a05_clean]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a05_clean]                      Part 351  | Sheet#1 System#1 Part#2{name:Piano staves[1] configs:[5]} dummyPart id: 1
+INFO  [a05_clean]                      Part 351  | Sheet#1 System#2 Part#1{name:Pno. staves[2] configs:[5]} dummyPart id: 2
+INFO  [a05_clean]                      Part 351  | Sheet#1 System#3 Part#1{name:Pno. staves[3] configs:[5]} dummyPart id: 2
+INFO  [a05_clean]                      Part 351  | Sheet#1 System#4 Part#1{name:Pno. staves[4] configs:[5]} dummyPart id: 2
+INFO  [a05_clean]                      Part 351  | Sheet#1 System#5 Part#1{name:Pno. staves[5] configs:[5]} dummyPart id: 2
+INFO  [a05_clean]             ScoreExporter 164  | Score a05_clean exported to /kaggle/working/out/audiveris/A/a05_clean.mxl
+INFO  [a05_clean]                     Score 181  | Closing {Score 1}

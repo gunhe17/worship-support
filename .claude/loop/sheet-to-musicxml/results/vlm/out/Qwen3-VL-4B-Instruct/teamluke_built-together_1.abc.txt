@@ -1,0 +1,12 @@
+```abc
+X:1
+T:함께 지어져 가네
+T:Being Built Together
+M:4/4
+L:1/8
+K:F
+F2 F2 F2 F2 | "Gm7" F2 F2 F2 F2 | "Am7" F2 F2 F2 F2 | "Gm7" F2 F2 F2 F2 | "F" F2 F2 F2 F2 | "Gm7" F2 F2 F2 F2 | "F/A" F2 F2 F2 F2 | z2 z2 z2 z2 |
+F2 F2 F2 F2 | "Gm7" F2 F2 F2 F2 | "Bb/C" F2 F2 F2 F2 | "C/Bb" F2 F2 F2 F2 | "Am7" F2 F2 F2 F2 | "D7" F2 F2 F2 F2 | "Gm7" F2 F2 F2 F2 | "F" F2 F2 F2 F2 |
+F2 F2 F2 F2 | "FM7" F2 F2 F2 F2 | "BbM7" F2 F2 F2 F2 | "F/A" F2 F2 F2 F2 | "Gm7" F2 F2 F2 F2 | "C" F2 F2 F2 F2 | "FM7" F2 F2 F2 F2 | z2 z2 z2 z2 |
+F2 F2 F2 F2 | "BbM7" F2 F2 F2 F2 | "Bb6" F2 F2 F2 F2 | "F/A" F2 F2 F2 F2 | "Dm7" F2 F2 F2 F2 | "Gm7" F2 F2 F2 F2 | "C" F2 F2 F2 F2 | "F" F2 F2 F2 F2 |
+```
