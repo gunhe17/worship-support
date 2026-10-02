@@ -200,6 +200,13 @@ def detect(g, k, p_force=None):
             return on, float(on.mean()), int(runs.max()) if len(runs) else 0
         LY = np.array([np.interp(cx, xs, Y[:, i]) for i in range(5)]); gp = (LY[4] - LY[0]) / 4
         diag = {}
+        # seen-only: fraction of columns where a real thin line is visible (ink-covered columns do NOT count)
+        mseen = line_mask(th)
+        def seen_cov(yy):
+            yy = np.clip(np.round(yy).astype(int), 1, H - 2); on = np.zeros(len(cx), bool)
+            for dy in (-1, 0, 1): on |= mseen[yy + dy, cx]
+            return float(on.mean())
+        diag["seen"] = [round(seen_cov(LY[i]), 3) for i in range(5)]
         for name, yy in [("up", LY[0] - gp), ("dn", LY[4] + gp)] + [(f"l{i}", LY[i]) for i in range(5)]:
             on, cv, mr = cover(yy)
             diag[name] = dict(cov=round(cv, 3), max_paper=mr, runs=int((np.diff(on.astype(np.int8)) == 1).sum()))
