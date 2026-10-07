@@ -1,0 +1,38 @@
+{
+  "title": "나의 예수님",
+  "key": "G",
+  "time_signature": "4/4",
+  "tempo": "=65",
+  "sections": [
+    {
+      "tag": "Verse",
+      "lyrics": "내 삶 속에 감당치 못할 고난을 통과한 예수 얀단",
+      "chords": "G D/F# Em7 Dm7 G7 C D/C Bm7 Eaug7 E7"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "오로 손종으로 곧게 지키면 주의 약속이 루시리라",
+      "chords": "Am7 D7 G D/F# Em7 C C/D G C/D"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "중심일은 세상속에서 내안에 충만한 예수소망",
+      "chords": "G D/F# Em7 Dm7 G7 C D/C Bm7 Eaug7 E7"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "오로자랑으로 곧게잘으면 나의 삶은그의집이라 예수",
+      "chords": "Am7 D7 G D/F# Em7 C C/D G C/D"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "님 나의예수님 복음의중심되시네 무너진내삶을세우신예수님예수",
+      "chords": "G D/F# Em7 Dm7 G7 C G/B A7 C/D"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "님 나의예수님 사랑의중심되시네 반복된모든죄덮으신주은혜",
+      "chords": "G F6 Em7 Cm/Eb Am7 G/B C C/D G"
+    }
+  ]
+}

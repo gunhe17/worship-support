@@ -1,0 +1,73 @@
+```abc
+X:1
+T:Moonlight an Roses (bring mem-ries of you)
+M:4/4
+L:1/8
+K:C
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+F2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B2 c2 d2 | A2 B2 c2 d2 |
+C2 | c4 e2 d2 | c2 B2 A2 G2 | A2 B

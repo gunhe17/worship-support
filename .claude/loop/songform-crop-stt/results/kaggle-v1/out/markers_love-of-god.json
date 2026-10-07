@@ -1,0 +1,535 @@
+{
+ "id": "markers_love-of-god",
+ "team": "마커스워십",
+ "title": "주님의 사랑",
+ "url": "https://www.youtube.com/watch?v=2omkAfYtcsE",
+ "kind": "live",
+ "pad": 1.5,
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 15.840633625345014,
+   "crop_start": 0.0,
+   "crop_end": 17.34,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "여러분 안녕하세요.",
+     "vocals": "안녕하세요. 오늘의 영상은 이곳에 있는 이곳의 이곳의 이곳의 이곳의 이곳의 이곳의 이곳의 이곳의 이곳의 이곳의 이곳의"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내가.",
+     "vocals": "우리의 인연은 시간을 지나도 쉬지 않고."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 15.840633625345014,
+   "end": 29.761190447617903,
+   "crop_start": 14.34,
+   "crop_end": 31.26,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "눈부신 햇살 저 하늘 너머 내게 준 거지",
+     "vocals": "눈부신 햇살 저 하늘 너머 내게 주어지"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "눈부신 해살 저를 넘어 내게 주어지.",
+     "vocals": "눈부신 해살 저를 넘어 내게 주어지."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 29.761190447617903,
+   "end": 43.561742469698785,
+   "crop_start": 28.26,
+   "crop_end": 45.06,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 사랑 깊어져 가는 나의 마음에 나 얻었네",
+     "vocals": "주님의 사랑 깊어져가네 나의 마음에 나어남네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 사랑 깊어져 안에 나의 마음에 나 어둠에.",
+     "vocals": "주님의 사랑 깊어져가네 나의 마음에 나오네."
+    }
+   }
+  },
+  {
+   "label": "pre-chorus",
+   "start": 43.561742469698785,
+   "end": 56.52226089043562,
+   "crop_start": 42.06,
+   "crop_end": 58.02,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "나 얻었네 변함없는 그 사랑 내 안에 기쁨의 노래 어쩔 수가 없네 주님의 사랑",
+     "vocals": "나 얻었네 변함없는 그 사랑 내 안에 기쁨의 노래 어쩔 수가 없네 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "나 오는 내 변함없는 그 사랑 내 안에 이쁨의 노래 멈출 수가 없네 주님의 사랑",
+     "vocals": "나 없는 내 변함없는 그 사랑 내 안에 기쁨의 노래 억제할 수가 없네 주님의 사랑"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 56.52226089043562,
+   "end": 81.96327853114124,
+   "crop_start": 55.02,
+   "crop_end": 83.46,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 사랑 밤에 실리는 내일을 찾아와 그 사랑에 네가 내 맘 가득해 주님의 은혜 눈물이 차는 영혼을 받아와 그 사랑에 내 맘 채우네",
+     "vocals": "없네 주님의 사랑 바람에 실리는 내게 찾아와 그 사랑의 향기가 내 맘 가득해 주님의 은혜 흩어지며 내게 받아와 그 사랑의 예배로 내 맘 채우네 자막 제공 및 광고를 포함하고 있습니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 사랑, 마음에 실리는 그 찾아와 그 사랑에 네가 내 마음 가득해. 주님의 은혜, 눈치 어른이 아름다워 그 사랑에 내 마음에 맘들네.",
+     "vocals": "주님의 사랑 마음에 스리는 내게 찾아와 그 사랑의 향기가 내 맘 같게 주님을 내 헛자루면 내게 알아봐 그 사랑의 애매로 내 맘 지우네"
+    }
+   }
+  },
+  {
+   "label": "inst",
+   "start": 81.96327853114124,
+   "end": 95.88383535341413,
+   "crop_start": 80.46,
+   "crop_end": 97.38,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 맘 채우네",
+     "vocals": "아멘"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 맘 주네.",
+     "vocals": "내 맘 주네."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 95.88383535341413,
+   "end": 109.92439697587903,
+   "crop_start": 94.38,
+   "crop_end": 111.42,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "눈부신 햇살 저 하늘 범어 내게 주어진 주님의 사랑",
+     "vocals": "눈부신 햇살 저 하늘 넘어 내게 주어진 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "눈부신 햇살 저 하늘 넘어 내게 주어지 주님의 사랑.",
+     "vocals": "눈부신 해살 저 하늘 넘어 내게 주어지 주님의 사랑."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 109.92439697587903,
+   "end": 123.4849393975759,
+   "crop_start": 108.42,
+   "crop_end": 124.98,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 사랑 깊어져 가네 나의 마음에 나 얼었네",
+     "vocals": "주님의 사랑 깊어져 가네 나의 마음에 날 얻었네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 사랑 깊어져 깊어져 내 마음에 나왔네.",
+     "vocals": "주님의 사랑. 주님의 사랑 깊어져 깊어져 가네 내 마음에 나왔네."
+    }
+   }
+  },
+  {
+   "label": "pre-chorus",
+   "start": 123.4849393975759,
+   "end": 136.92547701908077,
+   "crop_start": 121.98,
+   "crop_end": 138.43,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "나 없네 변함없는 그 사람 내 안에 기쁨의 노래 멈출 수가 없네 주님의 사랑",
+     "vocals": "나를 얻었네 변함없는 그 사랑 내 안에 기쁨의 노래 멈출 수가 없네 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "나 없네 변함없는 그 사랑 내 안에 기쁨의 노래 멈칠 수가 없네 주님의 사랑",
+     "vocals": "나 없는 변화 없는 그 사람 내 안에 기쁨의 노래 멈칠 수가 없네 주님의 자라."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 136.92547701908077,
+   "end": 151.08604344173767,
+   "crop_start": 135.43,
+   "crop_end": 152.59,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 사랑은 바람에 실리는 눈이 찾아와 그 사랑이 아내의 맘 같게 주님을 은혜해",
+     "vocals": "주님의 사랑 바람에 실린 눈이 찾아와 그 사랑의 향기가 내 맘 가득해 주님의 은혜"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 사랑, 바람에 실린 눈이 찾아왔 그 사랑에 믿감에 망각해 주님의 눈에",
+     "vocals": "주님의 사랑, 사랑의 주님 내게 찾아와 그 사랑에 기가 막히게 주님의 내"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 151.08604344173767,
+   "end": 165.24660986439457,
+   "crop_start": 149.59,
+   "crop_end": 166.75,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 은혜 우리 주님에게 다가와 그 사랑에 늘 늘어 내 맘 채우네 넌 없네 나 없네",
+     "vocals": "주의 외를 내 흡수리며 내게 다가와 그 사랑에 일대로 내 맘 채우네 너도 내 나 없네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 은혜 그저 우리 눈에 나가와 그 사랑에 열매로 내 마음 채우네 너도 네 나 없네.",
+     "vocals": "주위를 내 흡수리면 내게 다가와 그 사랑에 그대로 내 맘 채우래 나온대 나온대."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 165.24660986439457,
+   "end": 179.5271810872435,
+   "crop_start": 163.75,
+   "crop_end": 181.03,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "나 없네 변함없는 그 사람 내 안에 기쁨의 노래 그렇습니다 나 없네 나 없네",
+     "vocals": "그렇습니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "변함없는 내 사랑 내 안에 기쁨의 노래 그렇습니다. 주님 나 없네 나 없네",
+     "vocals": "나 없는 변화 없는 내 사랑, 내 앞에 기쁨의 노래. 그렇습니다. 주스 나 없는 나 없는"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 179.5271810872435,
+   "end": 195.84783391335654,
+   "crop_start": 178.03,
+   "crop_end": 197.35,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "나 얻었네 변함없는 그 사랑 내 안에 기쁨의 노래 멈출 수가 없네 멈출 수가 없네 주님의 사랑",
+     "vocals": "난 어던데 변함없는 그 사랑 내 안의 기쁨의 노래 멈출 수가 없네 멈출 수가 없네 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "멈출 수 없네 우리 목소리 넘겨 멈출 수가 없네 쓰리 매 사랑",
+     "vocals": "멈출 수 없네 변함없는 그 사랑 내 안에 깊은 내 노래 멈출 수 없을 수가 우리 목소리나 평 멈출 수가 없네 주님의 사랑"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 195.84783391335654,
+   "end": 210.24840993639745,
+   "crop_start": 194.35,
+   "crop_end": 211.75,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 사랑 바람에 실린 은혜를 찾아와 그 사랑에 한끼가 내 맘 가득해 주님의 은혜",
+     "vocals": "주님의 사랑 바람에 실린 내게 찾아와 그 사랑의 향기가 내 맘 가득해 주님의 은혜"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 사랑, 하나님의 실리는 내게 찾아와 그 사랑에 날 내 안에 맴돕게. 주님의 은혜.",
+     "vocals": "주님의 사랑, 아름다실 이분 내게 찾아와 그 사랑에 날 이간에 몸담을 때, 주님의 은혜."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 210.24840993639745,
+   "end": 223.6889475579023,
+   "crop_start": 208.75,
+   "crop_end": 225.19,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 은혜 그 자름에 다가와 내 사랑에 내 비로 내 맘 채우는 주님의 사랑",
+     "vocals": "주님의 은혜 흑사름을 내게 받아와 그 사랑의 땡기로 내 맘 채우네 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 은혜 굳절음을 받아와 그 사랑에 깨물어 내 맘 채우네 주님의 사랑.",
+     "vocals": "주님의 눈에 굽스르면 내게 다가와 그 사랑에 담으로 내 맘 채우네 주님의 사랑 주님의 사랑"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 223.6889475579023,
+   "end": 237.8495139805592,
+   "crop_start": 222.19,
+   "crop_end": 239.35,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "그 사랑에 햇빛 안에 맘 가득해",
+     "vocals": "주님의 사랑 바람에 실리든 내게 찾아와 그 사랑에 행복한 내 맘 가득해 주님의 은혜"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주인의 사랑, 하늘 신이든 내게 찾아왔 그 사랑에 한 달 안에 맘 같게 주인의 은혜",
+     "vocals": "주의 사랑, 하늘 시리든 내내 찾아와 그 사랑에 안기나 내 맘 같애. 주인분의"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 237.8495139805592,
+   "end": 262.6905076203048,
+   "crop_start": 236.35,
+   "crop_end": 264.19,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "그 사랑의 열매로 내 맘 채우네 그 사랑의 열매로 내 맘 채우네 그 사랑의 열매로 내 맘 채우네",
+     "vocals": "그 사랑의 열매로 내 맘 채우네 그 사랑의 열매로 내 맘 채우네 그 사랑의 열매로 내 맘 채우네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 무상한 그대 다가와 그 사랑에 나의 온 내 맘 주네 그 사랑에 나의 온 내 맘 주네 그 사랑에 나의 온 내 맘 주네",
+     "vocals": "주인의 숙취를 위해 나와 그 사랑에 열네로 내 맘 채우네 그 사랑에 열네로 내 맘 채우네 그 사랑에 열네로 내 맘 채우네"
+    }
+   }
+  },
+  {
+   "label": "bridge",
+   "start": 262.6905076203048,
+   "end": 279.3711748469939,
+   "crop_start": 261.19,
+   "crop_end": 280.87,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "내 맘 채우네 넌 없네 변함없는 그 사랑 우리 안에 계신 사랑 찬양합니다 사랑 넌 없네",
+     "vocals": "내 맘 충분해 나 얻었네 변함없는 그 사랑 우리 안에 계신 사람 찬양합니다 사랑 나 얻었네 변함없는 그 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "너 없네 변함없는 그 사랑 우리 안에 계신 사랑 찬양합니다.",
+     "vocals": "너네 맞추네. 나 너네 변함없는 그 사랑 우리 안에 계신 사랑 찬양합니다. 사랑 나 너네"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 279.3711748469939,
+   "end": 296.05184207368296,
+   "crop_start": 277.87,
+   "crop_end": 297.55,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "나 얻었네 변함없는 그 사랑 내 안의 기쁨의 노래 멈출 수가 없네 나 얻었네 변함없는 그 사랑",
+     "vocals": "나 얻었네 변함없는 그 사랑 내 안에 기쁨의 노래 멈출 수가 없네 나 얻었네 변함없는 그 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "너던 내 변함없는 그 사랑 내 안에 기쁨의 노래 멈출 수가 없네 나던 내",
+     "vocals": "나던 내 변함없는 그 사랑 내 안에 기쁨의 노래 멈출 수가 없네 나던 내"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 296.05184207368296,
+   "end": 311.2924516980679,
+   "crop_start": 294.55,
+   "crop_end": 312.79,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "나 얻었네 변함없는 그 사랑 내 안에 깊은 내 노래 멈출 수가 없네 주님의 사랑",
+     "vocals": "나 얻었네 변함없는 그 사랑 내 안에 기쁨의 노래 멈출 수가 없네 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "나도네 결함 없는 그 사랑 내 안에 깊은 내 노래 멈출 수가 없네 주님의 사랑",
+     "vocals": "나 없던 내 별함 없는 그 사랑 내 안에 기쁨의 노래 멈출 수가 없네 주님의 사랑"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 311.2924516980679,
+   "end": 327.37309492379694,
+   "crop_start": 309.79,
+   "crop_end": 328.87,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 사랑 바람에 실리는 내게 찾아와 그 사랑에 향기가 내 맘 가득해 주님의 사랑",
+     "vocals": "주님의 사랑 바람에 실리는 내게 찾아와 그 사랑에 향기가 내 맘 가득해 주님의 흐름"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 사랑, 바람의 실리는 내게 찾아와 그 사랑의 향기가 내 마음 가득해. 주님의 은혜",
+     "vocals": "네 주님의 사랑 바람에 실리는 내게 찾아와 그 사랑의 향기가 내 마음 가득해 주님의 은혜"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 327.37309492379694,
+   "end": 343.33373334933395,
+   "crop_start": 325.87,
+   "crop_end": 344.83,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 눈에 구비처럼 열매가 다가와 그 사랑의 열매로 내 맘 채우네 주님의 주님의 사랑",
+     "vocals": "주님의 은혜 구비처럼 은혜게 받아와 그 사랑의 열매로 내 맘 채우네 주님의 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님은 구비처럼 내게 다가와 그 사랑에 내 온전한 주님의 주님의 사랑",
+     "vocals": "주님의 구비처럼 내게 다가와 그 사랑의 열매로 내 마음 차우네 주님의 주님의 사랑"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 343.33373334933395,
+   "end": 360.49441977679106,
+   "crop_start": 341.83,
+   "crop_end": 361.99,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 사랑 바람에 실리는 내게 찾아와 사랑해 네가 내 맘 가득해 주님의 사랑",
+     "vocals": "주님의 사랑 바람에 실리는 내게 찾아와 내 사랑에 한기가 내 맘 가득해 주님의 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 주님의 사랑, 사랑의 실리듯 내게 찾아와. 사랑에 담긴 내 마음 거기 계. 주님의",
+     "vocals": "주님의 주님의 사랑 밤에 쉬는 내게 찾아와 사랑에 한 이가 내 마음 닿을게 주님의 주님의"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 360.49441977679106,
+   "end": 375.495019800792,
+   "crop_start": 358.99,
+   "crop_end": 377.0,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 눈에 구비철 흐름이 다가와 그 사랑의 열매로 내 맘 채우네 그 사랑의",
+     "vocals": "주님의 꿈이 철흐르며 내린 바가와 그 사랑의 열매로 내 맘 채우네 그 사랑의 그 사랑의"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 금빛 얼음면에 받아와 그 사랑의 열매로 내 마음 채우네. 그 사랑이 그 사랑이",
+     "vocals": "주님의 숨결 차르르며 내게 다가와 그 사랑의 열매로 내 마음 채우네 사랑 그 사랑"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 375.495019800792,
+   "end": 397.81591263650546,
+   "crop_start": 374.0,
+   "crop_end": 397.85,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "그 사랑의 열매로 내 맘 채우네 그 사랑의 열매로 내 맘 채우네",
+     "vocals": "그 사랑의 열매로 내 맘 채우네 그 사랑의 열매로 내 맘 채우네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "그 사랑에 야메로 내 맘 채우네 그 사랑에 야메로 내 맘 채우네",
+     "vocals": "그 사랑에 야메로 내 맘 채우네 그 사랑에 야메로 내 맘 채우네"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,409 @@
+{
+ "id": "isaiah61_god-so-loved",
+ "team": "아이자야씩스티원",
+ "title": "하나님께서 세상을 사랑하사",
+ "url": "https://www.youtube.com/watch?v=j_fxvfTShVg",
+ "kind": "live",
+ "pad": 1.5,
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 16.200648025921037,
+   "crop_start": 0.0,
+   "crop_end": 17.7,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "한글자막 by 한효정",
+     "vocals": "하늘"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하늘.",
+     "vocals": "하늘."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 16.200648025921037,
+   "end": 31.681267250690027,
+   "crop_start": 14.7,
+   "crop_end": 33.18,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하늘보다 높으신 주사랑 바다보다 넓으신 주사랑 나를 향한 크고 높으신 사랑",
+     "vocals": "하늘보다 높으신 주사랑 바다보다 넓으신 주사랑 나를 향한 크고 높으신 사랑"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하늘보다 높으신 주 사랑, 바다보다 넓으신 주 사랑 나를 향한 그 고 높으신 사랑 어때고?",
+     "vocals": "하늘보다 높으신 주 사랑, 바다보다 넓으신 주 사랑 나를 향한 그 고 높으신 사랑 어때고?"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 31.681267250690027,
+   "end": 47.04188167526701,
+   "crop_start": 30.18,
+   "crop_end": 48.54,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "한글자막 by 한효정",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "푸신 사랑 어때고 어때 그 모든 것 내게서 멀리 거두셨네 나의 수치 찬양되었네 영원히 가",
+     "vocals": "푸신 사랑 어때고 어때 그 모든 것 내게서 멀리 거두셨네 나의 수치 찬양되었네 영원히 가"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 47.04188167526701,
+   "end": 62.762510500420014,
+   "crop_start": 45.54,
+   "crop_end": 64.26,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "영원히 감사드리리 주님의 그 은혜 날 찾아주신 그 사랑 오 주님 내 전부 사랑해요",
+     "vocals": "영원히 감사드리리 주님의 그 은혜 날 찾아주신 그 사랑 오 주님 내 전부 사랑해요"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 영원히 감사드리리 주님의 그 내 내 찾아주신 그 사랑 오 주님 내 전부 사랑해요.",
+     "vocals": "내 영원히 감사드리리 주님에 그 내 찾아주신 그 사랑 오 주님 내 전부 사랑해요."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 62.762510500420014,
+   "end": 80.16320652826113,
+   "crop_start": 61.26,
+   "crop_end": 81.66,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "사랑해요 경배해요 나 주위에 살리 영원토록 신실하신 주 사랑을 전하리",
+     "vocals": "사랑해요 경배해요 나 주위에 살리니 영원토록 신실하신 줄 사랑을 전하리"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "사랑해요 경배해요 나 주위에 살리 영원토록 신실하신 주 사랑의 전달이 하늘",
+     "vocals": "사랑해요 경배해요 나 주위에 살리 영원토록 신실하신 주 사랑의 전달이 하늘."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 80.16320652826113,
+   "end": 95.52382095283811,
+   "crop_start": 78.66,
+   "crop_end": 97.02,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하늘보다 높으신 주사랑 바다보다 넓으신 주사랑 나를 향한 크고 높으신 사랑",
+     "vocals": "하늘보다 높으신 주사랑 바다보다 넓으신 주사랑 나를 향한 크고 높으신 사람"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하늘보다 높으신 주 사랑, 바다보다 넓으신 주 사랑 나를 양아 그 고 높으신 사랑 어때고",
+     "vocals": "하늘보다 높으신 주 살아, 바다보다 넓으신 주 살아, 나를 양아, 그고 높으신 사람 어떻게."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 95.52382095283811,
+   "end": 110.88443537741509,
+   "crop_start": 94.02,
+   "crop_end": 112.38,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "그 심사도 어때고 어땐 그 모든 건 내게서 멀리 거두셨네 나의 수치 찬양되었네 영원히 가",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "그 신선한 어때고 어때고 그 모든 것 내게서 멀리 거두셨네 나의 수치 찬양되었네 영원히가",
+     "vocals": "하신 사랑 어때고 어때는 그 모든 것 내게서 멀리 거두셨네 나의 수치 찬양되었네 영원히가"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 110.88443537741509,
+   "end": 126.36505460218409,
+   "crop_start": 109.38,
+   "crop_end": 127.87,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "영원히 감사드리리 주님의 그 은혜 내 찾아주신 그 사랑 오 주님 내 전부 사랑해요",
+     "vocals": "영원히 감사드리리 주님의 그 은혜 내 찾아주신 그 사랑 오 주님 내 전부 사랑해요"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "내 영원히 감사드리리 주님의 그늘 내 찾아주실 사랑 오 주님 내 전부 사랑해요.",
+     "vocals": "내 영원히 감사드리리 주님의 그 은혜, 내 찾아주신 그 사랑, 오 주님 내 전부 사랑해요."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 126.36505460218409,
+   "end": 144.0057602304092,
+   "crop_start": 124.87,
+   "crop_end": 145.51,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "사랑해요 경배해요 나 주위에 살리 영원토록 신실하신 주 사랑을 전하리",
+     "vocals": "사랑해요 경매해요 나 주위에 살리 영원토록 신실하신 줄 사랑을 전하리"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "사랑해요 경배해요 나 주위에 살리 영원토록 신실하신 주 사랑을 전하리 하나님께.",
+     "vocals": "사랑해요 경배해요 나 주위에 살리 영원토록 신실하신 주 사랑을 전하리 하나님께."
+    }
+   }
+  },
+  {
+   "label": "bridge",
+   "start": 144.0057602304092,
+   "end": 159.4863794551782,
+   "crop_start": 142.51,
+   "crop_end": 160.99,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님께서 세상을 사랑하사 독생자를 주셨으니 믿는 자는 영생을 얻으리",
+     "vocals": "하나님께서 세상을 사랑하사 생자를 주셨으니 믿는 자는 영생을 얻으리 하나님께"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님께서 세상을 사랑하사 독생자를 주셨으니 믿는 자는 영생을 얻으리. 하나님께서",
+     "vocals": "하나님께서 세상을 사랑하사 탄생자를 주셨으니 믿는 자는 영생을 얻으리. 하나님께서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 159.4863794551782,
+   "end": 174.96699867994718,
+   "crop_start": 157.99,
+   "crop_end": 176.47,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님께서 세상을 사랑하사 독생자를 주셨으니 믿는 자는 영생을 얻으리",
+     "vocals": "하나님께서 세상을 사랑하사 생자를 주셨으니 믿는 자는 영생을 얻으리 하나님께"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님께서 세상을 사랑하사 목생자를 주셨으니 믿는 자는 영생을 얻으리. 하나님께서",
+     "vocals": "하나님께서 세상을 사랑하사 목생자를 주셨으니 믿는 자는 영생을 얻으리. 하나님께서"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 174.96699867994718,
+   "end": 190.32761310452418,
+   "crop_start": 173.47,
+   "crop_end": 191.83,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님께서 세상을 사랑하사 독생자를 주셨으니 믿는 자는 영생을 얻으리 하나님께서 세상을 사랑하사 독생자를 주셨으니 믿는 자는 영생을 얻으리",
+     "vocals": "하나님께서 세상을 사랑하사 독생자를 주셨으니 믿는 자네 영생으로 드리"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님께서 세상을 살아나서 독생자를 주셨으니 믿는 자는 영생을 얻으리. 하나님께서",
+     "vocals": "하나님께서 세상을 사랑하셔 독생자를 주셨으니 믿는 자는 영생을 얻으리. 하나님께서"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 190.32761310452418,
+   "end": 205.68822752910117,
+   "crop_start": 188.83,
+   "crop_end": 207.19,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님께서 세상을 사랑하소 독생자를 주셨으니 믿는 자는 영생으로 우리 하나님",
+     "vocals": "하나님께서 세상을 사랑하여 독생자를 주셨으니 믿는 자는 영생으로 드릴 하나님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님께서 세상을 살아나서 독생자를 주셨으니 믿는 자는 영생을 얻으리하나니. 하나님.",
+     "vocals": "하나님께서 세상을 살아나서 독생자를 주셨으니 믿는 자는 영생을 얻으리니 하느님 하느님."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 205.68822752910117,
+   "end": 221.16884675387016,
+   "crop_start": 204.19,
+   "crop_end": 222.67,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님께서 세상을 사랑하사 복생자를 주셨으니 믿는 자는 영생을 얻으리 하나님",
+     "vocals": "하나님께서 세상을 사랑하사 복생자를 주셨으니 믿는 자들 영생을 얻으리 하나님"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님 하나님께서 세상을 살아나사 독생자를 지셨으니 믿는 자는 영생을 얻으리. 하나님",
+     "vocals": "하나님, 하나님께서 세상을 사랑하사 고통자를 주셨으니 믿는 자는 영생을 얻으리. 하나님."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 221.16884675387016,
+   "end": 235.80943237729508,
+   "crop_start": 219.67,
+   "crop_end": 237.31,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님께서 세상을 사랑하사 영생을 얻으리 난 믿네",
+     "vocals": "하나님께서 세상을 사랑하사 주신 나를 주셨으니 내 은자는 영생으로 드리라 믿네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하나님께서 세상을 사랑하소서 목숨나를 주셨으니 믿는 자는 영생으로 드리. 난 믿네.",
+     "vocals": "하나님께서 세상을 사랑하소서 나를 주셨으니 내 은찬은 영생으로 드리. 난 믿네."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 235.80943237729508,
+   "end": 251.7700708028321,
+   "crop_start": 234.31,
+   "crop_end": 253.27,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "난 믿네 난 믿네 난 믿네 다시 사신 고생자 난 믿네",
+     "vocals": "나 믿네 나 믿네 나 믿네 다시 사신 동생자 나 믿네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "들이 나 믿네 나 믿네 나 믿네 다시 삼신도생전 나 믿네",
+     "vocals": "들이 나 믿네 나 믿네 나 믿네 다시 사신 동생 자 나 믿네"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 251.7700708028321,
+   "end": 267.7307092283691,
+   "crop_start": 250.27,
+   "crop_end": 269.23,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "난 믿네 다시 사신 동생자 난 믿네",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "난 믿네 난 믿네 난 믿네 다시 사신 동생 자 난 믿네",
+     "vocals": "나 믿네 나 믿네 나 믿네 다시 사신 동생자 나 믿네"
+    }
+   }
+  },
+  {
+   "label": "outro",
+   "start": 267.7307092283691,
+   "end": 284.5313812552502,
+   "crop_start": 266.23,
+   "crop_end": 286.03,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "나미네",
+     "vocals": "덧붙네"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "남긴데.",
+     "vocals": "담임네."
+    }
+   }
+  },
+  {
+   "label": "intro",
+   "start": 284.5313812552502,
+   "end": 286.4514580583223,
+   "crop_start": 283.03,
+   "crop_end": 286.51,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "감사합니다.",
+     "vocals": "시청해주셔서 감사합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "그렇죠.",
+     "vocals": "그렇죠."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+```abc
+X:1
+T:Makin' Whoopee!
+C:Walter Donaldson
+C:Gus Kahn
+M:4/4
+L:1/8
+K:F
+V:1 clef=treble
+"FMaj7"F2A2c2B2 | A2F2E2D2 | C2B,2A,2G,2 | F,2E,2D,2C,2 | B,2A,2G,2F,2 | E,2D,2C,2B,,2 | A,2G,2F,2E,2 | D,2C,2B,,2A,,2 |
+V:2 clef=treble
+F2A2c2B2 | A2F2E2D2 | C2B,2A,2G,2 | F,2E,2D,2C,2 | B,2A,2G,2F,2 | E,2D,2C,2B,,2 | A,2G,2F,2E,2 | D,2C,2B,,2A,,2 |
+V:3 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:4 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:5 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:6 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:7 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:8 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:9 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:10 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:11 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:12 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:13 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:14 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:15 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:16 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:17 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:18 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:19 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:20 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:21 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:22 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:23 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:24 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:25 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:26 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:27 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:28 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:29 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z2z2z2z2 |
+V:30 clef=treble
+z2z2z2z2 | z2z2z2z2 | z2z2z2z2 | z

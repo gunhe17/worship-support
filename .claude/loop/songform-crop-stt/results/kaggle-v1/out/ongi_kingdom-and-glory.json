@@ -1,0 +1,283 @@
+{
+ "id": "ongi_kingdom-and-glory",
+ "team": "옹기장이",
+ "title": "주의 나라와 영광 이곳에",
+ "url": "https://www.youtube.com/watch?v=ufEXsxOS3mE",
+ "kind": "live",
+ "pad": 1.5,
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 21.72086883475339,
+   "crop_start": 0.0,
+   "crop_end": 23.22,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "한글자막 by 한효정",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "한번 잊는 한.",
+     "vocals": "안 바른 한."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 21.72086883475339,
+   "end": 41.52166086643466,
+   "crop_start": 20.22,
+   "crop_end": 43.02,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "한 걸음 한 걸음 주님과 함께 기쁘게 올바른 길 가게 하소서 여길까 저길까 아무 한지 말고 담대하게 주의 길 가게 하소서",
+     "vocals": "한걸음 한걸음 주님과 함께 이쁘게 올바른 길 가게 하소서 여기까 저기까 아원치 말고 남대하게 주의 길 가게 하소서 영원하나"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "한 걸음 한 걸음 주님과 함께 기쁘게 올라른 길 가게 하소서 여기다 저기다 아慌지 말고 당대하게 주일길 가게 하소서.",
+     "vocals": "한 걸음 한 걸음 주님과 함께 기쁘게 올바른 길 가게 하소서 여기다 저기다 아원지 말고 당대하게 주의 길 가게 하소서 영원한 하늘"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 41.52166086643466,
+   "end": 61.32245289811593,
+   "crop_start": 40.02,
+   "crop_end": 62.82,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "영원한 나를 막아 주님과 함께 진리의 길 서는 길 가게 하소서 세상의 유혹들 펼쳐버리고 믿음으로 주의 길 가게 하소서",
+     "vocals": "아멘"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님 나 말마다 주님 밝게 지리에게 서른길 밝게 하소서 세상의 유혹들 멀쳐버리고 믿음으로 주님에게 가게 하소서 오늘 하루",
+     "vocals": "약화라 알마다 주님 함께 진리에게 서는 기쁘게 하소서 세상의 유혹들을 쳐버리고 믿음으로 주의 길하게 하소서 오늘 하루."
+    }
+   }
+  },
+  {
+   "label": "pre-chorus",
+   "start": 61.32245289811593,
+   "end": 81.1232449297972,
+   "crop_start": 59.82,
+   "crop_end": 82.62,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "하나님의 이름으로 기도합니다.",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "하루하루 성공을 하고 저기날로 유화달해도 주 예수 믿고 있는 뜻 이루었으려 모두가 어떤 것이며 안주주하.",
+     "vocals": "천국을 하고 창백해도 예수 믿고 있는 이와서야 모두 다 화평 되시라. 자주주하사"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 81.1232449297972,
+   "end": 100.92403696147845,
+   "crop_start": 79.62,
+   "crop_end": 102.42,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "강조주 하나님 나의 구주 영원히 다스리와 각각 등 모두 합하여 우리 기쁘게 주 찬양하시",
+     "vocals": "창조주 하나님 나의 구주를 영원히 다스려와 문 앞엔 모두 합하여 우리 기쁘게 주 찬양하세"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "강조주 하나님 나의 구주 영원히 다스리원 같은 모두 함께 우리 기쁨이 주차려나지.",
+     "vocals": "장조준 하나님 나의 구주 영원히 날 세워 받은 모두 업하여 우리 빛들이 주차려라 세."
+    }
+   }
+  },
+  {
+   "label": "inst",
+   "start": 100.92403696147845,
+   "end": 115.8046321852874,
+   "crop_start": 99.42,
+   "crop_end": 117.3,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "한글자막 by 한효정",
+     "vocals": "감사합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "달인 한",
+     "vocals": "I'm riding high."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 115.8046321852874,
+   "end": 135.6054242169687,
+   "crop_start": 114.3,
+   "crop_end": 137.11,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "아름다운 걸음 주님과 함께 기쁘게 올바른 길을 가게 하소서 여길까 저길까 방황치 말고 담대하게 주의 길 가게 하소서",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "오늘 한 걸음 주님 함께 기쁘게 올바른 길 가게 하소서 여기 있다 저기 있다 아왕치 말고 담대하게 주의 길 가게 하소서.",
+     "vocals": "오늘은 한 걸음 주님과 함께 기쁘게 올바른 길 가게 하소서 여기다 저기다 아무렇지 말고 담대하게 주의 길 가게 하소서."
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 135.6054242169687,
+   "end": 155.28621144845795,
+   "crop_start": 134.11,
+   "crop_end": 156.79,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "날마다 날마다 주님과 함께 진리의 길 선한 길 가게 하소서 세상의 유혹들 멸쳐버리고 믿음으로 주의 길 가게 하소서",
+     "vocals": "달마다 날마다 주님과 함께 진리의 길 선한 길 가게 하소서 세상의 유혹을 떨쳐버리고 믿음으로 주의 길 가게 하소서"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "마다 날마다 주님 앞에 진리의 길 선택하기 하소서 세상의 유혹들 멸쳐버리고 믿음으로 주의 길 가게 하소서.",
+     "vocals": "날마다 날마다 주님 앞에 진리의 길 선택하기 하소서 세상의 유혹들 덮쳐버리고 믿음으로 주의 길 가게 하소서 허물어라"
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 155.28621144845795,
+   "end": 175.20700828033122,
+   "crop_start": 153.79,
+   "crop_end": 176.71,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "저의 마음은 선공을 하라고 저의 마음은 유아당해도 주 예수님 사랑하는 등 믿음 없으려 모두 다 얻는 것이고 찬송 주오",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "우리 모두 성공일 하모 조화 유화가 해도 주 예수 그리스도의 뜬 뜬 뜬 맛으며 모두 다 함께 다시로 찬조조",
+     "vocals": "하늘을 날아 성공의 한 몸으로 유바다에도 예수 믿고 만든 빛을 맞으면 모든 앞에 다신 없어."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 175.20700828033122,
+   "end": 194.76779071162846,
+   "crop_start": 173.71,
+   "crop_end": 196.27,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "찬소주 하나님 나의 부주 영원히 다스리와 한밭은 모두 아파여 우리 기쁨을 주 찬양하세 주님의",
+     "vocals": "찬여주 하나님 나의 보수 영원히 다스리오 말바뀐 모두 아파여 우리 기쁨의 주 찬양하세 주님의"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "창조주 하나님 나의 구주 나의 생명 하나님 모든 아량 우리 기쁘게 축하하는 새해 주님의",
+     "vocals": "자유주 하나님 나의 구주 영원히 날 세워 받는 모두 아파요 우리 기쁘게 주자영생 주님의"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 194.76779071162846,
+   "end": 222.00888035521422,
+   "crop_start": 193.27,
+   "crop_end": 223.51,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 나라와 주의 영광 이곳에 임하소서 기쁘게 찬양하리라 주의 나라와 영광 이곳에 우리 기쁘게 찬양하리라 주의 나라와 감사합니다.",
+     "vocals": "주님의 나라와 주의 영광 이곳에 임하소서 이쁘게 찬양하리라 주의 나라와 영광 이곳에 우리 기쁘게 찬양하리라 주님 나라와 감사합니다."
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "주님의 나라와 주의 영광 이곳에 임하소서. 우리 찬양하리라. 주의 나라와 영광 이곳에. 우리 찬양하리라. 주의 나라와.",
+     "vocals": "주님의 나라와 주의 영광 이곳에 이르소서. 이쁘게 장연하리라요. 주님 나라와 영광 이곳에. 우리게 이쁘게 장연하리라요. 주님 나라와."
+    }
+   }
+  },
+  {
+   "label": "chorus",
+   "start": 222.00888035521422,
+   "end": 247.32989319572783,
+   "crop_start": 220.51,
+   "crop_end": 248.83,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "한글자막 by 한효정",
+     "vocals": "한글자막 by 한효정"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "영원히 모습 영원히 모습 영원히 모습.",
+     "vocals": "영광이 보세 영광이 보세 영광이 보세 미래"
+    }
+   }
+  },
+  {
+   "label": "verse",
+   "start": 247.32989319572783,
+   "end": 266.77067082683305,
+   "crop_start": 245.83,
+   "crop_end": 266.75,
+   "stt": {
+    "whisper-large-v3": {
+     "mix": "주님의 나라와 주의 영광 이곳에 임하소서 행복에 찬양하리라 주의 나라와 영광 이곳에",
+     "vocals": "주님의 나라와 주의 영광 이곳에 임하소서 빛불게임 장영하리라 주의 나라와 영광 이곳에"
+    },
+    "whisper-turbo-ko-ghost613": {
+     "mix": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')",
+     "vocals": "ERROR: ValueError('The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Please update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224')"
+    },
+    "qwen3-asr-1.7b": {
+     "mix": "이 내 나라와 주의 영광 이곳에 임하소서 이곳의 자연아리여 주의 나라와 영광 이곳에.",
+     "vocals": "이 나라와 주의 영광, 이 도시와 소성, 이 뿔의 창명아리 영광, 주의 나라와 영광이 도성."
+    }
+   }
+  }
+ ]
+}

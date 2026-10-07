@@ -1,0 +1,14 @@
+{
+ "song": "jus_return-to-lord",
+ "model": "whisper-large-v3",
+ "input": "mix",
+ "seconds": 1.8,
+ "text": "내 백성이 나를 얻지만 내 사랑이 내 백성은 포기 못하니 내어주고 나 그들 얻은",
+ "segments": [
+  {
+   "start": 0.94,
+   "end": 52.28,
+   "text": " 내 백성이 나를 얻지만 내 사랑이 내 백성은 포기 못하니 내어주고 나 그들 얻은"
+  }
+ ]
+}

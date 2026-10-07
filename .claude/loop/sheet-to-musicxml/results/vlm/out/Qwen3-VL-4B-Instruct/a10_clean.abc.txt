@@ -1,0 +1,14 @@
+```abc
+X:1
+T:Because
+C:d'Hardelot
+M:4/4
+L:1/8
+K:C
+C|"G7"C2B,A, | C2B,A, | "C"z2cB | c2B,A, | "G7"c2B,A, | "A7"B,G, E,C, | "Dm"F,D, B,G, | "G7"c2B,A, |
+"C"c2B,A, | "C"z2cB | c2B,A, | "G7"c2B,A, | "C7"c2B,A, | "F"d2cB | "D7"c2B,A, | "C"c2B,A, |
+"G7"c2B,A, | "C7"c2B,A, | "F"d2cB | "D7"c2B,A, | "Gm"c2B,A, | "E7"c2B,A, | "Am"c2B,A, | "C"c2B,A, |
+"Fm"c2B,A, | "Dm"c2B,A, | "G7"c2B,A, | "C"c2B,A, | "Em"c2B,A, | "Dm"c2B,A, | "G7"c2B,A, | "A7"c2B,A, |
+"Dm"c2B,A, | "G7"c2B,A, | "C7"c2B,A, | "F"d2cB | "D7"c2B,A, | "C"c2B,A, | "G7"c2B,A, | "C"c2B,A, |
+"Am"c2B,A, | "Fm"c2B,A, | "G7"c2B,A, | "C"c2B,A, | z2z2 | z2z2 | z2z2 | z2z2 |
+```

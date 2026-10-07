@@ -1,0 +1,12 @@
+```abc
+X:1
+T:나의 예수 02
+M:4/4
+L:1/8
+K:Bb
+V:1
+B,"D/A" G "D/F#" E,"D" A,"D/F#" D | G "A sus4" A D "A/C#" G "A sus4" A D "A/C#" | B,"D/A" G "D/F#" E,"D" A,"D/F#" D | "A sus4" A "A sus4" D "A/C#" G/B "A sus4" A D "A/C#" | %4
+G/B "A sus4" A D "A/C#" G/B "A sus4" A D "A/C#" | G/B "A sus4" A D "A/C#" G/B "A sus4" A Bm /A | E/G# E "D/F#" G "A sus4" D | %6
+V:1
+z2 d2 c2 B2 | z2 d2 c2 B2 | z2 d2 c2 B2 | z2 d2 c2 B2 | z2 d2 c2 B2 | z2 d2 c2 B2 | z2 d2 c2 B2 | z2 d2 c2 B2 |
+```

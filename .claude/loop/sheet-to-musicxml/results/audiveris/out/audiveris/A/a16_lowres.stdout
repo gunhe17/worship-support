@@ -1,0 +1,69 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a16_lowres.png"
+INFO  [a16_lowres]                      Book 560  | 1 sheet in /tmp/aud_in/a16_lowres.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a16_lowres.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a16_lowres]            StepMonitoring 98   | LOAD
+INFO  [a16_lowres]                 SheetStub 1278 | Loaded image #1 1800x2546 from /tmp/aud_in/a16_lowres.png
+INFO  [a16_lowres]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a16_lowres]            StepMonitoring 98   | BINARY
+INFO  [a16_lowres]            StepMonitoring 98   | SCALE
+INFO  [a16_lowres]              ScaleBuilder 254  | Beam  guessed height:  9 -- 0.25 of [7..14] range
+INFO  [a16_lowres]              ScaleBuilder 271  | Beam measured height:  8 -- 0.14 of [7..14] range at 166% of needed quorum
+INFO  [a16_lowres]              ScaleBuilder 401  | Normalized black jitter: 20.00 %
+INFO  [a16_lowres]                 ScaleStep 65   | Scale{ interline(15,15,16) line(2,3,5) beam(8)}
+INFO  [a16_lowres]            StepMonitoring 98   | GRID
+INFO  [a16_lowres]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a16_lowres]         ClustersRetriever 326  | Retrieved raw line clusters: 5 of sizes [5] with interline(15,15,16)
+INFO  [a16_lowres]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5]
+INFO  [a16_lowres]             SystemManager 134  | Indentation detected for system #1
+INFO  [a16_lowres]             SystemManager 800  | 1 part along 5 systems
+INFO  [a16_lowres]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a16_lowres]            StepMonitoring 98   | HEADERS
+INFO  [a16_lowres]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a16_lowres]             StemSeedsStep 86   | stem(4 max:6)
+INFO  [a16_lowres]            StepMonitoring 98   | BEAMS
+INFO  [a16_lowres]            StepMonitoring 98   | LEDGERS
+INFO  [a16_lowres]            StepMonitoring 98   | HEADS
+INFO  [a16_lowres]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:-0.5,R:-0.9] NOTEHEAD_BLACK[L:-0.4]}
+INFO  [a16_lowres]            StepMonitoring 98   | STEMS
+INFO  [a16_lowres]            StepMonitoring 98   | REDUCTION
+INFO  [a16_lowres]             ReductionStep 105  | Stems free length median value: 54 pixels, 3.6 interlines
+INFO  [a16_lowres]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a16_lowres]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a16_lowres]            StepMonitoring 98   | TEXTS
+Estimating resolution as 322
+INFO  [a16_lowres]            StepMonitoring 98   | MEASURES
+INFO  [a16_lowres]                      Page 307  | 32 raw measures: [6 in system#1, 7 in system#2, 8 in system#3, 7 in system#4, 4 in system#5]
+INFO  [a16_lowres]            StepMonitoring 98   | CHORDS
+INFO  [a16_lowres]            StepMonitoring 98   | CURVES
+INFO  [a16_lowres]              SlursBuilder 240  | Slurs: 1
+INFO  [a16_lowres]           SegmentsBuilder 155  | Segments: 1
+INFO  [a16_lowres]            StepMonitoring 98   | SYMBOLS
+INFO  [a16_lowres]            StepMonitoring 98   | LINKS
+INFO  [a16_lowres]             SentenceInter 483  | No chord below ChordNameInter#2694{(0.729) staff:3 TEXT "G/D" font:BS-33 root:G ChordKind{MAJOR} bass:D}
+INFO  [a16_lowres]             SentenceInter 463  | No chord near SentenceInter#2830{(0.548) staff:4 mFont:BS-33 Direction} Bin
+INFO  [a16_lowres]            StepMonitoring 98   | RHYTHMS
+INFO  [a16_lowres]            StepMonitoring 98   | PAGE
+INFO  [a16_lowres]            SheetReduction 154  | Gutter. Different glyphs 4/5 DynamicsInter#3220{(0.505/0.775) DYNAMICS_P} vs ChordNameInter#2916{(0.721/0.721) staff:5 TEXT "Fm7" font:BS-32 root:F ChordKind{MINOR_SEVENTH 'm7'}}
+INFO  [a16_lowres]                      Book 2584 | Book{a16_lowres} storing
+INFO  [a16_lowres]                      Book 2565 | Stored /book.xml
+INFO  [a16_lowres]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a16_lowres]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a16_lowres]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a16_lowres.omr
+INFO  [a16_lowres]                 SheetStub 1655 | Sheet disposed
+INFO  [a16_lowres]                      Book 2050 | End of Stub#1
+INFO  [a16_lowres]                      Book 2057 | End of Book{a16_lowres}
+INFO  [a16_lowres]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a16_lowres]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a16_lowres]                      Part 351  | Sheet#1 System#1 Part#2{name:Voice staves[1] configs:[5]} dummyPart id: 1
+INFO  [a16_lowres]                      Part 351  | Sheet#1 System#2 Part#1{name:Ch staves[2] configs:[5]} dummyPart id: 2
+INFO  [a16_lowres]                      Part 351  | Sheet#1 System#3 Part#1{name:Ch staves[3] configs:[5]} dummyPart id: 2
+INFO  [a16_lowres]                      Part 351  | Sheet#1 System#4 Part#1{name:Ch staves[4] configs:[5]} dummyPart id: 2
+INFO  [a16_lowres]                      Part 351  | Sheet#1 System#5 Part#1{name:Ch staves[5] configs:[5]} dummyPart id: 2
+INFO  [a16_lowres]             ScoreExporter 164  | Score a16_lowres exported to /kaggle/working/out/audiveris/A/a16_lowres.mxl
+INFO  [a16_lowres]                     Score 181  | Closing {Score 1}

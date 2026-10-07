@@ -1,0 +1,14 @@
+```abc
+X:1
+T:My Heart Stood Still
+M:4/4
+L:1/8
+K:F
+F,"G dim7"Gm7"C7" F F+ Gm7 C7 F F+
+Gm7 C7 B7b Gm7 C7 F G dim7 Gm7 C7 F F+ Gm7 C7
+F F+ Gm7 C7 B66 F Fm B7
+C+ C C7 Dm7b5 G7 C7 Gm7b5
+F Am G dim7 Gm7 C7 F F+ B Gm7 F/C C7
+Bm7 A7 F
+|:z2 z2 z2 z2 z2 z2 z2 z2|
+```

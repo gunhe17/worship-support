@@ -1,0 +1,77 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a14_lowres.png"
+INFO  [a14_lowres]                      Book 560  | 1 sheet in /tmp/aud_in/a14_lowres.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a14_lowres.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a14_lowres]            StepMonitoring 98   | LOAD
+INFO  [a14_lowres]                 SheetStub 1278 | Loaded image #1 1800x2546 from /tmp/aud_in/a14_lowres.png
+INFO  [a14_lowres]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a14_lowres]            StepMonitoring 98   | BINARY
+INFO  [a14_lowres]            StepMonitoring 98   | SCALE
+INFO  [a14_lowres]              ScaleBuilder 254  | Beam  guessed height:  9 -- 0.25 of [7..14] range
+INFO  [a14_lowres]              ScaleBuilder 271  | Beam measured height: 12 -- 0.71 of [7..14] range at 63% of needed quorum
+WARN  [a14_lowres]              ScaleBuilder 300  | No reliable beam height found, guessed value: 9
+INFO  [a14_lowres]              ScaleBuilder 401  | Normalized black jitter: 20.00 %
+INFO  [a14_lowres]                 ScaleStep 65   | Scale{ interline(15,15,16) line(2,3,5) beam(9 extra)}
+INFO  [a14_lowres]            StepMonitoring 98   | GRID
+INFO  [a14_lowres]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a14_lowres]         ClustersRetriever 326  | Retrieved raw line clusters: 6 of sizes [5] with interline(15,15,16)
+INFO  [a14_lowres]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6]
+INFO  [a14_lowres]             SystemManager 134  | Indentation detected for system #1
+INFO  [a14_lowres]             SystemManager 800  | 1 part along 6 systems
+INFO  [a14_lowres]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a14_lowres]            StepMonitoring 98   | HEADERS
+INFO  [a14_lowres]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a14_lowres]             StemSeedsStep 86   | stem(4 max:6)
+INFO  [a14_lowres]            StepMonitoring 98   | BEAMS
+INFO  [a14_lowres]            StepMonitoring 98   | LEDGERS
+INFO  [a14_lowres]            StepMonitoring 98   | HEADS
+INFO  [a14_lowres]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:-0.8,R:-0.7] NOTEHEAD_BLACK[R:-0.8]}
+INFO  [a14_lowres]            StepMonitoring 98   | STEMS
+INFO  [a14_lowres]            StepMonitoring 98   | REDUCTION
+INFO  [a14_lowres]             ReductionStep 105  | Stems free length median value: 55 pixels, 3.7 interlines
+INFO  [a14_lowres]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a14_lowres]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a14_lowres]            StepMonitoring 98   | TEXTS
+Estimating resolution as 318
+INFO  [a14_lowres]            StepMonitoring 98   | MEASURES
+INFO  [a14_lowres]                      Page 307  | 34 raw measures: [5 in system#1, 6 in system#2, 7 in system#3, 6 in system#4, 7 in system#5, 3 in system#6]
+INFO  [a14_lowres]            StepMonitoring 98   | CHORDS
+INFO  [a14_lowres]            StepMonitoring 98   | CURVES
+INFO  [a14_lowres]              SlursBuilder 240  | Slurs: 1
+INFO  [a14_lowres]           SegmentsBuilder 155  | Segments: 1
+INFO  [a14_lowres]            StepMonitoring 98   | SYMBOLS
+INFO  [a14_lowres]            StepMonitoring 98   | LINKS
+INFO  [a14_lowres]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#3160{(0.228) staff:3 OTTAVA BASSA} at java.awt.Point[x=164,y=735]
+INFO  [a14_lowres]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#3162{(0.124) staff:3 QUINDICESIMA BASSA} at java.awt.Point[x=158,y=735]
+INFO  [a14_lowres]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#3177{(0.228) staff:4 OTTAVA ALTA} at java.awt.Point[x=164,y=735]
+INFO  [a14_lowres]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#3179{(0.124) staff:4 QUINDICESIMA ALTA} at java.awt.Point[x=158,y=735]
+INFO  [a14_lowres]             SentenceInter 463  | No chord near SentenceInter#2894{(0.610) staff:5 mFont:BS-72 Direction} [1—1
+INFO  [a14_lowres]             SentenceInter 483  | No chord below ChordNameInter#2912{(0.719) staff:5 TEXT "G" font:33 root:G ChordKind{MAJOR}}
+INFO  [a14_lowres]             SentenceInter 483  | No chord below ChordNameInter#2947{(0.733) staff:6 TEXT "G" font:33 root:G ChordKind{MAJOR}}
+INFO  [a14_lowres]            StepMonitoring 98   | RHYTHMS
+INFO  [a14_lowres]             MeasureRhythm 1044 | Measure{#23} No timeOffset for HeadChordInter#3049{(0.588/0.588) staff:4 slot#3 dur:1/2}
+INFO  [a14_lowres]               StackRhythm 224  | S4 MeasureStack#23 no correct rhythm
+INFO  [a14_lowres]            StepMonitoring 98   | PAGE
+INFO  [a14_lowres]                      Book 2584 | Book{a14_lowres} storing
+INFO  [a14_lowres]                      Book 2565 | Stored /book.xml
+INFO  [a14_lowres]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a14_lowres]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a14_lowres]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a14_lowres.omr
+INFO  [a14_lowres]                 SheetStub 1655 | Sheet disposed
+INFO  [a14_lowres]                      Book 2050 | End of Stub#1
+INFO  [a14_lowres]                      Book 2057 | End of Book{a14_lowres}
+INFO  [a14_lowres]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a14_lowres]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a14_lowres]                      Part 351  | Sheet#1 System#1 Part#2{name:Electric Piano staves[1] configs:[5]} dummyPart id: 1
+INFO  [a14_lowres]                      Part 351  | Sheet#1 System#2 Part#1{name:E.Pno staves[2] configs:[5]} dummyPart id: 2
+INFO  [a14_lowres]                      Part 351  | Sheet#1 System#3 Part#1{name:E.Pno staves[3] configs:[5]} dummyPart id: 2
+INFO  [a14_lowres]                      Part 351  | Sheet#1 System#4 Part#1{name:E.Pno staves[4] configs:[5]} dummyPart id: 2
+INFO  [a14_lowres]                      Part 351  | Sheet#1 System#5 Part#1{name:E.Pno staves[5] configs:[5]} dummyPart id: 2
+INFO  [a14_lowres]                      Part 351  | Sheet#1 System#6 Part#1{name:E.Pno staves[6] configs:[5]} dummyPart id: 2
+INFO  [a14_lowres]             ScoreExporter 164  | Score a14_lowres exported to /kaggle/working/out/audiveris/A/a14_lowres.mxl
+INFO  [a14_lowres]                     Score 181  | Closing {Score 1}

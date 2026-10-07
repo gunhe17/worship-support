@@ -1,0 +1,71 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a13_clean.png"
+INFO  [a13_clean]                      Book 560  | 1 sheet in /tmp/aud_in/a13_clean.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a13_clean.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a13_clean]            StepMonitoring 98   | LOAD
+INFO  [a13_clean]                 SheetStub 1278 | Loaded image #1 1650x2334 from /tmp/aud_in/a13_clean.png
+INFO  [a13_clean]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a13_clean]            StepMonitoring 98   | BINARY
+INFO  [a13_clean]            StepMonitoring 98   | SCALE
+INFO  [a13_clean]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [a13_clean]              ScaleBuilder 271  | Beam measured height:  8 -- 0.29 of [6..13] range at 84% of needed quorum
+INFO  [a13_clean]              ScaleBuilder 401  | Normalized black jitter: 14.29 %
+INFO  [a13_clean]                 ScaleStep 65   | Scale{ interline(14,14,15) line(1,2,3) beam(8)}
+INFO  [a13_clean]            StepMonitoring 98   | GRID
+INFO  [a13_clean]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a13_clean]         ClustersRetriever 326  | Retrieved raw line clusters: 4 of sizes [5] with interline(14,14,15)
+INFO  [a13_clean]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4]
+INFO  [a13_clean]             SystemManager 134  | Indentation detected for system #1
+INFO  [a13_clean]             SystemManager 800  | 1 part along 4 systems
+INFO  [a13_clean]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a13_clean]            StepMonitoring 98   | HEADERS
+INFO  [a13_clean]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a13_clean]             StemSeedsStep 86   | stem(3 max:4)
+INFO  [a13_clean]            StepMonitoring 98   | BEAMS
+INFO  [a13_clean]            StepMonitoring 98   | LEDGERS
+INFO  [a13_clean]            StepMonitoring 98   | HEADS
+INFO  [a13_clean]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[L:0.9,R:1.1]}
+INFO  [a13_clean]            StepMonitoring 98   | STEMS
+INFO  [a13_clean]            StepMonitoring 98   | REDUCTION
+INFO  [a13_clean]             ReductionStep 105  | Stems free length median value: 50 pixels, 3.6 interlines
+INFO  [a13_clean]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a13_clean]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a13_clean]            StepMonitoring 98   | TEXTS
+Estimating resolution as 268
+INFO  [a13_clean]            StepMonitoring 98   | MEASURES
+INFO  [a13_clean]                      Page 307  | 24 raw measures: [5 in system#1, 7 in system#2, 6 in system#3, 6 in system#4]
+INFO  [a13_clean]            StepMonitoring 98   | CHORDS
+INFO  [a13_clean]            StepMonitoring 98   | CURVES
+INFO  [a13_clean]              SlursBuilder 240  | Slurs: 0
+INFO  [a13_clean]           SegmentsBuilder 155  | Segments: 1
+INFO  [a13_clean]            StepMonitoring 98   | SYMBOLS
+INFO  [a13_clean]            StepMonitoring 98   | LINKS
+INFO  [a13_clean]            StepMonitoring 98   | RHYTHMS
+INFO  [a13_clean]            StepMonitoring 98   | PAGE
+INFO  [a13_clean]            SheetReduction 154  | Gutter. Different glyphs 1/2 DynamicsInter#2470{(0.355/0.649) DYNAMICS_FF} vs ChordNameInter#1963{(0.768/0.768) staff:2 TEXT "C7" font:S-32 root:C ChordKind{DOMINANT '7'}}
+INFO  [a13_clean]            SheetReduction 154  | Gutter. Different glyphs 1/2 DynamicsInter#2473{(0.288/0.578) DYNAMICS_FF} vs ChordNameInter#1965{(0.745/0.745) staff:2 TEXT "G7" font:S-32 root:G ChordKind{DOMINANT '7'}}
+INFO  [a13_clean]            SheetReduction 154  | Gutter. Different glyphs 1/2 DynamicsInter#2479{(0.355/0.648) DYNAMICS_FF} vs ChordNameInter#1967{(0.768/0.768) staff:2 TEXT "C7" font:S-32 root:C ChordKind{DOMINANT '7'}}
+INFO  [a13_clean]            SheetReduction 154  | Gutter. Different glyphs 2/3 DynamicsInter#2520{(0.355/0.649) DYNAMICS_FF} vs ChordNameInter#2125{(0.785/0.785) staff:3 TEXT "C7" font:S-32 root:C ChordKind{DOMINANT '7'}}
+INFO  [a13_clean]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#2539{(0.355/0.648) DYNAMICS_FF} vs ChordNameInter#2247{(0.768/0.768) staff:4 TEXT "C7" font:S-32 root:C ChordKind{DOMINANT '7'}}
+INFO  [a13_clean]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#2542{(0.355/0.586) DYNAMICS_FF} vs ChordNameInter#2251{(0.786/0.786) staff:4 TEXT "C7" font:S-32 root:C ChordKind{DOMINANT '7'}}
+INFO  [a13_clean]                      Book 2584 | Book{a13_clean} storing
+INFO  [a13_clean]                      Book 2565 | Stored /book.xml
+INFO  [a13_clean]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a13_clean]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a13_clean]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a13_clean.omr
+INFO  [a13_clean]                 SheetStub 1655 | Sheet disposed
+INFO  [a13_clean]                      Book 2050 | End of Stub#1
+INFO  [a13_clean]                      Book 2057 | End of Book{a13_clean}
+INFO  [a13_clean]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a13_clean]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a13_clean]                      Part 351  | Sheet#1 System#1 Part#2{name:Violin staves[1] configs:[5]} dummyPart id: 1
+INFO  [a13_clean]                      Part 351  | Sheet#1 System#2 Part#1{name:Vln staves[2] configs:[5]} dummyPart id: 2
+INFO  [a13_clean]                      Part 351  | Sheet#1 System#3 Part#1{name:Vln staves[3] configs:[5]} dummyPart id: 2
+INFO  [a13_clean]                      Part 351  | Sheet#1 System#4 Part#1{name:Vln staves[4] configs:[5]} dummyPart id: 2
+INFO  [a13_clean]             ScoreExporter 164  | Score a13_clean exported to /kaggle/working/out/audiveris/A/a13_clean.mxl
+INFO  [a13_clean]                     Score 181  | Closing {Score 1}

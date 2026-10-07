@@ -1,0 +1,9 @@
+Fetching 28 files:   0%|          | 0/28 [00:00<?, ?it/s]Fetching 28 files: 100%|██████████| 28/28 [00:00<00:00, 4058.49it/s]
+You are using a model of type songformer to instantiate a model of type custom_model. This is not supported for all configurations of models and can yield errors.
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:145: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+load 4.2s
+/Users/gunhee/.local/share/uv/python/cpython-3.12.6-macos-aarch64-none/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

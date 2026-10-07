@@ -1,0 +1,91 @@
+```abc
+X:1
+T:Joshua Fit The Battle Of Jericho
+M:4/4
+L:1/8
+K:Dm
+V:1 clef=treble
+"DM" D,^C,D,E F,G,A,B | A,F,G,A B,2 z2 | "A7" G,E,F,G A,2 z2 | 
+"DM" A,F,G,A B,2 z2 | "A7" A,G,F,E D,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM" B,2 A,2 G,2 F,2 | "A7" E,D,C,B, A,2 z2 | 
+"DM" D,2 z2 d,d | "A7" d,cB,A G,2 A,2 | 
+"DM"

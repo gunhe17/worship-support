@@ -1,0 +1,14 @@
+{
+ "song": "anointing_rejoice",
+ "model": "whisper-large-v3",
+ "input": "mix",
+ "seconds": 2.1,
+ "text": "한글자막 by 한효정",
+ "segments": [
+  {
+   "start": 6.93,
+   "end": 7.85,
+   "text": " 한글자막 by 한효정"
+  }
+ ]
+}

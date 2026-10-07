@@ -1,0 +1,17 @@
+```abc
+X:1
+T:?
+M:4/4
+L:1/8
+K:C
+C/E F Dm Dm/C Gsus4 G F/A G/B | z2 z2 z2 z2 z2 z2 z2 z2 |
+Csus4 G/B F/A C/G C/E F | z2 z2 z2 z2 z2 z2 z2 z2 |
+C/E Gsus4 G | z2 z2 z2 z2 z2 z2 z2 z2 |
+C G/B F/A C/G C/E | z2 z2 z2 z2 z2 z2 z2 z2 |
+F C/E Gsus4 G | z2 z2 z2 z2 z2 z2 z2 z2 |
+C G/B F/A C/G C/E | z2 z2 z2 z2 z2 z2 z2 z2 |
+F C/E Gsus4 G | z2 z2 z2 z2 z2 z2 z2 z2 |
+C G/B F/A C/G C/E | z2 z2 z2 z2 z2 z2 z2 z2 |
+F C/E Gsus4 G | z2 z2 z2 z2 z2 z2 z2 z2 |
+C | z2 z2 z2 z2 z2 z2 z2 z2 |
+```

@@ -1,0 +1,79 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a08_lowres.png"
+INFO  [a08_lowres]                      Book 560  | 1 sheet in /tmp/aud_in/a08_lowres.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a08_lowres.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a08_lowres]            StepMonitoring 98   | LOAD
+INFO  [a08_lowres]                 SheetStub 1278 | Loaded image #1 1800x2546 from /tmp/aud_in/a08_lowres.png
+INFO  [a08_lowres]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a08_lowres]            StepMonitoring 98   | BINARY
+INFO  [a08_lowres]            StepMonitoring 98   | SCALE
+INFO  [a08_lowres]              ScaleBuilder 254  | Beam  guessed height:  9 -- 0.25 of [7..14] range
+INFO  [a08_lowres]              ScaleBuilder 271  | Beam measured height: 10 -- 0.43 of [7..14] range at 132% of needed quorum
+INFO  [a08_lowres]              ScaleBuilder 401  | Normalized black jitter: 20.00 %
+INFO  [a08_lowres]                 ScaleStep 65   | Scale{ interline(14,15,16) line(2,3,5) beam(10)}
+INFO  [a08_lowres]            StepMonitoring 98   | GRID
+INFO  [a08_lowres]            LinesRetriever 1508 | Global slope: 0.00030
+INFO  [a08_lowres]         ClustersRetriever 326  | Retrieved raw line clusters: 5 of sizes [5] with interline(14,15,16)
+INFO  [a08_lowres]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5]
+INFO  [a08_lowres]             SystemManager 134  | Indentation detected for system #1
+INFO  [a08_lowres]             SystemManager 800  | 1 part along 5 systems
+INFO  [a08_lowres]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a08_lowres]            StepMonitoring 98   | HEADERS
+INFO  [a08_lowres]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a08_lowres]             StemSeedsStep 86   | stem(5 max:6)
+INFO  [a08_lowres]            StepMonitoring 98   | BEAMS
+INFO  [a08_lowres]            StepMonitoring 98   | LEDGERS
+INFO  [a08_lowres]            StepMonitoring 98   | HEADS
+INFO  [a08_lowres]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[R:-0.7] NOTEHEAD_BLACK[R:-0.8]}
+INFO  [a08_lowres]            StepMonitoring 98   | STEMS
+INFO  [a08_lowres]            StepMonitoring 98   | REDUCTION
+INFO  [a08_lowres]             ReductionStep 105  | Stems free length median value: 55 pixels, 3.7 interlines
+INFO  [a08_lowres]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a08_lowres]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a08_lowres]            StepMonitoring 98   | TEXTS
+Estimating resolution as 314
+INFO  [a08_lowres]            StepMonitoring 98   | MEASURES
+INFO  [a08_lowres]                      Page 307  | 38 raw measures: [7 in system#1, 8 in system#2, 9 in system#3, 9 in system#4, 5 in system#5]
+INFO  [a08_lowres]            StepMonitoring 98   | CHORDS
+INFO  [a08_lowres]            StepMonitoring 98   | CURVES
+INFO  [a08_lowres]              SlursBuilder 240  | Slurs: 11
+INFO  [a08_lowres]           SegmentsBuilder 155  | Segments: 1
+INFO  [a08_lowres]            StepMonitoring 98   | SYMBOLS
+INFO  [a08_lowres]            StepMonitoring 98   | LINKS
+INFO  [a08_lowres]             SentenceInter 449  | No measure stack for SentenceInter#3106{(0.900) staff:1 mFont:BS-31 Direction} Adapted from Fat Clancy, Tom Clancy, Liam Clancy and Tommy Makem
+INFO  [a08_lowres]             SentenceInter 463  | No chord near SentenceInter#3928{(0.892) staff:4 mFont:BS-31 Direction} And I nev - er will playthe wild ro - ver no more. And it's no,
+INFO  [a08_lowres]             SentenceInter 463  | No chord near SentenceInter#3947{(0.724) staff:4 mFont:BS-32 Direction} can get an -y
+INFO  [a08_lowres]             SentenceInter 463  | No chord near SentenceInter#3952{(0.743) staff:4 mFont:BS-33 Direction} Sucha cus - tomas yours!
+INFO  [a08_lowres]             SentenceInter 463  | No chord near SentenceInter#3964{(0.730) staff:4 mFont:BS-31 Direction} And the wordsthatI
+INFO  [a08_lowres]             SentenceInter 463  | No chord near SentenceInter#3968{(0.850) staff:4 mFont:BS-32 Direction} ThenI ne - ver will play the wild ro- ver no more.
+INFO  [a08_lowres]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#4459{(0.164) staff:4 QUINDICESIMA ALTA} at java.awt.Point[x=806,y=1056]
+INFO  [a08_lowres]            StepMonitoring 98   | RHYTHMS
+INFO  [a08_lowres]            StepMonitoring 98   | PAGE
+INFO  [a08_lowres]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#4439{(0.246/0.508) DYNAMICS_FZ} vs WordInter#3944{(0.719/0.719) staff:4 TEXT "no," font:BS-30}
+INFO  [a08_lowres]                      Book 2584 | Book{a08_lowres} storing
+INFO  [a08_lowres]                      Book 2565 | Stored /book.xml
+INFO  [a08_lowres]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a08_lowres]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a08_lowres]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a08_lowres.omr
+INFO  [a08_lowres]                 SheetStub 1655 | Sheet disposed
+INFO  [a08_lowres]                      Book 2050 | End of Stub#1
+INFO  [a08_lowres]                      Book 2057 | End of Book{a08_lowres}
+INFO  [a08_lowres]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a08_lowres]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#1 Part#3{name:Voice staves[1] configs:[5]} dummyPart id: 1
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#2 Part#2{name:Vo. staves[2] configs:[5]} dummyPart id: 1
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#4 Part#2{name:Vo. staves[4] configs:[5]} dummyPart id: 1
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#5 Part#2{name:Vo. staves[5] configs:[5]} dummyPart id: 1
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#1 Part#3{name:Voice staves[1] configs:[5]} dummyPart id: 2
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#3 Part#1{name:V0. staves[3] configs:[5]} dummyPart id: 2
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#2 Part#2{name:Vo. staves[2] configs:[5]} dummyPart id: 3
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#3 Part#1{name:V0. staves[3] configs:[5]} dummyPart id: 3
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#4 Part#2{name:Vo. staves[4] configs:[5]} dummyPart id: 3
+INFO  [a08_lowres]                      Part 351  | Sheet#1 System#5 Part#2{name:Vo. staves[5] configs:[5]} dummyPart id: 3
+INFO  [a08_lowres]             ScoreExporter 164  | Score a08_lowres exported to /kaggle/working/out/audiveris/A/a08_lowres.mxl
+INFO  [a08_lowres]                     Score 181  | Closing {Score 1}

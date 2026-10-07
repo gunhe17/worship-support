@@ -1,0 +1,198 @@
+{
+ "file": "jus_return-to-lord.wav",
+ "stems": false,
+ "device": "cuda",
+ "tuning_offset": 0.04,
+ "bpm": {
+  "value": 69.8,
+  "alternates": [
+   34.9,
+   139.5
+  ],
+  "meter_beats_per_bar": 4,
+  "ibi_cv": 0.239
+ },
+ "key": {
+  "song_key_essentia_majority": "Ab major"
+ },
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 15.1,
+   "bpm": 68.2,
+   "key_essentia": "Eb major",
+   "strength": 0.76,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "verse",
+   "start": 15.1,
+   "end": 29.2,
+   "bpm": 69.0,
+   "key_essentia": "Ab major",
+   "strength": 0.7,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "verse",
+   "start": 29.2,
+   "end": 43.0,
+   "bpm": 69.8,
+   "key_essentia": "Eb major",
+   "strength": 0.73,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "verse",
+   "start": 43.0,
+   "end": 56.9,
+   "bpm": 69.8,
+   "key_essentia": "Ab major",
+   "strength": 0.81,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "chorus",
+   "start": 56.9,
+   "end": 81.4,
+   "bpm": 69.8,
+   "key_essentia": "Ab major",
+   "strength": 0.77,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "chorus",
+   "start": 81.4,
+   "end": 95.2,
+   "bpm": 136.4,
+   "key_essentia": "Eb major",
+   "strength": 0.72,
+   "key_cnn": "Ab major",
+   "oti_vs_first_chorus": -5
+  },
+  {
+   "label": "verse",
+   "start": 95.2,
+   "end": 109.2,
+   "bpm": 136.4,
+   "key_essentia": "Ab major",
+   "strength": 0.75,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "verse",
+   "start": 109.2,
+   "end": 123.0,
+   "bpm": 136.4,
+   "key_essentia": "Ab major",
+   "strength": 0.68,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "pre-chorus",
+   "start": 123.0,
+   "end": 135.6,
+   "bpm": 68.2,
+   "key_essentia": "Ab major",
+   "strength": 0.73,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "chorus",
+   "start": 135.6,
+   "end": 164.6,
+   "bpm": 69.0,
+   "key_essentia": "Ab major",
+   "strength": 0.85,
+   "key_cnn": "Ab major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "bridge",
+   "start": 164.6,
+   "end": 178.7,
+   "bpm": 69.8,
+   "key_essentia": "Ab major",
+   "strength": 0.77,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "bridge",
+   "start": 178.7,
+   "end": 192.6,
+   "bpm": 69.8,
+   "key_essentia": "Ab major",
+   "strength": 0.65,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "bridge",
+   "start": 192.6,
+   "end": 206.5,
+   "bpm": 69.8,
+   "key_essentia": "Ab major",
+   "strength": 0.79,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "bridge",
+   "start": 206.5,
+   "end": 220.1,
+   "bpm": 69.0,
+   "key_essentia": "Bb minor",
+   "strength": 0.61,
+   "key_cnn": "Ab major"
+  },
+  {
+   "label": "chorus",
+   "start": 220.1,
+   "end": 234.0,
+   "bpm": 69.8,
+   "key_essentia": "Bb major",
+   "strength": 0.83,
+   "key_cnn": "Bb major",
+   "oti_vs_first_chorus": 2
+  },
+  {
+   "label": "chorus",
+   "start": 234.0,
+   "end": 247.3,
+   "bpm": 69.0,
+   "key_essentia": "Bb major",
+   "strength": 0.89,
+   "key_cnn": "Bb major",
+   "oti_vs_first_chorus": 2
+  },
+  {
+   "label": "chorus",
+   "start": 247.3,
+   "end": 272.5,
+   "bpm": 69.0,
+   "key_essentia": "Bb major",
+   "strength": 0.85,
+   "key_cnn": "Bb major",
+   "oti_vs_first_chorus": 2
+  },
+  {
+   "label": "outro",
+   "start": 272.5,
+   "end": 289.3,
+   "bpm": 69.0,
+   "key_essentia": "F major",
+   "strength": 0.75,
+   "key_cnn": "Bb major"
+  },
+  {
+   "label": "silence",
+   "start": 289.3,
+   "end": 291.0,
+   "bpm": null
+  }
+ ],
+ "timing_s": {
+  "beat_this": 5.7,
+  "songformer": 0.0,
+  "key": 34.4
+ }
+}

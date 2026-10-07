@@ -1,0 +1,66 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a05_lowres.png"
+INFO  [a05_lowres]                      Book 560  | 1 sheet in /tmp/aud_in/a05_lowres.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a05_lowres.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a05_lowres]            StepMonitoring 98   | LOAD
+INFO  [a05_lowres]                 SheetStub 1278 | Loaded image #1 1800x2546 from /tmp/aud_in/a05_lowres.png
+INFO  [a05_lowres]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a05_lowres]            StepMonitoring 98   | BINARY
+INFO  [a05_lowres]            StepMonitoring 98   | SCALE
+INFO  [a05_lowres]              ScaleBuilder 254  | Beam  guessed height:  9 -- 0.25 of [7..14] range
+INFO  [a05_lowres]              ScaleBuilder 271  | Beam measured height: 10 -- 0.43 of [7..14] range at 388% of needed quorum
+INFO  [a05_lowres]              ScaleBuilder 401  | Normalized black jitter: 20.00 %
+INFO  [a05_lowres]                 ScaleStep 65   | Scale{ interline(15,15,16) line(2,3,5) beam(10)}
+INFO  [a05_lowres]            StepMonitoring 98   | GRID
+INFO  [a05_lowres]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a05_lowres]         ClustersRetriever 326  | Retrieved raw line clusters: 5 of sizes [5] with interline(15,15,16)
+INFO  [a05_lowres]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5]
+INFO  [a05_lowres]             SystemManager 800  | 1 part along 5 systems
+INFO  [a05_lowres]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a05_lowres]            StepMonitoring 98   | HEADERS
+INFO  [a05_lowres]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a05_lowres]             StemSeedsStep 86   | stem(5 max:6)
+INFO  [a05_lowres]            StepMonitoring 98   | BEAMS
+INFO  [a05_lowres]            StepMonitoring 98   | LEDGERS
+INFO  [a05_lowres]            StepMonitoring 98   | HEADS
+INFO  [a05_lowres]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[L:-0.3,R:-1.0]}
+INFO  [a05_lowres]            StepMonitoring 98   | STEMS
+INFO  [a05_lowres]            StepMonitoring 98   | REDUCTION
+INFO  [a05_lowres]             ReductionStep 105  | Stems free length median value: 54 pixels, 3.6 interlines
+INFO  [a05_lowres]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a05_lowres]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a05_lowres]            StepMonitoring 98   | TEXTS
+Estimating resolution as 319
+INFO  [a05_lowres]            StepMonitoring 98   | MEASURES
+INFO  [a05_lowres]                      Page 307  | 16 raw measures: [3 in system#1, 3 in system#2, 3 in system#3, 4 in system#4, 3 in system#5]
+INFO  [a05_lowres]            StepMonitoring 98   | CHORDS
+INFO  [a05_lowres]            StepMonitoring 98   | CURVES
+INFO  [a05_lowres]              SlursBuilder 240  | Slurs: 3
+INFO  [a05_lowres]           SegmentsBuilder 155  | Segments: 0
+INFO  [a05_lowres]            StepMonitoring 98   | SYMBOLS
+INFO  [a05_lowres]            StepMonitoring 98   | LINKS
+INFO  [a05_lowres]            StepMonitoring 98   | RHYTHMS
+INFO  [a05_lowres]            StepMonitoring 98   | PAGE
+INFO  [a05_lowres]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#3593{(0.266/0.551) DYNAMICS_FF} vs ChordNameInter#3165{(0.744/0.744) staff:4 TEXT "C7" font:BS-32 root:C ChordKind{DOMINANT '7'}}
+INFO  [a05_lowres]                      Book 2584 | Book{a05_lowres} storing
+INFO  [a05_lowres]                      Book 2565 | Stored /book.xml
+INFO  [a05_lowres]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a05_lowres]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a05_lowres]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a05_lowres.omr
+INFO  [a05_lowres]                 SheetStub 1655 | Sheet disposed
+INFO  [a05_lowres]                      Book 2050 | End of Stub#1
+INFO  [a05_lowres]                      Book 2057 | End of Book{a05_lowres}
+INFO  [a05_lowres]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a05_lowres]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a05_lowres]                      Part 351  | Sheet#1 System#1 Part#2{name:Piano staves[1] configs:[5]} dummyPart id: 1
+INFO  [a05_lowres]                      Part 351  | Sheet#1 System#4 Part#2{ staves[4] configs:[5]} dummyPart id: 1
+INFO  [a05_lowres]                      Part 351  | Sheet#1 System#2 Part#1{name:Pno. staves[2] configs:[5]} dummyPart id: 2
+INFO  [a05_lowres]                      Part 351  | Sheet#1 System#3 Part#1{name:Pno. staves[3] configs:[5]} dummyPart id: 2
+INFO  [a05_lowres]                      Part 351  | Sheet#1 System#5 Part#1{name:Pno. staves[5] configs:[5]} dummyPart id: 2
+INFO  [a05_lowres]             ScoreExporter 164  | Score a05_lowres exported to /kaggle/working/out/audiveris/A/a05_lowres.mxl
+INFO  [a05_lowres]                     Score 181  | Closing {Score 1}

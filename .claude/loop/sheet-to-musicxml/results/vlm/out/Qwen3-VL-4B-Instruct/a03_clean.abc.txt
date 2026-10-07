@@ -1,0 +1,47 @@
+```abc
+X:1
+T:Moonlight an Roses (bring mem-ries of you)
+M:4/4
+L:1/8
+K:C
+C2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 | "C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 | "C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 | "C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 | "C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 | "C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 | "C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 | "C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 |
+"C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 |
+"D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 | "G7"d2 c2 |
+"C"e2 d2 | c2 B2 A2 | G2 F2 E2 | D2 C2 z2 | "C"e2 c2 | d2 c2- c2 B2 | A2 B2 c2 | A2 B2 c2 |
+"F"e2 d2 | c2 B2 A2 | "G7"d2 c2 | "A7"B2 A2 | "D7"G2 F2 | "G7"E2 D2 | "C"C2 z2 | "C"e2 c2 |
+d2 c2- c2 B2 | A2

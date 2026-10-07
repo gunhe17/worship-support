@@ -1,0 +1,74 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a08_clean.png"
+INFO  [a08_clean]                      Book 560  | 1 sheet in /tmp/aud_in/a08_clean.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a08_clean.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a08_clean]            StepMonitoring 98   | LOAD
+INFO  [a08_clean]                 SheetStub 1278 | Loaded image #1 1650x2334 from /tmp/aud_in/a08_clean.png
+INFO  [a08_clean]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a08_clean]            StepMonitoring 98   | BINARY
+INFO  [a08_clean]            StepMonitoring 98   | SCALE
+INFO  [a08_clean]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [a08_clean]              ScaleBuilder 271  | Beam measured height:  8 -- 0.29 of [6..13] range at 131% of needed quorum
+INFO  [a08_clean]              ScaleBuilder 401  | Normalized black jitter: 14.29 %
+INFO  [a08_clean]                 ScaleStep 65   | Scale{ interline(13,14,15) line(1,2,3) beam(8)}
+INFO  [a08_clean]            StepMonitoring 98   | GRID
+INFO  [a08_clean]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a08_clean]         ClustersRetriever 326  | Retrieved raw line clusters: 5 of sizes [5] with interline(13,14,15)
+INFO  [a08_clean]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5]
+INFO  [a08_clean]             SystemManager 134  | Indentation detected for system #1
+INFO  [a08_clean]             SystemManager 800  | 1 part along 5 systems
+INFO  [a08_clean]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a08_clean]            StepMonitoring 98   | HEADERS
+INFO  [a08_clean]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a08_clean]             StemSeedsStep 86   | stem(3 max:4)
+INFO  [a08_clean]            StepMonitoring 98   | BEAMS
+INFO  [a08_clean]            StepMonitoring 98   | LEDGERS
+INFO  [a08_clean]            StepMonitoring 98   | HEADS
+INFO  [a08_clean]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[R:0.6] NOTEHEAD_BLACK[R:0.9]}
+INFO  [a08_clean]            StepMonitoring 98   | STEMS
+INFO  [a08_clean]            StepMonitoring 98   | REDUCTION
+INFO  [a08_clean]             ReductionStep 105  | Stems free length median value: 50 pixels, 3.6 interlines
+INFO  [a08_clean]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a08_clean]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a08_clean]            StepMonitoring 98   | TEXTS
+Estimating resolution as 266
+INFO  [a08_clean]            StepMonitoring 98   | MEASURES
+INFO  [a08_clean]                      Page 307  | 38 raw measures: [7 in system#1, 8 in system#2, 9 in system#3, 9 in system#4, 5 in system#5]
+INFO  [a08_clean]            StepMonitoring 98   | CHORDS
+INFO  [a08_clean]            StepMonitoring 98   | CURVES
+INFO  [a08_clean]              SlursBuilder 240  | Slurs: 11
+INFO  [a08_clean]           SegmentsBuilder 155  | Segments: 0
+INFO  [a08_clean]            StepMonitoring 98   | SYMBOLS
+INFO  [a08_clean]            StepMonitoring 98   | LINKS
+INFO  [a08_clean]             SentenceInter 449  | No measure stack for SentenceInter#2973{(0.900) staff:1 mFont:S-32 Direction} Adapted from Pat Clancy, Tom Clancy, Liam Clancy and Tommy Makem
+INFO  [a08_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#4218{(0.544) staff:2 OTTAVA ALTA} at java.awt.Point[x=113,y=423]
+INFO  [a08_clean]             SentenceInter 463  | No chord near SentenceInter#3809{(0.893) staff:4 mFont:S-33 Direction} And I nev - er will playthe wild ro - ver no more. Andit's no,
+INFO  [a08_clean]             SentenceInter 463  | No chord near SentenceInter#3829{(0.836) staff:4 mFont:S-33 Direction} Sucha cus — t0mas y0ursI can get an — y
+INFO  [a08_clean]             SentenceInter 463  | No chord near SentenceInter#3842{(0.780) staff:4 mFont:S-33 Direction} And the w0rdsthat I
+INFO  [a08_clean]             SentenceInter 463  | No chord near SentenceInter#3856{(0.860) staff:4 mFont:S-33 Direction} ThenI ne — ver will play the wild ro - ver no more.
+INFO  [a08_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#4301{(0.176) staff:4 QUINDICESIMA ALTA} at java.awt.Point[x=739,y=967]
+INFO  [a08_clean]            StepMonitoring 98   | RHYTHMS
+INFO  [a08_clean]            StepMonitoring 98   | PAGE
+INFO  [a08_clean]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#4285{(0.299/0.585) DYNAMICS_FZ} vs WordInter#3824{(0.700/0.700) staff:4 TEXT "no," font:S-32}
+INFO  [a08_clean]                      Book 2584 | Book{a08_clean} storing
+INFO  [a08_clean]                      Book 2565 | Stored /book.xml
+INFO  [a08_clean]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a08_clean]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a08_clean]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a08_clean.omr
+INFO  [a08_clean]                 SheetStub 1655 | Sheet disposed
+INFO  [a08_clean]                      Book 2050 | End of Stub#1
+INFO  [a08_clean]                      Book 2057 | End of Book{a08_clean}
+INFO  [a08_clean]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a08_clean]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a08_clean]                      Part 351  | Sheet#1 System#1 Part#2{name:Voice staves[1] configs:[5]} dummyPart id: 1
+INFO  [a08_clean]                      Part 351  | Sheet#1 System#5 Part#2{ staves[5] configs:[5]} dummyPart id: 1
+INFO  [a08_clean]                      Part 351  | Sheet#1 System#2 Part#1{name:V0. staves[2] configs:[5]} dummyPart id: 2
+INFO  [a08_clean]                      Part 351  | Sheet#1 System#3 Part#1{name:V0. staves[3] configs:[5]} dummyPart id: 2
+INFO  [a08_clean]                      Part 351  | Sheet#1 System#4 Part#1{name:V0. staves[4] configs:[5]} dummyPart id: 2
+INFO  [a08_clean]             ScoreExporter 164  | Score a08_clean exported to /kaggle/working/out/audiveris/A/a08_clean.mxl
+INFO  [a08_clean]                     Score 181  | Closing {Score 1}

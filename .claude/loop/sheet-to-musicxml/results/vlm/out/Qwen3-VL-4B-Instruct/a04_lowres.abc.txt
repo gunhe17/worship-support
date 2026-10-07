@@ -1,0 +1,22 @@
+```abc
+X:1
+T:True Blue Lou
+M:4/4
+L:1/8
+K:Dmaj
+V:1 clef=treble
+Dm7 A,B,C,D E,F,G,A, | B,7 D,E,F,G, A,B,C,D | Cmaj7 E,F,G,A, B,C,D,E | A7 F,G,A,B, C,D,E,F, |
+D7 A,B,C,D E,F,G,A, | Dm7 E,F,G,A, B,C,D,E | CMaj7 FMaj7 CMaj7 Dm7 A,B,C,D | E,F,G,A, B,C,D,E |
+B7 A,B,C,D E,F,G,A, | CMaj7 E,F,G,A, B,C,D,E | A7 F,G,A,B, C,D,E,F, | D7 A,B,C,D E,F,G,A, |
+Dm7 A,B,C,D E,F,G,A, | CMaj7 FMaj7 CMaj7 Gm7 B,C,D,E | C7 A,B,C,D E,F,G,A, | FMaj7 A,B,C,D E,F,G,A, |
+D7 A,B,C,D E,F,G,A, | B7 A,B,C,D E,F,G,A, | CMaj7 E,F,G,A, B,C,D,E | A7 F,G,A,B, C,D,E,F, |
+D7 A,B,C,D E,F,G,A, | Dm7 A,B,C,D E,F,G,A, | CMaj7 FMaj7 CMaj7 | z2 z2 z2 z2 |
+V:2 clef=treble
+"DM7" A,B,C,D E,F,G,A, | "B7" D,E,F,G, A,B,C,D | "CMaj7" E,F,G,A, B,C,D,E | "A7" F,G,A,B, C,D,E,F, |
+"D7" A,B,C,D E,F,G,A, | "Dm7" E,F,G,A, B,C,D,E | "CMaj7" E,F,G,A, B,C,D,E | "FMaj7" A,B,C,D E,F,G,A, |
+"CMaj7" E,F,G,A, B,C,D,E | "A7" F,G,A,B, C,D,E,F, | "D7" A,B,C,D E,F,G,A, | "CMaj7" E,F,G,A, B,C,D,E |
+"Gm7" B,C,D,E F,G,A,B, | "C7" A,B,C,D E,F,G,A, | "FMaj7" A,B,C,D E,F,G,A, | "D7" A,B,C,D E,F,G,A, |
+"Dm7" A,B,C,D E,F,G,A, | "G7" B,C,D,E F,G,A,B, | "Dm7" A,B,C,D E,F,G,A, | "B7" A,B,C,D E,F,G,A, |
+"CMaj7" E,F,G,A, B,C,D,E | "A7" F,G,A,B, C,D,E,F, | "D7" A,B,C,D E,F,G,A, | "Dm7" A,B,C,D E,F,G,A, |
+"CMaj7" E,F,G,A, B,C,D,E | "FMaj7" A,B,C,D E,F,G,A, | "CMaj7" E,F,G,A, B,C,D,E | z2 z2 z2 z2 |
+```

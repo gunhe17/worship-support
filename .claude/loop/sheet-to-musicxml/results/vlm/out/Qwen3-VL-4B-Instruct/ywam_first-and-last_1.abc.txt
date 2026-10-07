@@ -1,0 +1,34 @@
+```abc
+X:1
+T:처음과 나중
+C:임우진
+M:4/4
+L:1/8
+K:Gm
+V:1
+"GM"F2D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D2 | "Eb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 | "F"z2 D2 F2D2 | "Bb"z2 D2 F2D2 |
+"GM"F2D2 F2D

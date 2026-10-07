@@ -1,0 +1,71 @@
+```abc
+X:1
+T:Makin' Whooppee!
+C:Walter Donaldson
+C:Gus Kahn
+M:4/4
+L:1/8
+K:Fmaj
+V:1 clef=treble
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2A2 | G2B2 | A2F2 | B2d2 | c2A2 | B2d2 | c2A2 |
+F2A2 | F2

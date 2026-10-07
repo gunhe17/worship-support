@@ -1,0 +1,13 @@
+{
+  "id": "gunhe17/sheet-xml-audiveris-v3",
+  "title": "sheet-xml-audiveris-v3",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": ["gunhe17/sheet-xml-audiveris"]
+}

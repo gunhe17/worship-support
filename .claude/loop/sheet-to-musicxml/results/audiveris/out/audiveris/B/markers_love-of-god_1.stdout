@@ -1,0 +1,78 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/markers_love-of-god_1.png"
+INFO  [markers_love-of-god_1]                      Book 560  | 1 sheet in /tmp/aud_in/markers_love-of-god_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/markers_love-of-god_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | LOAD
+INFO  [markers_love-of-god_1]                 SheetStub 1278 | Loaded image #1 1932x2730 from /tmp/aud_in/markers_love-of-god_1.png
+INFO  [markers_love-of-god_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | BINARY
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | SCALE
+INFO  [markers_love-of-god_1]              ScaleBuilder 254  | Beam  guessed height: 10 -- 0.25 of [8..15] range
+INFO  [markers_love-of-god_1]              ScaleBuilder 271  | Beam measured height: 10 -- 0.29 of [8..15] range at 221% of needed quorum
+INFO  [markers_love-of-god_1]              ScaleBuilder 401  | Normalized black jitter: 11.76 %
+INFO  [markers_love-of-god_1]                 ScaleStep 65   | Scale{ interline(16,17,17) line(4,5,6) beam(10)}
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | GRID
+INFO  [markers_love-of-god_1]            LinesRetriever 1508 | Global slope: 0.00023
+INFO  [markers_love-of-god_1]         ClustersRetriever 326  | Retrieved raw line clusters: 7 of sizes [5] with interline(16,17,17)
+INFO  [markers_love-of-god_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7]
+INFO  [markers_love-of-god_1]             SystemManager 800  | 1 part along 7 systems
+INFO  [markers_love-of-god_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | HEADERS
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [markers_love-of-god_1]             StemSeedsStep 86   | stem(4 max:5)
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | BEAMS
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | LEDGERS
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | HEADS
+INFO  [markers_love-of-god_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[R:-1.0] NOTEHEAD_BLACK[L:-1.0,R:-1.2]}
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | STEMS
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | REDUCTION
+INFO  [markers_love-of-god_1]             ReductionStep 105  | Stems free length median value: 59 pixels, 3.5 interlines
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [markers_love-of-god_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 447
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | MEASURES
+INFO  [markers_love-of-god_1]                      Page 307  | 36 raw measures: [8 in system#1, 4 in system#2, 5 in system#3, 5 in system#4, 4 in system#5, 5 in system#6, 5 in system#7]
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | CHORDS
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | CURVES
+INFO  [markers_love-of-god_1]              SlursBuilder 240  | Slurs: 33
+INFO  [markers_love-of-god_1]           SegmentsBuilder 155  | Segments: 37
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | SYMBOLS
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | LINKS
+INFO  [markers_love-of-god_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6147{(0.134) staff:3 OTTAVA BASSA} at java.awt.Point[x=156,y=1389]
+INFO  [markers_love-of-god_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6237{(0.134) staff:4 OTTAVA ALTA} at java.awt.Point[x=156,y=1389]
+INFO  [markers_love-of-god_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6276{(0.324) staff:4 QUINDICESIMA BASSA} at java.awt.Point[x=1086,y=1603]
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | RHYTHMS
+INFO  [markers_love-of-god_1]             MeasureRhythm 1044 | Measure{#4} No timeOffset for HeadChordInter#4821{(0.937/0.937) staff:1 slot#5 dur:1/4}
+INFO  [markers_love-of-god_1]               StackRhythm 224  | S1 MeasureStack#4 no correct rhythm
+INFO  [markers_love-of-god_1]             MeasureRhythm 1044 | Measure{#11} No timeOffset for HeadChordInter#4840{(0.945/0.945) staff:2 slot#6 dur:1/8}
+INFO  [markers_love-of-god_1]               StackRhythm 224  | S2 MeasureStack#11 no correct rhythm
+INFO  [markers_love-of-god_1]                     Voice 257  | Measure{#24} Voice{#1 excess:1/16} too long
+INFO  [markers_love-of-god_1]               StackRhythm 224  | S5 MeasureStack#24 no correct rhythm
+INFO  [markers_love-of-god_1]             MeasureRhythm 1044 | Measure{#27} No timeOffset for HeadChordInter#4906{(0.934/0.934) staff:6 slot#5 dur:1/4}
+INFO  [markers_love-of-god_1]               StackRhythm 224  | S6 MeasureStack#27 no correct rhythm
+INFO  [markers_love-of-god_1]                     Voice 257  | Measure{#33} Voice{#1 excess:1/16} too long
+INFO  [markers_love-of-god_1]               StackRhythm 224  | S7 MeasureStack#33 no correct rhythm
+INFO  [markers_love-of-god_1]            StepMonitoring 98   | PAGE
+INFO  [markers_love-of-god_1]                     Voice 257  | Measure{#24} Voice{#1 excess:1/16} too long
+INFO  [markers_love-of-god_1]                     Voice 257  | Measure{#33} Voice{#1 excess:1/16} too long
+INFO  [markers_love-of-god_1]                      Book 2584 | Book{markers_love-of-god_1} storing
+INFO  [markers_love-of-god_1]                      Book 2565 | Stored /book.xml
+INFO  [markers_love-of-god_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [markers_love-of-god_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [markers_love-of-god_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/markers_love-of-god_1.omr
+INFO  [markers_love-of-god_1]                 SheetStub 1655 | Sheet disposed
+INFO  [markers_love-of-god_1]                      Book 2050 | End of Stub#1
+INFO  [markers_love-of-god_1]                      Book 2057 | End of Book{markers_love-of-god_1}
+INFO  [markers_love-of-god_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [markers_love-of-god_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [markers_love-of-god_1]             ScoreExporter 164  | Score markers_love-of-god_1 exported to /kaggle/working/out/audiveris/B/markers_love-of-god_1.mxl
+INFO  [markers_love-of-god_1]                     Score 181  | Closing {Score 1}

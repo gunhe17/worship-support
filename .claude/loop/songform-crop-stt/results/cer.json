@@ -1,0 +1,182 @@
+{
+ "overall": {
+  "whisper-large-v3": {
+   "mix": {
+    "n": 165,
+    "mean": 0.1883628019949819,
+    "median": 0.10714285714285714
+   },
+   "vocals": {
+    "n": 153,
+    "mean": 0.22802658372377038,
+    "median": 0.15384615384615385
+   }
+  },
+  "whisper-turbo-ko-ghost613": {
+   "mix": {
+    "n": 165,
+    "mean": 0.9526521081693724,
+    "median": 0.875
+   },
+   "vocals": {
+    "n": 153,
+    "mean": 0.8455326946907606,
+    "median": 0.7142857142857143
+   }
+  },
+  "qwen3-asr-1.7b": {
+   "mix": {
+    "n": 165,
+    "mean": 0.3332857565321055,
+    "median": 0.24242424242424243
+   },
+   "vocals": {
+    "n": 153,
+    "mean": 0.31153865232526196,
+    "median": 0.23809523809523808
+   }
+  }
+ },
+ "per_song": {
+  "anointing_rejoice": {
+   "whisper-large-v3": {
+    "mix": 0.11451612903225807,
+    "vocals": 0.16666666666666666
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 1.259259259259259,
+    "vocals": 1.0588235294117647
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.35333333333333333,
+    "vocals": 0.43333333333333335
+   }
+  },
+  "fia_my-jesus": {
+   "whisper-large-v3": {
+    "mix": 0.15384615384615385,
+    "vocals": 0.15384615384615385
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.5769230769230769,
+    "vocals": 0.39285714285714285
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.19230769230769232,
+    "vocals": 0.1935483870967742
+   }
+  },
+  "isaiah61_god-so-loved": {
+   "whisper-large-v3": {
+    "mix": 0.06896551724137931,
+    "vocals": 0.16666666666666666
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.45454545454545453,
+    "vocals": 0.34615384615384615
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.1875,
+    "vocals": 0.2
+   }
+  },
+  "jus_return-to-lord": {
+   "whisper-large-v3": {
+    "mix": 0.037037037037037035,
+    "vocals": 0.017857142857142856
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.5128205128205128,
+    "vocals": 0.5625
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.14634146341463414,
+    "vocals": 0.12142857142857143
+   }
+  },
+  "levites_lord-of-my-heart": {
+   "whisper-large-v3": {
+    "mix": 0.027777777777777776,
+    "vocals": 0.043478260869565216
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.9384615384615385,
+    "vocals": 0.5789473684210527
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.2564102564102564,
+    "vocals": 0.17857142857142858
+   }
+  },
+  "markers_love-of-god": {
+   "whisper-large-v3": {
+    "mix": 0.20606060606060606,
+    "vocals": 0.12121212121212122
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.7777777777777777,
+    "vocals": 0.7307692307692307
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.4264069264069264,
+    "vocals": 0.42424242424242425
+   }
+  },
+  "ongi_kingdom-and-glory": {
+   "whisper-large-v3": {
+    "mix": 0.10434782608695653,
+    "vocals": 0.19440993788819877
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.8774879890185312,
+    "vocals": 0.9166666666666667
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.2545751633986928,
+    "vocals": 0.33695652173913043
+   }
+  },
+  "teamluke_built-together": {
+   "whisper-large-v3": {
+    "mix": 0.10714285714285714,
+    "vocals": 0.11538461538461539
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.5,
+    "vocals": 0.4642857142857143
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.11538461538461539,
+    "vocals": 0.13043478260869565
+   }
+  },
+  "welove_loving-you-more": {
+   "whisper-large-v3": {
+    "mix": 0.12903225806451613,
+    "vocals": 0.2456896551724138
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 0.84375,
+    "vocals": 0.7242424242424242
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.21153846153846154,
+    "vocals": 0.23956521739130435
+   }
+  },
+  "ywam_first-and-last": {
+   "whisper-large-v3": {
+    "mix": 0.25,
+    "vocals": 0.23076923076923078
+   },
+   "whisper-turbo-ko-ghost613": {
+    "mix": 1.9420289855072463,
+    "vocals": 1.5
+   },
+   "qwen3-asr-1.7b": {
+    "mix": 0.7368421052631579,
+    "vocals": 0.6153846153846154
+   }
+  }
+ }
+}

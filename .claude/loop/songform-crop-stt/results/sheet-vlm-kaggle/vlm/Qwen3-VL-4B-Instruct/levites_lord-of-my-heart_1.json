@@ -1,0 +1,43 @@
+{
+  "title": "나의 예수",
+  "key": "D",
+  "time_signature": "4/4",
+  "tempo": "77",
+  "sections": [
+    {
+      "tag": "Verse",
+      "lyrics": "나의 예수 온맘대해 사랑해요",
+      "chords": "D A/C# G/B A sus4 A D A/C#"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "나의 예수 온맘대해 경배해요",
+      "chords": "G/B A sus4 D A/C# G/B A sus4 A D A/C#"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "예수님께 온맘대해 순복해요",
+      "chords": "G/B A sus4 D A/C# G/B A sus4 A Bm /A"
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "영원토록 진앙을 드립니다",
+      "chords": "E/G# E D/F# G A sus4"
+    },
+    {
+      "tag": "Chorus",
+      "lyrics": "나의 예수",
+      "chords": "D A/C# G/B A sus4"
+    },
+    {
+      "tag": "Chorus",
+      "lyrics": "나의 예수",
+      "chords": "G/D D D/F#"
+    },
+    {
+      "tag": "Chorus",
+      "lyrics": "순결하고 내마음과 아름다운 내모든사",
+      "chords": "G A sus4 A D A/C# G A sus4 A D A/C#"
+    }
+  ]
+}

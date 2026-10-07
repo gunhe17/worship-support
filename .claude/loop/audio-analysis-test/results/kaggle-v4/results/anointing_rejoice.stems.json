@@ -1,0 +1,265 @@
+{
+ "file": "anointing_rejoice.wav",
+ "stems": true,
+ "device": "cuda",
+ "tuning_offset": 0.04,
+ "bpm": {
+  "value": 142.9,
+  "alternates": [
+   71.4,
+   285.7
+  ],
+  "meter_beats_per_bar": 4,
+  "ibi_cv": 0.026
+ },
+ "key": {
+  "song_key_essentia_majority": "E major"
+ },
+ "sections": [
+  {
+   "label": "intro",
+   "start": 0.0,
+   "end": 15.8,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.9,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "intro",
+   "start": 15.8,
+   "end": 29.2,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.9,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "verse",
+   "start": 29.2,
+   "end": 42.8,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.87,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "verse",
+   "start": 42.8,
+   "end": 56.4,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.87,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "chorus",
+   "start": 56.4,
+   "end": 69.8,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.88,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "chorus",
+   "start": 69.8,
+   "end": 83.6,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.88,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 83.6,
+   "end": 97.3,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.87,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "verse",
+   "start": 97.3,
+   "end": 110.9,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.88,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "chorus",
+   "start": 110.9,
+   "end": 124.6,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.85,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "bridge",
+   "start": 124.6,
+   "end": 141.5,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.87,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "chorus",
+   "start": 141.5,
+   "end": 155.3,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.87,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 155.3,
+   "end": 168.7,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.9,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 168.7,
+   "end": 182.6,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.88,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "intro",
+   "start": 182.6,
+   "end": 195.8,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.88,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "chorus",
+   "start": 195.8,
+   "end": 209.5,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.85,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 209.5,
+   "end": 223.0,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.88,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 223.0,
+   "end": 236.9,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.87,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 236.9,
+   "end": 250.3,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.89,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 250.3,
+   "end": 263.9,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.82,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "verse",
+   "start": 263.9,
+   "end": 277.6,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.86,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "bridge",
+   "start": 277.6,
+   "end": 294.6,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.64,
+   "key_cnn": "E major"
+  },
+  {
+   "label": "chorus",
+   "start": 294.6,
+   "end": 308.2,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.81,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 308.2,
+   "end": 321.9,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.86,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "chorus",
+   "start": 321.9,
+   "end": 335.4,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.81,
+   "key_cnn": "E major",
+   "oti_vs_first_chorus": 0
+  },
+  {
+   "label": "intro",
+   "start": 335.4,
+   "end": 349.1,
+   "bpm": 142.9,
+   "key_essentia": "E major",
+   "strength": 0.85,
+   "key_cnn": "E major"
+  }
+ ],
+ "timing_s": {
+  "beat_this": 5.5,
+  "songformer": 0.0,
+  "demucs": 18.5,
+  "key": 39.6
+ }
+}

@@ -1,0 +1,70 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/teamluke_built-together_1.png"
+INFO  [teamluke_built-together_1]                      Book 560  | 1 sheet in /tmp/aud_in/teamluke_built-together_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/teamluke_built-together_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | LOAD
+INFO  [teamluke_built-together_1]                 SheetStub 1278 | Loaded image #1 2482x2328 from /tmp/aud_in/teamluke_built-together_1.png
+INFO  [teamluke_built-together_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | BINARY
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | SCALE
+INFO  [teamluke_built-together_1]              ScaleBuilder 254  | Beam  guessed height: 12 -- 0.25 of [9..20] range
+INFO  [teamluke_built-together_1]              ScaleBuilder 271  | Beam measured height: 12 -- 0.27 of [9..20] range at 506% of needed quorum
+INFO  [teamluke_built-together_1]              ScaleBuilder 401  | Normalized black jitter: 14.29 %
+INFO  [teamluke_built-together_1]                 ScaleStep 65   | Scale{ interline(20,21,22) line(3,4,6) beam(12)}
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | GRID
+INFO  [teamluke_built-together_1]            LinesRetriever 1508 | Global slope: 0.00117
+INFO  [teamluke_built-together_1]         ClustersRetriever 326  | Retrieved raw line clusters: 4 of sizes [5] with interline(20,21,22)
+INFO  [teamluke_built-together_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4]
+INFO  [teamluke_built-together_1]             SystemManager 800  | 1 part along 4 systems
+INFO  [teamluke_built-together_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | HEADERS
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [teamluke_built-together_1]             StemSeedsStep 86   | stem(5 max:7)
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | BEAMS
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | LEDGERS
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | HEADS
+INFO  [teamluke_built-together_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_BLACK[L:-0.7,R:-1.6]}
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | STEMS
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | REDUCTION
+INFO  [teamluke_built-together_1]             ReductionStep 105  | Stems free length median value: 71 pixels, 3.4 interlines
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [teamluke_built-together_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 449
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | MEASURES
+INFO  [teamluke_built-together_1]                      Page 307  | 16 raw measures: [4 in system#1, 4 in system#2, 4 in system#3, 4 in system#4]
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | CHORDS
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | CURVES
+INFO  [teamluke_built-together_1]              SlursBuilder 240  | Slurs: 25
+INFO  [teamluke_built-together_1]           SegmentsBuilder 155  | Segments: 13
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | SYMBOLS
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | LINKS
+INFO  [teamluke_built-together_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#5571{(0.317) staff:1 QUINDICESIMA ALTA} at java.awt.Point[x=985,y=317]
+INFO  [teamluke_built-together_1]             SentenceInter 463  | No chord near SentenceInter#4300{(0.731) staff:2 mFont:53 Direction} our
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | RHYTHMS
+INFO  [teamluke_built-together_1]                     Voice 257  | Measure{#2} Voice{#1 excess:3/16} too long
+INFO  [teamluke_built-together_1]               StackRhythm 224  | S1 MeasureStack#2 no correct rhythm
+INFO  [teamluke_built-together_1]             MeasureRhythm 1044 | Measure{#6} No timeOffset for HeadChordInter#4921{(0.956/0.956) staff:2 slot#4 dur:1/16}
+INFO  [teamluke_built-together_1]               StackRhythm 224  | S2 MeasureStack#6 no correct rhythm
+INFO  [teamluke_built-together_1]            StepMonitoring 98   | PAGE
+INFO  [teamluke_built-together_1]                     Voice 257  | Measure{#2} Voice{#1 excess:3/16} too long
+INFO  [teamluke_built-together_1]                      Book 2584 | Book{teamluke_built-together_1} storing
+INFO  [teamluke_built-together_1]                      Book 2565 | Stored /book.xml
+INFO  [teamluke_built-together_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [teamluke_built-together_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [teamluke_built-together_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/teamluke_built-together_1.omr
+INFO  [teamluke_built-together_1]                 SheetStub 1655 | Sheet disposed
+INFO  [teamluke_built-together_1]                      Book 2050 | End of Stub#1
+INFO  [teamluke_built-together_1]                      Book 2057 | End of Book{teamluke_built-together_1}
+INFO  [teamluke_built-together_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [teamluke_built-together_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [teamluke_built-together_1]             ScoreExporter 164  | Score teamluke_built-together_1 exported to /kaggle/working/out/audiveris/B/teamluke_built-together_1.mxl
+INFO  [teamluke_built-together_1]                     Score 181  | Closing {Score 1}

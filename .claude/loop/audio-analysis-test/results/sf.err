@@ -1,0 +1,54 @@
+Fetching 28 files:   0%|          | 0/28 [00:00<?, ?it/s]Fetching 28 files: 100%|██████████| 28/28 [00:00<00:00, 6869.47it/s]
+You are using a model of type songformer to instantiate a model of type custom_model. This is not supported for all configurations of models and can yield errors.
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:145: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+load 4.7s
+/Users/gunhee/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:264: RuntimeWarning: invalid value encountered in divide
+  logits["function_logits"] /= logits_num["function_logits"]
+/Users/gunhee/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:265: RuntimeWarning: invalid value encountered in divide
+  logits["boundary_logits"] /= logits_num["boundary_logits"]
+infer 61.6s on mps
+       70.98 real         5.34 user         7.57 sys
+           995409920  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               40292  page reclaims
+              179016  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                  16  messages sent
+                  43  messages received
+                   0  signals received
+               10002  voluntary context switches
+               70468  involuntary context switches
+         79796128329  instructions retired
+         43632177682  cycles elapsed
+         14029375192  peak memory footprint
+Fetching 28 files:   0%|          | 0/28 [00:00<?, ?it/s]Fetching 28 files: 100%|██████████| 28/28 [00:00<00:00, 4689.37it/s]
+You are using a model of type songformer to instantiate a model of type custom_model. This is not supported for all configurations of models and can yield errors.
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:145: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+load 3.7s
+/Users/gunhee/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:264: RuntimeWarning: invalid value encountered in divide
+  logits["function_logits"] /= logits_num["function_logits"]
+/Users/gunhee/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:265: RuntimeWarning: invalid value encountered in divide
+  logits["boundary_logits"] /= logits_num["boundary_logits"]
+infer 43.6s on mps
+Fetching 28 files:   0%|          | 0/28 [00:00<?, ?it/s]Fetching 28 files: 100%|██████████| 28/28 [00:00<00:00, 1146.79it/s]
+You are using a model of type songformer to instantiate a model of type custom_model. This is not supported for all configurations of models and can yield errors.
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/Users/gunhee/workspace/codespace/service/worship-support/.claude/loop/audio-analysis-test/.venv/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:145: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+load 3.7s
+/Users/gunhee/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:264: RuntimeWarning: invalid value encountered in divide
+  logits["function_logits"] /= logits_num["function_logits"]
+/Users/gunhee/.cache/huggingface/modules/transformers_modules/a75880ed1b7375ac71860ec6c4fc9c899cf99515/modeling_songformer.py:265: RuntimeWarning: invalid value encountered in divide
+  logits["boundary_logits"] /= logits_num["boundary_logits"]
+infer 34.3s on mps

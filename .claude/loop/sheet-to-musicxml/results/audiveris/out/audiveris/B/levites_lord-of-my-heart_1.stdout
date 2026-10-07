@@ -1,0 +1,109 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/levites_lord-of-my-heart_1.png"
+INFO  [levites_lord-of-my-heart_1]                      Book 560  | 1 sheet in /tmp/aud_in/levites_lord-of-my-heart_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/levites_lord-of-my-heart_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | LOAD
+INFO  [levites_lord-of-my-heart_1]                 SheetStub 1278 | Loaded image #1 1448x2048 from /tmp/aud_in/levites_lord-of-my-heart_1.png
+INFO  [levites_lord-of-my-heart_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | BINARY
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | SCALE
+INFO  [levites_lord-of-my-heart_1]              ScaleBuilder 254  | Beam  guessed height:  6 -- 0.25 of [5..10] range
+INFO  [levites_lord-of-my-heart_1]              ScaleBuilder 271  | Beam measured height:  7 -- 0.40 of [5..10] range at 300% of needed quorum
+INFO  [levites_lord-of-my-heart_1]              ScaleBuilder 401  | Normalized black jitter: 18.18 %
+INFO  [levites_lord-of-my-heart_1]                 ScaleStep 65   | Scale{ interline(10,11,12) line(2,3,4) beam(7)}
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | GRID
+INFO  [levites_lord-of-my-heart_1]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [levites_lord-of-my-heart_1]         ClustersRetriever 326  | Retrieved raw line clusters: 6 of sizes [5] with interline(10,11,12)
+INFO  [levites_lord-of-my-heart_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6]
+INFO  [levites_lord-of-my-heart_1]             SystemManager 800  | 1 part along 6 systems
+INFO  [levites_lord-of-my-heart_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | HEADERS
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [levites_lord-of-my-heart_1]             StemSeedsStep 86   | stem(4 max:5)
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | BEAMS
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | LEDGERS
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | HEADS
+INFO  [levites_lord-of-my-heart_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[R:-0.6] NOTEHEAD_BLACK[L:-0.3,R:-0.1]}
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | STEMS
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | REDUCTION
+INFO  [levites_lord-of-my-heart_1]             ReductionStep 105  | Stems free length median value: 39 pixels, 3.5 interlines
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [levites_lord-of-my-heart_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 253
+INFO  [levites_lord-of-my-heart_1]            MetronomeInter 1410 | Metronome. Non recognized note for glyph#3736
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | MEASURES
+INFO  [levites_lord-of-my-heart_1]                      Page 307  | 23 raw measures: [4 in system#1, 4 in system#2, 4 in system#3, 3 in system#4, 4 in system#5, 4 in system#6]
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | CHORDS
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | CURVES
+INFO  [levites_lord-of-my-heart_1]              SlursBuilder 240  | Slurs: 10
+INFO  [levites_lord-of-my-heart_1]           SegmentsBuilder 155  | Segments: 11
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | SYMBOLS
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | LINKS
+INFO  [levites_lord-of-my-heart_1]             SentenceInter 483  | No chord below ChordNameInter#3766{(0.759) staff:1 TEXT "D" font:BS-25 root:D ChordKind{MAJOR}}
+INFO  [levites_lord-of-my-heart_1]             SentenceInter 463  | No chord near SentenceInter#3767{(0.532) staff:1 mFont:B-46 Direction} ^/(쓱
+INFO  [levites_lord-of-my-heart_1]             SentenceInter 483  | No chord below ChordNameInter#3804{(0.734) staff:2 TEXT "D" font:BS-25 root:D ChordKind{MAJOR}}
+INFO  [levites_lord-of-my-heart_1]             SentenceInter 483  | No chord below ChordNameInter#3980{(0.779) staff:6 TEXT "A" font:B-25 root:A ChordKind{MAJOR}}
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | RHYTHMS
+INFO  [levites_lord-of-my-heart_1]             MeasureRhythm 1044 | Measure{#13} No timeOffset for HeadChordInter#4082{(0.888/0.888) staff:4 slot#4 dur:1/4}
+INFO  [levites_lord-of-my-heart_1]        AbstractChordInter 635  | Measure{#13} No timeOffset for HeadChordInter#4082{(0.888/0.888) staff:4 slot#4 dur:1/4}
+INFO  [levites_lord-of-my-heart_1]        AbstractChordInter 635  | Measure{#13} No timeOffset for RestChordInter#4872{(0.791/0.791) staff:4 slot#5 dur:1/2}
+INFO  [levites_lord-of-my-heart_1]               StackRhythm 224  | S4 MeasureStack#13 no correct rhythm
+INFO  [levites_lord-of-my-heart_1]                     Voice 257  | Measure{#15} Voice{#1 excess:1/4} too long
+INFO  [levites_lord-of-my-heart_1]               StackRhythm 224  | S4 MeasureStack#15 no correct rhythm
+INFO  [levites_lord-of-my-heart_1]             MeasureRhythm 1044 | Measure{#19} No timeOffset for RestChordInter#4964{(0.712/0.712) staff:5 slot#5 dur:1/2}
+INFO  [levites_lord-of-my-heart_1]             MeasureRhythm 1044 | Measure{#19} No timeOffset for HeadChordInter#4103{(0.583/0.583) staff:5 slot#5 dur:1/2}
+INFO  [levites_lord-of-my-heart_1]               StackRhythm 224  | S5 MeasureStack#19 no correct rhythm
+INFO  [levites_lord-of-my-heart_1]             MeasureRhythm 1044 | Measure{#21} No timeOffset for HeadChordInter#4109{(0.582/0.582) staff:6 slot#6 dur:1/2}
+INFO  [levites_lord-of-my-heart_1]        AbstractChordInter 635  | Measure{#21} No timeOffset for HeadChordInter#4109{(0.582/0.582) staff:6 slot#6 dur:1/2}
+INFO  [levites_lord-of-my-heart_1]        AbstractChordInter 635  | Measure{#21} No timeOffset for HeadChordInter#4110{(0.954/0.954) staff:6 slot#7 dur:1/4}
+INFO  [levites_lord-of-my-heart_1]                     Voice 257  | Measure{#21} Voice{#1 excess:1/8} too long
+INFO  [levites_lord-of-my-heart_1]               StackRhythm 224  | S6 MeasureStack#21 no correct rhythm
+INFO  [levites_lord-of-my-heart_1]             MeasureRhythm 1044 | Measure{#23} No timeOffset for HeadChordInter#4127{(0.616/0.616) staff:6 slot#7 dur:1/2}
+INFO  [levites_lord-of-my-heart_1]               StackRhythm 224  | S6 MeasureStack#23 no correct rhythm
+INFO  [levites_lord-of-my-heart_1]            StepMonitoring 98   | PAGE
+INFO  [levites_lord-of-my-heart_1]            SheetReduction 154  | Gutter. Different glyphs 4/5 CaesuraInter#4854{(0.216/0.510) staff:4 CAESURA} vs WordInter#3857{(0.607/0.607) staff:5 TEXT "z." font:B-30}
+INFO  [levites_lord-of-my-heart_1]            SheetReduction 154  | Gutter. Different glyphs 4/5 CaesuraInter#4854{(0.216/0.510) staff:4 CAESURA} vs EndingInter#4304{(0.771/0.905) staff:5 ENDING}
+INFO  [levites_lord-of-my-heart_1]                     Voice 257  | Measure{#15} Voice{#2 excess:1/4} too long
+INFO  [levites_lord-of-my-heart_1]                     Voice 257  | Measure{#21} Voice{#1 excess:1/8} too long
+INFO  [levites_lord-of-my-heart_1]                      Book 2584 | Book{levites_lord-of-my-heart_1} storing
+INFO  [levites_lord-of-my-heart_1]                      Book 2565 | Stored /book.xml
+INFO  [levites_lord-of-my-heart_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [levites_lord-of-my-heart_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [levites_lord-of-my-heart_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/levites_lord-of-my-heart_1.omr
+INFO  [levites_lord-of-my-heart_1]                 SheetStub 1655 | Sheet disposed
+INFO  [levites_lord-of-my-heart_1]                      Book 2050 | End of Stub#1
+INFO  [levites_lord-of-my-heart_1]                      Book 2057 | End of Book{levites_lord-of-my-heart_1}
+INFO  [levites_lord-of-my-heart_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [levites_lord-of-my-heart_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+WARN  [levites_lord-of-my-heart_1]           PartwiseBuilder 1614 | Error visiting MetronomeInter#3738{<invalid-internals>} in {Page#1.1}
+java.lang.NullPointerException: Cannot invoke "org.audiveris.omr.sig.inter.BeatUnitInter$Note.toMusicXml()" because "note" is null
+	at org.audiveris.omr.score.PartwiseBuilder.processDirection(PartwiseBuilder.java:1573)
+	at org.audiveris.omr.score.PartwiseBuilder.processNote(PartwiseBuilder.java:2268)
+	at org.audiveris.omr.score.PartwiseBuilder.processChord(PartwiseBuilder.java:1393)
+	at org.audiveris.omr.score.PartwiseBuilder.processMeasure(PartwiseBuilder.java:2136)
+	at org.audiveris.omr.score.PartwiseBuilder.processPart(PartwiseBuilder.java:2678)
+	at org.audiveris.omr.score.PartwiseBuilder.processSystem(PartwiseBuilder.java:3223)
+	at org.audiveris.omr.score.PartwiseBuilder.processLogicalPart(PartwiseBuilder.java:1875)
+	at org.audiveris.omr.score.PartwiseBuilder.processStub(PartwiseBuilder.java:3174)
+	at org.audiveris.omr.score.PartwiseBuilder.processPartList(PartwiseBuilder.java:2710)
+	at org.audiveris.omr.score.PartwiseBuilder.processScore(PartwiseBuilder.java:2985)
+	at org.audiveris.omr.score.PartwiseBuilder.build(PartwiseBuilder.java:3543)
+	at org.audiveris.omr.score.ScoreExporter.export(ScoreExporter.java:122)
+	at org.audiveris.omr.score.ScoreExporter.export(ScoreExporter.java:163)
+	at org.audiveris.omr.sheet.Book.export(Book.java:630)
+	at org.audiveris.omr.CLI$ProcessingTask.processBook(CLI.java:927)
+	at org.audiveris.omr.CLI$CliTask.call(CLI.java:513)
+	at org.audiveris.omr.Main.runBatchTasks(Main.java:370)
+	at org.audiveris.omr.Main.main(Main.java:272)
+	at Audiveris.main(Audiveris.java:50)
+INFO  [levites_lord-of-my-heart_1]             ScoreExporter 164  | Score levites_lord-of-my-heart_1 exported to /kaggle/working/out/audiveris/B/levites_lord-of-my-heart_1.mxl
+INFO  [levites_lord-of-my-heart_1]                     Score 181  | Closing {Score 1}

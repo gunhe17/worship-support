@@ -1,0 +1,47 @@
+```abc
+X:1
+T:Onward, Christian Soldiers
+C:Sir Arthur Sullivan
+M:4/4
+L:1/8
+K:F
+V:1 clef=treble
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 | F2 z2 | A2 c2 f2 g2 | f2 e2 d2 c2 | d2 c2 B2 A2 | G2 F2 E2 D2 |
+F2 c2 d2 c2 | c3 d2 | A2 B2 A2 G2 |

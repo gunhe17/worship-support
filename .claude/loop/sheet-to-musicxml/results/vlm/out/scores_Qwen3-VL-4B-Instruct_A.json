@@ -1,0 +1,1010 @@
+{
+ "convert_ok": {
+  "a00_clean": false,
+  "a00_lowres": false,
+  "a01_clean": false,
+  "a01_lowres": true,
+  "a02_clean": false,
+  "a02_lowres": false,
+  "a03_clean": false,
+  "a03_lowres": false,
+  "a04_clean": false,
+  "a04_lowres": true,
+  "a05_clean": false,
+  "a05_lowres": true,
+  "a06_clean": false,
+  "a06_lowres": false,
+  "a07_clean": false,
+  "a07_lowres": false,
+  "a08_clean": false,
+  "a08_lowres": false,
+  "a09_clean": true,
+  "a09_lowres": false,
+  "a10_clean": true,
+  "a10_lowres": false,
+  "a11_clean": true,
+  "a11_lowres": false,
+  "a12_clean": false,
+  "a12_lowres": false,
+  "a13_clean": false,
+  "a13_lowres": false,
+  "a14_clean": false,
+  "a14_lowres": false,
+  "a15_clean": false,
+  "a15_lowres": false,
+  "a16_clean": false,
+  "a16_lowres": false,
+  "a17_clean": false,
+  "a17_lowres": false,
+  "a18_clean": true,
+  "a18_lowres": false,
+  "a19_clean": false,
+  "a19_lowres": false,
+  "anointing_rejoice_1": false,
+  "anointing_rejoice_2": false,
+  "fia_my-jesus_1": true,
+  "isaiah61_god-so-loved_1": false,
+  "isaiah61_god-so-loved_2": false,
+  "isaiah61_god-so-loved_3": true,
+  "jus_return-to-lord_1": false,
+  "levites_lord-of-my-heart_1": true,
+  "levites_lord-of-my-heart_2": true,
+  "markers_love-of-god_1": false,
+  "teamluke_built-together_1": true,
+  "welove_loving-you-more_1": false,
+  "welove_loving-you-more_2": false,
+  "ywam_first-and-last_1": false
+ },
+ "scores": {
+  "a00_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a00_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a01_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a01_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "gt_syms": 127,
+    "pred_syms": 3,
+    "edits": 130
+   },
+   "signatures": {
+    "omr_ned": 0.25,
+    "gt_syms": 4,
+    "pred_syms": 4,
+    "edits": 2
+   },
+   "barlines": {
+    "omr_ned": 0.0,
+    "gt_syms": 1,
+    "pred_syms": 1,
+    "edits": 0
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "gt_syms": 35,
+    "pred_syms": 0,
+    "edits": 35
+   },
+   "all": {
+    "omr_ned": 0.985,
+    "gt_syms": 391,
+    "pred_syms": 8,
+    "edits": 393
+   }
+  },
+  "a02_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a02_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a03_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a03_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a04_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a04_lowres": {
+   "notes": {
+    "omr_ned": 0.9491,
+    "gt_syms": 448,
+    "pred_syms": 1439,
+    "edits": 1791
+   },
+   "signatures": {
+    "omr_ned": 0.9535,
+    "gt_syms": 4,
+    "pred_syms": 82,
+    "edits": 82
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "gt_syms": 4,
+    "pred_syms": 0,
+    "edits": 4
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "gt_syms": 35,
+    "pred_syms": 17,
+    "edits": 52
+   },
+   "all": {
+    "omr_ned": 0.9639,
+    "gt_syms": 1112,
+    "pred_syms": 1574,
+    "edits": 2589
+   }
+  },
+  "a05_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a05_lowres": {
+   "notes": {
+    "omr_ned": 0.7683,
+    "gt_syms": 268,
+    "pred_syms": 552,
+    "edits": 630
+   },
+   "signatures": {
+    "omr_ned": 0.8333,
+    "gt_syms": 4,
+    "pred_syms": 8,
+    "edits": 10
+   },
+   "barlines": {
+    "omr_ned": 0.3333,
+    "gt_syms": 1,
+    "pred_syms": 2,
+    "edits": 1
+   },
+   "chords": {
+    "omr_ned": 0.7586,
+    "gt_syms": 20,
+    "pred_syms": 38,
+    "edits": 44
+   },
+   "all": {
+    "omr_ned": 0.8657,
+    "gt_syms": 725,
+    "pred_syms": 608,
+    "edits": 1154
+   }
+  },
+  "a06_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a06_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a07_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a07_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a08_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a08_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a09_clean": {
+   "notes": {
+    "omr_ned": 0.7341,
+    "gt_syms": 243,
+    "pred_syms": 103,
+    "edits": 254
+   },
+   "signatures": {
+    "omr_ned": 0.0,
+    "gt_syms": 4,
+    "pred_syms": 4,
+    "edits": 0
+   },
+   "barlines": {
+    "omr_ned": 0.0,
+    "gt_syms": 0,
+    "pred_syms": 0,
+    "edits": 0
+   },
+   "chords": {
+    "omr_ned": 0.2963,
+    "gt_syms": 30,
+    "pred_syms": 24,
+    "edits": 16
+   },
+   "all": {
+    "omr_ned": 0.8859,
+    "gt_syms": 798,
+    "pred_syms": 131,
+    "edits": 823
+   }
+  },
+  "a09_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a10_clean": {
+   "notes": {
+    "omr_ned": 0.9516,
+    "gt_syms": 480,
+    "pred_syms": 387,
+    "edits": 825
+   },
+   "signatures": {
+    "omr_ned": 0.25,
+    "gt_syms": 4,
+    "pred_syms": 4,
+    "edits": 2
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "gt_syms": 2,
+    "pred_syms": 0,
+    "edits": 2
+   },
+   "chords": {
+    "omr_ned": 0.3902,
+    "gt_syms": 41,
+    "pred_syms": 41,
+    "edits": 32
+   },
+   "all": {
+    "omr_ned": 0.9441,
+    "gt_syms": 1035,
+    "pred_syms": 432,
+    "edits": 1385
+   }
+  },
+  "a10_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a11_clean": {
+   "notes": {
+    "omr_ned": 0.8754,
+    "gt_syms": 243,
+    "pred_syms": 640,
+    "edits": 773
+   },
+   "signatures": {
+    "omr_ned": 0.3333,
+    "gt_syms": 4,
+    "pred_syms": 8,
+    "edits": 4
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "gt_syms": 3,
+    "pred_syms": 0,
+    "edits": 3
+   },
+   "chords": {
+    "omr_ned": 0.6508,
+    "gt_syms": 26,
+    "pred_syms": 37,
+    "edits": 41
+   },
+   "all": {
+    "omr_ned": 0.9313,
+    "gt_syms": 1236,
+    "pred_syms": 685,
+    "edits": 1789
+   }
+  },
+  "a11_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a12_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a12_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a13_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a13_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a14_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a14_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a15_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a15_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a16_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a16_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a17_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a17_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a18_clean": {
+   "notes": {
+    "omr_ned": 0.8917,
+    "gt_syms": 208,
+    "pred_syms": 346,
+    "edits": 494
+   },
+   "signatures": {
+    "omr_ned": 0.0,
+    "gt_syms": 4,
+    "pred_syms": 4,
+    "edits": 0
+   },
+   "barlines": {
+    "omr_ned": 0.5,
+    "gt_syms": 3,
+    "pred_syms": 1,
+    "edits": 2
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "gt_syms": 57,
+    "pred_syms": 2,
+    "edits": 59
+   },
+   "all": {
+    "omr_ned": 0.937,
+    "gt_syms": 672,
+    "pred_syms": 407,
+    "edits": 1011
+   }
+  },
+  "a18_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a19_clean": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  },
+  "a19_lowres": {
+   "notes": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "signatures": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "barlines": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "chords": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   },
+   "all": {
+    "omr_ned": 1.0,
+    "failed": "no output"
+   }
+  }
+ }
+}

@@ -1,0 +1,99 @@
+```abc
+X:1
+T:In a little Spanish town (twas on a night like this)
+C: Mabel Wayne
+C: Sam M lewis, Joe Young,
+M:2/4
+L:1/8
+K:C
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2 | z2 z2 | z2 z2 |
+C2 | cA cA dA cA | d2 z2

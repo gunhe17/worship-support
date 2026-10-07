@@ -1,0 +1,83 @@
+<title>찬양 악보 행 분할</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781; --ring:rgba(11,11,11,.10); --line:#e1e0d9;
+  --upper:#d4541f; --staff:#2a78d6; --lower:#0a7d0a;
+  --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--ring:rgba(255,255,255,.12);--line:#2c2c2a;--upper:#eb6834;--staff:#3987e5;--lower:#1fa31f}
+}
+:root[data-theme="dark"]{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--ring:rgba(255,255,255,.12);--line:#2c2c2a;--upper:#eb6834;--staff:#3987e5;--lower:#1fa31f}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;padding-inline:16px;padding-block:32px 72px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:28px}
+h1{margin:0;font-size:28px;font-weight:700;text-wrap:balance}
+h2{margin:0;font-size:19px;font-weight:600}
+p{margin:0;max-width:72ch;color:var(--ink-2)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--page);padding-block:10px;border-bottom:1px solid var(--line);display:grid;gap:8px}
+.toggles{display:flex;flex-wrap:wrap;gap:8px}
+.toggles label{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ring);border-radius:999px;padding:3px 12px 3px 8px;font-size:13.5px;cursor:pointer;background:var(--surface)}
+.toggles input{accent-color:var(--ink);margin:0}
+.toggles input:focus-visible{outline:2px solid var(--staff);outline-offset:2px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.nav{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px}
+.nav a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.nav a:hover{color:var(--ink)}
+.sheet{display:grid;gap:14px;scroll-margin-top:110px}
+.sheet-head{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.sys{background:#000;border:1px solid #000;border-radius:10px;padding:12px 14px;display:grid;gap:10px}
+.sys-n{font-family:var(--mono);font-size:12px;color:#a8a7a0}
+.part{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:start}
+.tag{font-size:12px;font-weight:600;border-radius:5px;padding:1px 0;text-align:center;color:#fff}
+.part.staff .tag{background:var(--staff)} .part.row .tag{background:#6b6a65}
+.rmeta{display:block;font-family:var(--mono);font-size:10.5px;color:#a8a7a0;font-weight:400;margin-top:2px;text-align:center}
+.band{display:grid;gap:8px}
+.part img{width:100%;display:block;background:#fff;border:1px solid var(--ring);border-radius:4px}
+body.hide-staff .part.staff,body.hide-row .part.row{display:none}
+@media (max-width:560px){.part{grid-template-columns:1fr;gap:4px}.tag{justify-self:start;padding:1px 8px}}
+</style>
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <div class="eyebrow">worship-support · sheet-to-musicxml · 절차 B</div>
+    <h1>찬양 악보 행 분할: 오선 사이를 잉크 행으로</h1>
+    <p>오선 영역(꼬리 포함)은 이전과 같이 오려내고, 오선과 오선 사이는 상단·하단으로 나누지 않고 잉크가 없는 가로 빈 띠를 기준으로 여러 행으로 나눴습니다. 행이 어느 오선에 속하는지는 아직 정하지 않았습니다. 반복 괄호의 세로선처럼 여러 행을 세로로 잇는 가는 선은 행을 나눌 때만 무시했습니다.</p>
+    <p>행 옆 숫자는 높이와, 위 오선 아래 끝에서 잰 거리입니다(줄 간격 단위).</p>
+  </header>
+  <div class="bar">
+    <div class="toggles">
+      <label><input type="checkbox" id="t-staff" checked><span class="dot" style="background:var(--staff)"></span>오선 (꼬리 포함)</label>
+      <label><input type="checkbox" id="t-row" checked><span class="dot" style="background:#8a8a84"></span>잉크 행</label>
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </div>
+  <div id="sheets" style="display:grid;gap:40px"></div>
+</div>
+<script>
+const D = /*__DATA__*/null;
+const f = v => v == null ? "–" : v.toFixed(1);
+document.getElementById("nav").innerHTML = D.map(s => `<a href="#${s.stem}">${s.label}</a>`).join("");
+const rowHtml = (s, r) => `<div class="part row"><span class="tag">행 ${r.row}<span class="rmeta">h ${f(r.h_gaps)}${r.from_staff_above_gaps != null ? `<br>↓${f(r.from_staff_above_gaps)}` : ""}</span></span>
+  <img loading="lazy" src="${r.src}" alt="${s.label} 행"></div>`;
+document.getElementById("sheets").innerHTML = D.map(s => {
+  const nb = Math.max(s.staff.length + 1, ...s.rows.map(r => r.band + 1));
+  let h = "";
+  for (let b = 0; b < nb; b++) {
+    const rs = s.rows.filter(r => r.band === b);
+    const title = b === 0 ? "첫 오선 위" : b === s.staff.length ? `${b}번째 오선 아래 (마지막)` : `${b}번째 ↔ ${b + 1}번째 오선 사이`;
+    if (rs.length) h += `<div class="sys"><div class="sys-n">${title} · ${rs.length}행</div>${rs.map(r => rowHtml(s, r)).join("")}</div>`;
+    if (b < s.staff.length) h += `<div class="sys"><div class="part staff"><span class="tag">오선 ${b + 1}</span><img loading="lazy" src="${s.staff[b]}" alt="${s.label} 오선 ${b + 1}"></div></div>`;
+  }
+  return `<section class="sheet" id="${s.stem}"><div class="sheet-head"><h2>${s.label}</h2><span class="meta">오선 ${s.staff.length}줄 · 행 ${s.rows.length}개</span></div>${h}</section>`;
+}).join("");
+for (const k of ["staff", "row"]) {
+  const box = document.getElementById("t-" + k);
+  box.addEventListener("change", () => document.body.classList.toggle("hide-" + k, !box.checked));
+}
+</script>

@@ -1,0 +1,913 @@
+{
+ "setA": [
+  {
+   "id": "a00",
+   "src": "[Traditional]/Banks_of_the_Ohio/Banks_of_the_Ohio.mxl",
+   "measures": 40,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a01",
+   "src": "Dorothy_Donnelly-Sigmund_Romberg/Deep_in_My_Heart,_Dear/Deep_in_My_Heart,_Dear.mxl",
+   "measures": 32,
+   "ts": [
+    "3/4"
+   ]
+  },
+  {
+   "id": "a02",
+   "src": "Robert_Burns-[Traditional]/Auld_Lang_Syne/Auld_Lang_Syne.mxl",
+   "measures": 33,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a03",
+   "src": "Ben_Black-Charles_N._Daniels/Moonlight_and_Roses/Moonlight_and_Roses.mxl",
+   "measures": 32,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a04",
+   "src": "Leo_Robin-Richard_A._Whiting-Sam_Coslow/True_Blue_Lou/True_Blue_Lou.mxl",
+   "measures": 32,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a05",
+   "src": "Chris_Smith_[1]-Jim_Burris/Ballin'_the_Jack/Ballin'_the_Jack.mxl",
+   "measures": 16,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a06",
+   "src": "Glenn_Miller/Moonlight_Serenade/Moonlight_Serenade.mxl",
+   "measures": 34,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a07",
+   "src": "Joe_Young-Mabel_Wayne-Sam_Lewis/In_a_Little_Spanish_Town/In_a_Little_Spanish_Town.mxl",
+   "measures": 32,
+   "ts": [
+    "3/4"
+   ]
+  },
+  {
+   "id": "a08",
+   "src": "[Traditional]/The_Wild_Rover/The_Wild_Rover.mxl",
+   "measures": 38,
+   "ts": [
+    "3/4"
+   ]
+  },
+  {
+   "id": "a09",
+   "src": "Jerome_Kern-Oscar_Hammerstein_II/The_Last_Time_I_Saw_Paris/The_Last_Time_I_Saw_Paris.mxl",
+   "measures": 35,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a10",
+   "src": "Edward_Teschemacher-Guy_d'Hardelot/Because/Because.mxl",
+   "measures": 36,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a11",
+   "src": "James_Pierpont/Jingle_Bells/Jingle_Bells.mxl",
+   "measures": 33,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a12",
+   "src": "Gus_Kahn-Walter_Donaldson/Makin'_Whoopee!/Makin'_Whoopee!.mxl",
+   "measures": 27,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a13",
+   "src": "Arthur_Sullivan-Sabine_Baring-Gould/Onward,_Christian_Soldiers/Onward,_Christian_Soldiers.mxl",
+   "measures": 24,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a14",
+   "src": "Hughie_Cannon/Bill_Bailey,_Won't_You_Please_Come_Home?/Bill_Bailey,_Won't_You_Please_Come_Home?.mxl",
+   "measures": 34,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a15",
+   "src": "[Traditional]/Joshua_Fit_the_Battle_of_Jericho/Joshua_Fit_the_Battle_of_Jericho.mxl",
+   "measures": 25,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a16",
+   "src": "George_Gershwin-Ira_Gershwin/'S_Wonderful/'S_Wonderful.mxl",
+   "measures": 32,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a17",
+   "src": "Benjamin_Russell_Hanby/Up_on_the_Housetop/Up_on_the_Housetop.mxl",
+   "measures": 35,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a18",
+   "src": "Lorenz_Hart-Richard_Rodgers/My_Heart_Stood_Still/My_Heart_Stood_Still.mxl",
+   "measures": 34,
+   "ts": [
+    "4/4"
+   ]
+  },
+  {
+   "id": "a19",
+   "src": "[Traditional]/The_Quartermaster's_Stores/The_Quartermaster's_Stores.mxl",
+   "measures": 19,
+   "ts": [
+    "4/4"
+   ]
+  }
+ ],
+ "candidates": {
+  "audiveris": {
+   "scores": {
+    "clean": {
+     "notes": {
+      "mean": 0.268,
+      "median": 0.2589,
+      "min": 0.0,
+      "max": 0.4701,
+      "n": 20,
+      "over_0_5": 0
+     },
+     "signatures": {
+      "mean": 0.34,
+      "median": 0.3333,
+      "min": 0.0,
+      "max": 0.4,
+      "n": 20,
+      "over_0_5": 0
+     },
+     "barlines": {
+      "mean": 0.2631,
+      "median": 0.1548,
+      "min": 0.0,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 1
+     },
+     "chords": {
+      "mean": 0.3951,
+      "median": 0.3431,
+      "min": 0.04,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 6
+     },
+     "lyrics": {
+      "mean": 0.3307,
+      "median": 0.2689,
+      "min": 0.0293,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 4
+     },
+     "all": {
+      "mean": 0.3168,
+      "median": 0.3034,
+      "min": 0.0231,
+      "max": 0.6478,
+      "n": 20,
+      "over_0_5": 3
+     },
+     "per_song_notes": {
+      "a00": 0.2011,
+      "a01": 0.4571,
+      "a02": 0.2222,
+      "a03": 0.3967,
+      "a04": 0.1917,
+      "a05": 0.2609,
+      "a06": 0.2498,
+      "a07": 0.2778,
+      "a08": 0.4701,
+      "a09": 0.2527,
+      "a10": 0.1694,
+      "a11": 0.0,
+      "a12": 0.2321,
+      "a13": 0.3169,
+      "a14": 0.2589,
+      "a15": 0.1947,
+      "a16": 0.3216,
+      "a17": 0.2588,
+      "a18": 0.2954,
+      "a19": 0.3316
+     }
+    },
+    "lowres": {
+     "notes": {
+      "mean": 0.4822,
+      "median": 0.3923,
+      "min": 0.0083,
+      "max": 0.8899,
+      "n": 20,
+      "over_0_5": 7
+     },
+     "signatures": {
+      "mean": 0.3719,
+      "median": 0.3667,
+      "min": 0.0,
+      "max": 0.5385,
+      "n": 20,
+      "over_0_5": 1
+     },
+     "barlines": {
+      "mean": 0.4928,
+      "median": 0.5,
+      "min": 0.0,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 9
+     },
+     "chords": {
+      "mean": 0.5993,
+      "median": 0.6438,
+      "min": 0.0612,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 12
+     },
+     "lyrics": {
+      "mean": 0.4936,
+      "median": 0.4176,
+      "min": 0.0393,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 8
+     },
+     "all": {
+      "mean": 0.4976,
+      "median": 0.4074,
+      "min": 0.0421,
+      "max": 0.9511,
+      "n": 20,
+      "over_0_5": 7
+     },
+     "per_song_notes": {
+      "a00": 0.2663,
+      "a01": 0.4571,
+      "a02": 0.2222,
+      "a03": 0.8098,
+      "a04": 0.8899,
+      "a05": 0.4718,
+      "a06": 0.5671,
+      "a07": 0.3846,
+      "a08": 0.8474,
+      "a09": 0.2482,
+      "a10": 0.2823,
+      "a11": 0.0083,
+      "a12": 0.8357,
+      "a13": 0.3575,
+      "a14": 0.3641,
+      "a15": 0.83,
+      "a16": 0.4,
+      "a17": 0.7432,
+      "a18": 0.3262,
+      "a19": 0.3316
+     }
+    }
+   },
+   "rhythm_A": {
+    "files": 40,
+    "measures": 2495,
+    "ok": 2354,
+    "partial": 11,
+    "bad": 130,
+    "ok_rate": 0.9435
+   },
+   "rhythm_B": {
+    "files": {
+     "anointing_rejoice_1.mxl": {
+      "measures": 34,
+      "ok": 29,
+      "partial": 0,
+      "bad": 5,
+      "fifths": 2
+     },
+     "anointing_rejoice_2.mxl": {
+      "measures": 36,
+      "ok": 32,
+      "partial": 0,
+      "bad": 4,
+      "fifths": 2
+     },
+     "fia_my-jesus_1.mxl": {
+      "measures": 25,
+      "ok": 25,
+      "partial": 0,
+      "bad": 0,
+      "fifths": 1
+     },
+     "isaiah61_god-so-loved_1.mvt1.mxl": {
+      "measures": 27,
+      "ok": 7,
+      "partial": 1,
+      "bad": 19,
+      "fifths": null
+     },
+     "isaiah61_god-so-loved_1.mvt2.mxl": {
+      "measures": 5,
+      "ok": 3,
+      "partial": 0,
+      "bad": 2,
+      "fifths": null
+     },
+     "isaiah61_god-so-loved_1.mxl": {
+      "measures": 27,
+      "ok": 7,
+      "partial": 1,
+      "bad": 19,
+      "fifths": null
+     },
+     "isaiah61_god-so-loved_2.mxl": {
+      "measures": 20,
+      "ok": 5,
+      "partial": 2,
+      "bad": 13,
+      "fifths": null
+     },
+     "isaiah61_god-so-loved_3.mxl": {
+      "measures": 18,
+      "ok": 11,
+      "partial": 1,
+      "bad": 6,
+      "fifths": null
+     },
+     "jus_return-to-lord_1.mxl": {
+      "measures": 19,
+      "ok": 2,
+      "partial": 0,
+      "bad": 17,
+      "fifths": -4
+     },
+     "levites_lord-of-my-heart_1.mxl": {
+      "measures": 20,
+      "ok": 13,
+      "partial": 0,
+      "bad": 7,
+      "fifths": 2
+     },
+     "levites_lord-of-my-heart_2.mxl": {
+      "measures": 25,
+      "ok": 13,
+      "partial": 0,
+      "bad": 12,
+      "fifths": 2
+     },
+     "markers_love-of-god_1.mxl": {
+      "measures": 36,
+      "ok": 24,
+      "partial": 0,
+      "bad": 12,
+      "fifths": 4
+     },
+     "teamluke_built-together_1.mxl": {
+      "measures": 16,
+      "ok": 13,
+      "partial": 0,
+      "bad": 3,
+      "fifths": -1
+     },
+     "welove_loving-you-more_1.mxl": {
+      "measures": 59,
+      "ok": 35,
+      "partial": 1,
+      "bad": 23,
+      "fifths": 4
+     },
+     "welove_loving-you-more_2.mxl": {
+      "measures": 50,
+      "ok": 31,
+      "partial": 0,
+      "bad": 19,
+      "fifths": 4
+     },
+     "ywam_first-and-last_1.mxl": {
+      "measures": 37,
+      "ok": 32,
+      "partial": 1,
+      "bad": 4,
+      "fifths": -2
+     }
+    },
+    "total": {
+     "files": 16,
+     "measures": 454,
+     "ok": 282,
+     "partial": 7,
+     "bad": 165,
+     "ok_rate": 0.6211
+    }
+   },
+   "timing_s": {
+    "a00_clean.png": [
+     20.079551696777344,
+     true
+    ],
+    "a00_lowres.jpg": [
+     24.60529327392578,
+     true
+    ],
+    "a01_clean.png": [
+     14.246167421340942,
+     true
+    ],
+    "a01_lowres.jpg": [
+     17.148609399795532,
+     true
+    ],
+    "a02_clean.png": [
+     18.341735124588013,
+     true
+    ],
+    "a02_lowres.jpg": [
+     21.297372817993164,
+     true
+    ],
+    "a03_clean.png": [
+     16.454344034194946,
+     true
+    ],
+    "a03_lowres.jpg": [
+     18.577154397964478,
+     true
+    ],
+    "a04_clean.png": [
+     22.186720609664917,
+     true
+    ],
+    "a04_lowres.jpg": [
+     25.440600633621216,
+     true
+    ],
+    "a05_clean.png": [
+     17.727721214294434,
+     true
+    ],
+    "a05_lowres.jpg": [
+     20.139721632003784,
+     true
+    ],
+    "a06_clean.png": [
+     20.87643051147461,
+     true
+    ],
+    "a06_lowres.jpg": [
+     27.439327478408813,
+     true
+    ],
+    "a07_clean.png": [
+     17.531538248062134,
+     true
+    ],
+    "a07_lowres.jpg": [
+     20.767330169677734,
+     true
+    ],
+    "a08_clean.png": [
+     18.95587158203125,
+     true
+    ],
+    "a08_lowres.jpg": [
+     23.002211332321167,
+     true
+    ],
+    "a09_clean.png": [
+     19.73903775215149,
+     true
+    ],
+    "a09_lowres.jpg": [
+     23.541245460510254,
+     true
+    ],
+    "a10_clean.png": [
+     19.667542219161987,
+     true
+    ],
+    "a10_lowres.jpg": [
+     24.386422872543335,
+     true
+    ],
+    "a11_clean.png": [
+     18.782232999801636,
+     true
+    ],
+    "a11_lowres.jpg": [
+     23.82191777229309,
+     true
+    ],
+    "a12_clean.png": [
+     18.770747184753418,
+     true
+    ],
+    "a12_lowres.jpg": [
+     23.764310121536255,
+     true
+    ],
+    "a13_clean.png": [
+     15.085238933563232,
+     true
+    ],
+    "a13_lowres.jpg": [
+     17.90103030204773,
+     true
+    ],
+    "a14_clean.png": [
+     16.94803261756897,
+     true
+    ],
+    "a14_lowres.jpg": [
+     20.197630405426025,
+     true
+    ],
+    "a15_clean.png": [
+     19.486077070236206,
+     true
+    ],
+    "a15_lowres.jpg": [
+     23.12091088294983,
+     true
+    ],
+    "a16_clean.png": [
+     16.376176834106445,
+     true
+    ],
+    "a16_lowres.jpg": [
+     18.684895753860474,
+     true
+    ],
+    "a17_clean.png": [
+     20.725581407546997,
+     true
+    ],
+    "a17_lowres.jpg": [
+     25.010618209838867,
+     true
+    ],
+    "a18_clean.png": [
+     16.814282655715942,
+     true
+    ],
+    "a18_lowres.jpg": [
+     20.796736240386963,
+     true
+    ],
+    "a19_clean.png": [
+     15.77423357963562,
+     true
+    ],
+    "a19_lowres.jpg": [
+     19.42527985572815,
+     true
+    ],
+    "anointing_rejoice_1.png": [
+     31.76198148727417,
+     true
+    ],
+    "anointing_rejoice_2.png": [
+     29.008090496063232,
+     true
+    ],
+    "fia_my-jesus_1.png": [
+     33.01963996887207,
+     true
+    ],
+    "isaiah61_god-so-loved_1.jpg": [
+     42.613789558410645,
+     true
+    ],
+    "isaiah61_god-so-loved_2.jpg": [
+     28.653359413146973,
+     true
+    ],
+    "isaiah61_god-so-loved_3.jpg": [
+     26.722914218902588,
+     true
+    ],
+    "jus_return-to-lord_1.png": [
+     44.45618772506714,
+     true
+    ],
+    "levites_lord-of-my-heart_1.png": [
+     23.620184659957886,
+     true
+    ],
+    "levites_lord-of-my-heart_2.png": [
+     26.348774194717407,
+     true
+    ],
+    "markers_love-of-god_1.png": [
+     29.621466636657715,
+     true
+    ],
+    "teamluke_built-together_1.jpg": [
+     31.410727739334106,
+     true
+    ],
+    "welove_loving-you-more_1.png": [
+     48.86949014663696,
+     true
+    ],
+    "welove_loving-you-more_2.png": [
+     46.80581045150757,
+     true
+    ],
+    "ywam_first-and-last_1.jpg": [
+     45.30782747268677,
+     true
+    ]
+   }
+  },
+  "Qwen3-VL-4B-Instruct": {
+   "scores": {
+    "clean": {
+     "notes": {
+      "mean": 0.9726,
+      "median": 1.0,
+      "min": 0.7341,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 20
+     },
+     "signatures": {
+      "mean": 0.8292,
+      "median": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 16
+     },
+     "barlines": {
+      "mean": 0.925,
+      "median": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 18
+     },
+     "chords": {
+      "mean": 0.9169,
+      "median": 1.0,
+      "min": 0.2963,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 18
+     },
+     "lyrics": null,
+     "all": {
+      "mean": 0.9849,
+      "median": 1.0,
+      "min": 0.8859,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 20
+     },
+     "per_song_notes": {
+      "a00": 1.0,
+      "a01": 1.0,
+      "a02": 1.0,
+      "a03": 1.0,
+      "a04": 1.0,
+      "a05": 1.0,
+      "a06": 1.0,
+      "a07": 1.0,
+      "a08": 1.0,
+      "a09": 0.7341,
+      "a10": 0.9516,
+      "a11": 0.8754,
+      "a12": 1.0,
+      "a13": 1.0,
+      "a14": 1.0,
+      "a15": 1.0,
+      "a16": 1.0,
+      "a17": 1.0,
+      "a18": 0.8917,
+      "a19": 1.0
+     }
+    },
+    "lowres": {
+     "notes": {
+      "mean": 0.9859,
+      "median": 1.0,
+      "min": 0.7683,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 20
+     },
+     "signatures": {
+      "mean": 0.9518,
+      "median": 1.0,
+      "min": 0.25,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 19
+     },
+     "barlines": {
+      "mean": 0.9167,
+      "median": 1.0,
+      "min": 0.0,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 18
+     },
+     "chords": {
+      "mean": 0.9879,
+      "median": 1.0,
+      "min": 0.7586,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 20
+     },
+     "lyrics": null,
+     "all": {
+      "mean": 0.9907,
+      "median": 1.0,
+      "min": 0.8657,
+      "max": 1.0,
+      "n": 20,
+      "over_0_5": 20
+     },
+     "per_song_notes": {
+      "a00": 1.0,
+      "a01": 1.0,
+      "a02": 1.0,
+      "a03": 1.0,
+      "a04": 0.9491,
+      "a05": 0.7683,
+      "a06": 1.0,
+      "a07": 1.0,
+      "a08": 1.0,
+      "a09": 1.0,
+      "a10": 1.0,
+      "a11": 1.0,
+      "a12": 1.0,
+      "a13": 1.0,
+      "a14": 1.0,
+      "a15": 1.0,
+      "a16": 1.0,
+      "a17": 1.0,
+      "a18": 1.0,
+      "a19": 1.0
+     }
+    }
+   },
+   "abc_convert_ok": {
+    "ok": 12,
+    "n": 54
+   },
+   "rhythm_A": {
+    "files": 7,
+    "measures": 310,
+    "ok": 275,
+    "partial": 4,
+    "bad": 31,
+    "ok_rate": 0.8871
+   },
+   "rhythm_B": {
+    "files": {
+     "fia_my-jesus_1.musicxml": {
+      "measures": 30,
+      "ok": 17,
+      "partial": 1,
+      "bad": 12,
+      "fifths": 1
+     },
+     "isaiah61_god-so-loved_3.musicxml": {
+      "measures": 35,
+      "ok": 21,
+      "partial": 0,
+      "bad": 14,
+      "fifths": 0
+     },
+     "levites_lord-of-my-heart_1.musicxml": {
+      "measures": 12,
+      "ok": 6,
+      "partial": 2,
+      "bad": 4,
+      "fifths": 1
+     },
+     "levites_lord-of-my-heart_2.musicxml": {
+      "measures": 15,
+      "ok": 14,
+      "partial": 1,
+      "bad": 0,
+      "fifths": -2
+     },
+     "teamluke_built-together_1.musicxml": {
+      "measures": 32,
+      "ok": 32,
+      "partial": 0,
+      "bad": 0,
+      "fifths": -1
+     }
+    },
+    "total": {
+     "files": 5,
+     "measures": 124,
+     "ok": 90,
+     "partial": 4,
+     "bad": 30,
+     "ok_rate": 0.7258
+    }
+   },
+   "timing_s": {
+    "a00_clean": 271.1,
+    "a00_lowres": 243.1,
+    "a01_clean": 269.3,
+    "a01_lowres": 19.0,
+    "a02_clean": 269.4,
+    "a02_lowres": 243.0,
+    "a03_clean": 269.4,
+    "a03_lowres": 242.9,
+    "a04_clean": 269.5,
+    "a04_lowres": 59.8,
+    "a05_clean": 269.2,
+    "a05_lowres": 43.3,
+    "a06_clean": 269.3,
+    "a06_lowres": 243.0,
+    "a07_clean": 269.5,
+    "a07_lowres": 242.9,
+    "a08_clean": 269.4,
+    "a08_lowres": 243.0,
+    "a09_clean": 23.3,
+    "a09_lowres": 242.9,
+    "a10_clean": 37.5,
+    "a10_lowres": 243.1,
+    "a11_clean": 78.5,
+    "a11_lowres": 243.1,
+    "a12_clean": 269.3,
+    "a12_lowres": 243.1,
+    "a13_clean": 269.3,
+    "a13_lowres": 243.0,
+    "a14_clean": 269.4,
+    "a14_lowres": 243.0,
+    "a15_clean": 269.2,
+    "a15_lowres": 243.0,
+    "a16_clean": 16.1,
+    "a16_lowres": 243.0,
+    "a17_clean": 269.3,
+    "a17_lowres": 242.9,
+    "a18_clean": 16.3,
+    "a18_lowres": 243.0,
+    "a19_clean": 269.3,
+    "a19_lowres": 243.4,
+    "anointing_rejoice_1": 241.0,
+    "anointing_rejoice_2": 218.2,
+    "fia_my-jesus_1": 21.1,
+    "isaiah61_god-so-loved_1": 253.3,
+    "isaiah61_god-so-loved_2": 253.2,
+    "isaiah61_god-so-loved_3": 24.1,
+    "jus_return-to-lord_1": 228.4,
+    "levites_lord-of-my-heart_1": 17.4,
+    "levites_lord-of-my-heart_2": 19.7,
+    "markers_love-of-god_1": 253.1,
+    "teamluke_built-together_1": 37.6,
+    "welove_loving-you-more_1": 253.5,
+    "welove_loving-you-more_2": 253.2,
+    "ywam_first-and-last_1": 269.4
+   }
+  }
+ }
+}

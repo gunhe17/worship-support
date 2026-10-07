@@ -1,0 +1,94 @@
+{
+  "title": "처음과 나중",
+  "key": "G minor",
+  "time_signature": "4/4",
+  "tempo": "Fine",
+  "sections": [
+    {
+      "tag": "Verse",
+      "lyrics": "오영원하신 주은세상주께속했네모살아계신주지금도역사하시네죄",
+      "chords": [
+        "Gm",
+        "F",
+        "Bb",
+        "Eb",
+        "F"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "든만물사라져가도주말씀영원해와슬픔우릴덮어도주약속이루시리",
+      "chords": [
+        "Eb",
+        "F",
+        "Gm",
+        "Eb",
+        "F"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "영광존귀능력주받으소서은",
+      "chords": [
+        "Bb",
+        "F",
+        "Gm",
+        "Eb",
+        "F"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "백성다의치네오거룩하신주",
+      "chords": [
+        "Bb",
+        "F",
+        "Eb/G",
+        "F",
+        "Bb"
+      ]
+    },
+    {
+      "tag": "Chorus",
+      "lyrics": "처음과나중되신주만세의왕홀로계신주",
+      "chords": [
+        "Bb",
+        "Dm",
+        "Gm",
+        "Eb"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "영원히다스리시네찬양할렐루아",
+      "chords": [
+        "Bb/D",
+        "F",
+        "Eb/G",
+        "F"
+      ]
+    },
+    {
+      "tag": "Verse",
+      "lyrics": "다시오실때우리다주앞에나가받은",
+      "chords": [
+        "Gm",
+        "F",
+        "Bb",
+        "Eb",
+        "F"
+      ]
+    },
+    {
+      "tag": "Chorus",
+      "lyrics": "먼류관주께드리며주경배드리리주",
+      "chords": [
+        "Eb",
+        "F",
+        "Gm",
+        "Eb",
+        "F"
+      ]
+    }
+  ]
+}

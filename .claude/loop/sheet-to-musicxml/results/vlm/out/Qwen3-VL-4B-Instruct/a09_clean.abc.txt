@@ -1,0 +1,12 @@
+```abc
+X:1
+T:The last time I saw Paris
+C:Jerome Kern
+C:Oscar Hammerstein II
+M:4/4
+L:1/8
+K:C
+C | "C" A2G2 | "G7" c2B2 | "Fm" d2c2 | "G7" B2A2 | "Dm" c2B2 | "G7" A2G2 | "C" c2B2 | "G7" A2G2 |
+"C" A2G2 | "D7" c2B2 | "G" A2G2 | "D7" c2B2 | "G" A2G2 | "E7" c2B2 | "A" c2B2 | "Dm" A2G2 |
+"G7" c2B2 | "Dm" c2B2 | "G7" A2G2 | "Gm" c2B2 | "A7" c2B2 | "Dm" A2G2 | "G7" c2B2 | "C" A2z2 |
+```

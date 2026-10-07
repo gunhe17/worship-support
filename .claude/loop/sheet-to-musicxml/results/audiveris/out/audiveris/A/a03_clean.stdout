@@ -1,0 +1,77 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/a03_clean.png"
+INFO  [a03_clean]                      Book 560  | 1 sheet in /tmp/aud_in/a03_clean.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a03_clean.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [a03_clean]            StepMonitoring 98   | LOAD
+INFO  [a03_clean]                 SheetStub 1278 | Loaded image #1 1650x2334 from /tmp/aud_in/a03_clean.png
+INFO  [a03_clean]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [a03_clean]            StepMonitoring 98   | BINARY
+INFO  [a03_clean]            StepMonitoring 98   | SCALE
+INFO  [a03_clean]              ScaleBuilder 254  | Beam  guessed height:  8 -- 0.25 of [6..13] range
+INFO  [a03_clean]              ScaleBuilder 271  | Beam measured height: 12 -- 0.86 of [6..13] range at 126% of needed quorum
+INFO  [a03_clean]              ScaleBuilder 401  | Normalized black jitter: 14.29 %
+INFO  [a03_clean]                 ScaleStep 65   | Scale{ interline(14,14,15) line(1,2,3) beam(12)}
+INFO  [a03_clean]            StepMonitoring 98   | GRID
+INFO  [a03_clean]            LinesRetriever 1508 | Global slope: 0.00000
+INFO  [a03_clean]         ClustersRetriever 851  | Destroying spurious Cluster#C671{interline(14,14,15) size:5 fil#667@0 fil#671@1 fil#678@2 fil#681@3 fil#691@4}
+INFO  [a03_clean]         ClustersRetriever 326  | Retrieved raw line clusters: 4 of sizes [5] with interline(14,14,15)
+INFO  [a03_clean]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4]
+INFO  [a03_clean]             SystemManager 134  | Indentation detected for system #1
+INFO  [a03_clean]             SystemManager 800  | 1 part along 4 systems
+INFO  [a03_clean]                      Book 543  | Created scores: [{Score 1}]
+INFO  [a03_clean]            StepMonitoring 98   | HEADERS
+INFO  [a03_clean]            StepMonitoring 98   | STEM_SEEDS
+INFO  [a03_clean]             StemSeedsStep 86   | stem(3 max:4)
+INFO  [a03_clean]            StepMonitoring 98   | BEAMS
+INFO  [a03_clean]            StepMonitoring 98   | LEDGERS
+INFO  [a03_clean]            StepMonitoring 98   | HEADS
+INFO  [a03_clean]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:0.4] NOTEHEAD_BLACK[L:1.2]}
+INFO  [a03_clean]            StepMonitoring 98   | STEMS
+INFO  [a03_clean]            StepMonitoring 98   | REDUCTION
+INFO  [a03_clean]             ReductionStep 105  | Stems free length median value: 50 pixels, 3.6 interlines
+INFO  [a03_clean]            StepMonitoring 98   | CUE_BEAMS
+INFO  [a03_clean]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [a03_clean]            StepMonitoring 98   | TEXTS
+Estimating resolution as 269
+INFO  [a03_clean]            StepMonitoring 98   | MEASURES
+INFO  [a03_clean]                      Page 307  | 31 raw measures: [6 in system#1, 8 in system#2, 8 in system#3, 9 in system#4]
+INFO  [a03_clean]            StepMonitoring 98   | CHORDS
+INFO  [a03_clean]            StepMonitoring 98   | CURVES
+INFO  [a03_clean]              SlursBuilder 240  | Slurs: 9
+INFO  [a03_clean]           SegmentsBuilder 155  | Segments: 9
+INFO  [a03_clean]            StepMonitoring 98   | SYMBOLS
+INFO  [a03_clean]            StepMonitoring 98   | LINKS
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#1723{(0.139) staff:1 OTTAVA BASSA} at java.awt.Point[x=530,y=279]
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#1764{(0.139) staff:1 OTTAVA BASSA} at java.awt.Point[x=1079,y=279]
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#1829{(0.139) staff:2 OTTAVA ALTA} at java.awt.Point[x=530,y=279]
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#1887{(0.139) staff:2 OTTAVA BASSA} at java.awt.Point[x=1466,y=457]
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#1926{(0.139) staff:3 OTTAVA BASSA} at java.awt.Point[x=678,y=637]
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#2092{(0.139) staff:4 OTTAVA ALTA} at java.awt.Point[x=678,y=637]
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#2111{(0.139) staff:4 OTTAVA BASSA} at java.awt.Point[x=1096,y=823]
+INFO  [a03_clean]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#2138{(0.139) staff:4 OTTAVA ALTA} at java.awt.Point[x=1508,y=637]
+INFO  [a03_clean]            StepMonitoring 98   | RHYTHMS
+INFO  [a03_clean]            StepMonitoring 98   | PAGE
+INFO  [a03_clean]            SheetReduction 154  | Gutter. Different glyphs 1/2 ArticulationInter#1751{(0.273/0.506) STACCATO} vs DynamicsInter#1831{ REMOVED(0.367/0.606) DYNAMICS_F}
+INFO  [a03_clean]            SheetReduction 154  | Gutter. Different glyphs 2/3 DynamicsInter#1824{(0.288/0.514) DYNAMICS_FF} vs OrnamentInter#1912{(0.576/0.643) TR}
+INFO  [a03_clean]            SheetReduction 154  | Gutter. Different glyphs 3/4 DynamicsInter#2019{(0.288/0.568) DYNAMICS_FF} vs ChordNameInter#1204{(0.797/0.797) staff:4 TEXT "G7" font:S-32 root:G ChordKind{DOMINANT '7'}}
+INFO  [a03_clean]                      Book 2584 | Book{a03_clean} storing
+INFO  [a03_clean]                      Book 2565 | Stored /book.xml
+INFO  [a03_clean]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [a03_clean]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [a03_clean]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/A/a03_clean.omr
+INFO  [a03_clean]                 SheetStub 1655 | Sheet disposed
+INFO  [a03_clean]                      Book 2050 | End of Stub#1
+INFO  [a03_clean]                      Book 2057 | End of Book{a03_clean}
+INFO  [a03_clean]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [a03_clean]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [a03_clean]                      Part 351  | Sheet#1 System#1 Part#2{name:Electric Piano staves[1] configs:[5]} dummyPart id: 1
+INFO  [a03_clean]                      Part 351  | Sheet#1 System#2 Part#1{name:E.Pno staves[2] configs:[5]} dummyPart id: 2
+INFO  [a03_clean]                      Part 351  | Sheet#1 System#3 Part#1{name:E.Pno staves[3] configs:[5]} dummyPart id: 2
+INFO  [a03_clean]                      Part 351  | Sheet#1 System#4 Part#1{name:E.Pno staves[4] configs:[5]} dummyPart id: 2
+INFO  [a03_clean]             ScoreExporter 164  | Score a03_clean exported to /kaggle/working/out/audiveris/A/a03_clean.mxl
+INFO  [a03_clean]                     Score 181  | Closing {Score 1}

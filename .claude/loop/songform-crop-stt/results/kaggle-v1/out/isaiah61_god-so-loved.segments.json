@@ -1,0 +1,135 @@
+[
+ {
+  "label": "intro",
+  "start": 0.0,
+  "end": 16.200648025921037,
+  "crop_start": 0.0,
+  "crop_end": 17.7
+ },
+ {
+  "label": "verse",
+  "start": 16.200648025921037,
+  "end": 31.681267250690027,
+  "crop_start": 14.7,
+  "crop_end": 33.18
+ },
+ {
+  "label": "verse",
+  "start": 31.681267250690027,
+  "end": 47.04188167526701,
+  "crop_start": 30.18,
+  "crop_end": 48.54
+ },
+ {
+  "label": "chorus",
+  "start": 47.04188167526701,
+  "end": 62.762510500420014,
+  "crop_start": 45.54,
+  "crop_end": 64.26
+ },
+ {
+  "label": "chorus",
+  "start": 62.762510500420014,
+  "end": 80.16320652826113,
+  "crop_start": 61.26,
+  "crop_end": 81.66
+ },
+ {
+  "label": "verse",
+  "start": 80.16320652826113,
+  "end": 95.52382095283811,
+  "crop_start": 78.66,
+  "crop_end": 97.02
+ },
+ {
+  "label": "verse",
+  "start": 95.52382095283811,
+  "end": 110.88443537741509,
+  "crop_start": 94.02,
+  "crop_end": 112.38
+ },
+ {
+  "label": "chorus",
+  "start": 110.88443537741509,
+  "end": 126.36505460218409,
+  "crop_start": 109.38,
+  "crop_end": 127.87
+ },
+ {
+  "label": "chorus",
+  "start": 126.36505460218409,
+  "end": 144.0057602304092,
+  "crop_start": 124.87,
+  "crop_end": 145.51
+ },
+ {
+  "label": "bridge",
+  "start": 144.0057602304092,
+  "end": 159.4863794551782,
+  "crop_start": 142.51,
+  "crop_end": 160.99
+ },
+ {
+  "label": "chorus",
+  "start": 159.4863794551782,
+  "end": 174.96699867994718,
+  "crop_start": 157.99,
+  "crop_end": 176.47
+ },
+ {
+  "label": "chorus",
+  "start": 174.96699867994718,
+  "end": 190.32761310452418,
+  "crop_start": 173.47,
+  "crop_end": 191.83
+ },
+ {
+  "label": "verse",
+  "start": 190.32761310452418,
+  "end": 205.68822752910117,
+  "crop_start": 188.83,
+  "crop_end": 207.19
+ },
+ {
+  "label": "chorus",
+  "start": 205.68822752910117,
+  "end": 221.16884675387016,
+  "crop_start": 204.19,
+  "crop_end": 222.67
+ },
+ {
+  "label": "chorus",
+  "start": 221.16884675387016,
+  "end": 235.80943237729508,
+  "crop_start": 219.67,
+  "crop_end": 237.31
+ },
+ {
+  "label": "chorus",
+  "start": 235.80943237729508,
+  "end": 251.7700708028321,
+  "crop_start": 234.31,
+  "crop_end": 253.27
+ },
+ {
+  "label": "chorus",
+  "start": 251.7700708028321,
+  "end": 267.7307092283691,
+  "crop_start": 250.27,
+  "crop_end": 269.23
+ },
+ {
+  "label": "outro",
+  "start": 267.7307092283691,
+  "end": 284.5313812552502,
+  "crop_start": 266.23,
+  "crop_end": 286.03
+ },
+ {
+  "label": "intro",
+  "start": 284.5313812552502,
+  "end": 286.4514580583223,
+  "crop_start": 283.03,
+  "crop_end": 286.51
+ }
+]

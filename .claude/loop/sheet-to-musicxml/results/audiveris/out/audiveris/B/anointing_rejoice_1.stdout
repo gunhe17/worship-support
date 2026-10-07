@@ -1,0 +1,85 @@
+INFO  []                      Main 259  | Running in batch mode
+INFO  []                 Languages 138  | Installed OCR languages: eng,kor
+INFO  []             AliasPatterns 146  | Alias patterns: [(IMSLP[0-9]*)-.*]
+INFO  []                      Main 194  | Submitting 1 task(s) in sequence:
+    Input "/tmp/aud_in/anointing_rejoice_1.png"
+INFO  [anointing_rejoice_1]                      Book 560  | 1 sheet in /tmp/aud_in/anointing_rejoice_1.png
+INFO  []                      Book 2565 | Stored /book.xml
+INFO  []                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/anointing_rejoice_1.omr
+INFO  []                      Book 1929 | Book reaching PAGE on sheets:[#1]
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | LOAD
+INFO  [anointing_rejoice_1]                 SheetStub 1278 | Loaded image #1 1932x2272 from /tmp/aud_in/anointing_rejoice_1.png
+INFO  [anointing_rejoice_1]                 ImageUtil 152  | Converting max RGB to gray
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | BINARY
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | SCALE
+INFO  [anointing_rejoice_1]              ScaleBuilder 254  | Beam  guessed height: 10 -- 0.25 of [8..16] range
+INFO  [anointing_rejoice_1]              ScaleBuilder 271  | Beam measured height: 11 -- 0.38 of [8..16] range at 319% of needed quorum
+INFO  [anointing_rejoice_1]              ScaleBuilder 401  | Normalized black jitter: 11.11 %
+INFO  [anointing_rejoice_1]                 ScaleStep 65   | Scale{ interline(18,18,19) line(4,4,6) beam(11)}
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | GRID
+INFO  [anointing_rejoice_1]            LinesRetriever 1508 | Global slope: -0.00037
+INFO  [anointing_rejoice_1]         ClustersRetriever 326  | Retrieved raw line clusters: 7 of sizes [5] with interline(18,18,19)
+INFO  [anointing_rejoice_1]                 PeakGraph 310  | Systems: #1[1] #2[2] #3[3] #4[4] #5[5] #6[6] #7[7]
+INFO  [anointing_rejoice_1]             SystemManager 800  | 1 part along 7 systems
+INFO  [anointing_rejoice_1]                      Book 543  | Created scores: [{Score 1}]
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | HEADERS
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | STEM_SEEDS
+INFO  [anointing_rejoice_1]             StemSeedsStep 86   | stem(5 max:7)
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | BEAMS
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | LEDGERS
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | HEADS
+INFO  [anointing_rejoice_1]             HeadSeedTally 235  | Scale information: HeadSeeds{NOTEHEAD_VOID[R:-0.8] NOTEHEAD_BLACK[R:-0.6]}
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | STEMS
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | REDUCTION
+INFO  [anointing_rejoice_1]             ReductionStep 105  | Stems free length median value: 66 pixels, 3.7 interlines
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | CUE_BEAMS
+INFO  [anointing_rejoice_1]              CueBeamsStep 81   | Step CUE_BEAMS is skipped because small heads switch is off
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | TEXTS
+Error opening data file /tmp/tessdata/chi_tra.traineddata
+Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory.
+Failed loading language 'chi_tra'
+Estimating resolution as 503
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | MEASURES
+INFO  [anointing_rejoice_1]                      Page 307  | 34 raw measures: [5 in system#1, 6 in system#2, 4 in system#3, 5 in system#4, 5 in system#5, 4 in system#6, 5 in system#7]
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | CHORDS
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | CURVES
+INFO  [anointing_rejoice_1]              SlursBuilder 240  | Slurs: 67
+INFO  [anointing_rejoice_1]           SegmentsBuilder 155  | Segments: 120
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | SYMBOLS
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | LINKS
+INFO  [anointing_rejoice_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6741{(0.418) staff:4 VENTIDUESIMA BASSA} at java.awt.Point[x=61,y=1372]
+INFO  [anointing_rejoice_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6854{(0.418) staff:5 VENTIDUESIMA ALTA} at java.awt.Point[x=61,y=1372]
+INFO  [anointing_rejoice_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6856{(0.338) staff:5 OTTAVA BASSA} at java.awt.Point[x=68,y=1657]
+INFO  [anointing_rejoice_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6858{(0.234) staff:5 VENTIDUESIMA BASSA} at java.awt.Point[x=61,y=1657]
+INFO  [anointing_rejoice_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6977{(0.338) staff:6 OTTAVA ALTA} at java.awt.Point[x=68,y=1657]
+INFO  [anointing_rejoice_1]             SymbolsLinker 258  | No chord linked to OctaveShiftInter#6978{(0.234) staff:6 VENTIDUESIMA ALTA} at java.awt.Point[x=61,y=1657]
+INFO  [anointing_rejoice_1]             SentenceInter 483  | No chord below ChordNameInter#4717{(0.713) staff:7 TEXT "A" font:ISC-49 root:A ChordKind{MAJOR}}
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | RHYTHMS
+INFO  [anointing_rejoice_1]             MeasureRhythm 1044 | Measure{#15} No timeOffset for HeadChordInter#4832{(0.552/0.552) staff:3 slot#9 dur:1/2}
+INFO  [anointing_rejoice_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#4832{(0.552/0.552) staff:3 slot#9 dur:1/2}
+INFO  [anointing_rejoice_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#4834{(0.950/0.950) staff:3 slot#11 dur:1/8}
+INFO  [anointing_rejoice_1]        AbstractChordInter 635  | Measure{#15} No timeOffset for HeadChordInter#4836{(0.950/0.950) staff:3 slot#13 dur:1/8}
+INFO  [anointing_rejoice_1]               StackRhythm 224  | S3 MeasureStack#15 no correct rhythm
+INFO  [anointing_rejoice_1]             MeasureRhythm 1044 | Measure{#21} No timeOffset for HeadChordInter#4874{(0.600/0.600) staff:5 slot#8 dur:1/2}
+INFO  [anointing_rejoice_1]        AbstractChordInter 635  | Measure{#21} No timeOffset for HeadChordInter#4874{(0.600/0.600) staff:5 slot#8 dur:1/2}
+INFO  [anointing_rejoice_1]        AbstractChordInter 635  | Measure{#21} No timeOffset for HeadChordInter#4875{(0.867/0.867) staff:5 slot#9 dur:3/4}
+INFO  [anointing_rejoice_1]               StackRhythm 224  | S5 MeasureStack#21 no correct rhythm
+INFO  [anointing_rejoice_1]             MeasureRhythm 1044 | Measure{#28} No timeOffset for HeadChordInter#4914{(0.540/0.540) staff:6 slot#9 dur:1/2}
+INFO  [anointing_rejoice_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for HeadChordInter#4914{(0.540/0.540) staff:6 slot#9 dur:1/2}
+INFO  [anointing_rejoice_1]        AbstractChordInter 635  | Measure{#28} No timeOffset for HeadChordInter#4915{(0.873/0.873) staff:6 slot#10 dur:3/4}
+INFO  [anointing_rejoice_1]               StackRhythm 224  | S6 MeasureStack#28 no correct rhythm
+INFO  [anointing_rejoice_1]             MeasureRhythm 1044 | Measure{#32} No timeOffset for HeadChordInter#4941{(0.954/0.954) staff:7 slot#7 dur:1/8}
+INFO  [anointing_rejoice_1]               StackRhythm 224  | S7 MeasureStack#32 no correct rhythm
+INFO  [anointing_rejoice_1]            StepMonitoring 98   | PAGE
+INFO  [anointing_rejoice_1]                      Book 2584 | Book{anointing_rejoice_1} storing
+INFO  [anointing_rejoice_1]                      Book 2565 | Stored /book.xml
+INFO  [anointing_rejoice_1]                DataHolder 348  | Stored /sheet#1/BINARY.png
+INFO  [anointing_rejoice_1]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml
+INFO  [anointing_rejoice_1]                      Book 2525 | Book stored as /kaggle/working/out/audiveris/B/anointing_rejoice_1.omr
+INFO  [anointing_rejoice_1]                 SheetStub 1655 | Sheet disposed
+INFO  [anointing_rejoice_1]                      Book 2050 | End of Stub#1
+INFO  [anointing_rejoice_1]                      Book 2057 | End of Book{anointing_rejoice_1}
+INFO  [anointing_rejoice_1]                 SheetStub 1000 | Loaded /sheet#1/sheet#1.xml
+INFO  [anointing_rejoice_1]           PartwiseBuilder 2707 | Exporting sheet(s): [#1]
+INFO  [anointing_rejoice_1]             ScoreExporter 164  | Score anointing_rejoice_1 exported to /kaggle/working/out/audiveris/B/anointing_rejoice_1.mxl
+INFO  [anointing_rejoice_1]                     Score 181  | Closing {Score 1}
