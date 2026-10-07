@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" role="img" aria-labelledby="title desc">
+  <title id="title">예배 준비의 핵심 사용자 흐름</title><desc id="desc">계정, 공간 참여, 콘티와 협업 권한, 곡 선택, 자료 연결, 연주 설정, 저장과 검토를 거쳐 PDF 다운로드를 한다. YouTube Playlist는 별도 연결을 요구하는 선택 작업이다.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#64748b"/></marker></defs>
+  <style>text{font-family:system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;fill:#0f172a}.title{font-size:26px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:17px}.note{font-size:15px;fill:#475569}.card{fill:white;stroke:#cbd5e1;stroke-width:1.5}.line{fill:none;stroke:#64748b;stroke-width:2;marker-end:url(#arrow)}</style>
+  <rect width="1100" height="560" rx="16" fill="#f8fafc"/>
+  <text x="32" y="45" class="title">예배 준비 · 계정부터 최종 콘티 전달까지</text><text x="32" y="75" class="note">Backend 기능은 구현됨 · 실제 프론트 화면/자연어 AI 연동 완료 여부는 별도</text>
+  <rect x="32" y="108" width="224" height="120" rx="12" class="card"/><text x="50" y="143" class="head">1. 계정 준비</text><text x="50" y="175" class="body">가입 · 이메일 확인</text><text x="50" y="202" class="body">로그인 · 표시 이름</text>
+  <rect x="302" y="108" width="224" height="120" rx="12" class="card"/><text x="320" y="143" class="head">2. 공간 참여</text><text x="320" y="175" class="body">생성 또는 초대 수락</text><text x="320" y="202" class="body">Membership 생성</text>
+  <rect x="572" y="108" width="224" height="120" rx="12" class="card"/><text x="590" y="143" class="head">3. 콘티 구성</text><text x="590" y="175" class="body">예배별 문서 생성</text><text x="590" y="202" class="body">공개 범위 · 문서 역할</text>
+  <rect x="842" y="108" width="224" height="120" rx="12" class="card"/><text x="860" y="143" class="head">4. 곡 선택</text><text x="860" y="175" class="body">기존 곡 또는 새 등록</text><text x="860" y="202" class="body">검색 후보는 선택 후 등록</text>
+  <path d="M256 168 H300" class="line"/><path d="M526 168 H570" class="line"/><path d="M796 168 H840" class="line"/>
+  <path d="M954 228 V285" class="line"/>
+  <rect x="842" y="287" width="224" height="120" rx="12" class="card"/><text x="860" y="322" class="head">5. 자료 연결</text><text x="860" y="354" class="body">악보 업로드 · 선택</text><text x="860" y="381" class="body">참고 영상 링크 선택</text>
+  <rect x="572" y="287" width="224" height="120" rx="12" class="card"/><text x="590" y="322" class="head">6. 연주 설정</text><text x="590" y="354" class="body">Key · BPM · 파트</text><text x="590" y="381" class="body">메모 · 송폼 · 순서</text>
+  <rect x="302" y="287" width="224" height="120" rx="12" class="card"/><text x="320" y="322" class="head">7. 저장 · 검토</text><text x="320" y="354" class="body">현재 권한 · 버전 확인</text><text x="320" y="381" class="body">충돌 시 수동 비교/재저장</text>
+  <rect x="32" y="287" width="224" height="120" rx="12" fill="#dbeafe"/><text x="50" y="322" class="head">8. PDF 전달</text><text x="50" y="354" class="body">송폼 + 실제 악보 합성</text><text x="50" y="381" class="body">현재 READ로 다운로드</text>
+  <path d="M842 347 H798" class="line"/><path d="M572 347 H528" class="line"/><path d="M302 347 H258" class="line"/>
+  <rect x="32" y="451" width="1034" height="73" rx="12" fill="#ede9fe"/>
+  <text x="52" y="482" class="head">선택 작업 · YouTube Playlist 생성/반영</text><text x="52" y="510" class="body">문서 EDIT와 본인 YouTube 연결 필요 · 내부 콘티 수정과 별개 · 실패/불확실 결과는 재시도·확인</text>
+</svg>

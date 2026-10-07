@@ -1,0 +1,23 @@
+CREATE TABLE immutable_export (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    workspace_id BIGINT NOT NULL,
+    document_id BIGINT NOT NULL,
+    actor_id BIGINT NOT NULL,
+    command_key VARCHAR(100) COLLATE utf8mb4_bin NOT NULL,
+    source_version BIGINT NOT NULL,
+    canonical_json LONGTEXT NOT NULL,
+    snapshot_hash CHAR(64) COLLATE utf8mb4_bin NOT NULL,
+    created_at DATETIME(6) NOT NULL,
+    status VARCHAR(30) NOT NULL,
+    attempt_id CHAR(36) COLLATE utf8mb4_bin NOT NULL,
+    started_at DATETIME(6) NOT NULL,
+    object_key VARCHAR(512) COLLATE utf8mb4_bin,
+    artifact_hash CHAR(64) COLLATE utf8mb4_bin,
+    byte_size BIGINT,
+    CONSTRAINT export_source FOREIGN KEY(workspace_id,document_id) REFERENCES document(workspace_id,id),
+    CONSTRAINT export_actor FOREIGN KEY(actor_id) REFERENCES user_account(id),
+    CONSTRAINT export_command UNIQUE(workspace_id,command_key),
+    CONSTRAINT export_json CHECK(JSON_VALID(canonical_json)),
+    CONSTRAINT export_status CHECK(status IN ('RUNNING','SUCCEEDED','FAILED_RETRYABLE')),
+    CONSTRAINT export_artifact CHECK(status<>'SUCCEEDED' OR (object_key IS NOT NULL AND artifact_hash IS NOT NULL AND byte_size>0))
+);

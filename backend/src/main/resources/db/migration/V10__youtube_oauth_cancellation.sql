@@ -1,0 +1,1 @@
+ALTER TABLE youtube_oauth_intent ADD COLUMN cancelled BOOLEAN NOT NULL DEFAULT FALSE;

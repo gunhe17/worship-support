@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 455" role="img" aria-labelledby="title desc">
+  <title id="title">외부 작업 전후의 짧은 DB transaction</title><desc id="desc">준비 transaction에서 권한과 입력을 고정한다. transaction 밖에서 PDF 또는 외부 작업을 한다. 현재 권한과 실행 소유권을 다시 확인하고 결과를 확정한다. DB와 외부 서비스의 완전한 원자성은 보장하지 않는다.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#64748b"/></marker></defs>
+  <style>text{font-family:system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;fill:#0f172a}.title{font-size:26px;font-weight:700}.head{font-size:20px;font-weight:700}.body{font-size:17px}.note{font-size:15px;fill:#475569}.line{stroke:#64748b;stroke-width:2;marker-end:url(#arrow)}</style>
+  <rect width="1100" height="455" rx="16" fill="#f8fafc"/><text x="32" y="45" class="title">외부 응답을 기다리는 동안 DB 잠금을 잡지 않습니다</text>
+  <rect x="32" y="102" width="303" height="215" rx="12" fill="#dbeafe"/>
+  <text x="52" y="139" class="head">1. 준비 · 짧은 transaction</text><text x="52" y="179" class="body">현재 계정 · 업무 권한 검사</text><text x="52" y="210" class="body">고정 입력 · commandKey 기록</text><text x="52" y="241" class="body">실행 번호 attempt_id 지정</text><text x="52" y="285" class="note">commit 후 DB 잠금 해제</text>
+  <rect x="398" y="102" width="303" height="215" rx="12" fill="#ffedd5"/>
+  <text x="418" y="139" class="head">2. 실행 · 긴 transaction 밖</text><text x="418" y="179" class="body">실제 악보 PDF 합성/저장</text><text x="418" y="210" class="body">또는 YouTube API 호출</text><text x="418" y="241" class="body">외부 단계에서도 소유권 검사</text><text x="418" y="285" class="note">외부 작업과 DB는 별도 시스템</text>
+  <rect x="764" y="102" width="303" height="215" rx="12" fill="#dcfce7"/>
+  <text x="784" y="139" class="head">3. 확정 · 짧은 transaction</text><text x="784" y="179" class="body">현재 권한 · 연결 상태 재검사</text><text x="784" y="210" class="body">이번 실행 번호가 유효한가?</text><text x="784" y="241" class="body">성공 확정 또는 실패/보상 기록</text><text x="784" y="285" class="note">회수·종료·이전 worker는 확정 차단</text>
+  <path d="M335 209 H396" class="line"/><path d="M701 209 H762" class="line"/>
+  <rect x="32" y="350" width="1035" height="73" rx="12" fill="white" stroke="#cbd5e1"/>
+  <text x="52" y="380" class="head">실패는 숨기지 않음 · 외부 결과의 완전한 rollback은 보장하지 않음</text><text x="52" y="407" class="body">불확실 생성은 확인/재시도 · 파일 보상 삭제 실패는 기록 · 내부 콘티를 외부 결과에 맞춰 되돌리지 않음</text>
+</svg>

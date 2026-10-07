@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 510" role="img" aria-labelledby="title desc">
+  <title id="title">설계 확인부터 검증과 checkpoint까지의 개발 Harness</title><desc id="desc">설계와 상태를 확인하고 ExecPlan을 유지한다. 구현 후 targeted test와 full check를 실행한다. 실패는 수정 후 재검증하고 통과한 Milestone은 기록과 local commit을 남긴다. 최종 clean check를 별도로 수행한다.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#64748b"/></marker></defs>
+  <style>text{font-family:system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;fill:#0f172a}.title{font-size:26px;font-weight:700}.head{font-size:20px;font-weight:700}.body{font-size:17px}.note{font-size:15px;fill:#475569}.line{fill:none;stroke:#64748b;stroke-width:2;marker-end:url(#arrow)}</style>
+  <rect width="1100" height="510" rx="16" fill="#f8fafc"/><text x="32" y="45" class="title">개발 Harness · 판단 근거와 검증 증거를 함께 관리</text>
+  <rect x="32" y="105" width="1035" height="73" rx="12" fill="#dbeafe"/>
+  <text x="54" y="137" class="head">Design Lock → PROJECT 상태 → ExecPlan</text><text x="54" y="163" class="note">승인 정책 · 범위/금지 작업 · 현재 변경/검증/복구 지점 확인</text>
+  <path d="M180 178 V209" class="line"/>
+  <rect x="32" y="212" width="280" height="77" rx="12" fill="white" stroke="#cbd5e1"/><text x="54" y="243" class="head">구현 · 관련 테스트</text><text x="54" y="271" class="body">정상 / 거부 / 경합 / rollback</text>
+  <rect x="392" y="212" width="280" height="77" rx="12" fill="#ede9fe"/><text x="414" y="243" class="head">Milestone 전체 gate</text><text x="414" y="271" class="body">./gradlew check</text>
+  <rect x="752" y="212" width="315" height="77" rx="12" fill="#dcfce7"/><text x="774" y="243" class="head">근거 기록 · local checkpoint</text><text x="774" y="271" class="body">계획/상태 갱신 → 다음 Milestone</text>
+  <path d="M312 250 H390" class="line"/><path d="M672 250 H750" class="line"/><text x="690" y="234" class="note">통과</text>
+  <path d="M532 289 V362 H314" class="line"/><text x="544" y="333" class="note">실패</text>
+  <rect x="32" y="325" width="280" height="74" rx="12" fill="#fee2e2"/><text x="54" y="357" class="head">원인 분석 · 수정</text><text x="54" y="385" class="body">관련 검증부터 다시 실행</text><path d="M172 325 V291" class="line"/>
+  <rect x="392" y="425" width="675" height="55" rx="12" fill="#0f172a"/><text x="414" y="459" class="head" style="fill:white">최종 gate · ./gradlew clean check + bootJar</text>
+  <path d="M910 289 V423" class="line"/><text x="790" y="385" class="note">범위 내 모든 Milestone 완료 후</text>
+</svg>

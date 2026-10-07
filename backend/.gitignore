@@ -1,0 +1,21 @@
+# Gradle and build output
+.gradle/
+build/
+out/
+
+# IDE and OS metadata
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Local credentials and runtime files
+.env
+.env.*
+!.env.example
+application-local.*
+*.log
+.local/
+.aws/
+*.pem
+*.key

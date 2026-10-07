@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">V1 Core Backend 구성과 인증·업무·저장 경계</title>
+  <desc id="desc">프론트와 향후 AI는 HTTP 기능을 호출한다. Spring Security의 인증과 Application의 업무 인가를 구분한다. 하나의 Spring Boot 배포 안에서 기능별 Domain과 Infrastructure를 사용하며 DB와 외부 호출은 별도 경계다.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#64748b"/></marker></defs>
+  <style>text{font-family:system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;fill:#0f172a}.title{font-size:27px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:17px}.muted{font-size:15px;fill:#475569}.line{fill:none;stroke:#64748b;stroke-width:2;marker-end:url(#arrow)}.box{fill:white;stroke:#cbd5e1;stroke-width:1.5}</style>
+  <rect width="1200" height="820" rx="16" fill="#f8fafc"/>
+  <text x="40" y="49" class="title">V1 Core Backend · 단일 배포, 기능별 책임</text>
+  <text x="40" y="78" class="muted">실선: 현재 호출 경계 · 점선: 향후 연동 · 제품 AI와 개발 Harness는 서로 다른 시스템</text>
+  <rect x="55" y="110" width="440" height="87" rx="12" fill="#dbeafe"/>
+  <text x="78" y="145" class="head">프론트엔드</text><text x="78" y="175" class="body">HTTP API · 세션 쿠키 · 변경 요청 CSRF</text>
+  <rect x="650" y="110" width="495" height="87" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="6 5"/>
+  <text x="673" y="145" class="head">제품 AI · 향후 연동</text><text x="673" y="175" class="body">Backend 기능 호출만 허용 · DB 직접 접근 금지</text>
+  <path d="M275 197 V236" class="line"/><path d="M896 197 V236" class="line" stroke-dasharray="6 5"/>
+  <rect x="40" y="238" width="1120" height="419" rx="16" fill="white" stroke="#2563eb" stroke-width="2"/>
+  <text x="63" y="272" class="head">Spring Boot · Modular Monolith</text><text x="775" y="272" class="muted">identity / workspace / document / setlist / …</text>
+  <rect x="66" y="298" width="260" height="305" rx="12" fill="#eff6ff"/>
+  <text x="86" y="335" class="head">Spring Security</text><text x="86" y="372" class="body">인증 · 서버 세션 · CSRF</text>
+  <text x="86" y="407" class="body">현재 계정 상태와</text><text x="86" y="434" class="body">세션 버전 유효성 확인</text>
+  <text x="86" y="481" class="muted">Actor: 인증된 사용자 정보</text><text x="86" y="507" class="muted">WorkspaceRole / Grant는</text><text x="86" y="532" class="muted">장기 세션 권한으로 저장 안 함</text>
+  <rect x="366" y="298" width="740" height="83" rx="12" class="box"/>
+  <text x="387" y="330" class="head">API · Controller / DTO</text><text x="387" y="357" class="body">입력 검증 · 인증에서 Actor 추출 · JPA Entity 대신 응답 DTO</text>
+  <path d="M326 340 H365" class="line"/><path d="M735 381 V412" class="line"/>
+  <rect x="366" y="414" width="740" height="83" rx="12" fill="#ede9fe"/>
+  <text x="387" y="445" class="head">Application · 작업 순서 / transaction / 업무 인가</text>
+  <text x="387" y="473" class="body">현재 Membership · DocumentGrant · 상태 · 버전 검사</text>
+  <path d="M510 497 V536" class="line"/><path d="M920 497 V536" class="line"/>
+  <rect x="366" y="538" width="310" height="83" rx="12" class="box"/>
+  <text x="387" y="569" class="head">Domain</text><text x="387" y="597" class="body">상태 · 값 · 변경 불변식</text>
+  <rect x="724" y="538" width="382" height="83" rx="12" class="box"/>
+  <text x="745" y="569" class="head">Infrastructure</text><text x="745" y="597" class="body">기능별 Store · 외부 Port / Adapter</text>
+  <path d="M835 621 V677 H265 V700" class="line"/><path d="M990 621 V700" class="line"/>
+  <rect x="66" y="702" width="395" height="78" rx="12" fill="#dcfce7"/>
+  <text x="88" y="733" class="head">MySQL · Flyway</text><text x="88" y="761" class="body">스키마 이행 · Hibernate validate</text>
+  <rect x="599" y="702" width="545" height="78" rx="12" fill="#ffedd5"/>
+  <text x="620" y="733" class="head">SMTP · YouTube · ObjectStorage</text><text x="620" y="761" class="body">명시적 설정 전 비활성 · 네트워크 I/O는 긴 DB 잠금 밖</text>
+</svg>
