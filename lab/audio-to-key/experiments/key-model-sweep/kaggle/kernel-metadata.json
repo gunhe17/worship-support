@@ -1,0 +1,13 @@
+{
+  "id": "gunhe17/worship-key-sweep",
+  "title": "worship-key-sweep",
+  "code_file": "sweep.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["gunhe17/worship-audio-analysis-test", "gunhe17/worship-audio-500"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

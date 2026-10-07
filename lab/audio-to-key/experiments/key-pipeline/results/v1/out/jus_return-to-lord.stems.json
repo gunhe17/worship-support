@@ -1,0 +1,50 @@
+{
+ "file": "jus_return-to-lord",
+ "stems": true,
+ "key": "Ab major",
+ "changes": [
+  {
+   "at": 167.0,
+   "from": "Ab major",
+   "to": "F minor",
+   "type": "relative",
+   "modulation": false
+  },
+  {
+   "at": 212.2,
+   "from": "F minor",
+   "to": "Bb major",
+   "type": "mode",
+   "modulation": false
+  }
+ ],
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 167.0,
+   "key": "Ab major",
+   "strength": 0.727,
+   "runner_up": "Eb major",
+   "runner_up_strength": 0.65
+  },
+  {
+   "start": 167.0,
+   "end": 212.2,
+   "key": "F minor",
+   "strength": 0.659,
+   "runner_up": "Ab major",
+   "runner_up_strength": 0.589
+  },
+  {
+   "start": 212.2,
+   "end": 291.0,
+   "key": "Bb major",
+   "strength": 0.752,
+   "runner_up": "F major",
+   "runner_up_strength": 0.641
+  }
+ ],
+ "tuning": 0.04,
+ "n_beats": 649,
+ "bpm_est": 136.0
+}

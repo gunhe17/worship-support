@@ -1,0 +1,38 @@
+{
+ "steady72": {
+  "bpm": 71,
+  "bpm_range": [
+   71,
+   71
+  ],
+  "stable": true,
+  "alternates": [
+   36,
+   143
+  ],
+  "feel": null,
+  "meter": 4,
+  "n_bars": 12,
+  "odd_bars": 0,
+  "pickup_beats": 0,
+  "octave_flips": 0
+ },
+ "change120to96": {
+  "bpm": null,
+  "bpm_range": [
+   97,
+   120
+  ],
+  "stable": false,
+  "alternates": [
+   60,
+   240
+  ],
+  "feel": null,
+  "meter": 4,
+  "n_bars": 26,
+  "odd_bars": 3,
+  "pickup_beats": 0,
+  "octave_flips": 0
+ }
+}

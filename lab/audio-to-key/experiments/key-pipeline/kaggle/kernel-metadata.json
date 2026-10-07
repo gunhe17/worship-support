@@ -1,0 +1,13 @@
+{
+  "id": "xxjiinn/worship-key-pipeline",
+  "title": "worship-key-pipeline",
+  "code_file": "key.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": ["xxjiinn/worship-audio-analysis-test", "andradaolteanu/gtzan-dataset-music-genre-classification", "xvanlee/giantsteps-key"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

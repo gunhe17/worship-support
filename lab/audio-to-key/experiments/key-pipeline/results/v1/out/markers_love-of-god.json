@@ -1,0 +1,125 @@
+{
+ "file": "markers_love-of-god",
+ "stems": false,
+ "key": "C major",
+ "changes": [
+  {
+   "at": 54.7,
+   "from": "E major",
+   "to": "B major",
+   "type": "fifth",
+   "modulation": false
+  },
+  {
+   "at": 94.7,
+   "from": "B major",
+   "to": "E major",
+   "type": "fifth",
+   "modulation": false
+  },
+  {
+   "at": 136.4,
+   "from": "E major",
+   "to": "B major",
+   "type": "fifth",
+   "modulation": false
+  },
+  {
+   "at": 169.5,
+   "from": "B major",
+   "to": "F# minor",
+   "type": "mode",
+   "modulation": false
+  },
+  {
+   "at": 192.1,
+   "from": "F# minor",
+   "to": "C major",
+   "type": "mode",
+   "modulation": false
+  },
+  {
+   "at": 253.4,
+   "from": "C major",
+   "to": "F major",
+   "type": "fifth",
+   "modulation": false
+  },
+  {
+   "at": 309.2,
+   "from": "F major",
+   "to": "C major",
+   "type": "fifth",
+   "modulation": false
+  }
+ ],
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 54.7,
+   "key": "E major",
+   "strength": 0.681,
+   "runner_up": "A major",
+   "runner_up_strength": 0.453
+  },
+  {
+   "start": 54.7,
+   "end": 94.7,
+   "key": "B major",
+   "strength": 0.688,
+   "runner_up": "E major",
+   "runner_up_strength": 0.556
+  },
+  {
+   "start": 94.7,
+   "end": 136.4,
+   "key": "E major",
+   "strength": 0.679,
+   "runner_up": "A major",
+   "runner_up_strength": 0.465
+  },
+  {
+   "start": 136.4,
+   "end": 169.5,
+   "key": "B major",
+   "strength": 0.65,
+   "runner_up": "E major",
+   "runner_up_strength": 0.592
+  },
+  {
+   "start": 169.5,
+   "end": 192.1,
+   "key": "F# minor",
+   "strength": 0.637,
+   "runner_up": "A major",
+   "runner_up_strength": 0.526
+  },
+  {
+   "start": 192.1,
+   "end": 253.4,
+   "key": "C major",
+   "strength": 0.632,
+   "runner_up": "F major",
+   "runner_up_strength": 0.569
+  },
+  {
+   "start": 253.4,
+   "end": 309.2,
+   "key": "F major",
+   "strength": 0.779,
+   "runner_up": "Bb major",
+   "runner_up_strength": 0.533
+  },
+  {
+   "start": 309.2,
+   "end": 397.8,
+   "key": "C major",
+   "strength": 0.732,
+   "runner_up": "F major",
+   "runner_up_strength": 0.661
+  }
+ ],
+ "tuning": 0.02,
+ "n_beats": 885,
+ "bpm_est": 136.0
+}

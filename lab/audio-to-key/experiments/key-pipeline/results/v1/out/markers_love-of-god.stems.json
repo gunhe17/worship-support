@@ -1,0 +1,110 @@
+{
+ "file": "markers_love-of-god",
+ "stems": true,
+ "key": "F major",
+ "changes": [
+  {
+   "at": 54.7,
+   "from": "E major",
+   "to": "B major",
+   "type": "fifth",
+   "modulation": false
+  },
+  {
+   "at": 94.7,
+   "from": "B major",
+   "to": "E major",
+   "type": "fifth",
+   "modulation": false
+  },
+  {
+   "at": 136.4,
+   "from": "E major",
+   "to": "B major",
+   "type": "fifth",
+   "modulation": false
+  },
+  {
+   "at": 167.8,
+   "from": "B major",
+   "to": "F# minor",
+   "type": "mode",
+   "modulation": false
+  },
+  {
+   "at": 195.6,
+   "from": "F# minor",
+   "to": "F major",
+   "type": "mode",
+   "modulation": false
+  },
+  {
+   "at": 309.2,
+   "from": "F major",
+   "to": "C major",
+   "type": "fifth",
+   "modulation": false
+  }
+ ],
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 54.7,
+   "key": "E major",
+   "strength": 0.723,
+   "runner_up": "B major",
+   "runner_up_strength": 0.529
+  },
+  {
+   "start": 54.7,
+   "end": 94.7,
+   "key": "B major",
+   "strength": 0.778,
+   "runner_up": "E major",
+   "runner_up_strength": 0.634
+  },
+  {
+   "start": 94.7,
+   "end": 136.4,
+   "key": "E major",
+   "strength": 0.725,
+   "runner_up": "A major",
+   "runner_up_strength": 0.521
+  },
+  {
+   "start": 136.4,
+   "end": 167.8,
+   "key": "B major",
+   "strength": 0.799,
+   "runner_up": "E major",
+   "runner_up_strength": 0.701
+  },
+  {
+   "start": 167.8,
+   "end": 195.6,
+   "key": "F# minor",
+   "strength": 0.553,
+   "runner_up": "B minor",
+   "runner_up_strength": 0.449
+  },
+  {
+   "start": 195.6,
+   "end": 309.2,
+   "key": "F major",
+   "strength": 0.757,
+   "runner_up": "C major",
+   "runner_up_strength": 0.624
+  },
+  {
+   "start": 309.2,
+   "end": 397.8,
+   "key": "C major",
+   "strength": 0.781,
+   "runner_up": "F major",
+   "runner_up_strength": 0.684
+  }
+ ],
+ "tuning": 0.02,
+ "n_beats": 885,
+ "bpm_est": 136.0
+}

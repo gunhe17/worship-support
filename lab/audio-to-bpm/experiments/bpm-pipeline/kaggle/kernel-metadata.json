@@ -1,0 +1,13 @@
+{
+  "id": "gunhe17/worship-bpm-pipeline",
+  "title": "worship-bpm-pipeline",
+  "code_file": "bpm.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["gunhe17/worship-audio-analysis-test"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,104 @@
+{
+ "all": {
+  "n": 996,
+  "acc1": 0.818,
+  "acc2": 0.945,
+  "beat_f": 0.893,
+  "downbeat_f": 0.789,
+  "meter_ok": 0.78,
+  "stable": 0.905
+ },
+ "errors": 3,
+ "by_genre": {
+  "blues": {
+   "n": 100,
+   "acc1": 0.73,
+   "acc2": 0.95,
+   "beat_f": 0.831,
+   "downbeat_f": 0.639,
+   "meter_ok": 0.63,
+   "stable": 0.92
+  },
+  "classical": {
+   "n": 98,
+   "acc1": 0.541,
+   "acc2": 0.745,
+   "beat_f": 0.669,
+   "downbeat_f": 0.525,
+   "meter_ok": 0.378,
+   "stable": 0.541
+  },
+  "country": {
+   "n": 100,
+   "acc1": 0.88,
+   "acc2": 1.0,
+   "beat_f": 0.944,
+   "downbeat_f": 0.915,
+   "meter_ok": 0.85,
+   "stable": 0.98
+  },
+  "disco": {
+   "n": 100,
+   "acc1": 0.95,
+   "acc2": 0.98,
+   "beat_f": 0.966,
+   "downbeat_f": 0.936,
+   "meter_ok": 0.97,
+   "stable": 0.98
+  },
+  "hiphop": {
+   "n": 100,
+   "acc1": 0.96,
+   "acc2": 0.99,
+   "beat_f": 0.975,
+   "downbeat_f": 0.898,
+   "meter_ok": 0.91,
+   "stable": 0.98
+  },
+  "jazz": {
+   "n": 99,
+   "acc1": 0.758,
+   "acc2": 0.909,
+   "beat_f": 0.869,
+   "downbeat_f": 0.747,
+   "meter_ok": 0.656,
+   "stable": 0.828
+  },
+  "metal": {
+   "n": 100,
+   "acc1": 0.79,
+   "acc2": 0.91,
+   "beat_f": 0.877,
+   "downbeat_f": 0.769,
+   "meter_ok": 0.84,
+   "stable": 0.89
+  },
+  "pop": {
+   "n": 100,
+   "acc1": 0.92,
+   "acc2": 0.98,
+   "beat_f": 0.953,
+   "downbeat_f": 0.939,
+   "meter_ok": 0.93,
+   "stable": 0.98
+  },
+  "reggae": {
+   "n": 99,
+   "acc1": 0.758,
+   "acc2": 1.0,
+   "beat_f": 0.907,
+   "downbeat_f": 0.688,
+   "meter_ok": 0.727,
+   "stable": 0.98
+  },
+  "rock": {
+   "n": 100,
+   "acc1": 0.89,
+   "acc2": 0.98,
+   "beat_f": 0.93,
+   "downbeat_f": 0.821,
+   "meter_ok": 0.89,
+   "stable": 0.96
+  }
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "file": "anointing_rejoice",
+ "stems": false,
+ "key": "E major",
+ "changes": [],
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 349.1,
+   "key": "E major",
+   "strength": 0.769,
+   "runner_up": "Ab minor",
+   "runner_up_strength": 0.566
+  }
+ ],
+ "tuning": 0.03,
+ "n_beats": 819,
+ "bpm_est": 143.6
+}
