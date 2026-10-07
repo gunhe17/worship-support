@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Canvas</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+</head>
+<body class="h-screen flex overflow-hidden select-none bg-white text-[11px] text-neutral-800 font-['Inter',system-ui,sans-serif]">
+
+<aside class="w-60 shrink-0 flex flex-col border-r border-neutral-200">
+  <div class="h-12 px-4 flex items-center border-b border-neutral-200 text-[13px] font-semibold">Canvas</div>
+  <div class="h-10 px-4 flex items-center font-semibold">Layers</div>
+  <div id="tree" class="flex-1 overflow-auto pb-4"></div>
+</aside>
+
+<main id="main" class="flex-1 relative bg-[#f5f5f5]">
+  <canvas id="cv" class="block w-full h-full touch-none"></canvas>
+  <div id="bar" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-0.5 p-1.5 bg-white rounded-xl border border-neutral-200 shadow-lg"></div>
+  <div id="msg" hidden class="absolute top-4 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-md bg-neutral-900 text-white"></div>
+</main>
+
+<aside class="w-60 shrink-0 flex flex-col border-l border-neutral-200">
+  <div class="h-12 px-4 flex items-center justify-between border-b border-neutral-200">
+    <span class="text-[13px] font-semibold">Design</span><span id="zoom" class="text-neutral-500"></span>
+  </div>
+  <div id="pBox" hidden>
+    <section class="p-4 border-b border-neutral-200 space-y-2">
+      <div class="font-semibold">Box</div>
+      <label class="field"><input data-f="name" class="w-full bg-transparent outline-none"></label>
+    </section>
+    <section class="p-4 border-b border-neutral-200 space-y-2">
+      <div class="font-semibold">Position</div>
+      <div class="grid grid-cols-2 gap-2">
+        <label class="field"><span class="text-neutral-400">X</span><input data-f="x" type="number" class="w-full bg-transparent outline-none"></label>
+        <label class="field"><span class="text-neutral-400">Y</span><input data-f="y" type="number" class="w-full bg-transparent outline-none"></label>
+      </div>
+      <div class="font-semibold pt-2">Dimensions</div>
+      <div class="grid grid-cols-2 gap-2">
+        <label class="field"><span class="text-neutral-400">W</span><input data-f="w" type="number" class="w-full bg-transparent outline-none"></label>
+        <label class="field"><span class="text-neutral-400">H</span><input data-f="h" type="number" class="w-full bg-transparent outline-none"></label>
+      </div>
+    </section>
+  </div>
+  <section id="pColor" class="p-4 border-b border-neutral-200 space-y-2">
+    <div id="pTitle" class="font-semibold"></div>
+    <label class="field"><input id="ci" type="color" class="w-4 h-4 p-0 border-0 bg-transparent cursor-pointer"><span id="hex"></span></label>
+  </section>
+</aside>
+
+<style type="text/tailwindcss">
+.field { @apply flex items-center gap-2 h-7 px-2 rounded bg-neutral-100 border border-transparent hover:border-neutral-200 focus-within:border-[#0d99ff]; }
+input[type=number]::-webkit-inner-spin-button { display: none; }
+input[type=color]::-webkit-color-swatch-wrapper { padding: 0; }
+input[type=color]::-webkit-color-swatch { border: 0; border-radius: 2px; }
+</style>
+
+<script>
+const BLUE = '#0d99ff', FONT = "16px Inter, system-ui, sans-serif", LH = 20;
+const ICON = {
+  select: 'M5 3l6 17 2.2-7.3L20 10.5z', box: 'M8 3v18M16 3v18M3 8h18M3 16h18', rect: 'M4 4h16v16H4z',
+  ellipse: 'M12 4a8 8 0 1 0 0 16a8 8 0 1 0 0-16', line: 'M5 19L19 5', arrow: 'M5 19L19 5M10 5h9v9',
+  pen: 'M3 16c3-7 6-9 9-4s6 3 9-4', text: 'M5 5h14M12 5v14',
+};
+const TOOLS = [['select','V','Move'],['box','B','Box'],['rect','R','Rectangle'],['ellipse','O','Ellipse'],['line','L','Line'],['arrow','A','Arrow'],['pen','P','Curve'],['text','T','Text']];
+const NAME = Object.fromEntries(TOOLS.map(([t, , n]) => [t, n]));
+const $ = id => document.getElementById(id);
+const cv = $('cv'), ctx = cv.getContext('2d'), bar = $('bar'), tree = $('tree'), ci = $('ci');
+const fields = [...document.querySelectorAll('[data-f]')];
+let R = {boxes:{}, shapes:{}}, cam = {x:40, y:60, z:1}, tool = 'select', color = '#222222';
+let sel = null, drag = null, draft = null, editing = null, space = false, ver = -1, raf, exT, flashT;
+
+const uid = () => Math.random().toString(36).slice(2, 10);
+const boxes = () => Object.values(R.boxes).sort((a, b) => a.z - b.z);
+const shapesOf = id => Object.values(R.shapes).filter(s => s.box === id).sort((a, b) => a.z - b.z);
+const rev = list => list.slice().reverse();
+const boxAt = ([x, y]) => rev(boxes()).find(b => x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h);
+const labelAt = ([x, y]) => rev(boxes()).find(b => x >= b.x && x <= b.x + b.w && y >= b.y - 18 / cam.z && y < b.y);
+const toWorld = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left - cam.x) / cam.z, (e.clientY - r.top - cam.y) / cam.z]; };
+const redraw = () => raf ??= requestAnimationFrame(() => { raf = null; render(); });
+function children() { // 위치와 무관한 계층: parent 필드만 본다
+  const k = {};
+  for (const b of boxes()) (k[R.boxes[b.parent] ? b.parent : ''] ??= []).push(b);
+  return k;
+}
+function status(t) {
+  clearTimeout(flashT);
+  $('msg').textContent = t || ''; $('msg').hidden = !t;
+  if (t) flashT = setTimeout(status, 2000);
+}
+
+// ---- 도형 ----
+function drawShape(c, s) {
+  c.strokeStyle = c.fillStyle = s.c; c.lineWidth = 2; c.lineCap = c.lineJoin = 'round';
+  const a = s.p[0], b = s.p.at(-1);
+  c.beginPath();
+  if (s.t === 'text') {
+    c.font = FONT; c.textBaseline = 'top';
+    return s.s.split('\n').forEach((l, i) => c.fillText(l, a[0], a[1] + i * LH));
+  }
+  if (s.t === 'rect') c.rect(a[0], a[1], b[0] - a[0], b[1] - a[1]);
+  if (s.t === 'ellipse') c.ellipse((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, Math.abs(b[0] - a[0]) / 2, Math.abs(b[1] - a[1]) / 2, 0, 0, 7);
+  if (s.t === 'line' || s.t === 'arrow') {
+    c.moveTo(...a); c.lineTo(...b);
+    const t = Math.atan2(b[1] - a[1], b[0] - a[0]);
+    if (s.t === 'arrow') for (const d of [2.6, -2.6]) { c.moveTo(...b); c.lineTo(b[0] + 12 * Math.cos(t + d), b[1] + 12 * Math.sin(t + d)); }
+  }
+  if (s.t === 'pen') {
+    c.moveTo(...a);
+    for (let i = 1; i < s.p.length - 1; i++) c.quadraticCurveTo(...s.p[i], (s.p[i][0] + s.p[i + 1][0]) / 2, (s.p[i][1] + s.p[i + 1][1]) / 2);
+    c.lineTo(...b);
+  }
+  c.stroke();
+}
+function bbox(s) {
+  const [x, y] = s.p[0];
+  if (s.t === 'text') { ctx.font = FONT; const ls = s.s.split('\n'); return [x, y, x + Math.max(...ls.map(l => ctx.measureText(l).width)), y + ls.length * LH]; }
+  const xs = s.p.map(p => p[0]), ys = s.p.map(p => p[1]);
+  return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+}
+const hit = (s, [x, y]) => { const [a, b, c, d] = bbox(s), m = 6 / cam.z; return x >= a - m && x <= c + m && y >= b - m && y <= d + m; };
+const corner = (b, [x, y]) => { // 선택된 box의 모서리 핸들 → [cx, cy] (0=왼/위, 1=오른/아래)
+  const hs = 6 / cam.z;
+  for (const cx of [0, 1]) for (const cy of [0, 1])
+    if (Math.abs(x - b.x - cx * b.w) < hs && Math.abs(y - b.y - cy * b.h) < hs) return [cx, cy];
+};
+
+// ---- 렌더 ----
+function render() {
+  const d = devicePixelRatio;
+  if (cv.width !== cv.clientWidth * d || cv.height !== cv.clientHeight * d) { cv.width = cv.clientWidth * d; cv.height = cv.clientHeight * d; }
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
+  ctx.setTransform(d * cam.z, 0, 0, d * cam.z, d * cam.x, d * cam.y);
+  const px = 1 / cam.z, ss = sel?.k === 'shapes' && R.shapes[sel.id];
+  for (const b of boxes()) {
+    const on = sel?.k === 'boxes' && sel.id === b.id;
+    ctx.fillStyle = '#fff'; ctx.fillRect(b.x, b.y, b.w, b.h);
+    ctx.fillStyle = on ? BLUE : '#8a8a8a'; ctx.font = `${11 * px}px Inter, system-ui`; ctx.textBaseline = 'bottom';
+    ctx.fillText(b.name, b.x, b.y - 4 * px);
+    ctx.save(); ctx.beginPath(); ctx.rect(b.x, b.y, b.w, b.h); ctx.clip(); ctx.translate(b.x, b.y);
+    for (const s of shapesOf(b.id)) if (s.id !== editing) drawShape(ctx, s);
+    if (draft?.box === b.id) drawShape(ctx, draft);
+    if (ss?.box === b.id) {
+      const [x0, y0, x1, y1] = bbox(ss);
+      ctx.lineWidth = px; ctx.strokeStyle = BLUE; ctx.strokeRect(x0 - 3 * px, y0 - 3 * px, x1 - x0 + 6 * px, y1 - y0 + 6 * px);
+    }
+    ctx.restore();
+    if (on) {
+      ctx.lineWidth = px; ctx.strokeStyle = BLUE; ctx.strokeRect(b.x, b.y, b.w, b.h);
+      ctx.fillStyle = '#fff';
+      for (const [cx, cy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) {
+        ctx.fillRect(b.x + cx * b.w - 4 * px, b.y + cy * b.h - 4 * px, 8 * px, 8 * px);
+        ctx.strokeRect(b.x + cx * b.w - 4 * px, b.y + cy * b.h - 4 * px, 8 * px, 8 * px);
+      }
+      const t = `${Math.round(b.w)} × ${Math.round(b.h)}`, tw = ctx.measureText(t).width + 10 * px;
+      ctx.beginPath(); ctx.roundRect(b.x + b.w / 2 - tw / 2, b.y + b.h + 6 * px, tw, 18 * px, 3 * px); ctx.fillStyle = BLUE; ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(t, b.x + b.w / 2, b.y + b.h + 15 * px); ctx.textAlign = 'left';
+    }
+  }
+  if (drag?.newbox) {
+    const [a, b] = [drag.w, drag.b];
+    ctx.lineWidth = px; ctx.strokeStyle = BLUE; ctx.strokeRect(a[0], a[1], b[0] - a[0], b[1] - a[1]);
+  }
+  panel();
+}
+function panel() { // 우측 Design 패널: 포커스 중인 입력은 건드리지 않음
+  $('zoom').textContent = `${Math.round(cam.z * 100)}%`;
+  const b = sel?.k === 'boxes' && R.boxes[sel.id], s = sel?.k === 'shapes' && R.shapes[sel.id];
+  $('pBox').hidden = !b;
+  if (b) for (const el of fields) if (el !== document.activeElement) el.value = el.dataset.f === 'name' ? b.name : Math.round(b[el.dataset.f]);
+  $('pTitle').textContent = s ? `${NAME[s.t]} · Stroke` : 'Stroke';
+  const c = s ? s.c : color;
+  ci.value = c; $('hex').textContent = c.slice(1).toUpperCase();
+}
+
+// ---- 동기화 ----
+function apply(op) { if (op.t === 'put') R[op.k][op.v.id] = op.v; else delete R[op.k][op.id]; }
+function send(ops) {
+  ops.forEach(apply);
+  fetch('op', {method: 'POST', body: JSON.stringify(ops)}).catch(() => status('저장 실패 — 서버 확인'));
+  changed();
+  clearTimeout(exT); exT = setTimeout(exportAll, 800); // 변경한 사람이 export 담당
+}
+const put = (k, v) => send([{t: 'put', k, v}]);
+function changed() { if (sel && !R[sel.k][sel.id]) sel = null; renderTree(); redraw(); }
+// ponytail: 1초 polling — 동시 편집이 잦아지면 SSE/WebSocket으로
+async function poll() {
+  if (drag || draft) return; // 그리는 중엔 덮어쓰지 않음
+  try {
+    const r = await (await fetch('record.json', {cache: 'no-store'})).json();
+    if (r.v !== ver) { ver = r.v; R = r; changed(); }
+  } catch { status('서버 연결 끊김'); }
+}
+poll(); setInterval(poll, 1000);
+
+// ---- export: box 계층 = 폴더 계층 ----
+function exportAll() {
+  const kids = children(), files = {};
+  const walk = (p, dir) => {
+    const used = new Set();
+    for (const b of kids[p] || []) {
+      const n = b.name.replace(/[\\/:*?"<>|.]/g, '_').trim() || 'box';
+      let m = n; for (let i = 2; used.has(m); i++) m = `${n}-${i}`;
+      used.add(m);
+      const c = document.createElement('canvas'), g = c.getContext('2d');
+      c.width = b.w * 2; c.height = b.h * 2; g.scale(2, 2);
+      g.fillStyle = '#fff'; g.fillRect(0, 0, b.w, b.h);
+      for (const s of shapesOf(b.id)) drawShape(g, s);
+      files[`${dir}${m}.png`] = c.toDataURL().split(',')[1];
+      walk(b.id, `${dir}${m}/`);
+    }
+  };
+  walk('', '');
+  fetch('export', {method: 'POST', body: JSON.stringify(files)}).catch(() => status('export 실패'));
+}
+
+// ---- Layers 트리 ----
+const OVER = ['ring-1', 'ring-inset', 'ring-[#0d99ff]'];
+function renderTree() {
+  const kids = children(), rows = [];
+  const walk = (p, depth) => {
+    for (const b of kids[p] || []) {
+      const row = document.createElement('div');
+      row.className = `flex items-center gap-2 h-8 mx-2 pr-2 rounded truncate ${sel?.id === b.id ? 'bg-[#e5f4ff]' : 'hover:bg-neutral-100'}`;
+      row.style.paddingLeft = `${8 + depth * 16}px`;
+      row.innerHTML = `<svg class="w-3.5 h-3.5 shrink-0 text-neutral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="${ICON.box}"/></svg>`;
+      row.append(b.name);
+      row.draggable = true;
+      row.onclick = () => { select('boxes', b.id); cam.x = cv.clientWidth / 2 - (b.x + b.w / 2) * cam.z; cam.y = cv.clientHeight / 2 - (b.y + b.h / 2) * cam.z; redraw(); };
+      row.ondblclick = focusName;
+      row.ondragstart = e => e.dataTransfer.setData('text/plain', b.id);
+      dropTarget(row, b.id);
+      rows.push(row);
+      walk(b.id, depth + 1);
+    }
+  };
+  walk('', 0);
+  tree.replaceChildren(...rows);
+}
+function dropTarget(el, pid) {
+  el.ondragover = e => { e.preventDefault(); el.classList.add(...OVER); };
+  el.ondragleave = () => el.classList.remove(...OVER);
+  el.ondrop = e => {
+    e.preventDefault(); e.stopPropagation(); el.classList.remove(...OVER);
+    const id = e.dataTransfer.getData('text/plain');
+    if (!R.boxes[id]) return;
+    for (let p = pid, seen = new Set(); p && !seen.has(p); seen.add(p), p = R.boxes[p]?.parent)
+      if (p === id) return status('자기 하위로는 옮길 수 없습니다');
+    put('boxes', {...R.boxes[id], parent: pid});
+  };
+}
+dropTarget(tree, null);
+function focusName() { redraw(); requestAnimationFrame(() => { const n = fields[0]; n.focus(); n.select(); }); }
+function select(k, id) { sel = k ? {k, id} : null; renderTree(); redraw(); }
+function delSel() {
+  if (!sel) return;
+  if (sel.k === 'shapes') send([{t: 'del', k: 'shapes', id: sel.id}]);
+  else {
+    const b = R.boxes[sel.id];
+    if (!confirm(`'${b.name}' box와 내부 기록을 삭제할까요? (하위 box는 위로 올라갑니다)`)) return;
+    send([
+      ...shapesOf(b.id).map(s => ({t: 'del', k: 'shapes', id: s.id})),
+      ...Object.values(R.boxes).filter(c => c.parent === b.id).map(c => ({t: 'put', k: 'boxes', v: {...c, parent: b.parent}})),
+      {t: 'del', k: 'boxes', id: b.id},
+    ]);
+  }
+  select(null);
+}
+
+// ---- Design 패널 입력 ----
+for (const el of fields) el.onchange = () => {
+  const b = R.boxes[sel?.id], f = el.dataset.f;
+  if (!b) return;
+  const v = f === 'name' ? el.value.trim() : Number(el.value);
+  if (f === 'name' ? !v : !Number.isFinite(v)) return;
+  put('boxes', {...b, [f]: f === 'w' || f === 'h' ? Math.max(20, v) : v});
+};
+ci.oninput = () => { // 선택된 도형이 있으면 그 색, 없으면 새로 그릴 색
+  color = ci.value;
+  const s = sel?.k === 'shapes' && R.shapes[sel.id];
+  if (s) s.c = color;
+  redraw();
+};
+ci.onchange = () => { const s = sel?.k === 'shapes' && R.shapes[sel.id]; if (s) put('shapes', s); };
+
+// ---- 텍스트: 캔버스 위에서 바로 입력 ----
+function editText(b, s) {
+  const ta = document.createElement('textarea');
+  ta.value = s.s;
+  ta.className = 'absolute p-0 m-0 bg-transparent outline-none resize-none overflow-hidden whitespace-pre ring-1 ring-[#0d99ff] [field-sizing:content] min-w-[1em]';
+  Object.assign(ta.style, {
+    left: `${cam.x + (b.x + s.p[0][0]) * cam.z}px`, top: `${cam.y + (b.y + s.p[0][1]) * cam.z}px`,
+    font: FONT, fontSize: `${16 * cam.z}px`, lineHeight: `${LH * cam.z}px`, color: s.c,
+  });
+  editing = s.id; redraw();
+  $('main').append(ta);
+  ta.focus();
+  ta.onkeydown = e => { if (e.key === 'Escape' || (e.key === 'Enter' && (e.metaKey || e.ctrlKey))) ta.blur(); };
+  ta.onblur = () => {
+    ta.remove(); editing = null;
+    if (ta.value.trim()) { put('shapes', {...s, s: ta.value}); select('shapes', s.id); }
+    else if (R.shapes[s.id]) send([{t: 'del', k: 'shapes', id: s.id}]);
+    setTool('select');
+  };
+}
+
+// ---- 툴바 / 포인터 ----
+for (const [t, k, n] of TOOLS) {
+  const b = document.createElement('button');
+  b.title = `${n} (${k})`; b.dataset.t = t; b.onclick = () => setTool(t);
+  b.innerHTML = `<svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="${ICON[t]}"/></svg>`;
+  bar.append(b);
+  if (t === 'box') bar.append(Object.assign(document.createElement('div'), {className: 'w-px h-5 mx-1 bg-neutral-200'}));
+}
+function setTool(t) {
+  tool = t;
+  for (const b of bar.querySelectorAll('button'))
+    b.className = `w-9 h-9 grid place-items-center rounded-lg ${b.dataset.t === t ? 'bg-[#0d99ff] text-white' : 'text-neutral-700 hover:bg-neutral-100'}`;
+  cv.style.cursor = t === 'select' ? 'default' : t === 'text' ? 'text' : 'crosshair';
+}
+
+cv.onpointerdown = e => {
+  const w = toWorld(e);
+  if (space || e.button === 1) { cv.setPointerCapture(e.pointerId); drag = {pan: 1, sx: e.clientX, sy: e.clientY, cx: cam.x, cy: cam.y}; return; }
+  if (e.button !== 0) return;
+  if (tool === 'box') { cv.setPointerCapture(e.pointerId); drag = {newbox: 1, w, b: w}; return; }
+  if (tool === 'select') {
+    const sb = sel?.k === 'boxes' && R.boxes[sel.id], c = sb && corner(sb, w);
+    if (c) drag = {k: 'boxes', item: sb, w, resize: c, orig: [sb.x, sb.y, sb.w, sb.h]};
+    else {
+      const b = boxAt(w) || labelAt(w);
+      if (!b) return select(null);
+      const s = rev(shapesOf(b.id)).find(s => hit(s, [w[0] - b.x, w[1] - b.y]));
+      if (s) { select('shapes', s.id); drag = {k: 'shapes', item: s, w, orig: s.p}; }
+      else { select('boxes', b.id); drag = {k: 'boxes', item: b, w, orig: [b.x, b.y]}; }
+    }
+    return cv.setPointerCapture(e.pointerId);
+  }
+  const b = boxAt(w);
+  if (!b) return status('Box 안에서만 그릴 수 있습니다');
+  const l = [w[0] - b.x, w[1] - b.y];
+  if (tool === 'text') return editText(b, {id: uid(), box: b.id, t: 'text', p: [l], c: color, s: '', z: Date.now()});
+  cv.setPointerCapture(e.pointerId);
+  draft = {id: uid(), box: b.id, t: tool, p: [l, l], c: color, z: Date.now()};
+};
+cv.onmousedown = e => { if (tool === 'text') e.preventDefault(); }; // 새 텍스트 입력칸의 포커스를 캔버스가 뺏지 않게
+cv.onpointermove = e => {
+  if (drag?.pan) { cam.x = drag.cx + e.clientX - drag.sx; cam.y = drag.cy + e.clientY - drag.sy; return redraw(); }
+  const w = toWorld(e);
+  if (draft) {
+    const b = R.boxes[draft.box];
+    if (!b) return (draft = null);
+    const l = [w[0] - b.x, w[1] - b.y];
+    if (draft.t === 'pen') draft.p.push(l); else draft.p[1] = l;
+    return redraw();
+  }
+  if (tool === 'select' && !drag) { // 모서리 위에선 리사이즈 커서
+    const sb = sel?.k === 'boxes' && R.boxes[sel.id], c = sb && corner(sb, w);
+    cv.style.cursor = c ? (c[0] === c[1] ? 'nwse-resize' : 'nesw-resize') : 'default';
+  }
+  if (!drag) return;
+  const dx = w[0] - drag.w[0], dy = w[1] - drag.w[1], it = drag.item;
+  if (drag.newbox) drag.b = w;
+  else if (drag.resize) {
+    const [cx, cy] = drag.resize, [ox, oy, ow, oh] = drag.orig;
+    it.w = Math.max(20, cx ? ow + dx : ow - dx); it.x = cx ? ox : ox + ow - it.w;
+    it.h = Math.max(20, cy ? oh + dy : oh - dy); it.y = cy ? oy : oy + oh - it.h;
+  }
+  else if (drag.k === 'boxes') { it.x = drag.orig[0] + dx; it.y = drag.orig[1] + dy; }
+  else it.p = drag.orig.map(([x, y]) => [x + dx, y + dy]);
+  drag.moved = 1;
+  redraw();
+};
+cv.onpointerup = () => {
+  if (draft) {
+    const [a, b] = [draft.p[0], draft.p.at(-1)];
+    if (draft.t === 'pen' ? draft.p.length > 2 : Math.hypot(b[0] - a[0], b[1] - a[1]) > 3) put('shapes', draft);
+    draft = null;
+  } else if (drag?.newbox) {
+    const [a, b] = [drag.w, drag.b], w = Math.abs(b[0] - a[0]), h = Math.abs(b[1] - a[1]);
+    if (w > 10 && h > 10) {
+      const nb = {id: uid(), name: `Box ${Object.keys(R.boxes).length + 1}`, parent: sel?.k === 'boxes' ? sel.id : null,
+        x: Math.min(a[0], b[0]), y: Math.min(a[1], b[1]), w, h, z: Date.now()};
+      put('boxes', nb); select('boxes', nb.id); setTool('select');
+    }
+  } else if (drag?.moved) put(drag.k, drag.item);
+  drag = null; redraw();
+};
+cv.ondblclick = e => {
+  if (tool !== 'select') return;
+  const w = toWorld(e), b = boxAt(w) || labelAt(w);
+  if (!b) return;
+  const s = rev(shapesOf(b.id)).find(s => s.t === 'text' && hit(s, [w[0] - b.x, w[1] - b.y]));
+  if (s) editText(b, s);
+  else if (!boxAt(w)) focusName();
+};
+cv.onwheel = e => {
+  e.preventDefault();
+  if (e.ctrlKey || e.metaKey) {
+    const r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    const z = Math.min(8, Math.max(0.1, cam.z * Math.exp(-e.deltaY * 0.01)));
+    cam.x = mx - (mx - cam.x) * z / cam.z; cam.y = my - (my - cam.y) * z / cam.z; cam.z = z;
+  } else { cam.x -= e.deltaX; cam.y -= e.deltaY; }
+  redraw();
+};
+onkeydown = e => {
+  if (/INPUT|TEXTAREA/.test(e.target.tagName)) return;
+  if (e.code === 'Space') { space = true; cv.style.cursor = 'grab'; return e.preventDefault(); }
+  if (e.key === 'Delete' || e.key === 'Backspace') return delSel();
+  if (e.key === 'Escape') return select(null);
+  const t = !e.metaKey && !e.ctrlKey && TOOLS.find(t => e.code === 'Key' + t[1]); // e.code: 한글 입력 상태에서도 동작
+  if (t) setTool(t[0]);
+};
+onkeyup = e => { if (e.code === 'Space') { space = false; setTool(tool); } };
+onresize = redraw;
+document.fonts.ready.then(redraw);
+setTool('select');
+</script>
+</body>
+</html>
