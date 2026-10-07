@@ -8,6 +8,8 @@ Risk level: CRITICAL
 
 ## Current State
 
+- **M9 GitHub 게시 완료(2026-10-07):** `gunhe17/worship-support`의 `auth-workspace-v1` 브랜치 `backend/`에 반입했다. 공유 main `c876286` 기반의 최초 반입 커밋 `e21c4a3`을 push하고 원격SHA 일치를 확인했다. 기존 root파일·main 무변경, PR/병합/force push 없음. 반입 경로 clean check+bootJar 성공(3m35s),135 tests/16 suites·실패/오류/skip0, JAR 기존 해시 일치. 기존 Java 변경3개는 주석/배치만 달라 현재 검증된 bytes로 공유 반입했으며 원래 로컬 변경은 보존·stage 제외했다. 아래 미게시 표현은 이전 단계 기록이다. Figma는 다음 별도 소통 대상이다.
+
 - 문서 시각화 품질 정비 완료(M7c): 기존5개 문서의 ASCII 도식을 인라인 SVG7개로 교체하고 모두 렌더링 확인했다. 아키텍처/인가/외부 transaction/동시 저장/Harness/핵심6테이블 경계를 표현하며 전체26테이블·177필드 사전은 유지한다. 정책 원본과 구현·미완료 범위를 구분하고 member_notice를26번에 정렬했다. 상대 링크37개/필드명/XML/whitespace 대조와 check(6s, UP-TO-DATE) 통과. 새 읽을 문서·ERD viewer·생성기는 추가하지 않았다. 코드/DDL/정책 변경 없음, GitHub 게시는 아직 미실행.
 
 - 문서5개 정리 완료: 사람용 Markdown은 사용 흐름/아키텍처/DB/인증·인가/권한 시나리오 5개뿐이다. 별도 안내·ERD·검토 스냅샷/프롬프트·옛 입력/점검 보고서 8개와 생성기를 삭제하고 고유 결론을 기존 원본/설명/계획에 통합했다. Git b7e224d에서 삭제 전 자료 복구 가능. 52개 상대 링크·fence·26개 테이블/177개 필드명 대조 및 check(7s, UP-TO-DATE) 통과. 코드/DDL 변경은 없으며 이전 clean135/16 증거를 보존한다. 브랜치 auth-workspace-v1와 해당 backend/ 배치·일반 push는 승인됐고 GitHub 게시 전에 문서 정리를 우선했다.

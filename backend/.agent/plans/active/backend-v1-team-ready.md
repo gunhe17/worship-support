@@ -44,7 +44,7 @@ GitHub 공유 전에 확정된 V1 Backend 요구의 미구현 부분을 완료�
 - [x] M8: clean check/bootJar 실제 실행, 135/16 전부 통과, 빈 로컬 DB의 V16/validate/배포 JAR 시작과 보안 응답 확인, 생성 PDF 재확인·반입 파일/이력 검사 완료.
 - [x] M7b: 사람용5개만 유지. 중복 자료8개와 ERD 생성기 삭제·고유 결론 통합·52개 링크/fence/필드명 대조·check(7s, UP-TO-DATE) 완료.
 - [x] M7c: 5개 문서의 ASCII 도식을 인라인 SVG7개로 교체, 전부 렌더링 확인 및 링크37개/26테이블177필드/XML 대조·check(6s, UP-TO-DATE) 완료. 별도 읽을 문서/ERD viewer/생성기 추가 없음.
-- [ ] M9: 공유 main 기반 브랜치에 안전하게 반입·commit·재검증.
+- [x] M9: 공유 main=c876286 기반 auth-workspace-v1/backend에 반입·clean135/16·commit e21c4a3·push·원격SHA 일치 확인. 기존 root파일/main 무변경, PR/병합/force push 없음.
 
 ## Plan
 
@@ -127,6 +127,8 @@ local checkpoint 이력과 기존 작업은 보존한다. 기존 문서를 임�
 증거: shared main이 작업 브랜치의 조상, 기존 원격 파일 보존, 의도한 diff만 포함, 새 checkout에서 `./gradlew clean check` 성공, 브랜치/commit/제한사항 인계. 원격 게시되지 않았다면 명시한다.
 
 ## Verification
+
+M9 게시 완료: 최초 반입 commit e21c4a3a78d7eb7b50feed1b12b321dfe900ef17을 `git push --set-upstream origin HEAD:refs/heads/auth-workspace-v1`으로 게시했다. ls-remote의 작업 브랜치 SHA가 동일하고 main=c876286cf1681f0c67bd7e1fdda4ffd8f2265657 불변. 반입 checkout clean, shared main이 조상이며 diff는backend159파일 추가만이다. 아래 진행/미게시 설명은 단계별 기록이며 현재 상태를 대체하지 않는다. 완료 기록만 후속 docs commit으로 게시한다. 실제 Git 인증은 기존 osxkeychain helper를 사용했으며 토큰을 열람/출력하지 않았다. 로그인 계정명은 따로 확인하지 않았고 실제 명시 ref push 성공이 서버 권한 증거다.
 
 M9 반입 gate 완료: `/private/tmp/worship-team-import.xghq94/repository/backend`에서 `./gradlew clean check bootJar --no-daemon` 성공(3m35s,6 tasks 실제 실행·clean은 빈 신규 경로에서 UP-TO-DATE). XML135 tests/16 suites, failures/errors/skips0. JAR SHA256 d05e8f0d360955d73f1e02fb126d1a9bfd8e24b64cb77ca89b079a5da5a975e0로 기존 검증본과 동일. 전체159파일 source bytes 일치, 상대 링크56개 정상, 제한적 secret 패턴 후보0. main 조상/기존 root파일 무변경 및 backend만stage 확인. Gradle wrapper Windows bat의 원래 CRLF를 보존하여 cr-at-eol 허용 whitespace 검사를 통과했다. main=c876286 재확인 및 원격 작업브랜치 미존재 확인. 다음은 local commit/명시 ref push/원격SHA 확인이며 아직 게시 완료로 표시하지 않는다.
 
@@ -233,12 +235,12 @@ M2 GREEN: `./gradlew test --tests com.worship.core.ScoreReferenceIntegrationTest
 
 복구 기준(사용자 2026-10-07 재강조): compaction의 요약을 단독 근거로 삼지 않고 AGENTS → Design/PROJECT → 이 계획 → 실제 diff/test XML을 다시 대조한다. 새 제품 정책 임의 생성 금지. 1–8 자율, 9 공유 반입/브랜치 및 이후 Figma 시작 전 사용자 소통, remote/push/PR 미실행. 사용자 dirty 3파일(AccountLifecycle/IdentityService/YouTubeAuthorizationService)은 원래 SHA-256 그대로이며 stage하지 않는다. M5 `adf2275`, M2/M6 `eac0954`, M7 `f15bcdf`; M8 결과는 위 최종 증거다.
 
-현재 실행: M7c 검증 완료, local checkpoint 후 M9 준비 상태. 사람용5개 유지, SVG7개는 인라인 삽화이며 별도 ERD viewer/스크립트/설명서 없음. 사용자 확정 auth-workspace-v1 / 그 브랜치 backend/ / 일반 push 승인; main 변경/병합/force push/자동 PR 금지. 이전 인증 조회는 중단되어 결과 미확인, 실제 branch/remote/push 미실행. 다음 원격 실행은 GitHub 인증/쓰기 권한·이름 충돌 확인과 안전한 별도 checkout 반입이다. dirty3 SHA 그대로/stage 제외. Figma는 게시 이후 별도 소통한다.
+현재 실행: M9 게시·원격SHA 확인 완료, 완료 기록 docs checkpoint 게시 후 인계. 공유 checkout `/private/tmp/worship-team-import.xghq94/repository`, branch auth-workspace-v1, Backend root backend/. 공유 main=c876286, 최초 반입 e21c4a3. 원래 로컬 main은 원격에 연결/게시하지 않았다. source dirty3은SHA 그대로/stage 제외, 공유 반입에는 현재 검증한 bytes를 포함했다. Figma는 아직 미실행이며 시작 전 사용자와 별도 소통한다. reader5개/SVG7개 유지. 실제 provider/프론트/AI/운영 준비 완료가 아니다.
 
 확정 정책: D-08 ACTIVE 공간 ADMIN 정확히 1명/원자적 이전; 강제 제거에만 확인 후 필요한 MANAGER 승계; 자발적 leave/withdraw 책임 이전; 인원 수 무관 ADMIN 종료·이름 재입력·현재 영향 확인; 원자적 상태/소속/초대/본인 알림; 종료 당시 구성원 최소 상태만, 자료/제목/구성원 및 무관한 사용자 상태 비공개; 즉시 삭제/사용자 복구 없음·운영 복구 미보장; legacy 복수 ADMIN 임의 선정 금지. D-06 표시 이름만 공유, D-07 ADMIN/MANAGER 지정 통지 서비스 내(이메일 제외), D-05 보존기간 운영 전 미정. PDF 생성 EDIT, 다운로드 READ. Agent Runtime/실제 provider 부작용은 제외.
 
-M0–M8/M7b/M7c 완료. M9의 브랜치/배치는 사용자 확정했고 인증/반입은 미실행이다. Figma는 게시 이후 별도 소통한다.
+M0–M9/M7b/M7c 완료. GitHub 인증/명시 브랜치 push 및 원격SHA 확인 성공. Figma는 게시 이후 별도 소통한다.
 
 ## Outcomes
 
-공유 전 Backend 준비(1–8): 실제 악보 불변 PDF/다운로드 계약, 승인 권한 이전·승계·종료·본인 알림·표시 이름/권한 조회, 외부 I/O 후 현재 권한 재검사, 두 브라우저 충돌 계약, 26개 테이블 감사와5개 설명서를 전달한다. 최종 clean135/16 및 packaged startup 통과. 구조 통합/추가 성능 최적화는 논의 전 미적용이며 절대 최선이라고 단정하지 않는다. M2의 항목별 조회 측정은 1/10/30 항목에서 7/16/36 statements이며 bulk 최적화는 논의 전 보류한다. 공유 저장소 반입/commit(M9), Figma, 프론트/AI 통합과 운영 승인(D-02/D-05/실 provider/부하/키관리)은 미완료이며 별도 범위다.
+공유 전 Backend 준비(1–8): 실제 악보 불변 PDF/다운로드 계약, 승인 권한 이전·승계·종료·본인 알림·표시 이름/권한 조회, 외부 I/O 후 현재 권한 재검사, 두 브라우저 충돌 계약, 26개 테이블 감사와5개 설명서를 전달한다. 최종 clean135/16 및 packaged startup 통과. M9 공유 main 기반 backend 반입/commit/push/원격 확인도 완료했다. 구조 통합/추가 성능 최적화는 논의 전 미적용이며 절대 최선이라고 단정하지 않는다. M2의 항목별 조회 측정은 1/10/30 항목에서 7/16/36 statements이며 bulk 최적화는 논의 전 보류한다. Figma, 프론트/AI 통합과 운영 승인(D-02/D-05/실 provider/부하/키관리)은 미완료이며 별도 범위다.
