@@ -1,0 +1,17 @@
+{
+ "id": "gunhe17/worship-bpm-sweep-c",
+ "title": "worship-bpm-sweep-c",
+ "code_file": "sweep.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_internet": true,
+ "dataset_sources": [
+  "andradaolteanu/gtzan-dataset-music-genre-classification",
+  "gunhe17/worship-audio-analysis-test",
+  "gunhe17/worship-audio-500"
+ ],
+ "competition_sources": [],
+ "kernel_sources": []
+}

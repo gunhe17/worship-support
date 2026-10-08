@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>찬양 음원 분석</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 구성: 상단 바(제목·BPM/key 전환) → 왼쪽 곡 목록 | 오른쪽 곡 카드 · 범례 · 트랙 편집기. 색은 BPM과 key가 같은 4가지 의미를 공유한다. */
+:root{
+  --bg:#f5f6f7; --surface:#ffffff; --ink:#15181b; --ink-2:#4a5157; --ink-3:#858c92; --rule:#e2e5e8; --grid:#eef0f2; --hover:#f0f2f4;
+  --same:#2a78d6; --family:#1baf7a; --shift:#eb6834; --off:#a3a9ae; --bar:#dde1e5;
+  --sans:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --lw:236px; --pps:4;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#121416; --surface:#1a1d20; --ink:#f1f3f4; --ink-2:#b5bbc0; --ink-3:#848b91; --rule:#2b2f33; --grid:#23272a; --hover:#22262a;
+  --same:#3987e5; --family:#199e70; --shift:#d95926; --off:#666d73; --bar:#33383c; color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.55 var(--sans)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--same);outline-offset:2px}
+
+.bar-top{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--rule)}
+.bar-top .in{max-width:1480px;margin:0 auto;padding:12px 20px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
+.brand{display:flex;flex-direction:column;min-width:0;margin-right:auto}
+.brand b{font-size:18px;font-weight:700}
+.brand span{font-size:12px;color:var(--ink-3)}
+.seg{display:inline-flex;background:var(--bg);border:1px solid var(--rule);border-radius:10px;padding:3px;gap:3px}
+.seg button{border:0;background:none;padding:7px 26px;border-radius:7px;font-weight:600;cursor:pointer;color:var(--ink-2)}
+.seg button[aria-selected="true"]{background:var(--ink);color:var(--surface)}
+
+.page{max-width:1480px;margin:0 auto;padding:16px 20px 48px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:960px){.page{grid-template-columns:minmax(0,1fr)}}
+
+.side{position:sticky;top:76px;display:flex;flex-direction:column;gap:8px}
+.side input,.side select{width:100%;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+.count{font-size:12px;color:var(--ink-3);padding:0 2px}
+.list{background:var(--surface);border:1px solid var(--rule);border-radius:10px;max-height:calc(100vh - 250px);overflow:auto}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1px 10px;align-items:center;width:100%;text-align:left;border:0;border-bottom:1px solid var(--rule);background:none;padding:9px 12px;cursor:pointer}
+.item:hover{background:var(--hover)}
+.item[aria-current="true"]{background:var(--ink);color:var(--surface)}
+.item[aria-current="true"] .sub{color:var(--surface);opacity:.7}
+.item .ttl{font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item .sub{font-size:12px;color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item .chip{grid-row:1/3;grid-column:2}
+
+.main{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;min-width:0}
+.eyebrow{font-size:12px;color:var(--ink-3)}
+h1{font-size:22px;line-height:1.3;margin:2px 0 12px;text-wrap:balance}
+.stats{display:flex;flex-wrap:wrap;gap:10px}
+.stat{border:1px solid var(--rule);border-radius:10px;padding:8px 14px;min-width:120px;display:flex;flex-direction:column;gap:2px}
+.stat .k{font-size:12px;color:var(--ink-3)}
+.stat .v{font-family:var(--mono);font-size:20px;font-weight:500;display:flex;align-items:center;gap:8px}
+.stat.main-ans{border-color:var(--ink)}
+.note{font-size:13px;color:var(--ink-2);margin:10px 0 0}
+a{color:var(--same)}
+
+.chip{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:22px;padding:0 8px;border-radius:6px;font:500 12px var(--mono);color:#fff;white-space:nowrap}
+.chip.same{background:var(--same)} .chip.family{background:var(--family)} .chip.shift{background:var(--shift)} .chip.off{background:var(--off)}
+.chip.plain{background:var(--grid);color:var(--ink-2)}
+.chip.sm{height:18px;min-width:0;font-size:11px;padding:0 6px}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:12.5px;color:var(--ink-2)}
+.legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend em{font-style:normal;color:var(--ink-3)}
+.legend .ref{margin-left:auto;color:var(--ink-3)}
+
+.editor{background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:hidden;min-width:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--rule)}
+.toolbar button{border:1px solid var(--rule);background:var(--bg);border-radius:7px;padding:3px 11px;cursor:pointer}
+.toolbar input[type=range]{width:170px}
+.tc{font-family:var(--mono);font-size:13px;color:var(--ink-2);min-width:70px}
+.hint{font-size:12px;color:var(--ink-3);margin-left:auto}
+.vp{overflow:auto;max-height:calc(100vh - 210px);position:relative;cursor:grab;user-select:none;-webkit-user-select:none}
+.vp.drag{cursor:grabbing}
+.cv{position:relative}
+.row{display:flex;height:30px}
+.row.thin{height:18px}
+.row[hidden]{display:none}
+.lab{position:sticky;left:0;z-index:2;flex:0 0 var(--lw);width:var(--lw);background:var(--surface);border-right:1px solid var(--rule);display:flex;align-items:center;gap:8px;padding:0 10px 0 22px}
+.lab .nm{flex:1;min-width:0;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink-2)}
+.row.thin .lab .nm{font-size:11px;color:var(--ink-3)}
+.row.ref .lab .nm{color:var(--ink);font-weight:600}
+.row.ref{border-bottom:2px solid var(--rule)}
+.lane{position:relative;flex:0 0 auto;border-bottom:1px solid var(--grid)}
+.row.grp{height:30px;cursor:pointer}
+.row.grp .lab,.row.grp .lane{background:var(--bg)}
+.row.grp .lab{padding-left:8px}
+.row.grp .lab .nm{color:var(--ink);font-weight:600;font-size:12.5px}
+.row.grp .caret{width:12px;color:var(--ink-3);font-size:11px;transition:transform .15s}
+.row.grp[aria-expanded="false"] .caret{transform:rotate(-90deg)}
+.row.grp .sum{position:absolute;left:10px;top:5px;display:flex;gap:6px;align-items:center;font-size:12px;color:var(--ink-3);white-space:nowrap}
+.row.grp:hover .lab,.row.grp:hover .lane{background:var(--hover)}
+.b{position:absolute;top:4px;bottom:4px;left:calc(var(--a) * var(--pps) * 1px);width:max(1px, calc(var(--w) * var(--pps) * 1px - 2px));border-radius:4px;color:#fff;font:500 11.5px/22px var(--mono);padding-left:6px;overflow:hidden;white-space:nowrap}
+.row.thin .b{top:3px;bottom:3px;font-size:10px;line-height:12px;padding-left:3px;border-radius:2px}
+.b.same{background:var(--same)} .b.family{background:var(--family)} .b.shift{background:var(--shift)} .b.off{background:var(--off)}
+.b.bar4{background:var(--bar);color:var(--ink-3)} .b.bar2{background:var(--shift)} .b.barx{background:var(--off)}
+.b.chord{background:var(--grid);color:var(--ink-2);font-weight:400}
+.ruler{position:sticky;top:0;z-index:4;height:28px;background:var(--surface);border-bottom:1px solid var(--rule)}
+.ruler .lab{z-index:5}
+.tick{position:absolute;top:0;bottom:0;border-left:1px solid var(--rule);font:10.5px var(--mono);color:var(--ink-3);padding:4px 0 0 4px}
+.tick.minor{border-left-color:var(--grid);top:18px}
+.ph{position:absolute;top:0;width:0;border-left:1px solid var(--ink);z-index:6;pointer-events:none}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font:12px/1.5 var(--mono);padding:6px 9px;border-radius:6px;z-index:30;white-space:nowrap}
+details.card>summary{cursor:pointer;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th{font-weight:500;color:var(--ink-3);font-size:12px}
+td:first-child,th:first-child{text-align:left}
+.scroll{overflow-x:auto}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="bar-top"><div class="in">
+  <div class="brand"><b>찬양 음원 분석</b><span>한국 찬양팀 공식 음원 500곡 · BPM과 key 방법별 결과 · 2026-10-08</span></div>
+  <div class="seg" role="tablist" aria-label="결과 종류"><button role="tab" data-m="bpm" aria-selected="true">BPM</button><button role="tab" data-m="key" aria-selected="false">key</button></div>
+</div></div>
+
+<div class="page">
+  <aside class="side">
+    <input id="q" type="search" placeholder="곡·팀 검색" aria-label="곡·팀 검색">
+    <select id="set" aria-label="곡 묶음"></select>
+    <select id="flt" aria-label="거르기"></select>
+    <div class="count" id="count"></div>
+    <div class="list" id="list" role="listbox" aria-label="곡 목록"></div>
+  </aside>
+  <main class="main">
+    <section class="card" id="head"></section>
+    <section class="card" style="padding:10px 16px"><div class="legend" id="legend"></div></section>
+    <section class="editor">
+      <div class="toolbar">
+        <button id="zout" aria-label="축소">−</button>
+        <input id="zoom" type="range" min="0" max="100" value="0" aria-label="확대 정도">
+        <button id="zin" aria-label="확대">+</button>
+        <button id="fit">전체 보기</button>
+        <button id="expand">모두 펼치기</button>
+        <span class="tc" id="tc">0:00.0</span>
+        <span class="hint">Ctrl·⌘ + 휠 / 핀치로 확대 · 드래그로 이동 · 그룹 줄을 눌러 접기</span>
+      </div>
+      <div class="vp" id="vp"><div class="cv" id="cv"></div></div>
+    </section>
+    <details class="card" id="about"></details>
+  </main>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const KD = __KEY__, BD = __BPM__, SW = __SWEEP__;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const mmss = t => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+const tip = $("#tip");
+const showTip = (h, x, y) => { tip.innerHTML = h; tip.hidden = false; tip.style.left = Math.min(x + 14, innerWidth - tip.offsetWidth - 8) + "px"; tip.style.top = (y + 16) + "px"; };
+const hideTip = () => tip.hidden = true;
+
+// ---------- 공통 의미: same / family / shift / off ----------
+const CAT = {
+  bpm: { same: ["기준과 같음", "±4%"], family: ["같은 계열", "반·두 배"], shift: ["변화", "4% 넘게 빨라지거나 느려짐"], off: ["어긋남", "×4/3·×3/2 등 박 단위 혼동"] },
+  key: { same: ["기준과 같음", ""], family: ["같은 계열", "나란한조"], shift: ["변화", "+1·+2 반음 상승(key up 후보)"], off: ["어긋남", "다른 key"] },
+};
+function bcat(x, ref) {
+  if (!x || !ref) return "off";
+  const r = x / ref, near = f => Math.abs(Math.log(r / f)) <= Math.log(1.04);
+  if (near(1)) return "same";
+  if (near(2) || near(.5)) return "family";
+  if ([4 / 3, 3 / 4, 3 / 2, 2 / 3, 3, 1 / 3].some(f => Math.abs(Math.log(r / f)) <= .03)) return "off";
+  return "shift";
+}
+const SH = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], FL = { Db: "C#", Eb: "D#", Gb: "F#", Ab: "G#", Bb: "A#", Cb: "B", Fb: "E", "E#": "F", "B#": "C" };
+const NAMES = ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+function pk(s) { if (!s) return null; const p = String(s).trim().split(/\s+/); if (p.length < 2) return null; let n = p[0][0].toUpperCase() + p[0].slice(1); n = FL[n] || n; const i = SH.indexOf(n); if (i < 0) return null; const m = p[1].toLowerCase(); return m.startsWith("min") ? i + 12 : m.startsWith("maj") ? i : null; }
+const kn = k => k == null ? "—" : `${NAMES[k % 12]} ${k < 12 ? "major" : "minor"}`;
+const ks = k => k == null ? "?" : NAMES[k % 12] + (k < 12 ? "" : "m");
+function kcat(k, c) { if (k == null || c == null) return "off"; if (k === c) return "same"; const d = ((k % 12) - (c % 12) + 12) % 12, sm = (k < 12) === (c < 12); if (!sm && d === ((c < 12) ? 9 : 3)) return "family"; if (sm && (d === 1 || d === 2)) return "shift"; return "off"; }
+function kscore(e, r) { if (e == null) return "—"; if (e === r) return "정답"; const em = e >= 12, rm = r >= 12, d = ((e % 12) - (r % 12) + 12) % 12; if (em === rm && (d === 7 || d === 5)) return "5도"; if (em !== rm && d === (rm ? 3 : 9)) return "나란한조"; if (em !== rm && d === 0) return "같은 으뜸음"; return "오답"; }
+
+// ---------- 방법 이름 ----------
+const KNAME = n => {
+  const inp = n.endsWith("_stem") ? "stem" : n.endsWith("_mix") ? "믹스" : "";
+  const base = n.replace(/_(mix|stem)$/, "");
+  const map = { pipe: "key-pipeline", bl_ess: "사용자 코드 · Essentia", bl_lib: "사용자 코드 · librosa", cnn: "madmom CNN", cnnwin: "madmom CNN · 창별", chord_key: "madmom 코드 → key" };
+  let nm = map[base] || (base.startsWith("esswin_") ? `Essentia 창별 · ${base.slice(7)}` : base.startsWith("ess_") ? `Essentia · ${base.slice(4)}` : base.startsWith("tpl_") ? `템플릿 · ${base.slice(4)}` : base);
+  return inp ? `${nm} · ${inp}` : nm;
+};
+const KGROUPS = [
+  { name: "key-pipeline", sub: "구간 · 제약 없음", test: n => n.startsWith("pipe_"), open: true },
+  { name: "사용자 코드 (detect_musical_key.py)", sub: "구간 · AGPL / 제약 없음", test: n => n.startsWith("bl_"), open: true },
+  { name: "창별 판정", sub: "평활화 없음 · AGPL / 비상업", test: n => n.startsWith("esswin_") || n === "cnnwin_mix", open: true },
+  { name: "madmom", sub: "곡 key · 비상업", test: n => ["cnn_mix", "cnn_stem", "chord_key"].includes(n), open: true },
+  { name: "librosa 템플릿", sub: "곡 key · 제약 없음", test: n => n.startsWith("tpl_"), open: false },
+  { name: "Essentia 프로파일", sub: "곡 key · AGPL", test: n => n.startsWith("ess_"), open: false },
+];
+const BSW = [
+  ["beatthis_small0", "Beat This! small0", "MIT"], ["beatthis_final0_dbn", "Beat This! final0 + DBN", "MIT · madmom DBN"],
+  ["madmom_dbn", "madmom RNN + DBN", "비상업"], ["beatnet", "BeatNet", "CC BY"],
+  ["librosa_beat", "librosa beat_track", "ISC"], ["librosa_plp", "librosa PLP", "ISC"],
+  ["ess_multifeature", "Essentia multifeature", "AGPL"], ["ess_degara", "Essentia degara", "AGPL"],
+];
+const BTEMPO = [["deeprhythm", "DeepRhythm", "AGPL"], ["madmom_tempo", "madmom 템포", "비상업"], ["librosa_tempo", "librosa tempo", "ISC"], ["ess_percival", "Essentia Percival", "AGPL"], ["ess_tempocnn", "Essentia TempoCNN", "비상업"]];
+
+// ---------- 곡 준비 ----------
+KD.songs.forEach(s => {
+  const v = {}; KD.core.forEach(n => { const k = pk(s.m[n]?.k); if (k != null) v[k] = (v[k] || 0) + 1; });
+  const t = Object.entries(v).sort((a, b) => b[1] - a[1]);
+  s.cons = t.length ? +t[0][0] : null; s.consN = t.length ? t[0][1] : 0; s.coreN = Object.values(v).reduce((a, b) => a + b, 0);
+  s.refs = s.set === "synth" ? [pk(s.truth[0][1])].concat(["relative", "up1", "up2"].includes(s.kind) ? [pk(s.truth[s.truth.length - 1][1])] : []) : s.set === "gt3" ? s.main.map(pk) : null;
+});
+const run2 = bars => { let c = 0, b = 0; (bars || []).forEach(x => { c = x[1] === 2 ? c + 1 : 0; b = Math.max(b, c); }); return b; };
+BD.songs.forEach(s => s.r2 = run2(s.bars));
+
+// ---------- 모드 ----------
+const MODES = {
+  bpm: {
+    songs: BD.songs,
+    sets: [["", "모든 곡"], ["w500", "찬양 500곡"], ["gt3", "정답 있는 찬양 3곡"]],
+    flts: [["", "전체"], ["one", "BPM 하나로 응답"], ["multi", "템포 구간 2개 이상"], ["run2", "2박 마디가 이어진 곡"]],
+    pass: (s, f) => !f || (f === "one" ? s.st : f === "multi" ? s.sec.length > 1 : s.r2 >= 2),
+    chip: s => `<span class="chip ${s.st ? "same" : "shift"}">${s.st ? s.bpm : s.lo + "–" + s.hi}</span>`,
+    ref: "기준 = 곡 BPM (파이프라인 템포 중앙값)",
+  },
+  key: {
+    songs: KD.songs,
+    sets: [["", "모든 곡"], ["w500", "찬양 500곡"], ["gt3", "정답 있는 찬양 3곡"], ["synth", "합성 곡 (정답 있음)"]],
+    flts: [["", "전체"], ["keyup", "key up 후보"], ["split", "방법끼리 의견이 갈린 곡"]],
+    pass: (s, f) => !f || (f === "keyup" ? KD.keyup[s.id] : s.consN <= s.coreN / 2),
+    chip: s => `<span class="chip ${KD.keyup[s.id] ? "shift" : "same"}">${ks(s.cons)}</span>`,
+    ref: "기준 = 다수 의견 key (방법 7개의 최빈값)",
+  },
+};
+let mode = "bpm", cur = 0, song = null, pps = 4, fitPps = 4;
+const vp = $("#vp"), cv = $("#cv");
+const LW = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--lw"));
+
+function setMode(m, keepId) {
+  mode = m;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-selected", b.dataset.m === m));
+  const M = MODES[m];
+  $("#set").innerHTML = M.sets.map(([v, n]) => `<option value="${v}">${n}</option>`).join("");
+  $("#flt").innerHTML = M.flts.map(([v, n]) => `<option value="${v}">${n}</option>`).join("");
+  const C = CAT[m];
+  $("#legend").innerHTML = Object.entries(C).map(([k, [n, ex]]) => `<span><i class="sw" style="background:var(--${k})"></i>${n}${ex ? ` <em>${ex}</em>` : ""}</span>`).join("")
+    + (m === "bpm" ? `<span>마디 <i class="sw" style="background:var(--bar);margin-left:6px"></i>4박 <i class="sw" style="background:var(--shift);margin-left:8px"></i>2박 <i class="sw" style="background:var(--off);margin-left:8px"></i>그 밖</span>` : "")
+    + `<span class="ref">${M.ref}</span>`;
+  $("#about").innerHTML = m === "bpm" ? aboutBpm() : aboutKey();
+  let i = keepId ? M.songs.findIndex(s => s.id === keepId) : -1;
+  if (i < 0) i = M.songs.findIndex(s => s.id === "markers_love-of-god");
+  cur = Math.max(0, i); renderList(); select(cur);
+}
+function renderList() {
+  const M = MODES[mode], q = $("#q").value.trim().toLowerCase(), st = $("#set").value, f = $("#flt").value;
+  const rows = M.songs.map((s, i) => [s, i]).filter(([s]) => (!st || s.set === st) && (!q || (s.title + " " + (s.team || "")).toLowerCase().includes(q)) && M.pass(s, f));
+  $("#count").textContent = `${rows.length}곡`;
+  $("#list").innerHTML = rows.map(([s, i]) => `<button class="item" role="option" data-i="${i}" aria-current="${i === cur}"><span class="ttl">${esc(s.title)}</span><span class="sub">${esc(s.team || (s.set === "synth" ? "합성 곡 · " + s.kind : "정답 있는 찬양"))}</span>${M.chip(s)}</button>`).join("");
+  $("#list").querySelectorAll(".item").forEach(b => b.onclick = () => select(+b.dataset.i));
+}
+
+// ---------- 트랙 정의 ----------
+// row: {type:'ref'|'track'|'thin'|'grp', name, chip:{t,c}, bands:[{a,b,t,c,tip}], gid, open, sum}
+const B = (a, b, t, c, tip) => ({ a, b: Math.max(a, b), t, c, tip });
+function bpmRows(s) {
+  const R = [], ref = s.bpm, sw = SW[s.id] || {};
+  const secBands = (name, sec) => sec.map(([a, b, v]) => B(a, b, v, bcat(v, ref), `${name}<br>${mmss(a)}–${mmss(b)} · ${v} BPM`));
+  const barBands = (name, bars, end) => bars.map(([a, k], j) => B(a, j + 1 < bars.length ? bars[j + 1][0] : end, k, k === 4 ? "bar4" : k === 2 ? "bar2" : "barx", `${name} · 마디<br>${mmss(a)} · ${k}박`));
+  R.push({ type: "ref", name: "최종 응답", chip: { t: s.st ? s.bpm : `${s.lo}–${s.hi}`, c: s.st ? "same" : "shift" }, bands: [B(0, s.dur, s.st ? `${s.bpm} BPM` : `범위 ${s.lo}–${s.hi} BPM`, s.st ? "same" : "shift", "파이프라인 최종 응답")] });
+  const add = (gid, name, sub, rows) => { R.push({ type: "grp", gid, name, sub, open: true }); rows.forEach(r => R.push({ ...r, gid })); };
+  add("bt0", "Beat This! final0 · 현재 파이프라인", "MIT", [
+    { type: "track", name: "구간 템포", chip: { t: s.bpm, c: "same" }, bands: secBands("구간 템포", s.sec) },
+    { type: "track", name: "8 beat 창 템포", bands: s.ct.map((t, i) => B(t, i + 1 < s.ct.length ? s.ct[i + 1] : Math.min(s.dur, t + 4), s.cb[i], bcat(s.cb[i], ref), `8 beat 창<br>${mmss(t)} · ${s.cb[i]} BPM`)) },
+    ...(s.bars.length ? [{ type: "thin", name: `마디 · ${s.meter}박`, bands: barBands("Beat This! final0", s.bars, s.bend) }] : []),
+  ]);
+  BSW.forEach(([k, name, lic]) => {
+    const m = sw[k]; if (!m || !m.sec) return;
+    add(k, name, lic, [{ type: "track", name: "구간 템포", chip: { t: Math.round(m.med), c: bcat(m.med, ref) }, bands: secBands(name, m.sec) },
+      ...(m.bars ? [{ type: "thin", name: `마디 · ${m.m || "?"}박`, bands: barBands(name, m.bars, m.bend) }] : [])]);
+  });
+  const to = BTEMPO.filter(([k]) => sw[k]?.t);
+  if (to.length) add("tempo", "곡 템포 하나만 내는 방법", "", to.map(([k, name, lic]) => { const v = sw[k].t; return { type: "track", name: `${name}`, chip: { t: Math.round(v), c: bcat(v, ref) }, bands: [B(0, s.dur, `${Math.round(v)} BPM`, bcat(v, ref), `${name} (${lic})<br>${v} BPM`)] }; }));
+  return R;
+}
+function keyRows(s) {
+  const R = [], dur = s.dur;
+  const kb = (name, a, b, k) => B(a, b, ks(k), kcat(k, s.cons), `${esc(name)}<br>${mmss(a)}–${mmss(b)} · ${kn(k)}`);
+  if (s.truth) R.push({ type: "ref", name: "정답", chip: { t: s.truth.map(x => ks(pk(x[1]))).join("→"), c: "plain" }, bands: s.truth.map(([t, k], j) => kb("정답", t, j + 1 < s.truth.length ? s.truth[j + 1][0] : dur, pk(k))) });
+  else if (s.main) R.push({ type: "ref", name: "정답", chip: { t: s.main.map(x => ks(pk(x))).join(" / "), c: "plain" }, bands: [kb(`정답 (${s.main.join(" 또는 ")})`, 0, dur, pk(s.main[0]))] });
+  if (s.ch) R.push({ type: "thin", name: "코드 (madmom)", bands: s.ch.map(([a, b, l]) => B(a, b, l.replace(":maj", "").replace(":min", "m"), "chord", `코드<br>${mmss(a)}–${mmss(b)} · ${esc(l)}`)) });
+  KGROUPS.forEach((g, gi) => {
+    const names = Object.keys(s.m).filter(g.test).sort();
+    if (!names.length) return;
+    const rows = names.map(n => {
+      const m = s.m[n];
+      let bands, k;
+      if (m.seg) { bands = m.seg.map(([a, b, x]) => kb(KNAME(n), a, b, pk(x))); k = pk(m.k); }
+      else if (m.win) { const step = m.win.length > 1 ? m.win[1][0] - m.win[0][0] : 5; bands = m.win.map(([t, x], j) => kb(KNAME(n), t, j + 1 < m.win.length ? m.win[j + 1][0] : Math.min(dur, t + step), pk(x))); const c = {}; m.win.forEach(([, x]) => { const y = pk(x); if (y != null) c[y] = (c[y] || 0) + 1; }); const top = Object.entries(c).sort((a, b) => b[1] - a[1])[0]; k = top ? +top[0] : null; }
+      else { k = pk(m.k); bands = [kb(KNAME(n), 0, dur, k)]; }
+      return { type: "track", name: KNAME(n), chip: { t: ks(k), c: kcat(k, s.cons) }, bands, k };
+    });
+    const cnt = {};
+    rows.forEach(r => { cnt[r.chip.t] = cnt[r.chip.t] || { n: 0, c: r.chip.c }; cnt[r.chip.t].n++; });
+    const sum = Object.entries(cnt).sort((a, b) => b[1].n - a[1].n).slice(0, 4).map(([t, v]) => `<span class="chip sm ${v.c}">${t} ×${v.n}</span>`).join("");
+    R.push({ type: "grp", gid: "k" + gi, name: g.name, sub: g.sub, open: g.open, sum: `${rows.length}개 · ${sum}` });
+    rows.forEach(r => R.push({ ...r, gid: "k" + gi }));
+  });
+  return R;
+}
+
+// ---------- 그리기 ----------
+const openState = {};
+function select(i) {
+  const M = MODES[mode]; cur = i; song = M.songs[i];
+  try { history.replaceState(null, "", `#${mode === "bpm" ? "b" : "k"}.${song.id}`); } catch (e) {}
+  $("#list").querySelectorAll(".item").forEach(b => b.setAttribute("aria-current", +b.dataset.i === i));
+  $("#head").innerHTML = mode === "bpm" ? headBpm(song) : headKey(song);
+  const R = mode === "bpm" ? bpmRows(song) : keyRows(song);
+  let h = `<div class="row ruler"><div class="lab"><span class="nm">시간</span></div><div class="lane" id="rl"></div></div>`;
+  R.forEach(r => {
+    if (r.type === "grp") {
+      const open = openState[mode + r.gid] ?? r.open;
+      h += `<div class="row grp" data-g="${r.gid}" aria-expanded="${open}" tabindex="0" role="button"><div class="lab"><span class="caret">▾</span><span class="nm" title="${esc(r.name)} · ${esc(r.sub)}">${esc(r.name)}</span></div><div class="lane"><div class="sum">${esc(r.sub)}${r.sum ? " · " + r.sum : ""}</div></div></div>`;
+      return;
+    }
+    const hidden = r.gid && !(openState[mode + r.gid] ?? R.find(x => x.type === "grp" && x.gid === r.gid).open);
+    h += `<div class="row ${r.type === "ref" ? "ref" : r.type === "thin" ? "thin" : ""}" data-in="${r.gid || ""}"${hidden ? " hidden" : ""}><div class="lab"><span class="nm" title="${esc(r.name)}">${esc(r.name)}</span>${r.chip ? `<span class="chip ${r.type === "thin" ? "sm " : ""}${r.chip.c}">${esc(r.chip.t)}</span>` : ""}</div><div class="lane">${r.bands.map(b => `<div class="b ${b.c}" style="--a:${b.a};--w:${b.b - b.a}" data-tip="${esc(b.tip)}">${esc(b.t)}</div>`).join("")}</div></div>`;
+  });
+  cv.innerHTML = h + `<div class="ph" id="ph" hidden></div>`;
+  cv.querySelectorAll(".row.grp").forEach(g => { const t = () => toggle(g); g.onclick = t; g.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); t(); } }; });
+  fitPps = Math.max(0.5, (vp.clientWidth - LW() - 8) / song.dur);
+  setPps(fitPps); vp.scrollLeft = 0;
+}
+function toggle(g) {
+  const open = g.getAttribute("aria-expanded") !== "true";
+  g.setAttribute("aria-expanded", open); openState[mode + g.dataset.g] = open;
+  cv.querySelectorAll(`.row[data-in="${g.dataset.g}"]`).forEach(r => r.hidden = !open);
+}
+$("#expand").onclick = () => { const anyClosed = [...cv.querySelectorAll(".row.grp")].some(g => g.getAttribute("aria-expanded") === "false"); cv.querySelectorAll(".row.grp").forEach(g => { if ((g.getAttribute("aria-expanded") === "true") !== anyClosed) toggle(g); }); $("#expand").textContent = anyClosed ? "모두 접기" : "모두 펼치기"; };
+
+function stat(k, v, extra = "", cls = "") { return `<div class="stat ${cls}"><span class="k">${k}</span><span class="v">${v}${extra}</span></div>`; }
+function headBpm(s) {
+  return `<div class="eyebrow">${esc(s.team || "정답 있는 찬양")} · ${mmss(s.dur)}${s.set === "w500" ? ` · <a href="https://www.youtube.com/watch?v=${s.id}" target="_blank" rel="noopener">YouTube에서 듣기</a>` : ""}</div>
+  <h1>${esc(s.title)}</h1>
+  <div class="stats">${stat("최종 응답", s.st ? `${s.bpm}` : `${s.lo}–${s.hi}`, ` <span class="chip ${s.st ? "same" : "shift"}">${s.st ? "하나" : "범위"}</span>`, "main-ans")}
+  ${stat("반·두 배 후보", `${s.alt[0]} / ${s.alt[1]}`)}${stat("템포 구간", s.sec.length)}${stat("박자", (s.meter || "?") + "박")}${stat("2박 마디 연속", s.r2, s.r2 >= 2 ? ` <span class="chip shift sm">확인</span>` : "")}</div>`;
+}
+function headKey(s) {
+  const truth = s.truth ? s.truth.map(([t, k]) => `${ks(pk(k))} (${mmss(t)}~)`).join(" → ") : s.main ? s.main.map(x => ks(pk(x))).join(" / ") : null;
+  return `<div class="eyebrow">${esc(s.team || (s.set === "synth" ? "합성 곡 · " + s.kind : "정답 있는 찬양"))} · ${mmss(s.dur || 0)}${s.set === "w500" ? ` · <a href="https://www.youtube.com/watch?v=${s.id}" target="_blank" rel="noopener">YouTube에서 듣기</a>` : ""}</div>
+  <h1>${esc(s.title)}</h1>
+  <div class="stats">${stat("다수 의견 key", kn(s.cons), "", "main-ans")}${stat("동의한 방법", `${s.consN}/${s.coreN}`)}
+  ${truth ? stat("정답", truth) : ""}${KD.keyup[s.id] ? stat("key up 후보", KD.keyup[s.id].length + "개 방법", ` <span class="chip shift sm">확인</span>`) : ""}</div>`;
+}
+function aboutBpm() {
+  const have = new Set(Object.values(SW).flatMap(o => Object.keys(o)));
+  const list = [...BSW, ...BTEMPO].filter(([k]) => have.has(k)).map(x => x[1]);
+  return `<summary>BPM 결과에 대해</summary><p class="note">현재 파이프라인은 Beat This! final0으로 beat를 잡고 반·두 배 통일 → 안정(±4%)이면 BPM 하나, 아니면 범위 → 구간 → 마디 순으로 응답합니다.
+  GTZAN 996클립 정확도: 템포 Acc2 94.5% · Acc1 81.8% · beat F 0.893 · downbeat F 0.789 · 박자 78.0%.</p>
+  <p class="note">비교 방법(일괄 시험): ${list.join(", ") || "없음"}. 나머지 방법은 실행이 끝나면 다시 생성해 추가합니다.</p>`;
+}
+function aboutKey() {
+  const G = Object.entries(KD.global).sort((a, b) => b[1].mirex - a[1].mirex).slice(0, 10);
+  const Mo = Object.entries(KD.mod).sort((a, b) => (b[1].recall || 0) - (a[1].recall || 0));
+  return `<summary>key 결과에 대해</summary><p class="note">방법 45개(모델·알고리즘 8종)를 곡마다 돌렸습니다. 찬양 500곡 중 359곡 처리. 정답 있는 32곡(합성 29 + 찬양 3) 채점:</p>
+  <div class="scroll"><table><tr><th>곡 key 상위 10</th><th>MIREX</th><th>정확</th></tr>${G.map(([n, v]) => `<tr><td>${KNAME(n)}</td><td>${v.mirex.toFixed(3)}</td><td>${(v.correct * 100).toFixed(0)}%</td></tr>`).join("")}</table>
+  <table style="margin-top:10px"><tr><th>전조 검출 (합성 29곡)</th><th>정밀도</th><th>재현율</th></tr>${Mo.map(([n, v]) => `<tr><td>${KNAME(n)}</td><td>${v.precision == null ? "—" : (v.precision * 100).toFixed(0) + "%"}</td><td>${(v.recall * 100 || 0).toFixed(0)}%</td></tr>`).join("")}</table></div>
+  <p class="note">합성 단조 곡은 나란한조 장조와 화음이 같게 만들어져 나란한조 오류가 부풀려져 있습니다.</p>`;
+}
+
+// ---------- 확대·이동 ----------
+function setPps(p) {
+  const maxP = 200, lw = LW();
+  pps = Math.min(maxP, Math.max(fitPps, p));
+  cv.style.setProperty("--pps", pps);
+  const w = song.dur * pps;
+  cv.querySelectorAll(".lane").forEach(l => l.style.width = w + "px");
+  cv.style.width = (lw + w) + "px";
+  $("#zoom").value = Math.round(100 * Math.log(pps / fitPps) / Math.log(maxP / fitPps || 2));
+  const steps = [0.5, 1, 2, 5, 10, 15, 30, 60, 120], st = steps.find(x => x * pps >= 70) || 120, minor = steps[Math.max(0, steps.indexOf(st) - 1)];
+  let r = "";
+  for (let t = 0; t <= song.dur; t += minor) { const major = Math.abs(t / st - Math.round(t / st)) < 1e-6; r += `<div class="tick${major ? "" : " minor"}" style="left:${t * pps}px">${major ? (st < 1 ? mmss(t) + "." + Math.round((t % 1) * 10) : mmss(t)) : ""}</div>`; }
+  $("#rl").innerHTML = r;
+}
+function zoomAt(f, clientX) {
+  const lw = LW(), r = vp.getBoundingClientRect(), x = (clientX ?? (r.left + lw + (r.width - lw) / 2)) - r.left - lw, t = (vp.scrollLeft + x) / pps;
+  setPps(pps * f); vp.scrollLeft = t * pps - x;
+}
+vp.addEventListener("wheel", e => { if (e.ctrlKey || e.metaKey) { e.preventDefault(); zoomAt(Math.exp(-e.deltaY * 0.01), e.clientX); } }, { passive: false });
+$("#zin").onclick = () => zoomAt(1.6); $("#zout").onclick = () => zoomAt(1 / 1.6); $("#fit").onclick = () => { setPps(fitPps); vp.scrollLeft = 0; };
+$("#zoom").oninput = e => { const p = fitPps * Math.pow(200 / fitPps, e.target.value / 100); zoomAt(p / pps); };
+addEventListener("keydown", e => { if (e.target.matches("input,select")) return; if (e.key === "+" || e.key === "=") zoomAt(1.6); if (e.key === "-") zoomAt(1 / 1.6); if (e.key === "0") $("#fit").click(); });
+let drag = null;
+vp.addEventListener("mousedown", e => { if (e.button !== 0 || e.target.closest(".grp")) return; drag = { x: e.clientX, s: vp.scrollLeft }; vp.classList.add("drag"); });
+addEventListener("mouseup", () => { drag = null; vp.classList.remove("drag"); });
+vp.addEventListener("mousemove", e => {
+  if (drag) { vp.scrollLeft = drag.s - (e.clientX - drag.x); hideTip(); }
+  const lw = LW(), r = vp.getBoundingClientRect(), x = e.clientX - r.left + vp.scrollLeft - lw, ph = $("#ph");
+  if (x < 0 || !song || e.clientX - r.left < lw) { ph.hidden = true; hideTip(); return; }
+  const t = Math.min(song.dur, x / pps);
+  ph.hidden = false; ph.style.left = (lw + t * pps) + "px"; ph.style.height = cv.scrollHeight + "px";
+  $("#tc").textContent = `${mmss(t)}.${Math.floor((t % 1) * 10)}`;
+  const b = e.target.closest("[data-tip]");
+  if (b && !drag) showTip(b.dataset.tip, e.clientX, e.clientY); else hideTip();
+});
+vp.addEventListener("mouseleave", () => { $("#ph").hidden = true; hideTip(); });
+addEventListener("resize", () => { if (!song) return; const wasFit = pps <= fitPps * 1.001; fitPps = Math.max(0.5, (vp.clientWidth - LW() - 8) / song.dur); setPps(wasFit ? fitPps : pps); });
+
+document.querySelectorAll(".seg button").forEach(b => b.onclick = () => setMode(b.dataset.m, song && song.id));
+$("#q").oninput = renderList; $("#set").onchange = renderList; $("#flt").onchange = renderList;
+const hh = location.hash.slice(1);
+setMode(hh.startsWith("k.") ? "key" : "bpm", hh.slice(2) || null);
+</script>
+</body>
+</html>

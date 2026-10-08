@@ -1,0 +1,13 @@
+{
+  "id": "gunhe17/worship-key-sweep-summary",
+  "title": "worship-key-sweep-summary",
+  "code_file": "sweep.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": ["gunhe17/worship-key-sweep-v1-songs"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

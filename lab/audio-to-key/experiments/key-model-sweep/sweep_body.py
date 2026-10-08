@@ -309,8 +309,9 @@ def events(m):  # 방법 출력 → [(시각, key)] 변화 이벤트
     return []
 
 
-def summarize():
-    rows = [json.load(open(f)) for f in sorted(glob.glob(f"{OUT}/songs/*.json"))]
+def summarize(src=OUT):
+    rows = [json.load(open(f)) for f in sorted(glob.glob(f"{src}/songs/*.json"))]
+    os.makedirs(OUT, exist_ok=True)
     names = sorted({n for r in rows for n in r.get("methods", {})})
     S = {"n": {s: sum(r["set"] == s for r in rows) for s in ("synth", "gt3", "w500")}, "methods": names, "global": {}, "modulation": {}, "agreement": {}}
     # 곡 key 채점: 합성(첫 key, relative 곡은 두 key 모두 정답) + 3곡(main 목록 중 하나)
@@ -397,6 +398,13 @@ def selftest():
 
 
 if __name__ == "__main__":
+    for r, ds, fs in os.walk("/kaggle/input"):
+        if r.count("/") <= 6:
+            print("INPUT", r, len(fs), ds[:5], fs[:3], flush=True)
+    done = glob.glob("/kaggle/input/**/songs/*.json", recursive=True)
+    if done and not glob.glob("/kaggle/input/**/songs.json", recursive=True):  # 집계 전용: 앞 커널 출력만 붙인 경우
+        summarize(os.path.dirname(os.path.dirname(done[0])))
+        sys.exit(0)
     sh = lambda c: subprocess.run(c, shell=True)
     pip = f"{sys.executable} -m pip install -q"
     sh(f"{pip} cython numpy soundfile demucs essentia > /kaggle/working/pip.log 2>&1")

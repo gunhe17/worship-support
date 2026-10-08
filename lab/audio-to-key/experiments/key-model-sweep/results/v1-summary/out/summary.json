@@ -1,0 +1,5420 @@
+{
+ "n": {
+  "synth": 29,
+  "gt3": 3,
+  "w500": 359
+ },
+ "methods": [
+  "bl_ess",
+  "bl_lib",
+  "chord_key",
+  "cnn_mix",
+  "cnn_stem",
+  "cnnwin_mix",
+  "ess_bgate_mix",
+  "ess_bgate_stem",
+  "ess_braw_mix",
+  "ess_braw_stem",
+  "ess_diatonic_mix",
+  "ess_diatonic_stem",
+  "ess_edma_mix",
+  "ess_edma_stem",
+  "ess_edmm_mix",
+  "ess_edmm_stem",
+  "ess_gomez_mix",
+  "ess_gomez_stem",
+  "ess_krumhansl_mix",
+  "ess_krumhansl_stem",
+  "ess_noland_mix",
+  "ess_noland_stem",
+  "ess_shaath_mix",
+  "ess_shaath_stem",
+  "ess_temperley2005_mix",
+  "ess_temperley2005_stem",
+  "ess_temperley_mix",
+  "ess_temperley_stem",
+  "ess_thpcp_mix",
+  "ess_thpcp_stem",
+  "ess_tonictriad_mix",
+  "ess_tonictriad_stem",
+  "ess_weichai_mix",
+  "ess_weichai_stem",
+  "esswin_bgate",
+  "esswin_edma",
+  "esswin_temperley",
+  "pipe_mix",
+  "pipe_stem",
+  "tpl_albrecht_mix",
+  "tpl_albrecht_stem",
+  "tpl_kk_mix",
+  "tpl_kk_stem",
+  "tpl_temperley_mix",
+  "tpl_temperley_stem"
+ ],
+ "global": {
+  "bl_ess": {
+   "n": 32,
+   "mirex": 0.728,
+   "correct": 0.625,
+   "cats": {
+    "correct": 20,
+    "relative": 11,
+    "other": 1
+   }
+  },
+  "bl_lib": {
+   "n": 32,
+   "mirex": 0.722,
+   "correct": 0.594,
+   "cats": {
+    "correct": 19,
+    "fifth_up": 1,
+    "relative": 12
+   }
+  },
+  "chord_key": {
+   "n": 32,
+   "mirex": 0.691,
+   "correct": 0.562,
+   "cats": {
+    "correct": 18,
+    "other": 1,
+    "relative": 12,
+    "fifth_up": 1
+   }
+  },
+  "cnn_mix": {
+   "n": 32,
+   "mirex": 0.603,
+   "correct": 0.438,
+   "cats": {
+    "correct": 14,
+    "relative": 6,
+    "other": 5,
+    "fifth_up": 7
+   }
+  },
+  "cnn_stem": {
+   "n": 32,
+   "mirex": 0.537,
+   "correct": 0.375,
+   "cats": {
+    "correct": 12,
+    "other": 7,
+    "fifth_up": 7,
+    "relative": 5,
+    "parallel": 1
+   }
+  },
+  "ess_bgate_mix": {
+   "n": 32,
+   "mirex": 0.206,
+   "correct": 0.188,
+   "cats": {
+    "fifth_down": 12,
+    "correct": 6,
+    "other": 12,
+    "relative": 2
+   }
+  },
+  "ess_bgate_stem": {
+   "n": 32,
+   "mirex": 0.206,
+   "correct": 0.188,
+   "cats": {
+    "correct": 6,
+    "fifth_down": 12,
+    "other": 12,
+    "relative": 2
+   }
+  },
+  "ess_braw_mix": {
+   "n": 32,
+   "mirex": 0.206,
+   "correct": 0.188,
+   "cats": {
+    "fifth_down": 12,
+    "correct": 6,
+    "other": 12,
+    "relative": 2
+   }
+  },
+  "ess_braw_stem": {
+   "n": 32,
+   "mirex": 0.206,
+   "correct": 0.188,
+   "cats": {
+    "correct": 6,
+    "fifth_down": 12,
+    "other": 12,
+    "relative": 2
+   }
+  },
+  "ess_diatonic_mix": {
+   "n": 32,
+   "mirex": 0.572,
+   "correct": 0.5,
+   "cats": {
+    "correct": 16,
+    "other": 6,
+    "relative": 6,
+    "fifth_down": 3,
+    "fifth_up": 1
+   }
+  },
+  "ess_diatonic_stem": {
+   "n": 32,
+   "mirex": 0.556,
+   "correct": 0.5,
+   "cats": {
+    "correct": 16,
+    "relative": 6,
+    "fifth_down": 4,
+    "other": 6
+   }
+  },
+  "ess_edma_mix": {
+   "n": 32,
+   "mirex": 0.419,
+   "correct": 0.375,
+   "cats": {
+    "correct": 12,
+    "other": 9,
+    "fifth_down": 7,
+    "relative": 3,
+    "fifth_up": 1
+   }
+  },
+  "ess_edma_stem": {
+   "n": 32,
+   "mirex": 0.278,
+   "correct": 0.25,
+   "cats": {
+    "correct": 8,
+    "fifth_down": 10,
+    "other": 11,
+    "relative": 3
+   }
+  },
+  "ess_edmm_mix": {
+   "n": 32,
+   "mirex": 0.556,
+   "correct": 0.469,
+   "cats": {
+    "correct": 15,
+    "fifth_up": 2,
+    "relative": 6,
+    "fifth_down": 3,
+    "other": 6
+   }
+  },
+  "ess_edmm_stem": {
+   "n": 32,
+   "mirex": 0.556,
+   "correct": 0.5,
+   "cats": {
+    "correct": 16,
+    "relative": 6,
+    "fifth_down": 4,
+    "other": 6
+   }
+  },
+  "ess_gomez_mix": {
+   "n": 32,
+   "mirex": 0.166,
+   "correct": 0.156,
+   "cats": {
+    "fifth_down": 13,
+    "correct": 5,
+    "other": 13,
+    "relative": 1
+   }
+  },
+  "ess_gomez_stem": {
+   "n": 32,
+   "mirex": 0.156,
+   "correct": 0.156,
+   "cats": {
+    "fifth_down": 13,
+    "correct": 5,
+    "other": 14
+   }
+  },
+  "ess_krumhansl_mix": {
+   "n": 32,
+   "mirex": 0.491,
+   "correct": 0.438,
+   "cats": {
+    "correct": 14,
+    "relative": 4,
+    "fifth_down": 6,
+    "other": 7,
+    "fifth_up": 1
+   }
+  },
+  "ess_krumhansl_stem": {
+   "n": 32,
+   "mirex": 0.434,
+   "correct": 0.406,
+   "cats": {
+    "correct": 13,
+    "other": 10,
+    "fifth_down": 6,
+    "relative": 3
+   }
+  },
+  "ess_noland_mix": {
+   "n": 32,
+   "mirex": 0.262,
+   "correct": 0.219,
+   "cats": {
+    "fifth_down": 11,
+    "correct": 7,
+    "other": 10,
+    "relative": 3,
+    "fifth_up": 1
+   }
+  },
+  "ess_noland_stem": {
+   "n": 32,
+   "mirex": 0.247,
+   "correct": 0.219,
+   "cats": {
+    "correct": 7,
+    "fifth_down": 11,
+    "other": 11,
+    "relative": 3
+   }
+  },
+  "ess_shaath_mix": {
+   "n": 32,
+   "mirex": 0.491,
+   "correct": 0.438,
+   "cats": {
+    "correct": 14,
+    "relative": 4,
+    "fifth_down": 6,
+    "other": 7,
+    "fifth_up": 1
+   }
+  },
+  "ess_shaath_stem": {
+   "n": 32,
+   "mirex": 0.403,
+   "correct": 0.375,
+   "cats": {
+    "correct": 12,
+    "other": 10,
+    "fifth_down": 7,
+    "relative": 3
+   }
+  },
+  "ess_temperley2005_mix": {
+   "n": 32,
+   "mirex": 0.262,
+   "correct": 0.219,
+   "cats": {
+    "fifth_down": 11,
+    "correct": 7,
+    "other": 10,
+    "relative": 3,
+    "fifth_up": 1
+   }
+  },
+  "ess_temperley2005_stem": {
+   "n": 32,
+   "mirex": 0.247,
+   "correct": 0.219,
+   "cats": {
+    "correct": 7,
+    "fifth_down": 11,
+    "other": 11,
+    "relative": 3
+   }
+  },
+  "ess_temperley_mix": {
+   "n": 32,
+   "mirex": 0.509,
+   "correct": 0.438,
+   "cats": {
+    "correct": 14,
+    "other": 6,
+    "relative": 6,
+    "fifth_down": 5,
+    "fifth_up": 1
+   }
+  },
+  "ess_temperley_stem": {
+   "n": 32,
+   "mirex": 0.537,
+   "correct": 0.5,
+   "cats": {
+    "correct": 16,
+    "relative": 4,
+    "fifth_down": 4,
+    "other": 8
+   }
+  },
+  "ess_thpcp_mix": {
+   "n": 32,
+   "mirex": 0.2,
+   "correct": 0.156,
+   "cats": {
+    "fifth_down": 13,
+    "correct": 5,
+    "other": 10,
+    "relative": 3,
+    "fifth_up": 1
+   }
+  },
+  "ess_thpcp_stem": {
+   "n": 32,
+   "mirex": 0.216,
+   "correct": 0.188,
+   "cats": {
+    "correct": 6,
+    "fifth_down": 12,
+    "other": 11,
+    "relative": 3
+   }
+  },
+  "ess_tonictriad_mix": {
+   "n": 32,
+   "mirex": 0.103,
+   "correct": 0.094,
+   "cats": {
+    "fifth_down": 15,
+    "correct": 3,
+    "other": 13,
+    "relative": 1
+   }
+  },
+  "ess_tonictriad_stem": {
+   "n": 32,
+   "mirex": 0.094,
+   "correct": 0.094,
+   "cats": {
+    "fifth_down": 15,
+    "correct": 3,
+    "other": 14
+   }
+  },
+  "ess_weichai_mix": {
+   "n": 32,
+   "mirex": 0.053,
+   "correct": 0.031,
+   "cats": {
+    "fifth_down": 7,
+    "correct": 1,
+    "other": 21,
+    "relative": 1,
+    "parallel": 2
+   }
+  },
+  "ess_weichai_stem": {
+   "n": 32,
+   "mirex": 0.125,
+   "correct": 0.094,
+   "cats": {
+    "correct": 3,
+    "other": 18,
+    "fifth_down": 7,
+    "relative": 2,
+    "parallel": 2
+   }
+  },
+  "pipe_mix": {
+   "n": 32,
+   "mirex": 0.631,
+   "correct": 0.531,
+   "cats": {
+    "correct": 17,
+    "fifth_up": 1,
+    "relative": 9,
+    "fifth_down": 2,
+    "other": 3
+   }
+  },
+  "pipe_stem": {
+   "n": 32,
+   "mirex": 0.688,
+   "correct": 0.594,
+   "cats": {
+    "correct": 19,
+    "relative": 10,
+    "fifth_down": 1,
+    "other": 2
+   }
+  },
+  "tpl_albrecht_mix": {
+   "n": 32,
+   "mirex": 0.488,
+   "correct": 0.406,
+   "cats": {
+    "correct": 13,
+    "other": 8,
+    "parallel": 2,
+    "relative": 4,
+    "fifth_down": 3,
+    "fifth_up": 2
+   }
+  },
+  "tpl_albrecht_stem": {
+   "n": 32,
+   "mirex": 0.556,
+   "correct": 0.5,
+   "cats": {
+    "correct": 16,
+    "other": 7,
+    "relative": 6,
+    "fifth_down": 3
+   }
+  },
+  "tpl_kk_mix": {
+   "n": 32,
+   "mirex": 0.666,
+   "correct": 0.562,
+   "cats": {
+    "correct": 18,
+    "fifth_up": 2,
+    "parallel": 1,
+    "relative": 7,
+    "fifth_down": 1,
+    "other": 3
+   }
+  },
+  "tpl_kk_stem": {
+   "n": 32,
+   "mirex": 0.669,
+   "correct": 0.531,
+   "cats": {
+    "correct": 17,
+    "fifth_up": 4,
+    "other": 3,
+    "relative": 8
+   }
+  },
+  "tpl_temperley_mix": {
+   "n": 32,
+   "mirex": 0.537,
+   "correct": 0.438,
+   "cats": {
+    "correct": 14,
+    "fifth_up": 3,
+    "relative": 5,
+    "fifth_down": 2,
+    "other": 7,
+    "parallel": 1
+   }
+  },
+  "tpl_temperley_stem": {
+   "n": 32,
+   "mirex": 0.572,
+   "correct": 0.5,
+   "cats": {
+    "correct": 16,
+    "fifth_up": 1,
+    "relative": 6,
+    "other": 6,
+    "fifth_down": 3
+   }
+  }
+ },
+ "modulation": {
+  "bl_ess": {
+   "tp": 0,
+   "fp": 4,
+   "fn": 29,
+   "precision": 0.0,
+   "recall": 0.0
+  },
+  "bl_lib": {
+   "tp": 0,
+   "fp": 0,
+   "fn": 29,
+   "precision": null,
+   "recall": 0.0
+  },
+  "cnnwin_mix": {
+   "tp": 3,
+   "fp": 19,
+   "fn": 26,
+   "precision": 0.136,
+   "recall": 0.103
+  },
+  "esswin_bgate": {
+   "tp": 8,
+   "fp": 82,
+   "fn": 21,
+   "precision": 0.089,
+   "recall": 0.276
+  },
+  "esswin_edma": {
+   "tp": 14,
+   "fp": 147,
+   "fn": 15,
+   "precision": 0.087,
+   "recall": 0.483
+  },
+  "esswin_temperley": {
+   "tp": 14,
+   "fp": 75,
+   "fn": 15,
+   "precision": 0.157,
+   "recall": 0.483
+  },
+  "pipe_mix": {
+   "tp": 5,
+   "fp": 2,
+   "fn": 24,
+   "precision": 0.714,
+   "recall": 0.172
+  },
+  "pipe_stem": {
+   "tp": 4,
+   "fp": 4,
+   "fn": 25,
+   "precision": 0.5,
+   "recall": 0.138
+  }
+ },
+ "agreement": {
+  "bl_ess|bl_lib": [
+   0.894,
+   0.914,
+   359
+  ],
+  "bl_ess|chord_key": [
+   0.925,
+   0.936,
+   359
+  ],
+  "bl_ess|cnn_mix": [
+   0.978,
+   0.978,
+   359
+  ],
+  "bl_ess|cnn_stem": [
+   0.961,
+   0.975,
+   359
+  ],
+  "bl_ess|ess_bgate_mix": [
+   0.71,
+   0.713,
+   359
+  ],
+  "bl_ess|ess_bgate_stem": [
+   0.632,
+   0.632,
+   359
+  ],
+  "bl_ess|ess_braw_mix": [
+   0.708,
+   0.71,
+   359
+  ],
+  "bl_ess|ess_braw_stem": [
+   0.632,
+   0.632,
+   359
+  ],
+  "bl_ess|ess_diatonic_mix": [
+   0.883,
+   0.886,
+   359
+  ],
+  "bl_ess|ess_diatonic_stem": [
+   0.85,
+   0.855,
+   359
+  ],
+  "bl_ess|ess_edma_mix": [
+   0.813,
+   0.816,
+   359
+  ],
+  "bl_ess|ess_edma_stem": [
+   0.755,
+   0.758,
+   359
+  ],
+  "bl_ess|ess_edmm_mix": [
+   0.877,
+   0.88,
+   359
+  ],
+  "bl_ess|ess_edmm_stem": [
+   0.847,
+   0.855,
+   359
+  ],
+  "bl_ess|ess_gomez_mix": [
+   0.365,
+   0.365,
+   359
+  ],
+  "bl_ess|ess_gomez_stem": [
+   0.323,
+   0.323,
+   359
+  ],
+  "bl_ess|ess_krumhansl_mix": [
+   0.836,
+   0.838,
+   359
+  ],
+  "bl_ess|ess_krumhansl_stem": [
+   0.805,
+   0.808,
+   359
+  ],
+  "bl_ess|ess_noland_mix": [
+   0.777,
+   0.78,
+   359
+  ],
+  "bl_ess|ess_noland_stem": [
+   0.694,
+   0.696,
+   359
+  ],
+  "bl_ess|ess_shaath_mix": [
+   0.836,
+   0.838,
+   359
+  ],
+  "bl_ess|ess_shaath_stem": [
+   0.802,
+   0.805,
+   359
+  ],
+  "bl_ess|ess_temperley2005_mix": [
+   0.777,
+   0.78,
+   359
+  ],
+  "bl_ess|ess_temperley2005_stem": [
+   0.699,
+   0.702,
+   359
+  ],
+  "bl_ess|ess_temperley_mix": [
+   0.861,
+   0.864,
+   359
+  ],
+  "bl_ess|ess_temperley_stem": [
+   0.83,
+   0.836,
+   359
+  ],
+  "bl_ess|ess_thpcp_mix": [
+   0.635,
+   0.638,
+   359
+  ],
+  "bl_ess|ess_thpcp_stem": [
+   0.543,
+   0.543,
+   359
+  ],
+  "bl_ess|ess_tonictriad_mix": [
+   0.217,
+   0.217,
+   359
+  ],
+  "bl_ess|ess_tonictriad_stem": [
+   0.175,
+   0.175,
+   359
+  ],
+  "bl_ess|ess_weichai_mix": [
+   0.439,
+   0.445,
+   346
+  ],
+  "bl_ess|ess_weichai_stem": [
+   0.368,
+   0.371,
+   348
+  ],
+  "bl_ess|pipe_mix": [
+   0.869,
+   0.886,
+   359
+  ],
+  "bl_ess|pipe_stem": [
+   0.903,
+   0.914,
+   359
+  ],
+  "bl_ess|tpl_albrecht_mix": [
+   0.88,
+   0.891,
+   359
+  ],
+  "bl_ess|tpl_albrecht_stem": [
+   0.877,
+   0.886,
+   359
+  ],
+  "bl_ess|tpl_kk_mix": [
+   0.85,
+   0.866,
+   359
+  ],
+  "bl_ess|tpl_kk_stem": [
+   0.852,
+   0.864,
+   359
+  ],
+  "bl_ess|tpl_temperley_mix": [
+   0.872,
+   0.88,
+   359
+  ],
+  "bl_ess|tpl_temperley_stem": [
+   0.905,
+   0.914,
+   359
+  ],
+  "bl_lib|chord_key": [
+   0.844,
+   0.872,
+   359
+  ],
+  "bl_lib|cnn_mix": [
+   0.883,
+   0.903,
+   359
+  ],
+  "bl_lib|cnn_stem": [
+   0.869,
+   0.9,
+   359
+  ],
+  "bl_lib|ess_bgate_mix": [
+   0.641,
+   0.657,
+   359
+  ],
+  "bl_lib|ess_bgate_stem": [
+   0.568,
+   0.582,
+   359
+  ],
+  "bl_lib|ess_braw_mix": [
+   0.638,
+   0.655,
+   359
+  ],
+  "bl_lib|ess_braw_stem": [
+   0.568,
+   0.582,
+   359
+  ],
+  "bl_lib|ess_diatonic_mix": [
+   0.808,
+   0.827,
+   359
+  ],
+  "bl_lib|ess_diatonic_stem": [
+   0.766,
+   0.791,
+   359
+  ],
+  "bl_lib|ess_edma_mix": [
+   0.744,
+   0.76,
+   359
+  ],
+  "bl_lib|ess_edma_stem": [
+   0.677,
+   0.694,
+   359
+  ],
+  "bl_lib|ess_edmm_mix": [
+   0.802,
+   0.822,
+   359
+  ],
+  "bl_lib|ess_edmm_stem": [
+   0.763,
+   0.791,
+   359
+  ],
+  "bl_lib|ess_gomez_mix": [
+   0.312,
+   0.326,
+   359
+  ],
+  "bl_lib|ess_gomez_stem": [
+   0.27,
+   0.281,
+   359
+  ],
+  "bl_lib|ess_krumhansl_mix": [
+   0.76,
+   0.78,
+   359
+  ],
+  "bl_lib|ess_krumhansl_stem": [
+   0.724,
+   0.744,
+   359
+  ],
+  "bl_lib|ess_noland_mix": [
+   0.708,
+   0.724,
+   359
+  ],
+  "bl_lib|ess_noland_stem": [
+   0.624,
+   0.641,
+   359
+  ],
+  "bl_lib|ess_shaath_mix": [
+   0.76,
+   0.78,
+   359
+  ],
+  "bl_lib|ess_shaath_stem": [
+   0.721,
+   0.741,
+   359
+  ],
+  "bl_lib|ess_temperley2005_mix": [
+   0.708,
+   0.724,
+   359
+  ],
+  "bl_lib|ess_temperley2005_stem": [
+   0.627,
+   0.643,
+   359
+  ],
+  "bl_lib|ess_temperley_mix": [
+   0.786,
+   0.805,
+   359
+  ],
+  "bl_lib|ess_temperley_stem": [
+   0.749,
+   0.772,
+   359
+  ],
+  "bl_lib|ess_thpcp_mix": [
+   0.565,
+   0.582,
+   359
+  ],
+  "bl_lib|ess_thpcp_stem": [
+   0.482,
+   0.496,
+   359
+  ],
+  "bl_lib|ess_tonictriad_mix": [
+   0.187,
+   0.192,
+   359
+  ],
+  "bl_lib|ess_tonictriad_stem": [
+   0.145,
+   0.148,
+   359
+  ],
+  "bl_lib|ess_weichai_mix": [
+   0.393,
+   0.41,
+   346
+  ],
+  "bl_lib|ess_weichai_stem": [
+   0.328,
+   0.339,
+   348
+  ],
+  "bl_lib|pipe_mix": [
+   0.914,
+   0.922,
+   359
+  ],
+  "bl_lib|pipe_stem": [
+   0.872,
+   0.894,
+   359
+  ],
+  "bl_lib|tpl_albrecht_mix": [
+   0.827,
+   0.847,
+   359
+  ],
+  "bl_lib|tpl_albrecht_stem": [
+   0.816,
+   0.833,
+   359
+  ],
+  "bl_lib|tpl_kk_mix": [
+   0.861,
+   0.875,
+   359
+  ],
+  "bl_lib|tpl_kk_stem": [
+   0.83,
+   0.85,
+   359
+  ],
+  "bl_lib|tpl_temperley_mix": [
+   0.822,
+   0.838,
+   359
+  ],
+  "bl_lib|tpl_temperley_stem": [
+   0.833,
+   0.858,
+   359
+  ],
+  "chord_key|cnn_mix": [
+   0.93,
+   0.942,
+   359
+  ],
+  "chord_key|cnn_stem": [
+   0.925,
+   0.944,
+   359
+  ],
+  "chord_key|ess_bgate_mix": [
+   0.716,
+   0.724,
+   359
+  ],
+  "chord_key|ess_bgate_stem": [
+   0.638,
+   0.646,
+   359
+  ],
+  "chord_key|ess_braw_mix": [
+   0.713,
+   0.721,
+   359
+  ],
+  "chord_key|ess_braw_stem": [
+   0.638,
+   0.646,
+   359
+  ],
+  "chord_key|ess_diatonic_mix": [
+   0.905,
+   0.914,
+   359
+  ],
+  "chord_key|ess_diatonic_stem": [
+   0.872,
+   0.883,
+   359
+  ],
+  "chord_key|ess_edma_mix": [
+   0.83,
+   0.838,
+   359
+  ],
+  "chord_key|ess_edma_stem": [
+   0.766,
+   0.774,
+   359
+  ],
+  "chord_key|ess_edmm_mix": [
+   0.9,
+   0.908,
+   359
+  ],
+  "chord_key|ess_edmm_stem": [
+   0.869,
+   0.883,
+   359
+  ],
+  "chord_key|ess_gomez_mix": [
+   0.365,
+   0.368,
+   359
+  ],
+  "chord_key|ess_gomez_stem": [
+   0.32,
+   0.323,
+   359
+  ],
+  "chord_key|ess_krumhansl_mix": [
+   0.858,
+   0.866,
+   359
+  ],
+  "chord_key|ess_krumhansl_stem": [
+   0.816,
+   0.825,
+   359
+  ],
+  "chord_key|ess_noland_mix": [
+   0.788,
+   0.797,
+   359
+  ],
+  "chord_key|ess_noland_stem": [
+   0.702,
+   0.71,
+   359
+  ],
+  "chord_key|ess_shaath_mix": [
+   0.858,
+   0.866,
+   359
+  ],
+  "chord_key|ess_shaath_stem": [
+   0.813,
+   0.822,
+   359
+  ],
+  "chord_key|ess_temperley2005_mix": [
+   0.788,
+   0.797,
+   359
+  ],
+  "chord_key|ess_temperley2005_stem": [
+   0.708,
+   0.716,
+   359
+  ],
+  "chord_key|ess_temperley_mix": [
+   0.883,
+   0.891,
+   359
+  ],
+  "chord_key|ess_temperley_stem": [
+   0.847,
+   0.858,
+   359
+  ],
+  "chord_key|ess_thpcp_mix": [
+   0.638,
+   0.643,
+   359
+  ],
+  "chord_key|ess_thpcp_stem": [
+   0.552,
+   0.557,
+   359
+  ],
+  "chord_key|ess_tonictriad_mix": [
+   0.22,
+   0.223,
+   359
+  ],
+  "chord_key|ess_tonictriad_stem": [
+   0.175,
+   0.175,
+   359
+  ],
+  "chord_key|ess_weichai_mix": [
+   0.439,
+   0.442,
+   346
+  ],
+  "chord_key|ess_weichai_stem": [
+   0.371,
+   0.374,
+   348
+  ],
+  "chord_key|pipe_mix": [
+   0.816,
+   0.841,
+   359
+  ],
+  "chord_key|pipe_stem": [
+   0.85,
+   0.869,
+   359
+  ],
+  "chord_key|tpl_albrecht_mix": [
+   0.908,
+   0.919,
+   359
+  ],
+  "chord_key|tpl_albrecht_stem": [
+   0.891,
+   0.908,
+   359
+  ],
+  "chord_key|tpl_kk_mix": [
+   0.855,
+   0.886,
+   359
+  ],
+  "chord_key|tpl_kk_stem": [
+   0.869,
+   0.889,
+   359
+  ],
+  "chord_key|tpl_temperley_mix": [
+   0.886,
+   0.9,
+   359
+  ],
+  "chord_key|tpl_temperley_stem": [
+   0.919,
+   0.933,
+   359
+  ],
+  "cnn_mix|cnn_stem": [
+   0.967,
+   0.981,
+   359
+  ],
+  "cnn_mix|ess_bgate_mix": [
+   0.719,
+   0.721,
+   359
+  ],
+  "cnn_mix|ess_bgate_stem": [
+   0.643,
+   0.643,
+   359
+  ],
+  "cnn_mix|ess_braw_mix": [
+   0.716,
+   0.719,
+   359
+  ],
+  "cnn_mix|ess_braw_stem": [
+   0.643,
+   0.643,
+   359
+  ],
+  "cnn_mix|ess_diatonic_mix": [
+   0.897,
+   0.9,
+   359
+  ],
+  "cnn_mix|ess_diatonic_stem": [
+   0.864,
+   0.869,
+   359
+  ],
+  "cnn_mix|ess_edma_mix": [
+   0.827,
+   0.83,
+   359
+  ],
+  "cnn_mix|ess_edma_stem": [
+   0.769,
+   0.772,
+   359
+  ],
+  "cnn_mix|ess_edmm_mix": [
+   0.891,
+   0.894,
+   359
+  ],
+  "cnn_mix|ess_edmm_stem": [
+   0.861,
+   0.869,
+   359
+  ],
+  "cnn_mix|ess_gomez_mix": [
+   0.365,
+   0.365,
+   359
+  ],
+  "cnn_mix|ess_gomez_stem": [
+   0.329,
+   0.329,
+   359
+  ],
+  "cnn_mix|ess_krumhansl_mix": [
+   0.85,
+   0.852,
+   359
+  ],
+  "cnn_mix|ess_krumhansl_stem": [
+   0.819,
+   0.822,
+   359
+  ],
+  "cnn_mix|ess_noland_mix": [
+   0.786,
+   0.788,
+   359
+  ],
+  "cnn_mix|ess_noland_stem": [
+   0.705,
+   0.708,
+   359
+  ],
+  "cnn_mix|ess_shaath_mix": [
+   0.85,
+   0.852,
+   359
+  ],
+  "cnn_mix|ess_shaath_stem": [
+   0.816,
+   0.819,
+   359
+  ],
+  "cnn_mix|ess_temperley2005_mix": [
+   0.786,
+   0.788,
+   359
+  ],
+  "cnn_mix|ess_temperley2005_stem": [
+   0.71,
+   0.713,
+   359
+  ],
+  "cnn_mix|ess_temperley_mix": [
+   0.875,
+   0.877,
+   359
+  ],
+  "cnn_mix|ess_temperley_stem": [
+   0.844,
+   0.85,
+   359
+  ],
+  "cnn_mix|ess_thpcp_mix": [
+   0.638,
+   0.641,
+   359
+  ],
+  "cnn_mix|ess_thpcp_stem": [
+   0.554,
+   0.554,
+   359
+  ],
+  "cnn_mix|ess_tonictriad_mix": [
+   0.22,
+   0.22,
+   359
+  ],
+  "cnn_mix|ess_tonictriad_stem": [
+   0.181,
+   0.181,
+   359
+  ],
+  "cnn_mix|ess_weichai_mix": [
+   0.434,
+   0.439,
+   346
+  ],
+  "cnn_mix|ess_weichai_stem": [
+   0.371,
+   0.374,
+   348
+  ],
+  "cnn_mix|pipe_mix": [
+   0.861,
+   0.877,
+   359
+  ],
+  "cnn_mix|pipe_stem": [
+   0.897,
+   0.908,
+   359
+  ],
+  "cnn_mix|tpl_albrecht_mix": [
+   0.889,
+   0.9,
+   359
+  ],
+  "cnn_mix|tpl_albrecht_stem": [
+   0.877,
+   0.886,
+   359
+  ],
+  "cnn_mix|tpl_kk_mix": [
+   0.852,
+   0.869,
+   359
+  ],
+  "cnn_mix|tpl_kk_stem": [
+   0.85,
+   0.861,
+   359
+  ],
+  "cnn_mix|tpl_temperley_mix": [
+   0.877,
+   0.886,
+   359
+  ],
+  "cnn_mix|tpl_temperley_stem": [
+   0.911,
+   0.919,
+   359
+  ],
+  "cnn_stem|ess_bgate_mix": [
+   0.721,
+   0.73,
+   359
+  ],
+  "cnn_stem|ess_bgate_stem": [
+   0.641,
+   0.646,
+   359
+  ],
+  "cnn_stem|ess_braw_mix": [
+   0.719,
+   0.727,
+   359
+  ],
+  "cnn_stem|ess_braw_stem": [
+   0.641,
+   0.646,
+   359
+  ],
+  "cnn_stem|ess_diatonic_mix": [
+   0.886,
+   0.9,
+   359
+  ],
+  "cnn_stem|ess_diatonic_stem": [
+   0.861,
+   0.872,
+   359
+  ],
+  "cnn_stem|ess_edma_mix": [
+   0.822,
+   0.83,
+   359
+  ],
+  "cnn_stem|ess_edma_stem": [
+   0.766,
+   0.774,
+   359
+  ],
+  "cnn_stem|ess_edmm_mix": [
+   0.883,
+   0.894,
+   359
+  ],
+  "cnn_stem|ess_edmm_stem": [
+   0.858,
+   0.872,
+   359
+  ],
+  "cnn_stem|ess_gomez_mix": [
+   0.37,
+   0.373,
+   359
+  ],
+  "cnn_stem|ess_gomez_stem": [
+   0.331,
+   0.334,
+   359
+  ],
+  "cnn_stem|ess_krumhansl_mix": [
+   0.844,
+   0.852,
+   359
+  ],
+  "cnn_stem|ess_krumhansl_stem": [
+   0.816,
+   0.825,
+   359
+  ],
+  "cnn_stem|ess_noland_mix": [
+   0.786,
+   0.794,
+   359
+  ],
+  "cnn_stem|ess_noland_stem": [
+   0.702,
+   0.71,
+   359
+  ],
+  "cnn_stem|ess_shaath_mix": [
+   0.844,
+   0.852,
+   359
+  ],
+  "cnn_stem|ess_shaath_stem": [
+   0.813,
+   0.822,
+   359
+  ],
+  "cnn_stem|ess_temperley2005_mix": [
+   0.786,
+   0.794,
+   359
+  ],
+  "cnn_stem|ess_temperley2005_stem": [
+   0.708,
+   0.716,
+   359
+  ],
+  "cnn_stem|ess_temperley_mix": [
+   0.866,
+   0.877,
+   359
+  ],
+  "cnn_stem|ess_temperley_stem": [
+   0.844,
+   0.852,
+   359
+  ],
+  "cnn_stem|ess_thpcp_mix": [
+   0.643,
+   0.649,
+   359
+  ],
+  "cnn_stem|ess_thpcp_stem": [
+   0.554,
+   0.557,
+   359
+  ],
+  "cnn_stem|ess_tonictriad_mix": [
+   0.223,
+   0.226,
+   359
+  ],
+  "cnn_stem|ess_tonictriad_stem": [
+   0.187,
+   0.187,
+   359
+  ],
+  "cnn_stem|ess_weichai_mix": [
+   0.439,
+   0.445,
+   346
+  ],
+  "cnn_stem|ess_weichai_stem": [
+   0.368,
+   0.371,
+   348
+  ],
+  "cnn_stem|pipe_mix": [
+   0.847,
+   0.875,
+   359
+  ],
+  "cnn_stem|pipe_stem": [
+   0.891,
+   0.903,
+   359
+  ],
+  "cnn_stem|tpl_albrecht_mix": [
+   0.872,
+   0.897,
+   359
+  ],
+  "cnn_stem|tpl_albrecht_stem": [
+   0.869,
+   0.883,
+   359
+  ],
+  "cnn_stem|tpl_kk_mix": [
+   0.833,
+   0.864,
+   359
+  ],
+  "cnn_stem|tpl_kk_stem": [
+   0.85,
+   0.858,
+   359
+  ],
+  "cnn_stem|tpl_temperley_mix": [
+   0.869,
+   0.886,
+   359
+  ],
+  "cnn_stem|tpl_temperley_stem": [
+   0.911,
+   0.919,
+   359
+  ],
+  "ess_bgate_mix|ess_bgate_stem": [
+   0.836,
+   0.838,
+   359
+  ],
+  "ess_bgate_mix|ess_braw_mix": [
+   0.997,
+   0.997,
+   359
+  ],
+  "ess_bgate_mix|ess_braw_stem": [
+   0.836,
+   0.838,
+   359
+  ],
+  "ess_bgate_mix|ess_diatonic_mix": [
+   0.794,
+   0.794,
+   359
+  ],
+  "ess_bgate_mix|ess_diatonic_stem": [
+   0.813,
+   0.813,
+   359
+  ],
+  "ess_bgate_mix|ess_edma_mix": [
+   0.886,
+   0.886,
+   359
+  ],
+  "ess_bgate_mix|ess_edma_stem": [
+   0.875,
+   0.877,
+   359
+  ],
+  "ess_bgate_mix|ess_edmm_mix": [
+   0.802,
+   0.802,
+   359
+  ],
+  "ess_bgate_mix|ess_edmm_stem": [
+   0.813,
+   0.816,
+   359
+  ],
+  "ess_bgate_mix|ess_gomez_mix": [
+   0.627,
+   0.627,
+   359
+  ],
+  "ess_bgate_mix|ess_gomez_stem": [
+   0.574,
+   0.577,
+   359
+  ],
+  "ess_bgate_mix|ess_krumhansl_mix": [
+   0.855,
+   0.855,
+   359
+  ],
+  "ess_bgate_mix|ess_krumhansl_stem": [
+   0.85,
+   0.852,
+   359
+  ],
+  "ess_bgate_mix|ess_noland_mix": [
+   0.925,
+   0.925,
+   359
+  ],
+  "ess_bgate_mix|ess_noland_stem": [
+   0.866,
+   0.869,
+   359
+  ],
+  "ess_bgate_mix|ess_shaath_mix": [
+   0.852,
+   0.852,
+   359
+  ],
+  "ess_bgate_mix|ess_shaath_stem": [
+   0.855,
+   0.858,
+   359
+  ],
+  "ess_bgate_mix|ess_temperley2005_mix": [
+   0.928,
+   0.928,
+   359
+  ],
+  "ess_bgate_mix|ess_temperley2005_stem": [
+   0.872,
+   0.875,
+   359
+  ],
+  "ess_bgate_mix|ess_temperley_mix": [
+   0.822,
+   0.822,
+   359
+  ],
+  "ess_bgate_mix|ess_temperley_stem": [
+   0.833,
+   0.833,
+   359
+  ],
+  "ess_bgate_mix|ess_thpcp_mix": [
+   0.914,
+   0.914,
+   359
+  ],
+  "ess_bgate_mix|ess_thpcp_stem": [
+   0.78,
+   0.783,
+   359
+  ],
+  "ess_bgate_mix|ess_tonictriad_mix": [
+   0.476,
+   0.476,
+   359
+  ],
+  "ess_bgate_mix|ess_tonictriad_stem": [
+   0.426,
+   0.429,
+   359
+  ],
+  "ess_bgate_mix|ess_weichai_mix": [
+   0.59,
+   0.59,
+   346
+  ],
+  "ess_bgate_mix|ess_weichai_stem": [
+   0.52,
+   0.52,
+   348
+  ],
+  "ess_bgate_mix|pipe_mix": [
+   0.624,
+   0.638,
+   359
+  ],
+  "ess_bgate_mix|pipe_stem": [
+   0.638,
+   0.649,
+   359
+  ],
+  "ess_bgate_mix|tpl_albrecht_mix": [
+   0.721,
+   0.724,
+   359
+  ],
+  "ess_bgate_mix|tpl_albrecht_stem": [
+   0.727,
+   0.735,
+   359
+  ],
+  "ess_bgate_mix|tpl_kk_mix": [
+   0.635,
+   0.649,
+   359
+  ],
+  "ess_bgate_mix|tpl_kk_stem": [
+   0.627,
+   0.638,
+   359
+  ],
+  "ess_bgate_mix|tpl_temperley_mix": [
+   0.727,
+   0.727,
+   359
+  ],
+  "ess_bgate_mix|tpl_temperley_stem": [
+   0.73,
+   0.733,
+   359
+  ],
+  "ess_bgate_stem|ess_braw_mix": [
+   0.838,
+   0.841,
+   359
+  ],
+  "ess_bgate_stem|ess_braw_stem": [
+   1.0,
+   1.0,
+   359
+  ],
+  "ess_bgate_stem|ess_diatonic_mix": [
+   0.696,
+   0.696,
+   359
+  ],
+  "ess_bgate_stem|ess_diatonic_stem": [
+   0.758,
+   0.758,
+   359
+  ],
+  "ess_bgate_stem|ess_edma_mix": [
+   0.774,
+   0.777,
+   359
+  ],
+  "ess_bgate_stem|ess_edma_stem": [
+   0.872,
+   0.872,
+   359
+  ],
+  "ess_bgate_stem|ess_edmm_mix": [
+   0.702,
+   0.705,
+   359
+  ],
+  "ess_bgate_stem|ess_edmm_stem": [
+   0.758,
+   0.76,
+   359
+  ],
+  "ess_bgate_stem|ess_gomez_mix": [
+   0.685,
+   0.688,
+   359
+  ],
+  "ess_bgate_stem|ess_gomez_stem": [
+   0.669,
+   0.669,
+   359
+  ],
+  "ess_bgate_stem|ess_krumhansl_mix": [
+   0.744,
+   0.747,
+   359
+  ],
+  "ess_bgate_stem|ess_krumhansl_stem": [
+   0.819,
+   0.819,
+   359
+  ],
+  "ess_bgate_stem|ess_noland_mix": [
+   0.805,
+   0.808,
+   359
+  ],
+  "ess_bgate_stem|ess_noland_stem": [
+   0.93,
+   0.93,
+   359
+  ],
+  "ess_bgate_stem|ess_shaath_mix": [
+   0.741,
+   0.744,
+   359
+  ],
+  "ess_bgate_stem|ess_shaath_stem": [
+   0.825,
+   0.825,
+   359
+  ],
+  "ess_bgate_stem|ess_temperley2005_mix": [
+   0.808,
+   0.811,
+   359
+  ],
+  "ess_bgate_stem|ess_temperley2005_stem": [
+   0.93,
+   0.93,
+   359
+  ],
+  "ess_bgate_stem|ess_temperley_mix": [
+   0.724,
+   0.724,
+   359
+  ],
+  "ess_bgate_stem|ess_temperley_stem": [
+   0.783,
+   0.783,
+   359
+  ],
+  "ess_bgate_stem|ess_thpcp_mix": [
+   0.85,
+   0.852,
+   359
+  ],
+  "ess_bgate_stem|ess_thpcp_stem": [
+   0.894,
+   0.894,
+   359
+  ],
+  "ess_bgate_stem|ess_tonictriad_mix": [
+   0.54,
+   0.543,
+   359
+  ],
+  "ess_bgate_stem|ess_tonictriad_stem": [
+   0.521,
+   0.521,
+   359
+  ],
+  "ess_bgate_stem|ess_weichai_mix": [
+   0.538,
+   0.538,
+   346
+  ],
+  "ess_bgate_stem|ess_weichai_stem": [
+   0.572,
+   0.572,
+   348
+  ],
+  "ess_bgate_stem|pipe_mix": [
+   0.549,
+   0.56,
+   359
+  ],
+  "ess_bgate_stem|pipe_stem": [
+   0.571,
+   0.579,
+   359
+  ],
+  "ess_bgate_stem|tpl_albrecht_mix": [
+   0.643,
+   0.646,
+   359
+  ],
+  "ess_bgate_stem|tpl_albrecht_stem": [
+   0.66,
+   0.666,
+   359
+  ],
+  "ess_bgate_stem|tpl_kk_mix": [
+   0.565,
+   0.577,
+   359
+  ],
+  "ess_bgate_stem|tpl_kk_stem": [
+   0.557,
+   0.565,
+   359
+  ],
+  "ess_bgate_stem|tpl_temperley_mix": [
+   0.649,
+   0.655,
+   359
+  ],
+  "ess_bgate_stem|tpl_temperley_stem": [
+   0.657,
+   0.666,
+   359
+  ],
+  "ess_braw_mix|ess_braw_stem": [
+   0.838,
+   0.841,
+   359
+  ],
+  "ess_braw_mix|ess_diatonic_mix": [
+   0.791,
+   0.791,
+   359
+  ],
+  "ess_braw_mix|ess_diatonic_stem": [
+   0.811,
+   0.811,
+   359
+  ],
+  "ess_braw_mix|ess_edma_mix": [
+   0.883,
+   0.883,
+   359
+  ],
+  "ess_braw_mix|ess_edma_stem": [
+   0.872,
+   0.875,
+   359
+  ],
+  "ess_braw_mix|ess_edmm_mix": [
+   0.799,
+   0.799,
+   359
+  ],
+  "ess_braw_mix|ess_edmm_stem": [
+   0.811,
+   0.813,
+   359
+  ],
+  "ess_braw_mix|ess_gomez_mix": [
+   0.63,
+   0.63,
+   359
+  ],
+  "ess_braw_mix|ess_gomez_stem": [
+   0.577,
+   0.579,
+   359
+  ],
+  "ess_braw_mix|ess_krumhansl_mix": [
+   0.852,
+   0.852,
+   359
+  ],
+  "ess_braw_mix|ess_krumhansl_stem": [
+   0.847,
+   0.85,
+   359
+  ],
+  "ess_braw_mix|ess_noland_mix": [
+   0.922,
+   0.922,
+   359
+  ],
+  "ess_braw_mix|ess_noland_stem": [
+   0.864,
+   0.866,
+   359
+  ],
+  "ess_braw_mix|ess_shaath_mix": [
+   0.85,
+   0.85,
+   359
+  ],
+  "ess_braw_mix|ess_shaath_stem": [
+   0.852,
+   0.855,
+   359
+  ],
+  "ess_braw_mix|ess_temperley2005_mix": [
+   0.925,
+   0.925,
+   359
+  ],
+  "ess_braw_mix|ess_temperley2005_stem": [
+   0.869,
+   0.872,
+   359
+  ],
+  "ess_braw_mix|ess_temperley_mix": [
+   0.819,
+   0.819,
+   359
+  ],
+  "ess_braw_mix|ess_temperley_stem": [
+   0.83,
+   0.83,
+   359
+  ],
+  "ess_braw_mix|ess_thpcp_mix": [
+   0.916,
+   0.916,
+   359
+  ],
+  "ess_braw_mix|ess_thpcp_stem": [
+   0.783,
+   0.786,
+   359
+  ],
+  "ess_braw_mix|ess_tonictriad_mix": [
+   0.479,
+   0.479,
+   359
+  ],
+  "ess_braw_mix|ess_tonictriad_stem": [
+   0.429,
+   0.432,
+   359
+  ],
+  "ess_braw_mix|ess_weichai_mix": [
+   0.59,
+   0.59,
+   346
+  ],
+  "ess_braw_mix|ess_weichai_stem": [
+   0.52,
+   0.52,
+   348
+  ],
+  "ess_braw_mix|pipe_mix": [
+   0.621,
+   0.635,
+   359
+  ],
+  "ess_braw_mix|pipe_stem": [
+   0.635,
+   0.646,
+   359
+  ],
+  "ess_braw_mix|tpl_albrecht_mix": [
+   0.719,
+   0.721,
+   359
+  ],
+  "ess_braw_mix|tpl_albrecht_stem": [
+   0.724,
+   0.733,
+   359
+  ],
+  "ess_braw_mix|tpl_kk_mix": [
+   0.632,
+   0.646,
+   359
+  ],
+  "ess_braw_mix|tpl_kk_stem": [
+   0.624,
+   0.635,
+   359
+  ],
+  "ess_braw_mix|tpl_temperley_mix": [
+   0.724,
+   0.724,
+   359
+  ],
+  "ess_braw_mix|tpl_temperley_stem": [
+   0.727,
+   0.73,
+   359
+  ],
+  "ess_braw_stem|ess_diatonic_mix": [
+   0.696,
+   0.696,
+   359
+  ],
+  "ess_braw_stem|ess_diatonic_stem": [
+   0.758,
+   0.758,
+   359
+  ],
+  "ess_braw_stem|ess_edma_mix": [
+   0.774,
+   0.777,
+   359
+  ],
+  "ess_braw_stem|ess_edma_stem": [
+   0.872,
+   0.872,
+   359
+  ],
+  "ess_braw_stem|ess_edmm_mix": [
+   0.702,
+   0.705,
+   359
+  ],
+  "ess_braw_stem|ess_edmm_stem": [
+   0.758,
+   0.76,
+   359
+  ],
+  "ess_braw_stem|ess_gomez_mix": [
+   0.685,
+   0.688,
+   359
+  ],
+  "ess_braw_stem|ess_gomez_stem": [
+   0.669,
+   0.669,
+   359
+  ],
+  "ess_braw_stem|ess_krumhansl_mix": [
+   0.744,
+   0.747,
+   359
+  ],
+  "ess_braw_stem|ess_krumhansl_stem": [
+   0.819,
+   0.819,
+   359
+  ],
+  "ess_braw_stem|ess_noland_mix": [
+   0.805,
+   0.808,
+   359
+  ],
+  "ess_braw_stem|ess_noland_stem": [
+   0.93,
+   0.93,
+   359
+  ],
+  "ess_braw_stem|ess_shaath_mix": [
+   0.741,
+   0.744,
+   359
+  ],
+  "ess_braw_stem|ess_shaath_stem": [
+   0.825,
+   0.825,
+   359
+  ],
+  "ess_braw_stem|ess_temperley2005_mix": [
+   0.808,
+   0.811,
+   359
+  ],
+  "ess_braw_stem|ess_temperley2005_stem": [
+   0.93,
+   0.93,
+   359
+  ],
+  "ess_braw_stem|ess_temperley_mix": [
+   0.724,
+   0.724,
+   359
+  ],
+  "ess_braw_stem|ess_temperley_stem": [
+   0.783,
+   0.783,
+   359
+  ],
+  "ess_braw_stem|ess_thpcp_mix": [
+   0.85,
+   0.852,
+   359
+  ],
+  "ess_braw_stem|ess_thpcp_stem": [
+   0.894,
+   0.894,
+   359
+  ],
+  "ess_braw_stem|ess_tonictriad_mix": [
+   0.54,
+   0.543,
+   359
+  ],
+  "ess_braw_stem|ess_tonictriad_stem": [
+   0.521,
+   0.521,
+   359
+  ],
+  "ess_braw_stem|ess_weichai_mix": [
+   0.538,
+   0.538,
+   346
+  ],
+  "ess_braw_stem|ess_weichai_stem": [
+   0.572,
+   0.572,
+   348
+  ],
+  "ess_braw_stem|pipe_mix": [
+   0.549,
+   0.56,
+   359
+  ],
+  "ess_braw_stem|pipe_stem": [
+   0.571,
+   0.579,
+   359
+  ],
+  "ess_braw_stem|tpl_albrecht_mix": [
+   0.643,
+   0.646,
+   359
+  ],
+  "ess_braw_stem|tpl_albrecht_stem": [
+   0.66,
+   0.666,
+   359
+  ],
+  "ess_braw_stem|tpl_kk_mix": [
+   0.565,
+   0.577,
+   359
+  ],
+  "ess_braw_stem|tpl_kk_stem": [
+   0.557,
+   0.565,
+   359
+  ],
+  "ess_braw_stem|tpl_temperley_mix": [
+   0.649,
+   0.655,
+   359
+  ],
+  "ess_braw_stem|tpl_temperley_stem": [
+   0.657,
+   0.666,
+   359
+  ],
+  "ess_diatonic_mix|ess_diatonic_stem": [
+   0.905,
+   0.908,
+   359
+  ],
+  "ess_diatonic_mix|ess_edma_mix": [
+   0.908,
+   0.908,
+   359
+  ],
+  "ess_diatonic_mix|ess_edma_stem": [
+   0.813,
+   0.813,
+   359
+  ],
+  "ess_diatonic_mix|ess_edmm_mix": [
+   0.992,
+   0.992,
+   359
+  ],
+  "ess_diatonic_mix|ess_edmm_stem": [
+   0.9,
+   0.905,
+   359
+  ],
+  "ess_diatonic_mix|ess_gomez_mix": [
+   0.421,
+   0.421,
+   359
+  ],
+  "ess_diatonic_mix|ess_gomez_stem": [
+   0.373,
+   0.373,
+   359
+  ],
+  "ess_diatonic_mix|ess_krumhansl_mix": [
+   0.933,
+   0.933,
+   359
+  ],
+  "ess_diatonic_mix|ess_krumhansl_stem": [
+   0.858,
+   0.858,
+   359
+  ],
+  "ess_diatonic_mix|ess_noland_mix": [
+   0.869,
+   0.869,
+   359
+  ],
+  "ess_diatonic_mix|ess_noland_stem": [
+   0.763,
+   0.763,
+   359
+  ],
+  "ess_diatonic_mix|ess_shaath_mix": [
+   0.933,
+   0.933,
+   359
+  ],
+  "ess_diatonic_mix|ess_shaath_stem": [
+   0.855,
+   0.855,
+   359
+  ],
+  "ess_diatonic_mix|ess_temperley2005_mix": [
+   0.866,
+   0.866,
+   359
+  ],
+  "ess_diatonic_mix|ess_temperley2005_stem": [
+   0.76,
+   0.76,
+   359
+  ],
+  "ess_diatonic_mix|ess_temperley_mix": [
+   0.972,
+   0.972,
+   359
+  ],
+  "ess_diatonic_mix|ess_temperley_stem": [
+   0.886,
+   0.889,
+   359
+  ],
+  "ess_diatonic_mix|ess_thpcp_mix": [
+   0.708,
+   0.708,
+   359
+  ],
+  "ess_diatonic_mix|ess_thpcp_stem": [
+   0.599,
+   0.599,
+   359
+  ],
+  "ess_diatonic_mix|ess_tonictriad_mix": [
+   0.27,
+   0.27,
+   359
+  ],
+  "ess_diatonic_mix|ess_tonictriad_stem": [
+   0.226,
+   0.226,
+   359
+  ],
+  "ess_diatonic_mix|ess_weichai_mix": [
+   0.46,
+   0.46,
+   346
+  ],
+  "ess_diatonic_mix|ess_weichai_stem": [
+   0.391,
+   0.391,
+   348
+  ],
+  "ess_diatonic_mix|pipe_mix": [
+   0.788,
+   0.805,
+   359
+  ],
+  "ess_diatonic_mix|pipe_stem": [
+   0.811,
+   0.825,
+   359
+  ],
+  "ess_diatonic_mix|tpl_albrecht_mix": [
+   0.897,
+   0.903,
+   359
+  ],
+  "ess_diatonic_mix|tpl_albrecht_stem": [
+   0.875,
+   0.883,
+   359
+  ],
+  "ess_diatonic_mix|tpl_kk_mix": [
+   0.825,
+   0.841,
+   359
+  ],
+  "ess_diatonic_mix|tpl_kk_stem": [
+   0.819,
+   0.833,
+   359
+  ],
+  "ess_diatonic_mix|tpl_temperley_mix": [
+   0.891,
+   0.897,
+   359
+  ],
+  "ess_diatonic_mix|tpl_temperley_stem": [
+   0.891,
+   0.897,
+   359
+  ],
+  "ess_diatonic_stem|ess_edma_mix": [
+   0.903,
+   0.903,
+   359
+  ],
+  "ess_diatonic_stem|ess_edma_stem": [
+   0.886,
+   0.886,
+   359
+  ],
+  "ess_diatonic_stem|ess_edmm_mix": [
+   0.903,
+   0.903,
+   359
+  ],
+  "ess_diatonic_stem|ess_edmm_stem": [
+   0.989,
+   0.992,
+   359
+  ],
+  "ess_diatonic_stem|ess_gomez_mix": [
+   0.46,
+   0.46,
+   359
+  ],
+  "ess_diatonic_stem|ess_gomez_stem": [
+   0.429,
+   0.429,
+   359
+  ],
+  "ess_diatonic_stem|ess_krumhansl_mix": [
+   0.894,
+   0.894,
+   359
+  ],
+  "ess_diatonic_stem|ess_krumhansl_stem": [
+   0.939,
+   0.939,
+   359
+  ],
+  "ess_diatonic_stem|ess_noland_mix": [
+   0.872,
+   0.872,
+   359
+  ],
+  "ess_diatonic_stem|ess_noland_stem": [
+   0.827,
+   0.827,
+   359
+  ],
+  "ess_diatonic_stem|ess_shaath_mix": [
+   0.891,
+   0.891,
+   359
+  ],
+  "ess_diatonic_stem|ess_shaath_stem": [
+   0.933,
+   0.933,
+   359
+  ],
+  "ess_diatonic_stem|ess_temperley2005_mix": [
+   0.875,
+   0.875,
+   359
+  ],
+  "ess_diatonic_stem|ess_temperley2005_stem": [
+   0.827,
+   0.827,
+   359
+  ],
+  "ess_diatonic_stem|ess_temperley_mix": [
+   0.911,
+   0.914,
+   359
+  ],
+  "ess_diatonic_stem|ess_temperley_stem": [
+   0.975,
+   0.975,
+   359
+  ],
+  "ess_diatonic_stem|ess_thpcp_mix": [
+   0.733,
+   0.733,
+   359
+  ],
+  "ess_diatonic_stem|ess_thpcp_stem": [
+   0.666,
+   0.666,
+   359
+  ],
+  "ess_diatonic_stem|ess_tonictriad_mix": [
+   0.312,
+   0.312,
+   359
+  ],
+  "ess_diatonic_stem|ess_tonictriad_stem": [
+   0.281,
+   0.281,
+   359
+  ],
+  "ess_diatonic_stem|ess_weichai_mix": [
+   0.486,
+   0.486,
+   346
+  ],
+  "ess_diatonic_stem|ess_weichai_stem": [
+   0.437,
+   0.437,
+   348
+  ],
+  "ess_diatonic_stem|pipe_mix": [
+   0.747,
+   0.769,
+   359
+  ],
+  "ess_diatonic_stem|pipe_stem": [
+   0.777,
+   0.794,
+   359
+  ],
+  "ess_diatonic_stem|tpl_albrecht_mix": [
+   0.847,
+   0.855,
+   359
+  ],
+  "ess_diatonic_stem|tpl_albrecht_stem": [
+   0.858,
+   0.869,
+   359
+  ],
+  "ess_diatonic_stem|tpl_kk_mix": [
+   0.774,
+   0.797,
+   359
+  ],
+  "ess_diatonic_stem|tpl_kk_stem": [
+   0.786,
+   0.802,
+   359
+  ],
+  "ess_diatonic_stem|tpl_temperley_mix": [
+   0.844,
+   0.852,
+   359
+  ],
+  "ess_diatonic_stem|tpl_temperley_stem": [
+   0.883,
+   0.891,
+   359
+  ],
+  "ess_edma_mix|ess_edma_stem": [
+   0.88,
+   0.883,
+   359
+  ],
+  "ess_edma_mix|ess_edmm_mix": [
+   0.916,
+   0.916,
+   359
+  ],
+  "ess_edma_mix|ess_edmm_stem": [
+   0.903,
+   0.905,
+   359
+  ],
+  "ess_edma_mix|ess_gomez_mix": [
+   0.513,
+   0.513,
+   359
+  ],
+  "ess_edma_mix|ess_gomez_stem": [
+   0.462,
+   0.465,
+   359
+  ],
+  "ess_edma_mix|ess_krumhansl_mix": [
+   0.969,
+   0.969,
+   359
+  ],
+  "ess_edma_mix|ess_krumhansl_stem": [
+   0.905,
+   0.908,
+   359
+  ],
+  "ess_edma_mix|ess_noland_mix": [
+   0.955,
+   0.955,
+   359
+  ],
+  "ess_edma_mix|ess_noland_stem": [
+   0.833,
+   0.836,
+   359
+  ],
+  "ess_edma_mix|ess_shaath_mix": [
+   0.967,
+   0.967,
+   359
+  ],
+  "ess_edma_mix|ess_shaath_stem": [
+   0.905,
+   0.908,
+   359
+  ],
+  "ess_edma_mix|ess_temperley2005_mix": [
+   0.958,
+   0.958,
+   359
+  ],
+  "ess_edma_mix|ess_temperley2005_stem": [
+   0.838,
+   0.841,
+   359
+  ],
+  "ess_edma_mix|ess_temperley_mix": [
+   0.936,
+   0.936,
+   359
+  ],
+  "ess_edma_mix|ess_temperley_stem": [
+   0.911,
+   0.911,
+   359
+  ],
+  "ess_edma_mix|ess_thpcp_mix": [
+   0.799,
+   0.799,
+   359
+  ],
+  "ess_edma_mix|ess_thpcp_stem": [
+   0.685,
+   0.688,
+   359
+  ],
+  "ess_edma_mix|ess_tonictriad_mix": [
+   0.362,
+   0.362,
+   359
+  ],
+  "ess_edma_mix|ess_tonictriad_stem": [
+   0.315,
+   0.318,
+   359
+  ],
+  "ess_edma_mix|ess_weichai_mix": [
+   0.512,
+   0.512,
+   346
+  ],
+  "ess_edma_mix|ess_weichai_stem": [
+   0.448,
+   0.448,
+   348
+  ],
+  "ess_edma_mix|pipe_mix": [
+   0.727,
+   0.741,
+   359
+  ],
+  "ess_edma_mix|pipe_stem": [
+   0.738,
+   0.749,
+   359
+  ],
+  "ess_edma_mix|tpl_albrecht_mix": [
+   0.83,
+   0.833,
+   359
+  ],
+  "ess_edma_mix|tpl_albrecht_stem": [
+   0.83,
+   0.838,
+   359
+  ],
+  "ess_edma_mix|tpl_kk_mix": [
+   0.749,
+   0.763,
+   359
+  ],
+  "ess_edma_mix|tpl_kk_stem": [
+   0.741,
+   0.752,
+   359
+  ],
+  "ess_edma_mix|tpl_temperley_mix": [
+   0.833,
+   0.833,
+   359
+  ],
+  "ess_edma_mix|tpl_temperley_stem": [
+   0.844,
+   0.847,
+   359
+  ],
+  "ess_edma_stem|ess_edmm_mix": [
+   0.819,
+   0.822,
+   359
+  ],
+  "ess_edma_stem|ess_edmm_stem": [
+   0.886,
+   0.889,
+   359
+  ],
+  "ess_edma_stem|ess_gomez_mix": [
+   0.571,
+   0.574,
+   359
+  ],
+  "ess_edma_stem|ess_gomez_stem": [
+   0.543,
+   0.543,
+   359
+  ],
+  "ess_edma_stem|ess_krumhansl_mix": [
+   0.85,
+   0.852,
+   359
+  ],
+  "ess_edma_stem|ess_krumhansl_stem": [
+   0.947,
+   0.947,
+   359
+  ],
+  "ess_edma_stem|ess_noland_mix": [
+   0.883,
+   0.886,
+   359
+  ],
+  "ess_edma_stem|ess_noland_stem": [
+   0.93,
+   0.93,
+   359
+  ],
+  "ess_edma_stem|ess_shaath_mix": [
+   0.847,
+   0.85,
+   359
+  ],
+  "ess_edma_stem|ess_shaath_stem": [
+   0.953,
+   0.953,
+   359
+  ],
+  "ess_edma_stem|ess_temperley2005_mix": [
+   0.886,
+   0.889,
+   359
+  ],
+  "ess_edma_stem|ess_temperley2005_stem": [
+   0.942,
+   0.942,
+   359
+  ],
+  "ess_edma_stem|ess_temperley_mix": [
+   0.836,
+   0.836,
+   359
+  ],
+  "ess_edma_stem|ess_temperley_stem": [
+   0.911,
+   0.911,
+   359
+  ],
+  "ess_edma_stem|ess_thpcp_mix": [
+   0.822,
+   0.825,
+   359
+  ],
+  "ess_edma_stem|ess_thpcp_stem": [
+   0.774,
+   0.774,
+   359
+  ],
+  "ess_edma_stem|ess_tonictriad_mix": [
+   0.421,
+   0.423,
+   359
+  ],
+  "ess_edma_stem|ess_tonictriad_stem": [
+   0.396,
+   0.396,
+   359
+  ],
+  "ess_edma_stem|ess_weichai_mix": [
+   0.529,
+   0.529,
+   346
+  ],
+  "ess_edma_stem|ess_weichai_stem": [
+   0.503,
+   0.503,
+   348
+  ],
+  "ess_edma_stem|pipe_mix": [
+   0.657,
+   0.671,
+   359
+  ],
+  "ess_edma_stem|pipe_stem": [
+   0.691,
+   0.702,
+   359
+  ],
+  "ess_edma_stem|tpl_albrecht_mix": [
+   0.76,
+   0.763,
+   359
+  ],
+  "ess_edma_stem|tpl_albrecht_stem": [
+   0.78,
+   0.788,
+   359
+  ],
+  "ess_edma_stem|tpl_kk_mix": [
+   0.68,
+   0.694,
+   359
+  ],
+  "ess_edma_stem|tpl_kk_stem": [
+   0.682,
+   0.694,
+   359
+  ],
+  "ess_edma_stem|tpl_temperley_mix": [
+   0.752,
+   0.758,
+   359
+  ],
+  "ess_edma_stem|tpl_temperley_stem": [
+   0.786,
+   0.794,
+   359
+  ],
+  "ess_edmm_mix|ess_edmm_stem": [
+   0.905,
+   0.908,
+   359
+  ],
+  "ess_edmm_mix|ess_gomez_mix": [
+   0.429,
+   0.429,
+   359
+  ],
+  "ess_edmm_mix|ess_gomez_stem": [
+   0.379,
+   0.382,
+   359
+  ],
+  "ess_edmm_mix|ess_krumhansl_mix": [
+   0.942,
+   0.942,
+   359
+  ],
+  "ess_edmm_mix|ess_krumhansl_stem": [
+   0.861,
+   0.864,
+   359
+  ],
+  "ess_edmm_mix|ess_noland_mix": [
+   0.877,
+   0.877,
+   359
+  ],
+  "ess_edmm_mix|ess_noland_stem": [
+   0.76,
+   0.763,
+   359
+  ],
+  "ess_edmm_mix|ess_shaath_mix": [
+   0.942,
+   0.942,
+   359
+  ],
+  "ess_edmm_mix|ess_shaath_stem": [
+   0.861,
+   0.864,
+   359
+  ],
+  "ess_edmm_mix|ess_temperley2005_mix": [
+   0.875,
+   0.875,
+   359
+  ],
+  "ess_edmm_mix|ess_temperley2005_stem": [
+   0.766,
+   0.769,
+   359
+  ],
+  "ess_edmm_mix|ess_temperley_mix": [
+   0.964,
+   0.964,
+   359
+  ],
+  "ess_edmm_mix|ess_temperley_stem": [
+   0.883,
+   0.883,
+   359
+  ],
+  "ess_edmm_mix|ess_thpcp_mix": [
+   0.716,
+   0.716,
+   359
+  ],
+  "ess_edmm_mix|ess_thpcp_stem": [
+   0.602,
+   0.604,
+   359
+  ],
+  "ess_edmm_mix|ess_tonictriad_mix": [
+   0.279,
+   0.279,
+   359
+  ],
+  "ess_edmm_mix|ess_tonictriad_stem": [
+   0.231,
+   0.234,
+   359
+  ],
+  "ess_edmm_mix|ess_weichai_mix": [
+   0.46,
+   0.46,
+   346
+  ],
+  "ess_edmm_mix|ess_weichai_stem": [
+   0.391,
+   0.391,
+   348
+  ],
+  "ess_edmm_mix|pipe_mix": [
+   0.783,
+   0.799,
+   359
+  ],
+  "ess_edmm_mix|pipe_stem": [
+   0.805,
+   0.819,
+   359
+  ],
+  "ess_edmm_mix|tpl_albrecht_mix": [
+   0.891,
+   0.897,
+   359
+  ],
+  "ess_edmm_mix|tpl_albrecht_stem": [
+   0.869,
+   0.877,
+   359
+  ],
+  "ess_edmm_mix|tpl_kk_mix": [
+   0.819,
+   0.836,
+   359
+  ],
+  "ess_edmm_mix|tpl_kk_stem": [
+   0.813,
+   0.827,
+   359
+  ],
+  "ess_edmm_mix|tpl_temperley_mix": [
+   0.891,
+   0.894,
+   359
+  ],
+  "ess_edmm_mix|tpl_temperley_stem": [
+   0.889,
+   0.891,
+   359
+  ],
+  "ess_edmm_stem|ess_gomez_mix": [
+   0.46,
+   0.462,
+   359
+  ],
+  "ess_edmm_stem|ess_gomez_stem": [
+   0.432,
+   0.432,
+   359
+  ],
+  "ess_edmm_stem|ess_krumhansl_mix": [
+   0.894,
+   0.897,
+   359
+  ],
+  "ess_edmm_stem|ess_krumhansl_stem": [
+   0.933,
+   0.936,
+   359
+  ],
+  "ess_edmm_stem|ess_noland_mix": [
+   0.872,
+   0.875,
+   359
+  ],
+  "ess_edmm_stem|ess_noland_stem": [
+   0.816,
+   0.819,
+   359
+  ],
+  "ess_edmm_stem|ess_shaath_mix": [
+   0.891,
+   0.894,
+   359
+  ],
+  "ess_edmm_stem|ess_shaath_stem": [
+   0.933,
+   0.936,
+   359
+  ],
+  "ess_edmm_stem|ess_temperley2005_mix": [
+   0.875,
+   0.877,
+   359
+  ],
+  "ess_edmm_stem|ess_temperley2005_stem": [
+   0.827,
+   0.83,
+   359
+  ],
+  "ess_edmm_stem|ess_temperley_mix": [
+   0.903,
+   0.908,
+   359
+  ],
+  "ess_edmm_stem|ess_temperley_stem": [
+   0.964,
+   0.967,
+   359
+  ],
+  "ess_edmm_stem|ess_thpcp_mix": [
+   0.733,
+   0.735,
+   359
+  ],
+  "ess_edmm_stem|ess_thpcp_stem": [
+   0.66,
+   0.663,
+   359
+  ],
+  "ess_edmm_stem|ess_tonictriad_mix": [
+   0.312,
+   0.315,
+   359
+  ],
+  "ess_edmm_stem|ess_tonictriad_stem": [
+   0.284,
+   0.284,
+   359
+  ],
+  "ess_edmm_stem|ess_weichai_mix": [
+   0.486,
+   0.486,
+   346
+  ],
+  "ess_edmm_stem|ess_weichai_stem": [
+   0.434,
+   0.434,
+   348
+  ],
+  "ess_edmm_stem|pipe_mix": [
+   0.744,
+   0.769,
+   359
+  ],
+  "ess_edmm_stem|pipe_stem": [
+   0.774,
+   0.794,
+   359
+  ],
+  "ess_edmm_stem|tpl_albrecht_mix": [
+   0.844,
+   0.855,
+   359
+  ],
+  "ess_edmm_stem|tpl_albrecht_stem": [
+   0.855,
+   0.869,
+   359
+  ],
+  "ess_edmm_stem|tpl_kk_mix": [
+   0.772,
+   0.797,
+   359
+  ],
+  "ess_edmm_stem|tpl_kk_stem": [
+   0.783,
+   0.802,
+   359
+  ],
+  "ess_edmm_stem|tpl_temperley_mix": [
+   0.844,
+   0.855,
+   359
+  ],
+  "ess_edmm_stem|tpl_temperley_stem": [
+   0.883,
+   0.891,
+   359
+  ],
+  "ess_gomez_mix|ess_gomez_stem": [
+   0.852,
+   0.855,
+   359
+  ],
+  "ess_gomez_mix|ess_krumhansl_mix": [
+   0.482,
+   0.482,
+   359
+  ],
+  "ess_gomez_mix|ess_krumhansl_stem": [
+   0.518,
+   0.521,
+   359
+  ],
+  "ess_gomez_mix|ess_noland_mix": [
+   0.552,
+   0.552,
+   359
+  ],
+  "ess_gomez_mix|ess_noland_stem": [
+   0.627,
+   0.63,
+   359
+  ],
+  "ess_gomez_mix|ess_shaath_mix": [
+   0.479,
+   0.479,
+   359
+  ],
+  "ess_gomez_mix|ess_shaath_stem": [
+   0.524,
+   0.526,
+   359
+  ],
+  "ess_gomez_mix|ess_temperley2005_mix": [
+   0.554,
+   0.554,
+   359
+  ],
+  "ess_gomez_mix|ess_temperley2005_stem": [
+   0.63,
+   0.632,
+   359
+  ],
+  "ess_gomez_mix|ess_temperley_mix": [
+   0.448,
+   0.448,
+   359
+  ],
+  "ess_gomez_mix|ess_temperley_stem": [
+   0.485,
+   0.485,
+   359
+  ],
+  "ess_gomez_mix|ess_thpcp_mix": [
+   0.713,
+   0.713,
+   359
+  ],
+  "ess_gomez_mix|ess_thpcp_stem": [
+   0.772,
+   0.774,
+   359
+  ],
+  "ess_gomez_mix|ess_tonictriad_mix": [
+   0.841,
+   0.841,
+   359
+  ],
+  "ess_gomez_mix|ess_tonictriad_stem": [
+   0.766,
+   0.769,
+   359
+  ],
+  "ess_gomez_mix|ess_weichai_mix": [
+   0.445,
+   0.445,
+   346
+  ],
+  "ess_gomez_mix|ess_weichai_stem": [
+   0.503,
+   0.503,
+   348
+  ],
+  "ess_gomez_mix|pipe_mix": [
+   0.295,
+   0.306,
+   359
+  ],
+  "ess_gomez_mix|pipe_stem": [
+   0.315,
+   0.323,
+   359
+  ],
+  "ess_gomez_mix|tpl_albrecht_mix": [
+   0.365,
+   0.368,
+   359
+  ],
+  "ess_gomez_mix|tpl_albrecht_stem": [
+   0.376,
+   0.382,
+   359
+  ],
+  "ess_gomez_mix|tpl_kk_mix": [
+   0.279,
+   0.29,
+   359
+  ],
+  "ess_gomez_mix|tpl_kk_stem": [
+   0.279,
+   0.287,
+   359
+  ],
+  "ess_gomez_mix|tpl_temperley_mix": [
+   0.387,
+   0.39,
+   359
+  ],
+  "ess_gomez_mix|tpl_temperley_stem": [
+   0.376,
+   0.382,
+   359
+  ],
+  "ess_gomez_stem|ess_krumhansl_mix": [
+   0.432,
+   0.435,
+   359
+  ],
+  "ess_gomez_stem|ess_krumhansl_stem": [
+   0.49,
+   0.49,
+   359
+  ],
+  "ess_gomez_stem|ess_noland_mix": [
+   0.499,
+   0.501,
+   359
+  ],
+  "ess_gomez_stem|ess_noland_stem": [
+   0.599,
+   0.599,
+   359
+  ],
+  "ess_gomez_stem|ess_shaath_mix": [
+   0.429,
+   0.432,
+   359
+  ],
+  "ess_gomez_stem|ess_shaath_stem": [
+   0.496,
+   0.496,
+   359
+  ],
+  "ess_gomez_stem|ess_temperley2005_mix": [
+   0.501,
+   0.504,
+   359
+  ],
+  "ess_gomez_stem|ess_temperley2005_stem": [
+   0.602,
+   0.602,
+   359
+  ],
+  "ess_gomez_stem|ess_temperley_mix": [
+   0.401,
+   0.401,
+   359
+  ],
+  "ess_gomez_stem|ess_temperley_stem": [
+   0.454,
+   0.454,
+   359
+  ],
+  "ess_gomez_stem|ess_thpcp_mix": [
+   0.655,
+   0.657,
+   359
+  ],
+  "ess_gomez_stem|ess_thpcp_stem": [
+   0.763,
+   0.763,
+   359
+  ],
+  "ess_gomez_stem|ess_tonictriad_mix": [
+   0.836,
+   0.838,
+   359
+  ],
+  "ess_gomez_stem|ess_tonictriad_stem": [
+   0.85,
+   0.852,
+   359
+  ],
+  "ess_gomez_stem|ess_weichai_mix": [
+   0.39,
+   0.393,
+   346
+  ],
+  "ess_gomez_stem|ess_weichai_stem": [
+   0.474,
+   0.477,
+   348
+  ],
+  "ess_gomez_stem|pipe_mix": [
+   0.253,
+   0.265,
+   359
+  ],
+  "ess_gomez_stem|pipe_stem": [
+   0.262,
+   0.267,
+   359
+  ],
+  "ess_gomez_stem|tpl_albrecht_mix": [
+   0.331,
+   0.334,
+   359
+  ],
+  "ess_gomez_stem|tpl_albrecht_stem": [
+   0.343,
+   0.345,
+   359
+  ],
+  "ess_gomez_stem|tpl_kk_mix": [
+   0.24,
+   0.251,
+   359
+  ],
+  "ess_gomez_stem|tpl_kk_stem": [
+   0.234,
+   0.24,
+   359
+  ],
+  "ess_gomez_stem|tpl_temperley_mix": [
+   0.348,
+   0.354,
+   359
+  ],
+  "ess_gomez_stem|tpl_temperley_stem": [
+   0.34,
+   0.348,
+   359
+  ],
+  "ess_krumhansl_mix|ess_krumhansl_stem": [
+   0.88,
+   0.883,
+   359
+  ],
+  "ess_krumhansl_mix|ess_noland_mix": [
+   0.93,
+   0.93,
+   359
+  ],
+  "ess_krumhansl_mix|ess_noland_stem": [
+   0.802,
+   0.805,
+   359
+  ],
+  "ess_krumhansl_mix|ess_shaath_mix": [
+   0.997,
+   0.997,
+   359
+  ],
+  "ess_krumhansl_mix|ess_shaath_stem": [
+   0.88,
+   0.883,
+   359
+  ],
+  "ess_krumhansl_mix|ess_temperley2005_mix": [
+   0.928,
+   0.928,
+   359
+  ],
+  "ess_krumhansl_mix|ess_temperley2005_stem": [
+   0.808,
+   0.811,
+   359
+  ],
+  "ess_krumhansl_mix|ess_temperley_mix": [
+   0.961,
+   0.961,
+   359
+  ],
+  "ess_krumhansl_mix|ess_temperley_stem": [
+   0.886,
+   0.886,
+   359
+  ],
+  "ess_krumhansl_mix|ess_thpcp_mix": [
+   0.769,
+   0.769,
+   359
+  ],
+  "ess_krumhansl_mix|ess_thpcp_stem": [
+   0.655,
+   0.657,
+   359
+  ],
+  "ess_krumhansl_mix|ess_tonictriad_mix": [
+   0.331,
+   0.331,
+   359
+  ],
+  "ess_krumhansl_mix|ess_tonictriad_stem": [
+   0.284,
+   0.287,
+   359
+  ],
+  "ess_krumhansl_mix|ess_weichai_mix": [
+   0.491,
+   0.491,
+   346
+  ],
+  "ess_krumhansl_mix|ess_weichai_stem": [
+   0.425,
+   0.425,
+   348
+  ],
+  "ess_krumhansl_mix|pipe_mix": [
+   0.741,
+   0.758,
+   359
+  ],
+  "ess_krumhansl_mix|pipe_stem": [
+   0.76,
+   0.772,
+   359
+  ],
+  "ess_krumhansl_mix|tpl_albrecht_mix": [
+   0.85,
+   0.855,
+   359
+  ],
+  "ess_krumhansl_mix|tpl_albrecht_stem": [
+   0.847,
+   0.855,
+   359
+  ],
+  "ess_krumhansl_mix|tpl_kk_mix": [
+   0.769,
+   0.786,
+   359
+  ],
+  "ess_krumhansl_mix|tpl_kk_stem": [
+   0.766,
+   0.777,
+   359
+  ],
+  "ess_krumhansl_mix|tpl_temperley_mix": [
+   0.852,
+   0.855,
+   359
+  ],
+  "ess_krumhansl_mix|tpl_temperley_stem": [
+   0.855,
+   0.858,
+   359
+  ],
+  "ess_krumhansl_stem|ess_noland_mix": [
+   0.897,
+   0.9,
+   359
+  ],
+  "ess_krumhansl_stem|ess_noland_stem": [
+   0.883,
+   0.883,
+   359
+  ],
+  "ess_krumhansl_stem|ess_shaath_mix": [
+   0.877,
+   0.88,
+   359
+  ],
+  "ess_krumhansl_stem|ess_shaath_stem": [
+   0.994,
+   0.994,
+   359
+  ],
+  "ess_krumhansl_stem|ess_temperley2005_mix": [
+   0.9,
+   0.903,
+   359
+  ],
+  "ess_krumhansl_stem|ess_temperley2005_stem": [
+   0.889,
+   0.889,
+   359
+  ],
+  "ess_krumhansl_stem|ess_temperley_mix": [
+   0.875,
+   0.875,
+   359
+  ],
+  "ess_krumhansl_stem|ess_temperley_stem": [
+   0.964,
+   0.964,
+   359
+  ],
+  "ess_krumhansl_stem|ess_thpcp_mix": [
+   0.786,
+   0.788,
+   359
+  ],
+  "ess_krumhansl_stem|ess_thpcp_stem": [
+   0.727,
+   0.727,
+   359
+  ],
+  "ess_krumhansl_stem|ess_tonictriad_mix": [
+   0.368,
+   0.37,
+   359
+  ],
+  "ess_krumhansl_stem|ess_tonictriad_stem": [
+   0.343,
+   0.343,
+   359
+  ],
+  "ess_krumhansl_stem|ess_weichai_mix": [
+   0.514,
+   0.514,
+   346
+  ],
+  "ess_krumhansl_stem|ess_weichai_stem": [
+   0.477,
+   0.477,
+   348
+  ],
+  "ess_krumhansl_stem|pipe_mix": [
+   0.705,
+   0.721,
+   359
+  ],
+  "ess_krumhansl_stem|pipe_stem": [
+   0.741,
+   0.752,
+   359
+  ],
+  "ess_krumhansl_stem|tpl_albrecht_mix": [
+   0.805,
+   0.808,
+   359
+  ],
+  "ess_krumhansl_stem|tpl_albrecht_stem": [
+   0.819,
+   0.827,
+   359
+  ],
+  "ess_krumhansl_stem|tpl_kk_mix": [
+   0.727,
+   0.744,
+   359
+  ],
+  "ess_krumhansl_stem|tpl_kk_stem": [
+   0.733,
+   0.744,
+   359
+  ],
+  "ess_krumhansl_stem|tpl_temperley_mix": [
+   0.797,
+   0.802,
+   359
+  ],
+  "ess_krumhansl_stem|tpl_temperley_stem": [
+   0.836,
+   0.844,
+   359
+  ],
+  "ess_noland_mix|ess_noland_stem": [
+   0.864,
+   0.866,
+   359
+  ],
+  "ess_noland_mix|ess_shaath_mix": [
+   0.928,
+   0.928,
+   359
+  ],
+  "ess_noland_mix|ess_shaath_stem": [
+   0.897,
+   0.9,
+   359
+  ],
+  "ess_noland_mix|ess_temperley2005_mix": [
+   0.997,
+   0.997,
+   359
+  ],
+  "ess_noland_mix|ess_temperley2005_stem": [
+   0.869,
+   0.872,
+   359
+  ],
+  "ess_noland_mix|ess_temperley_mix": [
+   0.897,
+   0.897,
+   359
+  ],
+  "ess_noland_mix|ess_temperley_stem": [
+   0.886,
+   0.886,
+   359
+  ],
+  "ess_noland_mix|ess_thpcp_mix": [
+   0.838,
+   0.838,
+   359
+  ],
+  "ess_noland_mix|ess_thpcp_stem": [
+   0.716,
+   0.719,
+   359
+  ],
+  "ess_noland_mix|ess_tonictriad_mix": [
+   0.401,
+   0.401,
+   359
+  ],
+  "ess_noland_mix|ess_tonictriad_stem": [
+   0.351,
+   0.354,
+   359
+  ],
+  "ess_noland_mix|ess_weichai_mix": [
+   0.54,
+   0.54,
+   346
+  ],
+  "ess_noland_mix|ess_weichai_stem": [
+   0.471,
+   0.471,
+   348
+  ],
+  "ess_noland_mix|pipe_mix": [
+   0.691,
+   0.705,
+   359
+  ],
+  "ess_noland_mix|pipe_stem": [
+   0.705,
+   0.716,
+   359
+  ],
+  "ess_noland_mix|tpl_albrecht_mix": [
+   0.788,
+   0.791,
+   359
+  ],
+  "ess_noland_mix|tpl_albrecht_stem": [
+   0.794,
+   0.802,
+   359
+  ],
+  "ess_noland_mix|tpl_kk_mix": [
+   0.708,
+   0.721,
+   359
+  ],
+  "ess_noland_mix|tpl_kk_stem": [
+   0.696,
+   0.708,
+   359
+  ],
+  "ess_noland_mix|tpl_temperley_mix": [
+   0.791,
+   0.791,
+   359
+  ],
+  "ess_noland_mix|tpl_temperley_stem": [
+   0.802,
+   0.805,
+   359
+  ],
+  "ess_noland_stem|ess_shaath_mix": [
+   0.799,
+   0.802,
+   359
+  ],
+  "ess_noland_stem|ess_shaath_stem": [
+   0.883,
+   0.883,
+   359
+  ],
+  "ess_noland_stem|ess_temperley2005_mix": [
+   0.866,
+   0.869,
+   359
+  ],
+  "ess_noland_stem|ess_temperley2005_stem": [
+   0.989,
+   0.989,
+   359
+  ],
+  "ess_noland_stem|ess_temperley_mix": [
+   0.791,
+   0.791,
+   359
+  ],
+  "ess_noland_stem|ess_temperley_stem": [
+   0.852,
+   0.852,
+   359
+  ],
+  "ess_noland_stem|ess_thpcp_mix": [
+   0.841,
+   0.844,
+   359
+  ],
+  "ess_noland_stem|ess_thpcp_stem": [
+   0.836,
+   0.836,
+   359
+  ],
+  "ess_noland_stem|ess_tonictriad_mix": [
+   0.471,
+   0.474,
+   359
+  ],
+  "ess_noland_stem|ess_tonictriad_stem": [
+   0.451,
+   0.451,
+   359
+  ],
+  "ess_noland_stem|ess_weichai_mix": [
+   0.546,
+   0.546,
+   346
+  ],
+  "ess_noland_stem|ess_weichai_stem": [
+   0.549,
+   0.549,
+   348
+  ],
+  "ess_noland_stem|pipe_mix": [
+   0.604,
+   0.618,
+   359
+  ],
+  "ess_noland_stem|pipe_stem": [
+   0.632,
+   0.643,
+   359
+  ],
+  "ess_noland_stem|tpl_albrecht_mix": [
+   0.702,
+   0.705,
+   359
+  ],
+  "ess_noland_stem|tpl_albrecht_stem": [
+   0.721,
+   0.73,
+   359
+  ],
+  "ess_noland_stem|tpl_kk_mix": [
+   0.621,
+   0.635,
+   359
+  ],
+  "ess_noland_stem|tpl_kk_stem": [
+   0.618,
+   0.63,
+   359
+  ],
+  "ess_noland_stem|tpl_temperley_mix": [
+   0.699,
+   0.705,
+   359
+  ],
+  "ess_noland_stem|tpl_temperley_stem": [
+   0.721,
+   0.73,
+   359
+  ],
+  "ess_shaath_mix|ess_shaath_stem": [
+   0.877,
+   0.88,
+   359
+  ],
+  "ess_shaath_mix|ess_temperley2005_mix": [
+   0.925,
+   0.925,
+   359
+  ],
+  "ess_shaath_mix|ess_temperley2005_stem": [
+   0.805,
+   0.808,
+   359
+  ],
+  "ess_shaath_mix|ess_temperley_mix": [
+   0.961,
+   0.961,
+   359
+  ],
+  "ess_shaath_mix|ess_temperley_stem": [
+   0.883,
+   0.883,
+   359
+  ],
+  "ess_shaath_mix|ess_thpcp_mix": [
+   0.766,
+   0.766,
+   359
+  ],
+  "ess_shaath_mix|ess_thpcp_stem": [
+   0.652,
+   0.655,
+   359
+  ],
+  "ess_shaath_mix|ess_tonictriad_mix": [
+   0.329,
+   0.329,
+   359
+  ],
+  "ess_shaath_mix|ess_tonictriad_stem": [
+   0.281,
+   0.284,
+   359
+  ],
+  "ess_shaath_mix|ess_weichai_mix": [
+   0.491,
+   0.491,
+   346
+  ],
+  "ess_shaath_mix|ess_weichai_stem": [
+   0.422,
+   0.422,
+   348
+  ],
+  "ess_shaath_mix|pipe_mix": [
+   0.741,
+   0.758,
+   359
+  ],
+  "ess_shaath_mix|pipe_stem": [
+   0.76,
+   0.772,
+   359
+  ],
+  "ess_shaath_mix|tpl_albrecht_mix": [
+   0.85,
+   0.855,
+   359
+  ],
+  "ess_shaath_mix|tpl_albrecht_stem": [
+   0.847,
+   0.855,
+   359
+  ],
+  "ess_shaath_mix|tpl_kk_mix": [
+   0.769,
+   0.786,
+   359
+  ],
+  "ess_shaath_mix|tpl_kk_stem": [
+   0.766,
+   0.777,
+   359
+  ],
+  "ess_shaath_mix|tpl_temperley_mix": [
+   0.852,
+   0.855,
+   359
+  ],
+  "ess_shaath_mix|tpl_temperley_stem": [
+   0.855,
+   0.858,
+   359
+  ],
+  "ess_shaath_stem|ess_temperley2005_mix": [
+   0.9,
+   0.903,
+   359
+  ],
+  "ess_shaath_stem|ess_temperley2005_stem": [
+   0.894,
+   0.894,
+   359
+  ],
+  "ess_shaath_stem|ess_temperley_mix": [
+   0.872,
+   0.872,
+   359
+  ],
+  "ess_shaath_stem|ess_temperley_stem": [
+   0.958,
+   0.958,
+   359
+  ],
+  "ess_shaath_stem|ess_thpcp_mix": [
+   0.791,
+   0.794,
+   359
+  ],
+  "ess_shaath_stem|ess_thpcp_stem": [
+   0.727,
+   0.727,
+   359
+  ],
+  "ess_shaath_stem|ess_tonictriad_mix": [
+   0.373,
+   0.376,
+   359
+  ],
+  "ess_shaath_stem|ess_tonictriad_stem": [
+   0.348,
+   0.348,
+   359
+  ],
+  "ess_shaath_stem|ess_weichai_mix": [
+   0.517,
+   0.517,
+   346
+  ],
+  "ess_shaath_stem|ess_weichai_stem": [
+   0.477,
+   0.477,
+   348
+  ],
+  "ess_shaath_stem|pipe_mix": [
+   0.702,
+   0.719,
+   359
+  ],
+  "ess_shaath_stem|pipe_stem": [
+   0.738,
+   0.749,
+   359
+  ],
+  "ess_shaath_stem|tpl_albrecht_mix": [
+   0.802,
+   0.805,
+   359
+  ],
+  "ess_shaath_stem|tpl_albrecht_stem": [
+   0.816,
+   0.825,
+   359
+  ],
+  "ess_shaath_stem|tpl_kk_mix": [
+   0.724,
+   0.741,
+   359
+  ],
+  "ess_shaath_stem|tpl_kk_stem": [
+   0.73,
+   0.741,
+   359
+  ],
+  "ess_shaath_stem|tpl_temperley_mix": [
+   0.794,
+   0.799,
+   359
+  ],
+  "ess_shaath_stem|tpl_temperley_stem": [
+   0.833,
+   0.841,
+   359
+  ],
+  "ess_temperley2005_mix|ess_temperley2005_stem": [
+   0.872,
+   0.875,
+   359
+  ],
+  "ess_temperley2005_mix|ess_temperley_mix": [
+   0.894,
+   0.894,
+   359
+  ],
+  "ess_temperley2005_mix|ess_temperley_stem": [
+   0.889,
+   0.889,
+   359
+  ],
+  "ess_temperley2005_mix|ess_thpcp_mix": [
+   0.841,
+   0.841,
+   359
+  ],
+  "ess_temperley2005_mix|ess_thpcp_stem": [
+   0.719,
+   0.721,
+   359
+  ],
+  "ess_temperley2005_mix|ess_tonictriad_mix": [
+   0.404,
+   0.404,
+   359
+  ],
+  "ess_temperley2005_mix|ess_tonictriad_stem": [
+   0.354,
+   0.357,
+   359
+  ],
+  "ess_temperley2005_mix|ess_weichai_mix": [
+   0.54,
+   0.54,
+   346
+  ],
+  "ess_temperley2005_mix|ess_weichai_stem": [
+   0.471,
+   0.471,
+   348
+  ],
+  "ess_temperley2005_mix|pipe_mix": [
+   0.691,
+   0.705,
+   359
+  ],
+  "ess_temperley2005_mix|pipe_stem": [
+   0.705,
+   0.716,
+   359
+  ],
+  "ess_temperley2005_mix|tpl_albrecht_mix": [
+   0.788,
+   0.791,
+   359
+  ],
+  "ess_temperley2005_mix|tpl_albrecht_stem": [
+   0.794,
+   0.802,
+   359
+  ],
+  "ess_temperley2005_mix|tpl_kk_mix": [
+   0.708,
+   0.721,
+   359
+  ],
+  "ess_temperley2005_mix|tpl_kk_stem": [
+   0.699,
+   0.71,
+   359
+  ],
+  "ess_temperley2005_mix|tpl_temperley_mix": [
+   0.791,
+   0.791,
+   359
+  ],
+  "ess_temperley2005_mix|tpl_temperley_stem": [
+   0.802,
+   0.805,
+   359
+  ],
+  "ess_temperley2005_stem|ess_temperley_mix": [
+   0.788,
+   0.788,
+   359
+  ],
+  "ess_temperley2005_stem|ess_temperley_stem": [
+   0.852,
+   0.852,
+   359
+  ],
+  "ess_temperley2005_stem|ess_thpcp_mix": [
+   0.847,
+   0.85,
+   359
+  ],
+  "ess_temperley2005_stem|ess_thpcp_stem": [
+   0.833,
+   0.833,
+   359
+  ],
+  "ess_temperley2005_stem|ess_tonictriad_mix": [
+   0.476,
+   0.479,
+   359
+  ],
+  "ess_temperley2005_stem|ess_tonictriad_stem": [
+   0.454,
+   0.454,
+   359
+  ],
+  "ess_temperley2005_stem|ess_weichai_mix": [
+   0.546,
+   0.546,
+   346
+  ],
+  "ess_temperley2005_stem|ess_weichai_stem": [
+   0.54,
+   0.54,
+   348
+  ],
+  "ess_temperley2005_stem|pipe_mix": [
+   0.607,
+   0.621,
+   359
+  ],
+  "ess_temperley2005_stem|pipe_stem": [
+   0.635,
+   0.646,
+   359
+  ],
+  "ess_temperley2005_stem|tpl_albrecht_mix": [
+   0.708,
+   0.71,
+   359
+  ],
+  "ess_temperley2005_stem|tpl_albrecht_stem": [
+   0.727,
+   0.735,
+   359
+  ],
+  "ess_temperley2005_stem|tpl_kk_mix": [
+   0.627,
+   0.641,
+   359
+  ],
+  "ess_temperley2005_stem|tpl_kk_stem": [
+   0.624,
+   0.635,
+   359
+  ],
+  "ess_temperley2005_stem|tpl_temperley_mix": [
+   0.702,
+   0.708,
+   359
+  ],
+  "ess_temperley2005_stem|tpl_temperley_stem": [
+   0.727,
+   0.735,
+   359
+  ],
+  "ess_temperley_mix|ess_temperley_stem": [
+   0.897,
+   0.9,
+   359
+  ],
+  "ess_temperley_mix|ess_thpcp_mix": [
+   0.735,
+   0.735,
+   359
+  ],
+  "ess_temperley_mix|ess_thpcp_stem": [
+   0.627,
+   0.627,
+   359
+  ],
+  "ess_temperley_mix|ess_tonictriad_mix": [
+   0.298,
+   0.298,
+   359
+  ],
+  "ess_temperley_mix|ess_tonictriad_stem": [
+   0.253,
+   0.253,
+   359
+  ],
+  "ess_temperley_mix|ess_weichai_mix": [
+   0.477,
+   0.477,
+   346
+  ],
+  "ess_temperley_mix|ess_weichai_stem": [
+   0.408,
+   0.408,
+   348
+  ],
+  "ess_temperley_mix|pipe_mix": [
+   0.766,
+   0.783,
+   359
+  ],
+  "ess_temperley_mix|pipe_stem": [
+   0.791,
+   0.802,
+   359
+  ],
+  "ess_temperley_mix|tpl_albrecht_mix": [
+   0.88,
+   0.886,
+   359
+  ],
+  "ess_temperley_mix|tpl_albrecht_stem": [
+   0.866,
+   0.875,
+   359
+  ],
+  "ess_temperley_mix|tpl_kk_mix": [
+   0.799,
+   0.816,
+   359
+  ],
+  "ess_temperley_mix|tpl_kk_stem": [
+   0.797,
+   0.808,
+   359
+  ],
+  "ess_temperley_mix|tpl_temperley_mix": [
+   0.872,
+   0.877,
+   359
+  ],
+  "ess_temperley_mix|tpl_temperley_stem": [
+   0.877,
+   0.883,
+   359
+  ],
+  "ess_temperley_stem|ess_thpcp_mix": [
+   0.758,
+   0.758,
+   359
+  ],
+  "ess_temperley_stem|ess_thpcp_stem": [
+   0.691,
+   0.691,
+   359
+  ],
+  "ess_temperley_stem|ess_tonictriad_mix": [
+   0.337,
+   0.337,
+   359
+  ],
+  "ess_temperley_stem|ess_tonictriad_stem": [
+   0.306,
+   0.306,
+   359
+  ],
+  "ess_temperley_stem|ess_weichai_mix": [
+   0.509,
+   0.509,
+   346
+  ],
+  "ess_temperley_stem|ess_weichai_stem": [
+   0.457,
+   0.457,
+   348
+  ],
+  "ess_temperley_stem|pipe_mix": [
+   0.73,
+   0.749,
+   359
+  ],
+  "ess_temperley_stem|pipe_stem": [
+   0.766,
+   0.78,
+   359
+  ],
+  "ess_temperley_stem|tpl_albrecht_mix": [
+   0.83,
+   0.836,
+   359
+  ],
+  "ess_temperley_stem|tpl_albrecht_stem": [
+   0.844,
+   0.855,
+   359
+  ],
+  "ess_temperley_stem|tpl_kk_mix": [
+   0.752,
+   0.772,
+   359
+  ],
+  "ess_temperley_stem|tpl_kk_stem": [
+   0.763,
+   0.777,
+   359
+  ],
+  "ess_temperley_stem|tpl_temperley_mix": [
+   0.822,
+   0.827,
+   359
+  ],
+  "ess_temperley_stem|tpl_temperley_stem": [
+   0.864,
+   0.872,
+   359
+  ],
+  "ess_thpcp_mix|ess_thpcp_stem": [
+   0.833,
+   0.836,
+   359
+  ],
+  "ess_thpcp_mix|ess_tonictriad_mix": [
+   0.56,
+   0.56,
+   359
+  ],
+  "ess_thpcp_mix|ess_tonictriad_stem": [
+   0.513,
+   0.515,
+   359
+  ],
+  "ess_thpcp_mix|ess_weichai_mix": [
+   0.616,
+   0.616,
+   346
+  ],
+  "ess_thpcp_mix|ess_weichai_stem": [
+   0.549,
+   0.549,
+   348
+  ],
+  "ess_thpcp_mix|pipe_mix": [
+   0.546,
+   0.56,
+   359
+  ],
+  "ess_thpcp_mix|pipe_stem": [
+   0.565,
+   0.577,
+   359
+  ],
+  "ess_thpcp_mix|tpl_albrecht_mix": [
+   0.635,
+   0.638,
+   359
+  ],
+  "ess_thpcp_mix|tpl_albrecht_stem": [
+   0.643,
+   0.652,
+   359
+  ],
+  "ess_thpcp_mix|tpl_kk_mix": [
+   0.549,
+   0.563,
+   359
+  ],
+  "ess_thpcp_mix|tpl_kk_stem": [
+   0.543,
+   0.554,
+   359
+  ],
+  "ess_thpcp_mix|tpl_temperley_mix": [
+   0.643,
+   0.643,
+   359
+  ],
+  "ess_thpcp_mix|tpl_temperley_stem": [
+   0.652,
+   0.655,
+   359
+  ],
+  "ess_thpcp_stem|ess_tonictriad_mix": [
+   0.63,
+   0.632,
+   359
+  ],
+  "ess_thpcp_stem|ess_tonictriad_stem": [
+   0.616,
+   0.616,
+   359
+  ],
+  "ess_thpcp_stem|ess_weichai_mix": [
+   0.517,
+   0.517,
+   346
+  ],
+  "ess_thpcp_stem|ess_weichai_stem": [
+   0.638,
+   0.638,
+   348
+  ],
+  "ess_thpcp_stem|pipe_mix": [
+   0.468,
+   0.479,
+   359
+  ],
+  "ess_thpcp_stem|pipe_stem": [
+   0.479,
+   0.487,
+   359
+  ],
+  "ess_thpcp_stem|tpl_albrecht_mix": [
+   0.552,
+   0.554,
+   359
+  ],
+  "ess_thpcp_stem|tpl_albrecht_stem": [
+   0.565,
+   0.571,
+   359
+  ],
+  "ess_thpcp_stem|tpl_kk_mix": [
+   0.471,
+   0.482,
+   359
+  ],
+  "ess_thpcp_stem|tpl_kk_stem": [
+   0.465,
+   0.474,
+   359
+  ],
+  "ess_thpcp_stem|tpl_temperley_mix": [
+   0.565,
+   0.571,
+   359
+  ],
+  "ess_thpcp_stem|tpl_temperley_stem": [
+   0.563,
+   0.571,
+   359
+  ],
+  "ess_tonictriad_mix|ess_tonictriad_stem": [
+   0.875,
+   0.88,
+   359
+  ],
+  "ess_tonictriad_mix|ess_weichai_mix": [
+   0.338,
+   0.338,
+   346
+  ],
+  "ess_tonictriad_mix|ess_weichai_stem": [
+   0.402,
+   0.402,
+   348
+  ],
+  "ess_tonictriad_mix|pipe_mix": [
+   0.17,
+   0.175,
+   359
+  ],
+  "ess_tonictriad_mix|pipe_stem": [
+   0.189,
+   0.192,
+   359
+  ],
+  "ess_tonictriad_mix|tpl_albrecht_mix": [
+   0.223,
+   0.226,
+   359
+  ],
+  "ess_tonictriad_mix|tpl_albrecht_stem": [
+   0.231,
+   0.234,
+   359
+  ],
+  "ess_tonictriad_mix|tpl_kk_mix": [
+   0.142,
+   0.15,
+   359
+  ],
+  "ess_tonictriad_mix|tpl_kk_stem": [
+   0.145,
+   0.148,
+   359
+  ],
+  "ess_tonictriad_mix|tpl_temperley_mix": [
+   0.245,
+   0.248,
+   359
+  ],
+  "ess_tonictriad_mix|tpl_temperley_stem": [
+   0.228,
+   0.234,
+   359
+  ],
+  "ess_tonictriad_stem|ess_weichai_mix": [
+   0.303,
+   0.312,
+   346
+  ],
+  "ess_tonictriad_stem|ess_weichai_stem": [
+   0.382,
+   0.388,
+   348
+  ],
+  "ess_tonictriad_stem|pipe_mix": [
+   0.131,
+   0.134,
+   359
+  ],
+  "ess_tonictriad_stem|pipe_stem": [
+   0.142,
+   0.142,
+   359
+  ],
+  "ess_tonictriad_stem|tpl_albrecht_mix": [
+   0.189,
+   0.192,
+   359
+  ],
+  "ess_tonictriad_stem|tpl_albrecht_stem": [
+   0.198,
+   0.198,
+   359
+  ],
+  "ess_tonictriad_stem|tpl_kk_mix": [
+   0.114,
+   0.12,
+   359
+  ],
+  "ess_tonictriad_stem|tpl_kk_stem": [
+   0.109,
+   0.109,
+   359
+  ],
+  "ess_tonictriad_stem|tpl_temperley_mix": [
+   0.203,
+   0.209,
+   359
+  ],
+  "ess_tonictriad_stem|tpl_temperley_stem": [
+   0.195,
+   0.201,
+   359
+  ],
+  "ess_weichai_mix|ess_weichai_stem": [
+   0.767,
+   0.767,
+   344
+  ],
+  "ess_weichai_mix|pipe_mix": [
+   0.382,
+   0.393,
+   346
+  ],
+  "ess_weichai_mix|pipe_stem": [
+   0.393,
+   0.399,
+   346
+  ],
+  "ess_weichai_mix|tpl_albrecht_mix": [
+   0.425,
+   0.425,
+   346
+  ],
+  "ess_weichai_mix|tpl_albrecht_stem": [
+   0.439,
+   0.445,
+   346
+  ],
+  "ess_weichai_mix|tpl_kk_mix": [
+   0.382,
+   0.393,
+   346
+  ],
+  "ess_weichai_mix|tpl_kk_stem": [
+   0.387,
+   0.393,
+   346
+  ],
+  "ess_weichai_mix|tpl_temperley_mix": [
+   0.428,
+   0.428,
+   346
+  ],
+  "ess_weichai_mix|tpl_temperley_stem": [
+   0.445,
+   0.448,
+   346
+  ],
+  "ess_weichai_stem|pipe_mix": [
+   0.322,
+   0.328,
+   348
+  ],
+  "ess_weichai_stem|pipe_stem": [
+   0.328,
+   0.33,
+   348
+  ],
+  "ess_weichai_stem|tpl_albrecht_mix": [
+   0.365,
+   0.368,
+   348
+  ],
+  "ess_weichai_stem|tpl_albrecht_stem": [
+   0.385,
+   0.388,
+   348
+  ],
+  "ess_weichai_stem|tpl_kk_mix": [
+   0.316,
+   0.325,
+   348
+  ],
+  "ess_weichai_stem|tpl_kk_stem": [
+   0.319,
+   0.322,
+   348
+  ],
+  "ess_weichai_stem|tpl_temperley_mix": [
+   0.379,
+   0.379,
+   348
+  ],
+  "ess_weichai_stem|tpl_temperley_stem": [
+   0.379,
+   0.382,
+   348
+  ],
+  "pipe_mix|pipe_stem": [
+   0.858,
+   0.883,
+   359
+  ],
+  "pipe_mix|tpl_albrecht_mix": [
+   0.802,
+   0.819,
+   359
+  ],
+  "pipe_mix|tpl_albrecht_stem": [
+   0.786,
+   0.805,
+   359
+  ],
+  "pipe_mix|tpl_kk_mix": [
+   0.844,
+   0.855,
+   359
+  ],
+  "pipe_mix|tpl_kk_stem": [
+   0.811,
+   0.833,
+   359
+  ],
+  "pipe_mix|tpl_temperley_mix": [
+   0.797,
+   0.811,
+   359
+  ],
+  "pipe_mix|tpl_temperley_stem": [
+   0.805,
+   0.827,
+   359
+  ],
+  "pipe_stem|tpl_albrecht_mix": [
+   0.811,
+   0.836,
+   359
+  ],
+  "pipe_stem|tpl_albrecht_stem": [
+   0.83,
+   0.836,
+   359
+  ],
+  "pipe_stem|tpl_kk_mix": [
+   0.822,
+   0.85,
+   359
+  ],
+  "pipe_stem|tpl_kk_stem": [
+   0.861,
+   0.861,
+   359
+  ],
+  "pipe_stem|tpl_temperley_mix": [
+   0.799,
+   0.819,
+   359
+  ],
+  "pipe_stem|tpl_temperley_stem": [
+   0.844,
+   0.855,
+   359
+  ],
+  "tpl_albrecht_mix|tpl_albrecht_stem": [
+   0.889,
+   0.903,
+   359
+  ],
+  "tpl_albrecht_mix|tpl_kk_mix": [
+   0.872,
+   0.886,
+   359
+  ],
+  "tpl_albrecht_mix|tpl_kk_stem": [
+   0.844,
+   0.864,
+   359
+  ],
+  "tpl_albrecht_mix|tpl_temperley_mix": [
+   0.928,
+   0.939,
+   359
+  ],
+  "tpl_albrecht_mix|tpl_temperley_stem": [
+   0.897,
+   0.914,
+   359
+  ],
+  "tpl_albrecht_stem|tpl_kk_mix": [
+   0.852,
+   0.875,
+   359
+  ],
+  "tpl_albrecht_stem|tpl_kk_stem": [
+   0.872,
+   0.875,
+   359
+  ],
+  "tpl_albrecht_stem|tpl_temperley_mix": [
+   0.869,
+   0.891,
+   359
+  ],
+  "tpl_albrecht_stem|tpl_temperley_stem": [
+   0.922,
+   0.939,
+   359
+  ],
+  "tpl_kk_mix|tpl_kk_stem": [
+   0.908,
+   0.936,
+   359
+  ],
+  "tpl_kk_mix|tpl_temperley_mix": [
+   0.844,
+   0.861,
+   359
+  ],
+  "tpl_kk_mix|tpl_temperley_stem": [
+   0.841,
+   0.869,
+   359
+  ],
+  "tpl_kk_stem|tpl_temperley_mix": [
+   0.813,
+   0.841,
+   359
+  ],
+  "tpl_kk_stem|tpl_temperley_stem": [
+   0.858,
+   0.877,
+   359
+  ],
+  "tpl_temperley_mix|tpl_temperley_stem": [
+   0.914,
+   0.919,
+   359
+  ]
+ },
+ "keyup_candidates": [
+  {
+   "id": "-1F1qDC0J5g",
+   "team": "김브라이언",
+   "title": "Perfect Peace - Brian Kim 브라이언킴 찬양 한국 praise worship ccm",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "05GLD2hPmWc",
+   "team": "옹기장이",
+   "title": "주 여호와는 나의 힘 & 찬송할 수 있을 때 | 옹기장이 40주년 카운트다운 콘서트 2026",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "0Eq3R4P_NdQ",
+   "team": "마커스워십",
+   "title": "Flowers - Markers Worship | 꽃들도 | 花も",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "1hpiguKhKdM",
+   "team": "뉴제너레이션워십",
+   "title": "목마른 사슴이 | 뉴제너레이션워십 | NEWGEN WORSHIP | 뉴젠워십 | 천관웅 | 20210807 예배 | 한곡 영상",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "2p4P73XThJM",
+   "team": "한마음찬양",
+   "title": "[Eng Sub] 함께 As One - 한마음찬양(HMU Worship) 2집 | Lyric Video",
+   "votes": [
+    "pipe_mix",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "2tSN0sQiLe4",
+   "team": "손경민",
+   "title": "일상 -  손경민 (with.아이빅밴드, 하니), (햇살콩 일러스트 &캘리)",
+   "votes": [
+    "pipe_mix",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "3EdaZKGEGbI",
+   "team": "좋은씨앗",
+   "title": "좋은씨앗(Goodseed) 1집 \"공원구석\"(Corner of the Park) 이유정 사,곡, K-CCM",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "4KDP6E2Kezo",
+   "team": "아이자야씩스티원",
+   "title": "빛으로 비추시네 | YKDC | OPEN WORSHIP",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "4v0oHeJ8-2k",
+   "team": "마커스워십",
+   "title": "Jesus, always with me - Markers Worship (Official) | 예수, 늘 함께 하시네 [ENG/SUB]",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "7kuBu5Qa3PA",
+   "team": "마커스워십",
+   "title": "Living in Your grace | Markers Worship | 주 은혜임을 [ENG/SUB]",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "7zx_SuQ-Puc",
+   "team": "브리지임팩트",
+   "title": "빈들에 마른풀 같이_브리지임팩트 showers of blessing_Bridge Impact Praise",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "9SFwuyQTxKg",
+   "team": "김브라이언",
+   "title": "오직 예수 - 브라이언킴 이권희",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "9ypxWDqUNL4",
+   "team": "예람워십",
+   "title": "[월드비전 x 예람투어 in SEOUL] 주 내 아버지 / 아 하나님의 은혜로 My Father / I Know not Why God's Wondrous Grace | 예람워십",
+   "votes": [
+    "pipe_mix",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "AlSeiyNGDh0",
+   "team": "소리엘",
+   "title": "나로부터 시작되리 I 소리엘 with 빅콰이어 (in 빌리그래함 전도대회 50주년 기념대회, 서울월드컵경기장)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "DUZubycHbJI",
+   "team": "한마음찬양",
+   "title": "2024 부활절 예배 : 부활하신 권능의 주",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "Dy82rJfUvNQ",
+   "team": "마커스워십",
+   "title": "Trust Him - Markers Worship (Official) | 주만 의지해 [ENG/SUB]",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "FAEQpV6zkUE",
+   "team": "한웅재",
+   "title": "너는 나의 사랑이라 [한웅재4집 우리,다시]",
+   "votes": [
+    "pipe_mix",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "FY2M5-xpfIU",
+   "team": "어노인팅",
+   "title": "01 슬픈 마음 있는 사람 /02 예수 열방의 소망(official) | 어노인팅예배캠프2013",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "Fi2waeWY18g",
+   "team": "팀룩",
+   "title": "주를 찾는 모든 자들이 Those Who Seek the Lord ㅣ Youth Revival & KOSTA WORLD",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "IFX1nyHpKp8",
+   "team": "손경민",
+   "title": "충만- 지선, 손경민",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "JGqENiEQ3l4",
+   "team": "한웅재",
+   "title": "소원 [아침묵상] 꿈이있는 자유 3집",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "JKOwGMp5AlA",
+   "team": "소리엘",
+   "title": "나로부터 시작되리 / 성령이여 임하소서 I 소리엘 지명현 (주일워십)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "KS4wNLfGD1s",
+   "team": "피아워십",
+   "title": "1. 나는 일어섭니다 (Official) | I SHALL STAND | 피아워십 정규 4집",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "M7gnF1VNwtk",
+   "team": "옹기장이",
+   "title": "Onggijangi Live Worship - Praise the Lord All the Earth & May the Spirit of the Lord #OnggijangiL...",
+   "votes": [
+    "pipe_mix",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "MPpxiJlWQCU",
+   "team": "옹기장이",
+   "title": "주 여호와는 나의 힘ㅣ옹기장이 LIVE",
+   "votes": [
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "NGB2VVH5Z80",
+   "team": "피아워십",
+   "title": "F.I.A x 자두 - 은혜 아니면 (콜라보/피아버전) | If Not By Grace (Collaboration/FIA.ver)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "OmnhVyt1yBE",
+   "team": "브리지임팩트",
+   "title": "주님의 강가에서_브리지임팩트 프레이즈",
+   "votes": [
+    "pipe_mix",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "OnBy6_auuA4",
+   "team": "어노인팅",
+   "title": "11 내 삶을 깨뜨립니다 (Official Lyrics) | 어노인팅예배캠프2019",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "PV3LJu68nwk",
+   "team": "아이자야씩스티원",
+   "title": "마음의 예배 | 내 삶의 이유라 | ONEDAY CONFERENCE LIVE | SOLA SCRIPTURA | 아이자야씩스티원 | 전주",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "SMHOOmD_YA0",
+   "team": "김브라이언",
+   "title": "그런 사람 있다면 -  브라이언킴 Brian Kim Official Music Video",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "Tk23p0NiVos",
+   "team": "손경민",
+   "title": "감사 - 손경민(작사,작곡자), 김정희",
+   "votes": [
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "TtH4qHWdTto",
+   "team": "팀룩",
+   "title": "함께 지어져 가네 Being Built Together ㅣ Youth Revival Busan",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "UnVnAZSnEbs",
+   "team": "위러브",
+   "title": "WELOVE - 나는 오늘을 살리 (I Will Live Today/Eng sub)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "UnuvgNqb5OA",
+   "team": "한마음찬양",
+   "title": "주님 고대가 | 한마음찬양(HMU Worship) LIVE CLIP",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "VEB1yvUtaAg",
+   "team": "피아워십",
+   "title": "하나님의 부르심 / THE CALLING OF GOD - 피아워십",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "VzpPlYs7bxE",
+   "team": "옹기장이",
+   "title": "[7-Time Grammy Award Winner] Korean CCM Receives Standing Ovation from the World's Best Gospel Choir",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "XNVhg688J2o",
+   "team": "옹기장이",
+   "title": "Grateful Every Time I Sing | Onggi-Jangi 40th Anniversary Countdown Concert 2026",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "Xm22G0JmbWw",
+   "team": "어노인팅",
+   "title": "08_내 영혼은 안전합니다 (Official) | 어노인팅 10집",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "Y0Uiss0-ukc",
+   "team": "히즈윌",
+   "title": "히즈윌 5집 '믿음이 없이는' (가사)",
+   "votes": [
+    "pipe_mix",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "_9y0rclhPNI",
+   "team": "예수전도단 화요모임",
+   "title": "Complete (Live)ㅣYWAM Worship Korea",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "_RRHcSpqkMo",
+   "team": "히즈윌",
+   "title": "히즈윌 HisWill Christmas '저기 저 별이' (가사, Eng sub.)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "a6U52DaHu7o",
+   "team": "예람워십",
+   "title": "My Father - Yeram Worship | Korean Christian Billboard Chart TOP10",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "bgdU5_BbACM",
+   "team": "팀룩",
+   "title": "All who look to the Lord + Those who seek the Lord l TLMC2025 l Handong University",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "c7OyG-fhFZc",
+   "team": "김브라이언",
+   "title": "주를 찾는 모든 자들이 Those Who Seek The Lord - 브라이언킴 Brian Kim",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "c8sIb-3kzrU",
+   "team": "뉴제너레이션워십",
+   "title": "하나님이 세상을 사랑하사 - 뉴제너레이션워십 | NEWGEN WORSHIP | 뉴젠워십 천관웅목사",
+   "votes": [
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "cmvL6ppJHO8",
+   "team": "위러브",
+   "title": "WELOVE - Your Kingdom Come (Eng Sub/Korean Worship)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "dN12aR02yiM",
+   "team": "손경민",
+   "title": "가장 귀한 삶 - 손경민 (with. 김정희, 이기명, 우혜림) 일러스트- 이화선(이화하하)",
+   "votes": [
+    "pipe_mix",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "eMWCKZjztZ0",
+   "team": "손경민",
+   "title": "감사 -아이빅밴드",
+   "votes": [
+    "pipe_mix",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "ele4YXY84lY",
+   "team": "어노인팅",
+   "title": "05 목마른 사슴이 (Official Video) ㅣ 어노인팅예배캠프2022 #Chapter1",
+   "votes": [
+    "pipe_mix",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "fZXFfEKlRSo",
+   "team": "팀룩",
+   "title": "선하신 나의 주 My Lord, You Are Good (ENG/POR/FIL/IND/CHI SUBS)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "h7XUqm7KrjA",
+   "team": "옹기장이",
+   "title": "Wisdom for Living in This World | Onggi-Jang-I 40th Anniversary Countdown Concert 2026",
+   "votes": [
+    "pipe_stem",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "iVRc9wcA95Q",
+   "team": "김브라이언",
+   "title": "Make Way 길을 비켜라 - Brian Kim | Korean Christian Music Video | Written by Alex Kim",
+   "votes": [
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "ij3JtLBdehk",
+   "team": "좋은씨앗",
+   "title": "시편 51편(Psalm 51), 좋은씨앗(Goodseed) official, 하나님이시여, 이유정 작곡, Feat. 조재옥",
+   "votes": [
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "jLpl1zteVWA",
+   "team": "옹기장이",
+   "title": "옹기장이-주님의 솜씨 / 좋은씨앗 베스트",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "kNw-JcQZilc",
+   "team": "부흥한국",
+   "title": "[부흥한국 2018] CD1 05 하늘은 노래하고 | 아버지의 나라가 이 땅에 오게 하소서",
+   "votes": [
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "kdFH0iSBU9I",
+   "team": "제이어스",
+   "title": "Love Never Fails 여호와께 돌아가자 | 제이어스 J-US | Official Lyric Video [Love Never Fails]",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "nlmlzkMcRQQ",
+   "team": "한마음찬양",
+   "title": "[Eng Sub] 부활의 소망 The Risen Hope  - 한마음찬양(HMU Worship) 3집",
+   "votes": [
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "ovjWMKsks2Y",
+   "team": "피아워십",
+   "title": "피아워십 정규앨범 2022 - 하나님의 부르심 (Official) | The Calling Of God (Official)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "pjtqG9-R5Mk",
+   "team": "옹기장이",
+   "title": "The Lord Is the Potter | Onggijang-i 40th Anniversary Countdown Concert 2026",
+   "votes": [
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "qDyCoSMia48",
+   "team": "위러브",
+   "title": "WELOVE | Rise Again",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "qGCOrFeD4Hk",
+   "team": "위러브",
+   "title": "WELOVE - The Lord Has Called Me",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "s3HySr8EoTY",
+   "team": "예람워십",
+   "title": "혼자 걷지 않을 거예요 Over The Rainbow | 예람워십",
+   "votes": [
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "sxmvTLUd--U",
+   "team": "제이어스",
+   "title": "나의 백성이 Heal Our Land | 제이어스 J-US | Live Worship [The Beginning]",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "tqvaGtNJMo8",
+   "team": "손경민",
+   "title": "행복 -아이빅밴드(IBIG BAND),지선 (JI SUN)",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "tw81eyMIlXQ",
+   "team": "제이어스",
+   "title": "하늘 위에 주님밖에 God Is The Strength Of My Heart | 제이어스 J-US",
+   "votes": [
+    "pipe_mix",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "u2coqlh3re8",
+   "team": "옹기장이",
+   "title": "[Official] Onggijang A Cappella Vol. 3 MV - Our Savior Who Bears Our Sins",
+   "votes": [
+    "pipe_mix",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "vG_E39ZYAjs",
+   "team": "마커스워십",
+   "title": "Von guten Mächten - Markers Worship | 선한 능력으로",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "w4ELHTfDrdU",
+   "team": "마커스워십",
+   "title": "내 눈 주의 영광을 보네 - Markers Worship",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "xtBnkPYqBr0",
+   "team": "아이자야씩스티원",
+   "title": "하나님의 나라 | His Kingdom | THE AWE | OPEN WORSHIP",
+   "votes": [
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "yRdByPgkBVI",
+   "team": "위러브",
+   "title": "WELOVE - Jesus, My Shelter",
+   "votes": [
+    "pipe_stem",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "yg2TRUSPhiY",
+   "team": "한웅재",
+   "title": "그 나무 아래로 [2nd Step] 한웅재 1집",
+   "votes": [
+    "pipe_mix",
+    "pipe_stem"
+   ]
+  },
+  {
+   "id": "yu2HxAOXCUA",
+   "team": "소리엘",
+   "title": "주가 보이신 생명의 길 I 소리엘 지명현 (with 조수진)",
+   "votes": [
+    "pipe_stem",
+    "bl_ess"
+   ]
+  },
+  {
+   "id": "ztWbZq0Cp6s",
+   "team": "레위지파",
+   "title": "Light Of The World | Scott Brenner | Official Lyric Video",
+   "votes": [
+    "pipe_mix",
+    "bl_ess",
+    "bl_lib"
+   ]
+  },
+  {
+   "id": "zvrAdnhi1xA",
+   "team": "어노인팅",
+   "title": "01 오늘 이 곳에 계신 성령님 (Official Lyrics) | 어노인팅예배캠프2017",
+   "votes": [
+    "pipe_mix",
+    "bl_ess",
+    "bl_lib"
+   ]
+  }
+ ],
+ "errors": {
+  "ess_faraldo_mix": 391,
+  "ess_pentatonic_mix": 391,
+  "ess_faraldo_stem": 391,
+  "ess_pentatonic_stem": 391,
+  "ess_weichai_mix": 13,
+  "ess_weichai_stem": 11
+ }
+}

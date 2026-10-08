@@ -1,0 +1,17 @@
+{
+ "id": "gunhe17/worship-bpm-sweep-s",
+ "title": "worship-bpm-sweep-s",
+ "code_file": "sweep.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_internet": true,
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [
+  "gunhe17/worship-bpm-sweep-a",
+  "gunhe17/worship-bpm-sweep-b",
+  "gunhe17/worship-bpm-sweep-c"
+ ]
+}

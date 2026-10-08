@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>찬양 음원 분석 · 결과</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { darkMode: "media", theme: { extend: {
+  colors: { same: "#2a78d6", family: "#1baf7a", shift: "#eb6834", off: "#a3a9ae" },
+  fontFamily: { sans: ['"IBM Plex Sans KR"', "system-ui", "sans-serif"], mono: ['"IBM Plex Mono"', "ui-monospace", "monospace"] } } } };
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  .b{position:absolute;top:3px;bottom:3px;left:calc(var(--a)*var(--pps)*1px);width:max(1px,calc(var(--w)*var(--pps)*1px - 2px))}
+  .s{position:absolute;top:0;bottom:0;left:calc(var(--a)*100%);width:max(1px,calc(var(--w)*100% - 1px))}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans text-sm">
+
+<header class="sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/95">
+  <div class="mx-auto flex max-w-[1600px] flex-wrap items-center gap-3 px-4 py-3">
+    <h1 class="mr-auto text-base font-bold">찬양 음원 분석</h1>
+    <div id="modes" class="inline-flex rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800" role="tablist" aria-label="결과 종류"></div>
+    <div id="layouts" class="inline-flex rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800" role="tablist" aria-label="레이아웃"></div>
+  </div>
+  <div class="mx-auto flex max-w-[1600px] flex-wrap items-center gap-2 px-4 pb-3">
+    <input id="q" type="search" placeholder="곡·팀 검색" aria-label="곡·팀 검색" class="w-56 rounded-md border border-zinc-200 bg-white px-3 py-1.5 dark:border-zinc-700 dark:bg-zinc-900">
+    <select id="set" aria-label="곡 묶음" class="rounded-md border border-zinc-200 bg-white px-2 py-1.5 dark:border-zinc-700 dark:bg-zinc-900"></select>
+    <select id="flt" aria-label="거르기" class="rounded-md border border-zinc-200 bg-white px-2 py-1.5 dark:border-zinc-700 dark:bg-zinc-900"></select>
+    <span id="count" class="text-xs text-zinc-500"></span>
+    <div id="legend" class="ml-auto flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-600 dark:text-zinc-400"></div>
+  </div>
+</header>
+
+<main id="view" class="mx-auto max-w-[1600px] px-4 py-4"></main>
+<div id="tip" class="pointer-events-none fixed z-50 whitespace-nowrap rounded-md bg-zinc-900 px-2 py-1 font-mono text-xs text-white dark:bg-zinc-100 dark:text-zinc-900" hidden></div>
+
+<script>
+const KD = __KEY__, BD = __BPM__, SW = __SWEEP__;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const mmss = t => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
+const tip = $("#tip");
+document.addEventListener("mousemove", e => { const t = e.target.closest?.("[data-tip]"); if (!t) { tip.hidden = true; return; } tip.innerHTML = t.dataset.tip; tip.hidden = false; tip.style.left = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 8) + "px"; tip.style.top = (e.clientY + 16) + "px"; });
+
+// ---------- 공통 의미 ----------
+const CC = { same: "bg-same text-white", family: "bg-family text-white", shift: "bg-shift text-white", off: "bg-off text-white", none: "bg-zinc-200 text-zinc-500 dark:bg-zinc-800" };
+const CAT = { bpm: { same: "곡 BPM ±4%", family: "반·두 배", shift: "4% 넘게 변화", off: "박 단위 혼동" }, key: { same: "다수 의견 key", family: "나란한조", shift: "+1·+2 상승", off: "다른 key" } };
+function bcat(x, ref) { if (!x || !ref) return "none"; const r = x / ref, near = f => Math.abs(Math.log(r / f)) <= Math.log(1.04); if (near(1)) return "same"; if (near(2) || near(.5)) return "family"; if ([4 / 3, 3 / 4, 3 / 2, 2 / 3, 3, 1 / 3].some(f => Math.abs(Math.log(r / f)) <= .03)) return "off"; return "shift"; }
+const SH = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], FL = { Db: "C#", Eb: "D#", Gb: "F#", Ab: "G#", Bb: "A#", Cb: "B", Fb: "E", "E#": "F", "B#": "C" };
+const NAMES = ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+function pk(s) { if (!s) return null; const p = String(s).trim().split(/\s+/); if (p.length < 2) return null; let n = p[0][0].toUpperCase() + p[0].slice(1); n = FL[n] || n; const i = SH.indexOf(n); if (i < 0) return null; const m = p[1].toLowerCase(); return m.startsWith("min") ? i + 12 : m.startsWith("maj") ? i : null; }
+const ks = k => k == null ? "—" : NAMES[k % 12] + (k < 12 ? "" : "m");
+function kcat(k, c) { if (k == null || c == null) return "none"; if (k === c) return "same"; const d = ((k % 12) - (c % 12) + 12) % 12, sm = (k < 12) === (c < 12); if (!sm && d === ((c < 12) ? 9 : 3)) return "family"; if (sm && (d === 1 || d === 2)) return "shift"; return "off"; }
+const chip = (t, c, extra = "", tipTxt = "") => `<span class="inline-flex h-6 min-w-[2.5rem] items-center justify-center rounded px-1.5 font-mono text-xs ${CC[c]} ${extra}"${tipTxt ? ` data-tip="${esc(tipTxt)}"` : ""}>${esc(t)}</span>`;
+
+// ---------- 방법 정의 ----------
+const KNAME = n => { const inp = n.endsWith("_stem") ? "stem" : n.endsWith("_mix") ? "믹스" : ""; const b = n.replace(/_(mix|stem)$/, "");
+  const m = { pipe: "key-pipeline", bl_ess: "사용자·Essentia", bl_lib: "사용자·librosa", cnn: "madmom CNN", cnnwin: "madmom CNN 창별", chord_key: "madmom 코드" };
+  const nm = m[b] || (b.startsWith("esswin_") ? `Essentia 창별 ${b.slice(7)}` : b.startsWith("ess_") ? `Essentia ${b.slice(4)}` : b.startsWith("tpl_") ? `템플릿 ${b.slice(4)}` : b);
+  return inp ? `${nm} · ${inp}` : nm; };
+const KCORE = ["pipe_mix", "pipe_stem", "bl_ess", "bl_lib", "chord_key", "cnn_mix", "tpl_kk_mix"];
+const BCOLS = [["beatthis_final0", "Beat This! final0"], ["beatthis_small0", "Beat This! small0"], ["beatthis_final0_dbn", "Beat This! +DBN"], ["madmom_dbn", "madmom DBN"], ["beatnet", "BeatNet"],
+  ["librosa_beat", "librosa beat"], ["librosa_plp", "librosa PLP"], ["ess_multifeature", "Ess. multifeature"], ["ess_degara", "Ess. degara"],
+  ["deeprhythm", "DeepRhythm"], ["madmom_tempo", "madmom 템포"], ["librosa_tempo", "librosa tempo"], ["ess_percival", "Ess. Percival"], ["ess_tempocnn", "Ess. TempoCNN"]];
+const BHAVE = new Set(Object.values(SW).flatMap(o => Object.keys(o)));
+const BMETH = BCOLS.filter(([k]) => BHAVE.has(k));
+
+// ---------- 곡 준비 ----------
+const run2 = bars => { let c = 0, b = 0; (bars || []).forEach(x => { c = x[1] === 2 ? c + 1 : 0; b = Math.max(b, c); }); return b; };
+BD.songs.forEach(s => { s.r2 = run2(s.bars); s.sw = SW[s.id] || {}; });
+const KALL = [...new Set(KD.songs.flatMap(s => Object.keys(s.m)))].sort((a, b) => { const o = n => KCORE.includes(n) ? KCORE.indexOf(n) : n.startsWith("esswin") || n.startsWith("cnnwin") ? 10 : n.startsWith("cnn") ? 11 : n.startsWith("tpl") ? 12 : 13; return o(a) - o(b) || a.localeCompare(b); });
+KD.songs.forEach(s => {
+  const v = {}; KD.core.forEach(n => { const k = pk(s.m[n]?.k); if (k != null) v[k] = (v[k] || 0) + 1; });
+  const t = Object.entries(v).sort((a, b) => b[1] - a[1]); s.cons = t.length ? +t[0][0] : null; s.consN = t.length ? t[0][1] : 0; s.coreN = Object.values(v).reduce((a, b) => a + b, 0);
+  s.gk = {}; KALL.forEach(n => { const m = s.m[n]; if (!m) return; if (m.k !== undefined) s.gk[n] = pk(m.k); else if (m.win) { const c = {}; m.win.forEach(([, x]) => { const y = pk(x); if (y != null) c[y] = (c[y] || 0) + 1; }); const top = Object.entries(c).sort((a, b) => b[1] - a[1])[0]; s.gk[n] = top ? +top[0] : null; } });
+  s.agree = Object.values(s.gk).filter(k => k === s.cons).length / Math.max(1, Object.keys(s.gk).length);
+  s.truthTxt = s.truth ? s.truth.map(x => ks(pk(x[1]))).join("→") : s.main ? s.main.map(x => ks(pk(x))).join("/") : "";
+});
+const bpmTempo = (s, k) => { const m = s.sw[k]; return k === "beatthis_final0" && !m ? s.bpm : m ? (m.med ?? m.t) : null; };
+
+// ---------- 상태 ----------
+const st = { mode: "bpm", layout: "table", sort: null, dir: 1, page: 0, song: null, pps: 4, fit: 4 };
+const MODES = {
+  bpm: { label: "BPM", songs: BD.songs, sets: [["", "모든 곡"], ["w500", "찬양 500곡"], ["gt3", "정답 3곡"]], flts: [["", "전체"], ["one", "BPM 하나"], ["multi", "구간 2개 이상"], ["run2", "2박 마디 연속"]],
+    pass: (s, f) => !f || (f === "one" ? s.st : f === "multi" ? s.sec.length > 1 : s.r2 >= 2) },
+  key: { label: "key", songs: KD.songs, sets: [["", "모든 곡"], ["w500", "찬양 500곡"], ["gt3", "정답 3곡"], ["synth", "합성 곡"]], flts: [["", "전체"], ["keyup", "key up 후보"], ["split", "의견 갈림"]],
+    pass: (s, f) => !f || (f === "keyup" ? KD.keyup[s.id] : s.consN <= s.coreN / 2) },
+};
+const LAYOUTS = [["table", "① 표"], ["cards", "② 카드"], ["heat", "③ 히트맵"], ["track", "④ 트랙"]];
+const seg = (id, items, cur, on) => { $(id).innerHTML = items.map(([v, n]) => `<button role="tab" data-v="${v}" aria-selected="${v === cur}" class="rounded-md px-3 py-1 text-sm font-medium ${v === cur ? "bg-white shadow-sm dark:bg-zinc-700" : "text-zinc-500"}">${n}</button>`).join(""); $(id).querySelectorAll("button").forEach(b => b.onclick = () => on(b.dataset.v)); };
+function filtered() { const M = MODES[st.mode], q = $("#q").value.trim().toLowerCase(), set = $("#set").value, f = $("#flt").value; return M.songs.filter(s => (!set || s.set === set) && (!q || (s.title + " " + (s.team || "")).toLowerCase().includes(q)) && M.pass(s, f)); }
+function chrome() {
+  seg("#modes", Object.entries(MODES).map(([k, v]) => [k, v.label]), st.mode, v => { st.mode = v; st.sort = null; st.page = 0; filters(); render(); });
+  seg("#layouts", LAYOUTS, st.layout, v => { st.layout = v; st.page = 0; chrome(); render(); });
+  $("#legend").innerHTML = Object.entries(CAT[st.mode]).map(([k, n]) => `<span class="inline-flex items-center gap-1.5"><i class="inline-block h-3 w-3 rounded-sm bg-${k}"></i>${n}</span>`).join("") + (st.mode === "bpm" ? `<span class="inline-flex items-center gap-1.5"><i class="inline-block h-3 w-3 rounded-sm bg-zinc-300 dark:bg-zinc-700"></i>4박 마디</span>` : "");
+}
+function filters() { const M = MODES[st.mode]; $("#set").innerHTML = M.sets.map(([v, n]) => `<option value="${v}">${n}</option>`).join(""); $("#flt").innerHTML = M.flts.map(([v, n]) => `<option value="${v}">${n}</option>`).join(""); chrome(); }
+function render() { const L = { table: renderTable, cards: renderCards, heat: renderHeat, track: renderTrack }; const songs = filtered(); $("#count").textContent = `${songs.length}곡`; L[st.layout](songs); }
+const songName = s => `<div class="min-w-0"><div class="truncate font-medium">${esc(s.title)}</div><div class="truncate text-xs text-zinc-500">${esc(s.team || (s.set === "synth" ? "합성 · " + s.kind : "정답 있는 찬양"))}</div></div>`;
+const openTrack = id => { st.layout = "track"; st.song = id; chrome(); render(); scrollTo(0, 0); };
+
+// ---------- ① 표 ----------
+function renderTable(songs) {
+  const cols = st.mode === "bpm"
+    ? [["ans", "응답", s => s.st ? s.bpm : 1000 + s.lo, s => chip(s.st ? s.bpm : `${s.lo}–${s.hi}`, s.st ? "same" : "shift")],
+       ...BMETH.map(([k, n]) => [k, n, s => bpmTempo(s, k) ?? -1, s => { const v = bpmTempo(s, k); return v ? chip(Math.round(v), bcat(v, s.bpm), "", `${n} · ${v}`) : chip("—", "none"); }]),
+       ["sec", "구간", s => s.sec.length, s => `<span class="font-mono">${s.sec.length}</span>`], ["meter", "박자", s => s.meter || 0, s => `<span class="font-mono">${s.meter || "—"}</span>`],
+       ["r2", "2박 연속", s => s.r2, s => s.r2 >= 2 ? chip(s.r2, "shift") : `<span class="font-mono text-zinc-400">${s.r2}</span>`]]
+    : [["cons", "다수 의견", s => s.cons ?? -1, s => chip(ks(s.cons), "same", "", `${s.consN}/${s.coreN} 동의`)],
+       ...(songs.some(s => s.truthTxt) ? [["truth", "정답", s => s.truthTxt, s => s.truthTxt ? `<span class="font-mono text-xs">${esc(s.truthTxt)}</span>` : ""]] : []),
+       ...KCORE.map(n => [n, KNAME(n), s => s.gk[n] ?? -1, s => chip(ks(s.gk[n]), kcat(s.gk[n], s.cons), "", KNAME(n))]),
+       ["agree", "45개 일치", s => s.agree, s => `<span class="font-mono">${Math.round(s.agree * 100)}%</span>`],
+       ["up", "key up", s => KD.keyup[s.id] ? KD.keyup[s.id].length : 0, s => KD.keyup[s.id] ? chip("↑" + KD.keyup[s.id].length, "shift") : ""]];
+  if (st.sort) { const c = cols.find(c => c[0] === st.sort); if (c) songs = [...songs].sort((a, b) => { const x = c[2](a), y = c[2](b); return (x > y ? 1 : x < y ? -1 : 0) * st.dir; }); }
+  $("#view").innerHTML = `<div class="overflow-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900" style="max-height:calc(100vh - 150px)">
+  <table class="w-full border-collapse text-sm"><thead class="sticky top-0 z-10 bg-zinc-50 dark:bg-zinc-800"><tr>
+  <th class="sticky left-0 z-10 bg-zinc-50 px-3 py-2 text-left font-medium text-zinc-500 dark:bg-zinc-800">곡</th>
+  ${cols.map(c => `<th data-k="${c[0]}" class="cursor-pointer whitespace-nowrap px-2 py-2 text-center text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white">${esc(c[1])}${st.sort === c[0] ? (st.dir > 0 ? " ↑" : " ↓") : ""}</th>`).join("")}</tr></thead>
+  <tbody>${songs.map(s => `<tr class="cursor-pointer border-t border-zinc-100 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/60" data-id="${esc(s.id)}">
+  <td class="sticky left-0 max-w-[280px] bg-inherit px-3 py-1.5">${songName(s)}</td>${cols.map(c => `<td class="px-2 py-1.5 text-center">${c[3](s)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  $("#view").querySelectorAll("th[data-k]").forEach(th => th.onclick = () => { st.dir = st.sort === th.dataset.k ? -st.dir : 1; st.sort = th.dataset.k; render(); });
+  $("#view").querySelectorAll("tr[data-id]").forEach(tr => tr.onclick = () => openTrack(tr.dataset.id));
+}
+
+// ---------- ② 카드 ----------
+const PER = 24;
+function strip(label, bands, dur, thin) {
+  return `<div class="flex items-center gap-2"><div class="w-28 shrink-0 truncate text-[11px] text-zinc-500">${esc(label)}</div><div class="relative ${thin ? "h-2" : "h-4"} flex-1 overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-800">${bands.map(([a, b, c, t]) => `<div class="s ${c.startsWith("bg-") ? c : CC[c]}" style="--a:${a / dur};--w:${(b - a) / dur}" data-tip="${esc(t)}"></div>`).join("")}</div></div>`;
+}
+function cardStrips(s) {
+  if (st.mode === "bpm") {
+    const out = [strip("Beat This! final0", s.sec.map(([a, b, v]) => [a, b, bcat(v, s.bpm), `${mmss(a)}–${mmss(b)} · ${v} BPM`]), s.dur)];
+    BMETH.forEach(([k, n]) => { const m = s.sw[k]; if (m?.sec && k !== "beatthis_final0") out.push(strip(n, m.sec.map(([a, b, v]) => [a, b, bcat(v, s.bpm), `${n} · ${mmss(a)}–${mmss(b)} · ${v}`]), s.dur)); });
+    if (s.bars.length) out.push(strip("마디", s.bars.map(([a, k], j) => [a, j + 1 < s.bars.length ? s.bars[j + 1][0] : s.bend, k === 4 ? "bg-zinc-300 dark:bg-zinc-700" : k === 2 ? "shift" : "off", `${mmss(a)} · ${k}박`]), s.dur, true));
+    return out.join("");
+  }
+  const out = [];
+  if (s.truth) out.push(strip("정답", s.truth.map(([t, k], j) => [t, j + 1 < s.truth.length ? s.truth[j + 1][0] : s.dur, kcat(pk(k), s.cons), `정답 ${k}`]), s.dur));
+  ["pipe_mix", "pipe_stem", "bl_ess", "bl_lib", "esswin_temperley", "cnnwin_mix"].forEach(n => { const m = s.m[n]; if (!m) return;
+    const segs = m.seg ? m.seg.map(([a, b, k]) => [a, b, k]) : m.win.map(([t, k], j) => [t, j + 1 < m.win.length ? m.win[j + 1][0] : s.dur, k]);
+    out.push(strip(KNAME(n), segs.map(([a, b, k]) => [a, b, kcat(pk(k), s.cons), `${KNAME(n)} · ${mmss(a)} · ${ks(pk(k))}`]), s.dur)); });
+  return out.join("");
+}
+function renderCards(songs) {
+  const pages = Math.max(1, Math.ceil(songs.length / PER)); st.page = Math.min(st.page, pages - 1);
+  const list = songs.slice(st.page * PER, st.page * PER + PER);
+  $("#view").innerHTML = `<div class="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(360px,1fr))]">${list.map(s => `
+  <article class="cursor-pointer rounded-xl border border-zinc-200 bg-white p-3 hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900" data-id="${esc(s.id)}">
+    <div class="mb-2 flex items-start gap-2">${songName(s)}<div class="ml-auto flex shrink-0 gap-1">${st.mode === "bpm" ? chip(s.st ? s.bpm : `${s.lo}–${s.hi}`, s.st ? "same" : "shift") + (s.r2 >= 2 ? chip("2박×" + s.r2, "shift") : "") : chip(ks(s.cons), "same", "", `${s.consN}/${s.coreN} 동의`) + (KD.keyup[s.id] ? chip("↑", "shift", "", "key up 후보") : "")}</div></div>
+    <div class="flex flex-col gap-1">${cardStrips(s)}</div>
+    <div class="mt-1 text-right font-mono text-[10px] text-zinc-400">${mmss(s.dur)}</div>
+  </article>`).join("")}</div>
+  <nav class="mt-4 flex items-center justify-center gap-2 text-sm">${Array.from({ length: pages }, (_, i) => `<button data-p="${i}" class="h-8 min-w-8 rounded-md px-2 ${i === st.page ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900" : "text-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-800"}">${i + 1}</button>`).join("")}</nav>`;
+  $("#view").querySelectorAll("[data-p]").forEach(b => b.onclick = () => { st.page = +b.dataset.p; render(); scrollTo(0, 0); });
+  $("#view").querySelectorAll("article[data-id]").forEach(a => a.onclick = () => openTrack(a.dataset.id));
+}
+
+// ---------- ③ 히트맵 ----------
+function renderHeat(songs) {
+  const cols = st.mode === "bpm" ? [["__ans", "응답"], ...BMETH] : KALL.map(n => [n, KNAME(n)]);
+  const cell = (s, k) => { if (st.mode === "bpm") { if (k === "__ans") return [s.st ? "same" : "shift", s.st ? `${s.bpm}` : `${s.lo}–${s.hi}`]; const v = bpmTempo(s, k); return v ? [bcat(v, s.bpm), `${Math.round(v)}`] : ["none", "—"]; } const g = s.gk[k]; return g === undefined ? ["none", "—"] : [kcat(g, s.cons), ks(g)]; };
+  const ord = st.mode === "key" ? [...songs].sort((a, b) => a.agree - b.agree) : [...songs].sort((a, b) => a.bpm - b.bpm);
+  $("#view").innerHTML = `<div class="overflow-auto rounded-xl border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-900" style="max-height:calc(100vh - 150px)">
+  <div class="mb-2 text-xs text-zinc-500">${st.mode === "key" ? "행 = 곡 (방법 간 일치율 낮은 순) · 열 = 방법 45개" : "행 = 곡 (BPM 순) · 열 = 방법"}</div>
+  <div class="grid gap-px" style="grid-template-columns:220px repeat(${cols.length},${st.mode === "key" ? 14 : 44}px)">
+    <div class="sticky top-0 z-10 bg-white dark:bg-zinc-900"></div>${cols.map(([k, n]) => `<div class="sticky top-0 z-10 flex h-28 items-end justify-center bg-white pb-1 dark:bg-zinc-900"><span class="whitespace-nowrap text-[10px] text-zinc-500" style="writing-mode:vertical-rl;transform:rotate(180deg)">${esc(n)}</span></div>`).join("")}
+    ${ord.map(s => `<button class="truncate pr-2 text-left text-[11px] hover:underline" data-id="${esc(s.id)}" title="${esc(s.title)}">${esc(s.title)}</button>${cols.map(([k, n]) => { const [c, t] = cell(s, k); return `<div class="h-4 ${CC[c]} ${st.mode === "bpm" ? "text-center font-mono text-[10px] leading-4" : ""}" data-tip="${esc(s.title.slice(0, 30))}<br>${esc(n)} · ${esc(t)}">${st.mode === "bpm" ? esc(t) : ""}</div>`; }).join("")}`).join("")}
+  </div></div>`;
+  $("#view").querySelectorAll("button[data-id]").forEach(b => b.onclick = () => openTrack(b.dataset.id));
+}
+
+// ---------- ④ 트랙 ----------
+function trackRows(s) {
+  const R = [];
+  if (st.mode === "bpm") {
+    R.push(["응답", s.st ? s.bpm : `${s.lo}–${s.hi}`, s.st ? "same" : "shift", [[0, s.dur, s.st ? `${s.bpm} BPM` : `${s.lo}–${s.hi} BPM`, s.st ? "same" : "shift", "응답"]], 1]);
+    R.push(["Beat This! final0", s.bpm, "same", s.sec.map(([a, b, v]) => [a, b, v, bcat(v, s.bpm), `${mmss(a)}–${mmss(b)} · ${v} BPM`])]);
+    R.push(["8 beat 창", "", "", s.ct.map((t, i) => [t, i + 1 < s.ct.length ? s.ct[i + 1] : s.dur, s.cb[i], bcat(s.cb[i], s.bpm), `${mmss(t)} · ${s.cb[i]} BPM`])]);
+    if (s.bars.length) R.push(["마디", s.meter + "박", "none", s.bars.map(([a, k], j) => [a, j + 1 < s.bars.length ? s.bars[j + 1][0] : s.bend, k, k === 4 ? "bg-zinc-300 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-300" : k === 2 ? "shift" : "off", `${mmss(a)} · ${k}박`]), 0, 1]);
+    BMETH.forEach(([k, n]) => { if (k === "beatthis_final0") return; const m = s.sw[k]; if (!m) return; const v = m.med ?? m.t;
+      if (m.sec) R.push([n, Math.round(v), bcat(v, s.bpm), m.sec.map(([a, b, x]) => [a, b, x, bcat(x, s.bpm), `${n} · ${mmss(a)}–${mmss(b)} · ${x}`])]);
+      else R.push([n, Math.round(v), bcat(v, s.bpm), [[0, s.dur, `${Math.round(v)} BPM`, bcat(v, s.bpm), `${n} · ${v}`]]]);
+      if (m.bars) R.push(["  마디", (m.m || "?") + "박", "none", m.bars.map(([a, q], j) => [a, j + 1 < m.bars.length ? m.bars[j + 1][0] : m.bend, q, q === 4 ? "bg-zinc-300 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-300" : q === 2 ? "shift" : "off", `${n} · ${mmss(a)} · ${q}박`]), 0, 1]); });
+  } else {
+    if (s.truth) R.push(["정답", s.truthTxt, "none", s.truth.map(([t, k], j) => [t, j + 1 < s.truth.length ? s.truth[j + 1][0] : s.dur, ks(pk(k)), kcat(pk(k), s.cons), `정답 ${k}`]), 1]);
+    if (s.ch) R.push(["코드", "", "", s.ch.map(([a, b, l]) => [a, b, l.replace(":maj", "").replace(":min", "m"), "bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300", `${mmss(a)} · ${l}`]), 0, 1]);
+    KALL.forEach(n => { const m = s.m[n]; if (!m) return; const g = s.gk[n];
+      const segs = m.seg ? m.seg : m.win ? m.win.map(([t, k], j) => [t, j + 1 < m.win.length ? m.win[j + 1][0] : s.dur, k]) : [[0, s.dur, m.k]];
+      R.push([KNAME(n), ks(g), kcat(g, s.cons), segs.map(([a, b, k]) => [a, b, ks(pk(k)), kcat(pk(k), s.cons), `${KNAME(n)} · ${mmss(a)} · ${ks(pk(k))}`])]); });
+  }
+  return R;
+}
+function renderTrack(songs) {
+  const M = MODES[st.mode];
+  let s = M.songs.find(x => x.id === st.song) || songs[0] || M.songs[0]; st.song = s.id;
+  const R = trackRows(s);
+  $("#view").innerHTML = `<div class="grid gap-3 lg:grid-cols-[280px_minmax(0,1fr)]">
+  <aside class="overflow-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900" style="max-height:calc(100vh - 150px)">${songs.map(x => `<button data-id="${esc(x.id)}" class="flex w-full items-center gap-2 border-b border-zinc-100 px-3 py-2 text-left dark:border-zinc-800 ${x.id === s.id ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900" : "hover:bg-zinc-50 dark:hover:bg-zinc-800"}">${songName(x)}</button>`).join("")}</aside>
+  <section class="min-w-0 overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+    <div class="flex flex-wrap items-center gap-2 border-b border-zinc-200 px-3 py-2 dark:border-zinc-800">
+      <div class="mr-auto min-w-0"><div class="truncate font-semibold">${esc(s.title)}</div><div class="text-xs text-zinc-500">${esc(s.team || "")} · ${mmss(s.dur)}${s.set === "w500" ? ` · <a class="text-same" href="https://www.youtube.com/watch?v=${s.id}" target="_blank" rel="noopener">YouTube</a>` : ""}</div></div>
+      <button id="zout" class="rounded-md border border-zinc-200 px-2 dark:border-zinc-700">−</button><input id="zoom" type="range" min="0" max="100" value="0" class="w-36" aria-label="확대"><button id="zin" class="rounded-md border border-zinc-200 px-2 dark:border-zinc-700">+</button>
+      <button id="fit" class="rounded-md border border-zinc-200 px-2 text-xs dark:border-zinc-700">전체</button><span id="tc" class="w-14 font-mono text-xs text-zinc-500">0:00</span>
+    </div>
+    <div id="vp" class="relative cursor-grab select-none overflow-auto" style="max-height:calc(100vh - 210px)"><div id="cv" class="relative" style="--pps:4">
+      <div class="sticky top-0 z-20 flex h-7 border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"><div class="sticky left-0 z-20 w-[220px] shrink-0 border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"></div><div class="lane relative" id="rl"></div></div>
+      ${R.map(([n, v, c, bands, ref, thin]) => `<div class="flex ${thin ? "h-5" : "h-8"} ${ref ? "border-b-2 border-zinc-200 dark:border-zinc-700" : ""}">
+        <div class="sticky left-0 z-10 flex w-[220px] shrink-0 items-center gap-2 border-r border-zinc-200 bg-white px-2 dark:border-zinc-800 dark:bg-zinc-900"><span class="flex-1 truncate ${ref ? "font-semibold" : "text-zinc-600 dark:text-zinc-400"} ${thin ? "text-[11px]" : "text-xs"}">${esc(n)}</span>${v !== "" && c ? chip(v, c, thin ? "!h-4 !min-w-0 text-[10px]" : "") : ""}</div>
+        <div class="lane relative border-b border-zinc-100 dark:border-zinc-800">${bands.map(([a, b, t, cc, tp]) => `<div class="b overflow-hidden whitespace-nowrap rounded ${CC[cc] || cc} px-1 font-mono ${thin ? "text-[10px] leading-[14px]" : "text-[11px] leading-[22px]"}" style="--a:${a};--w:${Math.max(0, b - a)}" data-tip="${esc(tp)}">${esc(t)}</div>`).join("")}</div></div>`).join("")}
+      <div id="ph" class="pointer-events-none absolute top-0 z-30 w-0 border-l border-zinc-900 dark:border-white" hidden></div>
+    </div></div>
+  </section></div>`;
+  $("#view").querySelectorAll("aside button[data-id]").forEach(b => b.onclick = () => { st.song = b.dataset.id; render(); });
+  setupZoom(s);
+}
+function setupZoom(s) {
+  const vp = $("#vp"), cv = $("#cv"), LW = 220;
+  st.fit = Math.max(.5, (vp.clientWidth - LW - 8) / s.dur);
+  const set = p => { st.pps = Math.min(200, Math.max(st.fit, p)); cv.style.setProperty("--pps", st.pps); const w = s.dur * st.pps; cv.querySelectorAll(".lane").forEach(l => l.style.width = w + "px"); cv.style.width = LW + w + "px";
+    $("#zoom").value = Math.round(100 * Math.log(st.pps / st.fit) / Math.log(200 / st.fit || 2));
+    const steps = [.5, 1, 2, 5, 10, 15, 30, 60, 120], sp = steps.find(x => x * st.pps >= 70) || 120; let r = "";
+    for (let t = 0; t <= s.dur; t += sp) r += `<div class="absolute bottom-0 top-0 border-l border-zinc-200 pl-1 pt-1 font-mono text-[10px] text-zinc-500 dark:border-zinc-700" style="left:${t * st.pps}px">${mmss(t)}</div>`;
+    $("#rl").innerHTML = r; };
+  const zoomAt = (f, cx) => { const r = vp.getBoundingClientRect(), x = (cx ?? (r.left + LW + (r.width - LW) / 2)) - r.left - LW, t = (vp.scrollLeft + x) / st.pps; set(st.pps * f); vp.scrollLeft = t * st.pps - x; };
+  set(st.fit);
+  vp.onwheel = e => { if (e.ctrlKey || e.metaKey) { e.preventDefault(); zoomAt(Math.exp(-e.deltaY * .01), e.clientX); } };
+  $("#zin").onclick = () => zoomAt(1.6); $("#zout").onclick = () => zoomAt(1 / 1.6); $("#fit").onclick = () => { set(st.fit); vp.scrollLeft = 0; };
+  $("#zoom").oninput = e => zoomAt(st.fit * Math.pow(200 / st.fit, e.target.value / 100) / st.pps);
+  let drag = null;
+  vp.onmousedown = e => { drag = { x: e.clientX, s: vp.scrollLeft }; };
+  onmouseup = () => drag = null;
+  vp.onmousemove = e => { if (drag) vp.scrollLeft = drag.s - (e.clientX - drag.x);
+    const r = vp.getBoundingClientRect(), x = e.clientX - r.left + vp.scrollLeft - LW, ph = $("#ph");
+    if (e.clientX - r.left < LW) { ph.hidden = true; return; }
+    const t = Math.min(s.dur, x / st.pps); ph.hidden = false; ph.style.left = (LW + t * st.pps) + "px"; ph.style.height = cv.scrollHeight + "px"; $("#tc").textContent = mmss(t); };
+}
+
+$("#q").oninput = () => { st.page = 0; render(); }; $("#set").onchange = () => { st.page = 0; render(); }; $("#flt").onchange = () => { st.page = 0; render(); };
+filters(); render();
+</script>
+</body>
+</html>

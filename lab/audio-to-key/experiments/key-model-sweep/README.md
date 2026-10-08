@@ -1,6 +1,6 @@
 # key 모델 일괄 시험 (key-model-sweep) — 계획, 대기 중
 
-상태: **실행 중** (2026-10-07, 커널 `gunhe17/worship-key-sweep`, T4). 처음엔 key-pipeline 작업 뒤로 미뤘으나 사용자가 "빈 Kaggle 세션에 지금 돌리기"로 변경.
+상태: **v1 완료(부분)** — 391/533곡, 결과는 [LOG.md](LOG.md). (2026-10-07 시작, 커널 `gunhe17/worship-key-sweep`, T4) 처음엔 key-pipeline 작업 뒤로 미뤘으나 사용자가 "빈 Kaggle 세션에 지금 돌리기"로 변경.
 
 - 코드: `sweep_body.py` + `build.py` → `kaggle/sweep.py` (key-pipeline/kaggle/key.py를 빌드 시점 사본으로 고정. 원본은 다른 세션이 수정 중이라 건드리지 않음)
 - GiantSteps·GTZAN 등 공개 정답 세트는 다른 세션(xxjiinn 계정)이 채점 중이라 여기서는 빼고, 합성 30곡 + 정답 3곡 + 찬양 500곡만
