@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    "pyproject.toml": true,
+    "**/.DS_Store": true,
+    "**/__pycache__": true,
+    "**/*.egg-info": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.ruff_cache": true,
+    "**/.coverage": true,
+    "**/.gradle": true,
+    "**/node_modules": true
+  },
+}

@@ -1,0 +1,28 @@
+{
+  "name": "worship-support",
+  "service": "workspace",
+
+  "workspaceFolder": "/app",
+  "dockerComposeFile": "../.docker/docker-compose.develop.yml",
+
+  "initializeCommand": ["sh", "${localWorkspaceFolder}/script/develop/devcontainer-initialize.sh"],
+  "postCreateCommand": ["sh", "${containerWorkspaceFolder}/script/develop/devcontainer-postcreate.sh"],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot",
+        "dbaeumer.vscode-eslint",
+        "ms-python.python",
+        "anthropic.claude-code",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+
+  "remoteUser": "root",
+  "remoteEnv": {
+    "PATH": "/root/.local/bin:${containerEnv:PATH}"
+  }
+}

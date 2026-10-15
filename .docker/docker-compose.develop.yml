@@ -1,0 +1,92 @@
+name: worship-support-develop
+
+services:
+  workspace:
+    container_name: worship-support-develop-workspace
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.develop.workspace
+    volumes:
+      # bind
+      - ..:/app
+      - ~/.claude.json:/root/.claude.json # share account/config (auth token is NOT here — login once inside)
+      # volume
+      - claude-config:/root/.claude
+      - vscode-server:/root/.vscode-server
+      - gradle_cache:/root/.gradle
+    command: sleep infinity
+    env_file:
+      - ../.env/.env.develop
+
+  api:
+    container_name: worship-support-develop-api
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.develop.api
+    # gradle writes build/ into the bind mount — not :ro
+    volumes:
+      - ..:/app
+      - gradle_cache:/root/.gradle
+    ports:
+      - "${DEVELOP_API_PORT}:${DEVELOP_API_CONTAINER_PORT}"
+    environment:
+      - SERVER_PORT=${DEVELOP_API_CONTAINER_PORT}
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${DEVELOP_MYSQL_HOST}:${DEVELOP_MYSQL_CONTAINER_PORT}/${DEVELOP_MYSQL_DATABASE}
+      - SPRING_DATASOURCE_USERNAME=${DEVELOP_MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DEVELOP_MYSQL_PASSWORD}
+    depends_on:
+      - database
+      - database-test
+    env_file:
+      - ../.env/.env.develop
+
+  uwi:
+    container_name: worship-support-develop-uwi
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.develop.uwi
+    volumes:
+      # bind
+      - ..:/app
+      # volume — keep linux node_modules out of the host tree
+      - uwi_node_modules:/app/worship_support/uwi/node_modules
+    ports:
+      - "${DEVELOP_UWI_PORT}:${DEVELOP_UWI_CONTAINER_PORT}"
+    depends_on:
+      - api
+    env_file:
+      - ../.env/.env.develop
+
+  database:
+    container_name: worship-support-develop-database
+    image: mysql:8.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DEVELOP_MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${DEVELOP_MYSQL_USER}
+      - MYSQL_PASSWORD=${DEVELOP_MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${DEVELOP_MYSQL_DATABASE}
+    ports:
+      - "127.0.0.1:${DEVELOP_MYSQL_PORT}:${DEVELOP_MYSQL_CONTAINER_PORT}"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  database-test:
+    container_name: worship-support-develop-database-test
+    image: mysql:8.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=${TEST_MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${TEST_MYSQL_USER}
+      - MYSQL_PASSWORD=${TEST_MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${TEST_MYSQL_DATABASE}
+    ports:
+      - "127.0.0.1:${TEST_MYSQL_PORT}:${TEST_MYSQL_CONTAINER_PORT}"
+    volumes:
+      - mysql_test_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+  mysql_test_data:
+  gradle_cache:
+  uwi_node_modules:
+  claude-config:
+  vscode-server:

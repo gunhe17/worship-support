@@ -1,0 +1,16 @@
+FROM node:22-slim AS build
+
+WORKDIR /app
+
+COPY worship_support/uwi/package*.json ./
+
+RUN npm ci
+
+COPY worship_support/uwi ./
+
+RUN npm run build
+
+FROM nginx:1.27-alpine
+
+# ponytail: Vite 빌드 출력(dist) 가정. SPA 라우팅 fallback은 nginx.conf 추가 시
+COPY --from=build /app/dist /usr/share/nginx/html
