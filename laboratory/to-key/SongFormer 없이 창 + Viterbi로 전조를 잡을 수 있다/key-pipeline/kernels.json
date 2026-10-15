@@ -1,0 +1,11 @@
+{
+ "worship-key-pipeline": {
+  "id": "xxjiinn/worship-key-pipeline",
+  "code": "kaggle/key.py",
+  "datasets": [
+   "xxjiinn/worship-audio-analysis-test",
+   "andradaolteanu/gtzan-dataset-music-genre-classification",
+   "xvanlee/giantsteps-key"
+  ]
+ }
+}

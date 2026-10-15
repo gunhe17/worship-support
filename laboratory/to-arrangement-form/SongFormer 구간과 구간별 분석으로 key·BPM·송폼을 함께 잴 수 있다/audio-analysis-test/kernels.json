@@ -1,0 +1,18 @@
+{
+ "worship-audio-analysis-run": {
+  "id": "gunhe17/worship-audio-analysis-run",
+  "code": "kaggle/kernel.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-audio-analysis-test"
+  ]
+ },
+ "worship-lyrics-stt": {
+  "id": "gunhe17/worship-lyrics-stt",
+  "code": "kaggle/stt-kernel.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-audio-analysis-test"
+  ]
+ }
+}

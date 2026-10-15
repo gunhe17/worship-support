@@ -1,0 +1,12 @@
+[package]
+name = "bpm-worker"
+version = "0.1.0"
+edition = "2021"
+description = "오디오 파일 → Beat This! + DBN 박·첫 박 (실험 페이지 업로드용, serve.py가 부른다)"
+
+[dependencies]
+beat-this = { version = "1.1", default-features = false, features = ["decode"] }
+anyhow = "1"
+
+[profile.release]
+opt-level = 3

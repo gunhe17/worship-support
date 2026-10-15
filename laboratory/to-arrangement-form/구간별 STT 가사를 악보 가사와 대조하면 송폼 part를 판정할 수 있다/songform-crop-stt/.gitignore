@@ -1,0 +1,8 @@
+audio/
+*.wav
+*.mp3
+*.m4a
+*.webm
+kaggle/dataset/
+refs/
+kaggle/sheet-dataset/

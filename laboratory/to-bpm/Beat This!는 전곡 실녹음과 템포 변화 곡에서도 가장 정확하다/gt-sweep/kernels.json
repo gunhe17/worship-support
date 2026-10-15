@@ -1,0 +1,36 @@
+{
+ "bpm-gt-sweep-a": {
+  "id": "gunhe17/bpm-gt-sweep-a",
+  "code": "kaggle/a.py",
+  "gpu": true
+ },
+ "bpm-gt-score-a": {
+  "id": "gunhe17/bpm-gt-score-a",
+  "code": "kaggle/a.py",
+  "datasets": [
+   "gunhe17/bpm-gt-sweep-out"
+  ]
+ },
+ "bpm-gt-sweep-b": {
+  "id": "miinggu/bpm-gt-sweep-b",
+  "code": "kaggle/b.py"
+ },
+ "bpm-gt-score-b": {
+  "id": "miinggu/bpm-gt-score-b",
+  "code": "kaggle/b.py",
+  "datasets": [
+   "miinggu/bpm-gt-sweep-out"
+  ]
+ },
+ "bpm-gt-sweep-c": {
+  "id": "gunhe17/bpm-gt-sweep-c",
+  "code": "kaggle/c.py"
+ },
+ "bpm-gt-score-c": {
+  "id": "gunhe17/bpm-gt-score-c",
+  "code": "kaggle/c.py",
+  "datasets": [
+   "gunhe17/bpm-gt-sweep-out"
+  ]
+ }
+}

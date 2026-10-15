@@ -1,0 +1,10 @@
+{
+ "worship-stt-500": {
+  "id": "gunhe17/worship-stt-500",
+  "code": "kaggle/run.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-audio-500"
+  ]
+ }
+}

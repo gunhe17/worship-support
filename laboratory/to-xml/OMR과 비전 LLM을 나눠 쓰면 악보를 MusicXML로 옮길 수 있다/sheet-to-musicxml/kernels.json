@@ -1,0 +1,158 @@
+{
+ "sheet-xml-audiveris": {
+  "id": "gunhe17/sheet-xml-audiveris",
+  "code": "kaggle/audiveris.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images"
+  ]
+ },
+ "sheet-xml-audiveris-v3": {
+  "id": "gunhe17/sheet-xml-audiveris-v3",
+  "code": "kaggle/audiveris-v3.py",
+  "kernels": [
+   "gunhe17/sheet-xml-audiveris"
+  ]
+ },
+ "sheet-dist-diag": {
+  "id": "gunhe17/sheet-dist-diag",
+  "code": "kaggle/dist-diag.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-ink-diag": {
+  "id": "gunhe17/sheet-ink-diag",
+  "code": "kaggle/ink-diag.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-regions": {
+  "id": "gunhe17/sheet-regions",
+  "code": "kaggle/regions.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images"
+  ]
+ },
+ "sheet-regions-100": {
+  "id": "gunhe17/sheet-regions-100",
+  "code": "kaggle/regions-100.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-regions-calib": {
+  "id": "gunhe17/sheet-regions-calib",
+  "code": "kaggle/regions-calib.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-regions-diag": {
+  "id": "gunhe17/sheet-regions-diag",
+  "code": "kaggle/regions-diag.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images"
+  ]
+ },
+ "sheet-xml-render": {
+  "id": "gunhe17/sheet-xml-render",
+  "code": "kaggle/render.py",
+  "kernels": [
+   "gunhe17/sheet-xml-audiveris",
+   "gunhe17/sheet-xml-audiveris-v3"
+  ]
+ },
+ "sheet-staff-500": {
+  "id": "gunhe17/sheet-staff-500",
+  "code": "kaggle/staff-500.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-diag": {
+  "id": "gunhe17/sheet-staff-diag",
+  "code": "kaggle/staff-diag.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-staff-dist": {
+  "id": "gunhe17/sheet-staff-dist",
+  "code": "kaggle/staff-dist.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-staff-p11": {
+  "id": "gunhe17/sheet-staff-p11",
+  "code": "kaggle/staff-p11.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-staff-p6x": {
+  "id": "gunhe17/sheet-staff-p6x",
+  "code": "kaggle/staff-p6x.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-probe": {
+  "id": "gunhe17/sheet-staff-probe",
+  "code": "kaggle/staff-probe.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-staff-strip": {
+  "id": "gunhe17/sheet-staff-strip",
+  "code": "kaggle/staff-strip.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-struct-diag": {
+  "id": "gunhe17/sheet-struct-diag",
+  "code": "kaggle/struct-diag.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-100"
+  ]
+ },
+ "sheet-xml-summary": {
+  "id": "gunhe17/sheet-xml-summary",
+  "code": "kaggle/summary.py",
+  "internet": false,
+  "kernels": [
+   "gunhe17/sheet-xml-audiveris",
+   "gunhe17/sheet-xml-vlm"
+  ]
+ },
+ "sheet-xml-vlm": {
+  "id": "gunhe17/sheet-xml-vlm",
+  "code": "kaggle/vlm.py",
+  "gpu": true,
+  "kernels": [
+   "gunhe17/sheet-xml-audiveris"
+  ]
+ },
+ "sheet-xml-worship": {
+  "id": "gunhe17/sheet-xml-worship",
+  "code": "kaggle/worship.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images"
+  ]
+ },
+ "sheet-xml-worship-render": {
+  "id": "gunhe17/sheet-xml-worship-render",
+  "code": "kaggle/worship-render.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images"
+  ],
+  "kernels": [
+   "gunhe17/sheet-xml-worship"
+  ]
+ }
+}

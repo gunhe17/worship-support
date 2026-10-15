@@ -1,0 +1,7 @@
+{
+ "songform-boundary-bench": {
+  "id": "gunhe17/songform-boundary-bench",
+  "code": "kaggle/bench.py",
+  "gpu": true
+ }
+}

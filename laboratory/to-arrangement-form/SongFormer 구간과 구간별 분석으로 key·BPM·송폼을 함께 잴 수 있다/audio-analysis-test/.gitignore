@@ -1,0 +1,6 @@
+audio/
+*.wav
+*.mp3
+*.m4a
+.venv/
+kaggle/dataset/

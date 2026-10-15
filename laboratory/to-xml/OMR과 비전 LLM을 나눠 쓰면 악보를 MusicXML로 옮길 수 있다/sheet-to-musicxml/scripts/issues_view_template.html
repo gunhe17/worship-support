@@ -1,0 +1,61 @@
+<title>남은 두 문제</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{--page:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink-2:#52514e;--muted:#898781;--ring:rgba(11,11,11,.10);--accent:#d4541f;--staff:#2a78d6;
+  --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--ring:rgba(255,255,255,.12)}}
+:root[data-theme="dark"]{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--ring:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;padding-inline:16px;padding-block:32px 72px}
+.wrap{max-width:1000px;margin:0 auto;display:grid;gap:36px}
+h1{margin:0;font-size:27px;text-wrap:balance} h2{margin:0;font-size:20px} h3{margin:0;font-size:15px}
+p{margin:0;max-width:72ch;color:var(--ink-2)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+section{display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:16px;display:grid;gap:10px}
+.shot{background:#000;border-radius:8px;padding:10px}
+.shot img{width:100%;display:block;background:#fff;border-radius:4px}
+.cap{font-size:13.5px;color:var(--ink-2)}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:1px 10px;color:#fff;background:var(--accent)}
+.tag.info{background:var(--staff)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+ul{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:4px}
+</style>
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <div class="eyebrow">worship-support · sheet-to-musicxml · 100장 적용 후</div>
+    <h1>남은 두 문제: 한글 조각 오탐, 놓친 오선</h1>
+    <p>문서별 잉크 기준을 100장에 적용한 뒤 남은 문제 두 가지를 실제 이미지로 보여줍니다. 빨간 박스는 검출 규칙이 "붙임줄 모양의 기호"로 판단한 조각, 초록 박스는 OCR이 찾은 가사 글자입니다.</p>
+  </header>
+
+  <section>
+    <h2>1. 한글 조각 오탐 <span class="tag">검출 규칙 문제</span></h2>
+    <p>예수전도단 「처음과 나중」. 가사 행에 기호가 섞였다고 표시됐지만 빨간 박스는 모두 한글 글자의 일부입니다. OCR이 그 글자를 놓쳐서(초록 박스 없음) "글자 박스 밖에 있는, 가로로 길고 속이 빈 곡선"이라는 붙임줄 조건에 걸렸습니다.</p>
+    <div class="card"><h3>'룩'의 아랫부분 (ㄹ·ㅜ·ㄱ 중 가로획)</h3><div class="shot"><img src="{{ywam4}}" alt="예수전도단 가사 행, 룩 아랫부분이 빨간 박스"></div>
+      <div class="cap">오른쪽 가운데 빨간 박스. 이 글자에는 OCR 박스가 없습니다.</div></div>
+    <div class="card"><h3>'3.주'의 아랫부분 (ㅜ)</h3><div class="shot"><img src="{{ywam6}}" alt="예수전도단 가사 행, 주 아랫부분이 빨간 박스"></div>
+      <div class="cap">오른쪽 끝 빨간 박스. 연하던 가사가 새 기준에서 선명해지면서 이전에 없던 오탐이 생겼습니다.</div></div>
+    <ul><li>진짜 붙임줄은 가사 글자보다 넓고(줄 간격 2–10칸), 가사 글자와 떨어진 높이에 걸쳐 있습니다. 한글 가로획은 글자 폭(약 1.8–2칸) 안에 있고 바로 옆에 다른 한글 조각이 붙어 있습니다.</li>
+        <li>개선 후보: 같은 글자 폭 안에 다른 조각이 위아래로 붙어 있으면 글자로 보기, 또는 OCR이 놓친 글자 자리를 가사 줄 높이로 채워 제외하기.</li></ul>
+  </section>
+
+  <section>
+    <h2>2. 오선 검출이 놓친 오선 <span class="tag">원인 미확인</span></h2>
+    <p>두 악보에서 오선 한 줄이 오선으로 잡히지 않고 행 안에 통째로 들어갔습니다. 앞서 "기울어진 오선"을 원인으로 추정했지만, 아래 이미지를 보면 두 줄 모두 수평입니다. 그 추정은 틀렸고 원인은 아직 모릅니다.</p>
+    <div class="card"><h3>마커스워십 「주의 이름 높이며」 — 5번째 오선</h3>
+      <div class="shot"><img src="{{mk_row}}" alt="마커스 놓친 오선 행"></div>
+      <div class="cap">행 PNG에 들어간 오선. 선은 수평입니다. 행 안에서 잰 "긴 가로선"은 5개 중 4개만 잡혔습니다.</div>
+      <div class="shot"><img src="{{mk_page}}" alt="마커스 원본 악보" style="max-width:520px;margin:0 auto"></div>
+      <div class="cap">원본 전체. 위에서 5번째 줄(Gm7 C/E로 시작)이 놓친 줄입니다.</div></div>
+    <div class="card"><h3>위러브 「우리가 주를 더욱 사랑하고」 1쪽 — 21–28마디</h3>
+      <div class="shot"><img src="{{wl_row}}" alt="위러브 놓친 오선 행"></div>
+      <div class="cap">행 PNG에 들어간 오선. 선은 수평이고 진합니다. 행 안에서 잰 "긴 가로선"은 5개 중 4개만 잡혔습니다.</div>
+      <div class="shot"><img src="{{wl_page}}" alt="위러브 페이지 영역 박스" style="max-width:520px;margin:0 auto"></div>
+      <div class="cap">페이지 영역 박스(이전 결과). 파란 오선 박스가 없는 줄이 21–28마디입니다.</div></div>
+    <ul><li>확인할 가설: ① 오선 줄 하나가 가늘거나 끊겨서 "페이지 폭 18% 이상 가로선" 조건에서 빠짐 → 5줄이 안 돼 오선으로 인정되지 않음. ② 위아래 오선의 선과 간격 계산이 섞여 묶음이 어긋남.</li>
+        <li>다음 단계: Kaggle에서 이 두 페이지의 줄 위치별 가로선 길이를 출력해 어느 줄이 왜 빠졌는지 확인.</li></ul>
+  </section>
+</div>

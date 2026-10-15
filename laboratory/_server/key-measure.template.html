@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Key Test</title>
+<style>
+/* 연구 지도 to Key › Test. bpm-measure(BPM Test)와 같은 형태: 제목 → 재생 카드 → 방법 표.
+   그래프 = 방법마다 시간별 key 띠 (곡 key 기준 색). 행을 누르면 그 방법의 지금 key를 재생 카드에 크게 보인다. 곡은 연구 지도 사이드바가 고른다 */
+:root {
+  --bg: #f5f5f7; --panel: #ffffff; --fg: #1d1d1f; --sub: #707070; --faint: #858585; --rule: #e8e8ed; --line: #d2d2d7; --pebble: #e2e2e5;
+  --apple: #0071e3; --link: #0066cc; --ice: #f4f8fb; --slate-50: #f5f5f7; --slate-400: #858585;
+  --max: #ff3b30; --max-text: #d70015; --min: #0071e3; --min-text: #0066cc;  /* 최댓값 빨강 · 최솟값 파랑 (사용자 결정) */
+  --sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, Inter, Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); letter-spacing: -0.016em; font-variant-numeric: tabular-nums; }
+html, body { height: 100%; }
+body { overflow: hidden; }  /* 페이지는 고정, 스크롤은 방법 표 안에서만 */
+main { max-width: 1024px; height: 100%; margin: 0 auto; padding: 24px 24px 16px; display: flex; flex-direction: column; gap: 20px; }
+main > section[aria-label="방법"] { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.table { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+#rows { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+#rows { scrollbar-width: none; } #rows::-webkit-scrollbar { display: none; }  /* 스크롤은 되고 막대만 숨김 */
+button { font: inherit; color: inherit; }
+button:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; }
+
+/* 재생 카드 = 왼쪽 메트로놈 칸(현재 템포 · 박) + 오른쪽 재생·소리 (Test·Playground 공통, 시안 P3) */
+/* 재생 카드 (P7 가운데 무대): 지금 템포 + 박 → [아이콘 | 막대 | 값] 두 줄 → 재생 버튼 */
+.player { flex: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.metro { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.metro .bpm { position: relative; line-height: 1; }
+.metro .bpm b { font-size: 48px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.metro .bpm span { position: absolute; left: 100%; bottom: 2px; margin-left: 6px; font-size: 14px; color: var(--faint); }
+.metro .beats { display: flex; gap: 14px; height: 18px; align-items: center; }
+.metro .beats i { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--line); transition: transform .12s cubic-bezier(0.22, 1, 0.36, 1), background .08s; }
+.metro .beats i.on { background: var(--apple); transform: scale(1.3); }
+.metro .beats i.on.first { background: var(--max); }
+.metro .beats i.hit { transform: scale(1.6); }
+@media (prefers-reduced-motion: reduce) { .metro .beats i { transition: none; } }
+/* 두 줄 같은 칸: 막대·트랙 양 끝이 맞고, 아이콘·값과 막대 사이는 모두 10px */
+.ctrl { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px 12px; align-items: center; width: 100%; padding-inline: 20px; margin-top: 4px; }
+.ic { display: flex; justify-content: flex-start; color: var(--fg); }
+.val { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.val span { font-weight: 400; color: var(--faint); }
+.levels { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.levels .ic { flex: none; margin-left: 24px; }
+.levels output { flex: none; font-size: 13px; font-weight: 600; }
+.levels input { -webkit-appearance: none; appearance: none; flex: 1; min-width: 40px; height: 16px; margin: 0; background: transparent; cursor: pointer; --p: 50%; }
+.levels input::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--apple) var(--p), var(--rule) var(--p)); }
+.levels input::-moz-range-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--apple) var(--p), var(--rule) var(--p)); }
+.levels input::-webkit-slider-thumb { -webkit-appearance: none; width: 10px; height: 10px; margin-top: -3px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+.levels input::-moz-range-thumb { width: 10px; height: 10px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+.levels input:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; border-radius: 4px; }
+.play { width: 48px; height: 48px; flex: none; border: 0; border-radius: 50%; background: var(--apple); color: #fff; display: grid; place-items: center; cursor: pointer; margin-top: 2px; }
+.play:disabled { background: var(--line); cursor: default; }
+.bar { flex: 1; height: 16px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+.bar i { position: absolute; left: 0; right: 0; top: 6px; height: 4px; border-radius: 2px; background: var(--rule); }
+.bar b { position: absolute; left: 0; top: 6px; height: 4px; border-radius: 2px; background: var(--apple); width: 0; }
+.bar s { position: absolute; top: 3px; left: 0; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+
+h2 { margin: 0 0 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--sub); }
+h2 span { margin-left: 6px; font-weight: 400; color: var(--faint); }
+.table { border-radius: 12px; background: var(--panel); }
+.head, .row { display: flex; align-items: center; gap: 16px; }
+.head { padding: 10px 20px; border-bottom: 1px solid var(--rule); font-size: 12px; color: var(--slate-400); }
+.row { position: relative; padding: 14px 20px; }
+.row + .row::before { content: ""; position: absolute; top: 0; left: 20px; right: 0; height: 1px; background: var(--rule); }
+.row:last-child { border-radius: 0 0 12px 12px; }
+.name { width: 200px; flex: none; position: relative; display: flex; align-items: center; gap: 6px; min-width: 0; }
+.name > span { font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.legend { flex: 1; display: flex; gap: 14px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 5px; height: 5px; border-radius: 50%; }
+/* ? = _design IconButton sm: 선 아이콘, 올리면 옅은 바탕. 올리기만 해도 설명이 보이고, 누르면 고정 */
+.q { flex: none; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--slate-400); cursor: pointer; transition: background .15s, color .15s; }
+.q:hover, .q[aria-expanded="true"] { background: var(--pebble); color: var(--fg); }
+.name:has(.q:hover, .tip:hover) .tip[hidden], .q:focus-visible + .tip[hidden] { display: grid; }
+.tip::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }  /* ? 와 설명 사이 틈을 건너도 닫히지 않게 */
+.tip { position: absolute; left: 0; top: calc(100% + 8px); z-index: 4; width: 320px; background: #fff; border-radius: 8px; border: 1px solid var(--line); padding: 12px 14px; display: grid; gap: 8px; }
+.tip[hidden] { display: none; }
+.tip b { display: block; font-size: 12px; font-weight: 600; }
+.tip p { margin: 0; font-size: 12.5px; line-height: 1.55; color: #474747; }
+/* 행을 누르면 그 방법의 박에 클릭을 켜고 끈다 (이름 버튼은 키보드용). 올리면 옅은 바탕, 켜면 파란 바탕·파란 이름 */
+.pick { border: 0; background: none; padding: 2px 0; margin: 0; text-align: left; cursor: pointer; min-width: 0; font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color .15s; }
+.pick:disabled { cursor: default; color: var(--sub); font-weight: 500; }
+.row { transition: background .15s; }
+.row.can { cursor: pointer; }
+.row.can:hover { background: var(--slate-50); }
+.row.can:hover .pick { color: var(--link); }
+.row.on, .row.on:hover { background: var(--ice); }
+.row.on .pick { color: var(--link); }
+.row:first-child { border-radius: 0; }
+.chart { flex: 1; min-width: 0; height: 48px; position: relative; }
+.chart svg { position: absolute; left: 0; top: 4px; width: 100%; height: 40px; overflow: visible; }
+.past { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: rgb(0 113 227 / .05); border-radius: 4px 0 0 4px; }
+.head-line { position: absolute; top: 0; bottom: 0; left: 0; width: 1.5px; margin-left: -.75px; background: var(--apple); }
+/* 그래프에 올리면: 모든 그래프에 같은 시각의 회색 안내선, 올린 그래프에는 시각 */
+.hover-line { position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: #b4b4b9; opacity: 0; pointer-events: none; }
+.hover-t { position: absolute; top: -2px; left: 0; transform: translate(-50%, -100%); font-size: 10.5px; font-weight: 600; color: #474747; background: #fff; border-radius: 6px; padding: 2px 6px; border: 1px solid var(--line); opacity: 0; pointer-events: none; white-space: nowrap; }
+#rows.hovering .hover-line { opacity: 1; }
+.chart.hover .hover-t { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .q, .pick, .row { transition: none; } }
+.dot { position: absolute; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; }
+.chart .val { position: absolute; font-size: 11px; font-weight: 600; line-height: 1; white-space: nowrap; pointer-events: none; text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 3px #fff; }
+.msg { flex: none; font-size: 13px; color: var(--max-text); }
+.msg:empty { display: none; }
+/* 좁은 폭: 이름 칸은 비율로 줄고 이름은 두 줄까지 감싼다 (말줄임 대신) */
+.name { width: clamp(132px, 28%, 240px); }
+.name > .pick { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; }
+@media (max-width: 720px) { main { padding: 16px 16px 12px; } .head, .row { padding-inline: 12px; gap: 10px; } .row + .row::before { left: 12px; } .ctrl { padding-inline: 12px; } .name > .pick { font-size: 15px; } }
+@media (max-width: 480px) { .levels .ic { margin-left: 8px; } }
+
+/* key 띠: 곡 key = 파랑, 관계조·같은 으뜸음 = 회색, 반음·온음 위(key up) = 빨강, 그 밖 = 주황 */
+:root { --same: #e3effd; --same-text: #0066cc; --rel: #ececf0; --rel-text: #474747; --up: #ffe3e0; --up-text: #d70015; --other: #fff0dc; --other-text: #b25000; }
+.band { position: absolute; left: 0; right: 0; top: 10px; height: 28px; border-radius: 6px; overflow: hidden; }
+.band span { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; padding-left: 6px; font-size: 11.5px; font-weight: 600; white-space: nowrap; overflow: hidden; box-shadow: inset -1px 0 0 #fff; }
+.k-same { background: var(--same); color: var(--same-text); } .k-rel { background: var(--rel); color: var(--rel-text); }
+.k-up { background: var(--up); color: var(--up-text); } .k-other { background: var(--other); color: var(--other-text); }
+.legend i.k-same { background: #9cc3f5; } .legend i.k-rel { background: #c7c7cf; } .legend i.k-up { background: #ff8a80; } .legend i.k-other { background: #ffc078; }
+.legend { flex-wrap: wrap; row-gap: 4px; min-width: 0; } .legend span { white-space: nowrap; }
+.legend i { width: 8px !important; height: 8px !important; border-radius: 2px !important; }
+.metro .key b { font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+.metro .key small { display: block; text-align: center; margin-top: 8px; font-size: 13px; color: var(--faint); }
+.row .main { flex: none; width: 64px; text-align: right; font-size: 13px; font-weight: 600; color: var(--sub); }
+.empty { padding: 28px 20px; color: var(--sub); font-size: 14px; }
+.name > .pick { font-size: 15px; }
+</style>
+
+<main>
+  <section class="player" aria-label="재생">
+    <div class="metro" id="metro" role="status" aria-live="polite"><span class="key"><b id="nowKey">–</b><small id="nowWho"></small></span></div>
+    <div class="ctrl">
+      <span class="ic" role="img" aria-label="재생 위치" title="재생 위치"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 5l11 7-11 7z"/></svg></span>
+      <button class="bar" id="bar" aria-label="재생 위치"><i></i><b id="barFill"></b><s id="barKnob"></s></button>
+      <span class="val"><b id="now">0:00</b><span> / <span id="end">0:00</span></span></span>
+      <span class="ic" role="img" aria-label="음원 소리" title="음원 소리"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18 7a7 7 0 0 1 0 10"/></svg></span>
+      <span class="levels"><input type="range" id="musicVol" aria-label="음원 소리" min="0" max="1" step="0.05"></span>
+      <span class="val"><output id="musicOut"></output></span>
+    </div>
+    <button class="play" id="play" aria-label="재생" disabled></button>
+  </section>
+  <section aria-label="방법">
+    <h2>방법<span id="count"></span></h2>
+    <div class="table">
+      <div class="head"><div class="name" style="font-size:12px;font-weight:400">방법</div>
+        <div class="legend"><span>시간별 key</span><span style="flex:1"></span><span><i class="k-same"></i>곡 key</span><span><i class="k-rel"></i>관계조·같은 으뜸음</span><span><i class="k-up"></i>반음·온음 위</span><span><i class="k-other"></i>그 밖</span></div>
+        <div class="main" style="font-size:12px;font-weight:400">곡 key</div></div>
+      <div id="rows"></div>
+    </div>
+  </section>
+  <div class="msg" id="msg" role="status"></div>
+</main>
+<audio id="audio" preload="metadata"></audio>
+
+<script>
+const { keys: KEYS, order: ORDER, meta: META, songs: ALL } = __DATA__;
+const $ = id => document.getElementById(id), audio = $("audio");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const mmss = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+const ICON = { play: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.5 5l11 7-11 7z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
+  q: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.5"/><path d="M12 16.9v.1"/></svg>' };
+// key 번호: 0–11 장조(C…B), 12–23 단조
+const short = k => KEYS[k].replace(" major", "").replace(" minor", "m");
+function rel(k, K) {  // 곡 key K 기준 관계
+  if (k === K) return "same";
+  const tk = k % 12, tK = K % 12, mk = k >= 12, mK = K >= 12;
+  if (tk === tK) return "rel";  // 같은 으뜸음 (장↔단)
+  if (mk !== mK && (mK ? (tK + 3) % 12 === tk : (tK + 9) % 12 === tk)) return "rel";  // 관계조
+  if (mk === mK && [1, 2].includes((tk - tK + 12) % 12)) return "up";  // 반음·온음 위 (key up)
+  return "other";
+}
+// 방법 설명 (? 아이콘)
+const GROUP = [
+  [/^pipe/, "key-pipeline", "이 연구의 key 파이프라인입니다. 박마다 크로마를 뽑아 템플릿과 비교하고, Viterbi로 구간을 이은 뒤 전조 규칙으로 key가 바뀐 자리를 찾습니다. stem은 Demucs로 베이스·화성 악기만 떼어 낸 소리입니다."],
+  [/^bl_/, "곡 전체 사전확률 Viterbi", "15초 창을 5초씩 옮기며 key 점수를 내고, 곡 전체에서 많이 나온 key를 사전확률로 삼아 Viterbi로 잇습니다. 곡 key는 잘 맞히지만 짧은 전조는 지우는 경향이 있습니다."],
+  [/^chord/, "코드 인식 → key", "madmom이 코드를 먼저 인식하고, 코드가 울린 길이에 가중치를 주어 가장 잘 맞는 key를 고릅니다."],
+  [/^cnnwin/, "madmom CNN 창별", "key를 맞히도록 학습한 신경망(madmom CNN)을 30초 창마다 돌린 결과입니다."],
+  [/^cnn_/, "madmom CNN", "key를 맞히도록 학습한 신경망을 곡 전체에 한 번 돌린 결과입니다."],
+  [/^esswin/, "Essentia 창별", "Essentia의 key 추정을 15초 창마다 돌린 결과입니다. 창마다 따로 판정해 자주 흔들립니다."],
+  [/^tpl/, "템플릿", "곡 전체 크로마 평균을 장·단조 템플릿과 비교해 가장 비슷한 key를 고릅니다. 템플릿마다 음 높이별 가중치가 다릅니다."],
+  [/^ess_/, "Essentia KeyExtractor", "오픈소스 음악 분석 도구 Essentia의 key 추정입니다. 프로파일(음 높이별 가중치)마다 결과가 꽤 다릅니다."],
+];
+const desc = k => { const g = GROUP.find(([r]) => r.test(k)); const mx = META[k].mirex;
+  return `<b>${esc(g ? g[1] : META[k].name)}</b><p>${esc(g ? g[2] : "")}</p>` + (mx != null ? `<p>정답 32곡(합성 29 + 찬양 3) MIREX 점수 ${(mx * 100).toFixed(0)}점</p>` : ""); };
+
+let S = null, tip = null, sel = null;
+const at = (runs, t) => { let r = runs[0]; for (const x of runs) { if (x[0] <= t) r = x; else break; } return r[1]; };
+const mainKey = (runs, dur) => {  // 가장 오래 울린 key
+  const len = {}; runs.forEach(([t, k], i) => len[k] = (len[k] || 0) + ((runs[i + 1]?.[0] ?? dur) - t));
+  return +Object.entries(len).sort((a, b) => b[1] - a[1])[0][0];
+};
+
+function pick(s) {
+  S = s; tip = null;
+  document.title = s.title;
+  const ids = ORDER.filter(k => s.m[k]);
+  if (!sel || !s.m[sel]) sel = ids[0];
+  $("count").textContent = ids.length;
+  const pct = t => (Math.min(t, s.dur) / s.dur * 100).toFixed(3) + "%";
+  $("rows").innerHTML = ids.map(k => {
+    const runs = s.m[k];
+    const band = runs.map(([t, key], i) => {
+      const end = runs[i + 1]?.[0] ?? s.dur, w = (end - t) / s.dur;
+      return `<span class="k-${rel(key, s.key)}" style="left:${pct(t)};width:${(w * 100).toFixed(3)}%" title="${mmss(t)}–${mmss(end)} · ${KEYS[key]}">${w > .06 ? short(key) : ""}</span>`;
+    }).join("");
+    const mk = mainKey(runs, s.dur), nm = esc(META[k].name);
+    return `<div class="row can${k === sel ? " on" : ""}" data-k="${k}"><div class="name"><button class="pick" aria-pressed="${k === sel}" title="누르면 이 방법의 지금 key를 위에 크게 보입니다">${nm}</button>`
+      + `<button class="q" aria-label="${nm} 설명" aria-expanded="false">${ICON.q}</button><div class="tip" hidden>${desc(k)}</div></div>`
+      + `<div class="chart" role="img" aria-label="${nm} 시간별 key"><span class="past"></span><div class="band">${band}</div><span class="head-line"></span><span class="hover-line"></span><span class="hover-t"></span></div>`
+      + `<div class="main" style="color:var(--${rel(mk, s.key) === "same" ? "same" : rel(mk, s.key)}-text)">${short(mk)}</div></div>`;
+  }).join("");
+  load(s);
+}
+function select(k) {
+  sel = k;
+  document.querySelectorAll("#rows .row").forEach(r => { const on = r.dataset.k === sel; r.classList.toggle("on", on); r.querySelector(".pick").setAttribute("aria-pressed", on); });
+  show(audio.currentTime);
+}
+$("rows").addEventListener("click", e => {
+  const q = e.target.closest(".q");
+  if (q) { const open = q.getAttribute("aria-expanded") !== "true"; closeTip(); if (open) { q.setAttribute("aria-expanded", "true"); q.nextElementSibling.hidden = false; tip = q; } return; }
+  if (e.target.closest(".tip")) return;
+  const row = e.target.closest(".row.can");
+  if (row) select(row.dataset.k);
+});
+$("rows").addEventListener("pointermove", e => {
+  const c = e.target.closest(".chart");
+  if (!c) return hideHover();
+  const r = c.getBoundingClientRect(), f = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)), p = (f * 100).toFixed(2) + "%";
+  $("rows").classList.add("hovering");
+  document.querySelectorAll("#rows .hover-line").forEach(l => l.style.left = p);
+  document.querySelectorAll("#rows .chart.hover").forEach(x => x !== c && x.classList.remove("hover"));
+  c.classList.add("hover");
+  const t = c.querySelector(".hover-t"); t.style.left = p; t.textContent = mmss(f * (audio.duration || S.dur));
+});
+const hideHover = () => { $("rows").classList.remove("hovering"); document.querySelectorAll("#rows .chart.hover").forEach(x => x.classList.remove("hover")); };
+$("rows").addEventListener("pointerleave", hideHover);
+const closeTip = () => { if (tip) { tip.setAttribute("aria-expanded", "false"); tip.nextElementSibling.hidden = true; tip = null; } };
+document.addEventListener("click", e => { if (tip && !e.target.closest(".name")) closeTip(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeTip(); });
+
+// 재생: serve.py /audio/<id>
+function load(s) {
+  audio.pause(); audio.src = `/audio/${s.id}`; $("play").disabled = true; $("play").innerHTML = ICON.play;
+  $("end").textContent = mmss(s.dur); $("msg").textContent = ""; show(0);
+}
+audio.onloadedmetadata = () => { $("play").disabled = false; $("end").textContent = mmss(audio.duration); };
+audio.onerror = () => { $("msg").textContent = location.protocol === "file:" ? "serve.py로 열어야 음원이 나옵니다" : "음원을 불러오지 못했습니다"; };
+audio.onplay = () => { $("play").innerHTML = ICON.pause; $("play").setAttribute("aria-label", "일시 정지"); };
+audio.onpause = () => { $("play").innerHTML = ICON.play; $("play").setAttribute("aria-label", "재생"); };
+$("play").onclick = () => { if (!audio.paused) return audio.pause(); audio.play().catch(e => { $("msg").textContent = "재생하지 못했습니다: " + e.message; }); };
+let lastKey = null;
+function show(t) {
+  if (!S) return;
+  const p = Math.min(100, t / S.dur * 100).toFixed(2) + "%";
+  $("now").textContent = mmss(t); $("barFill").style.width = p; $("barKnob").style.left = p;
+  document.querySelectorAll("#rows .past").forEach(e => e.style.width = p);
+  document.querySelectorAll("#rows .head-line").forEach(e => e.style.left = p);
+  const k = sel && S.m[sel] ? at(S.m[sel], t) : null;
+  if (k !== lastKey) { $("nowKey").textContent = k == null ? "–" : KEYS[k]; lastKey = k; }
+  $("nowWho").textContent = sel ? META[sel].name : "";
+}
+(function loop() { if (S && !audio.paused) show(audio.currentTime); requestAnimationFrame(loop); })();
+$("bar").onclick = e => { const r = $("bar").getBoundingClientRect(), t = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * (audio.duration || S.dur); if (audio.readyState) audio.currentTime = t; show(t); };
+// 그래프를 누르면 그 시각으로 (행 고르기와 함께)
+$("rows").addEventListener("click", e => { const c = e.target.closest(".chart"); if (!c) return; const r = c.getBoundingClientRect(), t = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * (audio.duration || S.dur); if (audio.readyState) audio.currentTime = t; show(t); });
+const keep = { get(k, d) { try { const v = localStorage.getItem("bpm:" + k); return v === null ? d : +v; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem("bpm:" + k, v); } catch (e) {} } };
+(function () { const el = $("musicVol"), apply = () => { el.style.setProperty("--p", el.value * 100 + "%"); $("musicOut").textContent = Math.round(el.value * 100) + "%"; audio.volume = +el.value; keep.set("music", el.value); };
+  el.value = keep.get("music", 0.8); el.oninput = apply; apply(); })();
+
+// 연구 지도 사이드바가 고른 곡 (500곡 중 key 측정은 359곡)
+addEventListener("message", e => {
+  if (e.data?.type !== "song") return;
+  const s = ALL.find(x => x.id === e.data.id);
+  if (s) { if (s !== S) pick(s); return; }
+  S = null; audio.pause(); document.title = "Key Test";
+  $("count").textContent = ""; $("rows").innerHTML = '<div class="empty">이 곡은 아직 key를 재지 않았습니다. key-model-sweep v1은 500곡 중 359곡만 돌았습니다.</div>'; $("nowKey").textContent = "–"; $("nowWho").textContent = "";
+});
+pick(ALL[0]);
+if (parent !== window) parent.postMessage({ type: "shown", id: ALL[0].id }, "*");  // 처음 띄운 곡을 사이드바에 알린다
+</script>

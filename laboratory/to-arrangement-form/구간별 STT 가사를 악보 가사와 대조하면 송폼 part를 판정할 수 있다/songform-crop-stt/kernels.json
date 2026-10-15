@@ -1,0 +1,36 @@
+{
+ "worship-songform-ghost613": {
+  "id": "gunhe17/worship-songform-ghost613",
+  "code": "kaggle/ghost-kernel.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-songform-pool"
+  ],
+  "kernels": [
+   "gunhe17/worship-songform-crop-stt"
+  ]
+ },
+ "worship-songform-crop-stt": {
+  "id": "gunhe17/worship-songform-crop-stt",
+  "code": "kaggle/kernel.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-songform-pool"
+  ]
+ },
+ "worship-sheet-omr": {
+  "id": "gunhe17/worship-sheet-omr",
+  "code": "kaggle/omr-kernel.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images"
+  ]
+ },
+ "worship-sheet-vlm": {
+  "id": "gunhe17/worship-sheet-vlm",
+  "code": "kaggle/vlm-kernel.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images"
+  ]
+ }
+}

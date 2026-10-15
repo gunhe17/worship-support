@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko" class="h-full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연구 지도</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { sans: ['"SF Pro Text"', "-apple-system", "BlinkMacSystemFont", "Inter", "Pretendard", '"Apple SD Gothic Neo"', "system-ui", "sans-serif"] },
+  colors: { slate: { 50: "#f5f5f7", 100: "#e8e8ed", 200: "#d2d2d7", 300: "#b4b4b9", 400: "#858585", 500: "#707070", 600: "#474747", 700: "#333333", 800: "#1d1d1f", 900: "#1d1d1f" },
+            apple: { DEFAULT: "#0071e3", link: "#0066cc" }, ice: "#f4f8fb", pebble: "#e2e2e5" },
+  transitionTimingFunction: { spring: "cubic-bezier(0.22, 1, 0.36, 1)" } } } };
+</script>
+<style>
+  body { letter-spacing: -0.016em; }
+  /* 접기 (_design Fold: 열기 240ms spring, 닫기 180ms) */
+  .fold { display: grid; grid-template-rows: 1fr; opacity: 1; transition: grid-template-rows 240ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms; }
+  .fold.shut { grid-template-rows: 0fr; opacity: 0; transition-duration: 180ms, 150ms; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  .fold > div { overflow: hidden; min-height: 0; }
+  @media (prefers-reduced-motion: reduce) { .fold { transition: none; } }
+  .no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }  /* 스크롤은 되고 막대만 숨김 */
+  /* 사이드바 (_design: 열기 280ms spring, 닫기 200ms) — 너비가 줄고 안쪽은 왼쪽으로 밀리며 흐려진다 */
+  #side { transition: width 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease-out; }
+  #side.shut { opacity: 0; transition: width 200ms cubic-bezier(0.4, 0, 0.2, 1), opacity 150ms ease-in; }
+  #sideInner { transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1); }
+  #side.shut #sideInner { transform: translateX(-16px); transition-duration: 200ms; }
+  #sep, #scrim { transition: opacity 200ms ease-out; }
+  #sep.shut, #scrim.shut { opacity: 0; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) { #side, #sideInner, #sep, #scrim { transition: none !important; } }
+</style>
+</head>
+<body class="flex h-full flex-col bg-slate-50 font-sans text-slate-800 antialiased">
+
+<header class="relative z-40 flex h-11 shrink-0 items-center gap-2 border-b border-slate-100 bg-white/90 px-4 backdrop-blur">
+  <button id="sideToggle" title="사이드바" aria-label="사이드바 열기·닫기" class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-slate-600 transition duration-150 hover:bg-slate-100 hover:text-slate-900 active:scale-[0.96]"></button>
+  <span class="absolute left-1/2 -translate-x-1/2 text-[15px] font-semibold tracking-tight text-slate-900">Research Lab</span>
+</header>
+
+<div id="shell" class="relative flex min-h-0 flex-1">
+  <div id="scrim" class="absolute inset-0 z-20 bg-slate-900/20 md:hidden"></div>
+  <aside id="side" class="flex h-full shrink-0 flex-col overflow-hidden bg-white max-md:absolute max-md:inset-y-0 max-md:left-0 max-md:z-30">
+    <div id="sideInner" class="flex min-h-0 flex-1 flex-col text-sm">
+      <nav id="tree" aria-label="기능" class="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-2 pt-2 pb-2"></nav>
+      <section id="songs" aria-label="곡" class="hidden flex-col">
+        <div class="flex shrink-0 flex-col gap-1 pt-1.5 pb-1">
+          <label class="flex h-8 items-center gap-2 rounded-lg bg-slate-50 px-2"><span class="sr-only">곡 검색</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="h-3.5 w-3.5 shrink-0 text-slate-400" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5l4.5 4.5"/></svg><input id="songQ" type="search" placeholder="제목이나 팀 이름" class="min-w-0 flex-1 bg-transparent text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none"></label>
+          <div class="flex items-center justify-between px-1 text-[11px]"><span class="font-semibold text-slate-500">곡</span><span id="songCount" aria-live="polite" class="text-slate-400"></span></div>
+        </div>
+        <div class="relative">
+          <ul id="songList" class="no-scrollbar max-h-[230px] overflow-y-auto"></ul>
+          <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-7 bg-gradient-to-b from-white/0 to-white"></div>
+        </div>
+      </section>
+    </div>
+  </aside>
+  <div id="sep" role="separator" aria-orientation="vertical" aria-label="사이드바 너비" title="드래그해서 너비 조절" class="relative z-20 w-px shrink-0 cursor-col-resize bg-slate-100 transition-colors hover:bg-slate-300 max-md:hidden"><div class="absolute inset-y-0 -left-2.5 -right-2.5"></div></div>
+  <main class="min-w-0 flex-1"><iframe id="frame" title="페이지" class="hidden h-full w-full border-0"></iframe></main>
+</div>
+
+<script>
+const G = __GRAPH__;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const byId = Object.fromEntries(G.nodes.map(n => [n.id, n]));
+const store = { get(k, d) { try { const v = localStorage.getItem("lab:" + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem("lab:" + k, JSON.stringify(v)); } catch (e) {} } };
+const ICONS = {
+  space: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+  sidebar: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>',
+  wave: '<path d="M4 12h2M8 8v8M12 5v14M16 9v6M20 11v2"/>',  // 아이콘은 잉크 영역 중심을 (12,12)에
+};
+// space 안의 페이지 (/ 기준 경로)
+const PAGES = { "to-bpm": [["measure", "Test", "wave", "_server/bpm-measure.html"]], "to-key": [["key-measure", "Test", "wave", "_server/key-measure.html"]], "to-arrangement-form": [["stt-measure", "Test", "wave", "_server/stt-measure.html"], ["boundary", "Boundary", "wave", "_server/boundary-measure.html"]] };
+const icon = (name, cls) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 ${cls}" aria-hidden="true">${ICONS[name]}</svg>`;
+
+// ---------- 사이드바: 기능은 고를 수 없는 그룹 제목, 그 아래 페이지들이 늘 보인다 ----------
+let page = store.get("page", null);
+const spaceOf = id => Object.keys(PAGES).find(k => PAGES[k].some(x => x[0] === id)) || null;
+function treeHTML() {
+  const feats = G.tree.filter(t => !t.id.startsWith("_"));
+  $("#sideInner").appendChild($("#songs"));  // 트리를 다시 쓰기 전에 곡 목록을 밖으로 빼 둔다
+  $("#tree").innerHTML = feats.map(f => {
+    const pages = PAGES[f.id] || [];
+    return `<div role="heading" aria-level="2" title="${esc(byId[f.id].title)}"
+      class="flex h-8 w-full cursor-default select-none items-center gap-2 px-2 text-sm ${pages.length ? "font-semibold text-slate-900" : "text-slate-400"}">
+      ${icon("space", `h-4 w-4 ${pages.length ? "text-slate-500" : "text-slate-300"}`)}<span class="min-w-0 flex-1 truncate">${esc(byId[f.id].title)}</span></div>`
+      + (pages.length ? `<div class="ml-3 flex flex-col gap-1 border-l border-slate-100 pl-1">${pages.map(([id, label, ic]) => SONG_PAGES.includes(id)
+        // Test = 누르면 그 아래 곡 목록만 열고 닫는 행. 본문은 곡을 눌러야 바뀐다
+        ? `<button type="button" data-fold="${id}" aria-expanded="${listAt === id}" aria-controls="slot-${id}" ${page === id ? 'aria-current="page"' : ""}
+            class="flex h-8 w-full items-center gap-2 rounded-lg px-2 text-left text-[13px] transition duration-150 hover:bg-slate-50 ${page === id ? "font-semibold text-apple-link" : "text-slate-600"}">${icon(ic, "h-4 w-4")}<span class="min-w-0 flex-1 truncate">${label}</span></button>
+          <div id="slot-${id}" class="fold ${listAt === id ? "" : "shut"}" ${listAt === id ? "" : "inert"}><div><div class="ml-3 border-l border-slate-100 pl-2"></div></div></div>`
+        : `<button type="button" data-page="${id}" ${page === id ? 'aria-current="page"' : ""}
+            class="flex h-8 w-full items-center gap-2 rounded-lg px-2 text-left text-[13px] transition duration-150 ${page === id ? "bg-ice font-semibold text-apple-link" : "text-slate-600 hover:bg-slate-50"}">${icon(ic, "h-4 w-4")}<span class="min-w-0 flex-1 truncate">${label}</span></button>`).join("")}</div>` : "");
+  }).join("");
+  $("#tree").querySelectorAll("[data-page]").forEach(b => b.onclick = () => { page = b.dataset.page; go(); });
+  if (listAt && $(`#slot-${listAt}`)) $(`#slot-${listAt} > div > div`).appendChild($("#songs"));  // 다시 그려도 검색어·스크롤이 남게 같은 요소를 옮긴다
+  $("#tree").querySelectorAll("[data-fold]").forEach(b => b.onclick = () => toggleList(b.dataset.fold));
+}
+// 트리를 다시 그리지 않고 접기만 바꿔 애니메이션이 이어지게. 본문(page)은 그대로
+function toggleList(id) {
+  const fold = (k, open) => { const el = $(`#slot-${k}`); if (!el) return; el.classList.toggle("shut", !open); el.inert = !open; $(`[data-fold="${k}"]`).setAttribute("aria-expanded", open); };
+  if (listAt) fold(listAt, false);  // 열린 목록은 닫고, 다른 행이면 그 아래에서 연다
+  listAt = listAt === id ? null : id; store.set("listAt", listAt);
+  if (listAt) { $(`#slot-${listAt} > div > div`).appendChild($("#songs")); fold(listAt, true); }
+  songsHTML();
+}
+// ---------- 곡 목록 (To Bpm › Test 아래): 곡을 누르면 본문을 Test로 바꾸고 그 곡을 알린다 ----------
+const SONG_PAGES = ["measure", "key-measure", "stt-measure", "boundary"];
+const SONG_LIST = { boundary: "_server/boundary-songs.json" };  // 그 밖의 Test는 찬양 500곡
+const listOf = id => SONG_LIST[id] || "_server/bpm-songs.json";  // 곡 목록은 Test의 하위 요소 (한 번에 한 곳에서 열림)
+let listAt = SONG_PAGES.includes(store.get("listAt", "measure")) ? store.get("listAt", "measure") : null;  // 지금 곡 목록이 열린 페이지 (없으면 null)
+const LISTS = {}, picked = store.get("picked", { "_server/bpm-songs.json": store.get("song", null) });  // 목록마다 고른 곡
+const songOf = id => picked[listOf(id)] || null;
+async function songsHTML() {
+  const show = !!listAt && !!$(`#slot-${listAt}`);  // 열린 자리(slot)에 붙어 있을 때만. 닫힌 채 사이드바 밖에 떠 있지 않게
+  $("#songs").classList.toggle("hidden", !show); $("#songs").classList.toggle("flex", show);
+  if (!show) return;
+  const url = listOf(listAt), song = songOf(listAt);
+  if (!LISTS[url]) { try { LISTS[url] = await (await fetch(url)).json(); } catch (e) { LISTS[url] = []; } }
+  const SONGS = LISTS[url];
+  const q = $("#songQ").value.trim().toLowerCase();
+  const rows = SONGS.filter(s => !q || (s.title + " " + s.team).toLowerCase().includes(q));
+  $("#songCount").textContent = `${rows.length}곡`;  // 지금 검색어에 걸린 곡 수
+  $("#songList").innerHTML = rows.map(s => `<li><button type="button" data-song="${esc(s.id)}" title="${esc(s.title)}" ${s.id === song ? 'aria-current="true"' : ""}
+    class="flex h-[46px] w-full items-center gap-2 rounded-lg px-2 text-left transition duration-150 ${s.id === song ? "bg-ice text-apple-link" : "text-slate-700 hover:bg-slate-50"}">
+    <span class="flex min-w-0 flex-1 flex-col"><span class="truncate text-[12.5px] leading-[18px] ${s.id === song ? "font-semibold" : ""}">${esc(s.title)}</span><span class="truncate text-[11px] text-slate-400">${esc(s.team)}</span></span></button></li>`).join("") || `<li class="px-2 py-2 text-[12px] text-slate-400">없음</li>`;
+  $("#songList").querySelectorAll("[data-song]").forEach(b => b.onclick = () => { pickSong(b.dataset.song); if (innerWidth < 768) setSide(false); });
+  $("#songList [aria-current]")?.scrollIntoView({ block: "nearest" });
+}
+$("#songQ").oninput = songsHTML;
+function pickSong(id) {
+  picked[listOf(listAt)] = id; store.set("picked", picked);
+  if (listAt && page !== listAt) { page = listAt; go(); return; }  // 목록이 열린 페이지로. 새로 여는 페이지에는 load 때 곡을 알린다
+  $("#frame").contentWindow?.postMessage({ type: "song", id }, "*");
+  songsHTML();
+}
+$("#frame").addEventListener("load", () => { const song = songOf(page); if (song) $("#frame").contentWindow.postMessage({ type: "song", id: song }, "*"); });
+// 페이지가 처음 띄운 곡: 사이드바에 고른 곡이 없을 때만 그 곡을 활성으로 표시 (본문에는 제목을 두지 않는다)
+addEventListener("message", e => { if (e.data?.type === "shown" && !songOf(page)) { picked[listOf(page)] = e.data.id; store.set("picked", picked); songsHTML(); } });
+
+// 본문: 고른 페이지를 iframe으로 (데이터가 커서 지도 파일과 나눔)
+function go() {
+  store.set("page", page);
+  const p = (PAGES[spaceOf(page)] || []).find(x => x[0] === page), f = $("#frame");
+  if (!p) page = null;
+  f.classList.toggle("hidden", !p);
+  if (p && f.getAttribute("src") !== p[3]) f.setAttribute("src", p[3]);
+  if (!p) f.removeAttribute("src");
+  treeHTML(); songsHTML();
+}
+
+// ---------- 사이드바 열기·닫기·너비 (288px 기본, 200–480, 드래그·더블클릭 초기화) ----------
+// 기본은 늘 열린 상태로 시작한다 (너비만 기억)
+let sideOpen = true, sideW = Math.min(480, Math.max(200, store.get("sideW", 288)));
+function setSide(open, instant) {
+  sideOpen = open;
+  const a = $("#side");
+  if (instant) {  // 처음 그릴 때는 애니메이션 없이
+    a.style.transition = "none";
+    requestAnimationFrame(() => requestAnimationFrame(() => { a.style.transition = ""; }));
+  }
+  a.classList.toggle("shut", !open); a.style.width = open ? sideW + "px" : "0px"; a.inert = !open;
+  a.setAttribute("aria-hidden", !open);
+  $("#sideInner").style.width = sideW + "px";
+  $("#sep").classList.toggle("shut", !open); $("#scrim").classList.toggle("shut", !open);
+  $("#sideToggle").classList.toggle("text-apple", open); $("#sideToggle").setAttribute("aria-expanded", open);
+}
+$("#sideToggle").innerHTML = icon("sidebar", "h-[18px] w-[18px]");
+$("#sideToggle").onclick = () => setSide(!sideOpen);
+$("#scrim").onclick = () => setSide(false);
+// 포인터 캡처: 드래그 중 마우스가 iframe 위로 가도 이벤트가 구분선에 남는다 (iframe은 잠시 마우스를 받지 않음)
+let resizing = false;
+const sep = $("#sep");
+sep.addEventListener("pointerdown", e => {
+  e.preventDefault(); resizing = true; sep.setPointerCapture(e.pointerId);
+  $("#side").style.transition = "none"; $("#frame").style.pointerEvents = "none";
+  document.body.classList.add("cursor-col-resize", "select-none");
+});
+sep.addEventListener("pointermove", e => {
+  if (!resizing) return;
+  sideW = Math.min(480, Math.max(200, Math.round(e.clientX - $("#side").getBoundingClientRect().left)));
+  $("#side").style.width = sideW + "px"; $("#sideInner").style.width = sideW + "px";
+});
+const endResize = () => {
+  if (!resizing) return; resizing = false;
+  $("#side").style.transition = ""; $("#frame").style.pointerEvents = "";
+  document.body.classList.remove("cursor-col-resize", "select-none"); store.set("sideW", sideW);
+};
+sep.addEventListener("pointerup", endResize);
+sep.addEventListener("pointercancel", endResize);
+sep.addEventListener("lostpointercapture", endResize);
+$("#sep").ondblclick = () => { sideW = 288; store.set("sideW", 288); setSide(true); };
+
+setSide(true, true); go();
+</script>
+</body>
+</html>

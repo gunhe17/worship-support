@@ -1,0 +1,118 @@
+<title>행 분할 검토</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781; --ring:rgba(11,11,11,.10); --line:#e1e0d9;
+  --upper:#d4541f; --staff:#2a78d6; --lower:#0a7d0a;
+  --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--ring:rgba(255,255,255,.12);--line:#2c2c2a;--upper:#eb6834;--staff:#3987e5;--lower:#1fa31f}
+}
+:root[data-theme="dark"]{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--ring:rgba(255,255,255,.12);--line:#2c2c2a;--upper:#eb6834;--staff:#3987e5;--lower:#1fa31f}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;padding-inline:16px;padding-block:32px 72px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:28px}
+h1{margin:0;font-size:28px;font-weight:700;text-wrap:balance}
+h2{margin:0;font-size:19px;font-weight:600}
+p{margin:0;max-width:72ch;color:var(--ink-2)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--page);padding-block:10px;border-bottom:1px solid var(--line);display:grid;gap:8px}
+.toggles{display:flex;flex-wrap:wrap;gap:8px}
+.toggles label{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ring);border-radius:999px;padding:3px 12px 3px 8px;font-size:13.5px;cursor:pointer;background:var(--surface)}
+.toggles input{accent-color:var(--ink);margin:0}
+.toggles input:focus-visible{outline:2px solid var(--staff);outline-offset:2px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.nav{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px}
+.nav a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.nav a:hover{color:var(--ink)}
+.sheet{display:grid;gap:14px;scroll-margin-top:110px}
+.sheet-head{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.sys{background:#000;border:1px solid #000;border-radius:10px;padding:12px 14px;display:grid;gap:10px}
+.sys-n{font-family:var(--mono);font-size:12px;color:#a8a7a0}
+.part{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:start}
+.tag{font-size:12px;font-weight:600;border-radius:5px;padding:1px 0;text-align:center;color:#fff}
+.part.staff .tag{background:var(--staff)} .part.row .tag{background:#6b6a65}
+.rmeta{display:block;font-family:var(--mono);font-size:10.5px;color:#a8a7a0;font-weight:400;margin-top:2px;text-align:center}
+.band{display:grid;gap:8px}
+.part img{width:100%;display:block;background:#fff;border:1px solid var(--ring);border-radius:4px}
+body.hide-staff .part.staff,body.hide-row .part.row{display:none}
+@media (max-width:560px){.part{grid-template-columns:1fr;gap:4px}.tag{justify-self:start;padding:1px 8px}}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px;display:grid;gap:2px}
+.tile .v{font-family:var(--mono);font-size:28px;font-weight:500;line-height:1.1}
+.tile .l{font-size:13px;color:var(--ink-2)}
+.cats{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px;display:grid;gap:6px}
+.cat-row{display:grid;grid-template-columns:minmax(150px,220px) 1fr 44px;gap:10px;align-items:center;font-size:13.5px}
+.cat-bar{height:14px;border-radius:0 4px 4px 0;background:var(--staff)}
+.cat-row.info .cat-bar{background:#8a8a84}
+.cat-n{font-family:var(--mono);text-align:right}
+.issue{background:#000;border-radius:10px;padding:12px 14px;display:grid;gap:8px;color:#eee}
+.issue-head{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px}
+.pill{font-size:12px;border-radius:999px;padding:1px 9px;border:1px solid #555;color:#ddd}
+.pill.high{background:#d4541f;border-color:#d4541f;color:#fff}.pill.medium{background:#b8860b;border-color:#b8860b;color:#fff}.pill.low{color:#bbb}
+.file{font-family:var(--mono);font-size:12px;color:#a8a7a0}
+.issue img{width:100%;background:#fff;border-radius:4px;display:block}
+.issue p{color:#ddd;max-width:none;font-size:14px}
+.issue .sugg{color:#9fc3ef;font-size:13px}
+.sheet-sum{color:var(--ink-2);font-size:14px}
+.pill.real{background:#d4541f;border-color:#d4541f;color:#fff}.pill.not{background:#2f6f3a;border-color:#2f6f3a;color:#fff}.pill.unclear{background:#b8860b;border-color:#b8860b;color:#fff}
+body.hide-real .issue.v-real,body.hide-not_problem .issue.v-not_problem,body.hide-unclear .issue.v-unclear{display:none}
+.reason{color:#e8c9a8;font-size:13px}
+.newtag{font-size:11px;color:#9fc3ef;border:1px solid #9fc3ef;border-radius:4px;padding:0 5px}
+</style>
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <div class="eyebrow">worship-support · sheet-to-musicxml · 절차 B 검토</div>
+    <h1>행 분할 결과 검토: 진짜 문제와 아닌 것</h1>
+    <p>잉크 행 분할(v9) 결과의 PNG 409개를 에이전트가 모두 보고 찾은 지적을, 사용자 기준으로 다시 판정했습니다. 판정도 에이전트가 PNG를 직접 보고 내린 것이라 틀린 판정이 섞여 있을 수 있습니다.</p>
+    <div class="cats" style="gap:6px;font-size:14px">
+      <div><span class="pill real">진짜 문제</span> 한 PNG에 음악 기호와 가사가 섞임 · 오선이 통째로 글자와 한 행에 들어감 · 어느 PNG에도 남지 않고 사라진 기호나 가사</div>
+      <div><span class="pill not">문제 아님</span> 음악 기호가 여러 행(또는 오선 PNG와 행)으로 나뉨, 단 그 행에 가사가 없을 때 · 잡티만 있는 행</div>
+      <div><span class="pill unclear">확인 필요</span> 기준 밖: 기호와 코드·라벨·마디 번호가 섞임 · 글자가 오선 PNG에 섞임 · 가사 한 줄이 두 행으로 잘림 · 가사 두 줄 합쳐짐 · 워터마크 · 제목/저작권 누락</div>
+    </div>
+  </header>
+  <div class="tiles" id="tiles"></div>
+  <section style="display:grid;gap:10px"><h2>진짜 문제 요약</h2><div class="cats" id="realsum" style="gap:10px;font-size:14px"></div></section>
+  <section style="display:grid;gap:10px"><h2>판정별 · 종류별 개수</h2><div class="cats" id="cats"></div></section>
+  <div class="bar">
+    <div class="toggles">
+      <label><input type="checkbox" id="t-real" checked><span class="dot" style="background:#d4541f"></span>진짜 문제</label>
+      <label><input type="checkbox" id="t-unclear" checked><span class="dot" style="background:#b8860b"></span>확인 필요</label>
+      <label><input type="checkbox" id="t-not_problem"><span class="dot" style="background:#2f6f3a"></span>문제 아님</label></div>
+    <nav class="nav" id="nav"></nav>
+  </div>
+  <div id="sheets" style="display:grid;gap:40px"></div>
+</div>
+<script>
+const D = /*__DATA__*/null;
+const CAT = { staff_missed: "오선 누락", staff_symbol_leak: "오선 기호가 행으로 샘", staff_text_leak: "글자가 오선 PNG에 섞임", staff_cut: "오선 기호 잘림",
+  row_merged: "여러 줄이 한 행으로 합쳐짐", row_split: "한 줄이 여러 행으로 쪼개짐", row_noise: "잡티만 있는 행", other: "기타", info_symbol_row: "기호만 있는 행" };
+const VL = { real: "진짜 문제", unclear: "확인 필요", not_problem: "문제 아님" }, VC = { real: "real", unclear: "unclear", not_problem: "not" };
+const iss = D.issues, by = v => iss.filter(x => x.verdict === v);
+document.getElementById("tiles").innerHTML = [[by("real").length, "진짜 문제"], [by("unclear").length, "확인 필요"], [by("not_problem").length, "문제 아님"], [iss.filter(x => x.new).length, "재검토에서 새로 찾은 것"]]
+  .map(([v, l]) => `<div class="tile"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+document.getElementById("realsum").innerHTML = D.real_summary || "";
+const rows = [];
+for (const v of ["real", "unclear", "not_problem"]) { const c = {}; by(v).forEach(x => c[x.category] = (c[x.category] || 0) + 1);
+  Object.entries(c).sort((a, b) => b[1] - a[1]).forEach(([k, n]) => rows.push([v, k, n])); }
+const mx = Math.max(1, ...rows.map(r => r[2]));
+document.getElementById("cats").innerHTML = rows.map(([v, k, n]) => `<div class="cat-row"><span><span class="pill ${VC[v]}" style="margin-right:6px">${VL[v]}</span>${CAT[k] || k}</span><div class="cat-bar" style="width:${n / mx * 100}%;background:${v === "real" ? "#d4541f" : v === "unclear" ? "#b8860b" : "#2f6f3a"}"></div><span class="cat-n">${n}</span></div>`).join("");
+const order = Object.keys(D.sheets);
+document.getElementById("nav").innerHTML = order.map(st => `<a href="#${st}">${D.sheets[st].label} (${iss.filter(x => x.stem === st && x.verdict === "real").length})</a>`).join("");
+const rank = { real: 0, unclear: 1, not_problem: 2 };
+document.getElementById("sheets").innerHTML = order.map(st => {
+  const s = D.sheets[st], list = iss.filter(x => x.stem === st).sort((a, b) => rank[a.verdict] - rank[b.verdict]);
+  return `<section class="sheet" id="${st}"><div class="sheet-head"><h2>${s.label}</h2><span class="meta">진짜 문제 ${list.filter(x => x.verdict === "real").length} · 확인 필요 ${list.filter(x => x.verdict === "unclear").length} · 문제 아님 ${list.filter(x => x.verdict === "not_problem").length}</span></div>
+    ${list.map(x => `<div class="issue v-${x.verdict}"><div class="issue-head"><span class="pill ${VC[x.verdict]}">${VL[x.verdict] || x.verdict}</span><b>${CAT[x.category] || x.category}</b><span class="file">${x.file}</span>${x.new ? '<span class="newtag">재검토에서 새로 찾음</span>' : ""}${x.mixed_kinds && x.mixed_kinds.length ? `<span class="file">섞인 것: ${x.mixed_kinds.join(" + ")}</span>` : ""}</div>
+      ${x.src ? `<img loading="lazy" src="${x.src}" alt="${s.label} ${x.file}">` : ""}
+      <p class="reason">판정: ${x.reason_ko || ""}</p><p>${x.description_ko}</p></div>`).join("") || `<p class="sheet-sum">지적 없음</p>`}</section>`;
+}).join("");
+for (const v of ["real", "unclear", "not_problem"]) { const box = document.getElementById("t-" + v);
+  document.body.classList.toggle("hide-" + v, !box.checked);
+  box.addEventListener("change", () => document.body.classList.toggle("hide-" + v, !box.checked)); }
+</script>

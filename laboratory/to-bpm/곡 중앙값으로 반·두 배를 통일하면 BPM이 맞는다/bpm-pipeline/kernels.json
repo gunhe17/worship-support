@@ -1,0 +1,26 @@
+{
+ "worship-bpm-pipeline": {
+  "id": "gunhe17/worship-bpm-pipeline",
+  "code": "kaggle/bpm.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-audio-analysis-test"
+  ]
+ },
+ "worship-bpm-gtzan": {
+  "id": "gunhe17/worship-bpm-gtzan",
+  "code": "kaggle/bpm.py",
+  "gpu": true,
+  "datasets": [
+   "andradaolteanu/gtzan-dataset-music-genre-classification"
+  ]
+ },
+ "worship-bpm-500": {
+  "id": "gunhe17/worship-bpm-500",
+  "code": "kaggle/bpm.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-audio-500"
+  ]
+ }
+}

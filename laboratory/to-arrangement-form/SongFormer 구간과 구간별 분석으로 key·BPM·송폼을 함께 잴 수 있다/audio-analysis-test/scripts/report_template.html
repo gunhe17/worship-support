@@ -1,0 +1,254 @@
+<title>찬양 오디오 분석 결과</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#EEF1F5; --ink:#172033; --muted:#5A6478; --faint:#8A93A4; --line:#DCE1E9;
+  --ref:#8A5A0B; --ref-bg:#FBF3E4; --model:#2F53BF; --model-bg:#EAF0FD; --oom:#B4232F;
+  --ks:62%; --kl:78%; --klm:66%; --ktext:#172033;
+  --lb-intro:#D9DEE7; --lb-verse:#BFD7F2; --lb-pre:#CFE6D2; --lb-chorus:#F4CFA6; --lb-bridge:#DCC8EE; --lb-inst:#E4E0D3; --lb-outro:#D3D8DF; --lb-silence:#EEF0F3;
+  --bpm-main:#E6EAF1; --bpm-alt:#F7D9A8;
+  --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F131A; --surface:#161C26; --surface-2:#1C2330; --ink:#E4E9F1; --muted:#9AA4B6; --faint:#6F7A8D; --line:#2A3342;
+    --ref:#E7B866; --ref-bg:#2A2214; --model:#8EA9FF; --model-bg:#1A2440; --oom:#F07A84;
+    --ks:45%; --kl:38%; --klm:28%; --ktext:#F1F4F9;
+    --lb-intro:#2E3542; --lb-verse:#23405F; --lb-pre:#274534; --lb-chorus:#5A3A1C; --lb-bridge:#3E2F55; --lb-inst:#3A372D; --lb-outro:#303641; --lb-silence:#1E242E;
+    --bpm-main:#252D3A; --bpm-alt:#5A4220;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F131A; --surface:#161C26; --surface-2:#1C2330; --ink:#E4E9F1; --muted:#9AA4B6; --faint:#6F7A8D; --line:#2A3342;
+  --ref:#E7B866; --ref-bg:#2A2214; --model:#8EA9FF; --model-bg:#1A2440; --oom:#F07A84;
+  --ks:45%; --kl:38%; --klm:28%; --ktext:#F1F4F9;
+  --lb-intro:#2E3542; --lb-verse:#23405F; --lb-pre:#274534; --lb-chorus:#5A3A1C; --lb-bridge:#3E2F55; --lb-inst:#3A372D; --lb-outro:#303641; --lb-silence:#1E242E;
+  --bpm-main:#252D3A; --bpm-alt:#5A4220;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.6;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:1100px;margin:0 auto;display:grid;gap:40px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:28px;font-weight:700;letter-spacing:-.01em}
+h2{font-size:20px;font-weight:600}
+h3{font-size:15px;font-weight:600}
+a{color:var(--model)}
+.mono,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:68ch;margin:8px 0 0}
+header.top{display:grid;gap:18px}
+.notice{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted)}
+.notice b{color:var(--ink);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:12.5px;color:var(--muted);white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600}
+.chip.warn{border-color:color-mix(in srgb,var(--oom) 45%,var(--line));color:var(--oom)}
+nav.jump{display:flex;flex-wrap:wrap;gap:8px}
+nav.jump a{text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:8px;font-size:13px}
+nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--model);outline:none}
+
+/* overview matrix */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2)}
+td.num,th.num{text-align:right}
+tr:last-child td{border-bottom:0}
+.col-ref{background:var(--ref-bg)}
+.col-model{background:var(--model-bg)}
+th.col-ref{color:var(--ref)} th.col-model{color:var(--model)}
+
+/* song section */
+section.song{display:grid;gap:16px;scroll-margin-top:16px}
+.song-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+.song-head .t{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.song-head .team{color:var(--muted);font-size:14px}
+.contrast{display:grid;grid-template-columns:110px 1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.contrast > div{padding:10px 14px;border-bottom:1px solid var(--line);min-width:0}
+.contrast .rowlab{font-size:12.5px;color:var(--muted);font-weight:600;background:var(--surface-2)}
+.contrast .hd{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.contrast .hd.ref{color:var(--ref);background:var(--ref-bg)}
+.contrast .hd.model{color:var(--model);background:var(--model-bg)}
+.contrast .ref{border-left:1px solid var(--line)}
+.contrast .model{border-left:1px solid var(--line)}
+.contrast > div:nth-last-child(-n+3){border-bottom:0}
+.sub{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.dist{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.kchip{display:inline-flex;gap:4px;align-items:center;font-family:var(--mono);font-size:12px;padding:1px 7px;border-radius:5px;color:var(--ktext)}
+.formline{font-size:12.5px;line-height:1.7;word-break:keep-all}
+.formline span{white-space:nowrap}
+
+/* timeline */
+.tl-card{padding:14px 14px 8px}
+.tl-title{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;align-items:baseline;margin-bottom:6px}
+.tl-title .cap{font-size:12.5px;color:var(--muted)}
+svg.tl{display:block;width:100%;min-width:760px;height:auto;font-family:var(--sans)}
+svg .lane-lab{fill:var(--muted);font-size:12px}
+svg .lane-grp{fill:var(--faint);font-size:10.5px;letter-spacing:.06em}
+svg .tick{stroke:var(--line);stroke-width:1}
+svg .ticklab{fill:var(--faint);font-size:10.5px;font-family:var(--mono)}
+svg .blk{stroke:var(--surface);stroke-width:1.5}
+svg .btxt{fill:var(--ink);font-size:11px;font-family:var(--mono);pointer-events:none}
+svg .ktxt{fill:var(--ktext);font-size:11px;font-family:var(--mono);pointer-events:none}
+svg .lb-intro{fill:var(--lb-intro)} svg .lb-verse{fill:var(--lb-verse)} svg .lb-pre-chorus{fill:var(--lb-pre)} svg .lb-chorus{fill:var(--lb-chorus)}
+svg .lb-bridge{fill:var(--lb-bridge)} svg .lb-inst{fill:var(--lb-inst)} svg .lb-outro{fill:var(--lb-outro)} svg .lb-silence{fill:var(--lb-silence)}
+svg .bpm-main{fill:var(--bpm-main)} svg .bpm-alt{fill:var(--bpm-alt)} svg .none{fill:var(--surface-2)}
+svg .oom{fill:url(#hatch)} svg .oomtxt{fill:var(--oom);font-size:12px;font-weight:600}
+svg .hatch-line{stroke:color-mix(in srgb,var(--oom) 40%,transparent);stroke-width:4}
+svg .sep{stroke:var(--line);stroke-dasharray:3 3}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);align-items:center}
+.legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details > summary{cursor:pointer;padding:10px 14px;font-size:13px;color:var(--muted);font-weight:500}
+details > summary:focus-visible{outline:2px solid var(--model);outline-offset:2px;border-radius:12px}
+details[open] > summary{border-bottom:1px solid var(--line)}
+details table td,details table th{white-space:nowrap}
+
+.notes{display:grid;gap:8px;font-size:13.5px;color:var(--muted);max-width:80ch}
+.notes li{margin-bottom:4px}
+.foot{font-size:12px;color:var(--faint)}
+
+.cmp th.row{background:var(--surface-2);color:var(--muted);text-transform:none;letter-spacing:0;font-size:12.5px}
+.cmp{table-layout:fixed;min-width:640px} .cmp th:first-child{width:170px} .cmp.key th:nth-child(2){width:170px}
+.lyr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.lyr .cell{padding:10px 14px;border-top:1px solid var(--line);min-width:0}
+.lyr .cell + .cell{border-left:1px solid var(--line)}
+.lyr .mh{grid-column:1/-1;padding:8px 14px;background:var(--surface-2);font-size:12.5px;font-weight:600;color:var(--muted);border-top:1px solid var(--line)}
+.lyr .ih{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.lyr ol{list-style:none;margin:0;padding:0;max-height:300px;overflow:auto;display:grid;gap:3px;font-size:13.5px}
+.lyr li{display:grid;grid-template-columns:44px 1fr;gap:8px}
+.lyr li .ts{font-family:var(--mono);font-size:11.5px;color:var(--faint);padding-top:2px}
+.lyr .err{color:var(--oom)}
+@media (max-width:640px){.lyr{grid-template-columns:1fr}.lyr .cell + .cell{border-left:0}}
+.agree{fill:var(--bpm-main)} .disagree{fill:var(--bpm-alt)}
+@media (max-width:640px){
+  h1{font-size:23px}
+  .contrast{grid-template-columns:1fr}
+  .contrast .ref,.contrast .model{border-left:0}
+  .contrast .hd.rowlab{display:none}
+  .contrast .rowlab{border-bottom:0;padding-bottom:2px}
+  .contrast .ref::before{content:"참고 · ";color:var(--ref);font-weight:600;font-size:12px}
+  .contrast .model::before{content:"모델 · ";color:var(--model);font-weight:600;font-size:12px}
+  .contrast .hd{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>찬양 오디오 분석 결과</h1>
+    <nav class="jump" id="jump" aria-label="곡 바로가기"></nav>
+  </header>
+  <div id="songs" class="wrap" style="gap:56px"></div>
+</div>
+
+<script>
+const SONGS = /*__DATA__*/null;
+const PCS = {"C":0,"C#":1,"Db":1,"D":2,"D#":3,"Eb":3,"E":4,"F":5,"F#":6,"Gb":6,"G":7,"G#":8,"Ab":8,"A":9,"A#":10,"Bb":10,"B":11};
+const SHORT = {intro:"Intro",verse:"V","pre-chorus":"PC",chorus:"C",bridge:"B",inst:"Inst",outro:"Out",silence:"–"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const mmss = t => `${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`;
+const keyParts = k => { if(!k) return null; const [t,m]=k.split(" "); return {t, minor:m==="minor", pc:PCS[t]}; };
+const keyShort = k => { const p=keyParts(k); return p ? p.t+(p.minor?"m":"") : "–"; };
+const keyFill = k => { const p=keyParts(k); return `hsl(${((p.pc*7)%12)*30} var(--ks) ${p.minor?"var(--klm)":"var(--kl)"})`; };
+const kchip = (k, n) => `<span class="kchip" style="background:${keyFill(k)}">${esc(k)}${n?` ×${n}`:""}</span>`;
+function dist(rows, f){ const m=new Map(); rows.forEach(r=>{ if(r[f]!=null) m.set(r[f],(m.get(r[f])||0)+1); }); return [...m]; }
+const majority = (rows, f) => dist(rows, f).sort((a,b)=>b[1]-a[1])[0]?.[0];
+const MODELS = [["Essentia · 믹스","mix","key_essentia"],["CNN · 믹스","mix","key_cnn"],["Essentia · stems","stems","key_essentia"],["CNN · stems","stems","key_cnn"]];
+
+function timeline(lanes, dur, groups){
+  const W=1000, L=150, P=W-L-10, H=24, G=6, x = t => L + (t/dur)*P;
+  let y = 22, out = [`<defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"/></pattern></defs>`];
+  const bottom = 22 + lanes.length*(H+G) + groups*14;
+  for(let t=0; t<=dur; t+=30) out.push(`<line class="tick" x1="${x(t)}" x2="${x(t)}" y1="16" y2="${bottom}"/><text class="ticklab" x="${x(t)}" y="11" text-anchor="middle">${mmss(t)}</text>`);
+  for(const ln of lanes){
+    if(ln.group){ out.push(`<text class="lane-grp" x="0" y="${y+10}">${esc(ln.group)}</text>`); y += 14; }
+    out.push(`<text class="lane-lab" x="0" y="${y+H/2+4}">${esc(ln.label)}</text>`);
+    if(ln.empty){ out.push(`<rect class="oom" x="${L}" y="${y}" width="${P}" height="${H}" rx="3"/><text class="oomtxt" x="${L+P/2}" y="${y+H/2+4}" text-anchor="middle">${esc(ln.empty)}</text>`); y += H+G; continue; }
+    for(const b of ln.blocks){
+      const x0=x(b.s), w=Math.max(1,x(b.e)-x0), fill = b.fill ? ` style="fill:${b.fill}"` : "";
+      out.push(`<rect class="blk ${b.cls||""}" x="${x0}" y="${y}" width="${w}" height="${H}" rx="3"${fill}><title>${esc(b.tip)}</title></rect>`);
+      if(b.txt && w > b.txt.length*6.2+4) out.push(`<text class="${b.fill?"ktxt":"btxt"}" x="${x0+w/2}" y="${y+H/2+4}" text-anchor="middle">${esc(b.txt)}</text>`);
+    }
+    y += H+G;
+  }
+  return `<svg class="tl" viewBox="0 0 ${W} ${y+2}" role="img">${out.join("")}</svg>`;
+}
+const segBlocks = segs => segs.map(r => ({s:r.start, e:r.end, cls:"lb-"+r.label, txt:SHORT[r.label]||r.label, tip:`${r.label} ${mmss(r.start)}–${mmss(r.end)}`}));
+const keyBlocks = (rows, f) => rows.map(r => r[f] ? {s:r.start,e:r.end,fill:keyFill(r[f]),txt:keyShort(r[f]),tip:`${mmss(r.start)}–${mmss(r.end)} · ${r[f]}${f==="key_essentia"&&r.strength!=null?` · strength ${r.strength}`:""}`} : {s:r.start,e:r.end,cls:"none",tip:""});
+const otiBlocks = rows => { const first = rows.find(q=>q.label==="chorus"); return rows.map(r => "oti_vs_first_chorus" in r ? {s:r.start,e:r.end,cls:r.oti_vs_first_chorus?"bpm-alt":"bpm-main",txt:(r.oti_vs_first_chorus>0?"+":"")+r.oti_vs_first_chorus,tip:`${mmss(r.start)} · OTI ${r.oti_vs_first_chorus}`} : r===first ? {s:r.start,e:r.end,cls:"bpm-main",txt:"기준",tip:"OTI 기준 chorus"} : {s:r.start,e:r.end,cls:"none",tip:""}); };
+const otiText = rows => { const all = rows.filter(r=>"oti_vs_first_chorus" in r); if(!all.length) return "–"; return dist(all,"oti_vs_first_chorus").map(([v,n])=>`<span class="mono">${v>0?"+":""}${v}</span> ×${n}`).join(" · "); };
+
+(function(){
+  document.getElementById("jump").innerHTML = SONGS.map(s => `<a href="#${s.id}">${esc(s.team)} · ${esc(s.title)}</a>`).join("");
+  const box = document.getElementById("songs");
+  for(const s of SONGS){
+    const mix = s.mix, st = s.stems, secs = mix.sections, src = {mix, stems: st};
+    const dur = Math.max(...secs.map(r => r.end));
+    const withKey = r => r.key_essentia;
+    const agree = secs.map((r,i) => { const ks = MODELS.map(([,m,f]) => src[m].sections[i]?.[f]).filter(Boolean); return !ks.length ? null : new Set(ks).size===1; });
+
+    const keyRows = MODELS.map(([name,m,f]) => { const rows = src[m].sections.filter(withKey); const maj = majority(rows,f);
+      return `<tr><th class="row">${name}</th><td>${maj?kchip(maj):"–"}</td><td><div class="dist" style="margin:0">${dist(rows,f).map(([k,n])=>kchip(k,n)).join("")}</div></td></tr>`; }).join("");
+    const nAgree = agree.filter(a=>a===true).length, nKey = agree.filter(a=>a!==null).length;
+    const bpmDist = dist(secs.filter(r=>r.bpm!=null),"bpm").map(([b,n])=>`<span class="mono">${b}</span> ×${n}`).join(" · ");
+    const seqOf = segs => segs.map(r => `<span>${esc(SHORT[r.label]||r.label)} <span class="mono" style="color:var(--faint)">${mmss(r.start)}</span></span>`).join(" · ");
+
+    const lanes = [
+      {group:"구간 · SongFormer", label:`${s.window} 창`, blocks:segBlocks(secs)},
+      {group:"key", label:MODELS[0][0], blocks:keyBlocks(secs,"key_essentia")},
+      {label:MODELS[1][0], blocks:keyBlocks(secs,"key_cnn")},
+      {label:MODELS[2][0], blocks:keyBlocks(st.sections,"key_essentia")},
+      {label:MODELS[3][0], blocks:keyBlocks(st.sections,"key_cnn")},
+      {label:"4개 일치", blocks:secs.map((r,i) => agree[i]===null ? {s:r.start,e:r.end,cls:"none",tip:""} : {s:r.start,e:r.end,cls:agree[i]?"agree":"disagree",txt:agree[i]?"=":"≠",tip:agree[i]?"4개 모델 일치":"모델 간 불일치"})},
+      {group:"OTI (첫 chorus 대비 반음)", label:"믹스", blocks:otiBlocks(secs)},
+      {label:"stems", blocks:otiBlocks(st.sections)},
+      ...(s.stt ? Object.entries(s.stt).flatMap(([m,byIn],mi) => ["mix","vocals"].filter(i=>byIn[i]).map((i,ii) => ({group: ii===0 ? `가사 전사 · ${m}` : undefined, label: i==="mix"?"믹스":"보컬", blocks: byIn[i].segments.filter(g=>g.end>g.start).map(g => ({s:g.start, e:Math.min(g.end,dur), cls:"lb-verse", tip:`${mmss(g.start)} ${g.text}`}))}))) : []),
+      {group:"BPM · Beat This!", label:"구간 BPM", blocks:secs.map(r => r.bpm==null ? {s:r.start,e:r.end,cls:"none",tip:""} : {s:r.start,e:r.end,cls:r.bpm===mix.bpm.value?"bpm-main":"bpm-alt",txt:String(r.bpm),tip:`${mmss(r.start)} · ${r.bpm}`})},
+    ];
+
+    const segCmp = [["420초 창", s.seg420], ["180초 창", s.seg180]].map(([n, sg]) => `<tr><th class="row">${n}</th><td class="formline">${sg ? seqOf(sg) : "출력 없음 (OOM)"}</td></tr>`).join("");
+
+    const raw = `<details><summary>구간별 원시 값 (${secs.length}개 구간)</summary><div class="scroll"><table>
+      <thead><tr><th>구간</th><th>시작–끝</th><th class="num">BPM</th><th>Essentia 믹스</th><th class="num">strength</th><th>CNN 믹스</th><th>Essentia stems</th><th class="num">strength</th><th>CNN stems</th><th class="num">OTI 믹스 / stems</th></tr></thead><tbody>
+      ${secs.map((r,i)=>{const q=st.sections[i]||{}; return `<tr><td>${esc(r.label)}</td><td class="mono">${r.start}–${r.end}</td><td class="num">${r.bpm??"–"}</td><td>${r.key_essentia?kchip(r.key_essentia):"–"}</td><td class="num">${r.strength??""}</td><td>${r.key_cnn?kchip(r.key_cnn):"–"}</td><td>${q.key_essentia?kchip(q.key_essentia):"–"}</td><td class="num">${q.strength??""}</td><td>${q.key_cnn?kchip(q.key_cnn):"–"}</td><td class="num">${"oti_vs_first_chorus" in r?`${r.oti_vs_first_chorus} / ${q.oti_vs_first_chorus}`:""}</td></tr>`}).join("")}
+      </tbody></table></div></details>`;
+
+    box.insertAdjacentHTML("beforeend", `
+    <section class="song" id="${s.id}" aria-labelledby="${s.id}-h">
+      <div class="song-head"><div class="t"><h2 id="${s.id}-h">${esc(s.title)}</h2><span class="team">${esc(s.team)}</span></div></div>
+
+      <div class="panel scroll"><table class="cmp key">
+        <thead><tr><th>Key 모델</th><th>곡 key (구간 다수결)</th><th>구간별 key 분포</th></tr></thead>
+        <tbody>${keyRows}<tr><th class="row">4개 모델 일치</th><td colspan="2"><span class="mono">${nAgree}</span> / ${nKey} 구간</td></tr></tbody>
+      </table></div>
+
+      <div class="panel scroll"><table class="cmp">
+        <thead><tr><th>OTI</th><th>첫 chorus 대비 반음 이동 (chorus 수)</th></tr></thead>
+        <tbody><tr><th class="row">믹스</th><td>${otiText(secs)}</td></tr><tr><th class="row">stems</th><td>${otiText(st.sections)}</td></tr></tbody>
+      </table></div>
+
+      <div class="panel scroll"><table class="cmp">
+        <thead><tr><th>BPM · Beat This!</th><th class="num">BPM</th><th class="num">÷2 / ×2</th><th class="num">마디당 박</th><th class="num">박 간격 CV</th><th>구간별 BPM</th></tr></thead>
+        <tbody><tr><th class="row">출력</th><td class="num">${mix.bpm.value}</td><td class="num">${mix.bpm.alternates.join(" / ")}</td><td class="num">${mix.bpm.meter_beats_per_bar}</td><td class="num">${mix.bpm.ibi_cv}</td><td>${bpmDist}</td></tr></tbody>
+      </table></div>
+
+      <div class="panel scroll"><table class="cmp">
+        <thead><tr><th>구간 · SongFormer</th><th>순서 (시작 시각)</th></tr></thead>
+        <tbody>${segCmp}</tbody>
+      </table></div>
+
+      ${s.stt ? `<div class="panel"><div style="padding:10px 14px"><h3>가사 전사</h3></div><div class="lyr">${Object.entries(s.stt).map(([m,byIn]) => `<div class="mh">${esc(m)}</div>` + ["mix","vocals"].map(i => { const r = byIn[i]; return `<div class="cell"><div class="ih">${i==="mix"?"입력 · 믹스":"입력 · 보컬 (Demucs)"}</div>${!r ? "–" : `<ol>${r.segments.map(g => `<li><span class="ts">${mmss(g.start)}</span><span class="${String(g.text).startsWith("ERROR")?"err":""}">${esc(g.text)}</span></li>`).join("")}</ol>`}</div>`; }).join("")).join("")}</div></div>` : ""}
+      <div class="panel tl-card scroll">${timeline(lanes, dur, lanes.filter(l=>l.group).length)}</div>
+      ${raw}
+    </section>`);
+  }
+})();
+</script>

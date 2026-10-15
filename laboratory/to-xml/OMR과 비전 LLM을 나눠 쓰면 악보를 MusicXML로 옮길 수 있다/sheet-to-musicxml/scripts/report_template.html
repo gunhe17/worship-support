@@ -1,0 +1,513 @@
+<title>악보 → MusicXML 정확도</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+  --after:#2a78d6; --before:#898781; --clean:#2a78d6; --lowres:#eb6834; --good:#006300;
+  --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;
+    --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+    --after:#3987e5; --before:#898781; --clean:#3987e5; --lowres:#d95926; --good:#0ca30c;}
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --after:#3987e5; --before:#898781; --clean:#3987e5; --lowres:#d95926; --good:#0ca30c;}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;padding-inline:16px;padding-block:32px 72px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:44px}
+h1,h2,h3{margin:0;line-height:1.3;text-wrap:balance}
+h1{font-size:30px;font-weight:700;letter-spacing:-.01em}
+h2{font-size:20px;font-weight:600}
+h3{font-size:15px;font-weight:600}
+p{margin:0;max-width:70ch}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--ink-2);margin-top:10px}
+section{display:grid;gap:14px}
+.sub{color:var(--ink-2);font-size:14px}
+.panel{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:18px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:16px 18px;display:grid;gap:4px;align-content:start}
+.tile .v{font-family:var(--mono);font-size:30px;font-weight:500;line-height:1.1}
+.tile .l{font-size:13px;color:var(--ink-2)}
+.tile .d{font-size:12.5px;color:var(--muted)}
+.tile .d b{color:var(--good);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink-2);align-items:center}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.sw.dot{border-radius:50%}
+.sw.hollow{background:transparent!important;border:2px solid var(--before)}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--sans);fill:var(--ink-2);font-size:12px}
+svg .tick{fill:var(--muted);font-family:var(--mono);font-size:11px}
+svg .grid{stroke:var(--grid);stroke-width:1}
+svg .base{stroke:var(--axis);stroke-width:1}
+svg .val{fill:var(--ink);font-family:var(--mono);font-size:11.5px}
+svg .cat{fill:var(--ink);font-size:13px}
+svg .hit{fill:transparent;cursor:default}
+.scroll{overflow-x:auto}
+.tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--ring);border-radius:8px;padding:8px 10px;font-size:12.5px;box-shadow:0 6px 18px rgba(0,0,0,.12);max-width:280px;z-index:10}
+.tip .t{font-weight:600;margin-bottom:2px}
+.examples{display:grid;gap:22px}
+.ex{display:grid;gap:10px}
+.ex-head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.pill{font-size:12px;border:1px solid var(--ring);border-radius:999px;padding:1px 9px;color:var(--ink-2)}
+.ex-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ex-grid figure{margin:0;display:grid;gap:6px;align-content:start}
+.ex-grid figcaption{font-size:12.5px;color:var(--ink-2)}
+.ex-grid img{width:100%;border:1px solid var(--ring);border-radius:6px;background:#fff}
+.ex-grid.cmp{grid-template-columns:1fr 1fr}
+select{font:inherit;font-size:14px;padding:4px 8px;border-radius:6px;border:1px solid var(--ring);background:var(--surface);color:var(--ink);margin-left:6px}
+@media (max-width:760px){.ex-grid,.ex-grid.cmp{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--grid)}
+th{font-size:12px;color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+details{background:var(--surface);border:1px solid var(--ring);border-radius:10px}
+details>summary{cursor:pointer;padding:12px 16px;font-size:14px;color:var(--ink-2)}
+details>summary:focus-visible{outline:2px solid var(--after);outline-offset:2px}
+details[open]>summary{border-bottom:1px solid var(--grid)}
+details .body{padding:12px 16px}
+.strip-row{display:grid;grid-template-columns:170px 1fr 56px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--grid)}
+.strip-row:last-child{border-bottom:0}
+.strip-name{font-size:13px;color:var(--ink)}
+.strip-name small{display:block;color:var(--muted);font-size:11.5px;font-family:var(--mono)}
+.cells{display:flex;flex-wrap:wrap;gap:2px}
+.cell{width:11px;height:14px;border-radius:2px;background:var(--grid)}
+.cell.ok{background:var(--after)} .cell.partial{background:var(--muted)} .cell.short,.cell.long{background:var(--lowres)}
+.strip-rate{font-family:var(--mono);font-size:12.5px;text-align:right}
+.fail{color:var(--lowres);font-size:13px}
+@media (max-width:640px){.strip-row{grid-template-columns:1fr 48px}.strip-row .cells{grid-column:1/-1;order:3}}
+details.ref>summary{font-size:15px;font-weight:600;color:var(--ink)}
+details.ref .body{display:grid;gap:36px;padding:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px;display:grid;gap:10px;align-content:start}
+.card-head{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.card-head h3{font-size:15px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.badge{font-size:12px;border:1px solid var(--ring);border-radius:999px;padding:0 8px;color:var(--ink-2);white-space:nowrap}
+.badge.bad{border-color:var(--lowres);color:var(--lowres)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;color:var(--ink-2)}
+.stats b{display:block;font-family:var(--mono);font-size:15px;font-weight:500;color:var(--ink)}
+.reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px}
+.reg-grid figure{margin:0;display:grid;gap:8px;align-content:start}
+.reg-grid img,.cmp img{width:100%;border:1px solid var(--ring);border-radius:6px;background:#fff}
+@media (max-width:640px){.reg-grid{grid-template-columns:1fr}}
+ul.notes{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:4px;max-width:78ch}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">worship-support · sheet-to-musicxml · 2026-09-29</div>
+    <h1>찬양 악보 이미지를 MusicXML로</h1>
+    <p class="lede">단성부 찬양 리드시트(멜로디 한 줄 + 코드 + 한글 가사) 14장을 지금까지 가장 좋았던 방법(저해상도 확대 → Audiveris → 주 파트만 유지)으로 MusicXML로 옮긴 결과입니다. 이 악보들은 정답 MusicXML이 없어서 음표 정확도 대신 key, 박자 정합성, 코드 수 같은 간접 지표로 봤습니다. 비교용으로 원본 악보 이미지가 들어 있으니 이 페이지는 비공개로 두세요.</p>
+  </header>
+
+  <section aria-labelledby="h-w">
+    <h2 id="h-w">찬양 악보 결과 요약</h2>
+    <div class="tiles" id="w-tiles"></div>
+  </section>
+
+  <section aria-labelledby="h-reg">
+    <h2 id="h-reg">영역 박스 검출: 오선 / 코드 / 가사</h2>
+    <p class="sub">OpenCV로 오선을 찾고, 오선에 닿은 꼬리·빔·덧줄 음표까지 박스를 넓혔습니다. 글자 박스는 EasyOCR(한국어+영어)로 찾은 뒤 위치와 모양으로 나눴습니다. 오선 바로 위에 있고 A–G로 시작하는 글자는 코드, 오선 아래 글자는 가사입니다.</p>
+    <div class="legend"><span><span class="sw" style="background:#2a78d6"></span>오선 영역 (꼬리 포함)</span><span><span class="sw" style="background:#eb6834"></span>코드</span><span><span class="sw" style="background:#008c00"></span>가사</span><span><span class="sw" style="background:#969696"></span>기타 (제목, 마디 번호, 안내 문구)</span></div>
+    <div class="reg-grid" id="reg-all"></div>
+  </section>
+
+  <section aria-labelledby="h-cmp">
+    <h2 id="h-cmp">원본 악보와 변환 결과 비교</h2>
+    <p class="sub">왼쪽은 원본 악보 이미지, 오른쪽은 변환된 MusicXML을 Verovio로 다시 그린 것입니다. 주황색 음표가 있는 마디는 음표 길이 합이 박자표와 맞지 않는 마디입니다. 검은 음표도 음높이·길이가 틀렸을 수 있습니다.</p>
+    <div class="examples" id="cmp-all"></div>
+  </section>
+
+  <section aria-labelledby="h-wbar">
+    <h2 id="h-wbar">악보별 박자 정합성</h2>
+    <p class="sub">마디마다 음표 길이 합이 박자표와 맞는 비율입니다. 맞지 않는 마디에는 틀린 음표가 확실히 있습니다. 맞는다고 음높이까지 맞다는 뜻은 아닙니다.</p>
+    <div class="panel"><div class="scroll"><svg id="c-wbar" role="img" aria-label="악보별 박자 정합성"></svg></div></div>
+  </section>
+
+  <section aria-labelledby="h-wstrip">
+    <h2 id="h-wstrip">악보 모양으로 본 마디별 결과</h2>
+    <p class="sub">변환 결과를 악보처럼 한 줄에 4마디씩 배치했습니다. 칸 하나가 마디 하나이고, 마우스를 올리면 그 마디의 음표 길이 합과 박자표를 보여줍니다. 음표 자체는 저작권 때문에 그리지 않았습니다.</p>
+    <div class="legend"><span><span class="sw" style="background:var(--after);opacity:.35"></span>박자 맞음</span><span><span class="sw" style="background:var(--lowres)"></span>박자 안 맞음 (짧거나 김)</span><span><span class="sw" style="background:var(--muted);opacity:.45"></span>못갖춘마디 (처음·끝)</span><span>막대: 박자표 대비 실제 길이</span></div>
+    <div class="cards" id="w-cards"></div>
+  </section>
+
+  <section aria-labelledby="h-wpos">
+    <h2 id="h-wpos">틀린 마디는 곡의 어디에 몰리나</h2>
+    <p class="sub">14장 모두의 마디를 곡의 앞에서 끝까지 10구간으로 나누고, 구간마다 박자가 안 맞는 마디의 비율을 모았습니다.</p>
+    <div class="panel"><div class="scroll"><svg id="c-wpos" role="img" aria-label="곡 위치별 틀린 마디 비율"></svg></div></div>
+  </section>
+
+  <section aria-labelledby="h-wdev">
+    <h2 id="h-wdev">틀린 마디는 얼마나 어긋났나</h2>
+    <p class="sub">박자가 안 맞는 마디마다 (실제 길이 − 박자표 길이)를 반 박 단위로 모았습니다. 반 박·한 박 차이가 많으면 8분음표·점·쉼표 한두 개를 놓친 경우가 대부분이라는 뜻입니다.</p>
+    <div class="panel"><div class="scroll"><svg id="c-wdev" role="img" aria-label="틀린 마디의 길이 차이 분포"></svg></div></div>
+  </section>
+
+  <section aria-labelledby="h-wtab">
+    <h2 id="h-wtab">악보별 전체 수치</h2>
+    <div class="panel scroll"><table id="t-w"></table></div>
+  </section>
+
+  <details class="ref"><summary>참고: 정답이 있는 시험 세트 (퍼블릭 도메인 단성부 리드시트 20곡)</summary><div class="body">
+
+  <section aria-labelledby="h-sum">
+    <h2 id="h-sum">핵심 결과</h2>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section aria-labelledby="h-methods">
+    <h2 id="h-methods">방법별 음표 정확도</h2>
+    <p class="sub">음표·쉼표(피치와 길이)만 비교한 점수입니다. 막대가 짧을수록 정확합니다.</p>
+    <div class="panel">
+      <div class="legend" style="margin-bottom:8px"><span><span class="sw" style="background:var(--clean)"></span>깨끗한 이미지 (1650px)</span><span><span class="sw" style="background:var(--lowres)"></span>저해상도 이미지 (900px JPEG)</span></div>
+      <div class="scroll"><svg id="c-methods" role="img" aria-label="방법별 음표 OMR-NED 막대 그래프"></svg></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-items">
+    <h2 id="h-items">항목별로 무엇이 좋아졌나 (저해상도)</h2>
+    <p class="sub">Audiveris 기본 설정과 가장 좋은 조합(3배 확대 + 파트 정리)을 항목별로 비교했습니다.</p>
+    <div class="panel">
+      <div class="legend" style="margin-bottom:8px"><span><span class="sw dot hollow"></span>개선 전 (Audiveris 기본)</span><span><span class="sw dot" style="background:var(--after)"></span>개선 후 (3배 확대 + 파트 정리)</span></div>
+      <div class="scroll"><svg id="c-items" role="img" aria-label="항목별 개선 전후 비교"></svg></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-songs">
+    <h2 id="h-songs">곡별 음표 정확도 (저해상도)</h2>
+    <p class="sub">20곡 모두 개선 후 점수가 낮아졌는지, 여전히 어려운 곡은 무엇인지 보여줍니다. 개선 후 점수 순으로 정렬했습니다.</p>
+    <div class="panel">
+      <div class="legend" style="margin-bottom:8px"><span><span class="sw dot hollow"></span>개선 전</span><span><span class="sw dot" style="background:var(--after)"></span>개선 후</span></div>
+      <div class="scroll"><svg id="c-songs" role="img" aria-label="곡별 개선 전후 점수"></svg></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-ex">
+    <h2 id="h-ex">실제 변환 결과 비교</h2>
+    <p class="sub">저해상도 이미지를 가장 좋은 조합으로 변환한 결과입니다. 정답과 결과를 비교해 음표·쉼표가 다른 곳에 색이 칠해져 있습니다(musicdiff 표시). 음표 점수 기준으로 가장 잘 된 곡, 중간인 곡, 가장 안 된 곡을 골랐습니다.</p>
+    <div class="examples" id="examples"></div>
+  </section>
+
+  <section aria-labelledby="h-real">
+    <h2 id="h-real">실제 찬양 악보에서는</h2>
+    <p class="sub">실제 찬양 악보는 정답 MusicXML이 없어서, 마디마다 음표 길이 합이 박자표와 맞는 비율(박자 정합성)로만 확인했습니다. 이 값이 높다고 음이 맞다는 뜻은 아니지만, 낮으면 확실히 틀린 마디가 많다는 뜻입니다.</p>
+    <div class="panel"><div class="scroll"><svg id="c-real" role="img" aria-label="박자 정합성 비교"></svg></div></div>
+  </section>
+
+  <section aria-labelledby="h-data">
+    <h2 id="h-data">전체 수치</h2>
+    <details><summary>방법 × 이미지 × 항목별 평균 OMR-NED 표</summary><div class="body scroll"><table id="t-all"></table></div></details>
+    <details><summary>곡별 음표 점수 표</summary><div class="body scroll"><table id="t-songs"></table></div></details>
+  </section>
+
+  </div></details>
+
+  <section aria-labelledby="h-notes">
+    <h2 id="h-notes">읽을 때 참고</h2>
+    <ul class="notes">
+      <li>정답 세트는 OpenEWLD(퍼블릭 도메인 리드시트, MIT)에서 조건에 맞는 20곡을 고정 시드로 뽑아 Verovio로 그린 이미지입니다. 실제 스캔·사진보다 깨끗하므로 실제 악보에서는 점수가 더 나쁠 수 있습니다.</li>
+      <li>"파트 정리"는 Audiveris가 한 성부 악보를 2~3개 파트로 나눠 내는 문제(40장 중 38장)를 고치려고, 음표가 가장 많은 파트 하나만 남긴 후처리입니다.</li>
+      <li>Qwen3-VL-4B는 악보를 ABC 표기로 옮기게 한 뒤 MusicXML로 변환했습니다. 54장 중 12장만 변환에 성공했고, 실패한 장은 점수 1.0으로 계산했습니다.</li>
+      <li>모든 변환과 채점은 Kaggle에서 실행했습니다. 20곡이라 수치는 몇 포인트 정도 흔들릴 수 있습니다.</li>
+    </ul>
+  </section>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D = /*__DATA__*/null;
+const $ = s => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const f3 = v => v == null ? "–" : v.toFixed(3);
+const mean = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : null;
+function el(tag, attrs = {}, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+const tip = $("#tip");
+function hover(node, html) {
+  node.addEventListener("pointermove", e => { tip.innerHTML = html; tip.hidden = false;
+    const x = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 8), y = Math.min(e.clientY + 14, innerHeight - tip.offsetHeight - 8);
+    tip.style.left = x + "px"; tip.style.top = y + "px"; });
+  node.addEventListener("pointerleave", () => { tip.hidden = true; });
+}
+function avg(scores, variant, item) {
+  return mean(Object.entries(scores).filter(([k]) => k.endsWith(variant)).map(([, d]) => d[item] && d[item].omr_ned).filter(v => v != null));
+}
+const ITEMS = [["notes", "음표·쉼표"], ["signatures", "조표·박자표"], ["barlines", "마디선·반복"], ["chords", "코드"], ["lyrics", "가사"], ["all", "전체"]];
+const M = D.methods; // {key: {label, scores}}
+
+// ---------- tiles
+(() => {
+  const bestClean = avg(M.keep.scores, "clean", "notes"), bestLow = avg(M.up3.scores, "lowres", "notes");
+  const baseClean = avg(M.base.scores, "clean", "notes"), baseLow = avg(M.base.scores, "lowres", "notes");
+  const tiles = [
+    [f3(bestClean), "음표 오류 · 깨끗한 이미지", `개선 전 ${f3(baseClean)} → <b>${Math.round((1 - bestClean / baseClean) * 100)}% 감소</b>`],
+    [f3(bestLow), "음표 오류 · 저해상도 이미지", `개선 전 ${f3(baseLow)} → <b>${Math.round((1 - bestLow / baseLow) * 100)}% 감소</b>`],
+    [f3(avg(M.up3.scores, "lowres", "signatures")), "조표·박자표 오류 · 저해상도", `개선 전 ${f3(avg(M.base.scores, "lowres", "signatures"))}`],
+    [`${D.timing.lowres}초`, "장당 처리 시간 · 저해상도", `깨끗한 이미지 ${D.timing.clean}초 · Kaggle CPU`],
+  ];
+  $("#tiles").innerHTML = tiles.map(([v, l, d]) => `<div class="tile"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d}</div></div>`).join("");
+})();
+
+// ---------- chart 1: methods x variant, horizontal grouped bars
+(() => {
+  const rows = [["qwen", "Qwen3-VL-4B → ABC"], ["base", "Audiveris 기본"], ["keep", "Audiveris + 파트 정리"], ["up3", "Audiveris + 3배 확대 + 파트 정리"]];
+  const W = 760, L = 230, R = 60, bh = 14, gap = 4, group = 2 * bh + gap + 18, top = 26;
+  const H = top + rows.length * group + 24, x = v => L + v * (W - L - R);
+  const s = $("#c-methods"); s.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  for (let t = 0; t <= 1.0001; t += 0.25) { el("line", { class: "grid", x1: x(t), x2: x(t), y1: top - 6, y2: H - 22 }, s); el("text", { class: "tick", x: x(t), y: H - 6, "text-anchor": "middle" }, s).textContent = t.toFixed(2); }
+  el("line", { class: "base", x1: x(0), x2: x(0), y1: top - 6, y2: H - 22 }, s);
+  rows.forEach(([k, label], i) => {
+    const y0 = top + i * group;
+    el("text", { class: "cat", x: L - 12, y: y0 + bh + 2, "text-anchor": "end" }, s).textContent = label;
+    [["clean", "var(--clean)", "깨끗한 이미지"], ["lowres", "var(--lowres)", "저해상도"]].forEach(([v, col, vl], j) => {
+      const y = y0 + j * (bh + gap), val = avg(M[k].scores, v, "notes");
+      if (val == null) { el("text", { x: x(0) + 6, y: y + bh - 3, class: "tick" }, s).textContent = "해당 없음 (저해상도 전용)"; return; }
+      const w = Math.max(2, x(val) - x(0));
+      el("path", { d: `M${x(0)},${y} h${w - 4} a4,4 0 0 1 4,4 v${bh - 8} a4,4 0 0 1 -4,4 h${-(w - 4)} z`, fill: col }, s);
+      el("text", { class: "val", x: x(val) + 6, y: y + bh - 3 }, s).textContent = f3(val);
+      const hit = el("rect", { class: "hit", x: L, y: y - 1, width: W - L - R + 50, height: bh + 2 }, s);
+      hover(hit, `<div class="t">${label}</div>${vl}: 음표 OMR-NED <b class="num">${f3(val)}</b>`);
+    });
+  });
+})();
+
+// ---------- chart 2: items dumbbell (lowres, base vs up3)
+(() => {
+  const W = 760, L = 140, R = 70, rh = 34, top = 22, H = top + ITEMS.length * rh + 26, x = v => L + v * (W - L - R);
+  const s = $("#c-items"); s.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  for (let t = 0; t <= 1.0001; t += 0.25) { el("line", { class: "grid", x1: x(t), x2: x(t), y1: top - 8, y2: H - 22 }, s); el("text", { class: "tick", x: x(t), y: H - 6, "text-anchor": "middle" }, s).textContent = t.toFixed(2); }
+  ITEMS.forEach(([k, label], i) => {
+    const y = top + i * rh + 8, a = avg(M.base.scores, "lowres", k), b = avg(M.up3.scores, "lowres", k);
+    el("text", { class: "cat", x: L - 12, y: y + 4, "text-anchor": "end" }, s).textContent = label;
+    if (a == null || b == null) return;
+    el("line", { x1: x(a), x2: x(b), y1: y, y2: y, stroke: "var(--axis)", "stroke-width": 2 }, s);
+    el("circle", { cx: x(a), cy: y, r: 5, fill: "var(--surface)", stroke: "var(--before)", "stroke-width": 2 }, s);
+    el("circle", { cx: x(b), cy: y, r: 6, fill: "var(--after)", stroke: "var(--surface)", "stroke-width": 2 }, s);
+    el("text", { class: "val", x: Math.max(x(a), x(b)) + 12, y: y + 4 }, s).textContent = `${f3(a)} → ${f3(b)}`;
+    const hit = el("rect", { class: "hit", x: L, y: y - rh / 2, width: W - L, height: rh }, s);
+    hover(hit, `<div class="t">${label}</div>개선 전 <span class="num">${f3(a)}</span><br>개선 후 <b class="num">${f3(b)}</b>`);
+  });
+})();
+
+// ---------- chart 3: per-song dot plot (lowres)
+(() => {
+  const songs = D.setA.map(a => {
+    const b = M.base.scores[a.id + "_lowres"]?.notes?.omr_ned, u = M.up3.scores[a.id + "_lowres"]?.notes?.omr_ned;
+    return { ...a, b, u };
+  }).filter(r => r.b != null && r.u != null).sort((p, q) => p.u - q.u);
+  const W = 760, L = 250, R = 40, rh = 22, top = 16, H = top + songs.length * rh + 26, x = v => L + v * (W - L - R);
+  const s = $("#c-songs"); s.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  for (let t = 0; t <= 1.0001; t += 0.25) { el("line", { class: "grid", x1: x(t), x2: x(t), y1: top - 6, y2: H - 22 }, s); el("text", { class: "tick", x: x(t), y: H - 6, "text-anchor": "middle" }, s).textContent = t.toFixed(2); }
+  songs.forEach((r, i) => {
+    const y = top + i * rh + 6;
+    el("text", { x: L - 10, y: y + 4, "text-anchor": "end" }, s).textContent = `${r.id} · ${r.title.slice(0, 30)}`;
+    el("line", { x1: x(r.b), x2: x(r.u), y1: y, y2: y, stroke: "var(--axis)", "stroke-width": 1.5 }, s);
+    el("circle", { cx: x(r.b), cy: y, r: 4, fill: "var(--surface)", stroke: "var(--before)", "stroke-width": 1.8 }, s);
+    el("circle", { cx: x(r.u), cy: y, r: 5, fill: "var(--after)", stroke: "var(--surface)", "stroke-width": 2 }, s);
+    const hit = el("rect", { class: "hit", x: 0, y: y - rh / 2, width: W, height: rh }, s);
+    hover(hit, `<div class="t">${r.title}</div>${r.measures}마디 · ${r.ts.join(", ")}<br>개선 전 <span class="num">${f3(r.b)}</span> → 개선 후 <b class="num">${f3(r.u)}</b>`);
+  });
+})();
+
+// ---------- examples
+(() => {
+  const TAG = { best: "가장 잘 된 곡", median: "중간인 곡", worst: "가장 안 된 곡" };
+  $("#examples").innerHTML = D.examples.map(e => `
+    <div class="panel ex">
+      <div class="ex-head"><h3>${e.title}</h3><span class="pill">${TAG[e.tag] || e.tag}</span>
+        <span class="sub">음표 OMR-NED <span class="num">${f3(e.score)}</span> · 다른 곳 ${e.num_diffs ?? "–"}개</span></div>
+      <div class="ex-grid">
+        <figure><img src="${e.input}" alt="${e.title} 입력 이미지 (저해상도)"><figcaption>입력: Audiveris가 받은 저해상도 이미지</figcaption></figure>
+        <figure><img src="${e.gt}" alt="${e.title} 정답 악보"><figcaption>정답 MusicXML을 그린 것 (다른 곳 색 표시)</figcaption></figure>
+        <figure><img src="${e.pred}" alt="${e.title} 변환 결과"><figcaption>변환 결과를 그린 것 (다른 곳 색 표시)</figcaption></figure>
+      </div>
+    </div>`).join("") || `<p class="sub">이미지가 아직 없습니다.</p>`;
+})();
+
+// ---------- real sheets: rhythm consistency
+(() => {
+  const rows = [["정답 세트 (퍼블릭 도메인 20곡 × 2)", D.rhythm.A], [`실제 찬양 악보 (${D.rhythm_files_B}개 파일)`, D.rhythm.B]];
+  const W = 760, L = 250, R = 70, bh = 18, rh = 40, top = 12, H = top + rows.length * rh + 24, x = v => L + v * (W - L - R);
+  const s = $("#c-real"); s.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  for (let t = 0; t <= 1.0001; t += 0.25) { el("line", { class: "grid", x1: x(t), x2: x(t), y1: top - 4, y2: H - 22 }, s); el("text", { class: "tick", x: x(t), y: H - 6, "text-anchor": "middle" }, s).textContent = Math.round(t * 100) + "%"; }
+  rows.forEach(([label, r], i) => {
+    const y = top + i * rh + 6, v = r.ok_rate, w = Math.max(2, x(v) - x(0));
+    el("text", { class: "cat", x: L - 12, y: y + bh - 4, "text-anchor": "end" }, s).textContent = label;
+    el("path", { d: `M${x(0)},${y} h${w - 4} a4,4 0 0 1 4,4 v${bh - 8} a4,4 0 0 1 -4,4 h${-(w - 4)} z`, fill: "var(--after)" }, s);
+    el("text", { class: "val", x: x(v) + 8, y: y + bh - 4 }, s).textContent = Math.round(v * 100) + "%";
+    const hit = el("rect", { class: "hit", x: 0, y: y - 4, width: W, height: bh + 8 }, s);
+    hover(hit, `<div class="t">${label}</div>박자가 맞는 마디 <b class="num">${r.ok}</b> / ${r.measures}`);
+  });
+})();
+
+// ---------- tables
+(() => {
+  const rows = [["qwen", "Qwen3-VL-4B → ABC"], ["base", "Audiveris 기본"], ["keep", "Audiveris + 파트 정리"], ["up3", "Audiveris + 3배 확대 + 파트 정리"], ["up2sharp", "Audiveris + 2배·선명 + 파트 정리"], ["up2bin", "Audiveris + 2배·흑백 + 파트 정리"]];
+  let h = `<thead><tr><th>방법</th><th>이미지</th>${ITEMS.map(([, l]) => `<th class="n">${l}</th>`).join("")}</tr></thead><tbody>`;
+  rows.forEach(([k, label]) => ["clean", "lowres"].forEach(v => {
+    const vals = ITEMS.map(([it]) => avg(M[k].scores, v, it));
+    if (vals.every(x => x == null)) return;
+    h += `<tr><td>${label}</td><td>${v === "clean" ? "깨끗함" : "저해상도"}</td>${vals.map(x => `<td class="n">${f3(x)}</td>`).join("")}</tr>`;
+  }));
+  $("#t-all").innerHTML = h + "</tbody>";
+  let g = `<thead><tr><th>곡</th><th class="n">마디</th><th class="n">기본·깨끗함</th><th class="n">파트 정리·깨끗함</th><th class="n">기본·저해상도</th><th class="n">3배+파트 정리·저해상도</th></tr></thead><tbody>`;
+  D.setA.forEach(a => {
+    const v = (k, s) => M[k].scores[`${a.id}_${s}`]?.notes?.omr_ned;
+    g += `<tr><td>${a.id} · ${a.title}</td><td class="n">${a.measures}</td><td class="n">${f3(v("base", "clean"))}</td><td class="n">${f3(v("keep", "clean"))}</td><td class="n">${f3(v("base", "lowres"))}</td><td class="n">${f3(v("up3", "lowres"))}</td></tr>`;
+  });
+  $("#t-songs").innerHTML = g + "</tbody>";
+})();
+// ================= worship sheets =================
+(() => {
+  const W0 = D.worship || {};
+  const NAME = { anointing: "어노인팅", fia: "피아워십", isaiah61: "아이자야씩스티원", jus: "제이어스", levites: "레위지파",
+                 markers: "마커스워십", teamluke: "팀룩워십", welove: "위러브", ywam: "예수전도단" };
+  const KEY = { markers: 4, anointing: 2, jus: -4, welove: 4, isaiah61: 0, ywam: -2, fia: 1, levites: 2, teamluke: -1 };
+  const KEYNAME = { "-4": "Ab", "-2": "Bb", "-1": "F", "0": "C", "1": "G", "2": "D", "4": "E" };
+  const rows = Object.entries(W0).map(([stem, r]) => {
+    const team = stem.split("_")[0], page = stem.match(/_(\d+)$/)?.[1];
+    return { stem, team, label: `${NAME[team] || team}${page && page !== "1" || ["anointing","isaiah61","levites","welove"].includes(team) ? " " + page : ""}`, ...r,
+             keyOk: r.fifths == null ? null : r.fifths === KEY[team] };
+  });
+  const okRows = rows.filter(r => r.rhythm_ok_rate != null);
+  const judged = rows.filter(r => r.keyOk !== null);
+  const avgR = mean(okRows.map(r => r.rhythm_ok_rate));
+  $("#w-tiles").innerHTML = [
+    [`${okRows.length}/${rows.length}`, "변환 성공한 악보", rows.length - okRows.length ? `실패 ${rows.length - okRows.length}장` : "모두 성공"],
+    [`${judged.filter(r => r.keyOk).length}/${judged.length}`, "key(조표) 정확", "C장조는 조표가 없어 판정 제외"],
+    [`${Math.round(avgR * 100)}%`, "박자 정합성 평균", `최저 ${Math.round(Math.min(...okRows.map(r => r.rhythm_ok_rate)) * 100)}% · 최고 ${Math.round(Math.max(...okRows.map(r => r.rhythm_ok_rate)) * 100)}%`],
+    [`${Math.round(mean(okRows.map(r => r.chords)))}개`, "악보당 인식한 코드 (평균)", "실제 악보에 찍힌 코드보다 크게 적음"],
+  ].map(([v, l, d]) => `<div class="tile"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d}</div></div>`).join("");
+
+  // bar chart, sorted
+  const sorted = [...rows].sort((a, b) => (b.rhythm_ok_rate ?? -1) - (a.rhythm_ok_rate ?? -1));
+  const W = 760, L = 200, R = 150, bh = 16, rh = 26, top = 10, H = top + sorted.length * rh + 24, x = v => L + v * (W - L - R);
+  const s = $("#c-wbar"); s.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  for (let t = 0; t <= 1.0001; t += 0.25) { el("line", { class: "grid", x1: x(t), x2: x(t), y1: top - 4, y2: H - 22 }, s); el("text", { class: "tick", x: x(t), y: H - 6, "text-anchor": "middle" }, s).textContent = Math.round(t * 100) + "%"; }
+  sorted.forEach((r, i) => {
+    const y = top + i * rh + 4;
+    el("text", { class: "cat", x: L - 12, y: y + bh - 3, "text-anchor": "end" }, s).textContent = r.label;
+    if (r.rhythm_ok_rate == null) { el("text", { x: x(0) + 6, y: y + bh - 3, fill: "var(--lowres)" }, s).textContent = "변환 실패 (출력 없음)"; return; }
+    const v = r.rhythm_ok_rate, w = Math.max(2, x(v) - x(0));
+    el("path", { d: `M${x(0)},${y} h${w - 4} a4,4 0 0 1 4,4 v${bh - 8} a4,4 0 0 1 -4,4 h${-(w - 4)} z`, fill: "var(--after)" }, s);
+    el("text", { class: "val", x: x(v) + 6, y: y + bh - 3 }, s).textContent = `${Math.round(v * 100)}%`;
+    el("text", { class: "tick", x: W - 4, y: y + bh - 3, "text-anchor": "end" }, s).textContent = `원본 ${r.width_in}px`;
+    const hit = el("rect", { class: "hit", x: 0, y: y - 4, width: W, height: rh }, s);
+    hover(hit, `<div class="t">${r.label}</div>박자 맞는 마디 <b class="num">${r.rhythm_ok}</b> / ${r.measures}<br>원본 가로 ${r.width_in}px → ${r.width_used}px로 변환<br>key ${r.keyOk == null ? "판정 불가" : r.keyOk ? "정확" : "틀림"} · 코드 ${r.chords}개`);
+  });
+
+  // sheet-shaped cards
+  const glyph = n => n == null ? "없음" : n > 0 ? "♯".repeat(n) : n < 0 ? "♭".repeat(-n) : "없음";
+  const ST = { ok: "박자 맞음", partial: "못갖춘마디", short: "짧음", long: "김" };
+  $("#w-cards").innerHTML = "";
+  sorted.forEach(r => {
+    const card = document.createElement("div"); card.className = "card"; $("#w-cards").appendChild(card);
+    const rate = r.rhythm_ok_rate, C = 2 * Math.PI * 17;
+    const keyBadge = r.fifths == null && KEY[r.team] !== 0 ? `<span class="badge bad">조표 인식 못함</span>`
+      : `<span class="badge${r.keyOk === false ? " bad" : ""}">조표 ${glyph(r.fifths)} ${KEYNAME[String(r.fifths ?? 0)] || ""}${r.keyOk ? " ✓" : r.keyOk === false ? " ✗" : " (판정 제외)"}</span>`;
+    card.innerHTML = `<div class="card-head"><div><h3>${r.label}</h3><div class="badges">${keyBadge}
+        <span class="badge${r.time ? "" : " bad"}">박자표 ${r.time ?? "인식 못함"}</span><span class="badge">${r.measures ?? 0}마디</span><span class="badge">원본 ${r.width_in}px</span></div></div>
+      <svg viewBox="0 0 48 48" width="52" height="52" role="img" aria-label="박자 정합성 ${Math.round((rate ?? 0) * 100)}%">
+        <circle cx="24" cy="24" r="17" fill="none" stroke="var(--grid)" stroke-width="6"/>
+        <circle cx="24" cy="24" r="17" fill="none" stroke="var(--after)" stroke-width="6" stroke-linecap="round" transform="rotate(-90 24 24)" stroke-dasharray="${(rate ?? 0) * C} ${C}"/>
+        <text x="24" y="28" text-anchor="middle" class="val" style="font-size:11px">${rate == null ? "–" : Math.round(rate * 100)}</text></svg></div>`;
+    const per = r.per_measure || [], PER = 4, mw = 76, sysH = 40, pad = 4, rowsN = Math.ceil(per.length / PER);
+    const W = pad * 2 + PER * mw, H = rowsN * sysH + 4;
+    const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `${r.label} 마디별 상태` }); card.appendChild(svg);
+    for (let row = 0; row < rowsN; row++) {
+      const y0 = row * sysH + 10, n = Math.min(PER, per.length - row * PER);
+      el("text", { class: "tick", x: pad, y: y0 - 2, style: "font-size:9px" }, svg).textContent = row * PER + 1;
+      per.slice(row * PER, row * PER + n).forEach((m, j) => {
+        const x0 = pad + j * mw, bad = m.status === "short" || m.status === "long";
+        el("rect", { x: x0 + 1, y: y0, width: mw - 2, height: 20, rx: 3, fill: bad ? "var(--lowres)" : m.status === "ok" ? "var(--after)" : "var(--muted)", opacity: bad ? .9 : m.status === "ok" ? .22 : .35 }, svg);
+        for (let l = 0; l < 5; l++) el("line", { x1: x0, x2: x0 + mw, y1: y0 + 2 + l * 4, y2: y0 + 2 + l * 4, stroke: "var(--ink-2)", "stroke-width": .6, opacity: .45 }, svg);
+        el("line", { x1: x0 + mw, x2: x0 + mw, y1: y0 + 2, y2: y0 + 18, stroke: "var(--ink-2)", "stroke-width": 1, opacity: .7 }, svg);
+        if (j === 0) el("line", { x1: x0, x2: x0, y1: y0 + 2, y2: y0 + 18, stroke: "var(--ink-2)", "stroke-width": 1, opacity: .7 }, svg);
+        // length bar: full width = time signature length, capped at 2x
+        const ratio = Math.min(m.dur / m.expect, 2), bw = (mw - 8) * ratio / 2;
+        el("line", { x1: x0 + 4, x2: x0 + 4 + (mw - 8) / 2, y1: y0 + 25, y2: y0 + 25, stroke: "var(--grid)", "stroke-width": 3, "stroke-linecap": "round" }, svg);
+        el("line", { x1: x0 + 4, x2: x0 + 4 + Math.max(bw, 1), y1: y0 + 25, y2: y0 + 25, stroke: bad ? "var(--lowres)" : "var(--axis)", "stroke-width": 3, "stroke-linecap": "round" }, svg);
+        const hit = el("rect", { class: "hit", x: x0, y: y0 - 2, width: mw, height: sysH - 8 }, svg);
+        hover(hit, `<div class="t">${r.label} · ${m.n}마디</div>${ST[m.status]}<br>음표 길이 합 <b class="num">${m.dur}</b>박 / 박자표 <span class="num">${m.expect}</span>박`);
+      });
+    }
+    if (!per.length) card.insertAdjacentHTML("beforeend", `<span class="fail">변환 실패</span>`);
+    card.insertAdjacentHTML("beforeend", `<div class="stats"><div><b>${r.notes ?? "–"}</b>음표</div><div><b>${r.chords ?? "–"}</b>코드</div><div><b>${r.lyric_notes ?? "–"}</b>가사 붙은 음표</div></div>`);
+  });
+
+  // where the bad measures sit (10 bins over song position)
+  (() => {
+    const bins = Array.from({ length: 10 }, () => ({ bad: 0, all: 0 }));
+    okRows.forEach(r => r.per_measure.forEach((m, i) => { const b = bins[Math.min(9, Math.floor(i / r.per_measure.length * 10))]; b.all++; if (m.status === "short" || m.status === "long") b.bad++; }));
+    const W = 760, L = 50, R = 20, top = 14, ph = 170, H = top + ph + 40, bw = (W - L - R) / 10, y = v => top + ph - v * ph / 0.6;
+    const s = $("#c-wpos"); s.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    for (let t = 0; t <= 0.6001; t += 0.2) { el("line", { class: "grid", x1: L, x2: W - R, y1: y(t), y2: y(t) }, s); el("text", { class: "tick", x: L - 8, y: y(t) + 4, "text-anchor": "end" }, s).textContent = Math.round(t * 100) + "%"; }
+    bins.forEach((b, i) => {
+      const v = b.all ? b.bad / b.all : 0, x0 = L + i * bw + 3, w = bw - 6, h = y(0) - y(v);
+      el("path", { d: `M${x0},${y(0)} v${-(h - 4)} a4,4 0 0 1 4,-4 h${w - 8} a4,4 0 0 1 4,4 v${h - 4} z`, fill: "var(--lowres)" }, s);
+      el("text", { class: "val", x: x0 + w / 2, y: y(v) - 6, "text-anchor": "middle" }, s).textContent = Math.round(v * 100) + "%";
+      el("text", { class: "tick", x: x0 + w / 2, y: y(0) + 16, "text-anchor": "middle" }, s).textContent = `${i * 10}–${i * 10 + 10}%`;
+      const hit = el("rect", { class: "hit", x: x0 - 3, y: top, width: bw, height: ph }, s);
+      hover(hit, `<div class="t">곡의 ${i * 10}–${i * 10 + 10}% 지점</div>틀린 마디 <b class="num">${b.bad}</b> / ${b.all}`);
+    });
+    el("line", { class: "base", x1: L, x2: W - R, y1: y(0), y2: y(0) }, s);
+    el("text", { x: (L + W - R) / 2, y: H - 4, "text-anchor": "middle" }, s).textContent = "곡의 시작 → 끝";
+  })();
+
+  // how far off the bad measures are (half-beat bins)
+  (() => {
+    const cnt = {}; okRows.forEach(r => r.per_measure.forEach(m => { if (m.status !== "short" && m.status !== "long") return;
+      const d = Math.max(-3, Math.min(3, Math.round((m.dur - m.expect) * 2) / 2)) || (m.dur < m.expect ? -0.5 : 0.5); cnt[d] = (cnt[d] || 0) + 1; }));
+    const keys = []; for (let d = -3; d <= 3.001; d += 0.5) if (d !== 0) keys.push(d);
+    const mx = Math.max(...keys.map(k => cnt[k] || 0)), W = 760, L = 40, R = 20, top = 14, ph = 170, H = top + ph + 44, bw = (W - L - R) / keys.length, y = v => top + ph - v * ph / mx;
+    const s = $("#c-wdev"); s.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    el("line", { class: "base", x1: L, x2: W - R, y1: y(0), y2: y(0) }, s);
+    keys.forEach((k, i) => {
+      const v = cnt[k] || 0, x0 = L + i * bw + 3, w = bw - 6, h = y(0) - y(v);
+      if (v) el("path", { d: `M${x0},${y(0)} v${-(Math.max(h, 4) - 4)} a4,4 0 0 1 4,-4 h${w - 8} a4,4 0 0 1 4,4 v${Math.max(h, 4) - 4} z`, fill: k < 0 ? "var(--lowres)" : "var(--before)" }, s);
+      if (v) el("text", { class: "val", x: x0 + w / 2, y: y(v) - 6, "text-anchor": "middle" }, s).textContent = v;
+      el("text", { class: "tick", x: x0 + w / 2, y: y(0) + 16, "text-anchor": "middle" }, s).textContent = (k > 0 ? "+" : "") + k + (Math.abs(k) === 3 ? "↑" : "");
+      const hit = el("rect", { class: "hit", x: x0 - 3, y: top, width: bw, height: ph }, s);
+      hover(hit, `<div class="t">${k > 0 ? "+" : ""}${k}박 ${k < 0 ? "짧음" : "김"}${Math.abs(k) === 3 ? " (3박 이상)" : ""}</div>마디 <b class="num">${v}</b>개`);
+    });
+    el("text", { x: L + bw * 3, y: H - 4, "text-anchor": "middle" }, s).textContent = "← 박자표보다 짧음";
+    el("text", { x: W - R - bw * 3, y: H - 4, "text-anchor": "middle" }, s).textContent = "박자표보다 김 →";
+  })();
+
+  // region boxes: every sheet
+  const byStem = Object.fromEntries(rows.map(r => [r.stem, r]));
+  const lab = st => byStem[st]?.label || st;
+  $("#reg-all").innerHTML = (D.regions || []).map(g => {
+    const up = Math.max(...g.ext.map(e => e[0])), dn = Math.max(...g.ext.map(e => e[1]));
+    return `<figure class="panel"><h3>${lab(g.stem)}</h3>
+      <div class="stats" style="grid-template-columns:repeat(4,1fr)"><div><b>${g.systems}</b>오선 줄</div><div><b>${up.toFixed(1)}/${dn.toFixed(1)}</b>꼬리 확장 위/아래</div><div><b>${g.counts.chord}</b>코드</div><div><b>${g.counts.lyric}</b>가사</div></div>
+      <img loading="lazy" src="${g.img}" alt="${lab(g.stem)} 영역 박스"></figure>`; }).join("") || `<p class="sub">영역 결과가 없습니다.</p>`;
+
+  // original vs converted: every sheet, best rhythm first
+  const cmp = [...(D.compare || [])].sort((a, b) => (byStem[b.stem]?.rhythm_ok_rate ?? 0) - (byStem[a.stem]?.rhythm_ok_rate ?? 0));
+  $("#cmp-all").innerHTML = cmp.map(c => { const r = byStem[c.stem] || {};
+    return `<div class="panel ex"><div class="ex-head"><h3>${lab(c.stem)}</h3><span class="pill">박자 정합성 ${Math.round((r.rhythm_ok_rate ?? 0) * 100)}%</span>
+      <span class="sub">틀린 마디 ${c.bad} · ${r.measures}마디 · 코드 ${r.chords}개 · 가사 붙은 음표 ${r.lyric_notes}개</span></div>
+      <div class="ex-grid cmp"><figure><img loading="lazy" src="${c.orig}" alt="${lab(c.stem)} 원본"><figcaption>원본 악보 (가로 ${r.width_in}px)</figcaption></figure>
+      <figure><img loading="lazy" src="${c.xml}" alt="${lab(c.stem)} 변환 결과"><figcaption>변환된 MusicXML (주황 = 박자 틀린 마디)</figcaption></figure></div></div>`; }).join("") || `<p class="sub">비교 이미지가 없습니다.</p>`;
+
+  // table
+  let h = `<thead><tr><th>악보</th><th class="n">원본 가로</th><th class="n">마디</th><th>key</th><th>박자표</th><th class="n">박자 정합성</th><th class="n">음표</th><th class="n">코드</th><th class="n">가사 붙은 음표</th><th class="n">처리 시간</th></tr></thead><tbody>`;
+  sorted.forEach(r => {
+    const key = r.fifths == null ? "–" : `${KEYNAME[String(r.fifths)] || r.fifths} ${r.keyOk ? "✓" : "✗"}`;
+    h += `<tr><td>${r.label}</td><td class="n">${r.width_in}</td><td class="n">${r.measures ?? "–"}</td><td>${key}</td><td>${r.time ?? "–"}</td>
+      <td class="n">${r.rhythm_ok_rate == null ? "실패" : Math.round(r.rhythm_ok_rate * 100) + "%"}</td><td class="n">${r.notes ?? "–"}</td><td class="n">${r.chords ?? "–"}</td><td class="n">${r.lyric_notes ?? "–"}</td><td class="n">${r.seconds}초</td></tr>`;
+  });
+  $("#t-w").innerHTML = h + "</tbody>";
+})();
+
+</script>

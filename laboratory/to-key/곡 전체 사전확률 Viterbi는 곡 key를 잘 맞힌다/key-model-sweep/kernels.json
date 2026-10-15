@@ -1,0 +1,27 @@
+{
+ "worship-key-sweep": {
+  "id": "gunhe17/worship-key-sweep",
+  "code": "kaggle/sweep.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-audio-analysis-test",
+   "gunhe17/worship-audio-500"
+  ]
+ },
+ "worship-key-sweep-summary": {
+  "id": "gunhe17/worship-key-sweep-summary",
+  "code": "kaggle/sweep.py",
+  "internet": false,
+  "datasets": [
+   "gunhe17/worship-key-sweep-v1-songs"
+  ]
+ },
+ "worship-key-sweep-v2": {
+  "id": "gunhe17/worship-key-sweep-v2",
+  "code": "kaggle/v2.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-audio-500"
+  ]
+ }
+}

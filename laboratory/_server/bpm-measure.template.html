@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BPM Test</title>
+<style>
+/* 방법 이름을 누르면 그 방법의 박에 클릭(첫 박은 높게)을 얹어 재생한다. 다시 누르면 끈다.
+   연구 지도 to BPM › 측정. 시안 M1(inset 목록 표): 제목 → 재생 카드(위에 붙음) → 방법 표.
+   그래프는 곡 템포 기준 같은 세로축(×0.79–×1.26), 최댓값·최솟값 점, 들은 구간 바탕 + 지금 위치 세로선. 곡은 연구 지도 사이드바가 고른다 */
+:root {
+  --bg: #f5f5f7; --panel: #ffffff; --fg: #1d1d1f; --sub: #707070; --faint: #858585; --rule: #e8e8ed; --line: #d2d2d7; --pebble: #e2e2e5;
+  --apple: #0071e3; --link: #0066cc; --ice: #f4f8fb; --slate-50: #f5f5f7; --slate-400: #858585;
+  --max: #ff3b30; --max-text: #d70015; --min: #0071e3; --min-text: #0066cc;  /* 최댓값 빨강 · 최솟값 파랑 (사용자 결정) */
+  --sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, Inter, Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); letter-spacing: -0.016em; font-variant-numeric: tabular-nums; }
+html, body { height: 100%; }
+body { overflow: hidden; }  /* 페이지는 고정, 스크롤은 방법 표 안에서만 */
+main { max-width: 1024px; height: 100%; margin: 0 auto; padding: 24px 24px 16px; display: flex; flex-direction: column; gap: 20px; }
+main > section[aria-label="방법"] { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.table { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+#rows { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+#rows { scrollbar-width: none; } #rows::-webkit-scrollbar { display: none; }  /* 스크롤은 되고 막대만 숨김 */
+button { font: inherit; color: inherit; }
+button:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; }
+
+/* 재생 카드 = 왼쪽 메트로놈 칸(현재 템포 · 박) + 오른쪽 재생·소리 (Test·Playground 공통, 시안 P3) */
+/* 재생 카드 (P7 가운데 무대): 지금 템포 + 박 → [아이콘 | 막대 | 값] 두 줄 → 재생 버튼 */
+.player { flex: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.metro { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.metro .bpm { position: relative; line-height: 1; }
+.metro .bpm b { font-size: 48px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.metro .bpm span { position: absolute; left: 100%; bottom: 2px; margin-left: 6px; font-size: 14px; color: var(--faint); }
+.metro .beats { display: flex; gap: 14px; height: 18px; align-items: center; }
+.metro .beats i { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--line); transition: transform .12s cubic-bezier(0.22, 1, 0.36, 1), background .08s; }
+.metro .beats i.on { background: var(--apple); transform: scale(1.3); }
+.metro .beats i.on.first { background: var(--max); }
+.metro .beats i.hit { transform: scale(1.6); }
+@media (prefers-reduced-motion: reduce) { .metro .beats i { transition: none; } }
+/* 두 줄 같은 칸: 막대·트랙 양 끝이 맞고, 아이콘·값과 막대 사이는 모두 10px */
+.ctrl { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px 12px; align-items: center; width: 100%; padding-inline: 20px; margin-top: 4px; }
+.ic { display: flex; justify-content: flex-start; color: var(--fg); }
+.val { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.val span { font-weight: 400; color: var(--faint); }
+.levels { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.levels .ic { flex: none; margin-left: 24px; }
+.levels output { flex: none; font-size: 13px; font-weight: 600; }
+.levels input { -webkit-appearance: none; appearance: none; flex: 1; min-width: 40px; height: 16px; margin: 0; background: transparent; cursor: pointer; --p: 50%; }
+.levels input::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--apple) var(--p), var(--rule) var(--p)); }
+.levels input::-moz-range-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--apple) var(--p), var(--rule) var(--p)); }
+.levels input::-webkit-slider-thumb { -webkit-appearance: none; width: 10px; height: 10px; margin-top: -3px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+.levels input::-moz-range-thumb { width: 10px; height: 10px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+.levels input:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; border-radius: 4px; }
+.play { width: 48px; height: 48px; flex: none; border: 0; border-radius: 50%; background: var(--apple); color: #fff; display: grid; place-items: center; cursor: pointer; margin-top: 2px; }
+.play:disabled { background: var(--line); cursor: default; }
+.bar { flex: 1; height: 16px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+.bar i { position: absolute; left: 0; right: 0; top: 6px; height: 4px; border-radius: 2px; background: var(--rule); }
+.bar b { position: absolute; left: 0; top: 6px; height: 4px; border-radius: 2px; background: var(--apple); width: 0; }
+.bar s { position: absolute; top: 3px; left: 0; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+
+h2 { margin: 0 0 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--sub); }
+h2 span { margin-left: 6px; font-weight: 400; color: var(--faint); }
+.table { border-radius: 12px; background: var(--panel); }
+.head, .row { display: flex; align-items: center; gap: 16px; }
+.head { padding: 10px 20px; border-bottom: 1px solid var(--rule); font-size: 12px; color: var(--slate-400); }
+.row { position: relative; padding: 14px 20px; }
+.row + .row::before { content: ""; position: absolute; top: 0; left: 20px; right: 0; height: 1px; background: var(--rule); }
+.row:last-child { border-radius: 0 0 12px 12px; }
+.name { width: 200px; flex: none; position: relative; display: flex; align-items: center; gap: 6px; min-width: 0; }
+.name > span { font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.legend { flex: 1; display: flex; gap: 14px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 5px; height: 5px; border-radius: 50%; }
+/* ? = _design IconButton sm: 선 아이콘, 올리면 옅은 바탕. 올리기만 해도 설명이 보이고, 누르면 고정 */
+.q { flex: none; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--slate-400); cursor: pointer; transition: background .15s, color .15s; }
+.q:hover, .q[aria-expanded="true"] { background: var(--pebble); color: var(--fg); }
+.name:has(.q:hover, .tip:hover) .tip[hidden], .q:focus-visible + .tip[hidden] { display: grid; }
+.tip::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }  /* ? 와 설명 사이 틈을 건너도 닫히지 않게 */
+.tip { position: absolute; left: 0; top: calc(100% + 8px); z-index: 4; width: 320px; background: #fff; border-radius: 8px; border: 1px solid var(--line); padding: 12px 14px; display: grid; gap: 8px; }
+.tip[hidden] { display: none; }
+.tip b { display: block; font-size: 12px; font-weight: 600; }
+.tip p { margin: 0; font-size: 12.5px; line-height: 1.55; color: #474747; }
+/* 행을 누르면 그 방법의 박에 클릭을 켜고 끈다 (이름 버튼은 키보드용). 올리면 옅은 바탕, 켜면 파란 바탕·파란 이름 */
+.pick { border: 0; background: none; padding: 2px 0; margin: 0; text-align: left; cursor: pointer; min-width: 0; font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color .15s; }
+.pick:disabled { cursor: default; color: var(--sub); font-weight: 500; }
+.row { transition: background .15s; }
+.row.can { cursor: pointer; }
+.row.can:hover { background: var(--slate-50); }
+.row.can:hover .pick { color: var(--link); }
+.row.on, .row.on:hover { background: var(--ice); }
+.row.on .pick { color: var(--link); }
+.row:first-child { border-radius: 0; }
+.chart { flex: 1; min-width: 0; height: 48px; position: relative; }
+.chart svg { position: absolute; left: 0; top: 4px; width: 100%; height: 40px; overflow: visible; }
+.past { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: rgb(0 113 227 / .05); border-radius: 4px 0 0 4px; }
+.head-line { position: absolute; top: 0; bottom: 0; left: 0; width: 1.5px; margin-left: -.75px; background: var(--apple); }
+/* 그래프에 올리면: 모든 그래프에 같은 시각의 회색 안내선, 올린 그래프에는 시각 */
+.hover-line { position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: #b4b4b9; opacity: 0; pointer-events: none; }
+.hover-t { position: absolute; top: -2px; left: 0; transform: translate(-50%, -100%); font-size: 10.5px; font-weight: 600; color: #474747; background: #fff; border-radius: 6px; padding: 2px 6px; border: 1px solid var(--line); opacity: 0; pointer-events: none; white-space: nowrap; }
+#rows.hovering .hover-line { opacity: 1; }
+.chart.hover .hover-t { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .q, .pick, .row { transition: none; } }
+.dot { position: absolute; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; }
+.chart .val { position: absolute; font-size: 11px; font-weight: 600; line-height: 1; white-space: nowrap; pointer-events: none; text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 3px #fff; }
+.msg { flex: none; font-size: 13px; color: var(--max-text); }
+.msg:empty { display: none; }
+/* 좁은 폭: 이름 칸은 비율로 줄고 이름은 두 줄까지 감싼다 (말줄임 대신) */
+.name { width: clamp(132px, 28%, 240px); }
+.name > .pick { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; }
+@media (max-width: 720px) { main { padding: 16px 16px 12px; } .head, .row { padding-inline: 12px; gap: 10px; } .row + .row::before { left: 12px; } .ctrl { padding-inline: 12px; } .name > .pick { font-size: 15px; } }
+@media (max-width: 480px) { .levels .ic { margin-left: 8px; } }
+</style>
+
+<main>
+  <section class="player" aria-label="재생">
+    <div class="metro" id="metro" role="status" aria-live="off"><span class="bpm"><b id="metroBpm">–</b><span>BPM</span></span><span class="beats" id="beats"></span></div>
+    <div class="ctrl">
+      <span class="ic" role="img" aria-label="재생 위치" title="재생 위치"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 5l11 7-11 7z"/></svg></span>
+      <button class="bar" id="bar" aria-label="재생 위치"><i></i><b id="barFill"></b><s id="barKnob"></s></button>
+      <span class="val"><b id="now">0:00</b><span> / <span id="end">0:00</span></span></span>
+      <span class="ic" role="img" aria-label="음원 소리" title="음원 소리"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18 7a7 7 0 0 1 0 10"/></svg></span>
+      <span class="levels"><input type="range" id="musicVol" aria-label="음원 소리" min="0" max="1" step="0.05"><output id="musicOut"></output><span class="ic" role="img" aria-label="클릭 소리" title="클릭 소리"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4h5l3.5 16h-12z"/><path d="M12 15l5-8"/></svg></span><input type="range" id="clickVol" aria-label="클릭 소리" min="0" max="1" step="0.05"></span>
+      <span class="val"><output id="clickOut"></output></span>
+    </div>
+    <button class="play" id="play" aria-label="재생" disabled></button>
+  </section>
+  <section aria-label="방법">
+    <h2>방법<span id="count"></span></h2>
+    <div class="table">
+      <div class="head"><div class="name" style="font-size:12px;font-weight:400">방법</div>
+        <div class="legend"><span>그래프</span><span style="flex:1"></span><span><i style="background:var(--max)"></i>최댓값</span><span><i style="background:var(--min)"></i>최솟값</span></div></div>
+      <div id="rows"></div>
+    </div>
+  </section>
+  <div class="msg" id="msg" role="status"></div>
+</main>
+<audio id="audio" preload="metadata"></audio>
+
+<script>
+const { names: NAMES, res: RES, songs: ALL } = __DATA__;
+const $ = id => document.getElementById(id), audio = $("audio");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const mmss = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+const med = a => { const b = [...a].sort((x, y) => x - y), n = b.length; return n % 2 ? b[n >> 1] : (b[n / 2 - 1] + b[n / 2]) / 2; };
+const ICON = { play: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.5 5l11 7-11 7z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
+  q: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.5"/><path d="M12 16.9v.1"/></svg>' };
+// 표 순서: 확정한 방법 → 박 추적 → 템포만
+const ORDER = ["beatthis_final0_dbn", "madmom_dbn", "beatthis_final0", "beatthis_small0", "beatnet", "ess_multifeature", "ess_degara", "librosa_beat", "librosa_plp", "ess_tempocnn", "deeprhythm", "madmom_tempo", "ess_percival", "librosa_tempo"];
+const DBN = "앞 단계가 낸 점수를 받아 실제 박 위치를 정하는 정리 단계입니다. 템포와 마디 길이가 일정하다고 보고 박을 고르게 맞춰서, 반 마디마다 첫 박을 찍던 실수를 없앱니다. 대신 박 위치는 아주 조금 덜 정확해집니다.";
+const DESC = {
+  beatthis_final0_dbn: [["Beat This!", "2024년에 나온 최신 신경망입니다. 음악을 듣고 박과 마디 첫 박이 어디쯤일지 점수를 냅니다."], ["DBN", DBN]],
+  madmom_dbn: [["madmom RNN", "오래 쓰여 온 음악 분석 도구 madmom의 신경망입니다. 박은 잘 찾지만, 느린 템포와 두 배 빠른 템포 중 어느 쪽으로 셀지는 가끔 반대로 고릅니다."], ["DBN", DBN]],
+  beatthis_final0: [["", "2024년에 나온 최신 신경망입니다. 음악을 듣고 박과 마디 첫 박을 직접 찍습니다. 정답이 있는 곡에서 박 위치가 가장 정확했습니다."]],
+  beatthis_small0: [["", "Beat This!의 작은 버전입니다. 더 가볍고 빠르며, 정확도는 큰 버전과 거의 같습니다."]],
+  beatnet: [["", "실시간으로 박을 따라가도록 만든 신경망입니다. 박과 마디 첫 박을 내지만, 이 비교에서는 정확도가 중간쯤입니다."]],
+  ess_multifeature: [["", "오픈소스 음악 분석 도구 Essentia의 박 찾기입니다. 신경망 없이 소리의 여러 특징을 함께 보고 박을 정합니다."]],
+  ess_degara: [["", "Essentia의 다른 박 찾기 방식(Degara)입니다. 신경망 없이 소리가 세지는 순간들로 박을 정합니다."]],
+  librosa_beat: [["", "파이썬 음악 라이브러리 librosa의 기본 박 찾기입니다. 신경망 없이, 소리가 세지는 순간들 사이의 규칙적인 간격을 찾습니다."]],
+  librosa_plp: [["", "librosa의 PLP 방식입니다. 박보다 더 잘게 쪼갠 맥박을 잡아서, 템포가 거의 늘 실제의 두 배로 나옵니다."]],
+  ess_tempocnn: [["", "Essentia에 들어 있는 작은 신경망입니다. 몇 초씩 끊어서 구간마다 템포를 냅니다. 박은 찍지 않습니다."]],
+  deeprhythm: [["", "템포만 맞히도록 학습한 신경망입니다. 곡 템포 숫자 하나만 냅니다."]],
+  madmom_tempo: [["", "madmom의 템포 추정입니다. 박을 찍지 않고 곡 템포 숫자 하나만 냅니다. 실제보다 절반(느린 쪽)으로 세는 경향이 있습니다."]],
+  ess_percival: [["", "Essentia의 템포 추정(Percival)입니다. 박을 찍지 않고 곡 템포 숫자 하나만 냅니다."]],
+  librosa_tempo: [["", "librosa가 곡 전체 템포를 숫자 하나로만 낸 값입니다."]],
+};
+const W = 600, H = 40, LO = 0.79, HI = 1.26;  // 세로축 = 곡 템포 × 0.79–1.26 (시안의 63.4 기준 50–80)
+let S = null, tip = null, sel = null, B = [], next = 0, ctx = null, gain = null, music = null;
+// ── 메트로놈 칸: 박 [[시각, 마디 안 박 번호]] · 마디 [[시작, 길이, 박 수]]. 첫 박이 없는 방법은 4박을 한 마디로 친다
+let MB = [], MBARS = [], METER = 4, lastBeat = -1;
+function metroSet(beats, downs) {
+  beats = beats || [];
+  const d = downs && downs.length >= 2 ? downs : beats.filter((_, i) => i % 4 === 0);
+  MB = []; let di = 0, k = 0;
+  for (const t of beats) { while (di < d.length && d[di] <= t + 0.05) { k = 0; di++; } k++; MB.push([t, k]); }
+  MBARS = d.slice(0, -1).map((a, j) => [a, d[j + 1] - a, beats.filter(t => a - 0.05 <= t && t < d[j + 1] - 0.05).length]);
+  const cnt = {}; MBARS.forEach(x => cnt[x[2]] = (cnt[x[2]] || 0) + 1);
+  METER = Math.min(7, Math.max(2, +Object.entries(cnt).sort((a, b) => b[1] - a[1])[0]?.[0] || 4));
+  $("beats").innerHTML = "<i></i>".repeat(METER); lastBeat = -1;
+}
+const before = (arr, t) => { let lo = 0, hi = arr.length - 1, r = -1; while (lo <= hi) { const m = (lo + hi) >> 1; if (arr[m][0] <= t) { r = m; lo = m + 1; } else hi = m - 1; } return r; };
+function metroShow(t, playing) {
+  const i = before(MB, t), dots = $("beats").children;
+  const k = playing && i >= 0 ? Math.min(MB[i][1], dots.length) : 0, hit = k && t - MB[i][0] < 0.12;
+  for (let j = 0; j < dots.length; j++) dots[j].className = j + 1 === k ? "on" + (k === 1 ? " first" : "") + (hit ? " hit" : "") : "";
+  const b = before(MBARS, t), w = b >= 0 ? MBARS.slice(Math.max(0, b - 3), b + 1) : [];  // 현재 템포 = 최근 4마디
+  $("metroBpm").textContent = w.length ? (60 * w.reduce((a, x) => a + x[2], 0) / w.reduce((a, x) => a + x[1], 0)).toFixed(1) : "–";
+  if (i !== lastBeat && k === 1) $("metro").setAttribute("aria-label", `현재 템포 ${$("metroBpm").textContent} BPM`);
+  lastBeat = i;
+}
+
+// 방법 → 결과 커널 (bpm-model-sweep a: Beat This!·DeepRhythm, b: madmom·BeatNet, c: librosa·Essentia)
+const KERNEL = k => /^(beatthis|deeprhythm)/.test(k) ? "a" : /^(madmom|beatnet)/.test(k) ? "b" : "c";
+const BEATLESS = new Set(["deeprhythm", "madmom_tempo", "librosa_tempo", "ess_percival", "ess_tempocnn"]);
+const beatCache = {};
+
+// 방법 하나 → 곡선 [[초, BPM]] (반·두 배를 곡 템포에 맞춤)
+function curveOf(S, e) {
+  let c;
+  if (e.t0 != null) c = e.c.map((v, i) => [e.t0 + i * 2, v]);
+  else if (e.c) c = e.c.map((v, i) => [(i + .5) * S.dur / e.c.length, v]);
+  else c = [[0, e.t], [S.dur, e.t]];
+  const f = 2 ** Math.max(-2, Math.min(2, Math.round(Math.log2(S.tempo / med(c.map(p => p[1]))))));
+  return c.map(([t, v]) => [t, v * f]);
+}
+
+function pick(s) {
+  S = s; tip = null; B = []; next = 0;
+  document.title = s.title;
+  metroSet([]);  // 클릭을 켠 방법의 박이 오면 채운다
+  const lo = s.tempo * LO, hi = s.tempo * HI;
+  const x = t => t / s.dur * W, y = v => (hi - Math.min(hi, Math.max(lo, v))) / (hi - lo) * H;
+  const px = t => (t / s.dur * 100).toFixed(2) + "%", top = v => (4 + y(v)).toFixed(1) + "px";
+  const ids = ORDER.filter(k => s.m[k]);
+  $("count").textContent = ids.length;
+  $("rows").innerHTML = ids.map((k, i) => {
+    const c = curveOf(s, s.m[k]), flat = new Set(c.map(p => p[1].toFixed(1))).size === 1;
+    const d = c.map(([t, v], j) => `${j ? "L" : "M"}${x(t).toFixed(1)},${y(v).toFixed(1)}`).join("");
+    let marks = "";
+    if (!flat) {
+      const mx = c.reduce((a, b) => b[1] > a[1] ? b : a), mn = c.reduce((a, b) => b[1] < a[1] ? b : a);
+      const mark = ([t, v], col, txt) => {
+        const right = t / s.dur > .9, yy = y(v), ty = yy < 8 ? "0" : yy > 32 ? "-100%" : "-50%";
+        return `<span class="dot" style="left:${px(t)};top:${top(v)};background:var(${col})"></span>`
+          + `<span class="val" style="left:${px(t)};top:${top(v)};color:var(${txt});transform:translate(${right ? "calc(-100% - 5px)" : "5px"},${ty})">${v.toFixed(1)}</span>`;
+      };
+      marks = mark(mx, "--max", "--max-text") + mark(mn, "--min", "--min-text");
+    }
+    const desc = (DESC[k] || []).map(([b, p]) => (b ? `<b>${esc(b)}</b>` : "") + `<p>${esc(p)}</p>`).join("");
+    const nm = esc(NAMES[k] || k), can = !BEATLESS.has(k);
+    return `<div class="row${can ? " can" : ""}${k === sel ? " on" : ""}" data-k="${k}"><div class="name"><button class="pick" ${can ? `aria-pressed="${k === sel}" title="누르면 이 방법의 박에 클릭을 켜고 끕니다"` : `disabled title="템포만 내는 방법이라 클릭할 박이 없습니다"`}>${nm}</button>${desc ? `<button class="q" data-tip="${k}" aria-label="${esc(NAMES[k] || k)} 설명" aria-expanded="false">${ICON.q}</button><div class="tip" role="dialog" hidden>${desc}</div>` : ""}</div>
+      <div class="chart" role="img" aria-label="${esc(NAMES[k] || k)} 시간별 BPM"><span class="past"></span>
+        <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><line x1="0" x2="${W}" y1="${y(s.tempo)}" y2="${y(s.tempo)}" stroke="#b4b4b9" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>
+        <path d="${d}" fill="none" stroke="#0071e3" stroke-width="${k === sel ? 2.2 : 1.5}" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>${marks}<span class="head-line"></span><span class="hover-line"></span><span class="hover-t"></span></div></div>`;
+  }).join("");
+  load(s);
+  if (sel) loadBeats(sel);
+}
+
+// 클릭: 고른 방법의 박을 곡별 결과 JSON에서 받는다 (곡마다 한 번)
+async function loadBeats(k) {
+  const s = S, key = s.id + "/" + KERNEL(k);
+  try {
+    beatCache[key] ??= fetch(`${RES}/${KERNEL(k)}/out/${KERNEL(k).toUpperCase()}/w500/${s.id}.json`).then(r => r.json());
+    const m = (await beatCache[key]).methods[k] || {};
+    if (S !== s || sel !== k) return;
+    const downs = new Set((m.downbeats || []).map(t => t.toFixed(2)));
+    B = (m.beats || []).map(t => [t, downs.has(t.toFixed(2))]); resync();
+    metroSet(m.beats, m.downbeats); show(audio.currentTime);
+  } catch (e) { $("msg").textContent = "박을 불러오지 못했습니다"; }
+}
+function select(k) {
+  sel = sel === k ? null : k; B = []; metroSet([]); show(audio.currentTime);
+  document.querySelectorAll("#rows .row").forEach(r => {
+    const on = r.dataset.k === sel; r.classList.toggle("on", on);
+    r.querySelector(".pick")?.setAttribute("aria-pressed", on);
+    r.querySelector("path").setAttribute("stroke-width", on ? 2.2 : 1.5);
+  });
+  if (sel) loadBeats(sel);
+}
+function ensureCtx() {
+  if (ctx) return;
+  ctx = new AudioContext();
+  // 음원과 클릭을 같은 시계로. 이렇게 이으면 Safari 등은 audio.volume을 무시하므로 음원도 전용 gain으로 크기를 조절한다
+  music = ctx.createGain(); music.gain.value = +$("musicVol").value; music.connect(ctx.destination);
+  ctx.createMediaElementSource(audio).connect(music);
+  gain = ctx.createGain(); gain.gain.value = +$("clickVol").value; gain.connect(ctx.destination);
+}
+function click(when, first) {
+  const o = ctx.createOscillator(), g = ctx.createGain();
+  o.frequency.value = first ? 1760 : 1000;
+  g.gain.setValueAtTime(first ? 1 : 0.55, when); g.gain.exponentialRampToValueAtTime(0.001, when + 0.05);
+  o.connect(g).connect(gain); o.start(when); o.stop(when + 0.06);
+}
+function resync() { const t = audio.currentTime; next = B.findIndex(b => b[0] >= t); if (next < 0) next = B.length; }
+setInterval(() => {  // 0.15초 앞까지 예약
+  if (!ctx || audio.paused || !B.length) return;
+  const now = audio.currentTime, r = audio.playbackRate;
+  while (next < B.length && B[next][0] < now + 0.15) {
+    const dt = (B[next][0] - now) / r;
+    if (dt > -0.02) click(ctx.currentTime + Math.max(0, dt), B[next][1]);
+    next++;
+  }
+}, 25);
+
+// 설명 드롭다운: 한 번에 하나, 바깥을 누르거나 Esc로 닫는다
+$("rows").addEventListener("click", e => {
+  const q = e.target.closest(".q");
+  if (q) { const open = q.getAttribute("aria-expanded") !== "true"; closeTip(); if (open) { q.setAttribute("aria-expanded", "true"); q.nextElementSibling.hidden = false; tip = q; } return; }
+  if (e.target.closest(".tip")) return;
+  const row = e.target.closest(".row.can");  // 행 어디를 눌러도 (이름 버튼 포함) 클릭 켜고 끄기
+  if (row) select(row.dataset.k);
+});
+$("rows").addEventListener("pointermove", e => {
+  const c = e.target.closest(".chart");
+  if (!c) return hideHover();
+  const r = c.getBoundingClientRect(), f = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)), p = (f * 100).toFixed(2) + "%";
+  $("rows").classList.add("hovering");
+  document.querySelectorAll("#rows .hover-line").forEach(l => l.style.left = p);
+  document.querySelectorAll("#rows .chart.hover").forEach(x => x !== c && x.classList.remove("hover"));
+  c.classList.add("hover");
+  const t = c.querySelector(".hover-t"); t.style.left = p; t.textContent = mmss(f * (audio.duration || S.dur));
+});
+const hideHover = () => { $("rows").classList.remove("hovering"); document.querySelectorAll("#rows .chart.hover").forEach(x => x.classList.remove("hover")); };
+$("rows").addEventListener("pointerleave", hideHover);
+const closeTip = () => { if (tip) { tip.setAttribute("aria-expanded", "false"); tip.nextElementSibling.hidden = true; tip = null; } };
+document.addEventListener("click", e => { if (tip && !e.target.closest(".name")) closeTip(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeTip(); });
+
+// 재생: serve.py /audio/<id>. 위치 표시는 다시 그리지 않고 막대·세로선 위치만 옮긴다
+function load(s) {
+  audio.pause(); audio.src = `/audio/${s.id}`; $("play").disabled = true; $("play").innerHTML = ICON.play;
+  $("end").textContent = mmss(s.dur); $("msg").textContent = ""; show(0);
+}
+audio.onloadedmetadata = () => { $("play").disabled = false; $("end").textContent = mmss(audio.duration); };
+audio.onerror = () => { $("msg").textContent = location.protocol === "file:" ? "serve.py로 열어야 음원이 나옵니다" : "음원을 불러오지 못했습니다"; };
+audio.onplay = () => { resync(); $("play").innerHTML = ICON.pause; $("play").setAttribute("aria-label", "일시 정지"); };
+audio.onpause = () => { $("play").innerHTML = ICON.play; $("play").setAttribute("aria-label", "재생"); };
+// Safari는 클릭 처리 안에서 바로 play()·resume()을 불러야 허용한다
+$("play").onclick = () => {
+  if (!audio.paused) return audio.pause();
+  try { ensureCtx(); ctx.resume(); } catch (e) {}
+  audio.play().catch(e => { $("msg").textContent = "재생하지 못했습니다: " + e.message; });
+};
+audio.onseeked = resync;
+function show(t) {
+  const p = S ? Math.min(100, t / S.dur * 100).toFixed(2) + "%" : "0%";
+  $("now").textContent = mmss(t); $("barFill").style.width = p; $("barKnob").style.left = p;
+  document.querySelectorAll("#rows .past").forEach(e => e.style.width = p);
+  document.querySelectorAll("#rows .head-line").forEach(e => e.style.left = p);
+  metroShow(t, !audio.paused);
+}
+(function loop() { if (S && !audio.paused) show(audio.currentTime); requestAnimationFrame(loop); })();
+function seekAt(el, cx) {
+  const r = el.getBoundingClientRect(), t = Math.max(0, Math.min(1, (cx - r.left) / r.width)) * (audio.duration || S.dur);
+  if (audio.readyState) audio.currentTime = t;
+  show(t);
+}
+$("bar").onclick = e => seekAt($("bar"), e.clientX);
+
+// 소리 크기: 클릭 · 음원 각자의 gain (재생을 처음 누를 때 만들어지고, 그 전 값은 만들 때 읽는다). 이 브라우저에 기억해 둔다
+const keep = { get(k, d) { try { const v = localStorage.getItem("bpm:" + k); return v === null ? d : +v; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem("bpm:" + k, v); } catch (e) {} } };
+function level(id, out, key, d, apply) {
+  const el = $(id), show = () => { el.style.setProperty("--p", el.value * 100 + "%"); $(out).textContent = Math.round(el.value * 100) + "%"; apply(+el.value); keep.set(key, el.value); };
+  el.value = keep.get(key, d); el.oninput = show; show();
+}
+level("clickVol", "clickOut", "click", 0.6, v => { if (gain) gain.gain.value = v; });
+level("musicVol", "musicOut", "music", 0.8, v => { if (music) music.gain.value = v; });
+
+// 연구 지도 사이드바가 고른 곡
+addEventListener("message", e => { if (e.data?.type !== "song") return; const s = ALL.find(x => x.id === e.data.id); if (s && s !== S) pick(s); });
+sel = "beatthis_final0_dbn";  // 처음에는 확정한 방법의 박에 클릭
+pick(ALL[0]);
+if (parent !== window) parent.postMessage({ type: "shown", id: ALL[0].id }, "*");  // 처음 띄운 곡을 사이드바에 알린다
+</script>

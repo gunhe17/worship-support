@@ -1,0 +1,37 @@
+{
+ "worship-bpm-sweep-a": {
+  "id": "gunhe17/worship-bpm-sweep-a",
+  "code": "kaggle/a.py",
+  "gpu": true,
+  "datasets": [
+   "andradaolteanu/gtzan-dataset-music-genre-classification",
+   "gunhe17/worship-audio-analysis-test",
+   "gunhe17/worship-audio-500"
+  ]
+ },
+ "worship-bpm-sweep-b": {
+  "id": "gunhe17/worship-bpm-sweep-b",
+  "code": "kaggle/b.py",
+  "datasets": [
+   "andradaolteanu/gtzan-dataset-music-genre-classification",
+   "gunhe17/worship-audio-analysis-test",
+   "gunhe17/worship-audio-500"
+  ]
+ },
+ "worship-bpm-sweep-c": {
+  "id": "gunhe17/worship-bpm-sweep-c",
+  "code": "kaggle/c.py",
+  "datasets": [
+   "andradaolteanu/gtzan-dataset-music-genre-classification",
+   "gunhe17/worship-audio-analysis-test",
+   "gunhe17/worship-audio-500"
+  ]
+ },
+ "worship-bpm-sweep-s": {
+  "id": "gunhe17/worship-bpm-sweep-s",
+  "code": "kaggle/s.py",
+  "datasets": [
+   "gunhe17/worship-bpm-sweep-v1-out"
+  ]
+ }
+}

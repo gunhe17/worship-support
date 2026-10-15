@@ -1,0 +1,248 @@
+<title>송폼 구간별 가사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#EEF1F5; --ink:#172033; --muted:#5A6478; --faint:#8A93A4; --line:#DCE1E9;
+  --ref:#8A5A0B; --ref-bg:#FBF3E4; --model:#2F53BF; --model-bg:#EAF0FD; --oom:#B4232F;
+  --ks:62%; --kl:78%; --klm:66%; --ktext:#172033;
+  --lb-intro:#D9DEE7; --lb-verse:#BFD7F2; --lb-pre:#CFE6D2; --lb-chorus:#F4CFA6; --lb-bridge:#DCC8EE; --lb-inst:#E4E0D3; --lb-outro:#D3D8DF; --lb-silence:#EEF0F3;
+  --bpm-main:#E6EAF1; --bpm-alt:#F7D9A8;
+  --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F131A; --surface:#161C26; --surface-2:#1C2330; --ink:#E4E9F1; --muted:#9AA4B6; --faint:#6F7A8D; --line:#2A3342;
+    --ref:#E7B866; --ref-bg:#2A2214; --model:#8EA9FF; --model-bg:#1A2440; --oom:#F07A84;
+    --ks:45%; --kl:38%; --klm:28%; --ktext:#F1F4F9;
+    --lb-intro:#2E3542; --lb-verse:#23405F; --lb-pre:#274534; --lb-chorus:#5A3A1C; --lb-bridge:#3E2F55; --lb-inst:#3A372D; --lb-outro:#303641; --lb-silence:#1E242E;
+    --bpm-main:#252D3A; --bpm-alt:#5A4220;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F131A; --surface:#161C26; --surface-2:#1C2330; --ink:#E4E9F1; --muted:#9AA4B6; --faint:#6F7A8D; --line:#2A3342;
+  --ref:#E7B866; --ref-bg:#2A2214; --model:#8EA9FF; --model-bg:#1A2440; --oom:#F07A84;
+  --ks:45%; --kl:38%; --klm:28%; --ktext:#F1F4F9;
+  --lb-intro:#2E3542; --lb-verse:#23405F; --lb-pre:#274534; --lb-chorus:#5A3A1C; --lb-bridge:#3E2F55; --lb-inst:#3A372D; --lb-outro:#303641; --lb-silence:#1E242E;
+  --bpm-main:#252D3A; --bpm-alt:#5A4220;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.6;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:1100px;margin:0 auto;display:grid;gap:40px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:28px;font-weight:700;letter-spacing:-.01em}
+h2{font-size:20px;font-weight:600}
+h3{font-size:15px;font-weight:600}
+a{color:var(--model)}
+.mono,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:68ch;margin:8px 0 0}
+header.top{display:grid;gap:18px}
+.notice{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted)}
+.notice b{color:var(--ink);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:12.5px;color:var(--muted);white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600}
+.chip.warn{border-color:color-mix(in srgb,var(--oom) 45%,var(--line));color:var(--oom)}
+nav.jump{display:flex;flex-wrap:wrap;gap:8px}
+nav.jump a{text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:8px;font-size:13px}
+nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--model);outline:none}
+
+/* overview matrix */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2)}
+td.num,th.num{text-align:right}
+tr:last-child td{border-bottom:0}
+.col-ref{background:var(--ref-bg)}
+.col-model{background:var(--model-bg)}
+th.col-ref{color:var(--ref)} th.col-model{color:var(--model)}
+
+/* song section */
+section.song{display:grid;gap:16px;scroll-margin-top:16px}
+.song-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+.song-head .t{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.song-head .team{color:var(--muted);font-size:14px}
+.contrast{display:grid;grid-template-columns:110px 1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.contrast > div{padding:10px 14px;border-bottom:1px solid var(--line);min-width:0}
+.contrast .rowlab{font-size:12.5px;color:var(--muted);font-weight:600;background:var(--surface-2)}
+.contrast .hd{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.contrast .hd.ref{color:var(--ref);background:var(--ref-bg)}
+.contrast .hd.model{color:var(--model);background:var(--model-bg)}
+.contrast .ref{border-left:1px solid var(--line)}
+.contrast .model{border-left:1px solid var(--line)}
+.contrast > div:nth-last-child(-n+3){border-bottom:0}
+.sub{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.dist{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.kchip{display:inline-flex;gap:4px;align-items:center;font-family:var(--mono);font-size:12px;padding:1px 7px;border-radius:5px;color:var(--ktext)}
+.formline{font-size:12.5px;line-height:1.7;word-break:keep-all}
+.formline span{white-space:nowrap}
+
+/* timeline */
+.tl-card{padding:14px 14px 8px}
+.tl-title{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;align-items:baseline;margin-bottom:6px}
+.tl-title .cap{font-size:12.5px;color:var(--muted)}
+svg.tl{display:block;width:100%;min-width:760px;height:auto;font-family:var(--sans)}
+svg .lane-lab{fill:var(--muted);font-size:12px}
+svg .lane-grp{fill:var(--faint);font-size:10.5px;letter-spacing:.06em}
+svg .tick{stroke:var(--line);stroke-width:1}
+svg .ticklab{fill:var(--faint);font-size:10.5px;font-family:var(--mono)}
+svg .blk{stroke:var(--surface);stroke-width:1.5}
+svg .btxt{fill:var(--ink);font-size:11px;font-family:var(--mono);pointer-events:none}
+svg .ktxt{fill:var(--ktext);font-size:11px;font-family:var(--mono);pointer-events:none}
+svg .lb-intro{fill:var(--lb-intro)} svg .lb-verse{fill:var(--lb-verse)} svg .lb-pre-chorus{fill:var(--lb-pre)} svg .lb-chorus{fill:var(--lb-chorus)}
+svg .lb-bridge{fill:var(--lb-bridge)} svg .lb-inst{fill:var(--lb-inst)} svg .lb-outro{fill:var(--lb-outro)} svg .lb-silence{fill:var(--lb-silence)}
+svg .bpm-main{fill:var(--bpm-main)} svg .bpm-alt{fill:var(--bpm-alt)} svg .none{fill:var(--surface-2)}
+svg .oom{fill:url(#hatch)} svg .oomtxt{fill:var(--oom);font-size:12px;font-weight:600}
+svg .hatch-line{stroke:color-mix(in srgb,var(--oom) 40%,transparent);stroke-width:4}
+svg .sep{stroke:var(--line);stroke-dasharray:3 3}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);align-items:center}
+.legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details > summary{cursor:pointer;padding:10px 14px;font-size:13px;color:var(--muted);font-weight:500}
+details > summary:focus-visible{outline:2px solid var(--model);outline-offset:2px;border-radius:12px}
+details[open] > summary{border-bottom:1px solid var(--line)}
+details table td,details table th{white-space:nowrap}
+
+.notes{display:grid;gap:8px;font-size:13.5px;color:var(--muted);max-width:80ch}
+.notes li{margin-bottom:4px}
+.foot{font-size:12px;color:var(--faint)}
+
+.cmp th.row{background:var(--surface-2);color:var(--muted);text-transform:none;letter-spacing:0;font-size:12.5px}
+.cmp{table-layout:fixed;min-width:640px} .cmp th:first-child{width:170px} .cmp.key th:nth-child(2){width:170px}
+.lyr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.lyr .cell{padding:10px 14px;border-top:1px solid var(--line);min-width:0}
+.lyr .cell + .cell{border-left:1px solid var(--line)}
+.lyr .mh{grid-column:1/-1;padding:8px 14px;background:var(--surface-2);font-size:12.5px;font-weight:600;color:var(--muted);border-top:1px solid var(--line)}
+.lyr .ih{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.lyr ol{list-style:none;margin:0;padding:0;max-height:300px;overflow:auto;display:grid;gap:3px;font-size:13.5px}
+.lyr li{display:grid;grid-template-columns:44px 1fr;gap:8px}
+.lyr li .ts{font-family:var(--mono);font-size:11.5px;color:var(--faint);padding-top:2px}
+.lyr .err{color:var(--oom)}
+@media (max-width:640px){.lyr{grid-template-columns:1fr}.lyr .cell + .cell{border-left:0}}
+.agree{fill:var(--bpm-main)} .disagree{fill:var(--bpm-alt)}
+@media (max-width:640px){
+  h1{font-size:23px}
+  .contrast{grid-template-columns:1fr}
+  .contrast .ref,.contrast .model{border-left:0}
+  .contrast .hd.rowlab{display:none}
+  .contrast .rowlab{border-bottom:0;padding-bottom:2px}
+  .contrast .ref::before{content:"참고 · ";color:var(--ref);font-weight:600;font-size:12px}
+  .contrast .model::before{content:"모델 · ";color:var(--model);font-weight:600;font-size:12px}
+  .contrast .hd{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style><style>
+.bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.songs{display:flex;flex-wrap:wrap;gap:6px}
+.songs button,.tog button{font:inherit;font-size:13px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 11px;cursor:pointer}
+.songs button[aria-pressed="true"]{border-color:var(--model);background:var(--model-bg);color:var(--model);font-weight:600}
+.tog{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--muted)}
+.tog button{font-size:12px;padding:3px 9px;font-family:var(--mono)}
+.tog button[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
+.songs button:focus-visible,.tog button:focus-visible{outline:2px solid var(--model);outline-offset:2px}
+.sec{display:grid;grid-template-columns:170px 1fr;border-top:1px solid var(--line)}
+.sec:first-child{border-top:0}
+.sec .meta{padding:12px 14px;background:var(--surface-2);display:grid;gap:4px;align-content:start}
+.sec .meta .lb{display:inline-block;font-weight:600;font-size:13px;padding:1px 8px;border-radius:5px;width:max-content;color:var(--ink)}
+.sec .meta .tm{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.sec .meta .cr{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.sec .body{display:grid;min-width:0}
+.mrow{display:grid;grid-template-columns:190px repeat(var(--cols),minmax(0,1fr));border-top:1px solid var(--line)}
+.mrow:first-child{border-top:0}
+.mrow > div{padding:8px 12px;min-width:0;font-size:13.5px;line-height:1.55}
+.mrow > div + div{border-left:1px solid var(--line)}
+.mrow .mn{font-family:var(--mono);font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+.mrow.hd > div{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;padding-block:6px}
+.empty{color:var(--faint)}
+.cer{display:inline-block;font-family:var(--mono);font-size:11px;padding:0 6px;border-radius:4px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+.cer.g{background:#d9f0e0;color:#1d5b33} .cer.m{background:#fbeccf;color:#7a4b06} .cer.b{background:#f7d9dc;color:#8a1f2b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cer.g{background:#1f3a29;color:#9fdcb3}:root:not([data-theme="light"]) .cer.m{background:#3d2e14;color:#f0c77e}:root:not([data-theme="light"]) .cer.b{background:#40202a;color:#f3a3ad}}
+:root[data-theme="dark"] .cer.g{background:#1f3a29;color:#9fdcb3} :root[data-theme="dark"] .cer.m{background:#3d2e14;color:#f0c77e} :root[data-theme="dark"] .cer.b{background:#40202a;color:#f3a3ad}
+.cerwrap{display:grid;gap:12px}
+.cerwrap table td.best{font-weight:700}
+.note{font-size:12.5px;color:var(--muted);max-width:90ch;margin:0}
+.err{color:var(--oom);font-family:var(--mono);font-size:12px;overflow-wrap:anywhere}
+.b-intro{background:var(--lb-intro)} .b-verse{background:var(--lb-verse)} .b-pre-chorus{background:var(--lb-pre)} .b-chorus{background:var(--lb-chorus)} .b-bridge{background:var(--lb-bridge)} .b-inst{background:var(--lb-inst)} .b-outro{background:var(--lb-outro)} .b-silence{background:var(--lb-silence)}
+@media (max-width:760px){.sec{grid-template-columns:1fr}.mrow{grid-template-columns:1fr}.mrow > div + div{border-left:0;border-top:1px dashed var(--line)}.mrow.hd{display:none}.mrow .cell::before{content:attr(data-inp) " · ";color:var(--faint);font-size:11px;font-family:var(--mono)}}
+</style>
+<div class="wrap">
+  <header class="top">
+    <h1>송폼 구간별 가사</h1>
+    <div class="bar"><div class="songs" id="songs" role="group" aria-label="곡 선택"></div></div>
+    <div class="bar">
+      <div class="tog" id="models" role="group" aria-label="모델 표시"><span>모델</span></div>
+      <div class="tog" id="inputs" role="group" aria-label="입력 표시"><span>입력</span></div>
+    </div>
+  </header>
+  <section class="cerwrap" aria-labelledby="cer-h" id="cerbox"></section>
+  <section id="view" style="display:grid;gap:14px" aria-live="polite"></section>
+</div>
+<script>
+const DATA = /*__DATA__*/null;
+const CER = /*__CER__*/null;
+const MODELS = ["whisper-large-v3","whisper-turbo-ko-ghost613","qwen3-asr-1.7b"];
+const INPUTS = [["mix","믹스"],["vocals","보컬 (Demucs)"]];
+const SHORT = {intro:"Intro",verse:"V","pre-chorus":"PC",chorus:"C",bridge:"B",inst:"Inst",outro:"Out",silence:"–"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const mmss = t => `${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,"0")}`;
+const st = {song: DATA[0].id, models: new Set(MODELS), inputs: new Set(INPUTS.map(i=>i[0]))};
+try { const s = JSON.parse(localStorage.getItem("sfcrop") || "null"); if (s && DATA.some(d=>d.id===s.song)) st.song = s.song; } catch(e) {}
+if (location.hash && DATA.some(d => d.id === location.hash.slice(1))) st.song = location.hash.slice(1);
+
+function strip(song){
+  const W=1000, H=26, dur=Math.max(...song.sections.map(g=>g.end));
+  const x=t=>t/dur*W; let o=[];
+  for(let t=0;t<=dur;t+=30) o.push(`<line class="tick" x1="${x(t)}" x2="${x(t)}" y1="14" y2="${16+H}"/><text class="ticklab" x="${Math.min(W-12,Math.max(12,x(t)))}" y="10" text-anchor="middle">${mmss(t)}</text>`);
+  song.sections.forEach((g,i)=>{ const w=x(g.end)-x(g.start); o.push(`<a href="#${song.id}-s${i}"><rect class="blk lb-${g.label}" x="${x(g.start)}" y="16" width="${w}" height="${H}" rx="3"><title>${g.label} ${mmss(g.start)}–${mmss(g.end)}</title></rect>${w>28?`<text class="btxt" x="${x(g.start)+w/2}" y="${16+H/2+4}" text-anchor="middle">${SHORT[g.label]||g.label}</text>`:""}</a>`); });
+  return `<svg class="tl" viewBox="0 0 ${W} ${H+20}" role="img" aria-label="구간 타임라인">${o.join("")}</svg>`;
+}
+function render(){
+  const song = DATA.find(d=>d.id===st.song);
+  document.querySelectorAll("#songs button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.id===st.song));
+  const ms = MODELS.filter(m=>st.models.has(m)), ins = INPUTS.filter(i=>st.inputs.has(i[0]));
+  const badge = (g,m,i) => { const c = g.cer?.[m]?.[i]; if (c==null) return ""; const k = c < .2 ? "g" : c < .5 ? "m" : "b"; return `<span class="cer ${k}" title="정답 가사 대비 CER">CER ${c.toFixed(2)}</span>`; };
+  const cell = (g,m,i) => badgeless(g,m,i) + badge(g,m,i);
+  const badgeless = (g,m,i) => { const t = g.stt?.[m]?.[i]; return t==null ? `<span class="empty">–</span>` : String(t).startsWith("ERROR") ? `<span class="err">${esc(t)}</span>` : t.trim()==="" ? `<span class="empty">(빈 출력)</span>` : esc(t); };
+  const secs = song.sections.map((g,i)=>`
+    <div class="sec" id="${song.id}-s${i}">
+      <div class="meta"><span class="lb b-${g.label}">${esc(g.label)}</span><span class="tm">${mmss(g.start)}–${mmss(g.end)} · ${(g.end-g.start).toFixed(1)}s</span><span class="cr">crop ${g.crop_start}–${g.crop_end}</span></div>
+      <div class="body" style="--cols:${Math.max(1,ins.length)}">
+        <div class="mrow hd"><div>모델</div>${ins.map(i=>`<div>${i[1]}</div>`).join("")}</div>
+        ${ms.map(m=>`<div class="mrow"><div class="mn">${m}</div>${ins.map(i=>`<div class="cell" data-inp="${i[1]}">${cell(g,m,i[0])}</div>`).join("")}</div>`).join("")}
+      </div>
+    </div>`).join("");
+  document.getElementById("view").innerHTML = `
+    <div class="song-head"><div class="t"><h2>${esc(song.title)}</h2><span class="team">${esc(song.team)}</span></div><div class="chips"><span class="chip">구간 <b>${song.sections.length}</b></span><span class="chip">crop 여유 <b>±${song.pad}s</b></span></div></div>
+    <div class="panel tl-card scroll">${strip(song)}</div>
+    <div class="panel">${secs}</div>`;
+  try { localStorage.setItem("sfcrop", JSON.stringify({song: st.song})); } catch(e) {}
+}
+if (CER) {
+  const MS = ["whisper-large-v3","qwen3-asr-1.7b","whisper-turbo-ko-ghost613"], IN = [["mix","믹스"],["vocals","보컬"]];
+  const rows = MS.flatMap(m => IN.map(([i,l]) => [m,l,CER.overall[m][i]])).sort((a,b)=>a[2].median-b[2].median);
+  const best = rows[0][2].median;
+  const song = DATA.map(d => { const p = CER.per_song[d.id]; if (!p) return ""; const vals = MS.flatMap(m => IN.map(([i]) => p[m][i])); const mn = Math.min(...vals);
+    return `<tr><td>${esc(d.team)} · ${esc(d.title)}</td>${vals.map(v=>`<td class="num${v===mn?" best":""}">${v.toFixed(3)}</td>`).join("")}</tr>`; }).join("");
+  document.getElementById("cerbox").innerHTML = `
+    <h2 id="cer-h">정답 가사 대비 CER</h2>
+    <p class="note">정답 가사는 악보 8곡·가사 텍스트 2곡에서 옮겨 적음(페이지에 포함하지 않음). 각 crop을 정답 가사의 가장 잘 맞는 부분에 정렬해 계산했고, 세 모델 중 하나라도 CER&lt;0.5인 crop(가사가 있는 구간)만 평가. 낮을수록 정확.</p>
+    <div class="panel scroll"><table><thead><tr><th>모델</th><th>입력</th><th class="num">crop 수</th><th class="num">평균 CER</th><th class="num">중앙값 CER</th></tr></thead><tbody>
+      ${rows.map(([m,l,v])=>`<tr><td class="mono">${m}</td><td>${l}</td><td class="num">${v.n}</td><td class="num">${v.mean.toFixed(3)}</td><td class="num${v.median===best?" best":""}">${v.median.toFixed(3)}</td></tr>`).join("")}
+    </tbody></table></div>
+    <details><summary>곡별 중앙값 CER</summary><div class="scroll"><table><thead><tr><th>곡</th>${MS.flatMap(m=>IN.map(([,l])=>`<th class="num">${m.replace("whisper-turbo-ko-","").replace("whisper-","").replace("-asr-1.7b","")}<br>${l}</th>`)).join("")}</tr></thead><tbody>${song}</tbody></table></div></details>`;
+}
+document.getElementById("songs").innerHTML = DATA.map(d=>`<button type="button" data-id="${d.id}" aria-pressed="false">${esc(d.team)} · ${esc(d.title)}</button>`).join("");
+document.getElementById("songs").addEventListener("click", e => { const b=e.target.closest("button"); if(!b) return; st.song=b.dataset.id; render(); });
+const togs = (id, list, set) => { const el=document.getElementById(id); el.insertAdjacentHTML("beforeend", list.map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="true">${esc(l)}</button>`).join("")); el.addEventListener("click", e => { const b=e.target.closest("button"); if(!b) return; const k=b.dataset.k; if(set.has(k) && set.size>1) set.delete(k); else set.add(k); b.setAttribute("aria-pressed", set.has(k)); render(); }); };
+togs("models", MODELS.map(m=>[m,m]), st.models);
+togs("inputs", INPUTS, st.inputs);
+render();
+</script>

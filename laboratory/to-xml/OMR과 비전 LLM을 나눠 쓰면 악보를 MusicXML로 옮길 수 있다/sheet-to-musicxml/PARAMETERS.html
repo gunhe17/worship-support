@@ -1,0 +1,375 @@
+<title>오선 검출 파이프라인</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --page:#f2f3f1;--surface:#ffffff;--ink:#16181a;--ink-2:#474c50;--muted:#7a8085;--line:#dcdfdc;--soft:#eef0ed;
+  --staff:#2b2d30;--param:#5b3fc4;--param-bg:#efebfc;--rule:#5d6870;--rule-bg:#eceff1;--meas:#0b7d77;--meas-bg:#e2f4f2;
+  --ok:#0a9a46;--bad:#d42b2b;--warn:#c27400;--hl:#1e64dc;--hl-bg:#e6effc;
+  --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --page:#111312;--surface:#1a1d1c;--ink:#eef0ef;--ink-2:#c2c7c5;--muted:#8b9290;--line:#2d3231;--soft:#222625;
+  --staff:#d8dbda;--param:#a993ff;--param-bg:#2a2343;--rule:#a3afb6;--rule-bg:#262b2e;--meas:#4fd1c7;--meas-bg:#173230;
+  --ok:#3cc878;--bad:#ff6b6b;--warn:#f0a640;--hl:#7aa7ff;--hl-bg:#1d2a40}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --page:#111312;--surface:#1a1d1c;--ink:#eef0ef;--ink-2:#c2c7c5;--muted:#8b9290;--line:#2d3231;--soft:#222625;
+  --staff:#d8dbda;--param:#a993ff;--param-bg:#2a2343;--rule:#a3afb6;--rule-bg:#262b2e;--meas:#4fd1c7;--meas-bg:#173230;
+  --ok:#3cc878;--bad:#ff6b6b;--warn:#f0a640;--hl:#7aa7ff;--hl-bg:#1d2a40}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;padding-inline:16px;padding-block:40px 80px}
+.wrap{max-width:1040px;margin:0 auto;display:grid;gap:30px}
+h1{font-size:30px;margin:0;line-height:1.25;text-wrap:balance} h2{font-size:21px;margin:0;line-height:1.35;text-wrap:balance} h3{font-size:15.5px;margin:0}
+p{margin:0;color:var(--ink-2);max-width:72ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.07em;color:var(--muted);text-transform:uppercase}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;gap:16px}
+.kpis{display:flex;flex-wrap:wrap;gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 16px;display:grid}
+.kpi b{font-size:24px;font-variant-numeric:tabular-nums;line-height:1.3} .kpi span{font-size:13px;color:var(--muted)}
+.kpi.good b{color:var(--ok)}
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:1px 10px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.chip.param{background:var(--param-bg);color:var(--param)} .chip.rule{background:var(--rule-bg);color:var(--rule)} .chip.meas{background:var(--meas-bg);color:var(--meas)}
+.chip .id{font-family:var(--mono);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--ink-2);align-items:center}
+/* flow */
+.flow{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.flow a{flex:1 0 120px;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:6px;align-content:start;position:relative}
+.flow a:hover,.flow a:focus-visible{border-color:var(--param);outline:none}
+.flow .n{font-family:var(--mono);font-size:12px;color:var(--muted)} .flow .t{font-weight:600;font-size:14px;line-height:1.35}
+.flow .ids{display:flex;flex-wrap:wrap;gap:4px}
+.flow .ids span{font-family:var(--mono);font-size:11.5px;background:var(--param-bg);color:var(--param);border-radius:6px;padding:0 6px}
+.flow .ids span.m{background:var(--meas-bg);color:var(--meas)}
+/* stage */
+.stage{display:grid;gap:16px;scroll-margin-top:20px}
+.shead{display:flex;gap:14px;align-items:flex-start}
+.snum{flex:none;min-width:44px;height:44px;border-radius:12px;background:var(--ink);color:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:15px;padding-inline:6px}
+.shead .txt{display:grid;gap:4px}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px;overflow-x:auto}
+.fig svg{display:block;width:100%;min-width:720px;height:auto}
+.does{display:grid;gap:6px;background:var(--soft);border-radius:12px;padding:14px 16px}
+.does ol{margin:0;padding-left:20px;display:grid;gap:4px;color:var(--ink-2)} .does b{color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--param);border-radius:12px;padding:14px 16px;display:grid;gap:8px;align-content:start}
+.card.rule{border-left-color:var(--rule)} .card.meas{border-left-color:var(--meas)}
+.card .top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.card .cid{font-family:var(--mono);font-weight:600;color:var(--param);font-size:13px}
+.card.rule .cid{color:var(--rule)} .card.meas .cid{color:var(--meas)}
+.card .nm{font-weight:700;font-size:15px}
+.card .val{font-size:17px;font-weight:700;color:var(--ink);line-height:1.4}
+.card .what{font-size:13.5px;color:var(--ink-2)}
+.card .tr{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:8px}
+.card .tr dt{color:var(--muted);white-space:nowrap} .card .tr dd{margin:0}
+/* tables */
+.tbl{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top} th{color:var(--muted);font-weight:600;font-size:13px}
+td.id{font-family:var(--mono);color:var(--param);font-weight:600;white-space:nowrap} td.num{font-variant-numeric:tabular-nums}
+tr.grp td{background:var(--soft);font-weight:600;color:var(--ink)}
+.hist td.good{color:var(--ok);font-weight:700} .hist td.bad{color:var(--bad);font-weight:700}
+figure{margin:0;display:grid;gap:6px} figure img{width:100%;border-radius:10px;border:1px solid var(--line);background:#fff}
+figcaption{font-size:13.5px;color:var(--ink-2)}
+svg text{font-family:var(--sans)}
+.flow .io{font-size:12px;color:var(--muted)}
+.iorow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:13px}
+.io-in,.io-out{border-radius:8px;padding:1px 10px;background:var(--soft);color:var(--ink-2)} .io-out{background:var(--hl-bg);color:var(--hl);font-weight:600}
+.io-arrow{color:var(--muted)}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+</style>
+<div class="wrap">
+  <header style="display:grid;gap:14px">
+    <div class="eyebrow">worship-support · sheet-to-musicxml · 오선 검출</div>
+    <h1>오선 검출 파이프라인</h1>
+    <p>찬양 악보 이미지에서 오선(같은 간격으로 놓인 가로줄 5개)을 찾는 과정을 순서대로 정리했습니다. 단계마다 무엇을 받아서 무엇을 만드는지, 그리고 그 단계에서 쓰는 값을 함께 보여 줍니다. 악보마다 달라질 수 있는 값에는 <b>파라미터</b>라는 이름을 붙였고, 처리한 악보가 쌓이면 데이터를 보고 고쳐 갑니다.</p>
+    <div class="kpis">
+      <div class="kpi"><b>100장</b><span>시험 악보</span></div>
+      <div class="kpi"><b>701개</b><span>찾은 오선 (사람 눈 검토 701)</span></div>
+      <div class="kpi good"><b>0개</b><span>남은 오류</span></div>
+      <div class="kpi"><b>17개</b><span>파라미터</span></div>
+    </div>
+    <div class="legend">
+      <span class="chip param">파라미터 (P1–P17): 데이터가 쌓이면 조정할 값</span>
+      <span class="chip meas">측정값: 악보마다 새로 재는 값</span>
+      <span class="chip rule">규칙: 값 없이 정해 둔 판단 방식</span>
+    </div>
+  </header>
+
+  <section class="box">
+    <h2>길이는 모두 "그 악보에서 잰 값"이 단위입니다</h2>
+    <div class="fig" style="border:none;padding:0"><svg id="units" viewBox="0 0 960 170"></svg></div>
+    <p>기준값은 대부분 고정된 px가 아니라 이 두 측정값의 배수입니다. 예를 들어 "줄 간격의 5배"는 줄 간격이 20px인 악보에서 100px, 14px인 악보에서 70px입니다. 그래서 크기가 다른 악보에도 같은 기준을 쓸 수 있습니다.</p>
+  </section>
+
+  <section style="display:grid;gap:10px">
+    <h2>전체 흐름</h2>
+    <nav class="flow" id="flow" aria-label="단계 바로가기"></nav>
+  </section>
+
+  <div id="stages" style="display:grid;gap:40px"></div>
+
+  <section class="box">
+    <h2>파라미터 전체</h2>
+    <div class="tbl"><table id="ptable"></table></div>
+  </section>
+
+  <section class="box">
+    <h2>지금 구조가 나오기까지</h2>
+    <p>100장을 돌릴 때마다 오류를 그림으로 확인하고 규칙을 고쳤습니다. 오류 수는 그때까지 발견한 기준이고, 마지막 두 줄은 100장 전체를 사람 눈 기준으로 검토한 결과입니다.</p>
+    <div class="tbl"><table class="hist">
+      <tr><th>바꾼 것</th><th>계기</th><th>오류</th></tr>
+      <tr><td>띠마다 5줄 찾기 + 이웃 띠 잇기 (첫 구현)</td><td>—</td><td class="bad">251</td></tr>
+      <tr><td>끊긴 띠 건너 잇기, 같은 높이 조각은 버리지 않음</td><td>"기호가 줄 위에 있어도 선은 이어진다"</td><td class="bad">5</td></tr>
+      <tr><td>오선 끝: 찾는 거리 제한 없앰 (종이에서만 끝)</td><td>합의한 규칙과 다른 임의 제한 발견</td><td class="bad">3</td></tr>
+      <tr><td>가로선 잇기 (2-1단계), 띠는 이어진 가로선을 읽음</td><td>"이전 단계에서 찾은 선을 바탕으로 판단하면 되지 않나"</td><td class="bad">1</td></tr>
+      <tr><td>5줄 모두 뚜렷해야 인정 (P11: 1 → 0)</td><td>"엄연히 5줄인데 왜 4줄만 잡히나"</td><td class="good">0</td></tr>
+      <tr><td>준비: 줄 간격을 먼저 재는 대신 A4 폭(2480px)으로 정규화만</td><td>"준비 단계에서 줄 간격을 잰다는 건 전제 오류 아닌가"</td><td class="good">0 (결과 동일)</td></tr>
+      <tr><td>100장 사람 눈 검토 (에이전트 5개)</td><td>"정답을 사람이 만들지 않았다"</td><td class="bad">1 (작게 그린 미리보기 오선)</td></tr>
+      <tr><td>5줄 간격 분포로 오선 종류 판단 + 원본 픽셀 허용치(P12)</td><td>"5줄 분포에 봉우리가 둘이면 여러 형태의 오선"</td><td class="good">0 (701 / 701)</td></tr>
+    </table></div>
+    <figure><img src="example.png" alt="찾은 오선 예: 초록 5줄이 실제 오선과 일치"><figcaption>결과 예(billyfunk). 빔이 맨 아랫줄을 덮은 곳에서도 초록 5줄이 처음부터 끝까지 이어집니다. 파란 세로선은 오선의 시작과 끝입니다.</figcaption></figure>
+    <p style="font-size:13.5px">남은 숙제: 덧붙은 줄 판정(P13)은 띠마다 따로 판단합니다. 그래서 덧줄이 아주 촘촘한 마디를 타브로 볼 수 있습니다. 지금 100장에서는 오류가 없지만, 오선 전체에서 줄이 끝까지 이어지는지로 판단하도록 바꿀 후보입니다.</p>
+  </section>
+</div>
+<script>
+const C=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim(),NS="http://www.w3.org/2000/svg";
+// ---------- data ----------
+const STAGES=[
+ {key:"prep",n:"준비",t:"이미지 정리",in:"원본 이미지",out:"작업 이미지",
+  d:"투명한 배경을 흰색으로 채우고 회색조로 바꾼 뒤, 모든 악보를 A4로 보고 가로 폭을 맞춥니다.",
+  steps:["투명한 배경은 흰색으로, 컬러는 회색조로 바꿉니다.","가로 폭을 2480px로 맞춥니다. (P8)","대부분 줄 간격이 18–26px가 됩니다. 벗어나도 이후 기준이 모두 줄 간격의 배수라 그대로 작동합니다."]},
+ {key:"s1",n:"1",t:"얇은 가로선 찾기",in:"작업 이미지",out:"선 픽셀",
+  d:"픽셀마다 '위아래보다 어두운 얇은 가로선'인 정도를 선 점수로 매깁니다. 진하기는 보지 않으므로 연하게 인쇄된 줄도 잡힙니다.",
+  steps:["픽셀마다 위아래로 일정 범위(P1)를 비교합니다.","그 범위보다 얇고 위아래보다 어두우면 선 점수가 높습니다. 줄은 높고, 빔·음표 머리처럼 두꺼운 것은 0입니다.","선 점수가 기준(P15) 이상인 픽셀을 선 픽셀로 씁니다."]},
+ {key:"s2",n:"2",t:"줄 간격 재기",in:"선 픽셀",out:"줄 간격 (오선 종류마다)",
+  d:"세로로 한 열씩 내려가며 선 픽셀 사이 거리를 모으고, 가장 흔한 거리를 이 악보의 줄 간격으로 정합니다. 5줄이 같은 간격으로 지나는 곳만 따로 모아, 크기가 다른 오선이 있는지도 판단합니다.",
+  steps:["열마다 선 픽셀 사이 거리를 모읍니다. 범위(P2) 밖의 거리는 버립니다.","모든 열에서 가장 흔한 거리가 본문 줄 간격입니다.","간격 4개가 연달아 거의 같은 곳(5줄이 그 열을 지나는 곳)의 간격만 따로 모아 '5줄 간격 분포'를 만듭니다.","이 분포에 다른 봉우리가 있으면 크기가 다른 오선이 있다고 보고, 그 간격으로 3·4단계를 한 번 더 합니다."]},
+ {key:"s2b",n:"2-1",t:"가로선 잇기",in:"선 픽셀",out:"가로선",
+  d:"선 픽셀을 같은 높이끼리 가로로 이어 가로선을 만듭니다. 빔·음표에 덮인 곳은 계속 잇고, 빈 종이에서 끊습니다.",
+  steps:["같은 높이(위아래 1px 안)의 선 픽셀을 가로로 잇습니다.","끊긴 자리가 잉크로 덮여 있으면 계속 잇고, 빈 종이면 끊습니다.","선 픽셀이 실제로 충분히 긴(P16) 것만 가로선으로 씁니다."]},
+ {key:"s3",n:"3",t:"띠마다 5줄 찾기",in:"가로선",out:"오선 조각",
+  d:"페이지를 세로 띠로 나누고, 띠마다 같은 간격으로 놓인 줄 5개를 찾습니다. 띠가 좁아서, 기울거나 휜 오선도 띠 안에서는 거의 수평입니다.",
+  steps:["페이지를 폭 P4의 세로 띠로 나눕니다.","띠 안의 높이마다 가로선이 지나는 비율을 보고 줄이 있는지 정합니다. (P3)","줄 간격만큼 떨어진 다섯 자리(5줄 틀, P9)에 뚜렷한 줄(P10)이 모두(P11) 있고 간격이 고르면(P12) 오선 조각입니다.","같은 간격의 줄이 6개 이상이면 덧붙은 줄인지 판정합니다. (P13)"]},
+ {key:"s4",n:"4",t:"띠를 이어 오선 만들기",in:"오선 조각",out:"오선",
+  d:"이웃한 띠의 오선 조각을 이어 오선 하나로 만들고, 시작과 끝을 정합니다.",
+  steps:["이웃한 띠의 오선 조각이 같은 높이(P5)면 잇습니다.","가운데 띠가 비어도 그 자리가 잉크로 덮여 있으면 건너서 잇습니다. 빈 종이(P17)면 끊습니다.","이어진 띠가 P6개 이상이면 오선입니다.","양 끝에서 줄을 따라가다 빈 종이(P17)가 나오면 거기서 끝냅니다."]},
+ {key:"s5",n:"5",t:"선 두께와 잉크 기준값",in:"오선",out:"선 두께 · 잉크 기준값",
+  d:"찾은 오선에서 줄의 실제 두께와 진하기를 잽니다. 두께가 1단계의 비교 범위와 맞지 않으면 1단계부터 한 번 더 합니다.",
+  steps:["오선 줄의 세로 두께 중 가장 흔한 값을 선 두께로 정합니다.","1단계 비교 범위가 선 두께와 맞지 않으면 다시 찾습니다. (P1)","줄의 진하기로 이 악보의 잉크 기준값을 계산합니다. (P7) 다음 단계에서 오선에 붙은 음표를 따라갈 때 씁니다."]}];
+const P=[
+ {id:"P8",s:"prep",name:"작업 폭",val:"가로 2480px",
+  what:"모든 악보를 A4로 보고 가로 폭을 이 값으로 맞춥니다. A4를 300dpi로 읽은 폭입니다.",
+  small:"얇은 선이 뭉개져 흐려짐",large:"처리 시간만 늘어남"},
+ {id:"P1",s:"s1",name:"선 두께 한계",val:"선 두께의 3배 (처음에는 9px)",
+  what:"위아래로 얼마만큼을 비교해 '얇은 선'인지 판단할지 정합니다. 줄 간격의 절반을 넘지 않습니다. 5단계에서 잰 선 두께와 2px 이상 어긋나면 1단계부터 다시 합니다.",
+  small:"굵게 인쇄된 줄을 얇은 선으로 보지 못함",large:"빔·음표 머리·글자도 얇은 선으로 봄"},
+ {id:"P15",s:"s1",name:"선 픽셀 기준",val:"가장 강한 선 점수의 30% 이상",
+  what:"선 점수가 이 이상인 픽셀만 선 픽셀로 씁니다. '가장 강한 선 점수'는 상위 0.5% 값입니다. 너무 낮아지지 않게 최소 6으로 둡니다.",
+  small:"종이 결·잡음이 선 픽셀이 됨",large:"연하게 인쇄된 줄이 빠짐"},
+ {id:"P2",s:"s2",name:"줄 간격 범위",val:"6–60px",
+  what:"줄 간격으로 볼 수 있는 거리의 범위입니다. 100장에서 실제로 잰 값은 11–38px입니다.",
+  small:"실제 간격이 범위 밖이면 그 2배나 절반을 줄 간격으로 고름",large:"덧줄 간격 같은 다른 반복을 줄 간격으로 고를 수 있음"},
+ {id:"P16",s:"s2b",name:"가로선 최소 길이",val:"줄 간격의 2배",
+  what:"선 픽셀이 실제로 이만큼 이어진 것만 가로선으로 봅니다. 이보다 짧은 글자 획이나 붙임줄은 덮인 곳을 이어 주지 않습니다.",
+  small:"글자 획이 가로선이 되어 엉뚱한 곳을 이음",large:"짧게 끊겨 보이는 줄을 잇지 못함"},
+ {id:"P4",s:"s3",name:"띠 폭",val:"줄 간격의 5배",
+  what:"페이지를 세로 띠로 나눌 때 띠 하나의 폭입니다.",
+  small:"띠 안 정보가 적어 판정이 흔들림",large:"기울어진 줄이 띠 안에서 수평이 아니게 됨"},
+ {id:"P3",s:"s3",name:"줄 인정 비율",val:"띠 폭의 50% 이상",
+  what:"띠 안의 한 높이에서 가로선이 띠 폭의 이 비율 이상 지나가야 그 높이에 줄이 있다고 봅니다.",
+  small:"글자 가로획을 줄로 봄",large:"음표가 많이 덮은 줄을 놓침"},
+ {id:"P9",s:"s3",name:"줄 위치 허용",val:"줄 간격의 25%",
+  what:"5줄 틀의 각 자리에서 실제 줄이 위아래로 이만큼까지 벗어나도 됩니다.",
+  small:"간격이 고르지 않은 손그림 오선을 놓침",large:"근처의 다른 선이 줄로 끼어듦"},
+ {id:"P10",s:"s3",name:"뚜렷한 줄 기준",val:"가장 뚜렷한 줄들의 25% 이상",
+  what:"줄의 세기가 이 이상이어야 '뚜렷한 줄'로 셉니다. '가장 뚜렷한 줄들'은 이 악보에서 상위 10%인 줄입니다.",
+  small:"잡음을 줄로 셈",large:"연하게 인쇄된 줄을 약한 줄로 봄"},
+ {id:"P11",s:"s3",name:"약해도 되는 줄 수",val:"0줄 (5줄 모두 뚜렷해야 함)",
+  what:"5줄 중 약해도 봐주는 줄의 수입니다. 1로 두면 '진짜 줄 4개 + 빈 자리 1개'인, 한 칸 밀린 틀까지 통과해서 0으로 정했습니다.",
+  small:"연한 줄이 둘 이상인 악보를 놓칠 수 있음 (지금 100장에는 없음)",large:"한 칸 밀린 가짜 틀을 오선으로 봄"},
+ {id:"P12",s:"s3",name:"간격 고르기 허용",val:"줄 간격의 10% (최소 원본 픽셀 1개)",
+  what:"5줄 사이 간격 4개가 서로 이만큼까지 달라도 고르다고 봅니다. 작게 스캔한 악보를 키운 경우, 원본 픽셀 하나보다 정밀하게 요구하지 않습니다(원본에 없는 정밀도이므로).",
+  small:"저해상도·손그림 오선을 놓침",large:"간격이 제각각인 다른 선 묶음을 오선으로 봄"},
+ {id:"P14",s:"s3",name:"한 줄로 합치는 거리",val:"줄 간격의 50%",
+  what:"두 줄 후보가 이보다 가까우면 같은 줄로 합칩니다.",
+  small:"두 픽셀 행에 걸친 줄을 두 줄로 봄",large:"가까운 두 줄을 하나로 합침"},
+ {id:"P13",s:"s3",name:"덧붙은 줄 판정",val:"길이 70% 미만 또는 세기 50% 미만",
+  what:"같은 간격의 줄이 6개 이상일 때 씁니다. 바깥 줄이 다른 줄보다 이만큼 짧거나 약하면 상자 테두리·덧줄로 보고 5줄만 고릅니다. 다른 줄과 같으면 타브로 보고 오선에서 뺍니다.",
+  small:"테두리를 줄로 보고 오선을 버림",large:"타브를 오선으로 봄"},
+ {id:"P5",s:"s4",name:"띠 잇기 허용",val:"줄 간격의 50%",
+  what:"이웃한 띠의 오선 조각끼리 높이 차이가 이 안이면 같은 오선으로 잇습니다.",
+  small:"기울어진 오선이 여러 조각으로 끊김",large:"한 칸 밀린 조각까지 이어 붙임"},
+ {id:"P17",s:"s4",name:"빈 종이 길이",val:"줄 간격의 50%",
+  what:"5줄 중 4줄 이상이 빈 종이인 구간이 이만큼 이어지면, 거기서 오선이 끊기거나 끝난다고 봅니다.",
+  small:"마디선·쉼표 사이 작은 틈에서 오선이 끝남",large:"옆의 글자나 다른 오선까지 이어 붙임"},
+ {id:"P6",s:"s4",name:"최소 오선 길이",val:"띠 2개 (줄 간격의 10배)",
+  what:"이어진 띠가 이만큼 이상이어야 오선으로 인정합니다.",
+  small:"우연히 맞은 짧은 구조를 오선으로 봄",large:"한두 마디짜리 짧은 오선을 놓침"},
+ {id:"P7",s:"s5",name:"잉크 기준값",val:"줄 진하기에서 종이 쪽으로 35%",
+  what:"오선 줄의 진하기로 이 악보의 '잉크' 경계를 정합니다. 출발점은 오선 줄 픽셀 회색값의 90% 지점, 종이는 페이지 회색값의 90% 지점입니다. 기본 잉크 기준(최대 150)보다 낮아지지 않습니다.",
+  small:"연한 꼬리·마디선이 오선 영역에서 빠짐",large:"워터마크까지 잉크로 봐서 가사가 오선에 붙음"}];
+const RULES={
+ s2:[{nm:"줄 간격",val:"선 픽셀 사이 거리 중 가장 흔한 값",what:"이후 모든 길이의 단위가 됩니다.",meas:1},
+     {nm:"오선 종류 판단",val:"5줄 간격 분포에 다른 봉우리가 있으면 한 번 더",what:"봉우리로 인정하는 최소 크기는 '최소 길이 오선 한 개'가 만드는 양입니다(P6·P4에서 나옴). 가사 글자처럼 짧게 5줄로 보이는 것도 후보가 되지만, 3·4단계 조건에서 걸러집니다."}],
+ s2b:[{nm:"덮인 곳과 빈 종이",val:"기본 잉크 기준(최대 150)보다 어두우면 잉크",what:"가로선이 끊긴 자리가 잉크면 덮인 곳으로 보고 계속 잇습니다. 빈 종이면 끊습니다. 덮인 곳에는 그 가로선의 세기를 채워, 3단계에서 줄이 보이게 합니다."}],
+ s4:[{nm:"중복 정리",val:"위아래와 좌우가 모두 겹치면 강한 쪽만",what:"같은 높이라도 좌우로 떨어져 있으면 다른 오선입니다."},
+     {nm:"오선 종류 합치기",val:"본문 오선 우선, 다른 간격은 겹치지 않을 때만 추가",what:"다른 줄 간격으로 다시 찾은 오선은, 이미 찾은 오선과 겹치지 않을 때만 결과에 넣습니다."},
+     {nm:"오선 끝",val:"줄을 따라가다 빈 종이(P17)에서 끝",what:"음표나 마디선에 덮인 곳에서는 끝나지 않습니다. 따라가는 거리에는 제한이 없습니다."}],
+ s5:[{nm:"선 두께",val:"오선 줄 세로 두께 중 가장 흔한 값",what:"1단계 비교 범위(P1)와 줄 진하기를 읽는 범위의 기준입니다.",meas:1}]};
+// ---------- flow ----------
+document.getElementById("flow").innerHTML=STAGES.map(g=>{const ids=P.filter(x=>x.s===g.key).map(x=>`<span>${x.id}</span>`).join("")+((RULES[g.key]||[]).filter(r=>r.meas).map(r=>`<span class="m">${r.nm}</span>`).join(""));
+  return `<a href="#${g.key}"><span class="n">${g.n==="준비"?"준비":"단계 "+g.n}</span><span class="t">${g.t}</span><span class="io">→ ${g.out}</span><span class="ids">${ids}</span></a>`;}).join("");
+// ---------- stages ----------
+const card=x=>`<div class="card"><div class="top"><span class="cid">${x.id}</span><span class="nm">${x.name}</span></div><div class="val">${x.val}</div><div class="what">${x.what}</div><dl class="tr"><dt>너무 작으면</dt><dd>${x.small}</dd><dt>너무 크면</dt><dd>${x.large}</dd></dl></div>`;
+const rcard=r=>`<div class="card ${r.meas?"meas":"rule"}"><div class="top"><span class="cid">${r.meas?"측정값":"규칙"}</span><span class="nm">${r.nm}</span></div><div class="val">${r.val}</div><div class="what">${r.what}</div></div>`;
+document.getElementById("stages").innerHTML=STAGES.map(g=>`<section class="stage" id="${g.key}">
+  <div class="shead"><span class="snum">${g.n}</span><div class="txt"><h2>${g.t}</h2><p>${g.d}</p><div class="iorow"><span class="io-in">${g.in}</span><span class="io-arrow">→</span><span class="io-out">${g.out}</span></div></div></div>
+  <div class="fig"><svg id="f_${g.key}"></svg></div>
+  <div class="does"><h3>하는 일</h3><ol>${g.steps.map(s=>`<li>${s.replace(/(P\d+)/g,'<b style="color:var(--param)">$1</b>')}</li>`).join("")}</ol></div>
+  <div class="cards">${P.filter(x=>x.s===g.key).map(card).join("")}${(RULES[g.key]||[]).map(rcard).join("")}</div></section>`).join("");
+// ---------- table ----------
+(()=>{let h="<tr><th>ID</th><th>이름</th><th>값</th><th>정하는 것</th></tr>";
+  STAGES.forEach(g=>{const ps=P.filter(x=>x.s===g.key);if(!ps.length)return;h+=`<tr class="grp"><td colspan="4">${g.n==="준비"?"준비":g.n+"단계"} · ${g.t}</td></tr>`;
+    ps.forEach(x=>h+=`<tr><td class="id">${x.id}</td><td><b>${x.name}</b></td><td>${x.val}</td><td>${x.what}</td></tr>`);});
+  document.getElementById("ptable").innerHTML=h;})();
+// ---------- drawing helpers ----------
+function S(id,w,h){const s=document.getElementById(id);s.setAttribute("viewBox",`0 0 ${w} ${h}`);s.setAttribute("role","img");
+  const el=(t,a,x)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!=null)e.textContent=x;s.appendChild(e);return e;};
+  const T=(x,y,t,o={})=>el("text",{x,y,"font-size":o.size||13,fill:o.fill||C("--ink-2"),"font-weight":o.w||400,"text-anchor":o.a||"start"},t);
+  // tag: pill label at (tx,ty); if (px,py) given, a short straight leader from the pill's nearest edge to that point
+  const tag=(px,py,tx,ty,id,kind)=>{const pr=P.find(x=>x.id===id),txt=pr?`${id} ${pr.name}`:id,w=[...txt].length*11.5+22,col=C(kind==="rule"?"--rule":kind==="meas"?"--meas":"--param"),bg=C(kind==="rule"?"--rule-bg":kind==="meas"?"--meas-bg":"--param-bg");
+    const bx=Math.max(4,Math.min(tx,s.viewBox.baseVal.width-w-4));
+    if(px!=null){const ex=Math.max(bx,Math.min(px,bx+w)),ey=py<ty?ty-13:ty+13;el("line",{x1:px,y1:py,x2:ex,y2:ey,stroke:col,"stroke-width":1.5,"stroke-dasharray":"4 3"});el("circle",{cx:px,cy:py,r:3.5,fill:col});}
+    el("rect",{x:bx,y:ty-13,width:w,height:26,rx:13,fill:bg,stroke:col,"stroke-width":1.5});T(bx+11,ty+5,txt,{fill:col,w:600,size:12.5});};
+  const arrow=(x1,y,x2)=>{el("line",{x1,y1:y,x2:x2-6,y2:y,stroke:C("--muted"),"stroke-width":2});el("path",{d:`M${x2-10},${y-6} L${x2},${y} L${x2-10},${y+6}`,fill:"none",stroke:C("--muted"),"stroke-width":2});};
+  const staff=(x0,x1,top,g,o={})=>{for(let i=0;i<5;i++){el("line",{x1:x0,x2:x1,y1:top+i*g,y2:top+i*g,stroke:o.color||C("--staff"),"stroke-width":o.w||1.6});}};
+  const note=(x,y,g)=>{el("ellipse",{cx:x,cy:y,rx:g*.6,ry:g*.42,fill:C("--staff"),transform:`rotate(-20 ${x} ${y})`});el("line",{x1:x+g*.55,x2:x+g*.55,y1:y,y2:y-3.2*g,stroke:C("--staff"),"stroke-width":1.5});};
+  const brV=(x,y1,y2,col)=>el("path",{d:`M${x-6},${y1} L${x},${y1} L${x},${y2} L${x-6},${y2}`,fill:"none",stroke:col,"stroke-width":2.5});
+  const brH=(x1,x2,y,col)=>el("path",{d:`M${x1},${y-6} L${x1},${y} L${x2},${y} L${x2},${y-6}`,fill:"none",stroke:col,"stroke-width":2.5});
+  return {s,el,T,tag,arrow,staff,note,brV,brH};}
+// units
+(()=>{const {el,T,staff,note,brV}=S("units",960,190);const g=24,top=40;
+  staff(30,380,top,g);note(120,top+4*g,g);note(240,top+2.5*g,g);
+  brV(400,top,top+g,C("--meas"));T(414,top+g/2+5,"줄 간격: 이웃한 두 줄 사이 거리 (2단계에서 잼)",{fill:C("--meas"),w:600});
+  // magnified thickness inset
+  el("circle",{cx:330,cy:top+3*g,r:16,fill:"none",stroke:C("--meas"),"stroke-width":1.5});
+  el("line",{x1:346,y1:top+3*g,x2:560,y2:top+3*g+52,stroke:C("--meas"),"stroke-dasharray":"3 3"});
+  el("rect",{x:560,y:top+3*g+30,width:180,height:44,fill:C("--surface"),stroke:C("--line"),rx:6});
+  el("rect",{x:570,y:top+3*g+46,width:160,height:10,fill:C("--staff")});brV(752,top+3*g+46,top+3*g+56,C("--meas"));
+  T(764,top+3*g+56,"선 두께: 줄 하나의 세로 두께",{fill:C("--meas"),w:600});T(764,top+3*g+76,"(5단계에서 잼)",{fill:C("--meas"),size:12});
+  T(30,182,"예: 줄 간격이 20px인 악보에서 \"줄 간격의 25%\"는 5px",{size:12.5,fill:C("--muted")});})();
+// prep
+(()=>{const {el,T,tag,arrow,staff,brH}=S("f_prep",960,270);
+  const page=(x,y,w,h,g,label)=>{el("rect",{x,y,width:w,height:h,fill:"#fff",stroke:C("--line")});staff(x+12,x+w-12,y+h*0.22,g,{color:"#333",w:1.2});staff(x+12,x+w-12,y+h*0.58,g,{color:"#333",w:1.2});if(label)T(x+w/2,y+h+20,label,{size:12.5,a:"middle"});};
+  page(30,50,110,150,4,"작게 스캔 (가로 800px)");page(170,30,170,190,6,"크게 스캔 (가로 3000px)");
+  arrow(370,125,450);
+  page(480,20,300,200,9,"");
+  brH(480,780,232,C("--param"));
+  tag(630,232,550,256,"P8");
+  T(800,110,"모두 가로 2480px",{size:13,fill:C("--ink"),w:600});T(800,132,"A4를 300dpi로 읽은 폭",{size:12.5,fill:C("--muted")});})();
+// s1
+(()=>{const {el,T,tag,arrow,staff}=S("f_s1",960,225);const g=24,top=50;
+  staff(30,330,top,g);el("rect",{x:120,y:top+2*g-16,width:120,height:32,fill:C("--staff")});T(180,top+2*g+5,"빔",{fill:"#fff",w:600,a:"middle"});
+  el("ellipse",{cx:290,cy:top+3.5*g,rx:13,ry:9,fill:C("--staff")});
+  el("rect",{x:56,y:top+g-11,width:26,height:22,fill:"none",stroke:C("--param"),"stroke-width":2,"stroke-dasharray":"4 3"});
+  tag(69,top+g-11,30,20,"P1");
+  T(30,top+5*g+30,"점선 상자 = 위아래로 비교하는 범위",{size:12.5});
+  arrow(350,top+2*g,430);
+  const ox=450;el("rect",{x:ox,y:top-20,width:300,height:4*g+40,fill:C("--soft"),rx:6});
+  for(let i=0;i<5;i++){const y=top+i*g;if(i===2){el("line",{x1:ox+10,x2:ox+100,y1:y,y2:y,stroke:C("--ok"),"stroke-width":3});el("line",{x1:ox+220,x2:ox+290,y1:y,y2:y,stroke:C("--ok"),"stroke-width":3});T(ox+160,y+5,"빔 자리: 0",{size:12,fill:C("--bad"),a:"middle"});}
+    else el("line",{x1:ox+10,x2:ox+290,y1:y,y2:y,stroke:C("--ok"),"stroke-width":3});}
+  T(ox,top+5*g+30,"선 점수: 얇은 줄은 높게, 빔·음표 머리는 0",{size:12.5});
+  tag(ox+290,top,780,top,"P15");
+  T(780,top+32,"이 이상이면 선 픽셀",{size:12.5,fill:C("--muted")});})();
+// s2
+(()=>{const {el,T,tag,arrow}=S("f_s2",960,300);const top=50;
+  const ys=[0,20,41,61,81,170,190,210,231,251].map(v=>v+top-20);
+  el("line",{x1:80,x2:80,y1:top-30,y2:270,stroke:C("--line"),"stroke-width":10,"stroke-linecap":"round"});
+  ys.forEach(y=>el("circle",{cx:80,cy:y,r:5,fill:C("--hl")}));
+  [[0,1,"20"],[1,2,"21"],[2,3,"20"],[3,4,"20"],[4,5,"89"]].forEach(([a,b,t])=>{const y1=ys[a],y2=ys[b];el("path",{d:`M100,${y1} L108,${y1} L108,${y2} L100,${y2}`,fill:"none",stroke:C("--muted")});T(114,(y1+y2)/2+4,t+"px",{size:12});});
+  T(40,top-36,"열 하나의 선 픽셀",{size:12.5,w:600});
+  arrow(190,150,280);
+  const hx=320,hy=220;const H={9:2,10:4,18:8,19:30,20:120,21:60,22:10,40:12,41:9,60:4,89:6};
+  el("line",{x1:hx,x2:hx+600,y1:hy,y2:hy,stroke:C("--line")});
+  for(let d=0;d<=95;d++){const v=H[d]||0;if(!v)continue;el("rect",{x:hx+d*6,y:hy-v*1.2,width:5,height:v*1.2,fill:d===20?C("--meas"):C("--muted"),rx:1});}
+  [0,20,40,60,80].forEach(d=>T(hx+d*6,hy+18,d+"px",{size:11.5,fill:C("--muted"),a:"middle"}));
+  el("rect",{x:hx+6*6,y:hy+28,width:54*6,height:6,fill:C("--param"),opacity:.35,rx:3});
+  tag(hx+33*6,hy+34,hx+33*6-70,hy+62,"P2");
+  T(hx+20*6+10,hy-120*1.2-4,"가장 흔한 거리 = 줄 간격 20px",{fill:C("--meas"),w:600});
+  T(hx+89*6+2,hy-12,"범위 밖",{size:11.5,fill:C("--muted"),a:"middle"});})();
+// s2b
+(()=>{const {el,T,tag,brH}=S("f_s2b",960,350);const y=70;
+  T(30,30,"선 픽셀 (1단계)",{w:600,size:13});
+  for(let x=40;x<=900;x+=12){if(x>300&&x<460)continue;if(x>700&&x<760)continue;el("circle",{cx:x,cy:y,r:3,fill:C("--hl")});}
+  el("rect",{x:300,y:y-15,width:160,height:30,fill:C("--staff"),rx:2});T(380,y+5,"빔 (잉크)",{fill:"#fff",a:"middle",w:600,size:12.5});
+  el("rect",{x:700,y:y-15,width:60,height:30,fill:"#fff",stroke:C("--line"),"stroke-dasharray":"3 3"});T(730,y+36,"빈 종이",{a:"middle",size:12});
+  const y2=190;T(30,y2-40,"가로선 (2-1단계)",{w:600,size:13});
+  el("line",{x1:40,x2:300,y1:y2,y2:y2,stroke:C("--ok"),"stroke-width":5,"stroke-linecap":"round"});
+  el("line",{x1:300,x2:460,y1:y2,y2:y2,stroke:C("--ok"),"stroke-width":5,"stroke-dasharray":"8 5"});
+  el("line",{x1:460,x2:700,y1:y2,y2:y2,stroke:C("--ok"),"stroke-width":5,"stroke-linecap":"round"});
+  el("line",{x1:760,x2:900,y1:y2,y2:y2,stroke:C("--ok"),"stroke-width":5,"stroke-linecap":"round"});
+  el("line",{x1:700,x2:760,y1:y2,y2:y2,stroke:C("--bad"),"stroke-width":2,"stroke-dasharray":"2 4"});
+  T(380,y2+30,"덮인 곳: 계속 이음",{a:"middle",fill:C("--ok"),w:600,size:12.5});
+  T(730,y2+30,"빈 종이: 끊음",{a:"middle",fill:C("--bad"),w:600,size:12.5});
+  // min length comparison
+  const ly=280;brH(40,120,ly-14,C("--param"));T(80,ly+8,"줄 간격의 2배",{a:"middle",size:12,fill:C("--param")});
+  el("line",{x1:150,x2:230,y1:ly-20,y2:ly-20,stroke:C("--ok"),"stroke-width":5});T(240,ly-15,"이만큼 길면 가로선 ✔",{size:12.5,fill:C("--ok")});
+  el("line",{x1:420,x2:445,y1:ly-20,y2:ly-20,stroke:C("--muted"),"stroke-width":5});T(455,ly-15,"짧은 글자 획·붙임줄 ✘",{size:12.5,fill:C("--muted")});
+  tag(80,ly-14,30,ly+40,"P16");})();
+// s3
+(()=>{const {el,T,tag,staff,note,brH}=S("f_s3",960,420);const g=22,top=70;
+  staff(30,560,top,g);[110,250,420].forEach((x,i)=>note(x,top+[4,1.5,3][i]*g,g));
+  el("rect",{x:280,y:top-30,width:150,height:4*g+60,fill:C("--hl"),opacity:.08});
+  for(let x=30;x<=560;x+=50)el("line",{x1:x,x2:x,y1:top-30,y2:top+4*g+30,stroke:C("--muted"),"stroke-width":1,"stroke-dasharray":"3 4"});
+  brH(30,80,top+4*g+44,C("--param"));tag(55,top+4*g+44,30,top+4*g+74,"P4");
+  T(300,top-38,"띠 하나 →",{size:12.5,fill:C("--hl"),w:600});
+  // zoom with comb
+  const zx=600,zt=top;el("rect",{x:zx,y:zt-30,width:120,height:4*g+60,fill:C("--surface"),stroke:C("--line"),rx:6});
+  T(zx,zt-40,"띠 하나 확대",{w:600,size:12.5});
+  for(let i=0;i<5;i++){el("line",{x1:zx+10,x2:zx+110,y1:zt+i*g,y2:zt+i*g,stroke:C("--staff"),"stroke-width":1.8});
+    el("rect",{x:zx+122,y:zt+i*g-6,width:24,height:12,fill:C("--param"),opacity:.2,rx:2});el("circle",{cx:zx+134,cy:zt+i*g,r:4,fill:C("--ok")});}
+  T(zx+156,zt-12,"5줄 틀: 줄 간격만큼 떨어진 다섯 자리",{size:12.5});
+  tag(zx+146,zt,zx+180,zt+22,"P9");
+  tag(zx+60,zt+2*g,zx+180,zt+2*g+30,"P3");
+  tag(zx+134,zt+4*g,zx+180,zt+4*g+38,"P10");
+  const ry=280;
+  const box=(x,title,lines)=>{el("rect",{x,y:ry,width:210,height:120,rx:10,fill:C("--soft")});T(x+14,ry+24,title,{w:700,size:13.5,fill:C("--ink")});lines.forEach((l,i)=>T(x+14,ry+50+i*21,l,{size:12.5}));};
+  T(30,ry-14,"오선 조각이 되는 조건",{w:600,size:13,fill:C("--ink")});
+  box(30,"① 5줄 모두 뚜렷",["약한 줄은 하나도 안 됨 (P11)","빈 자리가 끼면 탈락"]);
+  box(260,"② 간격이 고름",["간격 4개의 차이가","줄 간격의 10% 안 (P12)"]);
+  box(490,"③ 가까운 후보는 한 줄",["줄 간격의 절반보다 가까우면","같은 줄로 합침 (P14)"]);
+  box(720,"④ 6줄 이상이면",["바깥 줄이 짧거나 약하면 5줄만,","모두 같으면 타브 (P13)"]);})();
+// s4
+(()=>{const {el,T,tag}=S("f_s4",960,350);const g=16,top=70,w=60;
+  const ys=[0,1,2,2,3,null,4,5,6,6,7,8,8];
+  ys.forEach((o,j)=>{const x=40+j*w;el("rect",{x,y:top-30,width:w,height:4*g+60,fill:"none",stroke:C("--line")});
+    if(o===null){el("rect",{x:x+8,y:top-6,width:w-16,height:4*g+12,fill:C("--staff"),opacity:.85,rx:3});T(x+w/2,top+4*g+48,"빔",{a:"middle",size:12});return;}
+    for(let i=0;i<5;i++){const y=top+i*g+o*1.5;el("circle",{cx:x+w/2,cy:y,r:3.5,fill:C("--ok")});
+      const skip=ys[j+1]===null,nx=skip?ys[j+2]:ys[j+1],step=skip?2:1;
+      if(j<ys.length-1&&nx!=null)el("line",{x1:x+w/2,y1:y,x2:x+w/2+step*w,y2:top+i*g+nx*1.5,stroke:C("--ok"),"stroke-width":1.6,"stroke-dasharray":skip?"5 4":""});}});
+  tag(40+2*w+w/2,top-30,40+w,top-52,"P5");
+  T(40+5.5*w,top+4*g+68,"덮인 띠는 건너서 이음",{a:"middle",size:12.5,fill:C("--ok"),w:600});
+  const ex=40+13*w;el("line",{x1:ex,x2:ex,y1:top-20,y2:top+4*g+20,stroke:C("--hl"),"stroke-width":3});T(ex-6,top-36,"오선 끝",{a:"end",size:12.5,fill:C("--hl"),w:600});
+  el("rect",{x:ex+4,y:top-10,width:60,height:4*g+20,fill:"#fff",stroke:C("--line"),"stroke-dasharray":"3 3"});T(ex+34,top+4*g+48,"빈 종이",{a:"middle",size:12});
+  tag(ex+34,top+4*g+10,ex-160,top+4*g+88,"P17");
+  const by=260;el("rect",{x:40,y:by,width:410,height:70,rx:10,fill:C("--soft")});
+  T(56,by+28,"이어진 띠가 2개 이상이어야 오선",{w:600,size:13,fill:C("--ink")});T(56,by+50,"우연히 맞은 짧은 구조를 거릅니다",{size:12.5});
+  tag(null,null,300,by+28,"P6");
+  el("rect",{x:470,y:by,width:450,height:70,rx:10,fill:C("--rule-bg")});
+  T(486,by+28,"중복 정리 (규칙)",{w:600,size:13,fill:C("--rule")});T(486,by+50,"위아래와 좌우가 모두 겹치는 후보끼리만 강한 쪽을 남김",{size:12.5});})();
+// s5
+(()=>{const {el,T,tag,arrow,brV}=S("f_s5",960,300);
+  const x=40,y=40;
+  el("rect",{x,y,width:250,height:70,fill:C("--surface"),stroke:C("--line"),rx:6});
+  el("rect",{x:x+15,y:y+29,width:200,height:12,fill:C("--staff")});brV(x+232,y+29,y+41,C("--meas"));
+  T(x,y+92,"줄의 세로 두께를 여러 곳에서 잼 (확대)",{size:12.5});
+  T(x,y+114,"가장 흔한 값 = 선 두께",{size:13,fill:C("--meas"),w:600});
+  T(x,y+150,"1단계 비교 범위는 선 두께의 3배",{size:12.5});T(x,y+172,"처음 값(9px)과 2px 이상 다르면 1단계부터 다시",{size:12.5});
+  tag(null,null,x,y+212,"P1");
+  arrow(330,130,400);
+  const hx=430,hy=220;el("line",{x1:hx,x2:hx+480,y1:hy,y2:hy,stroke:C("--line")});
+  [[40,3],[60,8],[80,16],[100,22],[120,15],[140,6],[160,2]].forEach(([v,c])=>el("rect",{x:hx+v*1.8,y:hy-c*6,width:22,height:c*6,fill:C("--muted"),rx:2}));
+  el("rect",{x:hx+252*1.8-20,y:hy-150,width:26,height:150,fill:C("--soft"),stroke:C("--line")});T(hx+252*1.8-7,hy-158,"종이",{a:"middle",size:12});
+  const q=135,T7=q+0.35*(252-q),xq=hx+q*1.8+11,xt=hx+T7*1.8+11;
+  el("line",{x1:xq,x2:xq,y1:hy-170,y2:hy+4,stroke:C("--ink"),"stroke-dasharray":"4 3"});T(xq,hy+20,"출발점 (줄 회색값 90% 지점)",{a:"middle",size:11.5});
+  el("line",{x1:xt,x2:xt,y1:hy-170,y2:hy+4,stroke:C("--param"),"stroke-width":3});T(xt+6,hy-176,"잉크 기준값",{size:12.5,fill:C("--param"),w:600});
+  el("line",{x1:xq,x2:xt,y1:hy-122,y2:hy-122,stroke:C("--param"),"stroke-width":1.5});el("rect",{x:(xq+xt)/2-52,y:hy-146,width:104,height:18,fill:C("--surface")});T((xq+xt)/2,hy-132,"종이 쪽으로 35%",{a:"middle",size:11.5,fill:C("--param"),w:600});
+  T(hx,hy+46,"오선 줄 픽셀의 회색값 분포 (0 = 검정, 255 = 흰색)",{size:12,fill:C("--muted")});
+  tag(null,null,hx,30,"P7");})();
+</script>

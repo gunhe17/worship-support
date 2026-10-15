@@ -1,0 +1,8 @@
+# 정답 세트 clone (별도 git 저장소)
+**/results/summary/gt/
+
+# 500곡 데이터 (원본은 Kaggle, 작업할 때 내려받는다)
+**/w500/
+_data/audio-500/songs*.json
+
+_data/songformbench/

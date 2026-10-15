@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boundary Test</title>
+<style>
+/* 연구 지도 to Arrangement Form › Boundary. Test와 같은 틀: 재생(지금 마디) → 방법 표(정답 + 방법 5개, 마디 축 띠).
+   공개 300곡(SongFormBench) 마디 경계 시험. 행을 누르면 그 방법의 지금 구간을, 띠를 누르면 그 마디로. 곡은 연구 지도 사이드바가 고른다 */
+:root {
+  --bg: #f5f5f7; --panel: #ffffff; --fg: #1d1d1f; --sub: #707070; --faint: #858585; --rule: #e8e8ed; --line: #d2d2d7; --pebble: #e2e2e5;
+  --apple: #0071e3; --link: #0066cc; --ice: #f4f8fb; --slate-50: #f5f5f7; --slate-400: #858585;
+  --max: #ff3b30; --max-text: #d70015; --min: #0071e3; --min-text: #0066cc;  /* 최댓값 빨강 · 최솟값 파랑 (사용자 결정) */
+  --sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, Inter, Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); letter-spacing: -0.016em; font-variant-numeric: tabular-nums; }
+html, body { height: 100%; }
+body { overflow: hidden; }  /* 페이지는 고정, 스크롤은 방법 표 안에서만 */
+main { max-width: 1024px; height: 100%; margin: 0 auto; padding: 24px 24px 16px; display: flex; flex-direction: column; gap: 20px; }
+main > section[aria-label="방법"] { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.table { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+#rows { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+#rows { scrollbar-width: none; } #rows::-webkit-scrollbar { display: none; }  /* 스크롤은 되고 막대만 숨김 */
+button { font: inherit; color: inherit; }
+button:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; }
+
+/* 재생 카드 = 왼쪽 메트로놈 칸(현재 템포 · 박) + 오른쪽 재생·소리 (Test·Playground 공통, 시안 P3) */
+/* 재생 카드 (P7 가운데 무대): 지금 템포 + 박 → [아이콘 | 막대 | 값] 두 줄 → 재생 버튼 */
+.player { flex: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.metro { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.metro .bpm { position: relative; line-height: 1; }
+.metro .bpm b { font-size: 48px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.metro .bpm span { position: absolute; left: 100%; bottom: 2px; margin-left: 6px; font-size: 14px; color: var(--faint); }
+.metro .beats { display: flex; gap: 14px; height: 18px; align-items: center; }
+.metro .beats i { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--line); transition: transform .12s cubic-bezier(0.22, 1, 0.36, 1), background .08s; }
+.metro .beats i.on { background: var(--apple); transform: scale(1.3); }
+.metro .beats i.on.first { background: var(--max); }
+.metro .beats i.hit { transform: scale(1.6); }
+@media (prefers-reduced-motion: reduce) { .metro .beats i { transition: none; } }
+/* 두 줄 같은 칸: 막대·트랙 양 끝이 맞고, 아이콘·값과 막대 사이는 모두 10px */
+.ctrl { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px 12px; align-items: center; width: 100%; padding-inline: 20px; margin-top: 4px; }
+.ic { display: flex; justify-content: flex-start; color: var(--fg); }
+.val { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.val span { font-weight: 400; color: var(--faint); }
+.levels { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.levels .ic { flex: none; margin-left: 24px; }
+.levels output { flex: none; font-size: 13px; font-weight: 600; }
+.levels input { -webkit-appearance: none; appearance: none; flex: 1; min-width: 40px; height: 16px; margin: 0; background: transparent; cursor: pointer; --p: 50%; }
+.levels input::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--apple) var(--p), var(--rule) var(--p)); }
+.levels input::-moz-range-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--apple) var(--p), var(--rule) var(--p)); }
+.levels input::-webkit-slider-thumb { -webkit-appearance: none; width: 10px; height: 10px; margin-top: -3px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+.levels input::-moz-range-thumb { width: 10px; height: 10px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+.levels input:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; border-radius: 4px; }
+.play { width: 48px; height: 48px; flex: none; border: 0; border-radius: 50%; background: var(--apple); color: #fff; display: grid; place-items: center; cursor: pointer; margin-top: 2px; }
+.play:disabled { background: var(--line); cursor: default; }
+.bar { flex: 1; height: 16px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+.bar i { position: absolute; left: 0; right: 0; top: 6px; height: 4px; border-radius: 2px; background: var(--rule); }
+.bar b { position: absolute; left: 0; top: 6px; height: 4px; border-radius: 2px; background: var(--apple); width: 0; }
+.bar s { position: absolute; top: 3px; left: 0; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgb(0 0 0 / .15); }
+
+h2 { margin: 0 0 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--sub); }
+h2 span { margin-left: 6px; font-weight: 400; color: var(--faint); }
+.table { border-radius: 12px; background: var(--panel); }
+.head, .row { display: flex; align-items: center; gap: 16px; }
+.head { padding: 10px 20px; border-bottom: 1px solid var(--rule); font-size: 12px; color: var(--slate-400); }
+.row { position: relative; padding: 14px 20px; }
+.row + .row::before { content: ""; position: absolute; top: 0; left: 20px; right: 0; height: 1px; background: var(--rule); }
+.row:last-child { border-radius: 0 0 12px 12px; }
+.name { width: 200px; flex: none; position: relative; display: flex; align-items: center; gap: 6px; min-width: 0; }
+.name > span { font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.legend { flex: 1; display: flex; gap: 14px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 5px; height: 5px; border-radius: 50%; }
+/* ? = _design IconButton sm: 선 아이콘, 올리면 옅은 바탕. 올리기만 해도 설명이 보이고, 누르면 고정 */
+.q { flex: none; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--slate-400); cursor: pointer; transition: background .15s, color .15s; }
+.q:hover, .q[aria-expanded="true"] { background: var(--pebble); color: var(--fg); }
+.name:has(.q:hover, .tip:hover) .tip[hidden], .q:focus-visible + .tip[hidden] { display: grid; }
+.tip::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }  /* ? 와 설명 사이 틈을 건너도 닫히지 않게 */
+.tip { position: absolute; left: 0; top: calc(100% + 8px); z-index: 4; width: 320px; background: #fff; border-radius: 8px; border: 1px solid var(--line); padding: 12px 14px; display: grid; gap: 8px; }
+.tip[hidden] { display: none; }
+.tip b { display: block; font-size: 12px; font-weight: 600; }
+.tip p { margin: 0; font-size: 12.5px; line-height: 1.55; color: #474747; }
+/* 행을 누르면 그 방법의 박에 클릭을 켜고 끈다 (이름 버튼은 키보드용). 올리면 옅은 바탕, 켜면 파란 바탕·파란 이름 */
+.pick { border: 0; background: none; padding: 2px 0; margin: 0; text-align: left; cursor: pointer; min-width: 0; font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color .15s; }
+.pick:disabled { cursor: default; color: var(--sub); font-weight: 500; }
+.row { transition: background .15s; }
+.row.can { cursor: pointer; }
+.row.can:hover { background: var(--slate-50); }
+.row.can:hover .pick { color: var(--link); }
+.row.on, .row.on:hover { background: var(--ice); }
+.row.on .pick { color: var(--link); }
+.row:first-child { border-radius: 0; }
+.chart { flex: 1; min-width: 0; height: 48px; position: relative; }
+.chart svg { position: absolute; left: 0; top: 4px; width: 100%; height: 40px; overflow: visible; }
+.past { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: rgb(0 113 227 / .05); border-radius: 4px 0 0 4px; }
+.head-line { position: absolute; top: 0; bottom: 0; left: 0; width: 1.5px; margin-left: -.75px; background: var(--apple); }
+/* 그래프에 올리면: 모든 그래프에 같은 시각의 회색 안내선, 올린 그래프에는 시각 */
+.hover-line { position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: #b4b4b9; opacity: 0; pointer-events: none; }
+.hover-t { position: absolute; top: -2px; left: 0; transform: translate(-50%, -100%); font-size: 10.5px; font-weight: 600; color: #474747; background: #fff; border-radius: 6px; padding: 2px 6px; border: 1px solid var(--line); opacity: 0; pointer-events: none; white-space: nowrap; }
+#rows.hovering .hover-line { opacity: 1; }
+.chart.hover .hover-t { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .q, .pick, .row { transition: none; } }
+.dot { position: absolute; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; }
+.chart .val { position: absolute; font-size: 11px; font-weight: 600; line-height: 1; white-space: nowrap; pointer-events: none; text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 3px #fff; }
+.msg { flex: none; font-size: 13px; color: var(--max-text); }
+.msg:empty { display: none; }
+/* 좁은 폭: 이름 칸은 비율로 줄고 이름은 두 줄까지 감싼다 (말줄임 대신) */
+.name { width: clamp(132px, 28%, 240px); }
+.name > .pick { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; }
+@media (max-width: 720px) { main { padding: 16px 16px 12px; } .head, .row { padding-inline: 12px; gap: 10px; } .row + .row::before { left: 12px; } .ctrl { padding-inline: 12px; } .name > .pick { font-size: 15px; } }
+@media (max-width: 480px) { .levels .ic { margin-left: 8px; } }
+
+/* key 띠: 곡 key = 파랑, 관계조·같은 으뜸음 = 회색, 반음·온음 위(key up) = 빨강, 그 밖 = 주황 */
+:root { --same: #e3effd; --same-text: #0066cc; --rel: #ececf0; --rel-text: #474747; --up: #ffe3e0; --up-text: #d70015; --other: #fff0dc; --other-text: #b25000; }
+.band { position: absolute; left: 0; right: 0; top: 10px; height: 28px; border-radius: 6px; overflow: hidden; }
+.band span { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; padding-left: 6px; font-size: 11.5px; font-weight: 600; white-space: nowrap; overflow: hidden; box-shadow: inset -1px 0 0 #fff; }
+.k-same { background: var(--same); color: var(--same-text); } .k-rel { background: var(--rel); color: var(--rel-text); }
+.k-up { background: var(--up); color: var(--up-text); } .k-other { background: var(--other); color: var(--other-text); }
+.legend i.k-same { background: #9cc3f5; } .legend i.k-rel { background: #c7c7cf; } .legend i.k-up { background: #ff8a80; } .legend i.k-other { background: #ffc078; }
+.legend { flex-wrap: wrap; row-gap: 4px; min-width: 0; } .legend span { white-space: nowrap; }
+.legend i { width: 8px !important; height: 8px !important; border-radius: 2px !important; }
+.metro .key b { font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+.metro .key small { display: block; text-align: center; margin-top: 8px; font-size: 13px; color: var(--faint); }
+.row .main { flex: none; width: 64px; text-align: right; font-size: 13px; font-weight: 600; color: var(--sub); }
+.empty { padding: 28px 20px; color: var(--sub); font-size: 14px; }
+.name > .pick { font-size: 15px; }
+
+/* Boundary: 행 = 정답 + 방법, 띠 = 그 행의 경계로 나눈 구간(번갈아 음영), 선 = 경계(정답 검정 · ±1마디 안 파랑 · 벗어남 빨강), 세로선 = 재생 위치 */
+.metro .bigbar { position: relative; line-height: 1; }
+.metro .bigbar b { font-size: 48px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.metro .bigbar span { position: absolute; left: 100%; bottom: 2px; margin-left: 6px; font-size: 14px; color: var(--faint); white-space: nowrap; }
+.metro small { font-size: 13px; color: var(--faint); min-height: 1.3em; text-align: center; }
+.grids { display: inline-flex; gap: 6px; margin-left: 10px; vertical-align: 1px; text-transform: none; letter-spacing: -0.016em; }
+.grids button { font: inherit; font-size: 12px; font-weight: 500; border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.grids button[aria-pressed="true"] { border-color: var(--apple); background: var(--ice); color: var(--link); font-weight: 600; }
+.grids button:disabled { color: var(--faint); cursor: default; }
+.grids button:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; }
+.lane { flex: 1; min-width: 0; height: 28px; position: relative; cursor: pointer; }
+.lane .seg { position: absolute; top: 0; bottom: 0; box-shadow: inset -1px 0 0 #fff; }
+.lane .seg.a { background: #f2f3f6; } .lane .seg.b { background: #e9ebef; }
+.lane .mk { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; }
+.lane .mk.ref { background: var(--fg); } .lane .mk.hit { background: var(--apple); } .lane .mk.miss { background: var(--max); }
+.lane .ph { position: absolute; top: -6px; bottom: -6px; left: 0; width: 1.5px; margin-left: -.75px; background: var(--apple); pointer-events: none; }
+.row.ref .pick { color: var(--sub); }
+.row .main { width: 64px; }
+</style>
+
+<main>
+  <section class="player" aria-label="재생">
+    <div class="metro" id="metro" role="status" aria-live="polite">
+      <div class="bigbar"><b id="nowBar">–</b><span id="ofBars"></span></div>
+      <small id="nowWho"></small>
+    </div>
+    <div class="ctrl">
+      <span class="ic" role="img" aria-label="재생 위치" title="재생 위치"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 5l11 7-11 7z"/></svg></span>
+      <button class="bar" id="bar" aria-label="재생 위치"><i></i><b id="barFill"></b><s id="barKnob"></s></button>
+      <span class="val"><b id="now">0:00</b><span> / <span id="end">0:00</span></span></span>
+      <span class="ic" role="img" aria-label="음원 소리" title="음원 소리"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18 7a7 7 0 0 1 0 10"/></svg></span>
+      <span class="levels"><input type="range" id="musicVol" aria-label="음원 소리" min="0" max="1" step="0.05"></span>
+      <span class="val"><output id="musicOut"></output></span>
+    </div>
+    <button class="play" id="play" aria-label="재생" disabled></button>
+  </section>
+  <section aria-label="방법">
+    <h2>방법<span>5</span><span class="grids" role="group" aria-label="마디 칸"><button type="button" data-grid="beat-this">자동 추정 마디</button><button type="button" data-grid="harmonix">사람 표시 마디</button></span></h2>
+    <div class="table">
+      <div class="head"><div class="name">방법</div><div style="flex:1">마디 축 · 띠 = 그 행이 나눈 구간</div><div class="legend" style="flex:none"><span><i style="background:var(--fg)"></i>정답</span><span><i style="background:var(--apple)"></i>±1마디 안</span><span><i style="background:var(--max)"></i>벗어남</span></div><div class="main">F@1bar</div></div>
+      <div id="rows"></div>
+    </div>
+  </section>
+  <div class="msg" id="msg" role="status"></div>
+</main>
+<audio id="audio" preload="metadata"></audio>
+
+<script>
+const { songs: ALL } = __DATA__;
+const $ = id => document.getElementById(id), audio = $("audio");
+const mmss = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+const ICON = { play: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.5 5l11 7-11 7z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>' };
+const METHODS = [["cbm-modulo8", "CBM (8마디 벌점)"], ["cbm-none", "CBM (벌점 없음)"], ["laplacian-bar", "Laplacian"], ["foote-bar", "Foote"], ["grid-8bar", "8마디 등간격"]];
+const keep = { get(k, d) { try { const v = localStorage.getItem("boundary:" + k); return v === null ? d : v; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem("boundary:" + k, v); } catch (e) {} } };
+let S = null, G = null, grid = keep.get("grid", "beat-this"), sel = keep.get("sel", "cbm-modulo8");
+
+function pick(s) {
+  S = s;
+  audio.pause(); audio.src = `/sfb/${s.id}`; $("play").disabled = true; $("play").innerHTML = ICON.play; $("msg").textContent = "";
+  $("end").textContent = mmss(s.dur);
+  draw();
+}
+function draw() {
+  G = S.grids[grid] || S.grids["beat-this"];
+  document.querySelectorAll(".grids button").forEach(b => { b.disabled = !S.grids[b.dataset.grid]; b.setAttribute("aria-pressed", S.grids[b.dataset.grid] === G); });
+  const n = G.db.length - 1, x = b => (b / n * 100).toFixed(3) + "%", inner = b => b > 0 && b < n;
+  const ref = G.ref.filter(inner);
+  const lane = (bars, cls) => {
+    const b = [0, ...bars.filter(inner), n];
+    return b.slice(0, -1).map((s, i) => `<span class="seg ${i % 2 ? "b" : "a"}" style="left:${x(s)};width:${((b[i + 1] - s) / n * 100).toFixed(3)}%"></span>`).join("")
+      + bars.filter(inner).map(v => `<span class="mk ${cls(v)}" style="left:${x(v)}"></span>`).join("") + '<span class="ph"></span>';
+  };
+  const row = (k, name, bars, cls, score) => `<div class="row can${k === sel ? " on" : ""}${k === "ref" ? " ref" : ""}" data-k="${k}"><div class="name"><button class="pick" type="button" aria-pressed="${k === sel}">${name}</button></div><div class="lane" data-lane>${lane(bars, cls)}</div><div class="main">${score}</div></div>`;
+  $("rows").innerHTML = row("ref", "정답", G.ref, () => "ref", "")
+    + METHODS.map(([k, name]) => row(k, name, G.m[k].bars, v => ref.some(r => Math.abs(r - v) <= 1) ? "hit" : "miss", (G.m[k].f1 * 100).toFixed(1))).join("");
+  $("ofBars").textContent = `/ ${n}마디`;
+  show(audio.currentTime || 0);
+}
+// 재생 시각 → 마디 위치 (첫 박 사이를 선형으로)
+function barAt(t) {
+  const d = G.db; if (t <= d[0]) return 0;
+  for (let i = 0; i < d.length - 1; i++) if (t < d[i + 1]) return i + (t - d[i]) / (d[i + 1] - d[i]);
+  return d.length - 1;
+}
+function show(t) {
+  if (!S) return;
+  const p = Math.min(100, t / S.dur * 100).toFixed(2) + "%", n = G.db.length - 1, b = barAt(t);
+  $("now").textContent = mmss(t); $("barFill").style.width = p; $("barKnob").style.left = p;
+  $("nowBar").textContent = Math.min(n, Math.floor(b) + 1);
+  const bars = sel === "ref" ? G.ref : G.m[sel].bars, i = bars.findIndex(v => v > b);
+  const a = i > 0 ? bars[i - 1] : 0, z = i > 0 ? bars[i] : n;
+  const name = sel === "ref" ? "정답" : METHODS.find(m => m[0] === sel)[1];
+  $("nowWho").textContent = `${name} · 지금 구간 마디 ${a + 1}–${z}`;
+  document.querySelectorAll("#rows .ph").forEach(e => e.style.left = (b / n * 100).toFixed(3) + "%");
+}
+$("rows").addEventListener("click", e => {
+  const lane = e.target.closest("[data-lane]"), r = e.target.closest(".row");
+  if (lane) {  // 띠를 누르면 그 마디로
+    const rect = lane.getBoundingClientRect(), b = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * (G.db.length - 1);
+    const i = Math.min(G.db.length - 2, Math.floor(b)), t = G.db[i] + (b - i) * (G.db[i + 1] - G.db[i]);
+    if (audio.readyState) audio.currentTime = t; show(t); return;
+  }
+  if (r) { sel = r.dataset.k; keep.set("sel", sel); draw(); }
+});
+document.querySelectorAll(".grids button").forEach(b => b.onclick = () => { grid = b.dataset.grid; keep.set("grid", grid); draw(); });
+audio.onloadedmetadata = () => { $("play").disabled = false; $("end").textContent = mmss(audio.duration); };
+audio.onerror = () => { $("msg").textContent = location.protocol === "file:" ? "serve.py로 열어야 음원이 나옵니다" : "음원을 불러오지 못했습니다"; };
+audio.onplay = () => { $("play").innerHTML = ICON.pause; $("play").setAttribute("aria-label", "일시 정지"); };
+audio.onpause = () => { $("play").innerHTML = ICON.play; $("play").setAttribute("aria-label", "재생"); };
+$("play").onclick = () => { if (!audio.paused) return audio.pause(); audio.play().catch(e => { $("msg").textContent = "재생하지 못했습니다: " + e.message; }); };
+(function loop() { if (S && !audio.paused) show(audio.currentTime); requestAnimationFrame(loop); })();
+$("bar").onclick = e => { const r = $("bar").getBoundingClientRect(), t = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * (audio.duration || S.dur); if (audio.readyState) audio.currentTime = t; show(t); };
+(function () { const el = $("musicVol"), apply = () => { el.style.setProperty("--p", el.value * 100 + "%"); $("musicOut").textContent = Math.round(el.value * 100) + "%"; audio.volume = +el.value; keep.set("music", el.value); };
+  el.value = +keep.get("music", 0.8); el.oninput = apply; apply(); })();
+
+// 연구 지도 사이드바가 고른 곡
+addEventListener("message", e => { if (e.data?.type !== "song") return; const s = ALL.find(x => x.id === e.data.id); if (s && s !== S) pick(s); });
+pick(ALL[0]);
+if (parent !== window) parent.postMessage({ type: "shown", id: ALL[0].id }, "*");
+</script>
