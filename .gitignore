@@ -6,19 +6,22 @@ __pycache__/
 # Virtualenv
 .venv/
 
+# Java / Node
+.gradle/
+build/
+node_modules/
+dist/
+
 # Env
-.env
-.env.*
-!.env.example
+.env/.env.*
+!.env/.env.*.example
+.docker/.env
 
 # Caches
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 .coverage
-
-# IDE
-.vscode/
 
 # OS
 .DS_Store

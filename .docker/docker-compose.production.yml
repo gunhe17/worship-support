@@ -1,0 +1,48 @@
+name: worship-support-production
+
+services:
+  api:
+    container_name: worship-support-production-api
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.production.api
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PRODUCTION_API_PORT}:${PRODUCTION_API_CONTAINER_PORT}"
+    environment:
+      - SERVER_PORT=${PRODUCTION_API_CONTAINER_PORT}
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${PRODUCTION_MYSQL_HOST}:${PRODUCTION_MYSQL_CONTAINER_PORT}/${PRODUCTION_MYSQL_DATABASE}
+      - SPRING_DATASOURCE_USERNAME=${PRODUCTION_MYSQL_USER}
+      - SPRING_DATASOURCE_PASSWORD=${PRODUCTION_MYSQL_PASSWORD}
+    depends_on:
+      - database
+    env_file:
+      - ../.env/.env.production
+
+  uwi:
+    container_name: worship-support-production-uwi
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.production.uwi
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PRODUCTION_UWI_PORT}:${PRODUCTION_UWI_CONTAINER_PORT}"
+    depends_on:
+      - api
+
+  database:
+    container_name: worship-support-production-database
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${PRODUCTION_MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${PRODUCTION_MYSQL_USER}
+      - MYSQL_PASSWORD=${PRODUCTION_MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${PRODUCTION_MYSQL_DATABASE}
+    ports:
+      - "127.0.0.1:${PRODUCTION_MYSQL_PORT}:${PRODUCTION_MYSQL_CONTAINER_PORT}"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
