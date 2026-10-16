@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff Test</title>
+<style>
+/* 연구 지도 to Xml › Staff. key-measure(Key Test)와 같은 토큰·표 형태: 요약 → [악보 그림 | 오선 표].
+   그림 = Kaggle sheet-staff-500 출력(초록 5줄·번호·파랑 시작/끝·빨강 타브). 행에 올리면 그 오선을 그림에 표시, 누르면 그 자리로. 악보는 연구 지도 사이드바가 고른다 */
+:root {
+  --bg: #f5f5f7; --panel: #ffffff; --fg: #1d1d1f; --sub: #707070; --faint: #858585; --rule: #e8e8ed; --line: #d2d2d7; --pebble: #e2e2e5;
+  --apple: #0071e3; --link: #0066cc; --ice: #f4f8fb; --slate-50: #f5f5f7; --slate-400: #858585;
+  --max: #ff3b30; --max-text: #d70015; --min: #0071e3; --min-text: #0066cc;
+  --sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, Inter, Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); letter-spacing: -0.016em; font-variant-numeric: tabular-nums; overflow: hidden; }
+main { max-width: 1180px; height: 100%; margin: 0 auto; padding: 24px 24px 16px; display: flex; flex-direction: column; gap: 20px; }
+button { font: inherit; color: inherit; }
+button:focus-visible { outline: 2px solid var(--apple); outline-offset: 2px; }
+.no-bar { scrollbar-width: none; } .no-bar::-webkit-scrollbar { display: none; }
+
+/* 요약: 가운데 큰 오선 수 + 아래 측정값 칸 */
+.summary { flex: none; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.count { position: relative; line-height: 1; }
+.count b { font-size: 48px; font-weight: 600; letter-spacing: -0.03em; }
+.count span { position: absolute; left: 100%; bottom: 2px; margin-left: 6px; font-size: 14px; color: var(--faint); white-space: nowrap; }
+.note { font-size: 13px; color: var(--sub); text-align: center; }
+.note.bad { color: var(--max-text); font-weight: 600; }
+.note:empty { display: none; }
+.stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
+.stats div { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.stats small { font-size: 11.5px; color: var(--faint); }
+.stats b { font-size: 15px; font-weight: 600; }
+.stats b span { font-weight: 400; color: var(--faint); font-size: 12px; margin-left: 2px; }
+
+h2 { margin: 0 0 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--sub); }
+h2 span { margin-left: 6px; font-weight: 400; color: var(--faint); }
+.panes { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 20px; }
+.panes > section { min-height: 0; display: flex; flex-direction: column; }
+.card { flex: 1; min-height: 0; border-radius: 12px; background: var(--panel); overflow: hidden; display: flex; flex-direction: column; }
+
+/* 악보 그림: 정규화 폭 2480px 좌표를 그림 폭에 맞춰 표시 상자를 얹는다 */
+#sheet { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 12px; }
+.paper { position: relative; }
+.paper img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.mark { position: absolute; border: 2px solid var(--apple); border-radius: 4px; background: rgb(0 113 227 / .08); pointer-events: none; opacity: 0; transition: opacity .12s; }
+.mark.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .mark { transition: none; } }
+/* 영역 레이어 (sheet-regions-100): 오선 영역 파랑 · 기호 행 주황 · 가사 행 보라 · 문제 행 빨강 테두리 */
+:root { --r-staff: rgb(0 113 227 / .13); --r-staff-line: rgb(0 113 227 / .55); --r-symbol: rgb(255 149 0 / .2); --r-symbol-line: #c27400;
+  --r-lyric: rgb(175 82 222 / .16); --r-lyric-line: #8e44b8; --r-bad: rgb(255 59 48 / .2); }
+#layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#layer rect { vector-effect: non-scaling-stroke; stroke-width: 1; }
+#layer .staff { fill: var(--r-staff); stroke: var(--r-staff-line); }
+#layer .symbol { fill: var(--r-symbol); stroke: var(--r-symbol-line); }
+#layer .lyric { fill: var(--r-lyric); stroke: var(--r-lyric-line); }
+#layer .bad { fill: var(--r-bad); stroke: var(--max); stroke-width: 2; }
+#layer.off-staff .staff, #layer.off-symbol .symbol, #layer.off-lyric .lyric { display: none; }
+.chips { display: inline-flex; gap: 6px; margin-left: 10px; vertical-align: middle; text-transform: none; letter-spacing: -0.016em; }
+.chip { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 8px; border: 1px solid var(--line); border-radius: 11px; background: var(--panel); font-size: 11.5px; font-weight: 600; color: var(--fg); cursor: pointer; transition: background .15s, color .15s; }
+.chip i { width: 8px; height: 8px; border-radius: 2px; }
+.chip[aria-pressed="false"] { color: var(--faint); background: none; }
+.chip[aria-pressed="false"] i { opacity: .35; }
+/* 표 전환: 오선 | 영역 행 */
+.tabs { display: inline-flex; gap: 2px; padding: 2px; border-radius: 8px; background: var(--pebble); vertical-align: middle; text-transform: none; letter-spacing: -0.016em; }
+.tabs button { height: 24px; padding: 0 10px; border: 0; border-radius: 6px; background: none; font-size: 12px; font-weight: 600; color: var(--sub); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--panel); color: var(--fg); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
+.tabs button:disabled { color: var(--line); cursor: default; }
+.kind { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+.kind i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+
+/* 오선 표 */
+.head, .row { display: flex; align-items: center; gap: 16px; }
+.head[hidden] { display: none; }
+.head { flex: none; padding: 10px 20px; border-bottom: 1px solid var(--rule); font-size: 12px; color: var(--slate-400); }
+#rows { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.row { position: relative; padding: 12px 20px; cursor: pointer; transition: background .15s; }
+.row + .row::before { content: ""; position: absolute; top: 0; left: 20px; right: 0; height: 1px; background: var(--rule); }
+.row:hover { background: var(--slate-50); }
+.row:hover .name { color: var(--link); }
+.row.on, .row.on:hover { background: var(--ice); }
+.row.on .name { color: var(--link); }
+@media (prefers-reduced-motion: reduce) { .row { transition: none; } }
+.name { width: 64px; flex: none; font-size: 15px; font-weight: 600; transition: color .15s; }
+.lines { flex: 1; min-width: 0; display: flex; align-items: flex-end; gap: 4px; height: 28px; }
+.lines i { flex: 1; max-width: 22px; background: var(--rule); border-radius: 3px; position: relative; height: 100%; }
+.lines i b { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 3px; background: #9cc3f5; }
+.lines i.low b { background: var(--max); }
+.cell { flex: none; width: 76px; text-align: right; font-size: 13px; font-weight: 600; color: var(--sub); }
+.cell.wide { width: 92px; }
+.cell .low { color: var(--max-text); }
+.cell small { font-weight: 400; color: var(--faint); }
+.badge { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 6px; background: #fff0dc; color: #b25000; font-size: 11px; font-weight: 600; }
+.empty { padding: 28px 20px; color: var(--sub); font-size: 14px; }
+.legend { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 8px; height: 8px; border-radius: 2px; }
+
+/* ? = 설명 (key-measure와 같음): 올리면 보이고 누르면 고정 */
+.q { flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--slate-400); cursor: pointer; vertical-align: middle; transition: background .15s, color .15s; }
+.q:hover, .q[aria-expanded="true"] { background: var(--pebble); color: var(--fg); }
+.qwrap { position: relative; display: inline-block; text-transform: none; letter-spacing: -0.016em; }
+.qwrap:has(.q:hover, .tip:hover) .tip[hidden], .q:focus-visible + .tip[hidden] { display: grid; }
+.tip::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }
+.tip { position: absolute; left: 0; top: calc(100% + 8px); z-index: 4; width: 340px; background: #fff; border-radius: 8px; border: 1px solid var(--line); padding: 12px 14px; display: grid; gap: 8px; font-weight: 400; }
+.tip[hidden] { display: none; }
+.tip b { display: block; font-size: 12px; font-weight: 600; color: var(--fg); }
+.tip p { margin: 0; font-size: 12.5px; line-height: 1.55; color: #474747; }
+
+@media (max-width: 860px) {
+  body { overflow: auto; } main { height: auto; padding: 16px 16px 12px; }
+  .panes { grid-template-columns: minmax(0, 1fr); } #sheet, #rows { max-height: 70vh; }
+  .head, .row { padding-inline: 12px; gap: 10px; } .row + .row::before { left: 12px; } .cell { width: 64px; } .cell.wide { width: 80px; }
+}
+</style>
+
+<main>
+  <section class="summary" aria-label="요약">
+    <div class="count"><b id="count">–</b><span>오선</span></div>
+    <div class="note" id="note" role="status"></div>
+    <div class="stats" id="stats"></div>
+  </section>
+  <div class="panes">
+    <section aria-label="악보">
+      <h2>악보<span id="run"></span><span class="chips" id="chips"></span></h2>
+      <div class="card"><div id="sheet" class="no-bar"><div class="paper" id="paper"><img id="img" alt=""><svg id="layer" preserveAspectRatio="none" aria-hidden="true"></svg><div class="mark" id="mark"></div></div></div></div>
+    </section>
+    <section aria-label="오선">
+      <h2><span class="tabs" role="tablist" aria-label="표"><button role="tab" id="tabStaff" aria-selected="true">오선 <span id="n"></span></button><button role="tab" id="tabRows" aria-selected="false">영역 행 <span id="nRows"></span></button></span>
+        <span class="qwrap"><button class="q" aria-label="진단 설명" aria-expanded="false"></button><div class="tip" hidden>
+          <b>줄 5개</b><p>찾은 오선의 줄마다, 끝에서 끝까지 따라가며 선 반응이나 잉크가 있는 열의 비율입니다. 진짜 줄은 100장에서 최소 87%였습니다(LOG 28). 87%보다 낮으면 빨강입니다.</p>
+          <b>위 · 아래 자리</b><p>맨 윗줄 바로 위, 맨 아랫줄 바로 아래 한 칸 자리를 같은 방식으로 잰 비율입니다. 오선 밖 자리는 중앙값 8%, 99백분위 41%였습니다. 41%보다 높으면 빨강입니다(덧줄·상자 테두리·한 줄 밀림 의심).</p>
+          <b>띠 · 간격</b><p>이어진 세로 띠 수와, 이 오선을 찾은 줄 간격입니다. 본문 줄 간격과 다르면 '다른 간격'으로, 멀티 헤드가 다시 찾은 오선입니다.</p>
+          <b>영역 행</b><p>100장만 있습니다(sheet-regions-100, LOG 21). 오선 영역 = 맨 윗줄~맨 아랫줄 몸통 + 튀어나온 음표. 오선 사이는 오선 획을 뺀 잉크의 빈 띠로 행을 나눴고, OCR 가사 상자가 있으면 가사 행, 없으면 기호 행(코드·붙임줄·라벨)입니다. 빨강 = 기호와 가사가 한 행에 섞임, 또는 오선이 행 안에 통째로 들어감. 이 영역은 이전 오선 검출기 기준이라 그림의 초록 5줄(새 검출)과 다를 수 있습니다.</p>
+        </div></span>
+      </h2>
+      <div class="card">
+        <div class="head" id="headStaff"><div class="name" style="font-size:12px;font-weight:400">오선</div>
+          <div style="flex:1;display:flex;gap:12px"><span>줄 5개 이어진 비율</span><span class="legend"><i style="background:var(--max)"></i>87% 미만</span></div>
+          <div class="cell wide" style="font-size:12px;font-weight:400">위 · 아래</div><div class="cell" style="font-size:12px;font-weight:400">띠 · 간격</div></div>
+        <div class="head" id="headRows" hidden><div class="name" style="font-size:12px;font-weight:400">행</div>
+          <div style="flex:1">종류</div><div class="cell" style="font-size:12px;font-weight:400">높이</div></div>
+        <div id="rows" class="no-bar"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+const { sheets: ALL } = __DATA__;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const pct = v => Math.round(v * 100);
+const WIDTH = 2480;  // 오선 좌표는 가로 2480px로 정규화한 이미지 기준 (STAFF_DETECTION 1단계)
+const LINE_MIN = 0.87, OUT_MAX = 0.41;  // LOG 28
+document.querySelector(".q").innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.5"/><path d="M12 16.9v.1"/></svg>';
+
+const KIND = { lyric: ["가사 행", "var(--r-lyric-line)"], symbol: ["기호 행", "var(--r-symbol-line)"],
+  symbol_lyric_mixed: ["기호 + 가사 섞임", "var(--max)"], staff_in_row: ["오선이 행 안에 통째로", "var(--max)"] };
+const LAYERS = [["staff", "오선 영역", "var(--r-staff-line)"], ["symbol", "기호 행", "var(--r-symbol-line)"], ["lyric", "가사 행", "var(--r-lyric-line)"]];
+const keep = { get(k, d) { try { const v = localStorage.getItem("staff:" + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem("staff:" + k, JSON.stringify(v)); } catch (e) {} } };
+let S = null, sel = null, tab = keep.get("tab", "staff"), hidden = keep.get("hidden", []);
+// 표의 행 = 그림 위 상자 하나: 오선은 위아래로 1.5칸 여유, 영역 행은 그대로
+const items = () => tab === "rows" && S.regions ? S.regions.rows : S.staves.map(st => ({ x: st.x, y: [st.y[0] - S.p * 1.5, st.y[1] + S.p * 1.5] }));
+function pick(s) {
+  S = s; sel = null;
+  document.title = s.title;
+  $("count").textContent = s.staves.length;
+  $("note").textContent = s.note; $("note").classList.toggle("bad", s.tag === "확인된 오류");
+  const stat = (label, v, unit = "") => `<div><small>${label}</small><b>${v}<span>${unit}</span></b></div>`;
+  $("stats").innerHTML = stat("줄 간격", s.p, "px") + stat("선 두께", s.thickness, "px") + stat("잉크 기준", s.ink)
+    + stat("오선 줄 회색 p90", s.line_q90) + stat("종이", s.paper) + stat("원본", `${s.orig[0]}×${s.orig[1]}`) + (s.tabs ? stat("타브 표시", s.tabs) : "")
+    + (s.regions ? stat("영역 행", s.regions.rows.length) : "");
+  $("run").textContent = (s.run === "p6x" ? "P6x 재실행 결과" : "sheet-staff-500") + (s.regions ? " + sheet-regions-100" : "");
+  $("n").textContent = s.staves.length; $("nRows").textContent = s.regions ? s.regions.rows.length : "";
+  $("tabRows").disabled = !s.regions; $("tabRows").title = s.regions ? "" : "영역 분리는 100장만 있습니다";
+  $("chips").innerHTML = s.regions ? LAYERS.map(([k, label, c]) => `<button class="chip" data-layer="${k}" aria-pressed="${!hidden.includes(k)}"><i style="background:${c}"></i>${label}</button>`).join("") : "";
+  $("img").src = s.img; $("img").alt = s.title; $("layer").innerHTML = ""; $("sheet").scrollTop = 0;
+  table();
+}
+function table() {
+  const rows = tab === "rows" && S.regions;
+  $("tabStaff").setAttribute("aria-selected", !rows); $("tabRows").setAttribute("aria-selected", !!rows);
+  $("headStaff").hidden = !!rows; $("headRows").hidden = !rows; sel = null; mark(null);
+  if (rows) {
+    $("rows").innerHTML = S.regions.rows.map((r, i) => { const [label, c] = KIND[r.kind] || [r.kind, "var(--sub)"];
+      return `<div class="row" data-i="${i}" tabindex="0"><div class="name" style="font-size:13px">${esc(r.file)}</div><div class="kind" style="color:${KIND[r.kind] && c.includes("max") ? "var(--max-text)" : "inherit"}"><i style="background:${c}"></i>${label}</div>`
+        + `<div class="cell">${r.height}<small>칸</small></div></div>`; }).join("") || '<div class="empty">영역 행이 없습니다.</div>';
+    return;
+  }
+  $("rows").innerHTML = S.staves.map((st, i) => {
+    const bars = st.line.map((v, j) => `<i class="${v < LINE_MIN ? "low" : ""}" title="${j + 1}번째 줄 ${pct(v)}%"><b style="height:${pct(v)}%"></b></i>`).join("");
+    const out = v => `<span class="${v > OUT_MAX ? "low" : ""}">${pct(v)}</span>`;
+    return `<div class="row" data-i="${i}" tabindex="0"><div class="name">${i + 1}</div><div class="lines" role="img" aria-label="줄 5개 ${st.line.map(pct).join(", ")}%">${bars}</div>`
+      + `<div class="cell wide">${out(st.up)}<small> · </small>${out(st.down)}<small>%</small></div>`
+      + `<div class="cell">${st.strips}<small> · ${st.head}px</small>${st.head !== S.p ? '<br><span class="badge">다른 간격</span>' : ""}</div></div>`;
+  }).join("") || '<div class="empty">찾은 오선이 없습니다.</div>';
+}
+// 영역 레이어: 그림이 뜬 뒤 2480 기준 좌표계로 그린다
+$("img").onload = () => {
+  const img = $("img"), H = img.naturalHeight * WIDTH / img.naturalWidth, R = S.regions;
+  $("layer").setAttribute("viewBox", `0 0 ${WIDTH} ${H}`);
+  const rect = (cls, x0, y0, x1, y1, title) => `<rect class="${cls}" x="${x0}" y="${y0}" width="${x1 - x0}" height="${y1 - y0}" rx="6"><title>${esc(title)}</title></rect>`;
+  $("layer").innerHTML = !R ? "" : R.staves.map((b, i) => rect("staff", ...b, `오선 영역 ${i + 1}`)).join("")
+    + R.rows.map(r => rect(r.kind === "lyric" ? "lyric" : r.kind === "symbol" ? "symbol" : "bad symbol lyric", r.x[0], r.y[0], r.x[1], r.y[1], `${r.file} · ${(KIND[r.kind] || [r.kind])[0]}`)).join("");
+  layers();
+};
+const layers = () => LAYERS.forEach(([k]) => $("layer").classList.toggle("off-" + k, hidden.includes(k)));
+$("chips").addEventListener("click", e => { const c = e.target.closest(".chip"); if (!c) return; const k = c.dataset.layer;
+  hidden = hidden.includes(k) ? hidden.filter(x => x !== k) : [...hidden, k]; keep.set("hidden", hidden); c.setAttribute("aria-pressed", !hidden.includes(k)); layers(); });
+$("tabStaff").onclick = () => { tab = "staff"; keep.set("tab", tab); table(); };
+$("tabRows").onclick = () => { tab = "rows"; keep.set("tab", tab); table(); };
+function mark(i) {
+  const m = $("mark");
+  if (i == null) return m.classList.remove("on");
+  const b = items()[i], k = $("img").clientWidth / WIDTH;
+  Object.assign(m.style, { left: b.x[0] * k + "px", width: (b.x[1] - b.x[0]) * k + "px", top: b.y[0] * k + "px", height: (b.y[1] - b.y[0]) * k + "px" });
+  m.classList.add("on");
+  return b;
+}
+$("rows").addEventListener("pointerover", e => { const r = e.target.closest(".row"); mark(r ? +r.dataset.i : sel); });
+$("rows").addEventListener("pointerleave", () => mark(sel));
+const choose = r => {
+  sel = +r.dataset.i;
+  document.querySelectorAll("#rows .row").forEach(x => x.classList.toggle("on", x === r));
+  const b = mark(sel), k = $("img").clientWidth / WIDTH;
+  $("sheet").scrollTo({ top: Math.max(0, (b.y[0] + b.y[1]) / 2 * k - $("sheet").clientHeight / 2), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+};
+$("rows").addEventListener("click", e => { const r = e.target.closest(".row"); if (r) choose(r); });
+$("rows").addEventListener("keydown", e => { const r = e.target.closest(".row"); if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); choose(r); } });
+addEventListener("resize", () => mark(sel));
+
+const tipBtn = document.querySelector(".q");
+tipBtn.onclick = () => { const open = tipBtn.getAttribute("aria-expanded") !== "true"; tipBtn.setAttribute("aria-expanded", open); tipBtn.nextElementSibling.hidden = !open; };
+document.addEventListener("click", e => { if (!e.target.closest(".qwrap")) { tipBtn.setAttribute("aria-expanded", "false"); tipBtn.nextElementSibling.hidden = true; } });
+$("img").onerror = () => { $("note").textContent = "그림이 없습니다: sheet-to-musicxml/results에 Kaggle 출력을 받아 두세요"; $("note").classList.add("bad"); };
+
+// 연구 지도 사이드바가 고른 악보
+addEventListener("message", e => { if (e.data?.type !== "song") return; const s = ALL.find(x => x.id === e.data.id); if (s && s !== S) pick(s); });
+pick(ALL[0]);
+if (parent !== window) parent.postMessage({ type: "shown", id: ALL[0].id }, "*");
+</script>

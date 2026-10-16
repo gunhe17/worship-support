@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>support</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* layout: full height, phone-width column (max 440px); pages slide in from the right like Toss (flow → 곡 추가 → 곡 확인, flow → 편집) */
+:root {
+  --bg: #e9edf4;
+  --screen: #f6f8fb;
+  --surface: #ffffff;
+  --ink: #131925;
+  --ink-2: #5b6579;
+  --ink-3: #8b94a6;
+  --line: #dde3ed;
+  --accent: #2563eb;
+  --accent-ink: #ffffff;
+  --accent-soft: #e8efff;
+  --chip-v: #edf0f5;
+  --shadow: 0 1px 2px rgba(19, 25, 37, .06), 0 6px 18px rgba(19, 25, 37, .06);
+  --rail: #c9d1da;
+  --red: #d22030;
+  --red-soft: #fde8ea;
+  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #07090e; --screen: #0f131b; --surface: #171c27; --ink: #e7ebf3; --ink-2: #a0a9bb; --ink-3: #6f798c;
+    --line: #262e3d; --accent: #5d8eff; --accent-ink: #0a0f1c; --accent-soft: #17264a;
+    --chip-v: #222937;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4); --rail: #3a4456; --red: #ff6b75; --red-soft: #3a1a20; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #07090e; --screen: #0f131b; --surface: #171c27; --ink: #e7ebf3; --ink-2: #a0a9bb; --ink-3: #6f798c;
+  --line: #262e3d; --accent: #5d8eff; --accent-ink: #0a0f1c; --accent-soft: #17264a;
+  --chip-v: #222937;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4); --rail: #3a4456; --red: #ff6b75; --red-soft: #3a1a20; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.45; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* 화면 높이를 채우고, 너비는 스마트폰 크기(최대 440px)까지. 넓은 화면에서는 가운데 한 열 */
+body { overflow: hidden; }
+.phone { position: relative; height: 100%; max-width: 440px; margin-inline: auto; overflow: hidden; background: var(--screen); }
+@media (min-width: 441px) { .phone { border-inline: 1px solid var(--line); } }
+
+/* flow */
+.flow-head { flex: none; display: flex; justify-content: flex-end; padding-block: 8px; background: var(--screen); }
+.view-mode { display: inline-flex; gap: 2px; padding: 2px; border-radius: 9px; background: var(--chip-v); }
+.view-mode button { width: 34px; height: 28px; border: 0; border-radius: 7px; background: none; color: var(--ink-3); display: grid; place-items: center; }
+.view-mode button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.flow { position: relative; list-style: none; margin: 0; padding-block: 0 128px; }
+.gap { position: relative; height: 28px; display: grid; place-items: center; }
+.gap::before { content: ""; position: absolute; left: calc(50% - 1px); width: 2px; top: 0; bottom: 0; background: var(--rail); }
+.scard { position: relative; margin-top: 13px; padding: 0 16px 16px; border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; text-align: center;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: manipulation;
+  transition: transform .15s ease; }
+/* 첫 항목 위에는 연결선이 없다 */
+.item:first-child > .gap { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .scard { transition: none; } }
+
+/* page header (곡 추가 · 곡 확인) */
+.edit-nav { flex: none; display: flex; align-items: center; justify-content: space-between; padding-block: 8px; }
+.edit-nav button { height: 44px; min-width: 44px; border: 0; background: none; font-size: 16px; color: var(--ink); }
+.edit-nav .back { font-size: 26px; text-align: left; }
+.edit-title { flex: none; padding-block: 8px 20px; }
+.edit-title h1 { margin: 0; font-size: 24px; font-weight: 700; line-height: 1.35; text-wrap: balance; }
+.edit-title p { margin: 8px 0 0; font-size: 15px; color: var(--ink-2); }
+/* 카드 오른쪽 손잡이 영역: 잡고 끌면 목록에서 바로 순서가 바뀐다 */
+.scard { padding-inline: 16px 56px; }
+.scard .handle { position: absolute; top: 0; right: 0; bottom: 0; width: 48px; border: 0; border-left: 1px solid var(--line); border-radius: 0 18px 18px 0; background: var(--chip-v); color: var(--ink-3); display: grid; place-items: center; touch-action: none; cursor: grab; }
+.scard .handle:active { cursor: grabbing; color: var(--accent); }
+/* 끄는 카드는 떠오르고, 다른 카드는 transform으로 비켜난다 (dnd-kit 방식) */
+.item.dragging { position: relative; z-index: 3; }
+.item.dragging .scard { transform: scale(1.02); box-shadow: 0 0 0 2px var(--accent), 0 14px 32px rgba(19, 25, 37, .2); }
+.item.dragging .handle { color: var(--accent); }
+.flow.sorting .item:not(.dragging), .item.landing { transition: transform .22s cubic-bezier(.2, .8, .2, 1); }
+.flow.instant .item { transition: none !important; }
+/* 끄는 동안 맨 위 선은 '보이는 순서의 첫 카드' 기준으로 숨긴다 */
+.flow.sorting .item:first-child > .gap { visibility: visible; }
+.flow.sorting .item.lead > .gap, .item.dragging > .gap { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .flow.sorting .item, .item.landing { transition: none; } }
+.scard .num { margin-top: -13px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); box-shadow: 0 0 0 4px var(--screen); font: 700 12px var(--mono); display: grid; place-items: center; }
+.scard h3 { margin: 8px 16px 0; font-size: 18px; font-weight: 700; text-wrap: balance; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--line); }
+.stats div + div { border-left: 1px solid var(--line); }
+.stats dt { font-size: 11px; color: var(--ink-3); }
+.stats dd { margin: 2px 0 0; font: 700 18px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+.stats .key dd { color: var(--accent); }
+/* 하단 고정 버튼: 목록이 비쳐 보이는 그라데이션 위에 긴 버튼 */
+.cta-bar { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding-block: 36px calc(16px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(to bottom, transparent, var(--screen) 55%); pointer-events: none; }
+.cta-bar .cta { pointer-events: auto; width: 100%; height: 56px; border: 0; border-radius: 16px; background: var(--accent); color: var(--accent-ink); font-size: 17px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 6px 16px rgba(37, 99, 235, .25); }
+.cta-bar .cta:active { transform: scale(.98); }
+.end { display: flex; flex-direction: column; align-items: center; gap: 6px; padding-top: 4px; font: 700 12px var(--mono); }
+.end::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--ink); }
+
+/* add page: 상단의 파란 그라데이션 빛 + 가운데 질문 한 줄과 입력바 하나 */
+#s-add { overflow: hidden; }
+#s-add .edit-nav { position: relative; z-index: 1; }
+/* 토스 안내 화면처럼: 상단 연한 라벤더·하늘색 그라데이션이 화면 중간쯤에서 사라진다 */
+.glow { position: absolute; inset: 0 0 auto; height: 55%; pointer-events: none;
+  background:
+    radial-gradient(70% 60% at 20% 0%, rgba(124, 140, 255, .22), transparent 70%),
+    radial-gradient(70% 60% at 90% 10%, rgba(56, 189, 248, .22), transparent 70%),
+    linear-gradient(160deg, #dde5fb, #ddf1fd);
+  -webkit-mask: linear-gradient(to bottom, #000 35%, transparent); mask: linear-gradient(to bottom, #000 35%, transparent);
+  animation: drift 10s ease-in-out infinite alternate; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .glow { background: radial-gradient(70% 60% at 20% 0%, rgba(124, 140, 255, .28), transparent 70%), radial-gradient(70% 60% at 90% 10%, rgba(56, 189, 248, .22), transparent 70%), linear-gradient(160deg, #1a2140, #13283a); } }
+:root[data-theme="dark"] .glow { background: radial-gradient(70% 60% at 20% 0%, rgba(124, 140, 255, .28), transparent 70%), radial-gradient(70% 60% at 90% 10%, rgba(56, 189, 248, .22), transparent 70%), linear-gradient(160deg, #1a2140, #13283a); }
+@keyframes drift { from { background-position: 0 0, 0 0, 0 0; filter: hue-rotate(0deg); } to { background-position: 6% 4%, -6% 2%, 0 0; filter: hue-rotate(-12deg); } }
+@media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
+.add-head { position: relative; flex: none; padding-block: 36px 0; max-height: 220px; overflow: hidden; transition: max-height .35s cubic-bezier(.2, .8, .2, 1), padding .35s cubic-bezier(.2, .8, .2, 1), opacity .2s ease; }
+/* 검색하면 제목이 접히고 입력바가 최상단으로 올라가 그 밑에 결과가 이어진다 */
+#s-add.searching .add-head { max-height: 0; padding-block: 0; opacity: 0; }
+.spark { width: 52px; height: 52px; border-radius: 18px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #6f8bff, #38bdf8); box-shadow: 0 10px 24px rgba(79, 124, 255, .3); }
+.ask { margin: 22px 0 0; font-size: 26px; font-weight: 700; line-height: 1.38; letter-spacing: -.01em; }
+/* 입력바는 화면 세로 가운데. 아래 여백으로 위쪽 제목 높이를 상쇄한다 */
+.add-body { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; padding-bottom: 240px; transition: padding-bottom .35s cubic-bezier(.2, .8, .2, 1); }
+.add-body .spacer { flex: 1 1 0; transition: flex-grow .35s cubic-bezier(.2, .8, .2, 1); }
+#s-add.searching .add-body { padding-bottom: 0; }
+#s-add.searching .add-body .spacer:first-child { flex: 0 0 4px; }
+#s-add.searching .add-body .spacer:last-child { flex: 0 0 0; }
+#s-add #q { height: 56px; border-radius: 999px; border: 1.5px solid transparent; background: var(--surface); box-shadow: 0 0 0 1px rgba(49, 130, 246, .18), 0 10px 30px rgba(49, 130, 246, .16); }
+#s-add #q:focus { border-color: var(--accent); }
+.results { flex: 0 1 auto; min-height: 0; overflow-y: auto; margin-top: 10px; padding-bottom: 24px; }
+.results:empty { display: none; }
+/* 레퍼런스 없이: 영상 줄과 같은 틀, 썸네일 자리는 빈 칸 */
+.thumb.empty-ref { border: 1.5px dashed var(--accent); background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.result.bare { border-bottom: 1px solid var(--line); }
+.results .result { padding-inline: 0; }
+@keyframes fresh { from { box-shadow: 0 0 0 3px var(--accent), 0 0 0 9px var(--accent-soft); } }
+.scard.fresh { animation: fresh 1.6s ease-out; }
+
+.screen {
+  position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--screen);
+  transform: translateX(100%); transition: transform .34s cubic-bezier(.2, .8, .2, 1), filter .34s;
+}
+.screen.is-active { transform: none; }
+.screen.is-behind { transform: translateX(-26%); filter: brightness(.94); }
+@media (prefers-reduced-motion: reduce) { .screen { transition: none; } }
+
+.pad { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+
+
+/* search */
+.field-wrap { position: relative; }
+.field-wrap svg.ico { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+#q {
+  width: 100%; height: 52px; padding: 0 44px 0 42px; border-radius: 16px; border: 1.5px solid var(--line);
+  background: var(--surface); color: var(--ink); font: inherit; font-size: 16px; box-shadow: var(--shadow);
+}
+#q:focus { outline: none; border-color: var(--accent); }
+#clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border: 0; border-radius: 10px; background: none; color: var(--ink-3); }
+
+.results .cap { padding: 10px 14px 4px; font-size: 12px; color: var(--ink-3); }
+.result { display: grid; grid-template-columns: 116px 1fr; gap: 12px; width: 100%; padding: 10px 12px; border: 0; background: none; text-align: left; align-items: start; }
+.result + .result { border-top: 1px solid var(--line); }
+.result:hover { background: var(--chip-v); }
+.result .t { font-size: 14px; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.result .m { font-size: 12px; color: var(--ink-2); margin-top: 3px; }
+.result .ai-tag { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 600; color: var(--accent); }
+.empty { padding: 18px 14px; color: var(--ink-2); font-size: 14px; }
+
+.thumb { position: relative; aspect-ratio: 16 / 9; width: 100%; max-width: 100%; border-radius: 10px; overflow: hidden; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.thumb .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 28px; height: 20px; border-radius: 6px; background: rgba(0,0,0,.55); display: grid; place-items: center; }
+.thumb .dur { position: absolute; right: 5px; bottom: 5px; background: rgba(0,0,0,.72); color: #fff; font: 600 10px/1 var(--mono); padding: 3px 4px; border-radius: 4px; }
+
+/* 곡 상세 (토스 카드 상세 구조): 큰 시각 요소 → 제목 → 요약 한 줄 → 아이콘 + 굵은 이름 + 파란 값 줄 */
+.detail { padding-block: 8px 140px; }
+.thumb.hero { width: 72%; margin: 12px auto 28px; border-radius: 14px; box-shadow: 0 14px 30px rgba(19, 25, 37, .18); }
+.hero.thumb .dur { font-size: 12px; padding: 4px 6px; }
+.hero.empty-ref { box-shadow: none; }
+.pick-title { width: 100%; margin: 0; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; font-size: 26px; font-weight: 700; letter-spacing: -.01em; }
+.pick-title:focus { outline: none; box-shadow: 0 2px 0 var(--accent); }
+.pick-sub { margin: 10px 0 0; font-size: 15px; color: var(--ink-2); }
+.facts { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-direction: column; gap: 26px; }
+.fact { display: flex; align-items: center; gap: 16px; }
+.fact .ico { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; color: #fff; }
+.fact .body { flex: 1; min-width: 0; }
+.fact .line { display: flex; align-items: baseline; gap: 6px; font-size: 18px; font-weight: 700; }
+.fact .val { min-width: 2ch; max-width: 100%; padding: 0; border: 0; border-bottom: 1.5px dashed transparent; background: none; color: var(--accent); font: inherit; font-family: var(--mono); }
+.fact .val:hover { border-bottom-color: var(--line); }
+.fact .val:focus { outline: none; border-bottom-color: var(--accent); }
+.fact .val::placeholder { color: var(--ink-3); font-family: var(--sans); font-weight: 600; }
+.fact .val.wide { flex: 1; }
+.fact .sub { display: block; margin-top: 2px; font-size: 14px; color: var(--ink-2); }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="phone" id="phone">
+  <section class="screen is-active" id="s-flow" aria-label="콘티">
+    <header class="flow-head pad">
+      <div class="view-mode" role="group" aria-label="보기 방식">
+        <button data-view="edit" aria-pressed="true" aria-label="편집" title="편집">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18"/><rect x="5" y="5" width="14" height="5" rx="2"/><rect x="5" y="14" width="14" height="5" rx="2"/></svg>
+        </button>
+        <button data-view="compare" aria-pressed="false" aria-label="비교" title="비교">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/></svg>
+        </button>
+      </div>
+    </header>
+    <ol class="flow scroll pad" id="flow"></ol>
+    <div class="cta-bar pad">
+      <button class="cta" id="add-song">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>곡 추가
+      </button>
+    </div>
+    <div class="compare-empty" id="compare" hidden>1안과 2안 비교 화면은 다음 단계에서 붙입니다.</div>
+
+  </section>
+
+  <section class="screen" id="s-add" aria-label="곡 추가" inert>
+    <div class="edit-nav pad"><button class="back" data-back aria-label="뒤로">‹</button><span></span></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="add-head pad">
+      <span class="spark" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
+      </span>
+      <h1 class="ask">새로운 곡을<br>추가해볼까요?</h1>
+    </div>
+    <div class="add-body pad" id="add-body">
+      <div class="spacer"></div>
+      <div class="field-wrap">
+        <svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="곡 제목 · 가사 · 유튜브 링크" aria-label="유튜브 링크, 곡 제목 또는 가사">
+        <button id="clear" aria-label="지우기" hidden>✕</button>
+      </div>
+      <div class="results" id="results"></div>
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <section class="screen" id="s-card" aria-label="곡 확인" inert>
+    <div class="edit-nav pad"><button class="back" data-back aria-label="뒤로">‹</button><span></span></div>
+    <div class="scroll pad detail" id="d-body"></div>
+    <div class="cta-bar pad"><button class="cta" id="put">추가하기</button></div>
+  </section>
+</div>
+
+<script>
+// 예시 데이터. 영상 정보는 실제 유튜브 검색 결과(2026-10), key·BPM·송폼·악보는 지어낸 값.
+const SONG = ['그 사랑', '그사랑', 'the love', 'your love', '아버지 사랑 내가 노래해', '박희정'];
+const REFS = [
+  { id: 'sk_ACKNjq_o', title: '그 사랑 (피아버전) / THE LOVE (FIA.ver) - 피아워십', channel: '피아워십', views: '조회수 77만회', ago: '1년 전', dur: '6:05', hue: 214,
+    ai: { song: '그 사랑', key: 'E', bpm: 66, form: ['I', 'V1', 'PC', 'C', 'V2', 'PC', 'C', 'B', 'C', 'C↑', 'O'] } },
+  { id: 'jJEmRv_b93s', title: '마커스워십 - 그 사랑 (심종호 인도)', channel: 'MARKERS WORSHIP', views: '조회수 134만회', ago: '9년 전', dur: '6:22', hue: 26,
+    ai: { song: '그 사랑', key: 'D', bpm: 68, form: ['I', 'V1', 'PC', 'C', 'V2', 'PC', 'C', 'B', 'C', 'O'] } },
+  { id: 'hGpOABdr-VE', title: '그 사랑 (아버지 사랑 내가 노래해)_ArrangeㅣShiE K ver.', channel: 'Team ShiE K', views: '조회수 6.1만회', ago: '6년 전', dur: '4:47', hue: 300,
+    ai: { song: '그 사랑', key: 'G', bpm: 76, form: ['I', 'V1', 'PC', 'C', 'Int', 'V2', 'PC', 'C', 'B', 'C', 'O'] } },
+  { id: 'Rs91c7EHzvo', title: '오화평트리오 - 그 사랑(by 박희정) M/V / OHP trio - the love', channel: '오화평트리오 (Oh Hwa Pyoung Trio-OHPT)', views: '조회수 21만회', ago: '8년 전', dur: '4:52', hue: 100,
+    ai: { song: '그 사랑', key: 'Eb', bpm: 64, form: ['I', 'V1', 'C', 'V2', 'C', 'B', 'C', 'C↑', 'O'] } },
+  { id: 'wmMFNToC7t8', title: '[ALL DAY CCM] 그 사랑 - 조수아', channel: 'BEE on the CCM 비온더씨씨엠', views: '조회수 34만회', ago: '5년 전', dur: '4:50', hue: 266,
+    ai: { song: '그 사랑', key: 'G', bpm: 72, form: ['V1', 'PC', 'C', 'V2', 'PC', 'C', 'O'] } },
+  { id: 'vpyE1MC2vfQ', title: '[찬양] 배다해 - 그 사랑(Your Love)｜원곡 : 박희정 ｜갓쏭｜쏭스튜디오｜ccm', channel: "갓쏭 God's Song", views: '조회수 14만회', ago: '3년 전', dur: '4:09', hue: 330,
+    ai: { song: '그 사랑', key: 'Bb', bpm: 64, form: ['I', 'V1', 'C', 'V2', 'C', 'B', 'C', 'O'] } },
+  { id: 'L6c9DdguWxo', title: '그 사랑 by 박상규', channel: 'Beecompany 비컴퍼니', views: '조회수 20만회', ago: '7년 전', dur: '5:12', hue: 160,
+    ai: { song: '그 사랑', key: 'C', bpm: null, form: ['I', 'V1', 'PC', 'C', 'V2', 'PC', 'C', 'C', 'O'] } },
+  { id: 'Ofe1qQzkESQ', title: '그사랑 | The LOVE (covered by Family Worship)', channel: '패밀리워십 Family Worship', views: '조회수 46만회', ago: '5년 전', dur: '5:19', hue: 188,
+    ai: { song: '그 사랑', key: 'E', bpm: 70, form: ['I', 'V1', 'PC', 'C', 'V2', 'PC', 'C', 'B', 'B', 'C', 'O'] } },
+  { id: 'T6wCTHZmHR0', title: '[골방라이브] 김상진 - 그 사랑 (the love)', channel: '달빛마을 (Moonlight Village)', views: '조회수 48만회', ago: '7년 전', dur: '4:59', hue: 40,
+    ai: { song: '그 사랑', key: 'A', bpm: 62, form: ['V1', 'PC', 'C', 'V2', 'PC', 'C', 'O'] } },
+  { id: 'eRMM165NqDQ', title: '[중앙아트] ‘중앙성가 46집’ 2. 그 사랑 - 합창', channel: '중앙아트TV', views: '조회수 38만회', ago: '3년 전', dur: '4:09', hue: 140,
+    ai: { song: '그 사랑', key: 'F', bpm: 60, form: ['I', 'V1', 'C', 'V2', 'C', 'C↑', 'O'] } },
+];
+
+const state = { ref: null, hits: [] };
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const norm = (s) => s.toLowerCase().replace(/\s+/g, '');
+
+/* ---------- small visuals ---------- */
+const thumb = (r) => `<div class="thumb" style="background:linear-gradient(135deg,hsl(${r.hue} 55% 42%),hsl(${r.hue + 40} 60% 18%))">
+  <img src="https://i.ytimg.com/vi/${r.id}/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+  <span class="play"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z" fill="#fff"/></svg></span>
+  <span class="dur">${r.dur}</span></div>`;
+
+/* ---------- search (inside the sheet) ---------- */
+const q = $('#q'), results = $('#results');
+// infrastructure/youtube/youtube.py serve 로 열면 YouTube Data API, 파일로 열면 예시 데이터
+const live = location.protocol.startsWith('http');
+let timer;
+$('#clear').addEventListener('click', () => { q.value = ''; search(); q.focus(); });
+// search.list 한 번이 쿼터 100단위라 입력을 멈추거나 Enter일 때만 부른다
+q.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(search, live ? 600 : 0); });
+q.addEventListener('keydown', (e) => { if (e.key === 'Enter') { clearTimeout(timer); search(); } });
+
+async function search() {
+  const raw = q.value.trim();
+  $('#clear').hidden = !raw;
+  $('#s-add').classList.toggle('searching', !!raw);
+  if (!raw) { results.innerHTML = ''; return; }
+  const isLink = /youtu\.?be/.test(raw);
+  const top = isLink ? '' : bare(raw);
+  let hits;
+  if (live) {
+    results.innerHTML = top + '<div class="empty">유튜브에서 찾는 중…</div>';
+    const res = await fetch(`/youtube?q=${encodeURIComponent(raw)}`).then((r) => r.json()).catch((e) => ({ error: e.message }));
+    if (q.value.trim() !== raw) return;
+    if (res.error) { results.innerHTML = top + `<div class="empty">유튜브 검색 실패: ${esc(res.error)}</div>`; return; }
+    hits = res.videos.map(toRef);
+  } else {
+    const n = norm(raw);
+    hits = isLink
+      ? REFS.filter((r) => raw.includes(r.id))
+      : REFS.filter((r) => norm([r.title, r.channel, ...SONG].join(' ')).includes(n));
+  }
+  state.hits = hits;
+  if (!hits.length) {
+    results.innerHTML = top + `<div class="empty">${isLink && !live ? '예시 데이터에 없는 링크예요.' : `‘${esc(raw)}’에 맞는 영상을 찾지 못했어요.`}</div>`;
+    return;
+  }
+  results.innerHTML = top + `<div class="cap">${isLink ? '링크한 영상' : `유튜브 레퍼런스 ${hits.length}개`}</div>` + hits.map((r) => `
+    <button class="result" data-ref="${r.id}">${thumb(r)}<div style="min-width:0"><div class="t">${esc(r.title)}</div>
+    <div class="m">${esc(r.channel)} · ${r.views} · ${r.ago}</div>${r.ai.song ? '<span class="ai-tag">✦ AI 분석</span>' : ''}</div></button>`).join('');
+}
+
+// 맨 위 선택지: 레퍼런스 없이 곡 이름만으로 넣는다
+function bare(raw) {
+  return `<button class="result bare" data-bare="${esc(raw)}">
+    <div class="thumb empty-ref" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+    <div style="min-width:0"><div class="t">${esc(raw)}</div>
+    <div class="m">레퍼런스 없이 작업하기</div><span class="ai-tag">곡 이름만 · 키·BPM·시간은 나중에</span></div></button>`;
+}
+
+results.addEventListener('click', (e) => {
+  const ref = e.target.closest('[data-ref]'), name = e.target.closest('[data-bare]');
+  if (ref) openRef(ref.dataset.ref);
+  if (name) openPick({ name: name.dataset.bare });
+});
+
+/* ---------- youtube video → ref ---------- */
+function toRef(v) {
+  const sample = REFS.find((r) => r.id === v.id);
+  return {
+    id: v.id, title: v.title, channel: v.channel, hue: 214,
+    views: v.view_count === null ? '' : `조회수 ${count(v.view_count)}회`,
+    ago: ago(v.published_at),
+    dur: clock(v.duration_seconds),
+    sec: v.duration_seconds,
+    ai: sample ? sample.ai : { song: null, key: null, bpm: null, form: null },
+  };
+}
+function count(n) {
+  if (n >= 1e8) return `${+(n / 1e8).toFixed(1)}억`;
+  if (n >= 1e4) return `${+(n / 1e4).toFixed(n >= 1e5 ? 0 : 1)}만`;
+  if (n >= 1e3) return `${+(n / 1e3).toFixed(1)}천`;
+  return String(n);
+}
+function ago(iso) {
+  const days = (Date.now() - Date.parse(iso)) / 864e5;
+  if (days >= 365) return `${Math.floor(days / 365)}년 전`;
+  if (days >= 30) return `${Math.floor(days / 30)}개월 전`;
+  if (days >= 1) return `${Math.floor(days)}일 전`;
+  return '오늘';
+}
+function clock(s) {
+  const h = Math.floor(s / 3600), m = Math.floor(s / 60) % 60, pad = (x) => String(x).padStart(2, '0');
+  return h ? `${h}:${pad(m)}:${pad(s % 60)}` : `${m}:${pad(s % 60)}`;
+}
+
+/* ---------- 곡 상세 page: 검색 결과에서 고른 곡을 확인하고 고친 뒤 추가 ---------- */
+const ICON = {
+  key: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>',
+  bpm: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l3 18H6z"/><path d="M12 15l4-8"/></svg>',
+  time: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>',
+  form: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="5" height="14" rx="1.5"/><rect x="10" y="5" width="5" height="14" rx="1.5"/><rect x="17" y="5" width="4" height="14" rx="1.5"/></svg>',
+};
+const pencil = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+
+function fact({ id, icon, color, label, value, unit = '', hint, wide = false, mode = 'text' }) {
+  return `<li class="fact"><span class="ico" style="background:${color}" aria-hidden="true">${icon}</span>
+    <span class="body"><span class="line"><label for="${id}">${label}</label>
+      <input class="val${wide ? ' wide' : ''}" id="${id}" value="${esc(value)}" placeholder="입력" inputmode="${mode}" autocomplete="off" size="${Math.max(2, String(value).length + 1)}">${unit}</span>
+      <span class="sub">${hint}</span></span></li>`;
+}
+
+function openPick(pick) {
+  state.pick = pick;
+  const r = pick.ref, ai = r ? r.ai : {};
+  const from = r && ai.song ? 'AI 분석값 · 눌러서 고칠 수 있어요' : '비어 있어요 · 눌러서 입력';
+  const sec = r ? r.sec ?? r.dur.split(':').reduce((a, b) => a * 60 + Number(b), 0) : 0;
+  const hero = r
+    ? thumb(r).replace('class="thumb"', 'class="thumb hero"')
+    : `<div class="thumb hero empty-ref" aria-hidden="true">${pencil}</div>`;
+  $('#d-body').innerHTML = `${hero}
+    <input class="pick-title" id="pk-title" value="${esc(r ? ai.song || r.title : pick.name)}" aria-label="곡 이름">
+    <p class="pick-sub">${r ? `${esc(r.channel)} · ${r.dur}${ai.song ? ' · ✦ AI 분석' : ''}` : '레퍼런스 없이 작업'}</p>
+    <ul class="facts">
+      ${fact({ id: 'pk-key', icon: ICON.key, color: '#3182F6', label: '키', value: ai.key || '', hint: from })}
+      ${fact({ id: 'pk-bpm', icon: ICON.bpm, color: '#F59E0B', label: '템포', value: ai.bpm || '', unit: 'BPM', hint: '메트로놈 기준', mode: 'numeric' })}
+      ${fact({ id: 'pk-time', icon: ICON.time, color: '#14B8A6', label: '시간', value: sec ? clock(sec) : '', hint: r ? '참고 영상 길이 · 분:초' : '분:초로 입력' })}
+      ${fact({ id: 'pk-form', icon: ICON.form, color: '#8B5CF6', label: '송폼', value: (ai.form || []).join(' '), hint: '구간을 띄어 써요 · 예: I V1 C V2 C B C', wide: true })}
+    </ul>`;
+  $('#d-body').scrollTo(0, 0);
+  go('s-card');
+}
+function openRef(id) { openPick({ ref: state.hits.find((r) => r.id === id) }); }
+
+// 값 칸 너비를 글자 수에 맞춘다
+$('#d-body').addEventListener('input', (e) => { if (e.target.matches('.val:not(.wide)')) e.target.size = Math.max(2, e.target.value.length + 1); });
+
+$('#put').addEventListener('click', () => {
+  const { ref } = state.pick, v = (id) => $(`#${id}`).value.trim();
+  const sec = v('pk-time') ? v('pk-time').split(':').reduce((a, b) => a * 60 + Number(b), 0) : 0;
+  const id = ref ? `yt-${ref.id}` : `bare-${Date.now()}`;
+  SONGS[id] = {
+    title: v('pk-title') || (ref ? ref.title : '제목 없음'),
+    key: v('pk-key') || '—',
+    bpm: Number(v('pk-bpm')) || '—',
+    sec: Number.isFinite(sec) ? sec : 0,
+    form: v('pk-form').split(/\s+/).filter(Boolean),
+  };
+  addSong(id);
+});
+
+/* ---------- flow (first page) ---------- */
+// 예시 콘티. 곡 길이는 참고 영상 길이, key·BPM·송폼은 지어낸 값
+const SONGS = {
+  a: { title: '예수 우리 왕이여', key: 'G', bpm: 72, sec: 310, form: ['V1', 'C', 'V2', 'C', 'C'] },
+  b: { title: '길을 만드시는 주', key: 'G→A', bpm: 68, sec: 425, form: ['I', 'V1', 'C', 'V2', 'C', 'B', 'B', 'C↑'] },
+  c: { title: '그 사랑', key: 'E', bpm: 66, sec: 365, form: ['V1', 'PC', 'C', 'V2', 'PC', 'C', 'B', 'C'] },
+  d: { title: '은혜', key: 'D', bpm: 68, sec: 372, form: ['I', 'V1', 'C', 'V2', 'C', 'B', 'C', 'O'] },
+  e: { title: '하나님의 선하심', key: 'A', bpm: 63, sec: 354, form: ['I', 'V1', 'C', 'V2', 'C', 'B', 'B', 'C'] },
+  f: { title: '은혜 아니면', key: 'E', bpm: 70, sec: 290, form: ['V1', 'C', 'V2', 'C', 'B', 'C'] },
+};
+const flow = {
+  items: [{ song: 'a' }, { song: 'b' }, { song: 'c' }, { song: 'd' }],
+};
+const wall = (s) => `11:${String(Math.floor(s / 60)).padStart(2, '0')}`;
+const flowSecs = () => flow.items.reduce((sum, it) => sum + SONGS[it.song].sec, 0);
+
+function renderFlow() {
+  const total = flowSecs();
+  const gap = '<div class="gap" aria-hidden="true"></div>';
+  const last = '<li class="gap" aria-hidden="true"></li>';
+  let n = 0, html = '';
+  flow.items.forEach((it, i) => {
+    const s = SONGS[it.song];
+    n += 1;
+    html += `<li class="item" data-item="${i}">${gap}<article class="scard"><span class="num">${n}</span>
+      <h3>${esc(s.title)}</h3>
+      <dl class="stats"><div class="key"><dt>Key</dt><dd>${esc(s.key)}</dd></div><div><dt>BPM</dt><dd>${esc(s.bpm)}</dd></div><div><dt>시간</dt><dd>${s.sec ? clock(s.sec) : '—'}</dd></div></dl>
+      <button class="handle" aria-label="${esc(s.title)} 끌어서 순서 옮기기">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h14"/></svg>
+      </button></article></li>`;
+  });
+  html += last + `<li class="end">${wall(total)} 끝</li>`;
+  $('#flow').innerHTML = html;
+}
+
+/* ---------- pages (토스처럼 오른쪽에서 밀려 들어오고, 뒤로 가면 되돌아간다) ---------- */
+const stack = ['s-flow'];
+function go(id) {
+  const from = $(`#${stack[stack.length - 1]}`), to = $(`#${id}`);
+  from.classList.replace('is-active', 'is-behind');
+  from.inert = true;
+  to.classList.add('is-active');
+  to.inert = false;
+  stack.push(id);
+}
+function back(count = 1) {
+  for (let i = 0; i < count && stack.length > 1; i += 1) {
+    const page = $(`#${stack.pop()}`);
+    page.classList.remove('is-active', 'is-behind');
+    page.inert = true;
+  }
+  const top = $(`#${stack[stack.length - 1]}`);
+  top.classList.replace('is-behind', 'is-active');
+  top.inert = false;
+  if (stack.length === 1) renderFlow();
+}
+document.querySelectorAll('[data-back]').forEach((b) => b.addEventListener('click', () => back()));
+
+// 맨 끝에 넣고 목록으로 돌아와, 새 카드까지 스크롤하고 잠깐 강조한다
+function addSong(id) {
+  flow.items.push({ song: id });
+  back(stack.length - 1);
+  requestAnimationFrame(() => {
+    const cards = flowEl.querySelectorAll('.scard'), fresh = cards[cards.length - 1];
+    flowEl.scrollTo({ top: flowEl.scrollHeight, behavior: 'smooth' });
+    fresh.classList.add('fresh');
+  });
+}
+
+$('#add-song').addEventListener('click', () => {
+  q.value = '';
+  search();
+  go('s-add');
+});
+
+/* ---------- drag a card by its handle (dnd-kit 방식: 끄는 동안 DOM은 그대로, 다른 카드는 transform으로 비켜나고, 놓을 때 FLIP) ---------- */
+const flowEl = $('#flow');
+const EDGE = 64;
+let drag = null;
+
+flowEl.addEventListener('pointerdown', (e) => {
+  const handle = e.target.closest('.handle');
+  if (!handle || drag) return;
+  e.preventDefault();
+  try { flowEl.setPointerCapture(e.pointerId); } catch {}
+  const row = handle.closest('.item');
+  const rows = [...flowEl.querySelectorAll('.item')];
+  const box = row.getBoundingClientRect();
+  drag = { row, rows, from: rows.indexOf(row), to: rows.indexOf(row), y: e.clientY, grab: e.clientY - box.top, lead: null };
+  row.classList.add('dragging');
+  flowEl.classList.add('sorting');
+  if (navigator.vibrate) navigator.vibrate(8);
+  drag.raf = requestAnimationFrame(follow);
+});
+flowEl.addEventListener('pointermove', (e) => { if (drag) drag.y = e.clientY; });
+['pointerup', 'pointercancel', 'lostpointercapture'].forEach((t) => flowEl.addEventListener(t, () => { if (drag) drop(); }));
+
+const shiftOf = (el) => new DOMMatrix(getComputedStyle(el).transform).m42;
+
+function follow() {
+  const { row, rows, from } = drag;
+  const view = flowEl.getBoundingClientRect();
+  if (drag.y < view.top + EDGE) flowEl.scrollTop -= Math.ceil((view.top + EDGE - drag.y) / 6);
+  if (drag.y > view.bottom - EDGE) flowEl.scrollTop += Math.ceil((drag.y - view.bottom + EDGE) / 6);
+
+  const box = row.getBoundingClientRect();
+  const home = box.top - shiftOf(row);
+  const top = drag.y - drag.grab;
+  row.style.transform = `translateY(${top - home}px)`;
+
+  // 비교는 각 카드의 원래 자리 기준이라 비켜나는 중에도 흔들리지 않는다
+  const center = top + box.height / 2;
+  let to = 0;
+  rows.forEach((el, i) => {
+    if (i === from) return;
+    const r = el.getBoundingClientRect();
+    if (r.top - shiftOf(el) + r.height / 2 < center) to += 1;
+  });
+  rows.forEach((el, i) => {
+    if (i === from) return;
+    const shift = from < i && i <= to ? -box.height : to <= i && i < from ? box.height : 0;
+    el.style.transform = shift ? `translateY(${shift}px)` : '';
+  });
+  if (to !== drag.to || !drag.lead) {
+    if (drag.lead && navigator.vibrate) navigator.vibrate(6);
+    drag.to = to;
+    const projected = rows.filter((el) => el !== row);
+    projected.splice(to, 0, row);
+    let n = 0;
+    projected.forEach((el) => { el.querySelector('.num').textContent = ++n; });
+    drag.lead?.classList.remove('lead');
+    drag.lead = projected[0];
+    drag.lead.classList.add('lead');
+  }
+  drag.raf = requestAnimationFrame(follow);
+}
+
+// 놓는 순간 순서를 확정한다: 비켜나 있던 카드는 이미 새 자리, 잡은 카드만 보이던 위치에서 미끄러져 내려앉는다
+function drop() {
+  const { row, rows, from, to } = drag;
+  cancelAnimationFrame(drag.raf);
+  drag = null;
+  const seen = row.getBoundingClientRect().top;
+  flowEl.classList.add('instant');
+  rows.forEach((el) => { el.style.transform = ''; el.classList.remove('lead'); });
+  if (to !== from) flowEl.insertBefore(row, to > from ? rows[to].nextElementSibling : rows[to]);
+  const moved = flow.items.splice(from, 1)[0];
+  flow.items.splice(to, 0, moved);
+  flowEl.querySelectorAll('.item').forEach((el, i) => { el.dataset.item = i; });
+  row.style.transform = `translateY(${seen - row.getBoundingClientRect().top}px)`;
+  void flowEl.offsetHeight;
+  flowEl.classList.remove('instant', 'sorting');
+  row.classList.remove('dragging');
+  row.classList.add('landing');
+  row.style.transform = '';
+  const done = () => row.classList.remove('landing');
+  row.addEventListener('transitionend', done, { once: true });
+  setTimeout(done, 400);
+}
+
+/* ---------- view mode ---------- */
+document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => {
+  document.querySelectorAll('[data-view]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  $('#flow').hidden = b.dataset.view !== 'edit';
+  $('#compare').hidden = b.dataset.view !== 'compare';
+}));
+
+renderFlow();
+</script>
+</body>
+</html>

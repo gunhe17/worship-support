@@ -154,5 +154,17 @@
   "kernels": [
    "gunhe17/sheet-xml-worship"
   ]
+ },
+ "sheet-regions-500": {
+  "id": "gunhe17/sheet-regions-500",
+  "code": "kaggle/regions-500.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ],
+  "kernels": [
+   "gunhe17/sheet-staff-500",
+   "gunhe17/sheet-staff-p6x"
+  ]
  }
 }

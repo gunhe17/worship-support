@@ -6,3 +6,6 @@
 _data/audio-500/songs*.json
 
 _data/songformbench/
+
+# API 키
+.env

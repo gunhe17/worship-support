@@ -67,10 +67,11 @@ const store = { get(k, d) { try { const v = localStorage.getItem("lab:" + k); re
 const ICONS = {
   space: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
   sidebar: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>',
-  wave: '<path d="M4 12h2M8 8v8M12 5v14M16 9v6M20 11v2"/>',  // 아이콘은 잉크 영역 중심을 (12,12)에
+  wave: '<path d="M4 12h2M8 8v8M12 5v14M16 9v6M20 11v2"/>',
+  staff: '<path d="M3 6h18M3 9h18M3 12h18M3 15h18M3 18h18"/>',  // 아이콘은 잉크 영역 중심을 (12,12)에
 };
 // space 안의 페이지 (/ 기준 경로)
-const PAGES = { "to-bpm": [["measure", "Test", "wave", "_server/bpm-measure.html"]], "to-key": [["key-measure", "Test", "wave", "_server/key-measure.html"]], "to-arrangement-form": [["stt-measure", "Test", "wave", "_server/stt-measure.html"], ["boundary", "Boundary", "wave", "_server/boundary-measure.html"]] };
+const PAGES = { "to-bpm": [["measure", "Test", "wave", "_server/bpm-measure.html"]], "to-key": [["key-measure", "Test", "wave", "_server/key-measure.html"]], "to-arrangement-form": [["stt-measure", "Test", "wave", "_server/stt-measure.html"], ["boundary", "Boundary", "wave", "_server/boundary-measure.html"]], "to-xml": [["staff", "Staff", "staff", "_server/staff-measure.html"]] };
 const icon = (name, cls) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 ${cls}" aria-hidden="true">${ICONS[name]}</svg>`;
 
 // ---------- 사이드바: 기능은 고를 수 없는 그룹 제목, 그 아래 페이지들이 늘 보인다 ----------
@@ -105,8 +106,8 @@ function toggleList(id) {
   songsHTML();
 }
 // ---------- 곡 목록 (To Bpm › Test 아래): 곡을 누르면 본문을 Test로 바꾸고 그 곡을 알린다 ----------
-const SONG_PAGES = ["measure", "key-measure", "stt-measure", "boundary"];
-const SONG_LIST = { boundary: "_server/boundary-songs.json" };  // 그 밖의 Test는 찬양 500곡
+const SONG_PAGES = ["measure", "key-measure", "stt-measure", "boundary", "staff"];
+const SONG_LIST = { boundary: "_server/boundary-songs.json", staff: "_server/staff-sheets.json" };  // 그 밖의 Test는 찬양 500곡
 const listOf = id => SONG_LIST[id] || "_server/bpm-songs.json";  // 곡 목록은 Test의 하위 요소 (한 번에 한 곳에서 열림)
 let listAt = SONG_PAGES.includes(store.get("listAt", "measure")) ? store.get("listAt", "measure") : null;  // 지금 곡 목록이 열린 페이지 (없으면 null)
 const LISTS = {}, picked = store.get("picked", { "_server/bpm-songs.json": store.get("song", null) });  // 목록마다 고른 곡
