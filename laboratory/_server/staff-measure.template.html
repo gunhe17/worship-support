@@ -47,7 +47,7 @@ h2 span { margin-left: 6px; font-weight: 400; color: var(--faint); }
 .mark { position: absolute; border: 2px solid var(--apple); border-radius: 4px; background: rgb(0 113 227 / .08); pointer-events: none; opacity: 0; transition: opacity .12s; }
 .mark.on { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .mark { transition: none; } }
-/* 영역 레이어 (sheet-regions-100): 오선 영역 파랑 · 기호 행 주황 · 가사 행 보라 · 문제 행 빨강 테두리 */
+/* 영역 레이어 (sheet-regions-500): 오선 영역 파랑 · 기호 행 주황 · 가사 행 보라 · 문제 행 빨강 테두리 */
 :root { --r-staff: rgb(0 113 227 / .13); --r-staff-line: rgb(0 113 227 / .55); --r-symbol: rgb(255 149 0 / .2); --r-symbol-line: #c27400;
   --r-lyric: rgb(175 82 222 / .16); --r-lyric-line: #8e44b8; --r-bad: rgb(255 59 48 / .2); }
 #layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -131,7 +131,7 @@ h2 span { margin-left: 6px; font-weight: 400; color: var(--faint); }
           <b>줄 5개</b><p>찾은 오선의 줄마다, 끝에서 끝까지 따라가며 선 반응이나 잉크가 있는 열의 비율입니다. 진짜 줄은 100장에서 최소 87%였습니다(LOG 28). 87%보다 낮으면 빨강입니다.</p>
           <b>위 · 아래 자리</b><p>맨 윗줄 바로 위, 맨 아랫줄 바로 아래 한 칸 자리를 같은 방식으로 잰 비율입니다. 오선 밖 자리는 중앙값 8%, 99백분위 41%였습니다. 41%보다 높으면 빨강입니다(덧줄·상자 테두리·한 줄 밀림 의심).</p>
           <b>띠 · 간격</b><p>이어진 세로 띠 수와, 이 오선을 찾은 줄 간격입니다. 본문 줄 간격과 다르면 '다른 간격'으로, 멀티 헤드가 다시 찾은 오선입니다.</p>
-          <b>영역 행</b><p>100장만 있습니다(sheet-regions-100, LOG 21). 오선 영역 = 맨 윗줄~맨 아랫줄 몸통 + 튀어나온 음표. 오선 사이는 오선 획을 뺀 잉크의 빈 띠로 행을 나눴고, OCR 가사 상자가 있으면 가사 행, 없으면 기호 행(코드·붙임줄·라벨)입니다. 빨강 = 기호와 가사가 한 행에 섞임, 또는 오선이 행 안에 통째로 들어감. 이 영역은 이전 오선 검출기 기준이라 그림의 초록 5줄(새 검출)과 다를 수 있습니다.</p>
+          <b>영역 행</b><p>sheet-regions-500: 영역 분리(regions-100 알고리즘)에 새 오선 검출 결과를 넣어 500장을 돌렸습니다. 오선 영역 = 맨 윗줄~맨 아랫줄 몸통 + 튀어나온 음표. 오선 사이는 오선 획을 뺀 잉크의 빈 띠로 행을 나눴고, OCR 가사 상자가 있으면 가사 행, 없으면 기호 행(코드·붙임줄·라벨)입니다. 빨강 = 기호와 가사가 한 행에 섞임, 또는 오선이 행 안에 통째로 들어감. 두 단(좌우) 배치 악보는 오선이 위아래로 쌓인다고 가정해서 영역이 어긋날 수 있습니다.</p>
         </div></span>
       </h2>
       <div class="card">
@@ -171,7 +171,7 @@ function pick(s) {
   $("stats").innerHTML = stat("줄 간격", s.p, "px") + stat("선 두께", s.thickness, "px") + stat("잉크 기준", s.ink)
     + stat("오선 줄 회색 p90", s.line_q90) + stat("종이", s.paper) + stat("원본", `${s.orig[0]}×${s.orig[1]}`) + (s.tabs ? stat("타브 표시", s.tabs) : "")
     + (s.regions ? stat("영역 행", s.regions.rows.length) : "");
-  $("run").textContent = (s.run === "p6x" ? "P6x 재실행 결과" : "sheet-staff-500") + (s.regions ? " + sheet-regions-100" : "");
+  $("run").textContent = (s.run === "p6x" ? "P6x 재실행 결과" : "sheet-staff-500") + (s.regions ? " + sheet-regions-500" : "");
   $("n").textContent = s.staves.length; $("nRows").textContent = s.regions ? s.regions.rows.length : "";
   $("tabRows").disabled = !s.regions; $("tabRows").title = s.regions ? "" : "영역 분리는 100장만 있습니다";
   $("chips").innerHTML = s.regions ? LAYERS.map(([k, label, c]) => `<button class="chip" data-layer="${k}" aria-pressed="${!hidden.includes(k)}"><i style="background:${c}"></i>${label}</button>`).join("") : "";
