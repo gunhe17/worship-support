@@ -28,3 +28,20 @@ Thumbs.db
 *.db
 *.sqlite
 *.log
+
+# Java / Gradle
+.gradle/
+build/
+out/
+bin/
+*.class
+
+# IntelliJ / Eclipse
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Local-only design drafts
+docs/architecture/0*.md
