@@ -17,6 +17,32 @@ CONFIRMED = {
     "susanghanstreet_o-juyeo_1": "9마디 줄 오선 1개 놓침",
     "yerum-conti_naega-yesureul-motbakatseumnida-conti_1": "두 단 콘티: 왼쪽 단 오선 7개 중 2개만 찾음, 오른쪽 2번 타브 오표시",
     "j-us_abeojiui-sarang_2": "원본이 흐리게 처리된 미리보기 (표본 제외 후보)",
+    "jrabbit_sarangeun-love-is_1": "오선 2개 놓침: 확대로 옅어진 줄이 tau 미만 (LOG 44)",
+    "jus_nae-moseup-idaero_1": "오선 1개 놓침: 셋째 줄 반응 거의 0 (LOG 44)",
+}
+# LOG 44: 자동 검출이 문제로 표시했지만 눈으로 보니 오류가 아닌 행 → 원래 종류
+NOT_ERROR = {
+    ("anointing_rejoice_2", "b04_r01"): "symbol",                  # Fine을 가사로 봄
+    ("janchi_juui-soni_1", "b01_r01"): "symbol",                   # Verse 라벨을 가사로 봄
+    ("markers_ju-ui-ireum-nopimyeo_1", "b00_r01"): "symbol",       # 제목·삽화
+    ("withgod_ju-malsseum-yeongwonhari_1", "b04_r02"): "symbol",   # 코드 행을 가사로 봄
+    ("withgod_ju-malsseum-yeongwonhari_1", "b05_r02"): "symbol",
+    ("mideumuisaramdeul_ije-neun-sarang_1", "b11_r01"): "lyric",   # 이하 한글 아랫획을 기호로 봄
+    ("onggijangi_on-ttang-iyeo-medley_1", "b03_r02"): "lyric",
+    ("onggijangi_on-ttang-iyeo-medley_1", "b07_r01"): "lyric",
+    ("park-jong-ho_i-ttangeul-uriege_1", "b01_r01"): "lyric",
+    ("parkjongho_gido-deureusineun_1", "b01_r01"): "lyric",
+    ("reubenmorgan_yakhan-naro_1", "b05_r01"): "lyric",
+    ("robinmark_jigeumeun-elriya_1", "b04_r01"): "lyric",
+    ("tabernacle-david_gireumbueum_1", "b03_r02"): "lyric",
+    ("yeram_never-let-go_1", "b10_r01"): "lyric",
+    ("yesu-band_gil_1", "b07_r01"): "lyric",
+    ("ywam_first-and-last_1", "b04_r01"): "lyric",
+    ("ywam_first-and-last_1", "b06_r01"): "lyric",
+}
+ROW_NOTES = {
+    ("maggidawn_geuneun-uri-joereul_1", "b09_r01"): "오선 일부·꼬리도 행에 들어감",
+    ("yerum-conti_juleul-wihan-igose-conti_1", "b07_r01"): "가사 행과 코드 행이 합쳐짐",
 }
 UNSEEN = {
     "markers-plate_saranaen-mankeum-saranghan-mankeum_1",
@@ -93,7 +119,7 @@ def sheet(*, id: str, runs: dict[str, dict], metadata: dict, regions: dict | Non
         "tabs": len(result["tabs"]),
         "staves": [staff(s) for s in result["staves"]],
         "regions": (
-            region(regions) if regions else None
+            region(id=id, found=regions) if regions else None
         ),
     }
 
@@ -114,7 +140,7 @@ def staff(found: dict) -> dict:
 # #
 # region
 
-def region(found: dict) -> dict:
+def region(*, id: str, found: dict) -> dict:
     # regions-100은 가로 2000px, staff-500은 2480px로 정규화한 좌표
     scale = 2480 / 2000
     problems = {p["file"]: p["type"] for p in found["problems"]}
@@ -128,7 +154,12 @@ def region(found: dict) -> dict:
                 "x": [round(v * scale) for v in split[min(r["band"], len(split) - 1)]["x"]],
                 "y": [round(v * scale) for v in r["y"]],
                 "height": r["h_gaps"],
-                "kind": problems.get(r["file"]) or ("lyric" if r["lyric_boxes"] else "symbol"),
+                "kind": (
+                    NOT_ERROR.get((id, r["file"].removesuffix(".png")))
+                    or problems.get(r["file"])
+                    or ("lyric" if r["lyric_boxes"] else "symbol")
+                ),
+                "note": ROW_NOTES.get((id, r["file"].removesuffix(".png")), ""),
             }
             for r in found["rows"]
         ],
@@ -139,7 +170,7 @@ def region_tag(found: dict | None) -> str:
     if not found:
         return ""
     if any(r["kind"] not in ("lyric", "symbol") for r in found["rows"]):
-        return "영역 문제"
+        return "영역 오류"
     return "영역"
 
 

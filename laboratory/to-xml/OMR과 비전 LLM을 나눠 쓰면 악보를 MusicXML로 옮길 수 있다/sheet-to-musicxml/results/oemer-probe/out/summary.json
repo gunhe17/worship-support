@@ -1,0 +1,44 @@
+{
+ "staff": {
+  "n": 241,
+  "with_heads": 233,
+  "any_head": 234,
+  "five_lines": 241,
+  "lines_median": 5.0
+ },
+ "head-real": {
+  "n": 11,
+  "with_heads": 10,
+  "any_head": 11,
+  "five_lines": 11,
+  "lines_median": 5.0
+ },
+ "head-fake": {
+  "n": 27,
+  "with_heads": 6,
+  "any_head": 14,
+  "five_lines": 1,
+  "lines_median": 1.0
+ },
+ "missed": {
+  "n": 4,
+  "with_heads": 4,
+  "any_head": 4,
+  "five_lines": 1,
+  "lines_median": 4.0
+ },
+ "lyric": {
+  "n": 245,
+  "with_heads": 9,
+  "any_head": 51,
+  "five_lines": 0,
+  "lines_median": 0.0
+ },
+ "symbol": {
+  "n": 324,
+  "with_heads": 30,
+  "any_head": 57,
+  "five_lines": 1,
+  "lines_median": 0.0
+ }
+}

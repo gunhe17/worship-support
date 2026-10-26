@@ -1,0 +1,72 @@
+{
+ "1.20.1": {
+  "install_error": "error: No solution found when resolving dependencies\n  cause: Because there is no version of onnxruntime-gpu==1.20.1 and you require onnxruntime-gpu==1.20.1, we can conclude that your requirements are unsatisfiable.\n"
+ },
+ "1.19.2": {
+  "ort": "1.19.2",
+  "available": [
+   "TensorrtExecutionProvider",
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "unet_big": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  },
+  "seg_net": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  }
+ },
+ "1.18.1": {
+  "ort": "1.18.1",
+  "available": [
+   "TensorrtExecutionProvider",
+   "CUDAExecutionProvider",
+   "AzureExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "unet_big": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  },
+  "seg_net": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  }
+ },
+ "1.18.0": {
+  "ort": "1.18.0",
+  "available": [
+   "TensorrtExecutionProvider",
+   "CUDAExecutionProvider",
+   "AzureExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "unet_big": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  },
+  "seg_net": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  }
+ },
+ "1.17.1": {
+  "ort": "1.17.1",
+  "available": [
+   "TensorrtExecutionProvider",
+   "CUDAExecutionProvider",
+   "AzureExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "unet_big": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  },
+  "seg_net": {
+   "ok": false,
+   "error": "[ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(uint8))"
+  }
+ }
+}

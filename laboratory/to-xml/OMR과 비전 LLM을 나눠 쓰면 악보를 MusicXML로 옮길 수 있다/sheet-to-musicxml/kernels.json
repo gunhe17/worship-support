@@ -166,5 +166,52 @@
    "gunhe17/sheet-staff-500",
    "gunhe17/sheet-staff-p6x"
   ]
+ },
+ "sheet-staff-miss": {
+  "id": "gunhe17/sheet-staff-miss",
+  "code": "kaggle/staff-miss.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-why": {
+  "id": "gunhe17/sheet-staff-why",
+  "code": "kaggle/staff-why.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-oemer-probe": {
+  "id": "gunhe17/sheet-oemer-probe",
+  "code": "kaggle/oemer-probe.py",
+  "gpu": false,
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ],
+  "kernels": [
+   "gunhe17/sheet-staff-500",
+   "gunhe17/sheet-staff-p6x",
+   "gunhe17/sheet-regions-500"
+  ]
+ },
+ "sheet-oemer-gpu": {
+  "id": "gunhe17/sheet-oemer-gpu",
+  "code": "kaggle/oemer-gpu.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-oemer-audit": {
+  "id": "gunhe17/sheet-oemer-audit",
+  "code": "kaggle/oemer-audit.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ],
+  "kernels": [
+   "gunhe17/sheet-staff-500",
+   "gunhe17/sheet-staff-p6x"
+  ]
  }
 }
