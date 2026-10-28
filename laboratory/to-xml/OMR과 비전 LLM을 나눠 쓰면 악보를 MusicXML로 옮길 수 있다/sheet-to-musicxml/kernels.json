@@ -213,5 +213,61 @@
    "gunhe17/sheet-staff-500",
    "gunhe17/sheet-staff-p6x"
   ]
+ },
+ "sheet-staff-grid": {
+  "id": "gunhe17/sheet-staff-grid",
+  "code": "kaggle/staff-grid.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ],
+  "kernels": [
+   "gunhe17/sheet-staff-500",
+   "gunhe17/sheet-staff-p6x"
+  ]
+ },
+ "sheet-staff-v2": {
+  "id": "gunhe17/sheet-staff-v2",
+  "code": "kaggle/staff-v2.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-trace": {
+  "id": "gunhe17/sheet-staff-trace",
+  "code": "kaggle/staff-trace.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-v2-quick": {
+  "id": "gunhe17/sheet-staff-v2-quick",
+  "code": "kaggle/staff-v2-quick.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-v3": {
+  "id": "gunhe17/sheet-staff-v3",
+  "code": "kaggle/staff-v3.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-v3-quick": {
+  "id": "gunhe17/sheet-staff-v3-quick",
+  "code": "kaggle/staff-v3-quick.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
+ },
+ "sheet-staff-v3-frame": {
+  "id": "gunhe17/sheet-staff-v3-frame",
+  "code": "kaggle/staff-v3-frame.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ],
+  "kernels": [
+   "gunhe17/sheet-staff-v2"
+  ]
  }
 }
