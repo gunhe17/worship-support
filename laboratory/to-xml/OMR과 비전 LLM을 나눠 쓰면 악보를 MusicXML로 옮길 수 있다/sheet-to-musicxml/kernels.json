@@ -269,5 +269,12 @@
   "kernels": [
    "gunhe17/sheet-staff-v2"
   ]
+ },
+ "sheet-staff-v3-prof": {
+  "id": "gunhe17/sheet-staff-v3-prof",
+  "code": "kaggle/staff-v3-prof.py",
+  "datasets": [
+   "gunhe17/worship-sheet-images-500"
+  ]
  }
 }

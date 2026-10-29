@@ -178,18 +178,21 @@ def detect(g, k, p_force=None, relax=False):
             if run >= max(2, int(PAR["P17"] * p)): return False
         return True
     chains.sort(key=lambda ch: ch[0]["j"]); bridged = {}
-    merged = True
-    while merged:
-        merged = False
-        for a in chains:
-            nxt = [b for b in chains if b is not a and b[0]["j"] > a[-1]["j"] + 1
-                   and abs(b[0]["ys"][0] - a[-1]["ys"][0]) <= PAR["P5"] * p]
-            nxt.sort(key=lambda b: b[0]["j"])
-            for b in nxt[:1]:
-                if bridgeable(a[-1], b[0]):
-                    bridged[id(a)] = bridged.get(id(a), 0) + bridged.pop(id(b), 0) + 1
-                    a.extend(b); chains.remove(b); merged = True; break
-            if merged: break
+    # a merge a+b changes only the successor of a and of chains whose successor was b; every earlier chain already
+    # failed, so resume there, not from the start (same merges; restarting cost 1,689 s on reubenmorgan, LOG 52)
+    tried, succ = {}, {}; i = 0
+    while i < len(chains):
+        a = chains[i]
+        b = min((b for b in chains if b is not a and b[0]["j"] > a[-1]["j"] + 1
+                 and abs(b[0]["ys"][0] - a[-1]["ys"][0]) <= PAR["P5"] * p), key=lambda b: b[0]["j"], default=None)
+        succ[id(a)] = b
+        if b is None: i += 1; continue
+        pair = (id(a[-1]), id(b[0]))
+        if pair not in tried: tried[pair] = bridgeable(a[-1], b[0])
+        if not tried[pair]: i += 1; continue
+        bridged[id(a)] = bridged.get(id(a), 0) + bridged.pop(id(b), 0) + 1
+        a.extend(b); chains.remove(b)
+        i = next((h for h in range(i) if succ[id(chains[h])] is b), i)
     for ch in chains: ch[0]["bridged"] = bridged.get(id(ch), 0)
     chains = [ch for ch in chains if len(ch) >= PAR["P6"]]
     # dedup: candidates that overlap vertically AND horizontally = same staff -> keep the stronger

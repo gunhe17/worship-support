@@ -21,12 +21,13 @@ def status(kid):
 
 
 def watch(kid):
-    last = 0.0
+    last, seen = 0.0, set()                          # a reconnected log stream replays from the start
     while True:
         time.sleep(15)                                  # a just-pushed run is queued before its log exists
         logs = subprocess.Popen(["kaggle", "kernels", "logs", "-f", kid], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         for line in logs.stdout:
-            m = re.search(r"progress (\d+)/(\d+) (\d+)s", line)
+            if line in seen: continue
+            seen.add(line); m = re.search(r"progress (\d+)/(\d+) (\d+)s", line)
             if m:
                 i, n, t = map(int, m.groups())
                 if time.time() - last >= 60 or i == n:

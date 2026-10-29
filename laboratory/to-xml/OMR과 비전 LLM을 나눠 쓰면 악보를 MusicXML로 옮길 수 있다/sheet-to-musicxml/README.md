@@ -38,3 +38,4 @@
 - **코드 영역**: EasyOCR(ko+en) 글자 박스 중 오선 위 약 5줄 간격 안의 한글 아닌 글자.
 - **가사 영역**: 오선 아래의 한글 글자 박스.
 - 커널: `kaggle/regions` (gunhe17/sheet-regions, CPU). 결과는 원본 위에 박스를 그린 그림으로 사람이 먼저 판정 → 통과하면 영역별 인식과 마디 붙이기로 진행.
+- **오선 검출 확정(2026-10-29)**: [STAFF_DETECTION.md](STAFF_DETECTION.md) v3, 구현 `kaggle/staff-v3.py`, 기준 결과 `results/staff-v3/run5/` (LOG 53).
