@@ -276,5 +276,52 @@
   "datasets": [
    "gunhe17/worship-sheet-images-500"
   ]
+ },
+ "sheet-sets": {
+  "id": "gunhe17/sheet-sets",
+  "code": "kaggle/sets.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-500",
+   "gunhe17/worship-sheet-sets-gt"
+  ],
+  "kernels": [
+   "gunhe17/sheet-staff-v3"
+  ]
+ },
+ "sheet-ocr-bench": {
+  "id": "gunhe17/sheet-ocr-bench",
+  "code": "kaggle/ocr-bench.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-500",
+   "gunhe17/worship-sheet-sets-gt"
+  ],
+  "kernels": [
+   "gunhe17/sheet-sets"
+  ]
+ },
+ "sheet-oemer-sets": {
+  "id": "gunhe17/sheet-oemer-sets",
+  "code": "kaggle/oemer-sets.py",
+  "gpu": true,
+  "datasets": [
+   "gunhe17/worship-sheet-images-500",
+   "gunhe17/worship-sheet-sets-gt"
+  ],
+  "kernels": [
+   "gunhe17/sheet-staff-v3",
+   "gunhe17/sheet-sets"
+  ]
+ },
+ "sheet-sets-learn": {
+  "id": "gunhe17/sheet-sets-learn",
+  "code": "kaggle/sets-learn.py",
+  "datasets": [
+   "gunhe17/worship-sheet-sets-gt"
+  ],
+  "kernels": [
+   "gunhe17/sheet-sets"
+  ]
  }
 }
