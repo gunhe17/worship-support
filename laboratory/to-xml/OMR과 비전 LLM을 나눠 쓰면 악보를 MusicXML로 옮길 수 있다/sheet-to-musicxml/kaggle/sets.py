@@ -20,6 +20,7 @@ OUT = "/kaggle/working/out"
 for d in ("vis", "label", "gt"): os.makedirs(f"{OUT}/{d}", exist_ok=True)
 TEST = ["agapao_bedeuroui-gobaek_1", "allnations_modeun-neungryeokgwa-gwonse_1", "streamofpraise_juneun-naui-bit_1", "susanghanstreet_o-juyeo_1", "nomunhwan_geuga-jjillimeun_1", "yerum-conti_naega-yesureul-motbakatseumnida-conti_1", "yerum-conti_juleul-wihan-igose-conti_1", "jrabbit_sarangeun-love-is_1", "palmer_gujuyeo-gwangpung_1", "markers-plate_saranaen-mankeum-saranghan-mankeum_2", "simhyeongjin_eunhyeroda_1", "wecclesia_meonjeo-first_1", "markers_ju-ui-ireum-nopimyeo_1", "theoneworship_naneun-mideumeuro_1"]   # GT test set (LOG 55)
 TRAIN = ["bridge-impact_majimak-nare_1", "jesusdivine_hangaji_1", "seraphim_sesangeul-saneun-jihye_2", "kimyoungpyo_kkeutnaji-aneun-yebae_2", "kimsuji_chukbok-ui-tongno_1", "mideumuisaramdeul_ije-neun-sarang_1", "traditional_chansonghara-yeohowaui-jongdeura_1", "mattredman-levites_abeojiui-norae_1", "david-jonathan_deureora-junimui-eumseong_1", "lnmorris_na-eoneunal-kkumsogeul_1", "ccmhub-jeonseongjin_sonbbyeokchimyeo-chum-chwo_1", "kim-bokyu_adameun-malhagon-haji_1", "bogeumseongga_junimui-sup_1", "choi-u-gyu_naega-saraganeun-him_1", "holyimpact_eunhyeui-bicheuro_1", "ccmhub-jeonggeunyeong_duryeowo-malla_1", "gohyeongwon_modeun-ireum-wie-ttwieonan-ireum_1", "sim-jong-ho_gamsahameuro_1", "hongisaac_hananimui-segye_1", "jus_sipjaga_1", "philwickham-levites_ju-yesu-naui-san-somang_1", "leegilseung_gyeongbaehari-ju_1", "kimseokgyun_gasigwan_1", "yesumaeul_saranghaeyo-nae-abeoji_1", "billyfunk_give-thanks-and-praise_1", "tabernacle_blessed_1", "maggidawn_geuneun-uri-joereul_1", "leedojin_lords-love-for-me_1", "don-besig_i-mideum-deouk-gutsera_1", "a5_gohyeongwon_sesang-modeun-minjogi_1", "minhoki_naega-yeonyakhaedo_1", "leehyukjin_god-is-working_1", "mungyeongil_naega-eodum-sogeseo_1", "leeminseop_dangsineun-sarangbatgi_1", "youngsan-singers_naui-ane-geohara_1", "isaiah61_on-uju-jeone_2"]   # GT train set (LOG 60)
+MORE = ["gifted_o-juyeo-dangsin-ape_1", "unknown_jukke-gakkai_1", "jeoneunju_sonjapgo-hamkke-gase_1", "choi-deok-sin_naega-ne-ane-chakhan-il_1", "kimhansol_dasi-deurineun-gobaek_1", "carol_jeo-deulbakke_1", "choi-yong-deok_galili-maeul_1", "parkjongho_gido-deureusineun_1", "dreamfreedom_toward-you_1", "hillsong_still_1", "naviworship_da-deutgo-gyesin-naui-juninkke_1", "fia-worship_eoryeoun-il-danghal-ttae_1", "jeong-dong-su_naui-mideumeuro_1", "fia_sesange-nan-oechiri_1", "cheon-gwan-ung_you-are-special_1", "seaofhope_supper-in-the-wilderness_1", "campusworship_long-awaited_1", "kim-su-ji_miral_1", "song-myeong-hui-choi-deok-sin_na-gajin-jaemul_1", "choideoksin_bareul-ssitgisyeonne_1", "tony-hopkins_muhwagwa-namunnipi_1", "hiswill_sarangui-tongno_1", "son-kyungmin_immanuel_2", "brown-worship_ora-uriga_1", "jiyeong_sipjaga_1", "withgod_ju-malsseum-yeongwonhari_1", "davidruis_changjoui-abeoji_1", "feastcommunity_in-his-arms_1", "kathryn-kuhlman_nae-yeonghonui-guseju_1", "kangyeonhee_geujeo-saranghagi_1", "luvim_didnt-mind_1", "yeram-worship_honja-geotji-aneul-geoyeyo_1", "sonkyungmin_chungman_1", "joshua_geuneun-sarang_1", "kang-myeong-sik_gippeohara_1", "espinosa_hangsang-jinsilke_1"]   # GT labelled too (LOG 64); training on them lowered the test score, unused
 ONLY = TEST + TRAIN
 PAR = dict(W=2480, word_gap=0.5, row_gap=0.1, chord_reach=4.0, lyric_first=8.0, lyric_reach=4.0, mark_reach=4.0, conf=0.3, title=4.0, start=3.5, learn_sure=0.7,
            tie=dict(w=1.8, h=(0.4, 1.6), fill=0.4, flat=0.4), frame=dict(small=4.0, min=1.0, fill=0.35, edge=0.85), dust=0.05)
@@ -250,7 +251,8 @@ def run(path):
         reach = max(PAR["chord_reach"] * p, 2 * rh)
         def lyric_ok(k):                                          # per staff: a 2-column page has two chains in one row
             return k is not None and row["c0"] - last[k] <= max((PAR["lyric_first"] if last[k] == sb[k][3] else PAR["lyric_reach"]) * p, 2 * rh)
-        copy = any(COPY.search(w["text"]) for w in words) and sum(w["kind"] == "latin" for w in words) >= 2; pc = -1e9   # pc: right end of the last chord in the row
+        # joined: OCR splits "Copyr" "ight" (streamofpraise)
+        copy = bool(COPY.search("".join(w["text"] for w in words))) and sum(w["kind"] == "latin" for w in words) >= 2; pc = -1e9   # pc: right end of the last chord in the row
         for w in words:
             b = (w["x0"], w["y0"], w["x1"], w["y1"]); hw = w["y1"] - w["y0"]; t_ = w["text"].strip(); k_ = w["kind"]
             kb, db = near(b, True); ka, _ = near(b, False)
@@ -422,7 +424,7 @@ for i, q in enumerate(train, 1):
         if kind == "w" and (x0, y0, x1, y1) in tk: X.append(tk[(x0, y0, x1, y1)]["x"]); y.append(want)
     print(f"progress {i}/{len(train)} {time.time() - t0:.0f}s train", flush=True)
 if X:
-    MODEL = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.08, random_state=0).fit(np.array(X, float), y)
+    MODEL = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.08, early_stopping=False, random_state=0).fit(np.array(X, float), y)   # auto turns it on past 10k words
     print("selftest model trained on", len(y), "words from", len(train), "sheets", flush=True)
 res = {}; t0 = time.time()
 for i, q in enumerate(todo, 1):
