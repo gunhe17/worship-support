@@ -72,11 +72,22 @@ def features(*, p, sb, q, tokens, H):                              # LOG 59
     rc = [bool(CHORD.fullmatch(t["text"].replace(" ", ""))) for t in row]
     gap = min([abs(t["box"][0] - x1) for t in row] + [abs(x0 - t["box"][2]) for t in row], default=99 * p)
     t = q["text"]; s = t.replace(" ", "").replace("I", "/").replace("|", "/")
+    # a hyphen sits between two syllables at their mid-height; a tenuto / ledger dash does not (LOG 61)
+    hg = [u for u in row if HANGUL.search(u["text"])]
+    lg = min([x0 - u["box"][2] for u in hg if u["box"][2] <= x0 + p], default=99 * p)
+    rg = min([u["box"][0] - x1 for u in hg if u["box"][0] >= x1 - p], default=99 * p)
+    dy = (cy - float(np.median([(u["box"][1] + u["box"][3]) / 2 for u in hg]))) / p if hg else 99.0
+    # a second lyric verse right above the next staff: another row lies between it and the staff, a syllable above it
+    rid = {id(u) for u in row}
+    mid = [u for u in tokens if u is not q and id(u) not in rid and y1 < (u["box"][1] + u["box"][3]) / 2 < cy + below and abs((u["box"][0] + u["box"][2]) / 2 - cx) < 30 * p]
+    up = any(HANGUL.search(u["text"]) and min(x1, u["box"][2]) - max(x0, u["box"][0]) > 0.5 * min(x1 - x0, u["box"][2] - u["box"][0])
+             and 0 < cy - (u["box"][1] + u["box"][3]) / 2 < 3 * p for u in tokens if u is not q)
     return [(y1 - y0) / p, (x1 - x0) / p, (x1 - x0) / max(1, y1 - y0), min(above, 99 * p) / p, min(below, 99 * p) / p,
             any(s_[2] <= cy <= s_[3] for s_ in xs), (x0 - near_[0]) / p, (near_[1] - x1) / p, cy / H, len(row),
             float(np.mean(rh)) if rh else 0.0, float(np.mean(rc)) if rc else 0.0, gap / p,
             q["conf"], len(s), bool(HANGUL.search(t)), bool(CHORD.fullmatch(s)), bool(re.match(r"[(\[]?[A-G]", s)),
             bool(re.fullmatch(r"[0-9]+\.?", s)), bool(re.search(r"[A-Za-z]{2,}", t)), bool(re.fullmatch(r"[-~_=]+", s)),
+            min(lg, 99 * p) / p, min(rg, 99 * p) / p, dy, len(mid), sum(bool(CHORD.fullmatch(u["text"].replace(" ", ""))) for u in mid), up,
             *[q["row"] == k for k in ("chord", "lyric", "other")], *[q["rule"] == k for k in LETTER]]
 
 
@@ -88,6 +99,18 @@ def run(path):
     p, t = r["p"], r["thickness"] or 2; ink = g < r["ink_T"]
     cls = np.zeros((H, W), np.uint8); sid = np.full((H, W), -1, np.int16)
     staves = r["staves"]; h = t // 2 + 1
+    # a staff stopping well short of its column with ink (notes) beyond: the lines faded out (streamofpraise, LOG 61), so it
+    # runs on, flat, to where the column's other staves end
+    staves = [dict(st) for st in staves]
+    for st in staves:
+        x0, x1, y0, y1 = st["box"]
+        mates = [s["box"][1] for s in staves if s is not st and min(x1, s["box"][1]) - max(x0, s["box"][0]) > 0.5 * (x1 - x0) and s["box"][1] > x1]
+        if len(mates) < 2: continue
+        R = int(np.median(mates))
+        if R - x1 < 4 * p or any(s is not st and s["box"][0] < R and x1 < s["box"][1] and s["box"][2] < y1 and y0 < s["box"][3] for s in staves): continue
+        if ink[y0:y1, x1:R].any(0).mean() < 0.15: continue
+        st["box"] = [x0, R, y0, y1]; st["lines"] = [*st["lines"], [R, st["lines"][-1][1]]]
+        print(stem, "staff extended", x1, "->", R, flush=True)
 
     # staff lines: a short vertical ink run on a line is the line itself; a long one is a crossing stroke (stem, barline)
     rest = ink.copy(); body = np.full((H, W), -1, np.int16); sb = []
@@ -149,7 +172,7 @@ def run(path):
     voltas = []
     for i in free:
         x0, y0, x1, y1 = box(i); w, hh = x1 - x0, y1 - y0
-        if w < 3 * p or hh < 0.5 * p or hh > 3 * p: continue
+        if w < 3 * p or hh < 0.5 * p or hh > 4 * p: continue   # 4p: a volta glued to its "1." (markers-plate, LOG 62)
         sub = lab[y0:y1, x0:x1] == i; e = max(2, int(0.2 * hh))
         if sub[:e].any(0).mean() >= 0.8 and sub[:, :e].any(1).mean() >= 0.6 and sub[-e:, e:-e].any(0).mean() < 0.2 and stats[i, 4] < 0.3 * w * hh:
             owner[i] = ("ignore", -1); voltas.append((x0, y0, x1, y1))
@@ -218,7 +241,10 @@ def run(path):
         kb_, db_ = near(rb, True); ka_, da_ = near(rb, False)
         # position: right above a staff and nearer to it than to the staff above = where a chord row sits; OCR often
         # reads lone A/D/E as Hangul or digits, so such a row is a chord row unless it is clearly Hangul (simhyeongjin)
-        chord_pos = kb_ is not None and db_ <= max(3 * p, 1.5 * rh) and db_ < da_
+        # but not with a letter-high row between it and the staff: that one is the chord row, this a second verse (susanghanstreet)
+        chord_pos = kb_ is not None and db_ <= max(3 * p, 1.5 * rh) and db_ < da_ and not any(
+            r_ is not row and r_["col"] == row["col"] and r_["c0"] >= row["c1"] and r_["c1"] <= sb[kb_][2] and len(r_["ids"]) >= 3
+            and r_["c1"] - r_["c0"] >= 0.5 * rh for r_ in rows)
         row["kind"] = ("chord" if (nc and nc >= nl) or (chord_pos and nh < 0.5 * len(words)) else "lyric" if nl else "other")
         ch = [w["y1"] - w["y0"] for w in words if w["kind"] == "chord"]; ch = float(np.median(ch)) if ch else rh
         reach = max(PAR["chord_reach"] * p, 2 * rh)
@@ -229,14 +255,24 @@ def run(path):
             b = (w["x0"], w["y0"], w["x1"], w["y1"]); hw = w["y1"] - w["y0"]; t_ = w["text"].strip(); k_ = w["kind"]
             kb, db = near(b, True); ka, _ = near(b, False)
             notation = lambda: (lambda kd: ("staff", kd[0]) if kd[0] is not None and kd[1] <= PAR["mark_reach"] * p else ("ignore", -1))(vdist(b))
-            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or copy or hw > PAR["title"] * p: c = ("ignore", -1)
+            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or copy or hw > PAR["title"] * p and k_ != "chord": c = ("ignore", -1)   # staggered chords on a small-p page (yerum)
             elif row["kind"] == "chord":
                 start = kb is not None and b[2] <= sb[kb][0] + PAR["start"] * p   # above the clef: measure number
                 if start: c = ("ignore", -1)
+                # tuplet: a 3 smaller than the chords, or a 3 read with its bracket ("3~", "37"); a B read as 3 is chord-high
+                elif re.fullmatch(r"[-~—_(\[]*3[-~—_)\]7]*", t_) and (hw < 0.8 * ch or b[2] - b[0] >= 2.5 * hw): c = notation(); w["sure"] = True
+                # a second verse set tight under the first (susanghanstreet): same-size glyph right under a syllable, often
+                # garbled by OCR into a chord letter; a chord row keeps a gap from the lyric row above
+                elif not (k_ == "chord" and w["conf"] >= 0.9) and any(HANGUL.search(u["text"]) and u["row"] == "lyric" and 0 <= b[1] - u["box"][3] < 0.5 * hw
+                         and min(b[2], u["box"][2]) - max(b[0], u["box"][0]) >= 0.6 * min(b[2] - b[0], u["box"][2] - u["box"][0])
+                         and abs((b[2] - b[0]) - (u["box"][2] - u["box"][0])) < 0.3 * (b[2] - b[0])
+                         and abs(hw - (u["box"][3] - u["box"][1])) < 0.3 * hw for u in tokens):
+                    c = ("lyric", ka) if lyric_ok(ka) else ("ignore", -1); w["sure"] = True
+                    if c[0] == "lyric": w["kind"] = "lyric"; w["chain"] = ka
                 elif (k_ == "chord" or k_ == "latin" or (k_ == "num" and t_ in ("0", "5", "6", "8", "9"))   # G read as 6, Cb as 0
                       or (k_ == "num" and (b[0] - pc <= 2 * p or hw >= 0.8 * ch))                         # the 7 of B7, B7 read as 37
                       or (k_ in ("mark", "other") and (re.match(r"[(\[]?[A-G]", t_) or hw >= 0.6 * ch))):
-                    w["kind"] = "chord"; pc = b[2]
+                    w["kind"] = "chord"; pc = b[2]; w["sure"] = k_ == "chord" and w["conf"] >= 0.9 and len(t_) >= 3   # bracketed chords read surely (markers_ju)
                     c = ("chord", kb) if kb is not None and db <= reach else ("ignore", -1)
                 elif k_ in ("mark", "other", "dash", "num"): c = notation()                           # tuplet 3, rest read as 7
                 else: c = ("ignore", -1)
@@ -250,7 +286,7 @@ def run(path):
             elif k_ in ("mark", "other", "dash", "num"): c = notation()
             else: c = ("ignore", -1)
             for i in w["ids"]: owner[i] = c
-            tokens.append(dict(text=w["text"], conf=round(w["conf"], 2), kind=w["kind"], row=row["kind"], rule=c[0], cls=c[0], set=c[1],
+            tokens.append(dict(text=w["text"], conf=round(w["conf"], 2), kind=w["kind"], row=row["kind"], rule=c[0], cls=c[0], set=c[1], sure=w.get("sure", False),
                                box=[int(v) for v in b], ids=[int(i) for i in w["ids"]]))
         for w in words:
             if "chain" in w: last[w["chain"]] = max(last[w["chain"]], row["y1"])
@@ -263,12 +299,20 @@ def run(path):
         prob = MODEL.predict_proba(np.array([q["x"] for q in tokens], float))
         for q, pr in zip(tokens, prob):
             want = MODEL.classes_[pr.argmax()]
-            if want == LETTER[q["rule"]] or pr.max() < PAR["learn_sure"]: continue
+            if want == LETTER[q["rule"]] or pr.max() < PAR["learn_sure"] or q["sure"]: continue   # rules the train sheets rarely show
             b = q["box"]; kb, _ = near(b, True); ka, _ = near(b, False); kv, _ = vdist(b)
             c = {"C": ("chord", kb), "L": ("lyric", ka), "N": ("staff", kv), "X": ("ignore", -1)}[want]
             if c[1] is None: c = ("ignore", -1)
             for i in q["ids"]: owner[i] = c
             q["cls"], q["set"] = c
+    # a short staff above every full one is a legend (markers_ju: the opening motif in a box): all of it ignored
+    long_ = [s for s in sb if s[1] - s[0] >= 0.3 * max(s_[1] - s_[0] for s_ in sb)]
+    mini = {k for k, s in enumerate(sb) if s[1] - s[0] < 0.3 * max(s_[1] - s_[0] for s_ in sb) and s[3] < min(s_[2] for s_ in long_)}
+    for i, (c, k) in owner.items():
+        if k in mini: owner[i] = ("ignore", -1)
+    for q in tokens:
+        if q["set"] in mini: q["cls"], q["set"] = "ignore", -1
+    for k in mini: cls[sid == k] = CLS["ignore"]; sid[sid == k] = -1
     for row in rows:
         ks = [owner[i][1] for i in row["ids"] if owner.get(i, ("", -1))[0] == row["kind"]]
         row["set"] = max(set(ks), key=ks.count) if ks else None
