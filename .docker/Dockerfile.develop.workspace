@@ -1,5 +1,6 @@
-FROM eclipse-temurin:21-jdk
+FROM python:3.13-slim
 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 COPY --from=node:22-slim /usr/local/bin/node /usr/local/bin/node
 COPY --from=node:22-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
 
@@ -9,5 +10,11 @@ RUN \
     ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
     ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx && \
     apt-get update && \
-    apt-get install -y --no-install-recommends git curl ca-certificates python3 mysql-client && \
+    apt-get install -y --no-install-recommends build-essential git curl ca-certificates postgresql-client && \
     rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml ./
+
+RUN uv pip compile pyproject.toml --extra app --extra dev -o /tmp/reqs.txt && \
+    uv pip install --system -r /tmp/reqs.txt && \
+    rm /tmp/reqs.txt

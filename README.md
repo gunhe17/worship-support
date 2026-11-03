@@ -2,7 +2,7 @@
 
 ## web
 
-api · uwi · MySQL, in docker.
+api · worker · uwi · PostgreSQL, in docker.
 
 ##### to run
 - VS Code: `Dev Containers: Reopen in Container`
@@ -16,7 +16,7 @@ sh script/develop/docker-compose-down.sh
 |---|---|
 | api | `localhost:28300` |
 | uwi | `localhost:28301` |
-| MySQL | `localhost:23306` (test `23307`) |
+| PostgreSQL | `localhost:25432` (test `25433`) |
 
 ## native
 
