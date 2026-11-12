@@ -9,6 +9,7 @@ from worship_support.api.usecase import document_search
 from worship_support.api.usecase import group_create
 from worship_support.api.usecase import group_search
 from worship_support.api.usecase import member_remove
+from worship_support.api.usecase import member_restore
 from worship_support.api.usecase import member_search
 from worship_support.api.usecase import workspace_close
 from worship_support.api.usecase import workspace_create
@@ -123,3 +124,8 @@ async def get_documents(*, scope=Depends(behavior.request_workspace(AuthorizeMem
 async def post_document(body: document_create.Input, *, scope=Depends(behavior.request_workspace(AuthorizeMember()))) -> JSONResponse:
     created = await document_create.create(session=scope.session, input=body, workspace_id=scope.workspace_id, member_id=scope.member_id)
     return JSONResponse(status_code=200, content=created.to_dict())
+
+
+async def post_restore_member(body: member_restore.Input, *, scope=Depends(behavior.request(AuthenticateAccount()))) -> JSONResponse:
+    restored = await member_restore.restore(session=scope.session, input=body, user_id=scope.user_id)
+    return JSONResponse(status_code=200, content=restored.to_dict())

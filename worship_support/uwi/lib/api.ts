@@ -33,6 +33,7 @@ export type Member = {
   person: Person | null;
   me: boolean;
   relation: Relation;
+  joined_at: string | null;
 };
 
 export type InviteRow = {
@@ -147,6 +148,7 @@ export const api = {
   transfer: (id: string, member_id: string) => call<object>("POST", `/workspaces/${id}/transfer`, { member_id }),
   leave: (id: string) => call<object>("POST", `/workspaces/${id}/leave`),
   members: (id: string) => call<Member[]>("GET", `/workspaces/${id}/members`),
+  restoreMember: (member_id: string) => call<{ groups: number; grants: number }>("POST", "/members/restore", { member_id }),
   removeMember: (id: string, member_id: string) => call<object>("POST", `/workspaces/${id}/members/remove`, { member_id }),
   documents: (id: string) => call<Doc[]>("GET", `/workspaces/${id}/documents`),
   createDocument: (id: string, name: string) => call<{ id: string; name: string }>("POST", `/workspaces/${id}/documents`, { name }),

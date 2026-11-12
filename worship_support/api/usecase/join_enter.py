@@ -78,6 +78,10 @@ async def enter(
             )
             .values(removed_at=now)
         )
+        await session.execute(
+            sa.text("UPDATE document_grant SET revoked_at = :now WHERE member_id = :m AND revoked_at IS NULL"),
+            {"now": now, "m": entered.id},
+        )
 
     # notify
     name = (await describe(session=session, user_ids=[user.id]))[user.id]["name"]

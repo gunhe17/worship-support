@@ -118,3 +118,20 @@ async def test_withdraw(person):
     other = await person()
     assert (await other.call("POST", "/api/join/link/check", {"token": token}))["data"]["member_count"] == 1
     assert space["id"]
+
+
+async def test_restore_previous_access(person):
+    a, b = await person(), await person()
+    space = (await a.call("POST", "/api/workspaces", {"name": "되살림"}))["data"]
+    token = (await a.call("POST", f"/api/workspaces/{space['id']}/link"))["data"]["token"]
+    await b.call("POST", "/api/join/link", {"token": token})
+    doc = (await a.call("POST", f"/api/workspaces/{space['id']}/documents", {"name": "콘티"}))["data"]
+    target = next(r for r in (await a.call("GET", f"/api/workspaces/{space['id']}/members"))["data"] if r["user_id"] == b.id)
+    await a.call("POST", f"/api/workspaces/{space['id']}/members/remove", {"member_id": target["id"]})
+    await a.call("POST", f"/api/workspaces/{space['id']}/invites/email", {"emails": [b.email]})
+    mails = (await a.client.get("/api/develop/mail")).json()["data"]
+    code = next(m["body"] for m in mails if m["to"] == b.email)[-6:]
+    await b.call("POST", "/api/join/code", {"code": code})
+    await b.call("POST", "/api/members/restore", {"member_id": target["id"]}, status=403)
+    restored = (await a.call("POST", "/api/members/restore", {"member_id": target["id"]}))["data"]
+    assert restored == {"groups": 0, "grants": 0} and doc["id"]

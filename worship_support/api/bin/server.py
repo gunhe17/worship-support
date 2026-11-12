@@ -53,6 +53,9 @@ server.router(
     Router(path="/api/account/withdraw", methods=["POST"], endpoint=account.post_withdraw)
 )
 server.router(
+    Router(path="/api/members/restore", methods=["POST"], endpoint=workspace.post_restore_member)
+)
+server.router(
     Router(path="/api/workspaces", methods=["GET"], endpoint=workspace.get_search)
 )
 server.router(
