@@ -57,6 +57,7 @@ def client() -> ExceptionHandler:
         # body
         body = {
             "error": type(exc).__name__,
+            "key": key,
             "message": message,
         }
         if is_develop() and isinstance(exc, CoreApplicationError):

@@ -221,3 +221,114 @@ def get_postgres_config() -> PostgresConfig:
     else:
         raise NotImplementedError(f"postgres config not implemented for env={env}")
     return config
+
+
+class TestPostgresConfig(PostgresConfig):
+    @property
+    def POSTGRES_HOST(self) -> str:
+        return os.environ["TEST_POSTGRES_HOST"]
+
+    @property
+    def POSTGRES_PORT(self) -> int:
+        return int(os.environ["TEST_POSTGRES_CONTAINER_PORT"])
+
+    @property
+    def POSTGRES_USER(self) -> str:
+        return os.environ["TEST_POSTGRES_USER"]
+
+    @property
+    def POSTGRES_PASSWORD(self) -> str:
+        return os.environ["TEST_POSTGRES_PASSWORD"]
+
+    @property
+    def POSTGRES_DB(self) -> str:
+        return os.environ["TEST_POSTGRES_DB"]
+
+
+def get_test_postgres_config() -> PostgresConfig:
+    config = TestPostgresConfig()
+    return config
+
+
+# #
+# secret
+
+class SecretConfig(ABC):
+    @property
+    @abstractmethod
+    def SECRET_KEY(self) -> str: ...
+
+
+class DevelopSecretConfig(SecretConfig):
+    @property
+    def SECRET_KEY(self) -> str:
+        return os.environ["DEVELOP_SECRET_KEY"]
+
+
+class ProductionSecretConfig(SecretConfig):
+    @property
+    def SECRET_KEY(self) -> str:
+        return os.environ["PRODUCTION_SECRET_KEY"]
+
+
+def get_secret_config() -> SecretConfig:
+    env = get_app_config().APPLICATION_ENVIRONMENT
+    if env == Env.DEVELOP:
+        config = DevelopSecretConfig()
+    elif env == Env.PRODUCTION:
+        config = ProductionSecretConfig()
+    else:
+        raise NotImplementedError(f"secret config not implemented for env={env}")
+    return config
+
+
+# #
+# policy
+
+class PolicyConfig(ABC):
+    @property
+    @abstractmethod
+    def INVITE_DAYS(self) -> int: ...
+
+    @property
+    @abstractmethod
+    def SESSION_DAYS(self) -> int: ...
+
+    @property
+    @abstractmethod
+    def FRIEND_PENDING_LIMIT(self) -> int: ...
+
+    @property
+    @abstractmethod
+    def FRIEND_DAILY_LIMIT(self) -> int: ...
+
+    @property
+    @abstractmethod
+    def NOTIFICATION_DAYS(self) -> int: ...
+
+
+class DefaultPolicyConfig(PolicyConfig):
+    @property
+    def INVITE_DAYS(self) -> int:
+        return 7
+
+    @property
+    def SESSION_DAYS(self) -> int:
+        return 7
+
+    @property
+    def FRIEND_PENDING_LIMIT(self) -> int:
+        return 100
+
+    @property
+    def FRIEND_DAILY_LIMIT(self) -> int:
+        return 100
+
+    @property
+    def NOTIFICATION_DAYS(self) -> int:
+        return 90
+
+
+def get_policy_config() -> PolicyConfig:
+    config = DefaultPolicyConfig()
+    return config

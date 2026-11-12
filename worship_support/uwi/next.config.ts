@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const config: NextConfig = {
   output: "standalone",
+  devIndicators: false,
   distDir: process.env.NEXT_DIST_DIR || ".next",
   allowedDevOrigins: ["127.0.0.1", "localhost", "*.local", "10.*.*.*", "172.*.*.*", "192.168.*.*"],
   turbopack: {
