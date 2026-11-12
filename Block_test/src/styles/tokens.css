@@ -1,0 +1,113 @@
+/*
+ * 디자인 토큰
+ * - --ed-*: Canvas Editor (라이트, 제품 수준 UI)
+ * - --mon-*: DB Explorer / Network Timeline (다크, 개발자 모니터링 UI)
+ * - --st-*: CRUD/상태 색상 (CLAUDE_PROMPT §5) — 항상 텍스트 라벨과 함께 사용
+ */
+:root {
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+    'Segoe UI', 'Noto Sans KR', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', Menlo, Consolas, 'D2Coding', monospace;
+
+  /* Editor */
+  --ed-chrome: #f6f5f3;
+  --ed-surface: #ffffff;
+  --ed-surface-2: #fbfaf9;
+  --ed-hover: #f1efec;
+  --ed-active: #e9e6e1;
+  --ed-border: #e7e4df;
+  --ed-border-strong: #d6d2cb;
+  --ed-text: #1c1b19;
+  --ed-text-2: #57544f;
+  --ed-text-3: #8d8983;
+  --ed-text-4: #b5b1aa;
+  --ed-ink: #1c1b19;
+  --ed-ink-hover: #36342f;
+  --ed-canvas: #ecebe8;
+  --ed-canvas-dot: #d9d6d0;
+  --ed-focus: #2f6fed;
+  --ed-danger: #d93a3a;
+  --ed-danger-tint: #fdecec;
+  --ed-warn: #c76a0a;
+  --ed-warn-tint: #fdf1e3;
+  --ed-success: #1f8a4c;
+  --ed-success-tint: #e6f4ec;
+  --ed-radius-s: 6px;
+  --ed-radius: 8px;
+  --ed-radius-l: 12px;
+  --ed-shadow-s: 0 1px 2px rgba(28, 27, 25, 0.06);
+  --ed-shadow: 0 1px 2px rgba(28, 27, 25, 0.06), 0 4px 12px rgba(28, 27, 25, 0.06);
+  --ed-shadow-l: 0 2px 6px rgba(28, 27, 25, 0.06), 0 16px 40px rgba(28, 27, 25, 0.12);
+  --ed-page-shadow: 0 0 0 1px rgba(28, 27, 25, 0.04), 0 2px 4px rgba(28, 27, 25, 0.04),
+    0 12px 32px rgba(28, 27, 25, 0.08);
+
+  /* Monitor */
+  --mon-bg: #0e1014;
+  --mon-panel: #13161c;
+  --mon-panel-2: #181c23;
+  --mon-hover: #1d222b;
+  --mon-border: #232832;
+  --mon-border-strong: #2e3542;
+  --mon-text: #d5dae3;
+  --mon-text-2: #9aa3b4;
+  --mon-text-3: #6b7486;
+  --mon-accent: #6ea8fe;
+
+  /* 상태 */
+  --st-insert: #3fb950;
+  --st-update: #58a6ff;
+  --st-delete: #f85149;
+  --st-waiting: #f0883e;
+  --st-persisted: #3fb950;
+  --st-locked: #bc8cff;
+  --st-denied: #f85149;
+  --st-sent: #58a6ff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ed-text);
+  background: var(--mon-bg);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ed-focus);
+  outline-offset: 1px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}

@@ -1,0 +1,287 @@
+.panel {
+  display: grid;
+  grid-template-columns: 188px;
+  min-height: 0;
+  background: var(--ed-surface);
+  border-right: 1px solid var(--ed-border);
+}
+
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0;
+  border-right: 1px solid var(--ed-border);
+}
+
+.railButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 46px;
+  padding: 7px 0 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ed-text-2);
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+.railButton:hover {
+  background: var(--ed-hover);
+  color: var(--ed-text);
+}
+
+.railButton[aria-selected='true'] {
+  background: var(--ed-active);
+  color: var(--ed-text);
+}
+
+.drawer {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px 8px;
+}
+
+.drawerTitle {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.drawerHint {
+  font-size: 11px;
+  color: var(--ed-text-3);
+}
+
+.drawerBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px 16px;
+}
+
+/* 요소 추가: 한 줄에 하나씩 (아이콘 · 이름 · 설명) */
+.toolList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tool {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 8px 0 5px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ed-text-2);
+  text-align: left;
+  cursor: grab;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.tool:hover {
+  border-color: var(--ed-border);
+  background: var(--ed-chrome);
+  color: var(--ed-text);
+}
+
+.tool:active {
+  cursor: grabbing;
+}
+
+.toolPreview {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: var(--ed-chrome);
+}
+
+.tool:hover .toolPreview {
+  background: var(--ed-surface);
+}
+
+.toolLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ed-text);
+  white-space: nowrap;
+}
+
+
+/* ---------- Layers ---------- */
+.layerList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.layer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 14px 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 8px 0 4px;
+  border-radius: 7px;
+  color: var(--ed-text-2);
+  cursor: default;
+}
+
+.layer:hover {
+  background: var(--ed-hover);
+}
+
+.layer[aria-selected='true'] {
+  background: var(--user-tint);
+  color: var(--ed-text);
+}
+
+.layer[data-drop='before']::before,
+.layer[data-drop='after']::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--user-color, var(--ed-focus));
+}
+.layer[data-drop='before']::before {
+  top: -1px;
+}
+.layer[data-drop='after']::after {
+  bottom: -1px;
+}
+
+.grip {
+  color: var(--ed-text-4);
+  cursor: grab;
+  display: grid;
+  place-items: center;
+}
+
+.layerIcon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: var(--ed-chrome);
+  color: var(--ed-text-2);
+}
+
+.layerText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.layerName {
+  font-size: 12px;
+  font-weight: 550;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ed-text);
+}
+
+.layerId {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ed-text-3);
+}
+
+.layerMarks {
+  display: flex;
+  gap: 2px;
+}
+
+.mark {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mark-color);
+  box-shadow: 0 0 0 1.5px var(--ed-surface);
+}
+
+.empty {
+  padding: 24px 12px;
+  text-align: center;
+  color: var(--ed-text-3);
+  font-size: 12px;
+}
+
+.tag {
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 0 4px;
+  border-radius: 3px;
+  color: var(--ed-warn);
+  background: var(--ed-warn-tint);
+}
+
+/* ---------- 오른쪽 레이어 패널 ---------- */
+.layersPanel {
+  display: grid;
+  min-height: 0;
+  background: var(--ed-surface);
+  border-left: 1px solid var(--ed-border);
+}
+
+.adapterNote {
+  display: flex;
+  gap: 8px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--ed-chrome);
+  color: var(--ed-text-2);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.adapterNote code {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+}
+
+/* 다른 사용자가 편집 중인 레이어 */
+.lockTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 5px 0 3px;
+  border-radius: 999px;
+  background: var(--user-tint);
+  color: var(--user-color);
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.layer[data-locked='true'] .layerName {
+  color: var(--ed-text-2);
+}

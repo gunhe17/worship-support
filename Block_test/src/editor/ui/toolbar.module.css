@@ -1,0 +1,275 @@
+/* 선택한 요소 위에 뜨는 툴바 (캔버스 배율과 상관없이 같은 크기) */
+.toolbar {
+  position: absolute;
+  z-index: 30;
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--font-sans);
+  animation: pop 0.1s ease-out;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 36px;
+  padding: 0 4px;
+  border: 1px solid var(--ed-border);
+  border-radius: 10px;
+  background: var(--ed-surface);
+  box-shadow: var(--ed-shadow-l);
+  white-space: nowrap;
+}
+
+.kind {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 6px 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ed-text-2);
+}
+
+.lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px 1px 4px;
+  border-radius: 999px;
+  background: var(--user-tint);
+  color: var(--user-color);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sep {
+  width: 1px;
+  height: 20px;
+  margin: 0 3px;
+  background: var(--ed-border);
+  flex: none;
+}
+
+.group {
+  display: inline-flex;
+  gap: 1px;
+}
+
+.iconButton,
+.textButton {
+  display: inline-grid;
+  place-items: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ed-text-2);
+  transition: background 0.1s, color 0.1s;
+}
+
+.textButton {
+  display: inline-flex;
+  gap: 4px;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.iconButton:hover:not(:disabled),
+.textButton:hover:not(:disabled) {
+  background: var(--ed-hover);
+  color: var(--ed-text);
+}
+
+/* 켜진 상태: 사용자 색으로 표시 */
+.iconButton[aria-pressed='true'],
+.iconButton[aria-expanded='true'],
+.textButton[aria-expanded='true'] {
+  background: var(--user-tint);
+  color: var(--user-color);
+}
+
+.iconButton[data-danger='true']:hover:not(:disabled) {
+  background: var(--ed-danger-tint);
+  color: var(--ed-danger);
+}
+
+.iconButton:disabled,
+.textButton:disabled,
+.select:disabled {
+  color: var(--ed-text-4);
+  cursor: not-allowed;
+}
+
+.glyph {
+  font-size: 13.5px;
+  line-height: 1;
+}
+
+.select {
+  height: 28px;
+  padding: 0 4px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ed-text);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.select:hover:not(:disabled) {
+  background: var(--ed-hover);
+}
+
+.colorAnchor {
+  position: relative;
+  display: inline-flex;
+}
+
+.colorChip {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* 펼침 창 (색상 · 편집 카드 · ⋯ 메뉴) */
+.colorPop,
+.card,
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  z-index: 31;
+  padding: 10px;
+  border: 1px solid var(--ed-border);
+  border-radius: 10px;
+  background: var(--ed-surface);
+  box-shadow: var(--ed-shadow-l);
+  animation: pop 0.1s ease-out;
+}
+
+.colorPop {
+  left: 0;
+  top: calc(100% + 10px);
+  width: 236px;
+}
+
+.card {
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 300px;
+}
+
+.menu {
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 200px;
+  padding: 4px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ed-text);
+  font-size: 12.5px;
+  text-align: left;
+}
+
+.menuItem:hover:not(:disabled) {
+  background: var(--ed-hover);
+}
+
+.menuItem:disabled {
+  color: var(--ed-text-4);
+}
+
+.devBox {
+  margin-top: 4px;
+  padding: 8px 6px 4px;
+  border-top: 1px solid var(--ed-border);
+}
+
+.devIds {
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ed-text-3);
+}
+
+.devGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- 오른쪽 클릭 메뉴 ---------- */
+.contextMenu {
+  position: fixed;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 200px;
+  padding: 4px;
+  border: 1px solid var(--ed-border);
+  border-radius: 10px;
+  background: var(--ed-surface);
+  box-shadow: var(--ed-shadow-l);
+  font-family: var(--font-sans);
+  animation: pop 0.08s ease-out;
+}
+
+.menuSep {
+  height: 1px;
+  margin: 3px 4px;
+  background: var(--ed-border);
+}
+
+.menuLabel {
+  flex: 1;
+}
+
+.menuKey {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ed-text-3);
+}
+
+.menuItem[data-danger='true'] {
+  color: var(--ed-danger);
+}
+
+.menuItem[data-danger='true']:hover:not(:disabled) {
+  background: var(--ed-danger-tint);
+}
+
+.count {
+  padding: 0 8px 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ed-text);
+}

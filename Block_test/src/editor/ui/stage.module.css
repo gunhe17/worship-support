@@ -1,0 +1,873 @@
+.frame {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+}
+
+.stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px 36px 88px;
+  background-color: var(--ed-canvas);
+  background-image: radial-gradient(var(--ed-canvas-dot) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.stage[data-gesture='move'] {
+  cursor: move;
+}
+
+.pageMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin: 0 auto 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ed-text-2);
+}
+
+.metaDim {
+  font-weight: 400;
+  color: var(--ed-text-3);
+}
+
+.pageWrap {
+  position: relative;
+  margin: 0 auto;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: var(--ed-page-shadow);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.emptyPage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--ed-text-3);
+  pointer-events: none;
+}
+
+.emptyPage strong {
+  color: var(--ed-text-2);
+  font-size: 15px;
+}
+
+/* ---------- elements ---------- */
+.element {
+  position: absolute;
+  cursor: default;
+}
+
+.element[data-selected='true'] {
+  cursor: move;
+}
+
+.text,
+.title {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+  font-family: var(--font-sans);
+}
+
+.text {
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+.title {
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.editing {
+  outline: none;
+  cursor: text;
+  overflow: visible;
+  caret-color: var(--user-color);
+}
+
+.editing[data-empty='true']::before {
+  content: attr(data-placeholder);
+  color: #b9b5ae;
+  pointer-events: none;
+  /* 커서가 안내 문구 앞(맨 처음)에 오도록 겹쳐 그린다. 좌우를 채워 정렬도 따른다 */
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.editing::selection {
+  background: color-mix(in srgb, var(--user-color) 22%, transparent);
+}
+
+.placeholder {
+  color: #b9b5ae;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.caption {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  max-width: calc(100% - 16px);
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(20, 20, 20, 0.55);
+  color: #fff;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  backdrop-filter: blur(4px);
+}
+
+.imageEmpty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 6px;
+  border: 1.5px dashed #d4d0c9;
+  background:
+    linear-gradient(45deg, #f6f5f2 25%, transparent 25%, transparent 75%, #f6f5f2 75%),
+    linear-gradient(45deg, #f6f5f2 25%, #fbfaf8 25%, #fbfaf8 75%, #f6f5f2 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  color: var(--ed-text-3);
+  font-size: 12.5px;
+}
+
+.imageEmpty small {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ed-text-4);
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e7e4df;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.cardTitle {
+  font-weight: 650;
+  font-size: 14px;
+  color: #1c1b19;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardMeta {
+  font-size: 12px;
+  color: #8d8983;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardAction {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #f4f3f0;
+  color: #57544f;
+  flex: none;
+}
+
+.fileBadge {
+  display: grid;
+  place-items: end center;
+  width: 38px;
+  height: 46px;
+  padding-bottom: 6px;
+  border-radius: 6px 12px 6px 6px;
+  background: #e8edf5;
+  color: #3b5b8c;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  flex: none;
+}
+
+.fileBadge[data-ext='PDF'] {
+  background: #fbe5e3;
+  color: #c2402f;
+}
+
+.fileBadge[data-ext='ZIP'] {
+  background: #f6eedb;
+  color: #9a6b0c;
+}
+
+.linkFavicon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1c1b19, #4a4740);
+  color: #fff;
+  font-weight: 750;
+  font-size: 16px;
+  flex: none;
+}
+
+.songArt {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f0a35e, #d9506a 55%, #7b4bc4);
+  color: #fff;
+  flex: none;
+}
+
+.keyBadge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #f4f3f0;
+  color: #57544f;
+  flex: none;
+}
+
+.list {
+  margin: 0;
+  padding: 2px 0 0 22px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #2a2926;
+}
+
+.list li::marker {
+  color: #a39f97;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  color: #2a2926;
+  border: 1px solid #e7e4df;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #efede9;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1px;
+}
+
+.table th {
+  background: #f8f7f5;
+  font-weight: 650;
+  font-size: 12px;
+  color: #57544f;
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table td + td,
+.table th + th {
+  border-left: 1px solid #efede9;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(120, 140, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 75% 70%, rgba(255, 120, 150, 0.28), transparent 50%),
+    #16161a;
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #16161a;
+  padding-left: 3px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.videoBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 12px 9px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  color: #fff;
+  font-size: 12px;
+}
+
+.videoTitle {
+  font-weight: 600;
+}
+
+.videoTime {
+  font-family: var(--font-mono);
+  opacity: 0.8;
+}
+
+.videoHint {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.embed {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e7e4df;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.embedBar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 10px;
+  background: #f6f5f2;
+  border-bottom: 1px solid #ecebe7;
+  font-size: 11px;
+  color: #8d8983;
+}
+
+.embedBar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dcd9d3;
+}
+
+.embedBar span {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+}
+
+.embedBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #8d8983;
+  font-size: 12px;
+  background: repeating-linear-gradient(-45deg, #fff, #fff 10px, #fbfaf8 10px, #fbfaf8 20px);
+}
+
+.embedBody strong {
+  color: #2a2926;
+  font-size: 14px;
+}
+
+/* ---------- overlays (화면 크기 고정: --inv = 1/zoom) ---------- */
+.selection,
+.hover,
+.remoteSelection {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.hover {
+  outline: calc(1px * var(--inv)) solid color-mix(in srgb, var(--user-color) 55%, transparent);
+}
+
+.selection {
+  outline: calc(1.5px * var(--inv)) solid var(--user-color);
+}
+
+.selection[data-editing='true'] {
+  outline-style: solid;
+  outline-offset: calc(3px * var(--inv));
+}
+
+.handle {
+  position: absolute;
+  width: calc(9px * var(--inv));
+  height: calc(9px * var(--inv));
+  border: calc(1.5px * var(--inv)) solid var(--user-color);
+  border-radius: calc(2px * var(--inv));
+  background: #fff;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  box-shadow: 0 0 0 calc(0.5px * var(--inv)) rgba(0, 0, 0, 0.05);
+}
+
+.handle[data-dir='nw'] { left: 0; top: 0; cursor: nwse-resize; }
+.handle[data-dir='n'] { left: 50%; top: 0; cursor: ns-resize; }
+.handle[data-dir='ne'] { left: 100%; top: 0; cursor: nesw-resize; }
+.handle[data-dir='e'] { left: 100%; top: 50%; cursor: ew-resize; }
+.handle[data-dir='se'] { left: 100%; top: 100%; cursor: nwse-resize; }
+.handle[data-dir='s'] { left: 50%; top: 100%; cursor: ns-resize; }
+.handle[data-dir='sw'] { left: 0; top: 100%; cursor: nesw-resize; }
+.handle[data-dir='w'] { left: 0; top: 50%; cursor: ew-resize; }
+
+.handle[data-dir='n'],
+.handle[data-dir='s'] {
+  width: calc(14px * var(--inv));
+  height: calc(6px * var(--inv));
+}
+
+.handle[data-dir='e'],
+.handle[data-dir='w'] {
+  width: calc(6px * var(--inv));
+  height: calc(14px * var(--inv));
+}
+
+.sizeBadge {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, calc(10px * var(--inv)));
+  padding: calc(2px * var(--inv)) calc(7px * var(--inv));
+  border-radius: calc(5px * var(--inv));
+  background: var(--user-color);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: calc(10.5px * var(--inv));
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.remoteSelection {
+  outline: calc(1.5px * var(--inv)) solid var(--user-color);
+  outline-offset: calc(2px * var(--inv));
+}
+
+/* 요소 하나의 이름표 묶음 (편집 중인 사람 + 선택만 한 사람) */
+.remoteTags {
+  position: absolute;
+  left: calc(-3.5px * var(--inv));
+  bottom: 100%;
+  transform: translateY(calc(-4px * var(--inv)));
+  display: flex;
+  align-items: flex-end;
+  gap: calc(3px * var(--inv));
+}
+
+.remoteTag[data-minor='true'] {
+  opacity: 0.85;
+  font-weight: 500;
+  font-size: calc(9.5px * var(--inv));
+}
+
+.remoteTag {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(2px * var(--inv));
+  padding: calc(1px * var(--inv)) calc(6px * var(--inv));
+  border-radius: calc(4px * var(--inv)) calc(4px * var(--inv)) calc(4px * var(--inv)) 0;
+  background: var(--user-color);
+  color: #fff;
+  font-size: calc(10.5px * var(--inv));
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.guideX,
+.guideY {
+  position: absolute;
+  z-index: 10001;
+  pointer-events: none;
+  background: #f0447a;
+}
+
+.guideX {
+  top: 0;
+  bottom: 0;
+  width: calc(1px * var(--inv));
+}
+
+.guideY {
+  left: 0;
+  right: 0;
+  height: calc(1px * var(--inv));
+}
+
+.cursor {
+  position: absolute;
+  z-index: 10002;
+  pointer-events: none;
+  transition: left 0.08s linear, top 0.08s linear;
+}
+
+.cursorArrow {
+  display: block;
+  width: calc(18px * var(--inv));
+  height: calc(18px * var(--inv));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+}
+
+.cursorName {
+  position: absolute;
+  left: calc(14px * var(--inv));
+  top: calc(16px * var(--inv));
+  padding: calc(1px * var(--inv)) calc(6px * var(--inv));
+  border-radius: calc(5px * var(--inv));
+  background: var(--user-color);
+  color: #fff;
+  font-size: calc(10.5px * var(--inv));
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- zoom ---------- */
+.zoomBar {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--ed-surface);
+  border: 1px solid var(--ed-border);
+  box-shadow: var(--ed-shadow);
+  z-index: 5;
+}
+
+.zoomBar button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 26px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ed-text-2);
+}
+
+.zoomBar button:hover,
+.zoomBar button[data-active='true'] {
+  background: var(--ed-hover);
+  color: var(--ed-text);
+}
+
+.zoomValue {
+  min-width: 42px;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.zoomDivider {
+  width: 1px;
+  height: 16px;
+  background: var(--ed-border);
+  margin: 0 2px;
+}
+
+/* ---------- 캔버스 표 (셀 직접 편집, 행·열 추가) ---------- */
+.tableWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 테두리는 outline(안쪽)으로 그려 표 영역 = 행 수 × 행 높이를 유지한다 */
+.tableFrame {
+  width: 100%;
+  height: 100%;
+  outline: 1px solid #e7e4df;
+  outline-offset: -1px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.tableGrid {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  color: #2a2926;
+}
+
+.tableGrid th,
+.tableGrid td {
+  position: relative;
+  padding: 0 10px;
+  border-bottom: 1px solid #efede9;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tableGrid th {
+  background: #f8f7f5;
+  font-weight: 650;
+  font-size: 12px;
+  color: #57544f;
+}
+
+.tableGrid tr:last-child td,
+.tableGrid tr:last-child th {
+  border-bottom: 0;
+}
+
+.tableGrid td + td,
+.tableGrid th + th {
+  border-left: 1px solid #efede9;
+}
+
+.element[data-selected='true'] .tableGrid th,
+.element[data-selected='true'] .tableGrid td {
+  cursor: text;
+}
+
+.tableGrid [data-active] {
+  box-shadow: inset 0 0 0 2px var(--user-color);
+  background: #fff;
+}
+
+.cellInput {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+}
+
+/* 셀 강조(셀 테두리)가 이미 있으므로 입력창 자체의 포커스 테두리는 그리지 않는다 → 네모 하나 */
+.cellInput:focus,
+.cellInput:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.cellPlaceholder {
+  color: #b9b5ae;
+  font-weight: 500;
+}
+
+/* 노션처럼: 마우스를 올리면 오른쪽(열)·아래쪽(행) 가장자리에 + 막대 */
+.tableAddColumn,
+.tableAddRow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: calc(5px * var(--inv));
+  background: #f1efec;
+  color: #8a867f;
+  cursor: pointer;
+  /* 마우스를 올리기 전에는 보이지 않는다 (노션처럼) */
+  opacity: 0;
+  transition: opacity 120ms ease-out;
+}
+
+.tableAddColumn:hover,
+.tableAddRow:hover,
+.tableAddColumn:focus-visible,
+.tableAddRow:focus-visible {
+  opacity: 1;
+}
+
+.tableAddColumn {
+  top: 0;
+  left: 100%;
+  margin-left: calc(4px * var(--inv));
+  width: calc(16px * var(--inv));
+  height: 100%;
+}
+
+.tableAddRow {
+  top: 100%;
+  left: 0;
+  margin-top: calc(4px * var(--inv));
+  width: 100%;
+  height: calc(16px * var(--inv));
+}
+
+.tableAddColumn:hover:not(:disabled),
+.tableAddRow:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--user-color) 16%, #fff);
+  color: var(--user-color);
+}
+
+.tableAddColumn:disabled,
+.tableAddRow:disabled {
+  cursor: not-allowed;
+  color: #c9c5be;
+}
+
+/* 막대와 표 사이 틈에서도 hover가 끊기지 않도록 */
+.tableAddColumn::before,
+.tableAddRow::before {
+  content: '';
+  position: absolute;
+}
+.tableAddColumn::before {
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  width: calc(4px * var(--inv));
+}
+.tableAddRow::before {
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: calc(4px * var(--inv));
+}
+
+
+/* ---------- 목록 항목 편집 (캔버스) ---------- */
+.element[data-selected='true'] .list li {
+  cursor: text;
+}
+
+.itemInput {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+  caret-color: var(--user-color);
+}
+
+.itemInput:focus,
+.itemInput:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.itemInput::placeholder {
+  color: #b9b5ae;
+}
+
+/* ---------- 다중 선택 · 드래그 영역 선택 ---------- */
+.selection[data-multi='true'] {
+  pointer-events: none;
+}
+
+.marquee {
+  position: absolute;
+  z-index: 9998;
+  border: calc(1px * var(--inv)) solid var(--user-color);
+  background: color-mix(in srgb, var(--user-color) 10%, transparent);
+  pointer-events: none;
+}
+
+/* 캔버스에서는 요소 단위로만 선택한다: 끌기·영역 선택 중 글자가 선택되지 않게 한다 (입력 중인 칸만 예외) */
+.page {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.editing,
+.cellInput,
+.itemInput {
+  -webkit-user-select: text;
+  user-select: text;
+}
