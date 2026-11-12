@@ -9,11 +9,10 @@ services:
     volumes:
       # bind
       - ..:/app
-      - ~/.claude.json:/root/.claude.json # share account/config (auth token is NOT here — login once inside)
+      - ~/.claude.json:/root/.claude.json
       # volume
       - claude-config:/root/.claude
       - vscode-server:/root/.vscode-server
-      - gradle_cache:/root/.gradle
     command: sleep infinity
     env_file:
       - ../.env/.env.develop
@@ -23,22 +22,30 @@ services:
     build:
       context: ..
       dockerfile: .docker/Dockerfile.develop.api
-    # gradle writes build/ into the bind mount — not :ro
+    command: python -m worship_support.api.bin.server
     volumes:
-      - ..:/app
-      - gradle_cache:/root/.gradle
+      - ..:/app:ro
     ports:
-      - "${DEVELOP_API_PORT}:${DEVELOP_API_CONTAINER_PORT}"
-    environment:
-      - SERVER_PORT=${DEVELOP_API_CONTAINER_PORT}
-      - SPRING_DATASOURCE_URL=jdbc:mysql://${DEVELOP_MYSQL_HOST}:${DEVELOP_MYSQL_CONTAINER_PORT}/${DEVELOP_MYSQL_DATABASE}
-      - SPRING_DATASOURCE_USERNAME=${DEVELOP_MYSQL_USER}
-      - SPRING_DATASOURCE_PASSWORD=${DEVELOP_MYSQL_PASSWORD}
+      - "127.0.0.1:${DEVELOP_API_PORT}:${DEVELOP_API_CONTAINER_PORT}"
     depends_on:
       - database
       - database-test
     env_file:
       - ../.env/.env.develop
+
+  worker:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.develop.api
+    command: python -m worship_support.api.bin.worker
+    volumes:
+      - ..:/app:ro
+    depends_on:
+      - database
+    env_file:
+      - ../.env/.env.develop
+    deploy:
+      replicas: ${DEVELOP_WORKER_REPLICAS}
 
   uwi:
     container_name: worship-support-develop-uwi
@@ -48,8 +55,11 @@ services:
     volumes:
       # bind
       - ..:/app
-      # volume — keep linux node_modules out of the host tree
+      # volume
       - uwi_node_modules:/app/worship_support/uwi/node_modules
+      - uwi_next:/app/worship_support/uwi/.next
+    environment:
+      - API_URL=http://api:${DEVELOP_API_CONTAINER_PORT}
     ports:
       - "${DEVELOP_UWI_PORT}:${DEVELOP_UWI_CONTAINER_PORT}"
     depends_on:
@@ -59,34 +69,32 @@ services:
 
   database:
     container_name: worship-support-develop-database
-    image: mysql:8.4
+    image: postgres:16-alpine
     environment:
-      - MYSQL_ROOT_PASSWORD=${DEVELOP_MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${DEVELOP_MYSQL_USER}
-      - MYSQL_PASSWORD=${DEVELOP_MYSQL_PASSWORD}
-      - MYSQL_DATABASE=${DEVELOP_MYSQL_DATABASE}
+      - POSTGRES_USER=${DEVELOP_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DEVELOP_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DEVELOP_POSTGRES_DB}
     ports:
-      - "127.0.0.1:${DEVELOP_MYSQL_PORT}:${DEVELOP_MYSQL_CONTAINER_PORT}"
+      - "127.0.0.1:${DEVELOP_POSTGRES_PORT}:${DEVELOP_POSTGRES_CONTAINER_PORT}"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
 
   database-test:
     container_name: worship-support-develop-database-test
-    image: mysql:8.4
+    image: postgres:16-alpine
     environment:
-      - MYSQL_ROOT_PASSWORD=${TEST_MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${TEST_MYSQL_USER}
-      - MYSQL_PASSWORD=${TEST_MYSQL_PASSWORD}
-      - MYSQL_DATABASE=${TEST_MYSQL_DATABASE}
+      - POSTGRES_USER=${TEST_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${TEST_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${TEST_POSTGRES_DB}
     ports:
-      - "127.0.0.1:${TEST_MYSQL_PORT}:${TEST_MYSQL_CONTAINER_PORT}"
+      - "127.0.0.1:${TEST_POSTGRES_PORT}:${TEST_POSTGRES_CONTAINER_PORT}"
     volumes:
-      - mysql_test_data:/var/lib/mysql
+      - postgres_test_data:/var/lib/postgresql/data
 
 volumes:
-  mysql_data:
-  mysql_test_data:
-  gradle_cache:
+  postgres_data:
+  postgres_test_data:
   uwi_node_modules:
+  uwi_next:
   claude-config:
   vscode-server:

@@ -1,15 +1,20 @@
-FROM eclipse-temurin:21-jdk AS build
+FROM python:3.13-slim
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 WORKDIR /app
 
-COPY worship_support/api ./
+RUN \
+    apt-get update && \
+    apt-get install -y --no-install-recommends build-essential && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN ./gradlew bootJar --no-daemon
+COPY pyproject.toml ./
 
-FROM eclipse-temurin:21-jre
+RUN uv pip compile pyproject.toml --extra app -o /tmp/reqs.txt && \
+    uv pip install --system -r /tmp/reqs.txt && \
+    rm /tmp/reqs.txt
 
-WORKDIR /app
+COPY worship_support ./worship_support
 
-COPY --from=build /app/build/libs/*.jar app.jar
-
-CMD ["java", "-jar", "app.jar"]
+CMD ["python", "-m", "worship_support.api.bin.server"]

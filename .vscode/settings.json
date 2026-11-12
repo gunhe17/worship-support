@@ -8,7 +8,6 @@
     "**/.mypy_cache": true,
     "**/.ruff_cache": true,
     "**/.coverage": true,
-    "**/.gradle": true,
     "**/node_modules": true
   },
 }

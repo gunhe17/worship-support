@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+
+  /* color */
+  --color-page: #ffffff;
+  --color-surface: #f4f5f7;
+  --color-band: #f2f3f5;
+  --color-line: #e3e3e3;
+  --color-ink: #111111;
+  --color-sub: #6b6b6b;
+  --color-faint: #8a8a8a;
+  --color-primary: #326cf5;
+  --color-primary-text: #2b5cdd;
+  --color-tint: #ecf2fe;
+  --color-danger: #d7262b;
+  --color-scrim: rgb(17 17 17 / 0.4);
+  --color-disabled: #eceef1;
+  --color-failed: #6b6b6b;
+  --color-toast: #111111;
+  --color-person-0-bg: #dceeeb;
+  --color-person-0-fg: #86b5ae;
+  --color-person-1-bg: #dfe8f4;
+  --color-person-1-fg: #8ba6ca;
+  --color-person-2-bg: #efeff1;
+  --color-person-2-fg: #8e95a3;
+
+  /* type */
+  --text-home-title: 26px;
+  --text-greeting: 24px;
+  --text-title: 21px;
+  --text-group: 17px;
+  --text-name: 16px;
+  --text-body: 15px;
+  --text-detail: 15px;
+  --text-head: 13px;
+  --text-badge: 12px;
+  --text-code: 30px;
+
+  /* radius */
+  --radius-space: 14px;
+  --radius-surface: 24px;
+  --radius-sheet: 28px;
+  --radius-popup: 20px;
+
+  /* size */
+  --spacing-gutter: 20px;
+  --spacing-row: 64px;
+  --spacing-icon: 48px;
+  --spacing-field: 44px;
+  --spacing-button-row: 36px;
+  --spacing-button: 44px;
+  --spacing-button-sheet: 52px;
+  --spacing-tab: 64px;
+  --spacing-profile: 64px;
+
+  /* motion */
+  --ease-spring: cubic-bezier(0.2, 0.9, 0.25, 1.05);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --duration-small: 180ms;
+  --duration-large: 260ms;
+  --duration-exit: 200ms;
+}
+
+html,
+body {
+  background: var(--color-band);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+button {
+  cursor: pointer;
+}
+
+.press:active {
+  opacity: 0.6;
+}
+
+@keyframes enter-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes enter-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes enter-rise {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes enter-toast {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes exit-fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes exit-pop {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.96); }
+}
+
+@keyframes exit-rise {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes shine {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@keyframes skeleton-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.enter-fade { animation: enter-fade var(--duration-small) var(--ease-spring) both; }
+.enter-pop { animation: enter-pop var(--duration-small) var(--ease-spring) both; }
+.enter-rise { animation: enter-rise var(--duration-large) var(--ease-spring) both; }
+.enter-toast { animation: enter-toast var(--duration-small) var(--ease-spring) both; }
+.exit-fade { animation: exit-fade var(--duration-exit) var(--ease-exit) both; }
+.exit-pop { animation: exit-pop var(--duration-exit) var(--ease-exit) both; }
+.exit-rise { animation: exit-rise var(--duration-exit) var(--ease-exit) both; }
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-surface) 25%, var(--color-band) 37%, var(--color-surface) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-in 1ms 150ms both, shine 1.4s ease infinite;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+}

@@ -6,11 +6,9 @@ __pycache__/
 # Virtualenv
 .venv/
 
-# Java / Node
-.gradle/
-build/
+# Node
 node_modules/
-dist/
+.next/
 
 # Env
 .env/.env.*

@@ -9,21 +9,31 @@ services:
     restart: unless-stopped
     ports:
       - "127.0.0.1:${PRODUCTION_API_PORT}:${PRODUCTION_API_CONTAINER_PORT}"
-    environment:
-      - SERVER_PORT=${PRODUCTION_API_CONTAINER_PORT}
-      - SPRING_DATASOURCE_URL=jdbc:mysql://${PRODUCTION_MYSQL_HOST}:${PRODUCTION_MYSQL_CONTAINER_PORT}/${PRODUCTION_MYSQL_DATABASE}
-      - SPRING_DATASOURCE_USERNAME=${PRODUCTION_MYSQL_USER}
-      - SPRING_DATASOURCE_PASSWORD=${PRODUCTION_MYSQL_PASSWORD}
     depends_on:
       - database
     env_file:
       - ../.env/.env.production
+
+  worker:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.production.api
+    command: python -m worship_support.api.bin.worker
+    restart: unless-stopped
+    depends_on:
+      - database
+    env_file:
+      - ../.env/.env.production
+    deploy:
+      replicas: ${PRODUCTION_WORKER_REPLICAS}
 
   uwi:
     container_name: worship-support-production-uwi
     build:
       context: ..
       dockerfile: .docker/Dockerfile.production.uwi
+      args:
+        - API_URL=http://api:${PRODUCTION_API_CONTAINER_PORT}
     restart: unless-stopped
     ports:
       - "127.0.0.1:${PRODUCTION_UWI_PORT}:${PRODUCTION_UWI_CONTAINER_PORT}"
@@ -32,17 +42,16 @@ services:
 
   database:
     container_name: worship-support-production-database
-    image: mysql:8.4
+    image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=${PRODUCTION_MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${PRODUCTION_MYSQL_USER}
-      - MYSQL_PASSWORD=${PRODUCTION_MYSQL_PASSWORD}
-      - MYSQL_DATABASE=${PRODUCTION_MYSQL_DATABASE}
+      - POSTGRES_USER=${PRODUCTION_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${PRODUCTION_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${PRODUCTION_POSTGRES_DB}
     ports:
-      - "127.0.0.1:${PRODUCTION_MYSQL_PORT}:${PRODUCTION_MYSQL_CONTAINER_PORT}"
+      - "127.0.0.1:${PRODUCTION_POSTGRES_PORT}:${PRODUCTION_POSTGRES_CONTAINER_PORT}"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  mysql_data:
+  postgres_data:
