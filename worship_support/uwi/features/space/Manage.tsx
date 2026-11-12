@@ -41,6 +41,7 @@ export default function Manage() {
   const [inviting, setInviting] = useState(false);
   const [pastOpen, setPastOpen] = useState(false);
   const [target, setTarget] = useState<Member | null>(null);
+  const [historyOpen, setHistoryOpen] = useState(false);
   const [confirm, setConfirm] = useState<Confirm | null>(null);
   const { data, error, loading, reload } = useLoad<Data>(async () => {
     const [space, members] = await Promise.all([api.workspace(id), api.members(id)]);
@@ -225,9 +226,21 @@ export default function Manage() {
                 }
               />
             ))}
+            {manager ? (
+              <div className="mt-6">
+                <ListRow onClick={() => setHistoryOpen(true)} leading={<Icon name="clock" />} title={<span className="font-normal">초대·변경 이력</span>} trailing={<Icon name="chevronRight" size={22} className="text-faint" />} />
+              </div>
+            ) : null}
           </div>
         ) : null}
       </div>
+
+      <Sheet open={historyOpen} onClose={() => setHistoryOpen(false)} title="초대·변경 이력" description={space?.name}>
+        {history(data).length === 0 ? <p className="py-4 text-body text-sub">아직 이력이 없어요</p> : null}
+        {history(data).map((item, index) => (
+          <ListRow key={index} leading={<Avatar id={item.key} />} title={<span className="truncate">{item.who}</span>} subtitle={`${item.what} · ${day(item.at)}`} />
+        ))}
+      </Sheet>
 
       {data && manager ? (
         <InviteSheet
@@ -332,4 +345,18 @@ function MemberSheet({
       </div>
     </Sheet>
   );
+}
+
+function history(data: Data | null) {
+  if (!data) return [];
+  const items: Array<{ key: string; who: string; what: string; at: string }> = [];
+  for (const row of [...(data.invites?.sent ?? []), ...(data.invites?.past ?? [])]) {
+    const who = row.email ?? row.person?.name ?? "";
+    items.push({ key: row.person?.id ?? row.email ?? row.id, who, what: row.kind === "email" ? "이메일 초대 보냄" : "친구 초대 보냄", at: row.created_at });
+    if (row.state !== "pending") items.push({ key: row.person?.id ?? row.email ?? row.id, who, what: stateText[row.state], at: row.expires_at });
+  }
+  for (const member of data.members) {
+    if (member.joined_at) items.push({ key: member.user_id, who: member.person?.name ?? "", what: member.role === "MANAGER" ? "관리자" : "참여", at: member.joined_at });
+  }
+  return items.sort((a, b) => b.at.localeCompare(a.at));
 }

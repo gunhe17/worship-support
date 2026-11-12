@@ -40,6 +40,7 @@ export default function Notifications() {
   const { data, error, loading, reload, setData } = useLoad<Notices>(() => api.notifications());
   const [unread, setUnread] = useState<Set<string>>(new Set());
   const [busy, setBusy] = useState<string | null>(null);
+  const [restored, setRestored] = useState<Set<string>>(new Set());
   const [confirm, setConfirm] = useState<Confirm | null>(null);
   const marked = useRef(false);
 
@@ -148,6 +149,25 @@ export default function Notifications() {
                         </Button>
                       </div>
                     ) : null}
+                    {notice.kind === "MEMBER_RETURNED" && !restored.has(notice.id) ? (
+                      <div className="mt-3">
+                        <Button
+                          tone="line"
+                          size="row"
+                          busy={busy === notice.id}
+                          onClick={() =>
+                            act(notice, async () => {
+                              const result = await api.restoreMember(notice.target_id!);
+                              setRestored((current) => new Set(current).add(notice.id));
+                              toast(`이전 권한을 되살렸어요 (그룹 ${result.groups}개 · 문서 ${result.grants}개)`);
+                            })
+                          }
+                        >
+                          이전 권한 되살리기
+                        </Button>
+                      </div>
+                    ) : null}
+                    {restored.has(notice.id) ? <p className="mt-2 text-detail text-sub">이전 권한을 되살렸어요</p> : null}
                     {done ? <p className="mt-2 text-detail text-sub">{done}</p> : null}
                   </div>
                   {unread.has(notice.id) ? <span className="mt-2 size-2.5 shrink-0 rounded-full bg-primary" aria-label="안 읽음" /> : null}

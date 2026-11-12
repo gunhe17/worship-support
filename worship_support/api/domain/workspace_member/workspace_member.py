@@ -52,6 +52,9 @@ class WorkspaceMember(CoreEntity):
             "user_id": str(self.user_id),
             "role": self.role.to_str(),
             "status": self.status.to_str(),
+            "joined_at": (
+                self.created_at.isoformat() if self.created_at else None
+            ),
         }
 
     def to_model(self):
