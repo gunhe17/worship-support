@@ -28,7 +28,7 @@ ONLY = TEST + TRAIN + MORE
 PAR = dict(W=2480, word_gap=0.5, row_gap=0.1, chord_reach=4.0, lyric_first=8.0, lyric_reach=4.0, mark_reach=4.0, conf=0.3, title=4.0, start=3.5, learn_sure=0.7,
            tie=dict(w=1.8, h=(0.4, 1.6), fill=0.4, flat=0.4), frame=dict(small=4.0, min=1.0, fill=0.35, edge=0.85), dust=0.05, shape=12, patch=dict(span=(3.0, 12.0), size=48, epochs=30, folds=4), seg=dict(sym=0.7))
 CLS = {"chord": 1, "staff": 2, "lyric": 3, "ignore": 4}
-SECTION = re.compile(r"verse|chorus|bridge|intro|outro|interlude|ending|coda|fine|tag|pre-|key|rit\.|repeat|D\.\s?[SC]|copyright|©|rights|administered|permission|www\.|\.com|작곡|작사|편곡|(?<![a-z])arr(?![a-z])|transpose", re.I)
+SECTION = re.compile(r"verse|chorus|bridge|intro|outro|interlude|ending|coda|fine|tag|pre-|key|rit\.|repeat|D\.\s?[SC]|copyright|©|rights|administered|permission|www\.|\.com|adm\.|up\s?\(|작곡|작사|편곡|(?<![a-z])arr(?![a-z])|transpose", re.I)
 COPY = re.compile(r"©|@|copyright|admin|rights|ccli|www\.|\.com", re.I)          # one hit -> the whole row (OCR garbles the rest)
 SEGNO = re.compile(r"[%※§]+|D\.\s?S.*|Fi.?e", re.I)                        # fullmatch: segno / D.S. / Fine as OCR reads them (LOG 69)
 HANGUL = re.compile(r"[가-힣ㄱ-ㅎㅏ-ㅣ]")
@@ -304,6 +304,8 @@ def run(path):
             return k is not None and row["c0"] - last[k] <= max((PAR["lyric_first"] if last[k] == sb[k][3] else PAR["lyric_reach"]) * p, 2 * rh)
         # joined: OCR splits "Copyr" "ight" (streamofpraise)
         copy = bool(COPY.search("".join(w["text"] for w in words))) and sum(w["kind"] == "latin" for w in words) >= 2; pc = -1e9   # pc: right end of the last chord in the row
+        # a form line "A-A-B-A" (unknown): big letters joined by dashes, not chords
+        form = row["kind"] == "chord" and bool(re.search(r"[A-G]\s?[-–]\s?[A-G]\s?[-–]", "".join(w["text"] for w in words)))
         for w in words:
             b = (w["x0"], w["y0"], w["x1"], w["y1"]); hw = w["y1"] - w["y0"]; t_ = w["text"].strip(); k_ = w["kind"]
             kb, db = near(b, True); ka, _ = near(b, False)
@@ -312,7 +314,11 @@ def run(path):
                 c = ("ignore", -1); w["sure"] = bool(SECTION.search(t_) or SEGNO.fullmatch(t_))   # the classifier read D.S.Fie as a chord
             elif row["kind"] == "chord":
                 start = kb is not None and b[2] <= sb[kb][0] + PAR["start"] * p   # above the clef: measure number
+                nxt = words[words.index(w) + 1] if words.index(w) + 1 < len(words) else None
                 if start: c = ("ignore", -1)
+                elif form: c = ("ignore", -1); w["sure"] = True
+                # a volta number standing right before its chord ("1." B7, allnations, jeoneunju); "1.A" in one box stays a chord
+                elif re.fullmatch(r"[1-4][.,]?", t_) and nxt is not None and nxt["kind"] == "chord" and nxt["x0"] - b[2] < 1.5 * p: c = ("ignore", -1); w["sure"] = True
                 # tuplet: a 3 smaller than the chords, or a 3 read with its bracket ("3~", "37"); a B read as 3 is chord-high
                 elif re.fullmatch(r"[-~—_(\[]*3[-~—_)\]7]*", t_) and (hw < 0.8 * ch or b[2] - b[0] >= 2.5 * hw): c = notation(); w["sure"] = True
                 # a second verse set tight under the first (susanghanstreet): same-size glyph right under a syllable, often
@@ -328,14 +334,16 @@ def run(path):
                       or (k_ in ("mark", "other") and (re.match(r"[(\[]?[A-G]", t_) or hw >= 0.6 * ch))):
                     w["kind"] = "chord"; pc = b[2]; w["sure"] = k_ == "chord" and w["conf"] >= 0.9 and len(t_) >= 3   # bracketed chords read surely (markers_ju)
                     # by the row too: a word a pixel higher than its row mates is no further from the staff (brown-worship)
-                    c = ("chord", kb) if kb is not None and (db <= reach or kb == kb_ and db_ <= reach) else ("ignore", -1)
+                    c = ("chord", kb) if kb is not None and (db <= reach or kb == kb_ and db_ <= (1.25 if nc >= 3 else 1.0) * reach) else ("ignore", -1)   # a sure chord row reaches further (brown-worship 4.05p)
                 elif k_ in ("mark", "other", "dash", "num"): c = notation()                           # tuplet 3, rest read as 7
                 else: c = ("ignore", -1)
             elif row["kind"] == "lyric":
+                nxt_l = words[words.index(w) + 1] if words.index(w) + 1 < len(words) else None
                 start = ka is not None and b[2] <= sb[ka][0] + 2.5 * p          # verse / measure numbers at the line start
                 # a verse number ("1.", "2", its dot) ahead of the first syllable, wherever the line starts (indented lyrics)
                 verse = re.fullmatch(r"[0-9]{1,2}[.,]?|[.·•]", t_) and not any(HANGUL.search(u["text"]) for u in words[:words.index(w)])
-                if start or verse: c = ("ignore", -1)   # not sure: OCR reads a first syllable as 0 / 4 / 7 (version 54)
+                dot = nxt_l is not None and re.fullmatch(r"[.·•]", nxt_l["text"].strip()) and nxt_l["x0"] - b[2] < 0.5 * p
+                if start or verse: c = ("ignore", -1); w["sure"] = bool(verse and (re.search(r"[.,]$", t_) or dot or nxt_l is not None and HANGUL.search(nxt_l["text"]) and hw < 0.85 * (nxt_l["y1"] - nxt_l["y0"])))   # with its dot only: OCR reads a first syllable as 0 / 4 / 7
                 elif k_ in ("mark", "other") and ka is not None and b[1] - sb[ka][3] < 1.0 * p: c = notation()   # a note right under the staff (jrabbit)
                 elif lyric_ok(ka):
                     w["kind"] = "lyric"; c = ("lyric", ka); w["chain"] = ka
@@ -390,7 +398,7 @@ def run(path):
             b = q["box"]; mk = np.isin(lab[b[1]:b[3], b[0]:b[2]], q["ids"]); v = seg[b[1]:b[3], b[0]:b[2]][mk]
             if not v.size: continue
             sy, tx = float((v == 2).mean()), float((v == 1).mean()); q["seg"] = [round(tx, 2), round(sy, 2)]
-            if sy < PAR["seg"]["sym"] or sy < tx or q["cls"] == "staff": continue
+            if sy < PAR["seg"]["sym"] or sy < tx or q["cls"] == "staff" or q["sure"] and q["cls"] == "ignore": continue   # a segno stays ignored
             kv, dv = vdist(b); c = ("staff", kv) if kv is not None and dv <= PAR["mark_reach"] * p else ("ignore", -1)
             for i in q["ids"]: owner[i] = c
             q["cls"], q["set"] = c
