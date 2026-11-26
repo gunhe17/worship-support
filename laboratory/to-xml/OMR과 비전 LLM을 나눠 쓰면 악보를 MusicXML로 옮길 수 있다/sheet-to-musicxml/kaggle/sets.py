@@ -5,6 +5,7 @@
 # Text: the other components grouped into rows and words, each word read by EasyOCR (recognizer only, our own boxes, so
 # one-letter chords are read too, LOG 10); a chord row belongs to the staff below, lyric rows to the staff above.
 import glob, json, os, re, subprocess, sys, time
+os.environ["FLAGS_cudnn_deterministic"] = "True"                  # the symbol CNN gave 76 different word calls between runs (version 55)
 subprocess.run(f"{sys.executable} -m pip install -q paddlepaddle-gpu -i https://www.paddlepaddle.org.cn/packages/stable/cu126/ > /dev/null 2>&1", shell=True)
 # paddle-gpu brings its own NCCL, which breaks the preinstalled torch that paddleocr imports if present; torch is unused here
 subprocess.run(f"{sys.executable} -m pip uninstall -y -q torch torchvision torchaudio > /dev/null 2>&1", shell=True)
@@ -307,7 +308,8 @@ def run(path):
             b = (w["x0"], w["y0"], w["x1"], w["y1"]); hw = w["y1"] - w["y0"]; t_ = w["text"].strip(); k_ = w["kind"]
             kb, db = near(b, True); ka, _ = near(b, False)
             notation = lambda: (lambda kd: ("staff", kd[0]) if kd[0] is not None and kd[1] <= PAR["mark_reach"] * p else ("ignore", -1))(vdist(b))
-            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or SEGNO.fullmatch(t_) or copy or hw > PAR["title"] * p and k_ != "chord": c = ("ignore", -1)   # staggered chords on a small-p page (yerum)
+            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or SEGNO.fullmatch(t_) or copy or hw > PAR["title"] * p and k_ != "chord":
+                c = ("ignore", -1); w["sure"] = bool(SECTION.search(t_) or SEGNO.fullmatch(t_))   # the classifier read D.S.Fie as a chord
             elif row["kind"] == "chord":
                 start = kb is not None and b[2] <= sb[kb][0] + PAR["start"] * p   # above the clef: measure number
                 if start: c = ("ignore", -1)
@@ -333,7 +335,7 @@ def run(path):
                 start = ka is not None and b[2] <= sb[ka][0] + 2.5 * p          # verse / measure numbers at the line start
                 # a verse number ("1.", "2", its dot) ahead of the first syllable, wherever the line starts (indented lyrics)
                 verse = re.fullmatch(r"[0-9]{1,2}[.,]?|[.·•]", t_) and not any(HANGUL.search(u["text"]) for u in words[:words.index(w)])
-                if start or verse: c = ("ignore", -1)
+                if start or verse: c = ("ignore", -1)   # not sure: OCR reads a first syllable as 0 / 4 / 7 (version 54)
                 elif k_ in ("mark", "other") and ka is not None and b[1] - sb[ka][3] < 1.0 * p: c = notation()   # a note right under the staff (jrabbit)
                 elif lyric_ok(ka):
                     w["kind"] = "lyric"; c = ("lyric", ka); w["chain"] = ka
@@ -392,6 +394,17 @@ def run(path):
             kv, dv = vdist(b); c = ("staff", kv) if kv is not None and dv <= PAR["mark_reach"] * p else ("ignore", -1)
             for i in q["ids"]: owner[i] = c
             q["cls"], q["set"] = c
+    # a chord in a thin font breaks into pieces (the flat, a 7, the 1 of #11) that form rows of their own: a piece beside
+    # a chord, overlapping it in height and no taller, joins it (brown-worship, LOG 69)
+    chords = [q for q in tokens if q["cls"] == "chord"]
+    for q in tokens:
+        if q["cls"] not in ("ignore", "staff") or q["sure"] or (q.get("seg") or [0, 0])[1] >= PAR["seg"]["sym"]: continue
+        b = q["box"]
+        for u in chords:
+            v = u["box"]
+            if b[3] - b[1] <= v[3] - v[1] and b[1] < v[3] and v[1] < b[3] and max(b[0], v[0]) - min(b[2], v[2]) <= 0.6 * p:
+                for i in q["ids"]: owner[i] = ("chord", u["set"])
+                q["cls"], q["set"] = "chord", u["set"]; break
     # a short staff above every full one is a legend (markers_ju: the opening motif in a box): all of it ignored
     long_ = [s for s in sb if s[1] - s[0] >= 0.3 * max(s_[1] - s_[0] for s_ in sb)]
     mini = {k for k, s in enumerate(sb) if s[1] - s[0] < 0.3 * max(s_[1] - s_[0] for s_ in sb) and s[3] < min(s_[2] for s_ in long_)}
