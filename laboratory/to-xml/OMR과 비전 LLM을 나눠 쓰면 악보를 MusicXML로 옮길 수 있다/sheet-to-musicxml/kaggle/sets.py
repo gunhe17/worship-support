@@ -25,13 +25,18 @@ TEST = ["agapao_bedeuroui-gobaek_1", "allnations_modeun-neungryeokgwa-gwonse_1",
 TRAIN = ["bridge-impact_majimak-nare_1", "jesusdivine_hangaji_1", "seraphim_sesangeul-saneun-jihye_2", "kimyoungpyo_kkeutnaji-aneun-yebae_2", "kimsuji_chukbok-ui-tongno_1", "mideumuisaramdeul_ije-neun-sarang_1", "traditional_chansonghara-yeohowaui-jongdeura_1", "mattredman-levites_abeojiui-norae_1", "david-jonathan_deureora-junimui-eumseong_1", "lnmorris_na-eoneunal-kkumsogeul_1", "ccmhub-jeonseongjin_sonbbyeokchimyeo-chum-chwo_1", "kim-bokyu_adameun-malhagon-haji_1", "bogeumseongga_junimui-sup_1", "choi-u-gyu_naega-saraganeun-him_1", "holyimpact_eunhyeui-bicheuro_1", "ccmhub-jeonggeunyeong_duryeowo-malla_1", "gohyeongwon_modeun-ireum-wie-ttwieonan-ireum_1", "sim-jong-ho_gamsahameuro_1", "hongisaac_hananimui-segye_1", "jus_sipjaga_1", "philwickham-levites_ju-yesu-naui-san-somang_1", "leegilseung_gyeongbaehari-ju_1", "kimseokgyun_gasigwan_1", "yesumaeul_saranghaeyo-nae-abeoji_1", "billyfunk_give-thanks-and-praise_1", "tabernacle_blessed_1", "maggidawn_geuneun-uri-joereul_1", "leedojin_lords-love-for-me_1", "don-besig_i-mideum-deouk-gutsera_1", "a5_gohyeongwon_sesang-modeun-minjogi_1", "minhoki_naega-yeonyakhaedo_1", "leehyukjin_god-is-working_1", "mungyeongil_naega-eodum-sogeseo_1", "leeminseop_dangsineun-sarangbatgi_1", "youngsan-singers_naui-ane-geohara_1", "isaiah61_on-uju-jeone_2"]   # GT train set (LOG 60)
 MORE = ["gifted_o-juyeo-dangsin-ape_1", "unknown_jukke-gakkai_1", "jeoneunju_sonjapgo-hamkke-gase_1", "choi-deok-sin_naega-ne-ane-chakhan-il_1", "kimhansol_dasi-deurineun-gobaek_1", "carol_jeo-deulbakke_1", "choi-yong-deok_galili-maeul_1", "parkjongho_gido-deureusineun_1", "dreamfreedom_toward-you_1", "hillsong_still_1", "naviworship_da-deutgo-gyesin-naui-juninkke_1", "fia-worship_eoryeoun-il-danghal-ttae_1", "jeong-dong-su_naui-mideumeuro_1", "fia_sesange-nan-oechiri_1", "cheon-gwan-ung_you-are-special_1", "seaofhope_supper-in-the-wilderness_1", "campusworship_long-awaited_1", "kim-su-ji_miral_1", "song-myeong-hui-choi-deok-sin_na-gajin-jaemul_1", "choideoksin_bareul-ssitgisyeonne_1", "tony-hopkins_muhwagwa-namunnipi_1", "hiswill_sarangui-tongno_1", "son-kyungmin_immanuel_2", "brown-worship_ora-uriga_1", "jiyeong_sipjaga_1", "withgod_ju-malsseum-yeongwonhari_1", "davidruis_changjoui-abeoji_1", "feastcommunity_in-his-arms_1", "kathryn-kuhlman_nae-yeonghonui-guseju_1", "kangyeonhee_geujeo-saranghagi_1", "luvim_didnt-mind_1", "yeram-worship_honja-geotji-aneul-geoyeyo_1", "sonkyungmin_chungman_1", "joshua_geuneun-sarang_1", "kang-myeong-sik_gippeohara_1", "espinosa_hangsang-jinsilke_1"]   # GT labelled too (LOG 64); training on them lowered the test score, unused
 NEW = ["ana-paula-valadao_bososeo-junim_1", "hongisak_hananimui-segye_2", "hillsong-levites_areumdaun-ju-sarang_1", "mosielister_sonjaba-juso_1", "tommywalker_nae-ireum-asijyo_1", "ywam_holy-and-beautiful_1", "kilpatrick_guhara-modeun-yeolbang_1", "delirious-levites_ju-ape_1", "team-luke-worship_na-junimeul-moreunda-hayeodo_1", "elevation_trust-in-god_1", "grahamkendrick_kkaeeora_1", "hambuyoung_gil_1", "hillsong-joel-houston_nalmada_1", "kangchan_pour-again_3", "icheon_ireonara-juui-baekseong_1", "ywam-campus-worship_o-yesu_1", "israel-houghton_naneun-juui-chingu_1", "janchi_juui-soni_1", "song-jeong-mi_naui-gido_2", "joemackey_ipsurui-modeun-mal_1"]   # fresh holdout (LOG 71)
-ONLY = TEST + TRAIN + MORE + NEW
+HOLD1 = ["jworship_flowers-too_1", "umminyong_mariaui-norae_1", "agapao-worship_junim-gyeote-man-itgo-sipeoyo_1", "kidsmoa_urineun-bubunjeogeuro-algo_1", "ccmhub-kangseonghun_sarangi-ikkeureo-jibeuro_1", "leeeunsu_neoneun-nae-adeurira_1", "jongibaeyeohaeng_ja-useobwa_1", "bollback_goeroul-ttae_1", "parkseona_miga-6-8_1", "hmu_risen-hope_1", "voices_jigeum-i-sungan_1", "lenny-leblanc_junimgwa-gachi_1", "dykes_gwihasin-juui-ireum_1", "shinsanggeun_siloam_1", "juchanyang_naui-noraega-doesineun_1", "teamluke_goodness-of-god_2", "park-jong-ho_i-ttangeul-uriege_1", "j-us_maeil-maeil_1", "sohyang_maranata_1", "kim-seong-hye_eolmana-apeusyeonna_1"]   # holdout of round 1 (LOG 72)
+HOLD2 = ["kkumi-inneun-jayu_sowon_1", "parkjiyoung_geuriseudo-ui-gyejeol_1", "ccm-yeonga_najeun-jaui-hananim_1", "choiyongduk_heundeulliji-anneun-pyeonghwa_1", "leeseongjae_dangsineun-hananimui-saram_1", "tabernacle-david_gamsa-deurimnida_1", "robinmark_jigeumeun-elriya_1", "hanjaeho_nae-salmeul-kkaetteurimnida_1", "judahtribe_geuneun-yeohowa_1", "anointing_rejoice_1", "stg_gobaek_1", "yeram_never-let-go_1", "kimesther_modu-gippeohae_1", "kimdongkook_gijeok-ui-hananim_1", "kangsunghoon_only-the-lord_1", "gospel-trad_junim-sonjapgo-ireoseoseyo_1", "ccmhub-bubucheonjae_da-iyuga-inne_1", "nyeorinyang_gloria_1", "redeemer-praise_duryeowomalla_1", "mareujianneunsaem_jabez-prayer_1"]   # holdout of round 2 (LOG 72)
+HOLD3 = ["kimminsik_geu-nari-dojeokgachi_1", "yeojinhee_geuga-asinani_1", "newgeneration_jesus-generation_1", "jeonyounghun_ginagin-hanghae_2", "isaiah6tyone-jus-kardia_urineun-juui-gyohoe_2", "kimkyungran_meonjeo-saranghaesseoyo_1", "jusukil_sunjeonhan-maeum_1", "parksungmin_naega-sseureojin_1", "teamshiek_ts32_1", "leejongdae_gakkeum-eojjeom_1", "gippeumchanyang_good-shepherd_1", "kim-seok-gyun_chanyangi-eonjena_1", "kim-seong-jo_amudo-araju-ji-anado_1", "jeongjongwon_my-soul-praises-the-lord_1", "baekseungnam_geunare-uri_1", "hymn_ju-ui-chinjeolhan-pal_1", "welove_muneojim-gaundeseo_1", "somangui-bada_sipjagaui-jeondalja_1", "choimi_gonan-ui-gil_1", "haeun_seungni_1"]   # holdout of round 3 (LOG 73)
+ONLY = TEST + TRAIN + MORE + NEW + HOLD1 + HOLD2 + HOLD3
 PAR = dict(W=2480, word_gap=0.5, row_gap=0.1, chord_reach=4.0, lyric_first=8.0, lyric_reach=4.0, mark_reach=4.0, conf=0.3, title=4.0, start=3.5, learn_sure=0.7,
            tie=dict(w=1.8, h=(0.4, 1.6), fill=0.4, flat=0.4), frame=dict(small=4.0, min=1.0, fill=0.35, edge=0.85), dust=0.05, shape=12, patch=dict(span=(3.0, 12.0), size=48, epochs=30, folds=4), seg=dict(sym=0.7))
 CLS = {"chord": 1, "staff": 2, "lyric": 3, "ignore": 4}
 SECTION = re.compile(r"verse|chorus|bridge|intro|outro|interlude|ending|coda|fine|tag|pre-|key|rit\.|repeat|D\.\s?[SC]|copyright|©|rights|administered|permission|www\.|\.com|adm\.|up\s?\(|작곡|작사|편곡|(?<![a-z])arr(?![a-z])|transpose", re.I)
-COPY = re.compile(r"©|@|copyright|admin|rights|ccli|www\.|\.com", re.I)          # one hit -> the whole row (OCR garbles the rest)
-SEGNO = re.compile(r"[%※§]+|D\.\s?S.*|Fi.?e", re.I)                        # fullmatch: segno / D.S. / Fine as OCR reads them (LOG 69)
+COPY = re.compile(r"©|@|copyright|admin|rights|ccli|www\.|\.com(?![a-z])", re.I)          # one hit -> the whole row (OCR garbles the rest); "comes.comes." of a joined lyric row is no domain (robinmark)
+SEGNO = re.compile(r"[%※§①⊕]+|D\.\s?S.*|Fi.?e", re.I)                        # fullmatch: segno / D.S. / Fine as OCR reads them (LOG 69)
+TEMPO = re.compile(r"[=＝]\s?[0-9]{2,3}")                                       # fullmatch: the "= 69" after a tempo note
+NAV = re.compile(r"(D\.\s?)?[CS]\.\s?al\s?(Fine|Coda)|D\.\s?[CS]\.?|al\s?(Fine|Coda)|To\s?Coda", re.I)   # over the row: OCR splits "D.C. al Fine" into words
 HANGUL = re.compile(r"[가-힣ㄱ-ㅎㅏ-ㅣ]")
 CHORD = re.compile(r"[(\[]?[A-G][#b♯♭]?(?:maj|min|dim|aug|sus|add|m|M|[0-9]|[+\-°ø()])*(?:/[A-G][#b♯♭]?)?[)\]]?")
 
@@ -307,12 +312,16 @@ def run(path):
         copy = bool(COPY.search("".join(w["text"] for w in words))) and sum(w["kind"] == "latin" for w in words) >= 2; pc = -1e9   # pc: right end of the last chord in the row
         # a form line "A-A-B-A" (unknown): big letters joined by dashes, not chords
         form = row["kind"] == "chord" and bool(re.search(r"[A-G]\s?[-–]\s?[A-G]\s?[-–]", "".join(w["text"] for w in words)))
+        joined, at = "", []
+        for w in words: at.append(len(joined)); joined += w["text"].strip() + " "
+        nav = {j for m in NAV.finditer(joined) for j, a in enumerate(at) if m.start() <= a < m.end()}
         for w in words:
             b = (w["x0"], w["y0"], w["x1"], w["y1"]); hw = w["y1"] - w["y0"]; t_ = w["text"].strip(); k_ = w["kind"]
             kb, db = near(b, True); ka, _ = near(b, False)
             notation = lambda: (lambda kd: ("staff", kd[0]) if kd[0] is not None and kd[1] <= PAR["mark_reach"] * p else ("ignore", -1))(vdist(b))
-            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or SEGNO.fullmatch(t_) and row["kind"] != "lyric" or copy or hw > PAR["title"] * p and k_ != "chord":
-                c = ("ignore", -1); w["sure"] = bool(SECTION.search(t_) or SEGNO.fullmatch(t_) and row["kind"] != "lyric")   # in a lyric row "%" is a syllable OCR misread (LOG 71)   # the classifier read D.S.Fie as a chord
+            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or SEGNO.fullmatch(t_) and row["kind"] != "lyric" or TEMPO.fullmatch(t_) or words.index(w) in nav or copy or hw > PAR["title"] * p and k_ != "chord":
+                c = ("ignore", -1); w["sure"] = bool(SECTION.search(t_) or SEGNO.fullmatch(t_) and row["kind"] != "lyric" or TEMPO.fullmatch(t_) or words.index(w) in nav
+                                 or w["framed"] and re.fullmatch(r"[1-4][.,]?", t_))   # in a lyric row "%" is a syllable OCR misread (LOG 71)   # the classifier read D.S.Fie as a chord
             elif row["kind"] == "chord":
                 start = kb is not None and b[2] <= sb[kb][0] + PAR["start"] * p   # above the clef: measure number
                 nxt = words[words.index(w) + 1] if words.index(w) + 1 < len(words) else None
@@ -343,6 +352,8 @@ def run(path):
                 start = ka is not None and b[2] <= sb[ka][0] + 2.5 * p          # verse / measure numbers at the line start
                 # a verse number ("1.", "2", its dot) ahead of the first syllable, wherever the line starts (indented lyrics)
                 verse = re.fullmatch(r"[0-9]{1,2}[.,]?|[.·•]", t_) and not any(HANGUL.search(u["text"]) for u in words[:words.index(w)])
+                # mid-row: the second verse resumes after a volta ("2.또", robinmark), the dot read with the number
+                verse = verse or re.fullmatch(r"[1-9][.,]", t_) and nxt_l is not None and HANGUL.search(nxt_l["text"]) and nxt_l["x0"] - b[2] < 0.5 * p
                 dot = nxt_l is not None and re.fullmatch(r"[.·•]", nxt_l["text"].strip()) and nxt_l["x0"] - b[2] < 0.5 * p
                 if start or verse: c = ("ignore", -1); w["sure"] = bool(verse and (re.search(r"[.,]$", t_) or dot))   # with its dot only: OCR reads a first syllable as 0 / 4 / 7 (LOG 71)   # with its dot only: OCR reads a first syllable as 0 / 4 / 7
                 elif k_ in ("mark", "other") and ka is not None and b[1] - sb[ka][3] < 1.0 * p: c = notation()   # a note right under the staff (jrabbit)
@@ -523,7 +534,7 @@ def run(path):
     # the label, in the set the definition gives (chord -> staff below, lyric -> staff above); an s-box labelled L / C
     # (a glyph glued to a stem) passes when that class owns some of its ink
     fails, total = [], 0
-    for kind, x0, y0, x1, y1, want in (GT.get(stem, []) if stem in TEST + MORE + NEW else []):
+    for kind, x0, y0, x1, y1, want in (GT.get(stem, []) if stem in TEST + MORE + NEW + HOLD1 + HOLD2 + HOLD3 else []):
         sub = rest[y0:y1, x0:x1]; c_ = cls[y0:y1, x0:x1][sub]; s_ = sid[y0:y1, x0:x1][sub]
         if not c_.size or kind == "s" and want not in "LC": continue
         total += 1; cw = CLS[GTCLS[want]]
@@ -536,7 +547,7 @@ def run(path):
         if not ok: fails.append(dict(kind=kind, box=[x0, y0, x1, y1], want=want, got=[k for k, v in CLS.items() if v == got] or ["none"]))
     px = {c: int((cls == v).sum()) for c, v in CLS.items()}
     print(stem, "sets", len(sets), "rows", [r_["kind"][0] for r_ in rows], "px", px, "gt items", len(items), "tiles", len(tiles), "glue", [(q[3][0], q[5]) for q in glue], flush=True)
-    if stem in GT and stem in TEST + MORE + NEW: print(stem, "score", total - len(fails), "/", total, flush=True)
+    if stem in GT and stem in TEST + MORE + NEW + HOLD1 + HOLD2 + HOLD3: print(stem, "score", total - len(fails), "/", total, flush=True)
     return dict(p=p, sets=sets, tokens=tokens, rows=[dict(kind=r_["kind"], y=[int(r_["y0"]), int(r_["y1"])]) for r_ in rows], px=px,
                 gt=dict(tiles=tiles, items=items), score=dict(total=total, fails=fails))
 
@@ -572,7 +583,7 @@ for i, q in enumerate(todo, 1):
         import traceback; res[stem] = {"error": repr(e), "tb": traceback.format_exc()}; print(stem, "ERROR", e, flush=True)
     print(f"progress {i}/{len(todo)} {time.time() - t0:.0f}s", flush=True)    # _server/kaggle.py --watch
 # MORE: never trained on, a held-out check that a rule tuned on TEST generalises
-for name, group in (("selftest", TEST), ("heldout", MORE), ("new", NEW)):
+for name, group in (("selftest", TEST), ("heldout", MORE), ("new", NEW), ("hold1", HOLD1), ("hold2", HOLD2), ("hold3", HOLD3)):
     sc = [v["score"] for s_, v in res.items() if "score" in v and s_ in group]; fails = [f for q in sc for f in q["fails"]]
     kinds = {}
     for f_ in fails: kinds[f"{f_['want']}>{f_['got'][0]}"] = kinds.get(f"{f_['want']}>{f_['got'][0]}", 0) + 1
