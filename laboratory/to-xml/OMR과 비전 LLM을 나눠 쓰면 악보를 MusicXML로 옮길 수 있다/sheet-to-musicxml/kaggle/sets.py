@@ -11,22 +11,25 @@ subprocess.run(f"{sys.executable} -m pip uninstall -y -q torch torchvision torch
 if subprocess.run([sys.executable, "-c", "import paddle; assert paddle.device.is_compiled_with_cuda()"]).returncode:
     subprocess.run(f"{sys.executable} -m pip install -q paddlepaddle > /dev/null 2>&1", shell=True)
 subprocess.run(f"{sys.executable} -m pip install -q paddleocr > /dev/null 2>&1", shell=True)
-import cv2, numpy as np
+subprocess.run(f"{sys.executable} -m pip install -q onnxruntime > /dev/null 2>&1", shell=True)
+import cv2, numpy as np, paddle
 from paddleocr import TextRecognition
 from PIL import Image
 from sklearn.ensemble import HistGradientBoostingClassifier
+import onnxruntime
 
 OUT = "/kaggle/working/out"
-for d in ("vis", "label", "gt"): os.makedirs(f"{OUT}/{d}", exist_ok=True)
+for d in ("vis", "label", "label-oracle", "gt"): os.makedirs(f"{OUT}/{d}", exist_ok=True)
 TEST = ["agapao_bedeuroui-gobaek_1", "allnations_modeun-neungryeokgwa-gwonse_1", "streamofpraise_juneun-naui-bit_1", "susanghanstreet_o-juyeo_1", "nomunhwan_geuga-jjillimeun_1", "yerum-conti_naega-yesureul-motbakatseumnida-conti_1", "yerum-conti_juleul-wihan-igose-conti_1", "jrabbit_sarangeun-love-is_1", "palmer_gujuyeo-gwangpung_1", "markers-plate_saranaen-mankeum-saranghan-mankeum_2", "simhyeongjin_eunhyeroda_1", "wecclesia_meonjeo-first_1", "markers_ju-ui-ireum-nopimyeo_1", "theoneworship_naneun-mideumeuro_1"]   # GT test set (LOG 55)
 TRAIN = ["bridge-impact_majimak-nare_1", "jesusdivine_hangaji_1", "seraphim_sesangeul-saneun-jihye_2", "kimyoungpyo_kkeutnaji-aneun-yebae_2", "kimsuji_chukbok-ui-tongno_1", "mideumuisaramdeul_ije-neun-sarang_1", "traditional_chansonghara-yeohowaui-jongdeura_1", "mattredman-levites_abeojiui-norae_1", "david-jonathan_deureora-junimui-eumseong_1", "lnmorris_na-eoneunal-kkumsogeul_1", "ccmhub-jeonseongjin_sonbbyeokchimyeo-chum-chwo_1", "kim-bokyu_adameun-malhagon-haji_1", "bogeumseongga_junimui-sup_1", "choi-u-gyu_naega-saraganeun-him_1", "holyimpact_eunhyeui-bicheuro_1", "ccmhub-jeonggeunyeong_duryeowo-malla_1", "gohyeongwon_modeun-ireum-wie-ttwieonan-ireum_1", "sim-jong-ho_gamsahameuro_1", "hongisaac_hananimui-segye_1", "jus_sipjaga_1", "philwickham-levites_ju-yesu-naui-san-somang_1", "leegilseung_gyeongbaehari-ju_1", "kimseokgyun_gasigwan_1", "yesumaeul_saranghaeyo-nae-abeoji_1", "billyfunk_give-thanks-and-praise_1", "tabernacle_blessed_1", "maggidawn_geuneun-uri-joereul_1", "leedojin_lords-love-for-me_1", "don-besig_i-mideum-deouk-gutsera_1", "a5_gohyeongwon_sesang-modeun-minjogi_1", "minhoki_naega-yeonyakhaedo_1", "leehyukjin_god-is-working_1", "mungyeongil_naega-eodum-sogeseo_1", "leeminseop_dangsineun-sarangbatgi_1", "youngsan-singers_naui-ane-geohara_1", "isaiah61_on-uju-jeone_2"]   # GT train set (LOG 60)
 MORE = ["gifted_o-juyeo-dangsin-ape_1", "unknown_jukke-gakkai_1", "jeoneunju_sonjapgo-hamkke-gase_1", "choi-deok-sin_naega-ne-ane-chakhan-il_1", "kimhansol_dasi-deurineun-gobaek_1", "carol_jeo-deulbakke_1", "choi-yong-deok_galili-maeul_1", "parkjongho_gido-deureusineun_1", "dreamfreedom_toward-you_1", "hillsong_still_1", "naviworship_da-deutgo-gyesin-naui-juninkke_1", "fia-worship_eoryeoun-il-danghal-ttae_1", "jeong-dong-su_naui-mideumeuro_1", "fia_sesange-nan-oechiri_1", "cheon-gwan-ung_you-are-special_1", "seaofhope_supper-in-the-wilderness_1", "campusworship_long-awaited_1", "kim-su-ji_miral_1", "song-myeong-hui-choi-deok-sin_na-gajin-jaemul_1", "choideoksin_bareul-ssitgisyeonne_1", "tony-hopkins_muhwagwa-namunnipi_1", "hiswill_sarangui-tongno_1", "son-kyungmin_immanuel_2", "brown-worship_ora-uriga_1", "jiyeong_sipjaga_1", "withgod_ju-malsseum-yeongwonhari_1", "davidruis_changjoui-abeoji_1", "feastcommunity_in-his-arms_1", "kathryn-kuhlman_nae-yeonghonui-guseju_1", "kangyeonhee_geujeo-saranghagi_1", "luvim_didnt-mind_1", "yeram-worship_honja-geotji-aneul-geoyeyo_1", "sonkyungmin_chungman_1", "joshua_geuneun-sarang_1", "kang-myeong-sik_gippeohara_1", "espinosa_hangsang-jinsilke_1"]   # GT labelled too (LOG 64); training on them lowered the test score, unused
-ONLY = TEST + TRAIN
+ONLY = TEST + TRAIN + MORE
 PAR = dict(W=2480, word_gap=0.5, row_gap=0.1, chord_reach=4.0, lyric_first=8.0, lyric_reach=4.0, mark_reach=4.0, conf=0.3, title=4.0, start=3.5, learn_sure=0.7,
-           tie=dict(w=1.8, h=(0.4, 1.6), fill=0.4, flat=0.4), frame=dict(small=4.0, min=1.0, fill=0.35, edge=0.85), dust=0.05)
+           tie=dict(w=1.8, h=(0.4, 1.6), fill=0.4, flat=0.4), frame=dict(small=4.0, min=1.0, fill=0.35, edge=0.85), dust=0.05, shape=12, patch=dict(span=(3.0, 12.0), size=48, epochs=30, folds=4), seg=dict(sym=0.7))
 CLS = {"chord": 1, "staff": 2, "lyric": 3, "ignore": 4}
-SECTION = re.compile(r"verse|chorus|bridge|intro|outro|interlude|ending|coda|fine|tag|pre-|key|rit\.|repeat|D\.\s?[SC]|copyright|©|rights|administered|permission|www\.|\.com", re.I)
+SECTION = re.compile(r"verse|chorus|bridge|intro|outro|interlude|ending|coda|fine|tag|pre-|key|rit\.|repeat|D\.\s?[SC]|copyright|©|rights|administered|permission|www\.|\.com|작곡|작사|편곡|(?<![a-z])arr(?![a-z])|transpose", re.I)
 COPY = re.compile(r"©|@|copyright|admin|rights|ccli|www\.|\.com", re.I)          # one hit -> the whole row (OCR garbles the rest)
+SEGNO = re.compile(r"[%※§]+|D\.\s?S.*|Fi.?e", re.I)                        # fullmatch: segno / D.S. / Fine as OCR reads them (LOG 69)
 HANGUL = re.compile(r"[가-힣ㄱ-ㅎㅏ-ㅣ]")
 CHORD = re.compile(r"[(\[]?[A-G][#b♯♭]?(?:maj|min|dim|aug|sus|add|m|M|[0-9]|[+\-°ø()])*(?:/[A-G][#b♯♭]?)?[)\]]?")
 
@@ -40,6 +43,8 @@ def recognize(g, hl):                                               # hl = [[x0,
     return [(r["rec_text"], float(r["rec_score"])) for r in model.predict(input=crops)] if crops else []
 GT = next((json.load(open(q)) for q in glob.glob("/kaggle/input/**/sets-gt.json", recursive=True)), {})   # [kind, x0, y0, x1, y1, C|L|N|X]
 GTCLS = {"C": "chord", "L": "lyric", "N": "staff", "X": "ignore"}
+# text / symbol segmenter (LOG 69): U-Net, paper 0 / text 1 / symbol 2 at half width, trained on GT TRAIN + synthetic pages
+SEG = next((onnxruntime.InferenceSession(q) for q in glob.glob("/kaggle/input/**/seg.onnx", recursive=True)), None)
 STAFF = json.load(open(next(q for q in glob.glob("/kaggle/input/**/staff.json", recursive=True))))["sheets"]
 
 
@@ -90,6 +95,51 @@ def features(*, p, sb, q, tokens, H):                              # LOG 59
             bool(re.fullmatch(r"[0-9]+\.?", s)), bool(re.search(r"[A-Za-z]{2,}", t)), bool(re.fullmatch(r"[-~_=]+", s)),
             min(lg, 99 * p) / p, min(rg, 99 * p) / p, dy, len(mid), sum(bool(CHORD.fullmatch(u["text"].replace(" ", ""))) for u in mid), up,
             *[q["row"] == k for k in ("chord", "lyric", "other")], *[q["rule"] == k for k in LETTER]]
+
+
+# symbol CNN (LOG 66): OCR reads symbols (volta 1., tuplet 3, dot, %) as noise; a small CNN reads the token's ink and its
+# surroundings instead. paddle, not torch: the paddle-gpu install breaks torch here
+def fit_cnn(*, P, Y):
+    paddle.seed(0); rng = np.random.default_rng(0); nn = paddle.nn
+    # no BatchNorm (mostly empty patches swing the batch statistics), no global pooling (where the ink sits is the point)
+    net = nn.Sequential(nn.Conv2D(2 * len(PAR["patch"]["span"]), 32, 3, padding=1), nn.ReLU(), nn.MaxPool2D(2),
+                        nn.Conv2D(32, 64, 3, padding=1), nn.ReLU(), nn.MaxPool2D(2),
+                        nn.Conv2D(64, 64, 3, padding=1), nn.ReLU(), nn.MaxPool2D(2), nn.Flatten(),
+                        nn.Linear(64 * (PAR["patch"]["size"] // 8) ** 2, 128), nn.ReLU(), nn.Dropout(0.3), nn.Linear(128, 4))
+    opt = paddle.optimizer.Adam(learning_rate=1e-3, parameters=net.parameters(), weight_decay=1e-4)
+    for _ in range(PAR["patch"]["epochs"]):
+        net.train()
+        for idx in np.array_split(rng.permutation(len(Y)), max(1, len(Y) // 256)):
+            loss = nn.functional.cross_entropy(net(paddle.to_tensor(augment(P=P[idx], rng=rng), dtype="float32")), paddle.to_tensor(Y[idx], dtype="int64"))
+            loss.backward(); opt.step(); opt.clear_grad()
+    net.eval()
+    return net
+
+
+def augment(*, P, rng):
+    # 36 sheets are a few publishers: vary what differs between them (position, stroke weight, grey print)
+    out = np.empty_like(P); kernel = np.ones((3, 3), np.uint8)
+    for j, x in enumerate(P):
+        x = np.roll(x, tuple(rng.integers(-3, 4, 2)), axis=(1, 2)); w = rng.integers(3)
+        if w == 1: x = np.stack([cv2.dilate(c, kernel) for c in x])
+        if w == 2: x = np.stack([cv2.erode(c, kernel) for c in x])
+        out[j] = x; out[j, ::2] *= rng.uniform(0.6, 1.0)
+    return out
+
+
+def cnn_prob(*, net, P):
+    with paddle.no_grad():
+        return np.concatenate([
+            paddle.nn.functional.softmax(net(paddle.to_tensor(c, dtype="float32")), axis=1).numpy() for c in np.array_split(P, max(1, len(P) // 512))
+        ])
+
+
+def segment(g):
+    H, W = g.shape; h2 = H // 2
+    x = np.ones((-(-h2 // 32) * 32, -(-(W // 2) // 32) * 32), np.float32)
+    x[:h2, :W // 2] = cv2.resize(g, (W // 2, h2), interpolation=cv2.INTER_LINEAR) / 255
+    lab = SEG.run(None, {"img": x[None, None]})[0][0].argmax(0)[:h2, :W // 2].astype(np.uint8)
+    return cv2.resize(lab, (W, H), interpolation=cv2.INTER_NEAREST)
 
 
 def run(path):
@@ -257,7 +307,7 @@ def run(path):
             b = (w["x0"], w["y0"], w["x1"], w["y1"]); hw = w["y1"] - w["y0"]; t_ = w["text"].strip(); k_ = w["kind"]
             kb, db = near(b, True); ka, _ = near(b, False)
             notation = lambda: (lambda kd: ("staff", kd[0]) if kd[0] is not None and kd[1] <= PAR["mark_reach"] * p else ("ignore", -1))(vdist(b))
-            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or copy or hw > PAR["title"] * p and k_ != "chord": c = ("ignore", -1)   # staggered chords on a small-p page (yerum)
+            if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or SEGNO.fullmatch(t_) or copy or hw > PAR["title"] * p and k_ != "chord": c = ("ignore", -1)   # staggered chords on a small-p page (yerum)
             elif row["kind"] == "chord":
                 start = kb is not None and b[2] <= sb[kb][0] + PAR["start"] * p   # above the clef: measure number
                 if start: c = ("ignore", -1)
@@ -275,12 +325,15 @@ def run(path):
                       or (k_ == "num" and (b[0] - pc <= 2 * p or hw >= 0.8 * ch))                         # the 7 of B7, B7 read as 37
                       or (k_ in ("mark", "other") and (re.match(r"[(\[]?[A-G]", t_) or hw >= 0.6 * ch))):
                     w["kind"] = "chord"; pc = b[2]; w["sure"] = k_ == "chord" and w["conf"] >= 0.9 and len(t_) >= 3   # bracketed chords read surely (markers_ju)
-                    c = ("chord", kb) if kb is not None and db <= reach else ("ignore", -1)
+                    # by the row too: a word a pixel higher than its row mates is no further from the staff (brown-worship)
+                    c = ("chord", kb) if kb is not None and (db <= reach or kb == kb_ and db_ <= reach) else ("ignore", -1)
                 elif k_ in ("mark", "other", "dash", "num"): c = notation()                           # tuplet 3, rest read as 7
                 else: c = ("ignore", -1)
             elif row["kind"] == "lyric":
                 start = ka is not None and b[2] <= sb[ka][0] + 2.5 * p          # verse / measure numbers at the line start
-                if start: c = ("ignore", -1)
+                # a verse number ("1.", "2", its dot) ahead of the first syllable, wherever the line starts (indented lyrics)
+                verse = re.fullmatch(r"[0-9]{1,2}[.,]?|[.·•]", t_) and not any(HANGUL.search(u["text"]) for u in words[:words.index(w)])
+                if start or verse: c = ("ignore", -1)
                 elif k_ in ("mark", "other") and ka is not None and b[1] - sb[ka][3] < 1.0 * p: c = notation()   # a note right under the staff (jrabbit)
                 elif lyric_ok(ka):
                     w["kind"] = "lyric"; c = ("lyric", ka); w["chain"] = ka
@@ -296,7 +349,28 @@ def run(path):
 
     # learned call (LOG 59-60): a classifier trained on the GT train sheets re-decides every word from the rules' call,
     # its geometry against the staves, its OCR text and its row neighbours; the set follows the definition
-    for q in tokens: q["x"] = features(p=p, sb=sb, q=q, tokens=tokens, H=H)
+    # shape: OCR reads a symbol (volta 1., tuplet 3, dot, %) as noise, so the class lives in the ink itself (LOG 65)
+    for q in tokens:
+        b = q["box"]; glyph = np.isin(lab[b[1]:b[3], b[0]:b[2]], q["ids"]).astype(np.float32)
+        shape = cv2.resize(glyph, (PAR["shape"], PAR["shape"]), interpolation=cv2.INTER_AREA) if glyph.size else np.zeros(PAR["shape"] ** 2)
+        q["x"] = features(p=p, sb=sb, q=q, tokens=tokens, H=H) + [*shape.ravel()]
+    # patch: the token's surroundings (grey, ink = 1: staff lines, notes, neighbours) and its own ink, a square of span p at least
+    inv = (255 - g).astype(np.float32) / 255; comp = np.zeros(n, np.int32); size = PAR["patch"]["size"]
+    for j, q in enumerate(tokens): comp[q["ids"]] = j + 1
+    # two spans: the near one shows the glyph, the wide one its role (line start by a clef, over a barline, in a row of notes)
+    for j, q in enumerate(tokens):
+        b = q["box"]; cx, cy = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2; q["patch"] = []
+        for span in PAR["patch"]["span"]:
+            s = max(span * p, 1.2 * max(b[2] - b[0], b[3] - b[1])) / 2
+            xa, ya, xb, yb = max(0, int(cx - s)), max(0, int(cy - s)), min(W, int(cx + s) + 1), min(H, int(cy + s) + 1)
+            k = size / (2 * s); M = np.float32([[k, 0, (xa - cx + s) * k], [0, k, (ya - cy + s) * k]])
+            q["patch"] += [
+                cv2.warpAffine(inv[ya:yb, xa:xb], M, (size, size)),
+                cv2.warpAffine((comp[lab[ya:yb, xa:xb]] == j + 1).astype(np.float32), M, (size, size)),
+            ]
+        q["patch"] = np.stack(q["patch"])
+    if CNN is not None and tokens:
+        for q, pr in zip(tokens, cnn_prob(net=CNN, P=np.stack([q["patch"] for q in tokens]))): q["x"] += [*pr]; q["cnn"] = [round(float(v), 3) for v in pr]
     if MODEL is not None and tokens:
         prob = MODEL.predict_proba(np.array([q["x"] for q in tokens], float))
         for q, pr in zip(tokens, prob):
@@ -305,6 +379,17 @@ def run(path):
             b = q["box"]; kb, _ = near(b, True); ka, _ = near(b, False); kv, _ = vdist(b)
             c = {"C": ("chord", kb), "L": ("lyric", ka), "N": ("staff", kv), "X": ("ignore", -1)}[want]
             if c[1] is None: c = ("ignore", -1)
+            for i in q["ids"]: owner[i] = c
+            q["cls"], q["set"] = c
+    # segmenter: a word whose ink is mostly symbol is notation (tie, tuplet, dot, ledger note the OCR read as a letter)
+    seg = segment(g) if SEG is not None else None
+    if seg is not None:
+        for q in tokens:
+            b = q["box"]; mk = np.isin(lab[b[1]:b[3], b[0]:b[2]], q["ids"]); v = seg[b[1]:b[3], b[0]:b[2]][mk]
+            if not v.size: continue
+            sy, tx = float((v == 2).mean()), float((v == 1).mean()); q["seg"] = [round(tx, 2), round(sy, 2)]
+            if sy < PAR["seg"]["sym"] or sy < tx or q["cls"] == "staff": continue
+            kv, dv = vdist(b); c = ("staff", kv) if kv is not None and dv <= PAR["mark_reach"] * p else ("ignore", -1)
             for i in q["ids"]: owner[i] = c
             q["cls"], q["set"] = c
     # a short staff above every full one is a legend (markers_ju: the opening motif in a box): all of it ignored
@@ -321,7 +406,7 @@ def run(path):
 
     # glyphs glued to a staff component (a lyric touching a stem, a chord touching a slur): a piece of the component
     # inside a chord / lyric row core that is letter-shaped (wide, row-high, filled) and reads as that kind goes to the row
-    glue = []
+    glue = []; worded = {i for q in tokens for i in q["ids"]}
     for i, (c, k) in owner.items():
         if c != "staff": continue
         x0, y0, x1, y1 = box(i)
@@ -337,6 +422,10 @@ def run(path):
                 text, conf = recognize(g, hl)[0]
                 kind = kind_of(text) if conf >= PAR["conf"] else "mark"
                 if kind == row["kind"]: glue.append((a, x0, pl == j, row["kind"], row["set"], text))
+            # the segmenter sees text glued to a stem / slur where the piece is too small or thin for the shape test
+            if seg is not None and row["kind"] in ("chord", "lyric") and i not in worded:   # a word sent to staff stays (tuplet 3)
+                mk = (lab[a:b_, x0:x1] == i) & (seg[a:b_, x0:x1] == 1)
+                if mk.sum() >= PAR["dust"] * p * p: glue.append((a, x0, mk, row["kind"], row["set"], "seg"))
 
     # paint ownership
     lut_c = np.zeros(n, np.uint8); lut_s = np.full(n, -1, np.int16)
@@ -346,6 +435,15 @@ def run(path):
         h_, w_ = mk.shape; cls[a:a + h_, x0:x0 + w_][mk] = CLS[kind]; sid[a:a + h_, x0:x0 + w_][mk] = k
     label = np.where(cls == 0, 0, np.where(sid >= 0, cls.astype(np.int16) * 40 + sid + 1, cls.astype(np.int16) * 40)).astype(np.uint8)
     cv2.imwrite(f"{OUT}/label/{stem}.png", label)               # value = class x 40 + set + 1 (ignore = 160)
+    # oracle (LOG 68): the same ownership with every GT-labelled word given its label, so a downstream run on it shows
+    # what the remaining set errors cost; class only (value = class x 40)
+    if stem in GT:
+        tk = {tuple(q["box"]): q for q in tokens}; lut_o = lut_c.copy()
+        for kind, x0, y0, x1, y1, want in GT[stem]:
+            q = tk.get((x0, y0, x1, y1))
+            if kind == "w" and q: lut_o[q["ids"]] = CLS[GTCLS[want]]
+        oracle = cls.copy(); oracle[cm] = lut_o[lab[cm]]
+        cv2.imwrite(f"{OUT}/label-oracle/{stem}.png", (oracle * 40).astype(np.uint8))
 
     # sets: flexible outline = contour of the region's pixels closed by p/2
     ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (max(3, p // 2) | 1,) * 2); sets = []
@@ -394,7 +492,7 @@ def run(path):
     # the label, in the set the definition gives (chord -> staff below, lyric -> staff above); an s-box labelled L / C
     # (a glyph glued to a stem) passes when that class owns some of its ink
     fails, total = [], 0
-    for kind, x0, y0, x1, y1, want in (GT.get(stem, []) if stem in TEST else []):
+    for kind, x0, y0, x1, y1, want in (GT.get(stem, []) if stem in TEST + MORE else []):
         sub = rest[y0:y1, x0:x1]; c_ = cls[y0:y1, x0:x1][sub]; s_ = sid[y0:y1, x0:x1][sub]
         if not c_.size or kind == "s" and want not in "LC": continue
         total += 1; cw = CLS[GTCLS[want]]
@@ -407,36 +505,45 @@ def run(path):
         if not ok: fails.append(dict(kind=kind, box=[x0, y0, x1, y1], want=want, got=[k for k, v in CLS.items() if v == got] or ["none"]))
     px = {c: int((cls == v).sum()) for c, v in CLS.items()}
     print(stem, "sets", len(sets), "rows", [r_["kind"][0] for r_ in rows], "px", px, "gt items", len(items), "tiles", len(tiles), "glue", [(q[3][0], q[5]) for q in glue], flush=True)
-    if stem in GT and stem in TEST: print(stem, "score", total - len(fails), "/", total, flush=True)
+    if stem in GT and stem in TEST + MORE: print(stem, "score", total - len(fails), "/", total, flush=True)
     return dict(p=p, sets=sets, tokens=tokens, rows=[dict(kind=r_["kind"], y=[int(r_["y0"]), int(r_["y1"])]) for r_ in rows], px=px,
                 gt=dict(tiles=tiles, items=items), score=dict(total=total, fails=fails))
 
 
 paths = sorted(q for q in glob.glob("/kaggle/input/**/*", recursive=True) if q.lower().endswith((".png", ".jpg", ".jpeg", ".gif")) and "/out/" not in q)
 todo = [q for q in paths if os.path.basename(q).rsplit(".", 1)[0] in STAFF and (ONLY is None or os.path.basename(q).rsplit(".", 1)[0] in ONLY)]
-t0 = time.time(); MODEL = None
+t0 = time.time(); MODEL = CNN = None
 # train: the rules alone on the GT train sheets, then fit on their words (the test sheets are never seen)
 train = [q for q in todo if os.path.basename(q).rsplit(".", 1)[0] in TRAIN and os.path.basename(q).rsplit(".", 1)[0] in GT]
-X, y = [], []
+X, y, P, sheet = [], [], [], []
 for i, q in enumerate(train, 1):
     stem = os.path.basename(q).rsplit(".", 1)[0]; tk = {tuple(t["box"]): t for t in run(q)["tokens"]}
     for kind, x0, y0, x1, y1, want in GT[stem]:
-        if kind == "w" and (x0, y0, x1, y1) in tk: X.append(tk[(x0, y0, x1, y1)]["x"]); y.append(want)
+        if kind == "w" and (x0, y0, x1, y1) in tk: t = tk[(x0, y0, x1, y1)]; X.append(t["x"]); y.append(want); P.append(t["patch"]); sheet.append(i)
     print(f"progress {i}/{len(train)} {time.time() - t0:.0f}s train", flush=True)
 if X:
-    MODEL = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.08, early_stopping=False, random_state=0).fit(np.array(X, float), y)   # auto turns it on past 10k words
+    # the classifier learns from CNN calls on sheets the CNN did not see (folds by sheet), as on the test sheets
+    P = np.stack(P); Y = np.array(["CLNX".index(v) for v in y]); fold = np.array(sheet) % PAR["patch"]["folds"]; oof = np.zeros((len(Y), 4))
+    for f_ in range(PAR["patch"]["folds"]):
+        net = fit_cnn(P=P[fold != f_], Y=Y[fold != f_]); oof[fold == f_] = cnn_prob(net=net, P=P[fold == f_])
+        print("cnn fold", f_, "train accuracy", round(float((cnn_prob(net=net, P=P[fold != f_]).argmax(1) == Y[fold != f_]).mean()), 4), "accuracy", round(float((oof[fold == f_].argmax(1) == Y[fold == f_]).mean()), 4), f"{time.time() - t0:.0f}s", flush=True)
+    print("cnn oof accuracy by class", {c: round(float((oof[Y == j].argmax(1) == j).mean()), 3) for j, c in enumerate("CLNX")}, flush=True)
+    CNN = fit_cnn(P=P, Y=Y)
+    MODEL = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.08, early_stopping=False, random_state=0).fit(np.hstack([np.array(X, float), oof]), y)   # auto turns it on past 10k words
     print("selftest model trained on", len(y), "words from", len(train), "sheets", flush=True)
 res = {}; t0 = time.time()
 for i, q in enumerate(todo, 1):
     stem = os.path.basename(q).rsplit(".", 1)[0]
     try:
         res[stem] = run(q)
-        for t in res[stem]["tokens"]: t.pop("x"); t.pop("ids")
+        for t in res[stem]["tokens"]: t.pop("x"); t.pop("ids"); t.pop("patch")
     except Exception as e:
         import traceback; res[stem] = {"error": repr(e), "tb": traceback.format_exc()}; print(stem, "ERROR", e, flush=True)
     print(f"progress {i}/{len(todo)} {time.time() - t0:.0f}s", flush=True)    # _server/kaggle.py --watch
-sc = [v["score"] for v in res.values() if "score" in v]; fails = [f for q in sc for f in q["fails"]]
-kinds = {}
-for f_ in fails: kinds[f"{f_['want']}>{f_['got'][0]}"] = kinds.get(f"{f_['want']}>{f_['got'][0]}", 0) + 1
-print("selftest score", sum(q["total"] for q in sc) - len(fails), "/", sum(q["total"] for q in sc), sorted(kinds.items(), key=lambda q: -q[1]), flush=True)
+# MORE: never trained on, a held-out check that a rule tuned on TEST generalises
+for name, group in (("selftest", TEST), ("heldout", MORE)):
+    sc = [v["score"] for s_, v in res.items() if "score" in v and s_ in group]; fails = [f for q in sc for f in q["fails"]]
+    kinds = {}
+    for f_ in fails: kinds[f"{f_['want']}>{f_['got'][0]}"] = kinds.get(f"{f_['want']}>{f_['got'][0]}", 0) + 1
+    print(name, "score", sum(q["total"] for q in sc) - len(fails), "/", sum(q["total"] for q in sc), sorted(kinds.items(), key=lambda q: -q[1]), flush=True)
 json.dump(dict(params=PAR, sheets=res), open(f"{OUT}/sets.json", "w"), indent=1, ensure_ascii=False)

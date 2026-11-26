@@ -283,7 +283,8 @@
   "gpu": true,
   "datasets": [
    "gunhe17/worship-sheet-images-500",
-   "gunhe17/worship-sheet-sets-gt"
+   "gunhe17/worship-sheet-sets-gt",
+   "gunhe17/worship-sheet-seg-model"
   ],
   "kernels": [
    "gunhe17/sheet-staff-v3"
