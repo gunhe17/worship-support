@@ -321,7 +321,7 @@ def run(path):
             notation = lambda: (lambda kd: ("staff", kd[0]) if kd[0] is not None and kd[1] <= PAR["mark_reach"] * p else ("ignore", -1))(vdist(b))
             if w["framed"] and k_ != "chord" or SECTION.search(t_) or any(volta_near(b)) or SEGNO.fullmatch(t_) and row["kind"] != "lyric" or TEMPO.fullmatch(t_) or words.index(w) in nav or copy or hw > PAR["title"] * p and k_ != "chord":
                 c = ("ignore", -1); w["sure"] = bool(SECTION.search(t_) or SEGNO.fullmatch(t_) and row["kind"] != "lyric" or TEMPO.fullmatch(t_) or words.index(w) in nav
-                                 or w["framed"] and re.fullmatch(r"[1-4][.,]?", t_))   # in a lyric row "%" is a syllable OCR misread (LOG 71)   # the classifier read D.S.Fie as a chord
+                                 or w["framed"] and row["kind"] != "lyric" and re.fullmatch(r"[1-4][.,]?", t_))   # in a lyric row "%" is a syllable OCR misread (LOG 71)   # the classifier read D.S.Fie as a chord
             elif row["kind"] == "chord":
                 start = kb is not None and b[2] <= sb[kb][0] + PAR["start"] * p   # above the clef: measure number
                 nxt = words[words.index(w) + 1] if words.index(w) + 1 < len(words) else None
