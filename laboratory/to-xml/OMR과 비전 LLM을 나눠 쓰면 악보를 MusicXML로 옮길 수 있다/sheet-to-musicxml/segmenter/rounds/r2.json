@@ -1,0 +1,6 @@
+{"name": "r2", "init": "seg_r1.pt", "iters": 800, "lr": 5e-4,
+ "mix": [{"src": "real", "split": "TRAIN", "w": 0.4},
+         {"src": "focus", "split": "TRAIN", "boxes": "tuplet-boxes.json", "w": 0.05},
+         {"src": "syn", "dir": "syn", "w": 0.2},
+         {"src": "syn", "dir": "syn_r1", "w": 0.15},
+         {"src": "syn", "dir": "syn_r2", "w": 0.2}]}

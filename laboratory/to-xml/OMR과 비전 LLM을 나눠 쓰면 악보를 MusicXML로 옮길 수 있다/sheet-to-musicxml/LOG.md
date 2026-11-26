@@ -697,3 +697,4 @@
 - 목표(12,120개 중 실패 100 이하) 달성: 버전 51 167 → 98(−41%). 기여: 분할 모델 O1·O2 약 −45, 규칙 보강 약 −25(코드 조각, 볼타 번호, 형식 줄, 절 번호, segno·작곡 표기), 결정성은 판단 가능하게 함.
 - 남은 98: X>chord 18(볼타+코드 한 상자 "1.B" — 시험은 X, MORE는 C로 라벨 관례 불일치), X>staff 16(espinosa 8va 선, segno 기호), C>ignore 14, X>lyric 12, L>ignore 9(OCR이 음절을 숫자·기호로 읽음), N>chord 8(streamofpraise 셋잇단 조각).
 - withgod(워터마크) 207은 별도. 분할 모델에 '없음' 부류 또는 워터마크 합성이 필요.
+- 학습 코드 저장소 반영(`segmenter/`): `data.py`(GT 상자 → 픽셀 정답), `synthesize.py`(Verovio 합성, 라운드별 `--boost`), `train.py`(라운드 설정 `rounds/r0–r2.json`, 데이터 출처별 가중치·집중 자르기), `export.py`(ONNX). 검증: 기존 스크립트 대비 정답 86장·합성 페이지(기본·r2 강조) 동일, r2 설정 20스텝 학습 가중치 동일, 내보낸 ONNX 예측이 배포본과 일치(1.0).

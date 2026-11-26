@@ -1,0 +1,5 @@
+[
+ {"dir": "syn", "start": 1000, "count": 600, "boost": {}},
+ {"dir": "syn_r1", "start": 2000, "count": 300, "boost": {"triplet": 2, "triplet_text": 0.6, "triplet_flat": 0.7, "triplet_below": 0.4}},
+ {"dir": "syn_r2", "start": 3000, "count": 300, "boost": {"triplet": 2, "triplet_text": 0.6, "triplet_flat": 0.7, "triplet_below": 0.4, "chord_tight": 0.7, "chord_font": 0.7}}
+]
