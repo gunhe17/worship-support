@@ -398,7 +398,7 @@ def run(path):
     # a chord, overlapping it in height and no taller, joins it (brown-worship, LOG 69)
     chords = [q for q in tokens if q["cls"] == "chord"]
     for q in tokens:
-        if q["cls"] not in ("ignore", "staff") or q["sure"] or (q.get("seg") or [0, 0])[1] >= PAR["seg"]["sym"]: continue
+        if q["cls"] not in ("ignore", "staff") or q["rule"] == "staff" or q["sure"] or (q.get("seg") or [0, 0])[1] >= PAR["seg"]["sym"]: continue
         b = q["box"]
         for u in chords:
             v = u["box"]
@@ -436,9 +436,18 @@ def run(path):
                 kind = kind_of(text) if conf >= PAR["conf"] else "mark"
                 if kind == row["kind"]: glue.append((a, x0, pl == j, row["kind"], row["set"], text))
             # the segmenter sees text glued to a stem / slur where the piece is too small or thin for the shape test
-            if seg is not None and row["kind"] in ("chord", "lyric") and i not in worded:   # a word sent to staff stays (tuplet 3)
-                mk = (lab[a:b_, x0:x1] == i) & (seg[a:b_, x0:x1] == 1)
-                if mk.sum() >= PAR["dust"] * p * p: glue.append((a, x0, mk, row["kind"], row["set"], "seg"))
+
+    # segmenter: text pixels of a staff component inside a chord / lyric row go to the row, even left of the row's first
+    # word (a chord glued to the first stem, choi-deok-sin); a word sent to staff stays (tuplet 3)
+    for i, (c, k) in (owner.items() if seg is not None else ()):
+        if c != "staff" or i in worded: continue
+        x0, y0, x1, y1 = box(i)
+        for row in rows:
+            if row["kind"] not in ("chord", "lyric") or row["set"] is None or row["col"] != col((x0, y0, x1, y1)): continue
+            ya, yb = int(max(y0, row["y0"])), int(min(y1, row["y1"]))
+            if yb - ya < 2: continue
+            mk = (lab[ya:yb, x0:x1] == i) & (seg[ya:yb, x0:x1] == 1)
+            if mk.sum() >= PAR["dust"] * p * p: glue.append((ya, x0, mk, row["kind"], row["set"], "seg"))
 
     # paint ownership
     lut_c = np.zeros(n, np.uint8); lut_s = np.full(n, -1, np.int16)
